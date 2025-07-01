@@ -1,0 +1,1580 @@
+<head>
+<title>Diablo 4 DEV</title>
+<meta description="Unleash Diablo 4 with effects that set your room ablaze in RGB. v1.02" />
+<meta publisher="SignalRGB" />
+
+<meta property="keyScreenBrightness" label="Ambience brightness" type="number" min="0" max="100" default="100" />
+<meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
+tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
+type="boolean" default="0" />
+<meta property="enableHealth" label="enable Health effect" type="boolean" default="1" />
+<meta property="enableHealthHUD" label="enable Health HUD effect" type="boolean" default="1" />
+<meta property="healthColor" label="Health Bar Color" type="color" default="#6fff00" min="0" max="360" />
+<meta property="healthY" label="Health bar Y position" type="number" min="0" max="200" default="50" />
+<meta property="healthX" label="Health bar X position" type="number" min="0" max="320" default="0" />
+<meta property="healthWidth" label="Health bar width" type="number" min="0" max="320" default="320" />
+<meta property="healthHeight" label="Health bar height" type="number" min="0" max="100" default="20" />
+<meta property="enableMana" label="enable Mana effect" type="boolean" default="1" />
+<meta property="enableManaHUD" label="enable Mana HUD effect" type="boolean" default="1" />
+<meta property="manaColor" label="Mana Bar Color" type="color" default="#aa00ff" min="0" max="360" />
+<meta property="manaY" label="Mana bar Y position" type="number" min="0" max="200" default="70" />
+<meta property="manaX" label="Mana bar X position" type="number" min="0" max="320" default="0" />
+<meta property="manaWidth" label="Mana bar width" type="number" min="0" max="320" default="320" />
+<meta property="manaHeight" label="Mana bar height" type="number" min="0" max="100" default="20" />
+<meta property="blackToggle" label="HUD Background Black" type="boolean" default="1" />
+<meta property="enableDead" label="enable death effect" type="boolean" default="1" />
+<meta property="enableSafeZone" label="enable safezone effects" type="boolean" default="1" />
+<meta property="enableAbility" label="enable ability effects" type="boolean" default="1" />
+<meta property="enableDodge" label="enable dodge effect" type="boolean" default="1" />
+<meta property="enableFlask" label="enable flask effect" type="boolean" default="1" />
+<meta property="enableLevelUp" label="enable level up effect" type="boolean" default="1" />
+<meta property="enableEvent" label="enable Event Completion effect" type="boolean" default="1" />
+<meta property="enableQuest" label="enable quest completion effect" type="boolean" default="1" />
+<meta property="enableBuff" label="enable buff effect" type="boolean" default="1" />
+<meta property="enableWaypoint" label="enable Waypoint Discovery effect" type="boolean" default="1" />
+<meta property="enableMenu" label="enable In-Menu effect" type="boolean" default="1" />
+
+<meta meter="health" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  
+  h="0-20" s="35-100" l="0-100" hdr-h="0-20" hdr-s="35-100" hdr-l="0-100" >
+  <resolution aspect="3.55:1" x="0.4081" y="0.862" width="0.0003" height="0.0542" />
+  <resolution aspect="24:10" x="0.3631" y="0.8618" width="0.0009" height="0.1118" />
+  <resolution aspect="16:11" x="0.3169" y="0.8666" width="0.0008" height="0.1049" />
+
+  <resolution size="3840x2160" x="0.3169" y="0.8666" width="0.0008" height="0.1049" />
+  <resolution size="2560x1080" x="0.3619" y="0.8628" width="0.0011" height="0.1085" />
+</meta>
+
+<meta meter="health2" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  
+  h="240-360" s="35-100" l="0-100" hdr-h="240-360" hdr-s="35-100" hdr-l="0-100" >
+  <resolution aspect="3.55:1" x="0.4081" y="0.862" width="0.0003" height="0.0542" />
+  <resolution aspect="24:10" x="0.3631" y="0.8618" width="0.0009" height="0.1118" />
+  <resolution aspect="16:11" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  />
+
+  <resolution size="3840x2160" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  />
+  <resolution size="2560x1080" x="0.3619" y="0.8628" width="0.0011" height="0.1085"  />
+</meta>
+
+<meta meter="inGame" type="area" tags="VLC,Game,Diablo" x="0.3767" y="0.9187" width="0" height="0" 
+  h="176-216" s="5-52" l="10-79" hdr-h="176-216" hdr-s="5-52" hdr-l="10-79" >
+  <resolution aspect="3.55:1" x="0.4380" y="0.9176" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.4078" y="0.9174" width="0.0003" height="0.0014" />
+  <resolution aspect="16:11" x="0.3638" y="0.9243" width="0" height="0"  />
+
+  <resolution size="3840x2160" x="0.3767" y="0.9187" width="0" height="0"  />
+  <resolution size="2560x1080" x="0.4084" y="0.9249" width="0" height="0"  />
+</meta>
+
+<meta meter="inGame2" type="area" tags="VLC,Game,Diablo" x="0.7085" y="0.8707" width="0" height="0" 
+  h="155-215" s="10-65" l="9-50" hdr-h="155-215" hdr-s="10-65" hdr-l="9-50" >
+  <resolution aspect="3.55:1" x="0.6070" y="0.8806" width="0" height="0" />
+  <resolution aspect="24:10" x="0.6544" y="0.8681" width="0.0003" height="0.0014" />
+  <resolution aspect="16:11" x="0.7374" y="0.8793" width="0" height="0"  />
+
+  <resolution size="3840x2160" x="0.7085" y="0.8707" width="0" height="0"  />
+  <resolution size="2560x1080" x="0.66" y="0.8823" width="0" height="0"  />
+</meta>
+
+<meta meter="flaskWhite" type="area" tags="VLC,Game,Diablo" x="0.3497" y="0.8485" width="0" height="0" 
+  h="32-72" s="13-53" l="33-73" hdr-h="32-72" hdr-s="13-53" hdr-l="33-73" >
+  <resolution aspect="3.55:1" x="0.4250" y="0.8454" width="0" height="0.0005" />
+  <resolution aspect="24:10" x="0.3872" y="0.8486" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.3341" y="0.8468" width="0.0004" height="0"  />
+
+  <resolution size="3840x2160" x="0.3501" y="0.8518" width="0.0016" height="0.0009" />
+  <resolution size="2560x1080" x="0.3861" y="0.8545" width="0.0008" height="0" />
+</meta>
+
+<meta meter="dodge" type="area" tags="VLC,Game,Diablo" x="0.6503" y="0.8582" width="0" height="0"  
+  h="13-73" s="0-30" l="43-73" hdr-h="13-73" hdr-s="0-30" hdr-l="43-73" >
+  <resolution aspect="3.55:1" x="0.5750" y="0.8583" width="0" height="0.0005" />
+  <resolution aspect="24:10" x="0.6113" y="0.8583" width="0.0005" height="0.0005" />
+  <resolution aspect="16:11" x="0.6671" y="0.8612" width="0.0003" height="0" />
+
+  <resolution size="3840x2160" x="0.6502" y="0.8573" width="0.001" height="0"   />
+  <resolution size="2560x1080" x="0.6131" y="0.8591" width="0" height="0" />
+</meta>
+
+<meta meter="level" type="area" tags="VLC,Game,Diablo" x="0.5643" y="0.8881" width="0.0082" height="0.0014" 
+  h="12-210" s="44-100" l="4-74" hdr-h="12-210" hdr-s="44-100" hdr-l="4-74" >
+  <resolution aspect="3.55:1" x="0.5305" y="0.8833" width="0.0036" height="0" />
+  <resolution aspect="24:10" x="0.5465" y="0.8854" width="0.0070" height="0.0007" />
+  <resolution aspect="16:11" x="0.5463" y="0.8868" width="0.0121" height="-0.0006"   />
+
+  <resolution size="3840x2160" x="0.5619" y="0.8865" width="0.0106" height="0"  />
+  <resolution size="2560x1080" x="0.5318" y="0.8851" width="0.0047" height="0"  />
+</meta>
+
+<meta meter="safeZoneAbility0" type="area" tags="VLC,Game,Diablo" x="0.5561" y="0.9027" width="0.0011" height="-0.0007"
+  h="0-360" s="0-100" l="0-25" hdr-h="0-360" hdr-s="0-100" hdr-l="0-25" >
+  <resolution aspect="3.55:1" x="0.5268" y="0.9028" width="0.0003" height="0.0000" />
+  <resolution aspect="24:10" x="0.5392" y="0.9063" width="0.0026" height="0.0000" />
+  <resolution aspect="16:11" x="0.5612" y="0.9031" width="0.0023" height="0" />
+
+  <resolution size="3840x2160" x="0.5514" y="0.9037" width="0.0032" height="-0.0005" />
+  <resolution size="2560x1080" x="0.5404" y="0.9027" width="0.0016" height="0"  />
+</meta>
+
+<meta meter="safeZoneAbility1" type="area" tags="VLC,Game,Diablo" x="0.5897" y="0.902" width="0.0035" height="0.0007" 
+  h="0-360" s="0-100" l="0-25" hdr-h="0-360" hdr-s="0-100" hdr-l="0-25" >
+  <resolution aspect="3.55:1" x="0.5435" y="0.9009" width="0.0016" height="0.0000" />
+  <resolution aspect="24:10" x="0.5634" y="0.9063" width="0.0017" height="0.0000" />
+  <resolution aspect="16:11" x="0.5991" y="0.9031" width="0.005" height="-0.0007"  />
+
+  <resolution size="3840x2160" x="0.5853" y="0.9032" width="0.0024" height="-0.0009" />
+  <resolution size="2560x1080" x="0.5651" y="0.9036" width="0.0015" height="0" />
+</meta>
+
+<meta meter="deadRed" type="area" tags="VLC,Game,Diablo" x="0.5072" y="0.1946" width="0.002" height="0"
+  h="-30-30" s="60-100" l="0-40" hdr-h="-30-30" hdr-s="60-100" hdr-l="0-40" >
+  <resolution aspect="3.55:1" x="0.5026" y="0.1935" width="0.0010" height="0.0000" />
+  <resolution aspect="24:10" x="0.5044" y="0.1944" width="0.0010" height="0" />
+  <resolution aspect="16:11" x="0.5076" y="0.1926" width="0.0031" height="0.0025"  />
+
+  <resolution size="3840x2160" x="0.4855" y="0.1955" width="0.002" height="-0.0005"  />
+  <resolution size="2560x1080" x="0.5057" y="0.1946" width="0.0011" height="0"  />
+</meta>
+
+<meta meter="deadBlack" type="area" tags="VLC,Game,Diablo" x="0.5037" y="0.13" width="0" height="0" 
+  h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" >
+  <resolution aspect="3.55:1" x="0.5016" y="0.1315" width="0" height="0" />
+  <resolution aspect="24:10" x="0.5020" y="0.1313" width="0" height="0" />
+  <resolution aspect="16:11" x="0.5049" y="0.1301" width="0" height="0"  />
+
+  <resolution size="3840x2160" x="0.5027" y="0.1311" width="0" height="0"  />
+  <resolution size="2560x1080" x="0.5029" y="0.1307" width="0" height="0"  />
+</meta>
+
+<meta meter="mana" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098" 
+  h="0-360" s="20-100" l="10-100" hdr-h="0-360" hdr-s="20-100" hdr-l="10-100" >
+  <resolution aspect="3.55:1" x="0.5898" y="0.862" width="0.0008" height="0.0556" />
+  <resolution aspect="24:10" x="0.6346" y="0.8618" width="0.0003" height="0.1111" />
+  <resolution aspect="16:11" x="0.6831" y="0.8631" width="0.0019" height="0.1098"  />
+
+  <resolution size="3840x2160" x="0.6831" y="0.8631" width="0.0019" height="0.1098"  />
+  <resolution size="2560x1080" x="0.6358" y="0.861" width="0.0008" height="0.1121"  />
+</meta>
+
+<meta meter="manaBright" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098" 
+  h="0-360" s="00-20" l="60-100" hdr-h="0-360" hdr-s="00-20" hdr-l="60-100" >
+  <resolution aspect="3.55:1" x="0.5898" y="0.862" width="0.0008" height="0.0556" />
+  <resolution aspect="24:10" x="0.6346" y="0.8618" width="0.0003" height="0.1111" />
+  <resolution aspect="16:11" x="0.6831" y="0.8631" width="0.0019" height="0.1098"  />
+
+  <resolution size="3840x2160" x="0.6831" y="0.8631" width="0.0019" height="0.1098" />
+  <resolution size="2560x1080" x="0.6381" y="0.8684" width="0.002" height="0.0955" />
+</meta>
+
+<meta meter="manaCol" type="colormean" tags="VLC,Game,Diablo" x="0.6827" y="0.9687" width="0" height="0" >
+  <resolution aspect="3.55:1" x="0.5904" y="0.9722" width="0.0008" height="0.0556" />
+  <resolution aspect="24:10" x="0.6346" y="0.9701" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.6827" y="0.9687" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.6827" y="0.9687" width="0" height="0" />
+  <resolution size="2560x1080" x="0.6377" y="0.9639" width="0" height="0" />
+</meta>
+
+<meta meter="ability1" type="colormean" tags="VLC,Game,Diablo" x="0.4209" y="0.9062" width="0" height="0" >
+  <resolution aspect="3.55:1" x="0.4596" y="0.9064" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.4398" y="0.9063" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.4209" y="0.9062" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.4209" y="0.9062" width="0" height="0" />
+  <resolution size="2560x1080" x="0.44" y="0.9064" width="0.0016" height="0" />
+</meta>
+
+<meta meter="ability2" type="colormean" tags="VLC,Game,Diablo" x="0.4533" y="0.9062" width="0" height="0" >
+  <resolution aspect="3.55:1" x="0.4763" y="0.9064" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.4648" y="0.9063" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.4533" y="0.9062" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.4533" y="0.9062" width="0" height="0" />
+  <resolution size="2560x1080" x="0.4674" y="0.9064" width="0" height="0"   />
+</meta>
+
+<meta meter="ability3" type="colormean" tags="VLC,Game,Diablo" x="0.4853" y="0.9076" width="0" height="0" >
+  <resolution aspect="3.55:1" x="0.4763" y="0.9064" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.4887" y="0.9063" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.4853" y="0.9076" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.4853" y="0.9076" width="0" height="0" />
+  <resolution size="2560x1080" x="0.4924" y="0.9064" width="0" height="0" />
+</meta>
+
+<meta meter="ability4" type="colormean" tags="VLC,Game,Diablo" x="0.519" y="0.9069" width="0" height="0" >
+  <resolution aspect="3.55:1" x="0.5091" y="0.9064" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.5140" y="0.9063" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.519" y="0.9069" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.519" y="0.9069" width="0" height="0" />
+  <resolution size="2560x1080" x="0.517" y="0.9064" width="0" height="0" />
+</meta>
+
+<meta meter="ability5" type="colormean" tags="VLC,Game,Diablo" x="0.5506" y="0.9069" width="0" height="0" >
+  <resolution aspect="3.55:1" x="0.5260" y="0.9064" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.5387" y="0.9063" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.5506" y="0.9069" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.5506" y="0.9069" width="0" height="0" />
+  <resolution size="2560x1080" x="0.5424" y="0.9073" width="0" height="0" />
+</meta>
+
+<meta meter="ability6" type="colormean" tags="VLC,Game,Diablo" x="0.5842" y="0.9069" width="0" height="0" >
+  <resolution aspect="3.55:1" x="0.5419" y="0.9064" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.5625" y="0.9063" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.5842" y="0.9069" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.5842" y="0.9069" width="0" height="0" />
+  <resolution size="2560x1080" x="0.5678" y="0.9064" width="0" height="0" />
+</meta>
+
+<meta meter="notInSafeZone" type="area" tags="VLC,Game,Diablo" x="0.4189" y="0.0396" width="0" height="0" 
+  h="-30-30" s="75-100" l="20-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="20-75" >
+  <resolution aspect="3.55:1" x="0.4594" y="0.0408" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.4387" y="0.0396" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.4189" y="0.0396" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.4186" y="0.0435" width="0" height="0" />
+  <resolution size="2560x1080" x="0.4388" y="0.0417" width="0" height="0" />
+</meta>
+
+<meta meter="unMovable" type="area" tags="VLC,Game,Diablo" x="0.646" y="0.8457" width="0" height="0" 
+  h="230-360" s="0-22" l="10-50" hdr-h="230-360" hdr-s="0-22" hdr-l="10-50" >
+  <resolution aspect="3.55:1" x="0.5724" y="0.8462" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.6078" y="0.8472" width="0.001" height="0.0005" />
+  <resolution aspect="16:11" x="0.646" y="0.8457" width="0" height="0" />
+
+  <resolution size="3840x2160" x="0.6468" y="0.8606" width="0" height="0" />
+  <resolution size="2560x1080" x="0.6092" y="0.8573" width="0" height="0" />
+</meta>
+
+<meta meter="skillPointGrey" tags="VLC,Game,Diablo" type="area" x="0.7222" y="0.8193" width="0" height="0"
+  h="180-220" s="0-50" l="20-60" hdr-h="90-220" hdr-s="0-50" hdr-l="0-60" >
+  <resolution aspect="3.55:1" x="0.6109" y="0.8242" width="0" height="0" />
+  <resolution aspect="24:10" x="0.6648" y="0.8165" width="0.0005" height="0.0005" />
+  <resolution aspect="16:11" x="0.7479" y="0.8199" width="0" height="0"  />
+
+  <resolution size="3840x2160" x="0.7226" y="0.818" width="0" height="0" />
+  <resolution size="2560x1080" x="0.6671" y="0.8193" width="0" height="0"  />
+</meta>
+
+<meta meter="skillPointYellow" tags="VLC,Game,Diablo" type="area" x="0.7223" y="0.8389" width="0.0005" height="0.0005" 
+  h="40-210" s="25-100" l="45-100" hdr-h="0-90" hdr-s="25-100" hdr-l="45-100" >
+  <resolution aspect="3.55:1" x="0.6109" y="0.8457" width="0.0002" height="0.0042" />
+  <resolution aspect="24:10" x="0.6654" y="0.8486" width="0.0005" height="0.0005" />
+  <resolution aspect="16:11" x="0.7476" y="0.8405" width="0" height="0"  />
+
+  <resolution size="3840x2160" x="0.7223" y="0.8402" width="0.0005" height="0" />
+  <resolution size="2560x1080" x="0.6667" y="0.8397" width="0" height="0" />
+</meta>
+
+<meta meter="eventCompleteWhite" tags="VLC,process,Diablo" type="area" x="0.5004" y="0.1667" width="0.001" height="0.0005" 
+  h="25-50" s="0-100" l="65-100" hdr-h="25-70" hdr-s="0-100" hdr-l="65-100" >
+  <resolution aspect="3.55:1" x="0.5" y="0.1729" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.5004" y="0.1654" width="0.0003" height="0.0014" />
+  <resolution aspect="16:11" x="0.5004" y="0.1667" width="0.001" height="0.0005"  />
+
+  <resolution size="3840x2160" x="0.5004" y="0.1667" width="0.001" height="0.0005" />
+  <resolution size="2560x1080" x="0.5004" y="0.1667" width="0.001" height="0.0005" />
+</meta> 
+
+<meta meter="eventCompleteRed" tags="VLC,process,Diablo" type="area" x="0.4887" y="0.1757" width="0.0004" height="0.0063" 
+  h="-30-30" s="75-100" l="20-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="75-100" >
+  <resolution aspect="3.55:1" x="0.4945" y="0.1792" width="0.0003" height="0.0056" />
+  <resolution aspect="24:10" x="0.4917" y="0.1751" width="0.0006" height="0.0007" />
+  <resolution aspect="16:11" x="0.4887" y="0.1757" width="0.0004" height="0.0063" />
+
+  <resolution size="3840x2160" x="0.4887" y="0.1757" width="0.0004" height="0.0063" />
+  <resolution size="2560x1080" x="0.492" y="0.1789" width="0" height="0" />
+</meta>
+
+<meta meter="eventCompleteRed2" tags="VLC,process,Diablo" type="area" x="0.4887" y="0.1757" width="0.0004" height="0.0063" 
+  h="-30-30" s="75-100" l="20-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="75-100" >
+  <resolution aspect="3.55:1" x="0.4945" y="0.1792" width="0.0003" height="0.0056" />
+  <resolution aspect="24:10" x="0.4917" y="0.1751" width="0.0006" height="0.0007" />
+  <resolution aspect="16:11" x="0.4887" y="0.1757" width="0.0004" height="0.0063" />
+
+  <resolution size="3840x2160" x="0.4887" y="0.1757" width="0.0004" height="0.0063" />
+  <resolution size="2560x1080" x="0.492" y="0.1789" width="0" height="0" />
+</meta>
+
+<meta meter="questColor" tags="VLC,process,Diablo" type="colormean" x="0.1164" y="0.5611" width="0.0016" height="0.0042" 
+  h="197-217" s="63-93" l="78-100" hdr-h="197-217" hdr-s="63-93" hdr-l="78-100" >
+  <resolution aspect="3.55:1" x="0.1365" y="0.562" width="0.0005" height="0.0005" />
+  <resolution aspect="24:10" x="0.0875" y="0.5389" width="0" height="0" />
+  <resolution aspect="16:11" x="0.1305" y="0.5616" width="0" height="0"  />
+
+  <resolution size="3840x2160" x="0.1175" y="0.5628" width="0" height="0" />
+  <resolution size="2560x1080" x="0.1164" y="0.5611" width="0.0016" height="0.0042" />
+</meta> 
+
+<meta meter="questRed" tags="VLC,process,Diablo" type="area" x="0.1480" y="0.5646" width="0.1031" height="0.0005" 
+  h="-30-30" s="50-100" l="0-70" hdr-h="-30-30" hdr-s="50-100" hdr-l="0-70" >
+  <resolution aspect="3.55:1" x="0.162" y="0.55" width="0.0047" height="0.0005" />
+  <resolution aspect="24:10" x="0.1081" y="0.5375" width="0.0840" height="0.0030" />
+  <resolution aspect="16:11" x="0.1480" y="0.5646" width="0.1031" height="0.0005"  />
+
+  <resolution size="3840x2160" x="0.1701" y="0.5665" width="0.0427" height="-0.0005" />
+  <resolution size="2560x1080" x="0.1254" y="0.5681" width="0.0219" height="-0.0009"  />
+</meta> 
+
+<meta meter="questWhite" tags="VLC,process,Diablo" type="area" x="0.1480" y="0.5646" width="0.1031" height="0.0005" 
+  h="0-360" s="0-30" l="80-100" hdr-h="0-360" hdr-s="0-30" hdr-l="80-100" >
+  <resolution aspect="3.55:1" x="0.1516" y="0.5666" width="0.0818" height="0.0000" />
+  <resolution aspect="24:10" x="0.1081" y="0.5375" width="0.0840" height="0.0140" />
+  <resolution aspect="16:11" x="0.1480" y="0.5646" width="0.1031" height="0.0005"  />
+
+  <resolution size="3840x2160" x="0.1701" y="0.5665" width="0.0427" height="-0.0005" />
+  <resolution size="2560x1080" x="0.1235" y="0.557" width="0.0254" height="0.0009" />
+</meta> 
+
+<meta meter="buffedGreen" tags="VLC,process,Diablo" type="area" x="0.4023" y="0.8139" width="0.0504" height="0.0005" 
+  h="90-130" s="50-100" l="20-80" hdr-h="90-180" hdr-s="50-100" hdr-l="50-100" >
+  <resolution aspect="3.55:1" x="0.4513" y="0.814" width="0.0266" height="0.0000" />
+  <resolution aspect="24:10" x="0.4285" y="0.8139" width="0.0363" height="0.0000" />
+  <resolution aspect="16:11" x="0.4023" y="0.8139" width="0.0504" height="0.0005"  />
+
+  <resolution size="3840x2160" x="0.4027" y="0.8147" width="0.0633" height="0"  />
+  <resolution size="2560x1080" x="0.4271" y="0.8156" width="0.0461" height="-0.001"  />
+</meta> 
+
+<meta meter="buffedBlack" tags="VLC,process,Diablo" type="area" x="0.404" y="0.816" width="0.001" height="0.0005" 
+  h="70-150" s="0-100" l="0-60" hdr-h="70-150" hdr-s="0-100" hdr-l="0-60" >
+  <resolution aspect="3.55:1" x="0.4516" y="0.8158" width="0.0005" height="0.0000" />
+  <resolution aspect="24:10" x="0.4282" y="0.8153" width="0.0005" height="0.0005" />
+  <resolution aspect="16:11" x="0.404" y="0.816" width="0.001" height="0.0005"  />
+
+  <resolution size="3840x2160" x="0.4038" y="0.818" width="0.0007" height="-0.0005"   />
+  <resolution size="2560x1080" x="0.4279" y="0.8184" width="0" height="0"   />
+</meta> 
+
+<meta meter="waypointBlue" tags="VLC,process,Diablo" type="area" x="0.4996" y="0.6382" width="0.0005" height="0.0005" 
+  h="180-225" s="0-100" l="50-100" hdr-h="180-225" hdr-s="0-100" hdr-l="50-100" >
+  <resolution aspect="3.55:1" x="0.5003" y="0.5722" width="0" height="0" />
+  <resolution aspect="24:10" x="0.4996" y="0.6382" width="0.0005" height="0.0005" />
+  <resolution aspect="16:11" x="0.4996" y="0.6382" width="0.0005" height="0.0005" />
+
+  <resolution size="3840x2160" x="0.4991" y="0.6447" width="0.0008" height="0" />
+  <resolution size="2560x1080" x="0.4996" y="0.6382" width="0.0005" height="0.0005" />
+</meta>
+
+<meta meter="waypointRed" tags="VLC,process,Diablo" type="area" x="0.4984" y="0.6507" width="0.001" height="0.0005" 
+  h="-30-30" s="60-100" l="0-60" hdr-h="-30-30" hdr-s="50-100" hdr-l="0-70" >
+  <resolution aspect="3.55:1" x="0.4984" y="0.6507" width="0.0005" height="0.0000" />
+  <resolution aspect="24:10" x="0.4984" y="0.6507" width="0.0005" height="0.0005" />
+  <resolution aspect="16:11" x="0.4984" y="0.6507" width="0.001" height="0.0005"  />
+
+  <resolution size="3840x2160" x="0.4928" y="0.6359" width="0.0006" height="0.0005"  />
+  <resolution size="2560x1080"  x="0.4924" y="0.6404" width="0" height="0"  />
+</meta> 
+
+<meta meter="waypointRed2" tags="VLC,process,Diablo" type="area" x="0.4984" y="0.6507" width="0.001" height="0.0005" 
+  h="-30-30" s="60-100" l="0-60" hdr-h="-30-30" hdr-s="60-100" hdr-l="0-60" >
+  <resolution aspect="3.55:1" x="0.4984" y="0.6507" width="0.0005" height="0.0000" />
+  <resolution aspect="24:10" x="0.4984" y="0.6507" width="0.0005" height="0.0005" />
+  <resolution aspect="16:11" x="0.4984" y="0.6507" width="0.001" height="0.0005"  />
+
+  <resolution size="3840x2160" x="0.5072" y="0.6387" width="0.0007" height="0"  />
+  <resolution size="2560x1080" x="0.5061" y="0.6321" width="0" height="0" />
+</meta> 
+
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+<canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+const health_Meter = new Meter(5,healthCallback);
+
+const inGame_Meter = new Meter(2,inGameCallback); 
+const inGame2_Meter = new Meter(2,inGameCallback); 
+
+const flaskWhite_Meter = new Meter(8,flaskCallback); 
+
+const dodge_Meter = new Meter(5,dodgeCallback); 
+
+const level_Meter = new Meter(5,levelCallback); 
+
+const SafeZoneAbility0_Meter = new Meter(15,SafeZoneCallback); 
+const SafeZoneAbility1_Meter = new Meter(15,SafeZoneCallback); 
+
+const DeadRed_Meter = new Meter(8,DeadCallback); 
+const DeadBlack_Meter = new Meter(8,DeadCallback); 
+
+const mana_Meter = new Meter(5,manaCallback);
+const manaBright_Meter = new Meter(5,()=>"")
+const manaCol_Meter = new Meter(5,()=>"");
+
+const ability1_Meter = new Meter(3, ability1Callback)
+const ability2_Meter = new Meter(3, ability2Callback)
+const ability3_Meter = new Meter(3, ability3Callback)
+const ability4_Meter = new Meter(3, ability4Callback)
+const ability5_Meter = new Meter(3, ability5Callback)
+const ability6_Meter = new Meter(3, ability6Callback)
+const ability1Col_Meter = new Meter(10, ability1Callback)
+const ability2Col_Meter = new Meter(10, ability2Callback)
+const ability3Col_Meter = new Meter(10, ability3Callback)
+const ability4Col_Meter = new Meter(10, ability4Callback)
+const ability5Col_Meter = new Meter(10, ability5Callback)
+const ability6Col_Meter = new Meter(10, ability6Callback)
+
+const hasSkillGreyMeter = new Meter(10, skillAvailableCallback)
+const hasSkillYellowMeter = new Meter(3, skillAvailableCallback)
+
+const eventCompleteWhiteMeter = new Meter(10, eventCompleteCallback)
+const eventCompleteRedMeter = new Meter(10, eventCompleteCallback)
+
+const questCompleteColorMeter = new Meter(1, questCompleteCallback)
+const questCompleteRedMeter = new Meter(8, questCompleteCallback)
+const questCompleteWhiteMeter = new Meter(8, questCompleteCallback)
+
+const buffedGreenMeter = new Meter(10, buffedCallback)
+const buffedBlackMeter = new Meter(10, buffedCallback)
+
+const waypointBlueMeter = new Meter(10, waypointCallback)
+const waypointRedMeter = new Meter(10, waypointCallback)
+
+
+let designatedHealthSize = 0;
+let currentHealthSize = 0;
+let designatedManaSize = 0;
+let currentManaSize = 0;
+
+let inGame = false;
+let inSafeZone = false;
+let playCopyScreen = true
+
+let canvas, ctx;
+
+const foreGroundEffects = new childArray();
+const backGroundEffects= new childArray()
+
+const stateHdlr = new StateHandler();
+let latestLocation = {x:0,y:0}
+let lowHealthPlaying = false;
+let lowManaPlaying = false;
+
+function update(){
+  if(Date.now() % 2) inGameCallback()
+inGame_Meter.setValue(engine.vision.inGame)
+inGame2_Meter.setValue(engine.vision.inGame2)
+if(engine.vision.health > 0.99 || engine.vision.health < 0.93)
+health_Meter.setValue(engine.vision.health + engine.vision.health2)
+mana_Meter.setValue(engine.vision.mana)
+manaBright_Meter.setValue(engine.vision.manaBright)
+if (engine.vision.mana > 0.3){
+  manaCol_Meter.setValue(engine.vision.manaCol)
+}
+
+if (inGame){
+  flaskWhite_Meter.setValue(engine.vision.flaskWhite)
+  dodge_Meter.setValue(engine.vision.dodge)
+  level_Meter.setValue(engine.vision.level)
+  SafeZoneAbility0_Meter.setValue(engine.vision.safeZoneAbility0)
+  SafeZoneAbility1_Meter.setValue(engine.vision.safeZoneAbility1)
+  if(engine.vision.safeZoneAbility0 != 1 && engine.vision.safeZoneAbility1 != 1){
+    ability1_Meter.setValue(engine.vision.ability1[2])
+    ability2_Meter.setValue(engine.vision.ability2[2])
+    ability3_Meter.setValue(engine.vision.ability3[2])
+    ability4_Meter.setValue(engine.vision.ability4[2])
+    ability5_Meter.setValue(engine.vision.ability5[2])
+    ability6_Meter.setValue(engine.vision.ability6[2])
+    ability1Col_Meter.setValue(engine.vision.ability1[0])
+    ability2Col_Meter.setValue(engine.vision.ability2[0])
+    ability3Col_Meter.setValue(engine.vision.ability3[0])
+    ability4Col_Meter.setValue(engine.vision.ability4[0])
+    ability5Col_Meter.setValue(engine.vision.ability5[0])
+    ability6Col_Meter.setValue(engine.vision.ability6[0])
+}
+  hasSkillGreyMeter.setValue(engine.vision.skillPointGrey)
+  hasSkillYellowMeter.setValue(engine.vision.skillPointYellow)
+  buffedGreenMeter.setValue(engine.vision.buffedGreen)
+  buffedBlackMeter.setValue(engine.vision.buffedBlack)
+  waypointBlueMeter.setValue(engine.vision.waypointBlue)
+  waypointRedMeter.setValue(engine.vision.waypointRed + engine.vision.waypointRed2)
+}
+DeadRed_Meter.setValue(engine.vision.deadRed)
+DeadBlack_Meter.setValue(engine.vision.deadBlack)
+eventCompleteWhiteMeter.setValue(engine.vision.eventCompleteWhite)
+eventCompleteRedMeter.setValue(engine.vision.eventCompleteRed + engine.vision.eventCompleteRed2)
+questCompleteColorMeter.setValue(engine.vision.questColor[0])
+questCompleteRedMeter.setValue(engine.vision.questRed)
+questCompleteWhiteMeter.setValue(engine.vision.questWhite)
+
+
+  if(playCopyScreen) copyScreen(1);
+  backGroundEffects.draw();
+  foreGroundEffects.draw();
+  stateHdlr.Process();
+  drawHud();
+  window.requestAnimationFrame(update);
+}
+
+  function drawHud() {
+      let hpColor = hexToHSL(healthColor);
+      let mnColor = hexToHSL(manaColor);
+
+      if (inGame) {
+          designatedHealthSize = health_Meter.value;
+          designatedManaSize = mana_Meter.value + manaBright_Meter.value;
+      } else {
+          designatedHealthSize = 0;
+          designatedManaSize = 0;
+      }
+
+      currentHealthSize = lerp(currentHealthSize, designatedHealthSize, 0.05);
+      currentManaSize = lerp(currentManaSize, designatedManaSize, 0.05);
+
+      let healthString = `hsl(${hpColor.h}, ${hpColor.s}%, ${hpColor.l}%)`
+      let manaString = `hsl(${mnColor.h}, ${mnColor.s}%, ${mnColor.l}%)`
+
+      if (enableHealthHUD) {
+          if (blackToggle) {
+              DrawRect(healthX, healthY, healthWidth, healthHeight, "black");
+          }
+
+          let healthBarWidth;
+          if (adjToggle) {
+              healthBarWidth = healthWidth;
+          } else {
+              healthBarWidth = currentHealthSize * healthWidth;
+          }
+
+          DrawRect(healthX, healthY, healthBarWidth, healthHeight, healthString);
+      }
+
+      if (enableManaHUD) {
+          if (blackToggle) {
+              DrawRect(manaX, manaY, manaWidth, manaHeight, "black");
+          }
+
+          let manaBarWidth;
+          if (adjToggle) {
+              manaBarWidth = manaWidth;
+          } else {
+              manaBarWidth = currentManaSize * manaWidth * 1.05;
+          }
+
+          DrawRect(manaX, manaY, manaBarWidth, manaHeight, manaString);
+      }
+  }
+
+  function lerp(a, b, speed) {
+    return a + speed * (b - a)
+  }
+
+  let menuGoing = false
+ function inGameCallback () {
+  if (engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 && (DeadBlack_Meter.value != 1 || DeadRed_Meter.value != 1) && health_Meter.value > .05) {
+    inGame = true;
+  } else {
+    inGame = false;
+    backGroundEffects.clear()
+    if(!menuGoing && enableMenu){
+      foreGroundEffects.push(new InMenu())
+      menuGoing = true
+    } 
+  }
+}
+
+ function flaskCallback () {
+  if (flaskWhite_Meter.decreased && flaskWhite_Meter.value <= 0.1 && flaskWhite_Meter.diff > 0.25 && engine.vision.unMovable !=1 && enableFlask && engine.vision.inGame >= 0.95) {
+   foreGroundEffects.push(new flaskEffect())
+  }
+}
+
+ function dodgeCallback () {
+  if (dodge_Meter.decreased && dodge_Meter.value <= 0.1 && dodge_Meter.diff >0.5 && engine.vision.unMovable !=1 && engine.vision.dodge != 1 && enableDodge && engine.vision.inGame >= 0.95) {
+    foreGroundEffects.push(new dodgeEffect())
+  }
+}
+
+ function levelCallback () {
+  if(engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 && level_Meter.value <= 0.1 && level_Meter.decreased && enableLevelUp){
+    foreGroundEffects.push(new levelUpEffect())
+  }
+}
+
+ function SafeZoneCallback () {
+  if (SafeZoneAbility0_Meter.value >= 0.95 && SafeZoneAbility1_Meter.value >= 0.95 && !inSafeZone && engine.vision.notInSafeZone < 0.2 && engine.vision.unMovable !=1 && enableSafeZone && engine.vision.inGame >= 0.95){
+    foreGroundEffects.push(new EnterSafe())
+    inSafeZone = true;
+  } else if(inSafeZone) {
+    foreGroundEffects.push(new ExitSafe())
+    inSafeZone = false;
+  }
+
+}
+
+ function DeadCallback () {
+  if (DeadRed_Meter.value >= 0.95 && DeadBlack_Meter.value >= 0.95 && enableDead){
+    foreGroundEffects.push(new deadEffect())
+  }
+}
+
+const particleAmount = 50;
+
+let ability1Delay = Date.now()
+function ability1Callback(){
+  if(ability1_Meter.diff >5 && ability1_Meter.decreased && enableAbility && inGame && engine.vision.inGame >= 0.95 && Date.now() - ability1Delay > 300){
+   backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability1Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+   ability1Delay = Date.now()
+  }
+}
+
+let ability2Delay = Date.now()
+function ability2Callback(){
+  if(ability2_Meter.diff >5 && ability2_Meter.decreased && enableAbility && inGame && engine.vision.inGame >= 0.95 && Date.now() - ability2Delay > 300){
+    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability2Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    ability2Delay = Date.now()
+  }
+}
+
+let ability3Delay = Date.now()
+function ability3Callback(){
+  if(ability3_Meter.diff >5 && ability3_Meter.decreased && enableAbility && inGame && engine.vision.inGame >= 0.95 && Date.now() - ability3Delay > 300){
+    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability3Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    ability3Delay = Date.now()
+  }
+}
+
+let ability4Delay = Date.now()
+function ability4Callback(){
+  if(ability4_Meter.diff >5 && ability4_Meter.decreased && enableAbility && inGame && engine.vision.inGame >= 0.95 && Date.now() - ability4Delay > 300){
+    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability4Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    ability4Delay = Date.now()
+  }
+}
+
+let ability5Delay = Date.now()
+function ability5Callback(){
+  if(ability5_Meter.diff >5 && ability5_Meter.decreased && enableAbility && inGame && engine.vision.inGame >= 0.95 && Date.now() - ability5Delay > 300){
+    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability5Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    ability5Delay = Date.now()
+  }
+}
+
+let ability6Delay = Date.now()
+function ability6Callback(){
+  if(ability6_Meter.diff >5 && ability6_Meter.decreased && enableAbility && inGame && engine.vision.inGame >= 0.95 && Date.now() - ability6Delay > 300){
+    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability6Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    ability6Delay = Date.now()
+  }
+}
+
+function healthCallback (){
+  if (inGame && enableHealth && engine.vision.inGame >= 0.95){
+    if (health_Meter.value < 0.2 && !lowHealthPlaying){
+      backGroundEffects.push(new lowHealth())
+      lowHealthPlaying = true;
+    } else if ((lowHealthPlaying && health_Meter.value > 0.25) || !inGame || menuGoing){ 
+      lowHealthPlaying = false
+    }
+  }
+}
+
+function manaCallback (){
+  if (inGame && enableMana && engine.vision.inGame >= 0.95){
+    if (mana_Meter.value < 0.2 &&  !lowManaPlaying){
+      backGroundEffects.push(new lowMana())
+      lowManaPlaying = true
+    } else if ((lowManaPlaying && mana_Meter.value >0.25) || !inGame || menuGoing){
+      lowManaPlaying = false
+    }
+  }
+}
+
+let eventGoing = false
+function eventCompleteCallback(){
+  if(eventCompleteWhiteMeter.value >= .6 && eventCompleteRedMeter.value >= .75 && inGame && !eventGoing && engine.vision.inGame >= 0.95){
+    if(enableEvent) foreGroundEffects.push(new eventComplete())
+    eventGoing = true
+  } else if (eventCompleteWhiteMeter.value <= 0.1 && eventCompleteRedMeter.value <= 0.1) eventGoing = false;
+}
+
+function skillAvailableCallback(){
+  if(hasSkillGreyMeter.value >= 0.95 && hasSkillYellowMeter.value >= 0.95 && inGame && engine.vision.inGame >= 0.95){
+    if(enableLevelUp) foreGroundEffects.push(new hasSkillPoint())
+  }
+}
+
+let questGoing = false
+function questCompleteCallback(){
+  if(questCompleteRedMeter.value > .3 && questCompleteWhiteMeter.value > .1 && !questGoing && inGame && engine.vision.inGame >= 0.95){
+    if(enableQuest) foreGroundEffects.push(new questComplete())
+    questGoing = true
+  } else if (questCompleteRedMeter.value <= 0.1 && questCompleteWhiteMeter.value <= 0.1 && inGame) questGoing = false
+}
+
+let buffed = false
+function buffedCallback(){
+  if(buffedGreenMeter.value > .3 && buffedGreenMeter.increased && buffedBlackMeter.value >= 0.95 && inGame && !buffed && engine.vision.inGame >= 0.95){
+    if(enableBuff) foreGroundEffects.push(new gotBuffed())
+    buffed = true
+  } else if (inGame && buffedGreenMeter.value <= 0.1) buffed = false
+}
+
+let waypointGoing = false;
+function waypointCallback(){
+  if(waypointBlueMeter.value >= 0.95 && waypointRedMeter.value >= 0.95 && inGame && !waypointGoing){
+    if(enableWaypoint) foreGroundEffects.push(new waypoint())
+    waypointGoing = true
+  }
+}
+
+function gotBuffed(){
+    this.count = 0
+    this.draw = function(){
+      if(this.count == 0) foreGroundEffects.push(new rJumpHelp(120, 90, 20))
+      if(this.count == 20) foreGroundEffects.push(new rJumpHelp(120, 90, 30))
+      if(this.count == 40) foreGroundEffects.push(new rJumpHelp(120, 90, 40))
+      this.count < 41 ? this.count++ : this.lifetime = 0;
+      if(!inGame) this.lifetime = 0
+    }
+  }
+
+  function rJumpHelp(hue, sat, lit){
+    this.hue = hue
+    this.sat = sat
+    this.lit = lit
+    this.y = 300
+    this.vy = 0
+    this.lifetime = 100
+    this.draw = function(){
+      ctx.beginPath()
+      ctx.moveTo(0, this.y + 100)
+      ctx.lineTo(160, this.y)
+      ctx.lineTo(320, this.y + 100)
+      ctx.strokeStyle = `hsl(${this.hue}, ${this.sat}%, ${this.lit}%)`
+      ctx.lineWidth = 50
+      ctx.stroke()
+      this.y > -100 ? this.y-=this.vy : this.lifetime = 0
+      this.vy+=.05
+      if(!inGame) this.lifetime = 0
+    }
+  }
+
+function waypoint(){
+    this.effects = []
+    this.alpha = 0
+    this.count = 0;
+    this.draw = function(){
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+      this.alpha < .5 ? this.alpha += .025 : playCopyScreen = false
+      if(this.count < 300) this.effects.push(new wayParticle())
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) this.effects.splice(i, 1)
+      })
+      this.count < 300 ? this.count++ : this.effects.length > 0 ? this.effects.pop() : this.lifetime = 0
+      if(!inGame) this.lifetime = 0
+      if(this.lifetime == 0){
+        playCopyScreen = true
+        waypointGoing = false
+      } 
+    }
+  }
+
+  function wayParticle(){
+    this.rot = Math.random() * Math.PI * 2
+    this.x = -50
+    this.y = 100
+    this.rad = 40 + 20 * Math.random()
+    this.mod = Math.random() + .5
+    this.draw = function(){
+      ctx.save()
+      ctx.translate(160, 100)
+      ctx.rotate(this.rot)
+      ctx.translate(-160, -100)
+      DrawCircle(this.x, this.y, this.rad, `hsl(${this.rad + 180}, 100%, 50%)`)
+      this.x < 160 ? this.x++ : this.lifetime = 0;
+      if(this.rad > 1) this.rad-=.25
+      this.rot+=.025 * this.mod
+      ctx.restore()
+      if(!inGame) this.lifetime = 0
+    }
+  }
+
+  function questComplete(){
+    this.count = 0
+    this.draw = function(){
+      if(this.count == 0) foreGroundEffects.push(new rJumpHelp(0, 100, 10))
+      if(this.count == 20) foreGroundEffects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 20))
+      if(this.count == 40) foreGroundEffects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 30))
+      if(this.count == 60) foreGroundEffects.push(new rJumpHelp(0, 100, 40))
+      if(this.count == 80) foreGroundEffects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 50))
+      if(this.count == 100) foreGroundEffects.push(new rJumpHelp(0, 100, 60))
+      this.count < 101 ? this.count++ : this.lifetime = 0;
+      if(!inGame) this.lifetime = 0
+    }
+  }
+
+  function eventComplete(){
+    this.alpha = 0;
+    this.count = 0;
+    this.effects = []
+    this.draw = function(){
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+      this.alpha < .75 ? this.alpha += .025 : this.alpha = .75;
+      if(this.effects.length < 100 && this.count < 300){
+        this.effects.push(new hellParticle(50))
+        if(Math.random() > .9) this.effects.push(new hellSpark())
+      }
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) this.effects.splice(i, 1)
+      })
+      this.count < 300 ? this.count++ : this.effects.length == 0 ? null : this.lifetime = 0;
+      if(!inGame) this.lifetime = 0
+    }
+  }
+
+  function hellSpark(){
+    this.x = Math.random() * 320
+    this.mod = Math.random()
+    this.y = 250
+    this.rad = 10
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsla(${this.mod * 60}, ${100}%, ${75}%, .9)`)
+      this.x += Math.sin(Date.now() / (1000 * this.mod)) * 5
+      this.y > -50 ? this.y -= 10: this.lifetime = 0
+    }
+  }
+
+  function hellParticle(rad){
+    this.x = Math.random() * 320
+    this.mod = Math.random()
+    this.y = 180 + Math.abs(160 - this.x) * .6
+    this.rad = rad
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsla(${this.rad}, ${100}%, ${50}%, .9)`)
+      this.rad > .25 ? this.rad -= .25 : this.rad = .1
+      this.x += Math.sin(Date.now() / (1000 * this.mod)) * 3
+      this.y > -50 ? this.y -= 1 : this.lifetime = 0
+    }
+  }
+
+function hasSkillPoint(){
+    this.rad = 1
+    this.stroke = 5
+    this.lifetime = 10
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, `hsla(60, 100%, 50%, .25)`, this.stroke)
+      this.rad < 300 ? this.rad += 3 : this.lifetime = 0
+      this.stroke+=2
+      if(!inGame) this.lifetime = 0
+    }
+  }
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+function InMenu(){
+    this.alpha = 0;
+    this.half = false;
+    this.stop = 1
+    this.lifetime = 10;
+    this.draw = function(){
+      let grad = ctx.createLinearGradient(160, 0, 160, 200)
+      grad.addColorStop(1, `hsla(10, 100%, ${40 * this.stop}%, ${this.alpha})`)
+      grad.addColorStop(.35, `hsla(0, 0%, 2%, ${this.alpha})`)
+      DrawRect(0, 0, 320, 200, grad)
+      this.stop = Math.sin(Date.now() / 500) * .25 + .5
+      if(Math.random() > .9 && this.half) foreGroundEffects.push(new inMenuParticle())
+      if(this.half) playCopyScreen = false
+      if(inGame){
+         this.alpha > 0 ? this.alpha -= .025 : this.lifetime = 0;
+         if(!this.lifetime) playCopyScreen = true
+      } else this.alpha < .65 ? this.alpha += .005 : this.half = true;
+      if(questGoing || eventGoing) this.lifetime = 0
+      if(!this.lifetime) menuGoing = false
+    }
+  }
+
+  function inMenuParticle(){
+    this.x = Math.random() * 320
+    this.y = 210
+    this.rad = 15
+    this.mod = Math.random()
+    this.hue = Math.random() * 60
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsla(${this.hue}, 90%, ${50}%, ${this.rad / 15})`)
+      this.y-=((211 - this.y) / 20)
+      this.x+=Math.sin(Date.now() / (500 * this.mod)) * 5
+      this.rad > .06 ? this.rad -= .06 : this.lifetime = 0;
+    }
+  }
+
+
+function deadEffect(){
+  this.particles = new childArray();
+  this.start = Date.now();
+
+  this.draw = function (){   
+    let elapsed = Date.now() - this.start;
+    this.alpha = getAlpha(elapsed,1000,8000,1000);
+    DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
+    ctx.globalAlpha = this.alpha
+    DrawCircle(160,100,elapsed/200,"hsl(200,25%,60%)");
+    if (200- elapsed/30 >10){
+        for (let index = 0; index < 3; index++) {
+        let rot = elapsed/600 + ((Math.PI*2/3)*index);
+        let x = 160 + Math.cos(rot)*(200- elapsed/30);
+        let y = 100 + Math.sin(rot)*(200 - elapsed/30);
+        this.particles.push(new TrailParticle(x,y,20,"red",1000))
+      }
+    } else {
+      if (rng(1,false)>0.85 && this.alpha ==1)
+      this.particles.push(new wobblyExplosionParticle(160,100,{x:rng(5),y:rng(5)},{x:rng(50),y:rng(50)},100,2000,"red",20))
+    }
+    this.particles.draw();
+    ctx.globalAlpha = 1;
+    if(this.alpha == 0){
+      this.lifetime =0;
+    }
+  }
+}
+
+function flaskEffect(){
+  this.x = 0;
+  this.start = Date.now();
+  this.bubbbles = new childArray();
+
+  this.draw = function (){
+    let elapsed = Date.now() - this.start;
+    this.bubbbles.push(new bubble(rng(320,false), 250, rng(30,false), {x:rng(3), y:rng(-3,false)},{x:rng(10), y:0},500,"hsla(121, 100%, 71%, 1)",`hsla(121, ${80+rng(30,false)}%, ${50+rng(30,false)}%, 0.8)`,2,4000));
+    this.alpha = getAlpha(elapsed, 700, 2000, 700,0.9);
+    DrawRect(0,0,320,200,`hsla(0, 0%, 0%, ${this.alpha})`);
+    ctx.globalAlpha = this.alpha+0.1;
+    this.bubbbles.draw();
+    ctx.globalAlpha = 1;
+    if(this.alpha ==0){
+      this.lifetime= 0;
+    }
+    if(!inGame) this.lifetime = 0
+  }
+}
+
+
+function dodgeEffect () {
+    this.duration = 1000;
+    this.particles = new childArray();
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.particles = new childArray();
+
+  this.draw = function(){
+    this.x = -60 + this.elapsed/1.5
+    this.elapsed = Date.now() - this.start;
+    this.alpha = getAlpha(this.elapsed,300,this.duration,300,0.9)
+    ctx.globalAlpha = this.alpha;
+    DrawRect(0,0,320,200,"black");
+    DrawRect(this.x,0,30,200,"orange")
+    ctx.globalAlpha = 1;
+    this.particles.push(new trailParticle(this.x,rng(200,false),30,"orange",500))
+    this.particles.draw();
+    if(!inGame) this.lifetime = 0
+  }
+}
+
+function trailParticle(x,y,size,color,duration, colorspeed =0){
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.color = color;
+    this.duration = duration;
+    this.start = Date.now();
+    this.draw = function(){
+      this.elapsed = (Date.now() - this.start);
+      this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
+      ctx.globalAlpha = this.alpha;
+      if (colorspeed != 0){
+        this.color.h -= colorspeed;
+        DrawCircle(this.x,this.y,this.size*this.alpha,`hsla(${this.color.h},${this.color.s}%,${this.color.l}%)`)
+      } else {
+        DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
+      }
+   
+      ctx.globalAlpha = 1;
+      if(this.elapsed > this.duration){
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function EnterSafe(){
+  this.alpha = 1;
+  this.stroke = 5;
+  this.rad = 1
+  this.draw = function(){
+    this.rad < 160 ? this.rad += 2 : this.rad = 160
+    ctx.globalAlpha = this.alpha
+    DrawStroke(160, 100, this.rad, `hsl(${this.rad * 3/4}, 100%, 50%)`, this.stroke)
+    this.stroke < 320 ? this.stroke+=2 : this.alpha > .02 ? this.alpha -= .02 : this.lifetime = 0;
+    ctx.globalAlpha = 1
+    if(!inGame) this.lifetime = 0
+  }
+}
+
+function ExitSafe(){
+  this.alpha = 1;
+  this.stroke = 5;
+  this.rad = 1
+  this.draw = function(){
+    this.rad < 160 ? this.rad += 2 : this.rad = 160
+    ctx.globalAlpha = this.alpha
+    DrawStroke(160, 100, this.rad, `hsl(${120 - this.rad * 3/4}, 100%, 50%)`, this.stroke)
+    this.stroke < 320 ? this.stroke+=2 : this.alpha > .02 ? this.alpha -= .02 : this.lifetime = 0;
+    ctx.globalAlpha = 1
+    if(!inGame) this.lifetime = 0
+  }
+}
+
+
+
+  function ParticleExplosion(x, y, color, speed, duration, particleAmount, particleSize, fadeSpeed) {
+    this.start = Date.now();
+    this.col = color;
+    this.speed = speed;
+    this.duration = duration;
+    this.lifetime = 2000;
+    this.amount = particleAmount;
+    this.size = particleSize
+    this.x = x;
+    this.y = y;
+    this.fadeSpeed = fadeSpeed;
+    this.particles = [];
+
+    while (this.particles.length < this.amount) {
+      this.yspeed = ((Math.random() - 0.5) * this.speed);
+      this.particles.push(new ExplosionParticle(this.x, this.y, this.size, this.col, this.fadeSpeed,
+        {
+          x: ((Math.random() - 0.5) * this.speed),
+          y: this.yspeed
+        }))
+      this.draw = function () {
+        this.lifetime = this.duration - (Date.now() - this.start)
+        this.particles.forEach((Particle, index) => {
+          Particle.draw()
+        })
+      }
+    }
+  };
+
+  class ExplosionParticle {
+    constructor(x, y, radius, color, fadeSpeed, velocity) {
+      this.x = x;
+      this.y = y;
+      this.color = color;
+      this.radius = radius;
+      this.velocity = velocity;
+      this.alpha = 1 * fadeSpeed;
+    }
+    draw() {
+      ctx.globalAlpha = this.alpha;
+      ctx.beginPath()
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+      ctx.fillStyle = this.color
+      ctx.fill()
+      this.x += this.velocity.x
+      this.y += this.velocity.y
+      this.alpha -= 0.01
+      ctx.globalAlpha = 1;
+    }
+  }
+
+function levelUpEffect(){
+  this.start = Date.now();
+  this.particles = new childArray();
+  setTimeout(() => {
+    this.particles.push(new MovingArrow(160,200,160,200,0,4,"yellow"))
+      setTimeout(() => {
+      this.particles.push(new MovingArrow(160,200,160,200,0,4,"yellow"))
+    }, 800);
+  }, 500);
+
+  this.draw = function (){
+    this.elapsed = Date.now() - this.start;
+    this.alpha = getAlpha(this.elapsed,600, 2000, 600);
+    DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
+    const bgGrad = ctx.createRadialGradient(160,100,this.elapsed/3,160,100,this.elapsed/3+30);
+    bgGrad.addColorStop(0,`hsla(0,0%,0%,0)`);
+    bgGrad.addColorStop(0.5,`yellow`);
+    bgGrad.addColorStop(1,`hsla(0,0%,0%,0)`);
+    DrawRect(0,0,320,200,bgGrad);
+    this.particles.draw();
+    if(this.alpha ==0){
+      this.lifetime= 0;
+    }
+    if(!inGame) this.lifetime = 0
+  }
+}
+
+function TrailParticle(x=160,y=100,size=10,color="red",duration=2000){
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.color = color;
+      this.duration = duration;
+      this.start = Date.now();
+      this.draw = function(){
+        this.elapsed = (Date.now() - this.start);
+        this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
+        ctx.globalAlpha = this.alpha;
+        DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
+        ctx.globalAlpha = 1;
+        if(this.elapsed > this.duration){
+          this.lifetime = 0;
+        }
+      }
+    }
+
+    function SetRange(num, min, max) {
+      return Math.min(Math.max(num, min), max)
+    }
+
+
+function childArray(){
+  this.children = [];
+  this.push = function(child){
+    this.children.push(child);
+  }
+  this.draw = function(){
+    this.children.forEach((child,i) => {
+      child.draw();
+      if (child.lifetime <=0){
+        this.children.splice(i,1);
+      }
+    });
+  }
+  this.clear = function(){
+    this.children = [];
+  }
+}
+
+function rng(amount, negative = true){
+  return (Math.random()- (negative?0.5:0))*amount;
+}
+
+
+function getAlpha(elapsed, fadeInTime, duration, fadeOutTime, maxAlpha = 1) {
+  if (elapsed < fadeInTime) {
+    return (elapsed / fadeInTime) * maxAlpha;
+  } else if (elapsed < fadeInTime + duration) {
+    return maxAlpha;
+  } else if (elapsed < fadeInTime + duration + fadeOutTime) {
+    return maxAlpha - ((elapsed - fadeInTime - duration) / fadeOutTime) * maxAlpha;
+  } else {
+    return 0;
+  }
+}
+
+class basicEffect {
+  constructor( duration = 1000){
+    this.start = Date.now();
+    this.duration = duration;
+    this.elapsed = 0;
+  }
+  update (){
+    this.elapsed = Date.now() - this.start;
+    if (this.elapsed > this.duration){
+      this.lifetime = 0;
+    }
+  }
+}
+
+class wobblyMotion extends basicEffect {
+  constructor(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000){
+  super(duration);
+  this.x = x;
+  this.y = y;
+  this.speed = speed;
+  this.wobbleMove = wobbleMove;
+  this.wobbleSpeed = wobbleSpeed;
+  this.start = Date.now();
+  }
+  update (){
+    super.update();
+    this.elapsed = Date.now() - this.start;
+    this.x = this.x + this.speed.x;
+    this.y = this.y + this.speed.y;
+    const drawX = this.x + Math.sin(this.elapsed/this.wobbleSpeed) * this.wobbleMove.x;
+    const drawY = this.y + Math.sin(this.elapsed/this.wobbleSpeed) * this.wobbleMove.y;
+    return {x:drawX,y:drawY}
+  }
+}
+
+class wobblyExplosionParticle extends wobblyMotion {
+  constructor(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000,color,radius){
+    super(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000);
+    this.color = color;
+    this.radius = radius;
+    this.particles = new childArray();
+  }
+  draw(){
+    const pos = super.update();
+    this.particles.push(new TrailParticle(pos.x,pos.y,this.radius,this.color, this.duration/3))
+    this.particles.draw();
+    if (this.elapsed > this.duration){
+      this.lifetime = 0;
+    }
+  }
+} 
+
+class bubble extends wobblyMotion{
+  constructor(x,y,radius,speed,wobbleMove, wobbleSpeed, strokeCol, fillCol, lineWidth,duration = 1000){
+
+  super(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000);
+  this.radius = radius;
+  this.strokeCol = strokeCol;
+  this.fillCol = fillCol;
+  this.lineWidth = lineWidth;
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.strokeStyle = this.strokeCol;
+    ctx.fillStyle = this.fillCol;
+    ctx.lineWidth = this.lineWidth;
+    const pos = super.update();
+    ctx.arc(pos.x, pos.y, this.radius, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+    if (this.elapsed > this.duration){
+      this.lifetime = 0;
+    }
+  }
+}
+
+function lowHealth() {
+    this.start = Date.now();
+    this.particles = new childArray();
+
+    this.draw = function() {
+      if (rng(1,false)>0.96)
+      this.particles.push(new wobblyExplosionParticle(rng(320,false),-10,{x:rng(5),y:rng(5, false)},{x:rng(30,false),y:0},2,3000,"red",15))
+      this.elapsed = Date.now() - this.start;
+      const radius = Math.sin(this.elapsed / 200) * 120 + 180; // increase the radius value
+      const bgGrad = ctx.createRadialGradient(160, 100, 0, 160, 100, radius);
+      bgGrad.addColorStop(0, `hsla(0,0%,0%,0)`);
+      bgGrad.addColorStop(0.5, `red`);
+      bgGrad.addColorStop(1, `hsla(0,0%,0%,0)`);
+      DrawRect(0, 0, 320, 200, bgGrad);
+      this.particles.draw();
+      if (!lowHealthPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95)){
+        this.lifetime = 0;
+      }
+    };
+  }
+
+
+function lowMana() {
+  this.start = Date.now();
+  this.particles = new childArray();
+  this.mnColor = hexToHSL(manaColor)
+
+  this.draw = function() {
+    if (rng(1, false) > 0.96) {
+      const dir = rng(1, false) > 0.5;
+      this.particles.push(new wobblyExplosionParticle(dir? -10 :330 , rng(200,false), {x: dir?3:-3, y: rng(5)}, {x: rng(0, false), y: rng(30,false)}, 2, 3000, `hsla(${this.mnColor.h}, ${this.mnColor.s}%, ${this.mnColor.l}%, .3)`, 15));
+    }
+    this.elapsed = Date.now() - this.start;
+    const radius = Math.sin(this.elapsed / 200) * 120 + 180; // increase the radius value
+    const bgGrad = ctx.createRadialGradient(160, 100, 0, 160, 100, radius);
+    bgGrad.addColorStop(0, `hsla(0,0%,0%,0)`);
+    bgGrad.addColorStop(0.5, `hsla(${this.mnColor.h}, ${this.mnColor.s}%, ${this.mnColor.l}%, .8)`);
+    bgGrad.addColorStop(1, `hsla(0,0%,0%,0)`);
+    DrawRect(0, 0, 320, 200, bgGrad);
+    this.particles.draw();
+    if (!lowManaPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95)) {
+      this.lifetime = 0;
+    }
+  };
+}
+
+
+function MovingArrow(x=160, y=320, width=320, height=150,rotation=90,speed=3, color="red") {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+      this.color = color;
+      this.rotation = rotation;
+      this.speed = speed;
+      this.draw = function () {
+        ctx.beginPath();
+        ctx.save();
+        ctx.translate(160, 100);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.translate(-160, -100);
+          DrawArrow(this.x, this.y, this.width, this.height, this.color)
+        ctx.restore();
+        this.y -= this.speed;
+        if (this.y < -this.height) {
+          this.lifetime = 0;
+        }
+      }
+    }
+
+    function RippleEffect(x=160, y=100, speed=1, duration=3000, rippleWidth=20, color="red", inOrOut="out", fillOrStroke="stroke", amountOfRipples=4, background=true) {
+          this.col = color;
+          this.speed = speed;
+          this.dur = duration;
+          this.width = rippleWidth;
+          this.start = Date.now();
+          this.lifetime;
+          this.x = x;
+          this.y = y;
+          this.fill = fillOrStroke;
+          this.radius = 0;
+          this.amount = amountOfRipples;
+          this.background = background;
+          if (inOrOut == "in") {
+            this.radius = 200 + (this.width * (this.amount * 2));
+            this.speed = -this.speed
+          }
+          this.draw = function () {
+            if (this.background) {
+              ctx.beginPath();
+              ctx.fillStyle = "black";
+              ctx.fillRect(0, 0, 320, 200);
+            }
+            ctx.lineWidth = this.width;
+            ctx.beginPath();
+            for (let i = 0; i < this.amount; i++) {
+              ctx.beginPath();
+              if (this.radius - i * (this.width * 2) > 0) {
+                ctx.arc(this.x, this.y, this.radius - i * (this.width * 2), 0, 2 * Math.PI);
+              }
+              if (this.fill == "fill") {
+                ctx.fillStyle = this.col;
+                ctx.fill();
+              } else {
+                ctx.strokeStyle = this.col;
+                ctx.stroke();
+              }
+            }
+
+            this.radius += this.speed;
+            this.lifetime = this.dur - (Date.now() - this.start);
+            if (this.lifetime <= 0) {
+              utilityPlayed = false;
+            }
+          }
+        }
+
+
+
+
+function DrawRect(x, y, width, height, color) {
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, width, height);
+};
+
+function DrawCircle(x, y, radius, color) {
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.arc(x, y, radius, 0, 2 * Math.PI)
+  ctx.fill();
+};
+
+function StrokeCircle(x, y, width, height, color) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 30;
+  ctx.arc(x, y, width, 0, 2 * Math.PI);
+  ctx.stroke();
+};
+
+function renderPath(x, y, path, color, size, type="fill", strokeWidth = 5) {
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
+  ctx.save();
+  ctx.transform(size / 10, 0, 0, size / 10, 160 - 10 * 16.5, 79 - size * 7.5);
+  ctx.translate(x, y);
+  let ex = new Path2D(path);
+
+  if (type == "fill"){
+    ctx.fill(ex);
+  } else if (type == "stroke"){
+    ctx.lineWidth = strokeWidth;
+    ctx.stroke(ex);
+  }
+
+  ctx.restore();
+}
+
+
+
+  function DrawArrow(x, y, width, angle, color) {
+    ctx.beginPath();
+    ctx.moveTo(x - width, y + angle);
+    ctx.lineTo(x, y);
+    ctx.lineTo(x + width, y + angle);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 30;
+    ctx.stroke();
+  }
+
+        
+
+
+
+function getXAndYForPathPoint(point1, point2, percentage) {
+    let speed = { x: (point2.x - point1.x) * percentage, y: (point2.y - point1.y) * percentage }
+    return { x: point1.x + speed.x, y: point1.y + speed.y }
+  }
+
+
+function copyScreen(alpha) {
+  let lightness = new Int8Array(engine.zone.lightness);
+  let sat = new Int8Array(engine.zone.saturation);
+  let hue = new Int16Array(engine.zone.hue);
+  for (let iZone = 0; iZone < 560; iZone++) {
+    ctx.fillStyle =
+      "hsla(" +
+      hue[iZone] +
+      "," +
+      sat[iZone] +
+      "%," +
+      lightness[iZone] * keyScreenBrightness * 0.01 +
+      "%, " +
+      alpha
+      +
+      ")";
+    let iRow = Math.floor(iZone / 28);
+    let iCol = iZone % 28;
+    let iWidth = 320 / 28;
+    let iHeight = 200 / 20;
+    let iZx = iCol * iWidth;
+    let iZy = iRow * iHeight;
+
+    ctx.fillRect(iZx, iZy, iWidth, iHeight);
+  }
+}
+
+
+function StateHandler() {
+  let stack = [];
+  let state = null;
+
+  let updateState = function () {
+    if (stack.length > 0) {
+      state = stack[stack.length - 1];
+    } else {
+      state = null;
+    }
+  };
+
+  this.Push = function (newState) {
+    stack.push(newState);
+    updateState();
+  };
+
+  this.Pop = function () {
+    stack.pop();
+    updateState();
+  };
+
+  this.Process = function () {
+    if (state != null) {
+      state.Process();
+    }
+  };
+}
+
+
+
+function Meter(size, Callback) {
+  this.size = size;
+  this.value = 0;
+  this.diff = 0;
+  this.increased = false;
+  this.decreased = false;
+  let values = [];
+
+  this.setValue = function (updatedValue) {
+    values.push(updatedValue);
+    if (values.length > this.size) {
+      values.shift();
+    }
+
+    for (let i = 0; i < values.length - 1; i++) {
+      if (values[i] !== values[i + 1]) return;
+    }
+    if (this.value !== values[0]) {
+      this.diff = Math.abs(this.value - values[0]);
+      this.increased = this.value < values[0];
+      this.decreased = this.value > values[0];
+      this.value = values[0];
+      Callback();
+    }
+  };
+}
+
+
+function hexToHSL(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    (r /= 255), (g /= 255), (b /= 255);
+    var max = Math.max(r, g, b),
+      min = Math.min(r, g, b);
+    var h,
+      s,
+      l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    s = s * 100;
+    s = Math.round(s);
+    l = l * 100;
+    l = Math.round(l);
+    h = Math.round(360 * h);
+
+    var colors = [];
+    colors['h'] = h;
+    colors['s'] = s;
+    colors['l'] = l;
+
+    return colors;
+  }
+
+  function onCanvasTapped(x, y) {
+      latestLocation = {x:x, y:y}; 
+  }
+
+
+function onEngineReady() {
+  // Grab canvas and rendering context.
+  c = document.getElementById("exCanvas");
+  ctx = c.getContext("2d");
+  window.requestAnimationFrame(update);
+}
+onEngineReady()
+</script>

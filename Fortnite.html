@@ -1,0 +1,1043 @@
+<head>
+  <title>Fortnite Dev</title>
+  <meta description="Ambience and metering for Fortnite. v2.33" />
+  <meta publisher="SignalRGB" />
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Ambience"/>
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+  <meta property="enableHUD" label="HUD effects" type="boolean" default="1" />
+  <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" type="boolean" default="0" />
+  <meta property="HUDBack" label="Custom HUD Background" type="boolean" default="0" />
+  <meta property="healthColor" label="Health HUD Color" type="color" default="#12ff00" min="0" max="360" />
+  <meta property="HealthBarX" label="Health Bar X" type="number" min="0" max="320" default="0" />
+  <meta property="HealthBarY" label="Health Bar Y" type="number" min="0" max="200" default="50" />
+  <meta property="HealthBarWidth" label="Health Bar Width" type="number" min="0" max="320" default="320" />
+  <meta property="HealthBarHeight" label="Health Bar Height" type="number" min="0" max="200" default="30" />
+  <meta property="ShieldColor" label="Shield HUD Color" type="color" default="#00c3ff" min="0" max="360" />
+  <meta property="ShieldBarX" label="Shield Bar X" type="number" min="0" max="320" default="0" />
+  <meta property="ShieldBarY" label="Shield Bar Y" type="number" min="0" max="200" default="80" />
+  <meta property="ShieldBarWidth" label="Shield Bar Width" type="number" min="0" max="320" default="320" />
+  <meta property="ShieldBarHeight" label="Shield Bar Height" type="number" min="0" max="200" default="30" />
+  <meta property="enableHealing" label="Healing effect" type="boolean" default="1" />
+  <meta property="enableDamage" label="Damage effect" type="boolean" default="1" />
+  <meta property="enableVehicle" label="Vehicle effect" type="boolean" default="1" />
+  <meta property="enableCloud" label="Storm closing effect" type="boolean" default="1" />
+  <meta property="enableXP" label="XP effect" type="boolean" default="1" />
+  <meta property="enableKnock" label="Knocked-down effect" type="boolean" default="1" />
+  <meta property="enableKill" label="Kill effect" type="boolean" default="1" />
+  <meta property="enableBattlebus" label="Battlebus effect" type="boolean" default="1" />
+  <meta property="enableSprinting" label="Sprinting effect" type="boolean" default="1" />
+  <meta property="enableWin" label="Win effect" type="boolean" default="1" />
+
+  <!-- 22 Meters -->
+  <meta meter="inGame1" type="area" tags="vlc,fortnite" x="0.4934" y="0.0174" width="0.0137" height="0.0174" 
+    h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.4965" y="0.019" width="0.0076" height="0.0167" />
+    <resolution aspect="24:10" x="0.4945" y="0.0187" width="0.0108" height="0.0160" />
+    <resolution aspect="16:11" x="0.4930" y="0.0163" width="0.0133" height="0.0150" />
+  
+    <resolution size="2560x1080" x="0.4949" y="0.0194" width="0.0105" height="0.0148" />
+    <resolution size="3840x2160" x="0.4932" y="0.0194" width="0.0133" height="0.0162" />
+  </meta>
+
+  <meta meter="inGame2" type="area" tags="vlc,fortnite" x="0.9805" y="0.0396" width="0" height="0.0174" 
+    h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.9898" y="0.0382" width="0.0004" height="0.0174" />
+    <resolution aspect="24:10" x="0.9846" y="0.0382" width="0.0006" height="0.0174" />
+    <resolution aspect="16:11" x="0.9797" y="0.035" width="0.0012" height="0.0138" />
+
+    <resolution size="2560x1080" x="0.9848" y="0.038" width="0" height="0.0158" />
+    <resolution size="3840x2160" x="0.9792" y="0.0398" width="0.0005" height="0.0139" />
+  </meta>
+
+  <meta meter="notInGame2" type="area" tags="vlc,fortnite" x="0.9797" y="0.0618" width="0.0027" height="0" 
+    h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.9904" y="0.0612" width="0.0008" height="0.0013" />
+    <resolution aspect="24:10" x="0.9849" y="0.0612" width="0.0014" height="0.002" />
+    <resolution aspect="16:11" x="0.9793" y="0.0563" width="0.0027" height="0" />
+
+    <resolution size="2560x1080" x="0.9844" y="0.0648" width="0.0020" height="0.0037" />
+    <resolution size="3840x2160" x="0.9802" y="0.0621" width="0.0023" height="0.0023" />
+  </meta>
+
+  <meta meter="cloudClose" type="area" tags="vlc,fortnite" x="0.8581" y="0.3092" width="0.0028" height="-0.0007"  
+    h="290-350" s="60-100" l="50-100" hdr-h="290-320" hdr-s="40-80" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.9307" y="0.3238" width="0.0003" height="0.0014" />
+    <resolution aspect="24:10" x="0.8962" y="0.3245" width="0.0023" height="0.0007" />
+    <resolution aspect="16:11" x="0.8589" y="0.277" width="0.0028" height="0.0025" />
+  
+    <resolution size="2560x1080" x="0.8957" y="0.3077" width="0.0023" height="0" />
+    <resolution size="3840x2160" x="0.8596" y="0.3085" width="0.0013" height="0"   />
+  </meta>
+
+  <meta meter="BuildHealth" type="area" tags="vlc,fortnite" x="0.0484" y="0.9451" width="0.1680" height="0.0000" 
+    h="95-135" s="65-100" l="60-100" hdr-h="90-130" hdr-s="50-90" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.2750" y="0.9431" width="0.0850" height="0.0021" />
+    <resolution aspect="24:10" x="0.1648" y="0.9444" width="0.1265" height="0.0014" />
+    <resolution aspect="16:11" x="0.0492" y="0.9475" width="0.1707" height="0.0056" />
+  
+    <resolution size="2560x1080" x="0.1613" y="0.9426" width="0.1289" height="0.0009" />
+    <resolution size="3840x2160" x="0.0487" y="0.9449" width="0.1714" height="0.0014" />
+  </meta>
+
+  <meta meter="BuildHealthRed" type="area" tags="vlc,fortnite" x="0.0484" y="0.9451" width="0.1680" height="0.0000" 
+    h="320-360" s="80-100" l="60-100" hdr-h="310-350" hdr-s="80-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.2750" y="0.9431" width="0.0850" height="0.0021" />
+    <resolution aspect="24:10" x="0.1648" y="0.9444" width="0.1265" height="0.0014" />
+    <resolution aspect="16:11" x="0.0492" y="0.9475" width="0.1707" height="0.0056" />
+  
+    <resolution size="2560x1080" x="0.1613" y="0.9426" width="0.1289" height="0.0009" />
+    <resolution size="3840x2160" x="0.0487" y="0.9449" width="0.1714" height="0.0014" />
+  </meta>
+
+  <meta meter="BuildShields" type="area" tags="vlc,fortnite" x="0.0492" y="0.9139" width="0.1703" height="0.0007" 
+    h="180-220" s="80-100" l="60-100" hdr-h="160-200" hdr-s="80-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.2748" y="0.9139" width="0.0846" height="0.0005" />
+    <resolution aspect="24:10" x="0.1642" y="0.9125" width="0.1276" height="0.0005" />
+    <resolution aspect="16:11" x="0.0492" y="0.9219" width="0.1707" height="0.0005" />
+  
+    <resolution size="2560x1080" x="0.1617" y="0.9139" width="0.1277" height="0.0000" />
+    <resolution size="3840x2160" x="0.0484" y="0.9125" width="0.1714" height="0.0005" />
+  </meta>
+
+  <meta meter="BuildShields2" type="area" tags="vlc,fortnite" x="0.0492" y="0.915" width="0.1703" height="0.0007" 
+    h="180-220" s="80-100" l="60-100" hdr-h="160-200" hdr-s="80-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.2744" y="0.9222" width="0.0852" height="0.0005" />
+    <resolution aspect="24:10" x="0.1642" y="0.9135" width="0.1276" height="0.0005" />
+    <resolution aspect="16:11" x="0.0492" y="0.9229" width="0.1707" height="0.0005" />
+  
+    <resolution size="2560x1080" x="0.1617" y="0.9149" width="0.1277" height="0.0000" />
+    <resolution size="3840x2160" x="0.0484" y="0.9135" width="0.1714" height="0.0005"  />
+  </meta>
+
+  <meta meter="vehicle" type="area" tags="vlc,fortnite" x="0.0496" y="0.8868" width="0.0020" height="0.0035" 
+    h="20-40" s="60-100" l="75-100" hdr-h="30-60" hdr-s="60-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.2752" y="0.8854" width="0.0014" height="0.0076" />
+    <resolution aspect="24:10" x="0.1648" y="0.8854" width="0.0023" height="0.0049" />
+    <resolution aspect="16:11" x="0.0492" y="0.8975" width="0.0039" height="0.0038" />
+  
+    <resolution size="2560x1080" x="0.1625" y="0.8861" width="0.0020" height="0.0028" />
+    <resolution size="3840x2160" x="0.0490" y="0.8856" width="0.0021" height="0.0046"  />
+  </meta>
+
+  <meta meter="xp" type="area" tags="vlc,fortnite" x="0.0418" y="0.3843" width="0.0117" height="0.0007"
+    h="-120-50" s="70-100" l="75-100" hdr-h="-120-50" hdr-s="70-100" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.0211" y="0.3843" width="0.0070" height="0.002" />
+    <resolution aspect="24:10" x="0.0323" y="0.3840" width="0.0087" height="0.0002" />
+    <resolution aspect="16:11" x="0.0426" y="0.3458" width="0.0117" height="-0.0012" />
+  
+    <resolution size="2560x1080" x="0.0328" y="0.3846" width="0.0063" height="0"  />
+    <resolution size="3840x2160" x="0.0432" y="0.3863" width="0.0079" height="0"  />
+  </meta>
+
+  <meta meter="xp2" type="area" tags="vlc,fortnite" x="0.0434" y="0.3982" width="0.1825" height="0.0028"  
+    h="230-300" s="40-100" l="0-50" hdr-h="230-300" hdr-s="40-100" hdr-l="0-50">
+    <resolution aspect="3.55:1" x="0.0221" y="0.3991" width="0.0300" height="0.002" />
+    <resolution aspect="24:10" x="0.0328" y="0.3958" width="0.1363" height="0.0021" />
+    <resolution aspect="16:11" x="0.0445" y="0.359" width="0.1775" height="-0.0007" />
+  
+    <resolution size="2560x1080" x="0.0317" y="0.3994" width="0.134" height="-0.0018" />
+    <resolution size="3840x2160" x="0.0417" y="0.3988" width="0.0500" height="0.0005"  />
+  </meta>
+
+  <meta meter="sprintWhite" type="area" tags="vlc,fortnite" x="0.0492" y="0.8979" width="0.1703" height="0.0000" 
+    h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.2744" y="0.8986" width="0.0857" height="0.0007" />
+    <resolution aspect="24:10" x="0.1642" y="0.9000" width="0.1276" height="0.0007" />
+    <resolution aspect="16:11" x="0.0492" y="0.9100" width="0.1715" height="0.0006" />
+  
+    <resolution size="2560x1080" x="0.1621" y="0.8991" width="0.1277" height="-0.0009" />
+    <resolution size="3840x2160" x="0.0487" y="0.9000" width="0.1721" height="-0.0005" />
+  </meta>
+
+  <meta meter="sprintNoWhite" type="area" tags="vlc,fortnite" x="0.0453" y="0.8951" width="0.0004" height="0.0062" 
+    h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.2721" y="0.8958" width="0.0006" height="0.0069" />
+    <resolution aspect="24:10" x="0.1608" y="0.8958" width="0.0015" height="0.0028" />
+    <resolution aspect="16:11" x="0.0457" y="0.9050" width="0.0012" height="0.0069" />
+  
+    <resolution size="2560x1080" x="0.1578" y="0.8944" width="0.0016" height="0.0065" />
+    <resolution size="3840x2160" x="0.0453" y="0.8986" width="0.0005" height="0.0005" />
+  </meta>
+
+  <meta meter="battlebus" type="area" tags="vlc,fortnite" x="0.5441" y="0.0986" width="0.0039" height="0.0000" 
+    h="205-245" s="80-100" l="80-100" hdr-h="190-230" hdr-s="80-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.5219" y="0.0986" width="0.0033" height="0.0014" />
+    <resolution aspect="24:10" x="0.5052" y="0.1035" width="0.0012" height="0.0007" />
+    <resolution aspect="16:11" x="0.5449" y="0.0900" width="0.0039" height="-0.0006" />
+  
+    <resolution size="2560x1080" x="0.5340" y="0.1000" width="0.0035" height="0.0009" />
+    <resolution size="3840x2160" x="0.5458" y="0.0981" width="0.0039" height="0.0023" />
+  </meta>
+
+  <meta meter="battlebusConfirm" type="area" tags="vlc,fortnite" x="0.5565" y="0.1077" width="0.0039" height="0"
+    h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.5289" y="0.1069" width="0.0025" height="0.0028" />
+    <resolution aspect="24:10" x="0.5436" y="0.1083" width="0.0032" height="0.0000" />
+    <resolution aspect="16:11" x="0.5566" y="0.0963" width="0.0066" height="0.0025" />
+  
+    <resolution size="2560x1080" x="0.542" y="0.1103" width="0.0051" height="0.0037"  />
+    <resolution size="3840x2160" x="0.5574" y="0.1093" width="0.0034" height="0"  />
+  </meta>
+
+  <meta meter="parachute" type="area" tags="vlc,fortnite" x="0.8535" y="0.3099" width="0.0003" height="0.0021" 
+    h="80-110" s="55-75" l="50-70" hdr-h="70-110" hdr-s="30-70" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.9318" y="0.3208" width="0.0006" height="0.0021" />
+    <resolution aspect="24:10" x="0.8983" y="0.3208" width="0.0006" height="0.0007" />
+    <resolution aspect="16:11" x="0.8558" y="0.2802" width="0.0004" height="0.0031" />
+  
+    <resolution size="2560x1080" x="0.8898" y="0.3123" width="0.0012" height="-0.0009"/>
+    <resolution size="3840x2160" x="0.8539" y="0.314" width="0.001" height="0" />
+  </meta>
+
+  <meta meter="killRed" type="area" tags="vlc,fortnite" x="0.4396" y="0.6908" width="0.0504" height="0.002" 
+    h="-20-60" s="60-100" l="30-100" hdr-h="-20-60" hdr-s="50-90" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.4689" y="0.6868" width="0.0377" height="0.0118" />
+    <resolution aspect="24:10" x="0.4570" y="0.6854" width="0.0590" height="0.0125" />
+    <resolution aspect="16:11" x="0.4383" y="0.7169" width="0.0641" height="0.0119" />
+  
+    <resolution size="2560x1080" x="0.4689" y="0.6905" width="0.0383" height="0.0037" />
+    <resolution size="3840x2160" x="0.4491" y="0.6892" width="0.0547" height="0.0046" />
+  </meta>
+
+  <meta meter="killNotRed1" type="area" tags="vlc,fortnite" x="0.4682" y="0.7095" width="0.03" height="0.0007"
+    h="-20-60" s="60-100" l="30-100" hdr-h="-20-60" hdr-s="50-90" hdr-l="80-100">
+      <resolution aspect="3.55:1" x="0.4826" y="0.6681" width="0.0092" height="-0.0007" />
+      <resolution aspect="24:10" x="0.4765" y="0.6674" width="0.0235" height="-0.0007" />
+      <resolution aspect="16:11" x="0.4547" y="0.6937" width="0.0254" height="0.0025" />
+
+      <resolution size="2560x1080" x="0.4799" y="0.6701" width="0.0144" height="0.0009" />
+      <resolution size="3840x2160" x="0.4715" y="0.6693" width="0.018" height="0" />
+  </meta>
+
+  <meta meter="killNotRed2" type="area" tags="vlc,fortnite" x="0.5584" y="0.681" width="0.0008" height="0.0153"
+    h="-20-60" s="60-100" l="30-100" hdr-h="-20-60" hdr-s="50-90" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.4789" y="0.7097" width="0.0098" height="0.0014" />
+    <resolution aspect="24:10" x="0.4776" y="0.7083" width="0.0186" height="0.0014" />
+    <resolution aspect="16:11" x="0.4543" y="0.7362" width="0.0234" height="0.0019" />
+
+    <resolution size="2560x1080" x="0.4709" y="0.7053" width="0.0297" height="0" />
+    <resolution size="3840x2160" x="0.4642" y="0.7124" width="0.0138" height="0.0009" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var canvas, ctx;
+  var effects = [];
+  var hue = 200;
+  var sat = 100;
+  var latency = 6;
+  var stateMgr = new StateHandler();
+  var inGame = false;
+  var vehiclePhase = 0;
+  var BuildingAnim = false;
+  var lobbyAnim = false;
+  var cloudTimer = 0;
+  var xpAnim = false;
+  var move = 0;
+  var cloudDiff = 0;
+  var healthPrev = 0;
+  var shieldPrev = 0;
+
+  var inGame1Meter = new Meter(5, onGameChanged)
+  var inGame2Meter = new Meter(5, onGameChanged)
+
+  var healthM = new Meter(25, healthHelper);
+  var healthDamageM = new Meter(3, healthHelper);
+
+  var shieldsM = new Meter(20, shieldHelper);
+  var shields2M = new Meter(20, shieldHelper);
+
+  var xpM1 = new Meter(25, xpHelper);
+  var xpM2 = new Meter(25, xpHelper);
+
+  var cloudCloseM = new Meter(3, cloudHelper);
+
+  var vehicleM = new Meter(10, () => "");
+
+  let BattleBusMeter = new Meter(10, battlebusHelper)
+  let BattleBusConfirmMeter = new Meter(10, battlebusHelper)
+
+  let ParachuteMeter = new Meter(3, ()=>"")
+
+  let SprintMeter = new Meter(5, sprintHelper)
+
+  let KillMeter = new Meter(5, killHelper)
+
+  function update() {
+    inGame1Meter.setValue(engine.vision.inGame1)
+    inGame2Meter.setValue(engine.vision.inGame2)
+
+    BattleBusMeter.setValue(engine.vision.battlebus);
+    BattleBusConfirmMeter.setValue(engine.vision.battlebusConfirm);
+    
+    if(inGame) {
+      KillMeter.setValue(engine.vision.killRed)
+      if(engine.vision.sprintNoWhite < .1) SprintMeter.setValue(engine.vision.sprintWhite)
+      ParachuteMeter.setValue(engine.vision.parachute)
+      vehicleM.setValue(engine.vision.vehicle);
+      healthM.setValue(engine.vision.BuildHealth);
+      healthDamageM.setValue(engine.vision.BuildHealthRed);
+      shieldsM.setValue(engine.vision.BuildShields);
+      shields2M.setValue(engine.vision.BuildShields2);
+      xpM1.setValue(engine.vision.xp);
+      xpM2.setValue(engine.vision.xp2);
+      cloudCloseM.setValue(engine.vision.cloudClose);
+    }
+
+    if (engine.vision.battlebus || engine.vision.exit) {
+      enableVehicle = false;
+    }
+
+    DrawRect(0, 0, 320, 200, "black")
+    backgroundHandler()
+
+    renderExtensions();
+
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw();
+      if (effects[i].lifetime <= 0) {
+        effects.splice(i, 1);
+      }
+    }
+    
+    if(enableHUD) DrawHUD();
+    stateMgr.Process();
+    window.requestAnimationFrame(update);
+  }
+
+  let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+
+  let KillGoing = false
+  function killHelper(){
+    if(KillMeter.value >= .3 && engine.vision.killNotRed1 < .1 && engine.vision.killNotRed2 < .1 && !KillGoing){
+      if(enableKill) effects.push(new kill())
+      KillGoing = true
+    }
+  }
+
+  let SprintGoing = false
+  function sprintHelper(){
+    if(SprintMeter.value > .05 && engine.vision.sprintNoWhite < .1 && !SprintGoing){
+      if(enableSprinting) effects.push(new sprinting())
+      SprintGoing = true
+    }
+  }
+
+  let BBGoing = false
+  function battlebusHelper(){
+    if(BattleBusMeter.value >= .95 && BattleBusConfirmMeter.value >= .95 && !BBGoing){
+      if(enableBattlebus) effects.push(new battlebus())
+      BBGoing = true
+    } else if (BattleBusMeter.value < .1 && BattleBusConfirmMeter.value < .1) BBGoing = false
+  }
+
+  function onGameChanged() {
+    if (inGame1Meter.value >= 0.33 && inGame2Meter.value >= .8 && engine.vision.notInGame2 < .1 && engine.vision.BuildHealth) {
+      setTimeout(() => {
+        inGame = true;
+      }, 1000);
+    } else if (engine.vision.BuildHealth < .05 && engine.vision.BuildHealthRed) inGame = false;
+  }
+
+  function DrawHUD() {
+    if (inGame) {
+      ctx.beginPath()
+      ctx.fillStyle = healthColor;
+      ctx.fillRect(HealthBarX, HealthBarY, healthM.value * HealthBarWidth, HealthBarHeight)
+      //shield
+      ctx.beginPath()
+      ctx.fillStyle = ShieldColor;
+      ctx.fillRect(ShieldBarX, ShieldBarY, shieldsM.value * ShieldBarWidth, ShieldBarHeight)
+    } else if (adjToggle) {
+      ctx.beginPath()
+      ctx.fillStyle = healthColor;
+      ctx.fillRect(HealthBarX, HealthBarY, HealthBarWidth, HealthBarHeight)
+      //shield
+      ctx.beginPath()
+      ctx.fillStyle = ShieldColor;
+      ctx.fillRect(ShieldBarX, ShieldBarY, ShieldBarWidth, ShieldBarHeight)
+    }
+    //health
+  }
+    
+  function shieldHelper() {
+    if (inGame) {
+      if (shieldsM.decreased && shieldsM.value != shieldPrev && healthM.value > .1 && Math.abs(shieldsM.value - shields2M.value) < .05 && shieldsM.diff > 0.05) {
+        if (enableDamage) {
+          effects.push(new Wave('#ffffff', "down"));
+          setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 150);
+          setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 300);
+          shieldPrev = shieldsM.value;
+        }
+      } else if (shieldsM.increased && shieldsM.value != shieldPrev && healthM.value > .1 && shieldsM.diff > 0.05) {
+        if (enableHealing) {
+          effects.push(new Wave('#ffffff', "up"));
+          setTimeout(() => { effects.push(new Wave('#00ffff', "up")); }, 150);
+          setTimeout(() => { effects.push(new Wave('#00ffff', "up")); }, 300);
+          shieldPrev = shieldsM.value;
+        }
+      };
+    }
+  };
+
+  function healthHelper() {
+    if (inGame) {
+      if (healthM.diff < 0.95) {
+        if (healthM.decreased && healthM.value != healthPrev && healthM.value > .1 && !engine.vision.battlebus && healthM.diff > 0.08) {
+          if (enableDamage) {
+            effects.push(new Wave('#ffffff', "down"));
+            setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 150);
+            setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 300);
+            healthPrev = healthM.value;
+          }
+        } else if (healthM.increased && healthM.value != healthPrev && healthM.value > .1 && !engine.vision.battlebus && healthM.diff > 0.08) {
+          if (enableHealing) {
+            effects.push(new Wave('#ffffff', "up"));
+            setTimeout(() => { effects.push(new Wave('#00ff00', "up")); }, 150);
+            setTimeout(() => { effects.push(new Wave('#00ff00', "up")); }, 300);
+            healthPrev = healthM.value;
+          }
+        };
+      }
+    }
+  };
+
+  function xpHelper() {
+    if (inGame) {
+      if (xpM1.value > 0.9 && xpM2.value > 0.85 && !xpAnim) {
+        if (enableXP) effects.push(new xpGain())
+        xpAnim = true;
+      } else if (xpM1.value == 0 || !inGame) {
+        xpAnim = false;
+      };
+    }
+  };
+
+  function cloudHelper() {
+    if (enableCloud) {
+      cloudDiff = Date.now() - cloudTimer;
+      if (cloudCloseM.value >= .6 && cloudDiff > 3500) {
+        cloudTimer = Date.now();
+        effects.push(new effectPulse(310));
+        setTimeout(() => { effects.push(new effectPulse(310)) }, 300);
+      };
+    }
+  };
+
+  let vehicleGoing = false
+  let lowHealthGoing = false
+  let knockedGoing = false
+  function renderExtensions() {
+    if (enableVehicle) {
+      if (healthM.value > 0.1 && vehicleM.value >= .95 && !vehicleGoing) {
+        effects.push(new vehicle())
+        vehicleGoing = true
+      };
+    };
+    if (healthM.value > .1 && healthM.value < .4 && !lowHealthGoing) {
+      effects.push(new lowHealth())
+      lowHealthGoing = true
+    } else if (healthM.value < .1 && healthDamageM.value > .1 && !knockedGoing) {
+      if (enableKnock) {
+        effects.push(new knocked())
+        knockedGoing = true
+      }
+    };
+  }
+
+  function kill(){
+        this.alpha = 1
+        this.alpha2 = 0
+        this.rad = 1
+        this.stroke = 10
+        this.width = 0
+        this.width2 = 0
+        this.draw = function(){
+          ctx.globalAlpha = this.alpha
+          DrawRect(0, 0, 320, 200, `hsla(0, 100%, 0%, ${this.alpha2})`)
+          DrawStroke(160, 100, this.rad, "red", this.stroke)
+          DrawLine([0, 0], [this.width * 1.6, this.width], "red", 40)
+          DrawLine([320, 0], [320 - this.width2 * 1.6, this.width2], "red", 40)
+          ctx.globalAlpha = 1
+          this.rad < 300 ? this.rad += 10 : this.width < 200 ? this.width += 10 : this.width2 < 200 ? this.width2 += 10 : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0;
+          if(this.stroke < 100) this.stroke+=5
+          if(this.alpha2 <= .95) this.alpha2 += .05
+          if(this.lifetime == 0) KillGoing = false
+        }
+    }
+
+    function DrawRect(x, y, width, height, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, width, height);
+    };
+
+  function DrawLine(start, end, color, stroke){
+    ctx.beginPath()
+    ctx.moveTo(start[0], start[1])
+    ctx.lineTo(end[0], end[1])
+    ctx.strokeStyle = color
+    ctx.lineWidth = stroke
+    ctx.stroke()
+  }
+
+  function sprinting(){
+        this.sprintValue = 1
+        this.count = 0
+        this.draw = function(){
+            if(Math.abs(this.sprintValue - SprintMeter.value) > .02 && this.count == 0) {
+              effects.push(new sprintHelp(this.sprintValue * 120))
+              this.count++
+            }
+            this.sprintValue = SprintMeter.value
+            if(this.count > 0) this.count < 20 ? this.count++ : this.count = 0
+            if(engine.vision.sprintNoWhite > .25 || SprintMeter.value < .05) {
+              this.lifetime = 0
+              SprintGoing = false
+            }
+        }
+    }
+
+    function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+    function sprintHelp(hue){
+        this.rad = 1
+        this.vrad = 0
+        this.stroke = 1
+        this.hue = hue
+        this.draw = function(){
+            DrawStroke(160, 100, this.rad, `hsl(${this.hue}, 100%, 50%)`, this.stroke)
+            this.rad < 300 ? this.rad += this.vrad : this.lifetime = 0
+            this.vrad += .5
+            this.stroke += 3
+        }
+    }
+
+  function battlebus(){
+        this.alpha = 0
+        this.half = false
+        this.count = 0
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, `hsla(240, 100%, 30%, ${this.alpha})`)
+            effects.push(new battlebusHelp())
+            if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
+            if(engine.vision.BuildHealth > .75 || engine.vision.parachute > .25) this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
+            if(this.lifetime == 0) effects.push(new parachute())
+        }
+    }
+
+    function battlebusHelp(){
+        this.x = Math.random() * 320
+        this.y = 250
+        this.rad = 50
+        this.mod = Math.random() * 30
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, `hsla(${240 - this.rad}, 100%, ${50 + this.mod}%, ${this.rad / 70})`)
+            this.y -= 10
+            this.rad >= 3 ? this.rad -= 1.5 : this.lifetime = 0
+        }
+    }
+
+    function parachute(){
+        this.effects = []
+        this.count = 0
+        this.alpha = 0
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, `hsla(240, 100%, 1%, ${this.alpha})`)
+            if(engine.vision.parachute > .1) this.alpha < 1 ? this.alpha += .025 : this.alpha = 1
+            else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+            if(Math.random() > .95) this.effects.push(new paraFront())
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+        }
+    }
+
+    function paraFront(){
+      this.x = Math.random() * 100 + 110
+      this.vx = 1 - Math.random() * 2
+      this.y = -25
+      this.hue = Math.random() * 360
+      this.count = 0
+      this.effects = []
+      this.draw = function(){
+        DrawCircle(this.x, this.y, 30, `hsla(${this.hue}, 100%, 50%, 1)`)
+        if(this.count == 0) this.effects.unshift([this.x, this.y])
+        this.count < 1 ? this.count++ : this.count = 0
+        this.effects.forEach((ele, i)=>{
+          DrawCircle(ele[0], ele[1], 30 - i * 2, `hsla(${this.hue}, 100%, 50%, ${1 - i / 10})`)
+        })
+        if(this.effects.length > 10) this.effects.pop()
+        this.x += this.vx
+        this.y < 400 ? this.y += 10 : this.lifetime = 0
+      }
+    }
+
+  function knocked(){
+        this.alpha = .5
+        this.draw = function(){
+          this.alpha = Math.sin(Date.now() / 500) * .25 + .75
+          let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+          grad.addColorStop(0, "red")
+          grad.addColorStop(.75, "black")
+          ctx.globalAlpha = this.alpha
+          DrawRect(0, 0, 320, 200, grad)
+          ctx.globalAlpha = 1
+          if(healthM.value > .1 || healthDamageM.value < .1 || !inGame){
+            this.lifetime = 0
+            knockedGoing = false
+          }
+        }
+    }
+
+  function lowHealth(){
+        this.draw = function(){
+            effects.push(new lowHealthHelp())
+            if(healthM.value < .1 || healthM.value > .4 || !inGame){
+              this.lifetime = 0
+              lowHealthGoing = false
+            }
+        }
+    }
+
+    function lowHealthHelp(){
+        this.x = Math.random() * 320
+        this.y = Math.random() * 200
+        this.alpha = 0
+        this.half = false
+        this.draw = function(){
+            DrawCircle(this.x, this.y, 30, `hsla(0, 100%, 50%, ${this.alpha})`)
+            if(!this.half) this.alpha < 1 ? this.alpha += .1 : this.half = true
+            else this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
+            this.x += 5 - Math.random() * 10
+            this.y += 5 - Math.random() * 10
+        }
+    }
+
+  let carSVG = "m221.34,32h-1.21v-8.04c-3.85-5.61-71.89-7.6-71.89-7.6L127.66,1.28c-6.39-1.76-47.34,0-47.34,0l-28.73,8.15C40.68,15.48,2.81,19.12,2.81,19.12c-1.54.88-1.54,8.48-1.54,8.48-2.75,1.87,2.75,5.83,2.75,5.83l3.52,4.51s36,4.4,58.57,6.72c22.57,2.31,127.6-1.32,127.6-1.32,11.78-.33,21.91-5.94,21.91-5.94,7.16.44,5.72-5.39,5.72-5.39ZM84.5,14.05l14.64-6.39h20.92l7.71,7.72s-39.41.64-43.27-1.34Z"
+    function vehicle(){
+      this.x = 0
+      this.y = 60
+      this.rad = 1
+      this.alpha = 0
+      this.half = false
+      this.rot = 0
+      this.draw = function(){
+          DrawRect(0, 0, 320, 200, `hsla(20, 100%, 50%, ${this.alpha})`)
+          if(!this.half) this.alpha < .75 ? this.alpha += .025 : this.half = true
+          DrawPath(this.x, this.y, carSVG, "black", 1.2, 1.5)
+          DrawCircle(this.x, this.y + 35, 10, "red")
+          wheel(this.x + 60, this.y + 60, `hsla(20, 100%, 50%, ${this.alpha})`, this.rot)
+          wheel(this.x + 200, this.y + 60, `hsla(20, 100%, 50%, ${this.alpha})`, this.rot + Math.PI)
+          this.rot+=.2
+          this.rot%=Math.PI*2
+          this.x < 330 ? this.x += 5 : this.x = -320
+          if(healthM.value < 0.1 || vehicleM.value < .1 || !inGame){
+            this.lifetime = 0
+            vehicleGoing = false
+          }
+      }
+    }
+
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+      ctx.fillStyle = color;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scaleX, scaleY)
+      let ex = new Path2D(path);
+      ctx.fill(ex);
+      ctx.restore();
+    };
+
+    function wheel(x, y, color, rot){
+      ctx.save()
+      ctx.translate(x, y)
+      ctx.rotate(rot)
+      ctx.translate(-x, -y)
+      DrawCircle(x, y, 30, "black")
+      ctx.beginPath()
+      ctx.arc(x, y, 20, 0, Math.PI)
+      ctx.fillStyle = color
+      ctx.fill()
+      ctx.restore()
+    }
+
+  function xpGain(){
+      this.count = 0
+      this.draw = function(){
+        effects.push(new xpHelp())
+        this.count < 150 ? this.count++ : this.lifetime = 0
+      }
+    }
+
+    function xpHelp(){
+      this.x = Math.random() * 320
+      this.y = 230
+      this.vy = 0
+      this.ay = -.1
+      this.rad = 30
+      this.draw = function(){
+        DrawCircle(this.x, this.y, this.rad, "yellow")
+        this.y += this.vy
+        this.vy += this.ay
+        this.rad > 1 ? this.rad-=.25 : this.lifetime = 0
+      }
+    }
+
+    function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function Wave(color, direction) {
+    this.color = color;
+    this.direction = direction;
+    this.lifetime = 300;
+    this.draw = function () {
+      if (this.direction == "up") {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(160, this.lifetime - 100);
+        ctx.lineTo(320, this.lifetime);
+        ctx.lineTo(320, this.lifetime + 50);
+        ctx.lineTo(160, this.lifetime - 50);
+        ctx.lineTo(0, this.lifetime + 50);
+        ctx.lineTo(0, this.lifetime);
+        ctx.lineTo(160, this.lifetime - 100);
+        ctx.fill();
+      } else if (this.direction = "down") {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(160, 300 - this.lifetime);
+        ctx.lineTo(320, 200 - this.lifetime);
+        ctx.lineTo(320, 100 - this.lifetime);
+        ctx.lineTo(160, 200 - this.lifetime);
+        ctx.lineTo(0, 100 - this.lifetime);
+        ctx.lineTo(0, 200 - this.lifetime);
+        ctx.lineTo(160, 300 - this.lifetime);
+        ctx.fill();
+      }
+      this.lifetime -= 10;
+    };
+  };
+
+  function reversePulseRippleState(color, hollow) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color = color;
+    this.isHollow = hollow;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      var pctUp = this.count / 2000;
+      if (this.isHollow) {
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 20;
+        ctx.beginPath();
+        ctx.arc(160, 100, 200 * pctUp, 0, 2 * Math.PI);
+        ctx.stroke();
+      } else {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(160, 100, 200 * pctUp, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      if (this.count < 100) {
+        this.count = 2000;
+      } else {
+        this.count -= 75;
+      }
+    };
+  }
+
+  function tookHit(hue) {
+    this.lifetime = 25;
+    this.start = new Date().getTime();
+    this.elapsed = 0;
+
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      ctx.fillStyle = `hsl(${hue}, 100%, ${Math.sin(this.elapsed / 10) * 25 + 50}%`;
+      ctx.beginPath();
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.stroke();
+      this.lifetime--;
+    }
+  };
+
+  function effectPulse(hue) {
+    this.lifetime = 500;
+    this.hue = hue;
+
+    this.draw = function () {
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+      ctx.lineWidth = 50;
+      ctx.beginPath();
+      ctx.arc(160, 100, this.lifetime, 0, Math.PI * 2);
+      ctx.stroke();
+      this.lifetime -= 10;
+    }
+  }
+
+  function PulseRippleState(color, hollow, duration) {
+    this.start = new Date().getTime();
+    this.duration = duration;
+    this.count = 2000;
+    this.color = color;
+    this.isHollow = hollow;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      var pctUp = this.count / 2000;
+      if (this.isHollow) {
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 20;
+        ctx.beginPath();
+        ctx.arc(160, 100, 200 - 200 * pctUp, 0, 2 * Math.PI);
+        ctx.stroke();
+      } else {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(160, 100, 200 - 200 * pctUp, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      if (this.count < 100) {
+        this.count = 2000;
+      } else {
+        this.count -= 75;
+      }
+    };
+  }
+
+  function StateHandler() {
+    var stack = [];
+    var state = null;
+
+    var updateState = function () {
+      if (stack.length > 0) {
+        state = stack[stack.length - 1];
+      } else {
+        state = null;
+      }
+    };
+
+    this.Push = function (newState) {
+      stack.push(newState);
+      updateState();
+    };
+
+    this.Pop = function () {
+      stack.pop();
+      updateState();
+    };
+
+    this.Process = function () {
+      if (state != null) {
+        state.Process();
+      }
+    };
+  }
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      // Exit early if we've got a long-term match.
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    };
+  }
+
+    function StrokeRect(x, y, width, height, color, stroke){
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke
+      ctx.rect(x, y, width, height);
+      ctx.stroke()
+    }
+
+    function hexToHSL(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+  
+      (r /= 255), (g /= 255), (b /= 255);
+      var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+      var h,
+        s,
+        l = (max + min) / 2;
+  
+      if (max === min) {
+        h = s = 0; // achromatic
+      } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+  
+      s = s * 100;
+      s = Math.round(s);
+      l = l * 100;
+      l = Math.round(l);
+      h = Math.round(360 * h);
+  
+      return [h, s, l];
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+  function onEngineReady() {
+    // Grab canvas and rendering context.
+    canvas = document.getElementById("exCanvas");
+    ctx = canvas.getContext("2d");
+    window.requestAnimationFrame(update);
+  }
+</script>

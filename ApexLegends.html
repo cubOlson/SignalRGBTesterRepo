@@ -1,0 +1,4402 @@
+<head>
+  <title>Apex Legends Devv</title>
+  <meta description="Meters and ambiance for Apex Legends. v1.02" />
+  <meta publisher="SignalRGB" />
+
+  <meta property="character" label="Legends" type="list"
+    values="Alter,Ash,Ballistic,Bangalore,Bloodhound,Catalyst,Caustic,Conduit,Crypto,Fuse,Gibraltar,Horizon,Lifeline,Loba,Mad Maggie,Mirage,NewCastle,Octane,Pathfinder,Rampart,Revenant,Seer,Valkyrie,Vantage,Wattson,Wraith"
+    default="Alter" />
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Custom"/>
+  <meta property="backColor" label="Custom Color" type="color" default="#050505" min="0" max="360" />
+  <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
+    tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
+    type="boolean" default="0" />
+  <meta property="HUDOn" label="HUD Effects" type="boolean" default="1" />
+  <meta property="enableHealth" label="Health effects" type="boolean" default="1" />
+  <meta property="HealthBarX" label="HealthBarX" type="number" min="0" max="100" default="0" />
+  <meta property="HealthBarY" label="HealthBarY" type="number" min="0" max="100" default="25" />
+  <meta property="HealthBarWidth" label="HealthBarWidth" type="number" min="0" max="100" default="100" />
+  <meta property="HealthBarHeight" label="HealthBarHeight" type="number" min="0" max="100" default="30" />
+  <meta property="enableShield" label="Shield effects" type="boolean" default="1" />
+  <meta property="ShieldBarX" label="ShieldBarX" type="number" min="0" max="100" default="0" />
+  <meta property="ShieldBarY" label="ShieldBarY" type="number" min="0" max="100" default="40" />
+  <meta property="ShieldBarWidth" label="ShieldBarWidth" type="number" min="0" max="100" default="100" />
+  <meta property="ShieldBarHeight" label="ShieldBarHeight" type="number" min="0" max="100" default="30" />
+  <meta property="effectHex" label="Legends Select Color" type="color" min="0" max="360" default="#efff00" />
+  <meta property="enableUlt" label="Ult effects" type="boolean" default="1" />
+  <meta property="enableQ" label="Q effects" type="boolean" default="1" />
+  <meta property="enableVD" label="Victory/Defeat effects" type="boolean" default="1" />
+  <meta property="enableStorm" label="Storm effects" type="boolean" default="1" />
+  <meta property="enableDrop" label="Dropship effects" type="boolean" default="1" />
+  <meta property="enableTeam" label="Teammate Death effect" type="boolean" default="1" />
+  <meta property="enableMenu" label="Menu effects" type="boolean" default="1" />
+  <meta property="enableRevive" label="Revive effects" type="boolean" default="1" />
+  <meta property="enableSyringe" label="Syringe effects" type="boolean" default="1" />
+  <meta property="enablePhoenix" label="Phoenix Kit effects" type="boolean" default="1" />
+
+  <!-- 38 Meters CHECK ALL RES-->
+
+  <meta meter="check" tags="apex,VLC,process" type="linear" x="0.2668" y="0.9583" width="0.0003" height=".0001" 
+    h="0-360" s="0-25" l="50-100" hdr-h="0-360" hdr-s="0-25" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.1195" y="0.912" width="0.0005" height=".0001" />
+    <resolution aspect="24:10" x="0.199" y="0.9597" width="0.002" height=".0001" />
+    <resolution aspect="16:11" x="0.2653" y="0.9656" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.266" y="0.9597" width="0" height="0" />
+    <resolution size="2560x1080" x="0.199" y="0.9597" width="0.002" height=".0001" />
+  </meta>
+
+  <meta meter="cyrp" tags="apex,VLC,process" type="area" x="0.4986" y="0.9083" width="0.0024" height="0.0007" 
+    h="135-180" s="20-50" l="80-100" hdr-h="160-180" hdr-s="0-20" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.4958" y="0.9056" width="0.0042" height="0.002" />
+    <resolution aspect="24:10" x="0.4959" y="0.9056" width="0.0035" height="0.004" />
+    <resolution aspect="16:11"  x="0.4936" y="0.9174" width="0.007" height="0" />
+
+    <resolution size="3840x2160" x="0.4918" y="0.9064" width="0.0107" height="0.0033"/>
+    <resolution size="2560x1080" x="0.4994" y="0.9092" width="0.0012" height="0" />
+  </meta>
+
+  <meta meter="InGameOrange" tags="apex,VLC,process" type="area" x="0.0442" y="0.9403" width="0.0005" height="0.0005"
+    h="0-360" s="40-100" l="30-100" hdr-h="0-360" hdr-s="40-100" hdr-l="30-100">
+    <resolution aspect="3.55:1" x="0.0211" y="0.9352" width="0.0005" height=".0001" />
+    <resolution aspect="24:10" x="0.0302" y="0.9284" width="0.0015" height="0.0028" />
+    <resolution aspect="16:11"  x="0.0442" y="0.9403" width="0.0005" height="0.0005"/>
+
+    <resolution size="3840x2160" x="0.0315" y="0.8925" width="-0.0005" height="0.0061" />
+    <resolution size="2560x1080" x="0.0238" y="0.8943" width="0.0008" height="0.0065" />
+  </meta>
+
+  <meta meter="WhiteInGame" tags="apex,VLC,process" type="area" x="0.7465" y="0.9660" width="0.00025" height="0.0007"
+    h="0-360" s="0-30" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.8820" y="0.937" width="0.0005" height=".0001" />
+    <resolution aspect="24:10" x="0.8108" y="0.9653" width="0.00009" height="0.0021" />
+    <resolution aspect="16:11"  x="0.7465" y="0.9660" width="0.00025" height="0.0007"/>
+
+    <resolution size="3840x2160" x="0.7473" y="0.9657" width="0" height="0.0014" />
+    <resolution size="2560x1080" x="0.8108" y="0.9653" width="0.00009" height="0.0021" />
+  </meta>
+
+  <meta meter="ultCheck" tags="apex,VLC,process" type="colormean" x="0.4818" y="0.9415" width="0.0359" height=".0001">
+    <resolution aspect="3.55:1" x="0.4892" y="0.9422" width="0.0044" height="0"/>
+    <resolution aspect="24:10" x="0.4826" y="0.9410" width="0.0334" height="0" />
+    <resolution aspect="16:11"  x="0.4951" y="0.8637" width="0.0082" height="-0.0007" />
+
+    <resolution size="3840x2160" x="0.4818" y="0.9415" width="0.0359" height=".0001" />
+    <resolution size="2560x1080" x="0.4959" y="0.848" width="0.0015" height=".0001" />
+  </meta>
+
+  <meta meter="greyZ" tags="apex,VLC,process" type="area" x="0.4938" y="0.8444" height="0.00009" width="0.0119" 
+    h="0-360" s="0-20" l="70-100" hdr-h="0-360" hdr-s="0-20" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.4979" y="0.8436" width="0.0005" height=".0001" />
+    <resolution aspect="24:10" x="0.4962" y="0.8444" width="0.009" height="0.00009" />
+    <resolution aspect="16:11"  x="0.4951" y="0.8605" width="0.0078" height="-0.0006"/>
+
+    <resolution size="3840x2160" x="0.4962" y="0.8444" width="0.009" height="0.00009" />
+    <resolution size="2560x1080" x="0.4962" y="0.8444" width="0.009" height="0.00009" />
+  </meta>
+
+  <meta meter="ultCol" tags="apex,VLC,process" type="colormean" x="0.4949" y="0.8521" width="0.0098" height="0.0028">
+    <resolution aspect="3.55:1" x="0.4984" y="0.8528" width="0.0005" height=".0001" />
+    <resolution aspect="24:10" x="0.4971" y="0.8521" width="0.0023" height="0.0001" />
+    <resolution aspect="16:11"  x="0.4963" y="0.868" width="0.007" height="-0.0006"/>
+
+    <resolution size="3840x2160" x="0.4949" y="0.8521" width="0.0098" height="0.0028" />
+    <resolution size="2560x1080" x="0.4971" y="0.8521" width="0.0023" height="0.0001" />
+  </meta>
+
+  <meta meter="whiteVal" tags="apex,VLC,process" type="area" x="0.4863" y="0.8771" width="0.0285" height="0.0472" 
+    h="0-360" s="0-5" l="95-100" hdr-h="0-360" hdr-s="0-5" hdr-l="95-100">
+    <resolution aspect="3.55:1" x="0.4930" y="0.8778" width="0.0141" height="0.0250" />
+    <resolution aspect="24:10" x="0.4910" y="0.8813" width="0.0180" height="0.0403" />
+    <resolution aspect="16:11"  x="0.4875" y="0.8795" width="0.0180" height="0.0460"/>
+
+    <resolution size="3840x2160" x="0.4910" y="0.8813" width="0.0180" height="0.0403" />
+    <resolution size="2560x1080" x="0.4910" y="0.8813" width="0.0180" height="0.0403" />
+  </meta>
+
+  <meta meter="confirm" tags="apex,VLC,process" x=".875" y=".6759" width=".0001" height=".0001" 
+    h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="linear">
+    <resolution aspect="3.55:1" x="0.6901" y="0.6954" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.5881" y="0.6583" width="0.0001" height=".0001" />
+    <resolution aspect="16:11"  x="0.8812" y="0.6767" width="-0.0008" height="0.0006" />
+
+    <resolution size="3840x2160"  x="0.875" y="0.679" width="0.0015" height="0.0051"  />
+    <resolution size="2560x1080" x="0.7855" y="0.6914" width="0.0007" height="0.0055"/>
+  </meta>
+
+  <meta meter="reviveConfirm" tags="apex,VLC,process" x=".875" y=".6759" width=".0001" height=".0001" 
+    h="90-120" s="50-100" l="50-100" hdr-h="90-120" hdr-s="50-100" hdr-l="50-100" type="linear">
+    <resolution aspect="3.55:1" x="0.6901" y="0.6954" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.5881" y="0.6583" width="0.0001" height=".0001" />
+    <resolution aspect="16:11"  x="0.8812" y="0.6767" width="-0.0008" height="0.0006"/>
+
+    <resolution size="3840x2160"  x="0.8757" y="0.6809" width="0" height="0" />
+    <resolution size="2560x1080" x="0.7866" y="0.6969" width="0" height="0" />
+  </meta>
+
+  <meta meter="health" tags="apex,VLC,process" x=".0932" y=".937" width=".119" height=".0001" 
+    h="0-360" s="0-40" l="90-100" hdr-h="0-360" hdr-s="0-40" hdr-l="90-100" type="linear">
+    <resolution aspect="3.55:1" x="0.0466" y="0.9388" width="0.0599" height="0.0001" />
+    <resolution aspect="24:10" x="0.0692" y="0.9417" width=".0913" height=".0001" />
+    <resolution aspect="16:11" x="0.093" y="0.9437" width="0.1188" height="0.0038"/>
+
+    <resolution size="3840x2160" x="0.0938" y="0.9361" width="0.1195" height="0.006" />
+    <resolution size="2560x1080" x="0.0692" y="0.9417" width=".0913" height=".0001" />
+  </meta>
+
+  <meta meter="loba2" tags="apex,VLC,process" type="area" x="0.5983" y="0.5511" width="0" height="0.0028" 
+    h="25-30" s="85-95" l="95-100" hdr-h="25-50" hdr-s="60-80" hdr-l="95-100">
+    <resolution aspect="3.55:1" x="0.596" y="0.5502" width="0" height="0.0019" />
+    <resolution aspect="24:10" x="0.5971" y="0.5528" width="0.000" height="0.001" />
+    <resolution aspect="16:11"  x="0.6002" y="0.5503" width="-0.0007" height="0.0038"/>
+
+    <resolution size="3840x2160" x="0.5991" y="0.5521" width="-0.0005" height="0.0032" />
+    <resolution size="2560x1080" x="0.5975" y="0.5524" width="0" height="0.0037" />
+  </meta>
+
+  <meta meter="mini" tags="apex,VLC,process" type="area" x="0.8707" y="0.9611" width="-0.0008" height="0"  
+    h="295-300" s="57-100" l="60-65" hdr-h="275-300" hdr-s="30-60" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.9344" y="0.9606" width="0.0002" height="-0.0004"/>
+    <resolution aspect="24:10" x="0.9017" y="0.9590" width="0.0009" height="0" />
+    <resolution aspect="16:11"  x="0.8683" y="0.9637" width="0.0027" height="-0.0006"/>
+
+    <resolution size="3840x2160" x="0.8695" y="0.9616" width="0.0003" height="0.0055" />
+    <resolution size="2560x1080" x="0.9015" y="0.9592" width="0.0016" height="0" />
+  </meta>
+
+  <meta meter="osdEsc" tags="apex,VLC,process" x="0.034" y="0.9444" width="0.016" height="-0.0014"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-10" hdr-l="80-100" type="linear">
+    <resolution aspect="3.55:1" x="0.0172" y="0.9412" width="0.0075" height="0.0005" />
+    <resolution aspect="24:10" x="0.0258" y="0.9409" width="0.0168" height="0.0007" />
+    <resolution aspect="16:11"  x="0.034" y="0.9481" width="0.0176" height="0.0025"/>
+
+    <resolution size="3840x2160" x="0.0344" y="0.9444" width="0.0187" height="-0.0009" />
+    <resolution size="2560x1080" x="0.0258" y="0.9416" width="0.0117" height="0.0009" />
+  </meta>
+
+  <meta meter="osdEscOn" tags="apex,VLC,process" x="0.034" y="0.9444" width="0.016" height="-0.0014"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-10" hdr-l="80-100" type="linear">
+    <resolution aspect="3.55:1" x="0.0172" y="0.9412" width="0.0075" height="0.0005" />
+    <resolution aspect="24:10" x="0.0258" y="0.9409" width="0.0168" height="0.0007" />
+    <resolution aspect="16:11"  x="0.034" y="0.9481" width="0.0176" height="0.0025"/>
+
+    <resolution size="3840x2160" x="0.0344" y="0.9444" width="0.0187" height="-0.0009" />
+    <resolution size="2560x1080" x="0.0258" y="0.9416" width="0.0117" height="0.0009" />
+  </meta>
+
+  <meta meter="phoenixKit" tags="apex,VLC,process" x=".6989" y=".6925" width=".13" height=".0001" 
+    h="270-280" s="40-90" l="0-100" hdr-h="250-360" hdr-s="0-90" hdr-l="0-100" type="linear">
+    <resolution aspect="3.55:1" x="0.6005" y="0.6926" width="0.0727" height="0.0001" />
+    <resolution aspect="24:10" x="0.6474" y="0.6924" width=".10" height=".0001" />
+    <resolution aspect="16:11"  x="0.7003" y="0.6704" width="0.145" height="0.0081"/>
+
+    <resolution size="3840x2160" x="0.6968" y="0.6911" width="0.1487" height="0.006" />
+    <resolution size="2560x1080" x="0.6474" y="0.6924" width=".10" height=".0001" />
+  </meta>
+
+  <meta meter="q" tags="apex,VLC,process" type="area" x="0.2903" y="0.9076" width="0.0004" height="0.0028" 
+    h="0-360" s="0-50" l="50-75" hdr-h="0-360" hdr-s="0-30" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.1451" y="0.9056" width="0.000" height="0.00" />
+    <resolution aspect="24:10" x="0.2172" y="0.9034" width="0.0003" height="0.0015" />
+    <resolution aspect="16:11"  x="0.2915" y="0.9162" width="0" height="0"/>
+
+    <resolution size="3840x2160" x="0.2897" y="0.9078" width="-0.0003" height="0.0023"  />
+    <resolution size="2560x1080" x="0.2177" y="0.9082" width="0" height="0.001" />
+  </meta>
+
+  <meta meter="q1" tags="apex,VLC,process" type="area" x=" 0.3352" y="0.9268" width="0.0020" height="0.0014"
+    h="20-60" s="50-100" l="70-100" hdr-h="20-60" hdr-s="50-100" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.1674" y="0.924" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.2515" y="0.9326" width="0.0003" height="0.003" />
+    <resolution aspect="16:11"  x="0.3286" y="0.9131" width="-0.0003" height="0.0012"/>
+
+    <resolution size="3840x2160" x="0.3373" y="0.9319" width="0" height="0.0023" />
+    <resolution size="2560x1080" x="0.2528" y="0.9314" width="0.0004" height="0.0047" />
+  </meta>
+
+  <meta meter="q2" tags="apex,VLC,process" type="area" x="0.3326" y="0.9160" width="0.0016" height="0.0021"
+    h="30-60" s="70-100" l="70-100" hdr-h="30-60" hdr-s="70-100" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.1656" y="0.9138" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.2473" y="0.9167" width="0.0009" height="0.0007" />
+    <resolution aspect="16:11"  x="0.3329" y="0.9268" width="0.0004" height="0.0019"/>
+
+    <resolution size="3840x2160"  x="0.3334" y="0.9185" width="0.0005" height="0.0051" />
+    <resolution size="2560x1080" x="0.2501" y="0.9194" width="0.0004" height="0.0028" />
+  </meta>
+
+  <meta meter="q3" tags="apex,VLC,process" type="area" x=" 0.3295" y="0.9056" width="0.0010" height="0.0028" 
+    h="30-60" s="70-100" l="70-100" hdr-h="30-60" hdr-s="70-100" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.1641" y="0.9028" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.2488" y="0.9243" width="0.0009" height="0.0011" />
+    <resolution aspect="16:11"  x="0.3286" y="0.9137" width="0.0012" height="0.0037"/>
+
+    <resolution size="3840x2160" x="0.3279" y="0.9037" width="0.0014" height="0.0027" />
+    <resolution size="2560x1080" x="0.2466" y="0.9045" width="0.0004" height="0.0037" />
+  </meta>
+
+  <meta meter="ShieldBar" tags="apex,VLC,process" x="0.0930" y="0.9263" width="0.1160" height="0.0042" 
+    h="0-360" s="65-100" l="50-100" hdr-h="0-360" hdr-s="65-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.0466" y="0.926" width="0.0589" height="0.0001" />
+    <resolution aspect="24:10" x="0.0689" y="0.9264" width=".0878" height=".0001" />
+    <resolution aspect="16:11"  x="0.0934" y="0.9343" width="0.1157" height="-0.0031"/>
+
+    <resolution size="3840x2160" x="0.0927" y="0.9254" width="0.118" height="0" />
+    <resolution size="2560x1080" x="0.0689" y="0.9264" width=".0878" height=".0001" />
+  </meta>
+
+  <meta meter="ShieldBarColor" tags="apex,VLC,process" x="0.0930" y="0.9243" width="0.0001" height="0.0001" type="colormean">
+    <resolution aspect="3.55:1" x="0.0466" y="0.926" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.0698" y="0.9278" width=".0020" height=".0001" />
+    <resolution aspect="16:11"  x="0.0942" y="0.9337" width="0.0011" height="0"/>
+
+    <resolution size="3840x2160" x="0.094" y="0.9268" width="0.0026" height="-0.0004" />
+    <resolution size="2560x1080" x="0.0711" y="0.9268" width="0.0012" height="0" />
+  </meta>
+
+  <meta meter="revive" tags="apex,VLC,process" x=".6989" y=".6925" width=".13" height=".0001" 
+    h="90-120" s="50-100" l="50-100" hdr-h="90-120" hdr-s="50-100" hdr-l="50-100" type="linear">
+    <resolution aspect="3.55:1" x="0.6005" y="0.6926" width="0.0727" height="0.0001" />
+    <resolution aspect="24:10" x="0.6474" y="0.6924" width=".10" height=".0001" />
+    <resolution aspect="16:11"  x="0.7003" y="0.6704" width="0.145" height="0.0081"/>
+
+    <resolution size="3840x2160" x="0.6968" y="0.6911" width="0.1487" height="0.006" />
+    <resolution size="2560x1080" x="0.6483" y="0.6923" width="0.1098" height="0.0019"   />
+  </meta>
+
+  <meta meter="syringeCharge" tags="apex,VLC,process" x=".6989" y=".6925" width=".13" height=".0001" 
+    h="0-10" s="70-100" l="0-100" hdr-h="0-10" hdr-s="70-100" hdr-l="0-100" type="linear">
+    <resolution aspect="3.55:1" x="0.6005" y="0.6926" width="0.0727" height="0.0001" />
+    <resolution aspect="24:10" x="0.6474" y="0.6924" width=".10" height=".0001" />
+    <resolution aspect="16:11"  x="0.7003" y="0.6704" width="0.145" height="0.0081"/>
+
+    <resolution size="3840x2160" x="0.6968" y="0.6911" width="0.1487" height="0.006" />
+    <resolution size="2560x1080" x="0.6474" y="0.6924" width=".10" height=".0001" />
+  </meta>
+
+  <meta meter="shieldCharge" tags="apex,VLC,process" x=".6989" y=".6925" width=".13" height=".0001" 
+    h="200-220" s="70-100" l="0-100" hdr-h="180-240" hdr-s="50-80" hdr-l="80-100" type="linear">
+    <resolution aspect="3.55:1" x="0.6005" y="0.6926" width="0.0727" height="0.0001" />
+    <resolution aspect="24:10" x="0.6474" y="0.6924" width=".10" height=".0001" />
+    <resolution aspect="16:11"  x="0.7003" y="0.6704" width="0.145" height="0.0081"/>
+
+    <resolution size="3840x2160" x="0.6968" y="0.6911" width="0.1487" height="0.006" />
+    <resolution size="2560x1080" x="0.6474" y="0.6924" width=".10" height=".0001" />
+  </meta>
+
+  <meta meter="valkz" tags="apex,VLC,process" type="area" x="0.6878" y="0.3885" width="0.0023" height="0.0014"  
+    h="145-155" s="70-100" l="87-100" hdr-h="150-180" hdr-s="60-80" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.5943" y="0.3908" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.6415" y="0.3899" width="0.0008" height="0.0055" />
+    <resolution aspect="16:11"  x="0.6889" y="0.4015" width="0.0024" height="0.025"/>
+
+    <resolution size="3840x2160" x="0.6898" y="0.39" width="-0.0006" height="0.012"  />
+    <resolution size="2560x1080" x="0.6428" y="0.3883" width="0" height="0.0037" />
+  </meta>
+
+  <meta meter="WhiteStormBar" tags="apex,VLC,process" type="linear" x="0.1462" y="0.3009" width="0.0011" height="0.0014"
+    h="0-360" s="0-10" l="60-100" hdr-h="0-360" hdr-s="0-50" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.0737" y="0.2991" width="0." height="0" />
+    <resolution aspect="24:10" x="0.1090" y="0.3000" width="0.0003" height="0.0001" />
+    <resolution aspect="16:11"  x="0.1462" y="0.2714" width="0.0011" height="0.0013"/>
+
+    <resolution size="3840x2160" x="0.1456" y="0.3001" width="0.0016" height="0.0019"  />
+    <resolution size="2560x1080" x="0.1094" y="0.2994" width="0.0008" height="0.0027" />
+  </meta>
+
+  <meta meter="OrangeStormBar" tags="apex,VLC,process" type="linear" x="0.031" y="0.2993" width="0.1156" height="0.0035"
+    h="0-360" s="30-100" l="9-90" hdr-h="0-360" hdr-s="30-100" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.0141" y="0.2982" width="0.0589" height="0.0001" />
+    <resolution aspect="24:10" x="0.0209" y="0.2951" width="0.0898" height="0.0000" />
+    <resolution aspect="16:11"  x="0.0258" y="0.2658" width="0.1172" height="0.000"/>
+
+    <resolution size="3840x2160" x="0.0258" y="0.2983" width="0.1206" height="0.0023" />
+    <resolution size="2560x1080" x="0.0209" y="0.2951" width="0.0898" height="0.0000" />
+  </meta>
+
+  <meta meter="YellowSelectMenu" tags="apex,VLC,process" type="area" x="0.9867" y="0.9898" width="0.0117" height="0.0083" 
+    h="50-70" s="90-100" l="40-100" hdr-h="50-70" hdr-s="90-100" hdr-l="40-100">
+    <resolution aspect="3.55:1" x="0.9932" y="0.9916" width="0.0029" height="0.0014" />
+    <resolution aspect="24:10" x="0.9933" y="0.9903" width="0.0012" height="0.0042" />
+    <resolution aspect="16:11" x="0.9867" y="0.9898" width="0.0117" height="0.0083"/>
+
+    <resolution size="3840x2160" x="0.9933" y="0.9903" width="0.0012" height="0.0042" />
+    <resolution size="2560x1080" x="0.9933" y="0.9903" width="0.0012" height="0.0042" />
+  </meta>
+
+  <meta meter="InDropShipWhite" tags="apex,VLC,process" type="area" x="0.4635" y="0.8277" width="0.0609" height="0.0013" 
+    h="0-360" s="0-10" l="95-100" hdr-h="0-360" hdr-s="0-10" hdr-l="95-100">
+    <resolution aspect="3.55:1" x="0.4648" y="0.824" width="0.0012" height="0.0001" />
+    <resolution aspect="24:10" x="0.4591" y="0.8263" width="0.0059" height="0.0027" />
+    <resolution aspect="16:11" x="0.4725" y="0.8449" width="0.0519" height="-0.0012"/>
+
+    <resolution size="3840x2160" x="0.4572" y="0.8286" width="0.082" height="-0.0018" />
+    <resolution size="2560x1080" x="0.4591" y="0.8263" width="0.0059" height="0.0027" />
+  </meta>
+
+  <meta meter="InDropShipOrange" tags="apex,VLC,process" type="area" x="0.4635" y="0.8277" width="0.0609" height="0.0013" 
+    h="7-27" s="83-100" l="43-100" hdr-h="7-27" hdr-s="43-100" hdr-l="43-100">
+    <resolution aspect="3.55:1" x="0.4648" y="0.824" width="0.0012" height="0.0001" />
+    <resolution aspect="24:10" x="0.4591" y="0.8263" width="0.0059" height="0.0027" />
+    <resolution aspect="16:11" x="0.4725" y="0.8449" width="0.0519" height="-0.0012"/>
+
+    <resolution size="3840x2160" x="0.4572" y="0.8286" width="0.082" height="-0.0018" />
+    <resolution size="2560x1080" x="0.4591" y="0.8263" width="0.0059" height="0.0027" />
+  </meta>
+
+  <meta meter="WinLossConfirm" tags="apex,VLC,process" type="area" x="0.0043" y="0.9938" width="0.0105" height="0.0014"
+    h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.0060" y="0.9620" width="0.0012" height="0.001" />
+    <resolution aspect="24:10" x="0.0052" y="0.9708" width="0.0006" height="0.0049" />
+    <resolution aspect="16:11" x="0.0043" y="0.9938" width="0.0105" height="0.0014"/>
+
+    <resolution size="3840x2160" x="0.0052" y="0.9708" width="0.0006" height="0.0049" />
+    <resolution size="2560x1080" x="0.0052" y="0.9708" width="0.0006" height="0.0049" />
+  </meta>
+
+  <meta meter="LossRed" tags="apex,VLC,process" type="area" x="0.499" y="0.2641" width="0" height="0.0034"
+    h="0-30" s="70-100" l="50-80" hdr-h="0-30" hdr-s="42-90" hdr-l="35-100">
+    <resolution aspect="3.55:1" x="0.497" y="0.2504" width="0.0021" height="0" />
+    <resolution aspect="24:10" x="0.4949" y="0.2599" width="0.0039" height="0" />
+    <resolution aspect="16:11" x="0.4963" y="0.2314" width="0.0039" height="0.0025"/>
+
+    <resolution size="3840x2160" x="0.4947" y="0.2552" width="0.0083" height="0.0009" />
+    <resolution size="2560x1080" x="0.4947" y="0.2502" width="0.0078" height="0.0074" />
+  </meta>
+
+  <meta meter="lossNoRed" type="area" tags="VLC,Game" x="0.4889" y="0.2717" width="-0.0004" height="0.0042"
+    h="0-30" s="80-100" l="50-70" hdr-h="0-30" hdr-s="42-90" hdr-l="35-100" >
+    <resolution aspect="3.55:1" x="0.4934" y="0.2732" width="0.0018" height="0"   />
+    <resolution aspect="24:10" x="0.4941" y="0.2759" width="0.0012" height="-0.0014" />
+    <resolution aspect="16:11" x="0.4869" y="0.2458" width="0.0039" height="0.0037"/>
+
+    <resolution size="3840x2160" x="0.4876" y="0.2747" width="0" height="0" />
+    <resolution size="2560x1080" x="0.49" y="0.2753" width="0" height="0" />
+  </meta>
+
+  <meta meter="WinGold" tags="apex,VLC,process" type="area" x="0.56" y="0.5840" width="0.0001" height="0.035" 
+    h="10-70" s="25-50" l="75-100">
+    <resolution aspect="3.55:1"  x="0.503" y="0.5900" width="-0.0005" height="0.0033" />
+    <resolution aspect="24:10" x="0.4963" y="0.5872" width="-0.0003" height="0.0063"  />
+    <resolution aspect="16:11" x="0.5068" y="0.576" width="-0.0074" height="0.0031"/>
+
+    <resolution size="3840x2160" x="0.5004" y="0.5855" width="0.0057" height="0.028" />
+    <resolution size="2560x1080" x="0.4963" y="0.5913" width="0.0035" height="0.0055" />
+  </meta>
+
+  <meta meter="SelectMenuColor" tags="apex,VLC,process" type="colormean" x="0.9023" y="0.8068" width="0.0066" height="0.0132">
+    <resolution aspect="3.55:1" x="0.7064" y="0.8000" width="0.0037" height="0.0074" />
+    <resolution aspect="24:10" x="0.7884" y="0.7792" width="0.0108" height="0.023" />
+    <resolution aspect="16:11" x="0.8996" y="0.8005" width="0.0047" height="0.0081"/>
+
+    <resolution size="3840x2160" x="0.8872" y="0.7823" width="0.0055" height="0.0065"   />
+    <resolution size="2560x1080" x="0.9796" y="0.8902" width="0.0038" height="0.007" />
+  </meta>
+
+  <meta meter="teammate1" tags="apex,VLC,process" type="colormean" x="0.0738" y="0.7604" width="0.0008" height="0.0001">
+    <resolution aspect="3.55:1" x="0.0378" y="0.8231" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.0547" y="0.8222" width="0.000" height="0.00" />
+    <resolution aspect="16:11" x="0.0739" y="0.8399" width="0.0039" height="0"/>
+
+    <resolution size="3840x2160" x="0.0732" y="0.8231" width="0.0021" height="-0.0005" />
+    <resolution size="2560x1080" x="0.0551" y="0.8221" width="-0.0004" height="0.0027" />
+  </meta>
+
+  <meta meter="teammate2" tags="apex,VLC,process" type="colormean" x="0.0742" y="0.7616" width="0" height="0">
+    <resolution aspect="3.55:1" x="0.0370" y="0.7593" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.0558" y="0.7604" width="0" height="0" />
+    <resolution aspect="16:11" x="0.0735" y="0.7867" width="0.0011" height="0"/>
+
+    <resolution size="3840x2160" x="0.074" y="0.7601" width="0.0023" height="0"  />
+    <resolution size="2560x1080" x="0.0551" y="0.759" width="0.0008" height="0.0037" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  //tags="apex, apex legends"
+
+  //#region Variable declaration
+
+  var canvas, ctx;
+  let blueShield, purpleShield, goldShield;
+  let characterChanged = false;
+  let ultCharged = false;
+  let ultAnimPlayed = false;
+  let zGoing = false;
+  let healthHistory = [];
+  var shieldPushed = false;
+  var blockCrypUlt = false;
+  var menuHandler = false;
+
+  let healAnimLength = 1000;
+  var effects = [];
+  var stateMgr = new StateHandler();
+  var inGame = false;
+  var vantageReady = true;
+  var stromGoing = false;
+  var stormObj = false;
+  var lossPlaying = false;
+
+  var theHUD = new DrawHud()
+
+  //#endregion
+  //#region Meter declaration
+
+  var inGameMeter = new Meter(10, InGame)
+  var whiteInGameMeter = new Meter(10, InGame)
+  
+  var q_Meter = new Meter(15, Q_Effects);
+  var q1_Meter = new Meter(15, Q1_Effects);
+  var q2_Meter = new Meter(15, Q2_Effects);
+  var q3_Meter = new Meter(15, Q3_Effects);
+
+  var z_Total = new Meter(4, () => "");
+  var z_TotalHue = new Meter(4, () => "")
+  var z_WhiteVal = new Meter(10, Z_Effects)
+  var z_CheckCharge = new Meter(10, Z_Charged);
+  var grey_Z_Meter = new Meter(2, () => "")
+  var checkMeter = new Meter(15, () => "");
+  var get_Z = new Meter(15, () => "");
+
+  var osdEsc_Meter = new Meter(2, () => "")
+
+  var loba_t = new Meter(3, () => "")
+
+  var deathProtection_Meter = new Meter(4, () => "")
+
+  var healthMeter = new Meter(4, HpEffects)
+
+  var shieldBar_Meter = new Meter(5, Shield_Effects)
+  var shieldBarCol_Meter = new Meter(10, ShieldPickupEffect)
+  
+  var valkUltMeter = new Meter(5, valkUlt)
+  
+  var crypMeter = new Meter(20, CheckCryptoUlt)
+
+  var reviveConfirmationMeter = new Meter(15, () => "")
+
+  var WhiteStormBarMeter = new Meter(8, StormCallback);
+  var OrangeStormBarMeter = new Meter(8, () => "")
+
+  var osdEscOn_Meter = new Meter(5, baseMenuCallback);
+
+
+  var YellowSelectMenuMeter = new Meter(10, selectMenuCallback)
+  var MenuColorMeter = new Meter(3, () => "")
+
+  var InDropShipOrangeMeter = new Meter(15, dropShipMenuCallback)
+  var InDropShipWhiteMeter = new Meter(10, dropShipMenuCallback)
+
+  var LossRedMeter = new Meter(10, LossCallback);
+  var WinGoldMeter = new Meter(10, WinCallback);
+  var WinLossConfirmMeter = new Meter(7, () => "")
+
+  var Team1Meter = new Meter(10, TeamCallback);
+  var Team2Meter = new Meter(10, TeamCallback);
+  let logo = `M135.603 134.549 C 100.294 194.800,71.398 244.298,71.390 244.543 C 71.369 245.166,108.669 275.079,109.271 274.922 C 109.510 274.860,125.802 263.798,145.476 250.342 L 181.246 225.875 160.623 225.811 C 149.280 225.776,140.000 225.684,140.000 225.608 C 140.000 225.373,199.866 120.253,200.000 120.252 C 200.106 120.252,259.973 224.939,260.208 225.537 C 260.253 225.652,250.886 225.776,239.392 225.811 L 218.492 225.875 254.393 250.342 C 274.138 263.798,290.489 274.859,290.728 274.922 C 291.331 275.079,328.631 245.167,328.610 244.543 C 328.593 244.017,200.291 25.000,200.000 25.000 C 199.891 25.000,170.912 74.297,135.603 134.549 `
+  //#endregion
+  //#region  updateLoop 
+  function update() {
+      DrawRect(0, 0, 320, 200, "black")
+    if (!lossPlaying) {
+      backgroundHandler()
+    }
+
+    whiteInGameMeter.setValue(engine.vision.WhiteInGame)
+    inGameMeter.setValue(engine.vision.InGameOrange)
+    LossRedMeter.setValue(engine.vision.LossRed);
+    WinLossConfirmMeter.setValue(engine.vision.WinLossConfirm)
+    reviveConfirmationMeter.setValue(engine.vision.reviveConfirm);
+    valkUltMeter.setValue(engine.vision.valkz)
+    if (engine.vision.WhiteInGame >= .95) {
+      checkMeter.setValue(engine.vision.check);
+      z_Total.setValue(engine.vision.ultCol[1] + engine.vision.ultCol[2])
+      z_TotalHue.setValue(engine.vision.ultCol[0])
+      z_WhiteVal.setValue(engine.vision.whiteVal)
+      z_CheckCharge.setValue(z_WhiteVal.value)
+      deathProtection_Meter.setValue(engine.vision.dprotection)
+      q_Meter.setValue(engine.vision.q)
+      q1_Meter.setValue(engine.vision.q1);
+      q2_Meter.setValue(engine.vision.q2);
+      q3_Meter.setValue(engine.vision.q3)
+      osdEsc_Meter.setValue(engine.vision.osdEsc)
+      loba_t.setValue(engine.vision.loba2);
+      shieldBar_Meter.setValue(engine.vision.ShieldBar)
+      shieldBarCol_Meter.setValue(engine.vision.ShieldBarColor[0])
+      healthMeter.setValue(engine.vision.health)
+      grey_Z_Meter.setValue(engine.vision.greyZ)
+
+      crypMeter.setValue(engine.vision.cyrp)
+      WinGoldMeter.setValue(engine.vision.WinGold);
+
+      if (inGame) {
+        OrangeStormBarMeter.setValue(engine.vision.OrangeStormBar);
+        WhiteStormBarMeter.setValue(engine.vision.WhiteStormBar);
+        Team1Meter.setValue(engine.vision.teammate1[1])
+        Team2Meter.setValue(engine.vision.teammate2[1])
+      }
+    }
+
+    if (!inGame) {
+      osdEscOn_Meter.setValue(engine.vision.osdEscOn)
+      YellowSelectMenuMeter.setValue(engine.vision.YellowSelectMenu)
+      InDropShipOrangeMeter.setValue(engine.vision.InDropShipOrange)
+      InDropShipWhiteMeter.setValue(engine.vision.InDropShipWhite)
+      if (engine.vision.SelectMenuColor[2] > 20) {
+        MenuColorMeter.setValue(engine.vision.SelectMenuColor[0])
+      }
+    }
+
+    if (((ultCharged && !ultAnimPlayed) || vantageReady) && inGame && enableUlt) {
+      stateMgr.Push(new BurstRippleState(effectHex, '#ffffff', effectHex))
+      ultAnimPlayed = true;
+      vantageReady = false;
+    }
+
+    if (!ultCharged) {
+      ultAnimPlayed = false;
+    }
+
+    var confirmCharge = engine.vision.confirm;
+    if (enablePhoenix && inGame) {
+      if (engine.vision.phoenixKit > 0.1 && confirmCharge > 0.8) {
+        drawSweep(engine.vision.phoenixKit, "rgba(139, 35, 224, 0.9)");
+       
+      }
+
+      if (engine.vision.phoenixKit > 0.95 && confirmCharge > 0.8) {
+        effects.push(new ColorBurst(160, 100, "rgb(139, 35, 224"));
+      
+      }
+    }
+    if (enableSyringe) {
+      if (engine.vision.syringeCharge > 0.1 && confirmCharge > 0.8) {
+        drawSweep(engine.vision.syringeCharge, "rgba(255, 0, 0, 0.9");
+      }
+
+      if (engine.vision.syringeCharge > 0.95 && confirmCharge > 0.8) {
+        effects.push(new ColorBurst(160, 100, `hsla(${engine.vision.ShieldBarColor[0]}, ${engine.vision.ShieldBarColor[1]}%, ${engine.vision.ShieldBarColor[2]}%, 1)`));
+     
+      }
+    }
+
+    if (enableShield) {
+      if (engine.vision.shieldCharge > 0.1 && confirmCharge > 0.8 && engine.vision.check >= .95) {
+        drawSweep(engine.vision.shieldCharge, "rgba(19, 101, 183, 0.9");
+      }
+
+      if (engine.vision.shieldCharge > 0.95 && confirmCharge > 0.8 && engine.vision.check >= .95) {
+        effects.push(new ColorBurst(160, 100, "rgb(19, 101, 183"));
+     
+      }
+    }
+    if (enableRevive && reviveConfirmationMeter.value >= .95) {
+      if (engine.vision.revive > 0.1) {
+        drawSweepUp(engine.vision.revive, "rgba(123, 174, 0, 0.9");
+      }
+
+      if (engine.vision.revive > 0.95) {
+        effects.push(new ColorBurst(160, 100, "rgb(123, 174, 0"));
+    
+      }
+    }
+
+    if (stormObj !== false) {
+      stormObj.draw();
+    }
+
+    theHUD.draw();
+
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw();
+      if (effects[i].lifetime  <= 0) {
+        effects.splice(i, 1);
+      }
+    }
+
+    if (effects.length === 0) {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
+    stateMgr.Process();
+
+    if (menuHandler != false) {
+      menuHandler.update();
+    }
+
+    window.requestAnimationFrame(update);
+  }
+  //#endregion
+  //#region callbacks
+
+  function oncharacterChanged(){
+    characterSelected(hexToHSL(effectHex))
+  }
+
+  let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        if (engine.vision.health < 0.35 && engine.vision.health > 0 && inGame) {
+            ctx.fillStyle =
+            "hsla(" +
+            0 +
+            "," +
+            100 +
+            "%," +
+            50 +
+            "%, " +
+            ambienceAlpha * 0.01 +
+            ")";
+        } else if ((engine.vision.mini > 0.7 && character == "Rampart") || (engine.vision.dprotection > .7 && character == "Revenant") && inGame) {
+          ctx.fillStyle =
+            "hsla(" +
+            30 +
+            "," +
+            100 +
+            "%," +
+            lightness[iZone] +
+            "%, " +
+            ambienceAlpha * 0.01 +
+            ")";
+        } else if (engine.vision.cyrp >= .8 && character == "Crypto" && inGame) {
+            ctx.fillStyle =
+            "hsla(" +
+            115 +
+            "," +
+            100 +
+            "%," +
+            lightness[iZone] +
+            "%, " +
+            ambienceAlpha * 0.01 +
+            ")";
+        } else {
+          ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        }
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        if (engine.vision.health < 0.35 && engine.vision.health > 0 && inGame) {
+            ctx.fillStyle =
+            "hsla(" +
+            0 +
+            "," +
+            100 +
+            "%," +
+            50 +
+            "%, " +
+            ambienceAlpha * 0.01 +
+            ")";
+        } else if ((engine.vision.mini > 0.7 && character == "Rampart") || (engine.vision.dprotection > .7 && character == "Revenant") && inGame) {
+          ctx.fillStyle =
+            "hsla(" +
+            30 +
+            "," +
+            100 +
+            "%," +
+            lightness[iZone] +
+            "%, " +
+            ambienceAlpha * 0.01 +
+            ")";
+        } else if (engine.vision.cyrp >= .8 && character == "Crypto" && inGame) {
+            ctx.fillStyle =
+            "hsla(" +
+            115 +
+            "," +
+            100 +
+            "%," +
+            lightness[iZone] +
+            "%, " +
+            ambienceAlpha * 0.01 +
+            ")";
+        } else {
+          ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        }
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+  function DrawHud() {
+    this.oldHPWidth = 0;
+    this.HPAlpha = 0;
+    this.red = false;
+    this.white = false;
+    this.draw = function () {
+      if (adjToggle) {
+        DrawRect(HealthBarX, HealthBarY, HealthBarWidth * 3.2, HealthBarHeight * 2, "green")
+        DrawRect(ShieldBarX, ShieldBarY, ShieldBarWidth * 3.2, ShieldBarHeight * 2, "blue")
+      } else if (inGame) {
+        if (Math.abs(HealthBarWidth * 3.2 * healthMeter.value - this.oldHPWidth)<-2) {
+          this.white = true;
+          this.HPAlpha = 1
+        } else if ( Math.abs(HealthBarWidth * 3.2 * healthMeter.value - this.oldHPWidth)>2) {
+          this.red = true;
+          this.HPAlpha = 1
+        }
+        this.oldHPWidth = HealthBarWidth * 3.2 * healthMeter.value;
+        if (enableHealth && HUDOn) DrawRect(HealthBarX, HealthBarY, HealthBarWidth * 3.2 * healthMeter.value, HealthBarHeight * 2, `hsla(${healthMeter.value > 0.7 ? 116 : healthMeter.value > 0.5 ? 42 : healthMeter.value > 0.3 ? 321 : Math.sin(Date.now() / 200) * 5 + 10},100%,50%)`)
+        ctx.globalAlpha = this.HPAlpha
+        DrawRect(HealthBarX, HealthBarY, HealthBarWidth * 3.2 * healthMeter.value, HealthBarHeight * 2, this.white ? "white" : this.red ? "red" : "hsla(0, 0%, 0%, 0)")
+        ctx.globalAlpha = 1;
+        this.HPAlpha > .05 ? this.HPAlpha -= .05 : this.HPAlpha = 0;
+        if (this.HPAlpha <= 0) {
+          this.white = false;
+          this.red = false;
+        }
+        if (enableShield && HUDOn) DrawRect(ShieldBarX, ShieldBarY, ShieldBarWidth * 3.2 * shieldBar_Meter.value * 1.1, ShieldBarHeight * 2, `hsl(${shieldBarCol_Meter.value},100%,50%)`)
+      }
+    }
+  }
+
+  function CheckCryptoUlt() {
+    if (crypMeter.value <= 0 && healthMeter.value <= 0 && ultCharged && inGameMeter.value <= 0 && character == "Crypto") {
+      stateMgr.Push(new BurstRippleState("#0000ff", "#00ffff", "#00ff00"));
+      ultCharged = false;
+    }
+  }
+
+  function valkUlt() {
+    if (character == "Valkyrie" && enableUlt) {
+      if (valkUltMeter.value >= .95) {
+        effects.length = 0;
+        effects.push(new valkUltimate());
+
+        
+      }
+    }
+  }
+
+  function InGame() {
+    if (engine.vision.InGameOrange >= .95 && engine.vision.WhiteInGame >= .95 && engine.vision.health > 0 && !inGame) {
+      inGame = true;
+
+      setTimeout(() => {
+        effects.length = 0;
+        stateMgr.stack = [];
+      }, 300);
+      setTimeout(() => {
+        effects.length = 0;
+      }, 500);
+      effects.length = 0;
+      stateMgr.stack = [];
+    } else if (inGame && (inGameMeter.value != 1 || whiteInGameMeter.value != 1|| engine.vision.health  <= 0 )) {
+      inGame = false;
+      setTimeout(() => {
+        effects.length = 0;
+      }, 300);
+      effects.length = 0;
+
+      stateMgr.stack = [];
+    }
+  }
+
+  function baseMenuCallback() {
+    if ( osdEscOn_Meter.value >= .95) {
+      if (menuHandler == false) {
+        menuHandler = new StagedMenuHandler
+        menuHandler.state = "BaseMenu"
+        stormObj = false;
+      } else {
+        menuHandler.state = "BaseMenu"
+      }
+    }
+  }
+
+  function selectMenuCallback() {
+    if (YellowSelectMenuMeter.value >= .95) {
+      if (menuHandler != false) {
+        menuHandler.state = "SelectMenu"
+      }
+    }
+  }
+
+  function dropShipMenuCallback() {
+    if (engine.vision.InGameOrange >= .95 && engine.vision.ShieldBar  <= 0.1 && engine.vision.health >= 0.8 && menuHandler != false) {
+      if (InDropShipOrangeMeter.value >= .95 || InDropShipWhiteMeter.value >= 0.95) {
+        menuHandler.state = "InDropShip"
+      } else if (engine.vision.ShieldBarColor[2] > 70 && menuHandler != false) {
+        if (InDropShipWhiteMeter.decreased && InDropShipWhiteMeter.value < 0.3 && menuHandler.state != "outDropShip" && menuHandler.state == "InDropShip") {
+          menuHandler.state = "outDropShip"
+        }
+      }
+    }
+  }
+
+  var defeatPushed = false;
+  function LossCallback() {
+    if (LossRedMeter.value >= .95 && engine.vision.lossNoRed < .1 && enableVD && WinLossConfirmMeter.value >= .95 && !inGame && osdEsc_Meter.value <= 0 && !defeatPushed && menuHandler == false) {
+      stateMgr.Push(new LossEffect())
+
+      stormObj = false;
+      defeatPushed = true;
+    }
+  }
+
+  function WinCallback() {
+    if (WinGoldMeter.value >= .95 && enableVD && WinLossConfirmMeter.value >= .95 && !inGame && osdEsc_Meter.value <= 0) {
+      effects.push(new victoryEffect());
+
+      stormObj = false;
+    }
+  }
+
+  var team1White = false;
+  var team2White = false;
+  function TeamCallback() {
+    if (engine.vision.teammate1[1] < 5 && engine.vision.teammate1[2] > 95) team1White = true
+    if (engine.vision.teammate2[1] < 5 && engine.vision.teammate2[2] > 95) team2White = true
+
+    if (team1White && enableTeam && engine.vision.teammate1[1] > 5 && engine.vision.teammate1[2] < 95) {
+      effects.push(new teamDeath())
+    
+    }
+    if (team2White && enableTeam && engine.vision.teammate2[1] > 5 && engine.vision.teammate2[2] < 95){
+      effects.push(new teamDeath())
+  
+    } 
+
+    if (engine.vision.teammate1[1] > 5 && engine.vision.teammate1[2] < 95) team1White = false
+    if (engine.vision.teammate2[1] > 5 && engine.vision.teammate2[2] < 95) team2White = false
+  }
+
+  function Z_Charged() {
+    if (!zGoing && z_Total.value > 40 && z_WhiteVal.value >= 0.01 && enableUlt && crypMeter.value < .5 && inGame) {
+      ultCharged = true;
+    }
+  }
+
+  function Q_Effects() {
+    if (checkMeter.value >= .95, osdEsc_Meter.value != 1 && engine.vision.health != 0 && inGame && enableQ) {
+      if (q_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q_Meter.value < .5 && q_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
+        switch (character) {
+          case "Alter":
+            effects.push(new AlterQ());
+            break;
+          case "Ash":
+            stateMgr.Push(new Ash_Q());
+            break;
+          case "Bangalore":
+            stateMgr.Push(new bangaloreQ())
+            break;
+          case "Ballistic" : 
+            effects.push(new BallisticQ())
+            break;
+          case "Bloodhound":
+            stateMgr.Push(new PulseRippleState("#ff7300", true, 1150, true))
+            break;
+          case "Catalyst":
+            stateMgr.Push(new CatalystQ);
+            break;
+          case "Caustic":
+            stateMgr.Push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
+            break;
+          case "Conduit":
+            effects.push(new ConduitQ());
+            break;
+          case "Fuse":
+            stateMgr.Push(new fuseQ())
+            break;
+          case "Gibraltar":
+            effects.push(new GibraltarQ())
+            break;
+          case "Horizon":
+            effects.push(new horizonQ())
+            break;
+          case "Lifeline":
+            stateMgr.Push(new BurstRippleState("#09ff00", "#63ffef", "#63ffef"))
+            break;
+          case "Loba":
+            if (!loba_t.decreased) {
+              stateMgr.Push(new BurstRippleState("#ffffff", "#8400ff", "#ffffff", true))
+            }
+            break;
+          case "Mad Maggie":
+            effects.push(new maggieQ())
+            break;
+          case "Mirage":
+            stateMgr.Push(new BurstRippleState("#0004ff", "#63ffef", "#0004ff"));
+            break;
+          case "NewCastle":
+            stateMgr.Push(new newCastleQ())
+            break;
+          case "Octane":
+            effects.push(new octaneQ())
+            break;
+          case "Pathfinder":
+            stateMgr.Push(new pathfinderQ());
+            break
+          case "Rampart":
+            stateMgr.Push(new WallUpState(314, 73, 50, 0.85));
+            break;
+          case "Revenant":
+            effects.push(new RevenantQ());
+            break;
+          case "Seer":
+            stateMgr.Push(new seerQ());
+            break;
+          case "Valkyrie":
+            if (grey_Z_Meter.value >= .95 || (z_TotalHue.value < 30 && z_Total.value > 50))
+              effects.push(new valkQ());
+            break;
+          case "Vantage":
+            effects.push(new vantageQ)
+            break;
+          case "Wattson":
+            stateMgr.Push(new wattsonQ())
+            break;
+          case "Wraith":
+            stateMgr.Push(new wraithQ())
+            break;
+        }
+      } else if (q_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q_Meter.value > .5 && q_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
+        effects.push(new AbilityRechargeEffect())
+   
+      }
+    }
+  }
+
+
+
+
+  function Q1_Effects() {
+    if (checkMeter.value >= .95, osdEsc_Meter.value != 1 && engine.vision.health != 0 && inGame && enableQ) {
+
+      if (q1_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q1_Meter.value < .5 && q1_Meter.diff > 0.5) {
+        switch (character) {
+          case "Caustic":
+            stateMgr.Push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
+      
+            break;
+
+          case "Rampart":
+            stateMgr.Push(new WallUpState(314, 73, 50, 0.85));
+    
+            break;
+
+          case "Wattson":
+            stateMgr.Push(new wattsonQ())
+      
+            break;
+        }
+      } else if (q1_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q1_Meter.value > .5 && q1_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
+        switch (character) {
+          case "Caustic":
+            effects.push(new AbilityRechargeEffect())
+
+            break;
+
+          case "Rampart":
+            effects.push(new AbilityRechargeEffect())
+         
+            break;
+
+          case "Wattson":
+            effects.push(new AbilityRechargeEffect())
+    
+            break;
+        }
+
+      }
+    }
+  }
+
+  function Q2_Effects() {
+    if (checkMeter.value >= .95, osdEsc_Meter.value != 1 && engine.vision.health != 0 && inGame && enableQ) {
+
+      if (q2_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q2_Meter.value < .5 && q2_Meter.diff > 0.5) {
+        switch (character) {
+          case "Bangalore":
+            stateMgr.Push(new bangaloreQ())
+  
+            break;
+          case "Fuse":
+            stateMgr.Push(new fuseQ())
+     
+            break;
+          case "Wattson":
+            stateMgr.Push(new wattsonQ())
+   
+            break;
+        }
+      } else if (q2_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q2_Meter.value > .5 && q2_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
+        switch (character) {
+          case "Bangalore":
+            effects.push(new AbilityRechargeEffect())
+   
+            break;
+          case "Fuse":
+            effects.push(new AbilityRechargeEffect())
+     
+            break;
+          case "Wattson":
+            effects.push(new AbilityRechargeEffect())
+      
+            break;
+        }
+
+      }
+    }
+  }
+
+  function Q3_Effects() {
+    if (checkMeter.value >= .95, osdEsc_Meter.value != 1 && engine.vision.health != 0 && inGame && enableQ) {
+      if (q3_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q3_Meter.value < .5 && q3_Meter.diff > 0.5) {
+        switch (character) {
+          case "Catalyst":
+            stateMgr.Push(new CatalystQ);
+     
+            break;
+          case "Caustic":
+            stateMgr.Push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
+    
+            break;
+          case "Rampart":
+            stateMgr.Push(new WallUpState(314, 73, 50, 0.85));
+     
+            break;
+          case "Wattson":
+            stateMgr.Push(new wattsonQ())
+      
+            break;
+        }
+      } else if (q2_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q2_Meter.value > .5 && q2_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
+        switch (character) {
+          case "Catalyst":
+            effects.push(new AbilityRechargeEffect())
+         
+            break;
+          case "Caustic":
+            effects.push(new AbilityRechargeEffect())
+      
+            break;
+          case "Rampart":
+            effects.push(new AbilityRechargeEffect())
+     
+            break;
+          case "Wattson":
+            effects.push(new AbilityRechargeEffect())
+       
+            break;
+        }
+      }
+    }
+  }
+
+  function Z_Effects() {
+    if (ultCharged && z_WhiteVal.decreased && z_WhiteVal.diff > 0.05 && checkMeter.value >= .95 && osdEsc_Meter.value != 1 && !zGoing && inGame && enableUlt && checkUltCol()) {
+      zGoing = true
+      ultCharged = false
+      switch (character) {
+        case "Alter":
+          effects.push(new AlterZ())
+          break;
+        case "Ash":
+          effects.push(new AshZ())
+          break;
+        case "Bangalore":
+          stateMgr.Push(new bangaloreZ())
+          break;
+        case "Ballistic":
+          effects.push(new BallisticZ())
+          break;
+        case "Bloodhound":
+          stateMgr.Push(new BloodhoundZ());
+          break;
+        case "Crypto":
+          stateMgr.Push(new BurstRippleState("#0000ff", "#00ffff", "#00ff00"));
+          ultCharged = false;
+          break;
+        case "Catalyst":
+          stateMgr.Push(new CatalystZ);
+          break;
+        case "Caustic":
+          stateMgr.Push(new causticZ());
+          break;
+        case "Conduit":
+          effects.push(new ConduitZ());
+          break;
+        case "Fuse":
+          effects.push(new fuseZ())
+          break;
+        case "Gibraltar":
+          stateMgr.Push(new gibraltarZ())
+          break;
+        case "Horizon":
+          effects.push(new HorizonZ())
+          break;
+        case "Lifeline":
+          stateMgr.Push(new lifelineZ())
+          break;
+        case "Loba":
+          effects.push(new lobaZ())
+          break;
+        case "Mad Maggie":
+          effects.push(new maggieZ())
+          break;
+        case "Mirage":
+          effects.push(new MirageZ())
+          break;
+        case "NewCastle":
+          stateMgr.Push(new newCastleUlt())
+          break;
+        case "Octane":
+          effects.push(new octaneZ());
+          break;
+        case "Pathfinder":
+          effects.push(new pathfinderZ());
+          break
+        case "Rampart":
+          effects.push(new rampartZ());
+        
+          break;
+        case "Revenant":
+          effects.push(new RevenantZ());
+          break;
+        case "Seer":
+          effects.push(new seerZ());
+          break;
+        case "Vantage":
+          ultCharged = false
+          vantageReady = true;
+          effects.push(new vantageNoAmmo())
+          break;
+        case "Wattson":
+          effects.push(new wattsonZ())
+          break;
+        case "Wraith":
+          effects.push(new WraithZ())
+          break;
+      }
+    }
+  }
+
+
+  function checkUltCol() {
+    let color = engine.vision.ultCheck;
+    switch (character) {
+      case "Alter":
+      if (grey_Z_Meter.increased) {
+          return true;
+        }
+      case "Ash":
+        return checkGrey();
+        break;
+      case "Bangalore":
+        return checkYellow();
+        break;
+      case "Ballistic":
+        return checkBlue();
+        break;
+      case "Bloodhound":
+        return checkYellow();
+        break;
+      case "Conduit":
+        return checkGrey();
+        break;
+      case "Crypto":
+        if (grey_Z_Meter.value >= .95 && crypMeter.value <= 0) {
+          return true;
+        }
+        break;
+      case "Catalyst":
+        return checkGrey();
+        break;
+      case "Caustic":
+        return checkYellow();
+        break;
+      case "Fuse":
+        return checkGrey();
+        break;
+      case "Gibraltar":
+        return checkYellow();
+        break;
+      case "Horizon":
+        return checkBlue();
+        break;
+      case "Lifeline":
+
+        return checkLightBlue();
+        break;
+      case "Loba":
+        return checkGreen();
+        break;
+      case "Mad Maggie":
+        return checkGrey();
+        break;
+      case "Mirage":
+        return checkYellow();
+        break;
+      case "NewCastle":
+        return checkLightBlue();
+        break;
+      case "Octane":
+        return checkGreen();
+        break;
+      case "Pathfinder":
+        return checkYellow();
+        break
+      case "Rampart":
+        return checkGrey();
+        break;
+      case "Revenant":
+        return checkGreen();
+        break;
+      case "Seer":
+        return checkBlue();
+        break;
+      case "Vantage":
+        return checkGrey();
+        break;
+      case "Wattson":
+        return checkGreen();
+        break;
+      case "Wraith":
+        return checkYellow();
+        break;
+    }
+    return false;
+  }
+
+  function checkYellow() {
+    let color = engine.vision.ultCheck;
+    if (color[0] > 45 && color[0] < 80 && color[1] > 60 && color[1] < 80 && color[2] > 75 && color[2] <= 100) {
+      return true;
+    }
+    return false;
+  }
+
+  function checkGrey() {
+    if (grey_Z_Meter.value >= .95) {
+      return true;
+    }
+  }
+
+  function checkBlue() {
+    let color = engine.vision.ultCheck;
+    if (color[0] > 190 && color[0] < 230 && color[1] > 8 && color[1] < 65 && color[2] > 70 && color[2] <= 100) {
+      return true;
+    }
+    return false;
+  }
+
+  function checkGreen() {
+    let color = engine.vision.ultCheck;
+    if (color[0] > 35 && color[0] < 80 && color[1] > 20 && color[1] < 60 && color[2] > 80 && color[2] <= 100) {
+      return true;
+    }
+    return false;
+  }
+
+  function checkLightBlue() {
+    let color = engine.vision.ultCheck;
+    if (color[0] > 155 && color[0] < 200 && color[1] > 0 && color[1] < 60 && color[2] > 75 && color[2] < 100) {
+      return true;
+    }
+    return false;
+  }
+
+  function Shield_Effects() {
+    if (shieldBar_Meter.decreased && shieldBar_Meter.diff > 0.05 && checkMeter.value >= .95 && inGame && enableShield) {
+      for (i = 0; i < 5; i++) {
+        effects.push(new DamageDrop(Math.random() * 320, Math.random() * 200))
+    
+      }
+    }
+  }
+
+  function HpEffects() {
+    InGame();
+    if (healthMeter.decreased && healthMeter.diff > 0.01 && checkMeter.value >= .95 && inGame && enableHealth && engine.vision.WhiteInGame >= .95) {
+      for (let index = 0; index < 5; index++) {
+        effects.push(new DamageDrop(Math.random() * 320, Math.random() * 200))
+  
+      }
+    } else if (healthMeter.increased && enableHealth && healthMeter.diff > 0.01 && checkMeter.value >= .95) {
+      effects.push(new HealWave())
+  
+    }
+  }
+
+  function ShieldPickupEffect() {
+    if (shieldBarCol_Meter.diff > 10 && engine.vision.ShieldBarColor[1] > 30 && engine.vision.ShieldBarColor[2] > 30 && enableShield && inGame) {
+      if (shieldBarCol_Meter.value > 190 && shieldBarCol_Meter.value < 220 && checkMeter.value >= .95) {
+
+        effects.push(new ShieldAnimation("rgba(19, 101, 183, 1"));
+    
+      }
+      if (shieldBarCol_Meter.value > 270 && shieldBarCol_Meter.value < 290 && checkMeter.value >= .95) {
+        effects.push(new ShieldAnimation("rgba(139, 35, 224, 1"));
+
+      }
+      if (shieldBarCol_Meter.value > 50 && shieldBarCol_Meter.value < 70 && checkMeter.value >= .95) {
+        effects.push(new ShieldAnimation("rgba(204, 157, 4, 1"));
+
+      }
+      if (shieldBarCol_Meter.value < 15 && checkMeter.value >= .95 && engine.vision.ShieldBarColor[2] > 30 && engine.vision.ShieldBarColor[1] > 50) {
+        effects.push(new ShieldAnimation("rgba(255, 0, 0, 1"));
+
+      }
+    }
+  }
+
+  function StormCallback() {
+
+    if (engine.vision.WhiteInGame >= .95 && enableStorm && engine.vision.OrangeStormBar >= 0.001 && WhiteStormBarMeter.value >= .95) {
+      if (stormObj == false) {
+        stormObj = new stormEffect() 
+      }
+    }
+  }
+
+ 
+
+  function drawRadialGradient(color1, color2, inneRadius, fade) {
+    ctx.beginPath();
+    let gradient = ctx.createRadialGradient(160, 100, inneRadius, 160, 100, inneRadius + fade)
+    gradient.addColorStop(0, color1);
+    gradient.addColorStop(1, color2);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 320, 200);
+  }
+
+  function getStormState(state) {
+    let strength = 100 - ((engine.vision.WhiteStormBar - 0.03) - engine.vision.OrangeStormBar) * 95;
+    if (engine.vision.WhiteStormBar > 0.97) {
+      state.nextState = -1;
+    } else {
+      if (strength < 20) {
+        state.nextState = 0;
+      } else if (strength > 20 && strength < 40) {
+        state.nextState = 1;
+      }
+      else if (strength > 40 && strength < 60) {
+        state.nextState = 2;
+      } else if (strength > 60 && strength < 80) {
+        state.nextState = 3;
+      } else if (strength > 80 && strength < 95) {
+        state.nextState = 4;
+      } else if (strength > 95 && strength < 103) {
+        state.nextState = 5;
+      } else {
+        state.nextState = 6;
+      }
+    }
+
+    if (state.nextState == state.prevNextState) {
+      if (state.countState < 10) {
+        state.countState++;
+      }
+    } else {
+      state.countState = 0;
+      state.prevNextState = state.nextState;
+    }
+    if (state.countState >= .950) {
+      state.state = state.nextState;
+    }
+    return state;
+  }
+
+  //#endregion
+  //#region general effects
+  function AlterZ(){
+      this.y = 215
+      this.count = 200
+      this.half = false
+      this.alpha = 0
+      this.effects = []
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        DrawRect(0, 0, 320, 200, "black")
+        if(!this.half) this.alpha <= .7 ? this.alpha += .05 : this.y > 100 ? this.y-=3 : this.count < 5 ? this.count ++ : this.half = true
+        else {
+          this.count > 0 ? this.count-- : this.lifetime = 0
+          this.alpha = this.count / 100
+          if(this.count % 20 <= 0) this.effects.unshift(new alterZHelp())
+        }
+        ctx.globalAlpha = this.alpha / 2
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime  <= 0) this.effects.splice(i, 1)
+      })
+        DrawCircle(160, this.y, 30, "purple")
+        ctx.globalAlpha = 1
+      }
+    }
+
+    function alterZHelp(val){
+      this.rad = 1
+      this.color = val ? "black" : "white"
+      this.draw = function(){
+        DrawStroke(160, 100, this.rad, this.color, 30)
+        this.rad < 300 ? this.rad += 3 : this.lifetime = 0
+      }
+    }
+
+  function AlterQ(){
+      this.y = 0
+      this.count = 0
+      this.half = false
+      this.alpha = 1
+      this.rad = 1
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        if(!this.half) this.y < 100 ? this.y+=10 : this.count < 5 ? this.count ++ : this.half = true
+        else {
+          this.y > 0 ? this.y -= 5 : this.y = 0
+          this.rad < 200 ? this.rad += 5 : this.alpha >= .033 ? this.alpha -= .033 : this.lifetime = 0
+          DrawCircle(160, 100, this.rad * 1.5, "white")
+          DrawCircle(160, 100, this.rad * 1.25, "purple")
+          DrawCircle(160, 100, this.rad, "black")
+        }
+        DrawTriangle(160, this.y, 160 + this.y, 0, 160 - this.y, 0, "purple")
+        ctx.globalAlpha = 1
+      }
+    }
+
+  function BloodhoundZ() {
+    this.start = new Date().getTime();
+    this.duration = 25000;
+    this.bird = new bloodhoundBird()
+    for(let i = 0; i < 3; i++){
+      setTimeout(()=>{
+        effects.push(new bloodZHelp(`hsla(0, 0%, ${50 * i}%)`))
+        
+      }, 200 * i)
+    }
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        zGoing = false;
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = `hsla(0,100%,50%,${Math.sin(Date.now() / 500) * .25 + .5})`
+      ctx.fillRect(0, 0, 320, 200);
+      this.bird.draw()
+    };
+  }
+
+  function bloodhoundBird(){
+    this.mod = -70
+    this.y = 200
+    this.draw = function(){
+      ctx.beginPath()
+      ctx.moveTo(160, 50 + this.y)
+      ctx.lineTo(170, 70 + this.y)
+      ctx.lineTo(180, 85 + this.y)
+      ctx.lineTo(180, 85 + this.y)
+      ctx.lineTo(300, 110 + this.mod + this.y)
+      ctx.lineTo(180, 120 + this.y)
+      ctx.lineTo(170, 125 + this.y)
+      ctx.lineTo(190, 150 + this.y)
+      ctx.lineTo(130, 150 + this.y)
+      ctx.lineTo(150, 125 + this.y)
+      ctx.lineTo(140, 120 + this.y)
+      ctx.lineTo(20, 110 + this.mod + this.y)
+      ctx.lineTo(140, 85 + this.y)
+      ctx.lineTo(150, 70 + this.y)
+      ctx.fillStyle = "black"
+      ctx.fill()
+      this.y > 10 ? this.y += (2 - this.y) / 20 : this.mod < 70 ? this.mod += (80 - this.mod) / 10 : this.mod = 70;
+      if(this.mod > 20) this.y += (-300 - this.y) / 50
+      this.y--
+    }
+  }
+
+  function bloodZHelp(color){
+    this.rad = 1
+    this.color = color
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, this.color, 30)
+      this.rad < 250 ? this.rad += 8 : this.lifetime = 0
+    }
+  }
+
+  function characterSelected(col) {
+    let colors = col;
+    for (let i = 0; i < 20; i++) {
+      setTimeout(function () {
+        effects.push(
+          new moveableBar(-50, random(0, 200), 100, 20, 15, 0, colors[0] + random(-20, 20), colors[1] + random(-20, 20), colors[2], 0.7)
+          
+        );
+      }, random(0, 800));
+      setTimeout(function () {
+        effects.push(
+          new moveableBar(360, random(0, 200), 100, 20, -15, 0, colors[0] + random(-20, 20), colors[1] + random(-20, 20), colors[2], 0.7)
+        );
+      }, random(0, 800));
+    }
+  }
+
+  function RevenantQ(){
+    this.count = 0
+    this.draw = function (){
+      effects.push(new revQParticle())
+      DrawRect(0, 0, 320, 200, `hsla(0, 100%, 50%, ${(21 - Math.abs(20 - this.count)) / 40})`)
+      if(this.count <= 0){
+        effects.push(new revQHelp("grey"))
+      }
+      if(this.count == 20){
+        effects.push(new revQHelp("red"))
+      }
+      if(this.count == 40){
+        effects.push(new revQHelp("black"))
+      }
+      if(this.count >= .9500) this.lifetime = 0
+      this.count++
+    }
+  }
+
+  function revQHelp(color){
+    this.color = color
+    this.rad = 1
+    this.stroke = 1
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, this.color, this.stroke)
+      this.rad < 300 ? this.rad += 2 : this.lifetime = 0
+      this.stroke++
+    }
+  }
+
+  function revQParticle(){
+    this.points = []
+    this.x = 160
+    this.y = 100
+    this.vx = 3 - Math.random() * 6
+    this.vy = 3 - Math.random() * 6
+    this.rad = 1
+    if(Math.abs(this.vy) + Math.abs(this.vx) < 2) this.lifetime = 0
+    this.draw = function(){
+      for(let i = 0; i < this.points.length; i++){
+        DrawCircle(this.points[i][0], this.points[i][1], this.rad * .9 * i, `hsla(0, 100%, 50%, ${1 - (i * .1)})`)
+      }
+      DrawCircle(this.x, this.y, this.rad, "red")
+      this.x += this.vx
+      this.y += this.vy
+      this.rad += .1
+      this.points.push([this.x, this.y])
+      if(this.points.length > 5) this.points.shift()
+      if(this.x < -20 || this.x > 340 || this.y < -20 || this.y > 220) this.lifetime = 0;
+    }
+  }
+
+  function RevenantZ(){
+    this.count = 15
+    this.count2 = 500
+    this.draw = function (){
+      DrawRect(0, 0, 320, 200, `hsla(10, 100%, 20%, ${.25 - (this.count / 60)})`)
+      effects.push(new revZHelp(this.count))
+      this.count > .1 ? this.count-=this.count / 200 : this.count2 > 0 ? this.count2-- : this.lifetime = 0
+      if(this.lifetime <= 0) zGoing = false
+    }
+  }
+
+  let revZCol = ["black", "grey", "red"]
+  function revZHelp(speed){
+    this.x = Math.random() * 330 - 20
+    this.y = Math.random() * 210 - 20
+    this.vy = speed
+    this.mod = Math.random()
+    this.color = revZCol[Math.floor(this.mod * 2.99)]
+    this.alpha = 0
+    this.draw = function(){
+      ctx.globalAlpha = this.alpha
+      DrawRect(this.x, this.y, this.mod * 30 + 30, this.mod * 30 + 30, this.color)
+      ctx.globalAlpha = 1
+      this.y -= this.vy
+      if(this.half) this.alpha > 0 ? this.alpha -= .05 : this.lifetime = 0
+      else this.alpha < 1 ? this.alpha += .05 : this.half = true;
+    }
+  }
+
+  function HealWave() {
+    this.lifetime = 100;
+    this.radius = 1;
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.lineWidth = 25;
+      ctx.strokeStyle = `hsl(120, 100%, ${this.radius / 3 + 15}%)`;
+      ctx.arc(160, 100, this.radius, 0, 2 * Math.PI);
+      ctx.stroke();
+      this.radius < 250 ? this.radius += 8 : this.lifetime = 0;
+    }
+  }
+
+  function AbilityRechargeEffect() {
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      drawArrow(160, 200 - this.elapsed / 3, 320, 200, "lightgreen", 30, 0)
+      drawArrow(160, 280 - this.elapsed / 3, 320, 200, "cyan", 30, 0)
+      if (this.elapsed > 3000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function teamDeath() {
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      drawArrow(160, -160 + this.elapsed / 3, 320, 200, "red", 30, Math.PI)
+      drawArrow(160, -240 + this.elapsed / 3, 320, 200, "black", 30, Math.PI)
+      drawArrow(160, -320 + this.elapsed / 3, 320, 200, "red", 30, Math.PI)
+      if (this.elapsed > 3000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+
+  function DamageDrop(x, y) {
+    this.x = x;
+    this.y = y;
+    this.alpha = 1;
+    this.radius = 1;
+    this.lifetime = 10;
+    this.draw = function () {
+      ctx.fillStyle = "red";
+      DrawCircle(this.x, this.y, 20, `hsla(0, 100%, 50%, ${this.alpha})`)
+      DrawStroke(this.x, this.y, this.radius, "red", 10)
+      this.radius < 250 ? this.radius += 6 : this.lifetime = 0;
+      this.alpha >= .1 ? this.alpha -= .1 : this.alpha = 0;
+    }
+  }
+
+
+  function ShieldAnimation(color) {
+    this.color = color;
+    this.lifetime = 10;
+    this.stop = .99;
+    this.draw = function () {
+      var grad = ctx.createLinearGradient(160, -50, 160, 250)
+      grad.addColorStop(0, "hsla(0, 0%, 0%, 0)")
+      grad.addColorStop(this.stop, this.color)
+      grad.addColorStop(1, "hsla(0, 0%, 0%, 0)")
+      DrawRect(0, -50, 320, 250, grad)
+      this.stop >= .02 ? this.stop -= .01 : this.lifetime = 0;
+    }
+  }
+
+
+  function stormEffect() {
+    this.start = Date.now();
+    this.elapsed;
+    this.storm = true;
+    this.state = { prevNumber: 0, state: 0, nextState: 0, prevNextState: 0, countState: 0 }
+    this.endCount = 0;
+
+    stateMgr.Push(new PulseRippleState("orange", true, 2000, false))
+
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      if (WhiteStormBarMeter.value <= 0 && engine.vision.WhiteInGame >= .95 && healthMeter.value > 0 && engine.vision.InGameOrange >= .95 && inGame) {
+        if (this.endCount > 20) {
+          stormObj = false;
+        }
+        this.endCount++;
+      } else {
+        this.endCount = 0;
+      }
+      if (inGame) {
+        this.state = getStormState(this.state);
+      }
+
+      /*
+      StateDescription
+      this.state.state returns a value between 0 and 6 depending on the current distance from the circle
+
+      0 is really far away, 1 is far away, 2 is pretty far away, 3 is medium distance, 4 is fairly close 5 is really close, 6 is in storm
+
+      The WhiteStormBarMeter below in the if statement checks if you are in the safe circle
+
+      */
+
+      switch (this.state.state) {
+        case -1:
+          drawRadialGradient('hsla(0,0%,0%,0)', "green", Math.sin(this.elapsed / 300) * 50 + 230, 10);
+          break;
+        case 0:
+          break;
+        case 1:
+          drawRadialGradient('hsla(0,0%,0%,0)', "orange", Math.sin(this.elapsed / 350) * 40 + 200, 10);
+          break;
+        case 2:
+          drawRadialGradient('hsla(0,0%,0%,0)', "orange", Math.sin(this.elapsed / 250) * 40 + 200, 10);
+          break;
+        case 3:
+          drawRadialGradient('hsla(0,0%,0%,0)', "orange", Math.sin(this.elapsed / 190) * 40 + 200, 10);
+          break;
+        case 4:
+          drawRadialGradient('hsla(0,0%,0%,0)', "orange", Math.sin(this.elapsed / 150) * 40 + 200, 10);
+          break;
+        case 5:
+          drawRadialGradient('hsla(0,0%,0%,0)', "orange", Math.sin(this.elapsed / 100) * 70 + 170, 10);
+          break;
+        case 6:
+          drawRadialGradient('hsla(0,0%,0%,0)', "red", Math.sin(this.elapsed / 180) * 100 + 150, 10);
+          break;
+      }
+    }
+  }
+
+  function StagedMenuHandler() {
+    this.state = null;
+    this.prevState = null;
+    this.effect = null;
+    this.menuGoing = true;
+    this.transitionTime = 0;
+    this.transition = null;
+    this.popTime = 0;
+    this.update = function () {
+      if (inGame == true) {
+        if (this.popTime > 100) {
+          menuHandler = false;
+        }
+        this.popTime++;
+      } else {
+        this.popTime = 0;
+      }
+      if (this.state != this.prevState) {
+        if (this.state == "BaseMenu" && enableMenu) {
+          this.effect = new BaseMenuEffect;
+          this.prevState = this.state;
+        } else if (this.state == "SelectMenu" && enableMenu) {
+          this.effect = new SelectMenuEffect
+          this.transition = null;
+          this.prevState = this.state;
+        } else if (this.state == "InDropShip" && enableDrop) {
+          this.effect = new DropShipEffect;
+          this.prevState = this.state;
+          this.transition = "RingIn"
+          this.transitionTime = Date.now();
+        } else if (this.state == "outDropShip" && enableDrop) {
+          this.prevState = this.state;
+          this.transition = "RingOut"
+          this.transitionTime = Date.now();
+          setTimeout(() => {
+            this.effect = new outDropShipEffect;
+          }, 1200);
+        }
+      }
+      if (this.effect != null && this.transition == null) {
+        this.effect.draw();
+      }
+      if (this.transition != null) {
+        switch (this.transition) {
+          case "RingIn":
+            let gradient = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+            this.elapsed = Date.now() - this.transitionTime + 200;
+            this.calculateVal = -1440 * Math.floor((this.elapsed / 1440) / -1) + ((this.elapsed / 1440) * (1440 / -1));
+            gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
+            gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+            DrawCircle(160, 100, 300, gradient)
+            if (Date.now() - this.transitionTime > 1300) {
+              this.transition = null;
+            }
+            break;
+          case "RingOut":
+            let gradient2 = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+            this.elapsed = Date.now() - this.transitionTime;
+            this.calculateVal = -1440 * Math.floor((this.elapsed / 1440) / 1) + ((this.elapsed / 1440) * (1440 / 1));
+            gradient2.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
+            gradient2.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+            DrawCircle(160, 100, 300, gradient2)
+            if (Date.now() - this.transitionTime > 1200) {
+              this.transition = null;
+            }
+            break;
+        }
+      }
+    }
+  }
+
+  function BaseMenuEffect() {
+    this.stripes = [];
+    this.draw = function () {
+      if (Math.random() > 0.9) {
+        this.stripes.push(new baseMenuParticle(`hsla(${engine.vision.SelectMenuColor[0] + (Math.random() - 0.5) * 80},80%,${engine.vision.SelectMenuColor[2]}%,0.7)`))
+      }
+
+      this.stripes.forEach((element, i) => {
+        element.draw();
+        if (element.lifetime  <= 0) {
+          this.stripes.splice(i, 1);
+        }
+      });
+    }
+  }
+
+  function baseMenuParticle(color) {
+    this.x = Math.random() * 320;
+    this.y = 220;
+    this.radius = Math.random() * 30 + 30;
+    this.color = color;
+    this.mod = Math.random() * 2 + 1;
+    this.lifetime = 10;
+    this.draw = function () {
+      var loopX = this.x + Math.sin(Date.now() / 500 * this.mod) * 15
+      DrawCircle(loopX, this.y, this.radius, this.color)
+      this.y > -20 ? this.y -= this.mod : this.lifetime = 0;
+    }
+  }
+
+
+  function SetRange(num, min, max) {
+    return Math.min(Math.max(num, min), max)
+  }
+
+  function SelectMenuEffect() {
+    this.orbs = [];
+    this.state = 0;
+    this.isSelectEffect = true;
+    this.effect = null;
+    this.effectTimer = 0;
+    this.start = Date.now();
+    this.counter = 0;
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      if ((engine.vision.SelectMenuColor[2] < 10 && this.counter < 20) || (engine.vision.SelectMenuColor[2] > 95 && this.counter < 20)) {
+        this.state = 1;
+        this.effectTimer = this.elapsed;
+        this.counter++;
+      }
+      if (this.state <= 0) {
+        DrawRect(0, 0, 320, 200, "white")
+        DrawRect(0, 0, 320, 200, `hsla(${MenuColorMeter.value},70%,20%,0.7)`)
+        if (Math.random() > 0.8) {
+          let randomVal = SetRange(Math.random() * 80, 30, 80);
+          this.orbs.push(new floatingOrb(0, Math.random() * 450, randomVal, { x: SetRange(10 - randomVal / 10, 0, 2), y: SetRange(0 - (10 - randomVal / 10), -2, 0) }, `hsla(${MenuColorMeter.value + (Math.random() - 0.5) * 40},100%,50%,0.7`))
+        }
+        this.orbs.forEach(element => {
+          element.draw();
+        });
+      } else if (this.state >= .95) {
+        if (this.counter > 20) {
+          this.state <= 0;
+        } else {
+          DrawRect(0, 0, 320, 200, "black");
+          if (engine.vision.SelectMenuColor[2] > 10) {
+            DrawCircle(160, 100, (this.elapsed - this.effectTimer) / 5, `hsla(${MenuColorMeter.value},100%,50%,1)`)
+          }
+          if (this.elapsed - this.effectTimer > 1500) {
+            this.state = 0
+          }
+        }
+      }
+    }
+  }
+
+  function DropShipEffect() {
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.flares = [];
+    this.x = 320;
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      DrawRect(0, 0, 320, 200, "black");
+      drawArrow(this.x, 20, 40, 100, "orange", 20, 90 * (Math.PI / 180))
+      if (Math.random() > 0.9) {
+        this.flares.push(new flare(this.x, 20, `hsla(${Math.random() * 360},100%,50%)`))
+      }
+      this.x = (320 - this.elapsed / 93.7)
+      this.flares.forEach((element, i) => {
+        element.draw();
+        if (element.lifetime) {
+          this.flares.splice(i, 1)
+        }
+      });
+    }
+  }
+
+  function outDropShipEffect() {
+    this.stripes = [];
+    this.draw = function () {
+      for (let i = 0; i < 3; i++) {
+        this.stripes.push(new fallingParticle())
+      }
+      this.stripes.forEach((element, i) => {
+        element.draw();
+        if (element.lifetime  <= 0) {
+          this.stripes.splice(i, 1);
+        }
+      });
+    }
+  }
+
+  function fallingParticle() {
+    this.x = 160;
+    this.y = 100;
+    this.vx = (10 - Math.random() * 20) * 2;
+    this.vy = (10 - Math.random() * 20) * 2;
+    this.radius = Math.random() * 10 + 10;
+    this.lit = Math.random() * 100;
+    this.alpha = 0;
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawCircle(this.x, this.y, this.radius, `hsla(0, 0%, ${this.lit}%, ${this.alpha})`)
+      this.alpha <= .9 ? this.alpha += .1 : this.alpha = 1;
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < -30 || this.x > 350 || this.y < -30 || this.y > 230) this.lifetime = 0;
+    }
+  }
+
+  function flare(x, y, color) {
+    this.x = x
+    this.y = y
+    this.color = color
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.firstPoint = { x: this.x, y: this.y + 20 }
+    this.secondPoint = { x: this.x - 20 + Math.random() * 100, y: this.y + 50 + Math.random() * 100 };
+    this.thirdPoint = { x: this.x - 60 + Math.random() * 100, y: this.y + 100 + Math.random() * 100 };
+    this.fourthPoint = { x: -50, y: +150 + Math.random() * 100 }
+    this.draw = function () {
+      ctx.beginPath();
+      this.elapsed = Date.now() - this.start;
+      this.point = getCubicBezierXYatPercent(this.firstPoint, this.secondPoint, this.thirdPoint, this.fourthPoint, this.elapsed / 1500)
+      ctx.moveTo(this.point.x, this.point.y);
+      for (let index = 0; index < 20; index++) {
+        let point2 = getCubicBezierXYatPercent(this.firstPoint, this.secondPoint, this.thirdPoint, this.fourthPoint, this.elapsed / 1500 + index / 100);
+        ctx.lineTo(point2.x, point2.y);
+      }
+      ctx.strokeStyle = this.color
+      ctx.lineWidth = 7
+      ctx.stroke()
+      if (this.elapsed > 1500) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function GibraltarQ(){
+    this.rad = 1
+    this.draw = function(){
+      DrawCircle(160, 100, this.rad, `hsla(240, 100%, 50%, ${1 - this.rad / 350})`)
+      this.rad < 400 ? this.rad += 5 : this.lifetime = 0
+    }
+  }
+
+  function LossEffect() {
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.orbs = [];
+    lossPlaying = true;
+
+    this.Process = function () {
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed < 10000) {
+        this.draw();
+      } else {
+        lossPlaying = false
+        menuHandler = new StagedMenuHandler
+        menuHandler.state = "BaseMenu"
+        menuHandler.transition = "RingOut"
+        menuHandler.transitionTime = Date.now();
+        defeatPushed = false;
+        stateMgr.Pop();
+      }
+    }
+
+    this.draw = function () {
+      DrawRect(0, 0, 320, this.elapsed / 5, "black")
+      if ((200 - this.elapsed / 50) > 60) {
+        let pulseValue = ((Math.sin(this.elapsed / (200 - this.elapsed / 50)) + 1) + 0.5) / 4 + 0.5;
+        DrawHeart(160, SetRange((this.elapsed / 8) - 60, -60, 90), 80 * pulseValue, 60 * pulseValue, "red")
+      } else {
+        DrawRect(0, 0, 320, 200, "hsla(0,0%,0%,0.06)")
+        this.orbs.push(new BloodDrop(160, 100, Math.random() * 30, "red"))
+        this.orbs.forEach(element => {
+          element.draw();
+        });
+      }
+    }
+  }
+
+  function MirageZ(){
+    this.rot = 0
+    this.vrot = .3
+    this.rad = 1
+    this.alpha = 1
+    this.draw = function(){
+      ctx.globalAlpha = this.alpha
+      DrawRect(0, 0, 320, 200, `hsla(0, 100%, 0%, ${this.alpha / 2})`)
+      DrawCircle(Math.cos(this.rot) * this.rad + 160, Math.sin(this.rot) * this.rad + 100, 50, "orange")
+      DrawCircle(Math.cos(this.rot - Math.PI * 1 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 1 / 3) * this.rad + 100, 50, "yellow")
+      DrawCircle(Math.cos(this.rot - Math.PI * 2 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 2 / 3) * this.rad + 100, 50, "grey")
+      DrawCircle(Math.cos(this.rot - Math.PI * 3 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 3 / 3) * this.rad + 100, 50, "orange")
+      DrawCircle(Math.cos(this.rot - Math.PI * 4 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 4 / 3) * this.rad + 100, 50, "yellow")
+      DrawCircle(Math.cos(this.rot - Math.PI * 5 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 5 / 3) * this.rad + 100, 50, "grey")
+      ctx.globalAlpha = 1
+      this.rot+=this.vrot
+      this.vrot >= .01 ? this.vrot -= .01 : this.vrot = .01
+      this.rad < 95 ? this.rad += (100 - this.rad) / 20 : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+    }
+  }
+
+  function victoryEffect() {
+    this.start = Date.now();
+    this.lifetime = 10;
+    this.xs = [80, 160, 240]
+    this.rotate = -.6
+    this.width = 40
+    this.hue = 60;
+    this.lit = 50;
+    this.alpha = 0;
+    this.draw = function () {
+      var elapsed = Date.now() - this.start
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+      this.xs.forEach((ele, i) => {
+        ctx.save()
+        ctx.translate(this.xs[i] + this.width / 2, 100)
+        ctx.rotate(this.rotate)
+        ctx.translate(-this.xs[i] - this.width / 2, -100)
+        DrawRect(this.xs[i] - this.width / 2, 0, this.width, 200, `hsla(${this.hue}, 100%, ${this.lit}%, ${this.alpha})`)
+        ctx.restore()
+      })
+      if (elapsed < 1000) this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      if (elapsed > 1000 && elapsed < 2500) {
+        if (this.rotate  <= 0) this.rotate += .02
+      } else if (elapsed > 2500) {
+        if (this.width < 200) this.width += 1
+        if (this.hue > 0) this.hue -= .1
+        if (this.lit < 25) this.lit -= .1
+        this.alpha >= .002 ? this.alpha -= .002 : this.lifetime = 0;
+      }
+    }
+  }
+
+  function BloodDrop(x, y, radius, color) {
+    this.radius = radius;
+    this.color = color;
+    this.x = x;
+    this.vx = 7 * Math.sin(radius);
+    this.y = y;
+    this.vy = Math.random() * -20;
+    this.ay = 1;
+    this.lifetime = 10;
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vy += this.ay;
+      if (this.y > 200) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+
+
+
+
+
+  function floatingOrb(x, y, size, speed, color, duration) {
+    this.start = Date.now();
+    this.x = x
+    this.y = y
+    this.size = size
+    this.speed = speed
+    this.color = color
+
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      DrawCircle(this.x, this.y, this.size, this.color)
+      this.x += this.speed.x;
+      this.y += this.speed.y;
+    }
+  }
+
+  function stripe(beginPoint, endPoint, width, height, speed, color, duration) {
+    this.x = beginPoint.x;
+    this.y = beginPoint.y;
+    this.endPoint = endPoint;
+    this.endX = endPoint.x;
+    this.endY = endPoint.y;
+    this.width = width;
+    this.height = height;
+    this.speed = speed;
+    this.color = color;
+    this.start = Date.now();
+    this.duration = duration;
+    this.lifetime = 1;
+
+    this.rot = Math.atan2(this.endY - this.y, this.endX - this.x);
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rot);
+      ctx.fillStyle = this.color;
+      ctx.fillRect(0, 0, this.width, this.height);
+      ctx.restore();
+      this.x += this.speed * Math.cos(this.rot);
+      this.y += this.speed * Math.sin(this.rot);
+
+      if (Date.now() - this.start > this.duration) {
+        this.lifetime = 0;
+      }
+
+    }
+  }
+
+
+
+  function ColorBurst(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.size = 0;
+    this.width = 30;
+    this.start = new Date().getTime();
+
+    this.draw = function () {
+
+      this.elapsed = new Date().getTime() - this.start;
+      this.size = this.elapsed / 5;
+      ctx.beginPath();
+
+      var brightness = this.lifetime + 10;
+      var opacity = this.lifetime / 45;
+      //main wave
+      ctx.beginPath();
+      ctx.lineWidth = this.width;
+      ctx.strokeStyle = this.color;
+      ctx.arc(this.x, this.y, this.size + 5, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      //front wave
+      ctx.lineWidth = 10;
+      ctx.strokeStyle = "white";
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      ctx.arc(this.x, this.y, this.size + 35, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      ctx.fillStyle = "white";
+      for (let index = 0; index < 4; index++) {
+        ctx.fillRect(Math.random() * 320, Math.random() * 200, 10, 10);
+      }
+      if (this.elapsed > 1000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+  //#endregion
+  //#region character effects
+
+  function AshZ(){
+      let index = 0;
+      while (index < 6) {
+        effects.push(new ellipseFade(100 / (index + 1), 200));
+        index++;
+      }
+      this.draw = function(){
+        this.lifetime = 0
+      }
+    }
+
+  function Ash_Q() {
+      this.start = new Date().getTime();
+      this.duration = 6000;
+      this.count = 0;
+      this.elapsed = 0;
+
+      this.Process = function () {
+        this.elapsed = new Date().getTime() - this.start;
+        if (this.elapsed > this.duration) {
+          stateMgr.Pop();
+        }
+        this.Draw();
+      };
+
+      this.Draw = function () {
+        let colorAdj = Math.sin(this.elapsed / 300) * 15 + 40;
+
+        ctx.fillStyle = `hsla(0, 0%, 0%, ${(6000 - this.elapsed) / 6000})`;
+        ctx.fillRect(0, 0, 320, 200);
+
+        ctx.strokeStyle = `hsl(220, 100%, ${colorAdj}%)`;
+
+        if (this.elapsed > 5000 && this.elapsed % 2 === 0) {
+          ctx.strokeStyle = `black`;
+        }
+        ctx.lineWidth = this.count;
+        ctx.beginPath();
+        ctx.lineWidth = this.elapsed / 10;
+        ctx.arc(160, 100, this.count, 0, 2 * Math.PI);
+        ctx.stroke();
+        this.count += 2;
+      };
+    }
+
+  //Ballistice
+
+  function BallisticQ(){
+    this.x = 0;
+    this.y = 85;
+    this.speed = {x:5,y:((Math.random()-0.5) *2)}
+    this.start = Date.now();
+    this.alpha = 0;
+    this.particles = [];
+    this.halwayMark = false;
+    this.draw = function (){
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed < 500){
+        this.alpha = SetRange(this.elapsed/500,0,0.9);
+      } else if (this.elapsed>1500) {
+        this.alpha = SetRange(1-(this.elapsed-5500)/500,0,0.9);
+        if (this.alpha <=0){
+          this.lifetime = 0;
+        }
+      }   
+      DrawRect(0, 0, 320, 200, `hsla(0, ${this.x-500}%, ${(this.x-500)/10}%, ${this.alpha})`);
+      this.x += this.speed.x;
+      this.y += this.speed.y;
+      ctx.fillStyle = "#fff";
+      if (this.x > 160 && !this.halwayMark){
+        this.speed.y = -this.speed.y;
+        this.halwayMark = true;
+      }
+      let rotation = Math.atan2(this.speed.y, this.speed.x);
+
+      if (this.x<160){
+        this.particles.push(new trailParticle(this.x,this.y+15,15,"blue",500))
+      } else if (this.x <320) {
+        this.particles.push(new movingBall(this.x,this.y+15,10,{x:-1,y:(Math.random()-0.5)*4},`hsla(${Math.random()*50 + 200},${Math.random()*70 + 30}%,${50 + Math.random() *40}%,0.5)`,500))
+      } else if (this.x < 700) {
+        this.particles.push(new movingBall(Math.random() *320,200,Math.random() *20,{x:(Math.random()-0.5)*4,y:(Math.random())*-6},`hsla(${Math.random()*30 },${Math.random()*20 + 80}%,${50 + Math.random() *10}%,0.9)`,2000))
+        this.particles.push(new movingBall(Math.random() *320,200,Math.random() *20,{x:(Math.random()-0.5)*4,y:(Math.random())*-6},`hsla(${Math.random()*30 },${Math.random()*20 + 80}%,${50 + Math.random() *10}%,0.9)`,2000))
+      }
+   
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(rotation);
+
+      ctx.rect(0, 0, 50,30);
+      ctx.fill();
+      ctx.restore();
+
+
+      this.particles.forEach((particle) => {
+        particle.draw();
+        if (particle.lifetime  <= 0) {
+          this.particles.splice(this.particles.indexOf(particle), 1);
+        }
+      });
+    }
+  }
+
+  function BallisticZ(){
+    this.x = 0;
+    this.y = 85;
+    this.start = Date.now();
+    this.alpha = 0;
+    this.particles = [];
+
+    for (let index = 0; index < 80; index++) {
+      setTimeout(() => {
+        this.particles.push(new spark(Math.random()*320,Math.random()*200,2,this.particles,1,{h:180,s:100,l:50}))
+      }, index * 100);
+    }
+
+
+    this.draw = function (){
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed < 500){
+        this.alpha = SetRange(this.elapsed/500,0,0.8);
+      } else if (this.elapsed>1500) {
+        this.alpha = SetRange(1-(this.elapsed-7500)/500,0,0.8);
+        if (this.alpha <=0){
+          this.lifetime = 0;
+          zGoing = false
+        }
+      }   
+      DrawRect(0, 0, 320, 200, `hsla(0, ${this.x-500}%, ${(this.x-500)/10}%, ${this.alpha})`);
+
+      ctx.globalAlpha = this.alpha+0.1;
+      this.particles.forEach((particle) => {
+        particle.draw();
+        if (particle.lifetime  <= 0) {
+          this.particles.splice(this.particles.indexOf(particle), 1);
+        }
+      });
+      ctx.globalAlpha =1;
+
+    }
+  }
+
+
+
+
+  function bangaloreQ() {
+      this.start = Date.now();
+      this.duration = 8000;
+      this.circles = [];
+      this.done = false
+      this.alpha = 0
+    this.Process = function () {
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed > this.duration) {
+        this.alpha >= .01 ? this.alpha -= .01 : stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      if(!this.done) this.alpha <= .75 ? this.alpha += .025 : this.done = true
+      ctx.globalAlpha = this.alpha
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, 1)`)
+      this.circles.push(new fadingCircles());
+      this.circles.forEach((e, i) => {
+        e.Draw();
+        if (e.lifetime  <= 0) {
+          this.circles.splice(i, 1);
+        }
+      })
+      ctx.globalAlpha = 1
+    };
+  }
+
+  function bangaloreZ() {
+    this.x = 100;
+    this.y = 0;
+    this.start = getNow();
+    this.duration = 6000;
+    this.squares = [];
+    var split = 0;
+
+    this.Process = function () {
+      this.elapsed = getNow() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        zGoing = false;
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      if (this.elapsed < 1500) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 320, 200);
+        ctx.fillStyle = "#ff3beb";
+        ctx.fillRect(0 + split, 90, 60, 60);
+
+        split += 8;
+      }
+      if (this.elapsed >= 1500) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 320, 200);
+
+        if (this.squares.length < 5) {
+          this.squares.push(new fallingSquare(Math.random() * 320, this.y, 0));
+        }
+        this.squares.forEach((e, i) => {
+          e.Draw();
+          if (e.done) {
+            this.squares.splice(i, 1);
+          }
+        })
+      }
+      if (this.elapsed >= 5000) {
+        for (let index = 0; index < 4; index++) {
+          effects.push(new SparkleEffect(42 + random(-10, 10), 60, 50, 30));
+        }
+      }
+    };
+  }
+
+  function CatalystQ() {
+    this.start = getNow();
+    this.duration = 5000;
+    this.streaks = [];
+    let rot = Math.random() * 360;
+    let path = [];
+    for (let index = 0; index < 40; index++) {
+      path.push({ x: 160 + index * 5 * Math.cos(rot + index), y: 100 + index * 5 * Math.sin(rot + index) });
+    }
+    this.streaks.push(new PathStreak(path, 4000, 50, 2, "blue", 30));
+
+    this.Process = function () {
+      this.elapsed = getNow() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      if (Date.now() - this.start > 4000) {
+        this.elapsed = Date.now() - (this.start + 4000);
+        let gradient = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+        this.calculateVal = -1660 * Math.floor((this.elapsed / 1660) / 1) + ((this.elapsed / 1660) * (1660 / 1));
+        gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
+        gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "blue");
+        gradient.addColorStop(SetRange((-400 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+        DrawRect(0, 0, 320, 200, gradient);
+      } else {
+        DrawCircle(160, 100, (Date.now() - this.start) / 20, `hsla(280, 100%, ${Math.sin(this.elapsed / 100) * 5 + 15}%, 1)`)
+        this.streaks.forEach(element => {
+          element.draw();
+        });
+        DrawCircle(160, 100, 10 + (Math.sin((Date.now() - this.start) / 100) + 1) / 2 * 20, "blue");
+      }
+    };
+  }
+
+
+  function CatalystZ() {
+    this.start = getNow();
+    this.duration = 7000;
+    let offset = [];
+    let offset2 = [];
+    this.holes = [];
+    for (let index = 0; index < 320; index++) {
+      offset.push(Math.random() * 200);
+    }
+    this.Process = function () {
+      this.elapsed = getNow() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        zGoing = false
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, 100);
+        for (let index = 0; index < 320; index++) {
+          offset2[index] = Math.sin((offset[index]) + (this.elapsed / 300)) * 50;
+          ctx.lineTo(index, 250 + (i * 30) - offset2[index] - (this.elapsed < 3700 ? this.elapsed / 10 : (3500 - (this.elapsed - 3700)) / 10));
+        }
+        ctx.lineTo(320, 200);
+        ctx.lineTo(0, 200);
+        ctx.lineTo(0, 100)
+        ctx.fillStyle = i >= .95 ? "purple" : i == 2 ? `hsla(280, 100%, ${Math.sin(this.elapsed / 250) * 5 + 15}%, 1)` : "blue";
+        ctx.lineWidth = 0.1;
+        ctx.fill();
+
+        this.holes.forEach(element => {
+          element.draw();
+          if (element.lifetime  <= 0) {
+            this.holes.splice(this.holes.indexOf(element), 1);
+          }
+        });
+      }
+    }
+  }
+
+
+  function PathStreak(path, duration, quality, length, color, lineWidth) {
+
+    this.points = path;
+    this.start = Date.now();
+    let pointAmount = path.length
+    this.betweenPoint = 1 / pointAmount + 2
+    this.duration = duration;
+    this.quality = quality;
+    this.length = length;
+    this.totalDistance = 0;
+    this.color = color;
+    this.lineWidth = lineWidth;
+
+
+    this.draw = function () {
+      ctx.beginPath();
+      let value = (this.duration - (this.duration - (Date.now() - this.start))) / this.duration;
+      ctx.moveTo(this.points[0].x, this.points.y)
+      for (let index = 0; index < this.quality; index++) {
+        let pointVal = Math.floor((value * pointAmount) - (index * (this.length / this.quality)));
+        if (pointVal >= 1) {
+          if (pointVal < pointAmount) {
+            let movePoint = getXAndYForPathPoint(this.points[pointVal - 1], this.points[pointVal], (((value) * pointAmount) - (index * (this.length / this.quality))) - pointVal);
+            ctx.lineTo(movePoint.x, movePoint.y)
+          }
+        }
+      }
+
+      ctx.lineWidth = this.lineWidth;
+      ctx.strokeStyle = this.color;
+      ctx.stroke();
+      if (value > 1) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function getXAndYForPathPoint(point1, point2, percentage) {
+    let speed = { x: (point2.x - point1.x) * percentage, y: (point2.y - point1.y) * percentage }
+    return { x: point1.x + speed.x, y: point1.y + speed.y }
+  }
+
+
+
+  function causticZ() {
+this.size = 0;
+this.start = new Date().getTime();
+this.duration = 3000;
+var split = 0;
+this.alpha = 1
+this.Process = function () {
+  this.elapsed = new Date().getTime() - this.start;
+  if (this.elapsed > this.duration) {
+    this.alpha >= .05 ? this.alpha -= .05 : stateMgr.Pop();
+    zGoing = false;
+  }
+  this.Draw();
+};
+this.Draw = function () {
+  ctx.globalAlpha = this.alpha
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, 320, 200);
+  if (this.elapsed <= 1500) {
+    ctx.fillStyle = "yellow";
+    ctx.beginPath();
+    ctx.arc(- 100 + split, 100, 45, 0, 2 * Math.PI);
+    ctx.fill();
+    split += 8;
+  }
+  if (this.elapsed > 1500) {
+    ctx.fillStyle = "#ebae34";
+    ctx.beginPath();
+    ctx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.fillStyle = "yellow";
+    ctx.beginPath();
+    ctx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.fillStyle = "#ebae34";
+    ctx.beginPath();
+    ctx.arc(160, 100, this.size, 0, 2 * Math.PI);
+    ctx.fill();
+    this.size += 3;
+  }
+  ctx.globalAlpha = 1
+};
+}
+
+  function ConduitQ(){
+    this.alpha = 0
+    this.count = 0
+    this.effects = []
+    this.draw = function (){
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+      if(this.effects.length < 5) this.effects.push(new Beam())
+      ctx.globalAlpha = this.alpha
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime  <= 0) this.effects.splice(i, 1)
+      })
+    ctx.globalAlpha = 1
+    if(this.count < 75) this.alpha < .75 ? this.alpha += .025 : this.count++
+    else this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
+    }
+  }
+
+  function Beam(){
+    this.time = Math.random() * 100
+    this.color = `hsl(${Math.random() * 50 + 190}, 100%, ${Math.random() * 10 + 45}%)`
+    this.draw = function(){
+      for(let i = 0; i < 11; i++){
+        DrawCircle(i * 320 / 10, Math.sin(i * 320 / 10 + this.time) * 50 + 100, 20, this.color)
+      }
+      this.time+=.15
+    }
+  }
+
+  function ConduitZ(){
+    this.count = 0
+    this.alpha = 0
+    this.effects = []
+    this.draw = function (){
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+      if(this.count <= 0) for(let i = 0; i < 5; i++){
+        this.effects.push(new bouncyBall(i * 320 / 4))
+      }
+      ctx.globalAlpha = this.alpha
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime  <= 0) this.effects.splice(i, 1)
+      })
+      ctx.globalAlpha = 1
+      if(this.count < 300 && this.alpha < 1) this.alpha += .05
+      this.count < 300 ? this.count++ : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+      if(this.lifetime <= 0) zGoing = false
+    }
+  }
+
+  function bouncyBall(x){
+    this.x = x
+    this.y = 0
+    this.vy = 0
+    this.ay = .1
+    this.bounce = false
+    this.rad = 30
+    this.count = 0
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsla(240, 100%, ${40 + this.count / 2}%, 1)`)
+      if(this.y + this.vy + this.rad >= 200){
+        this.vy*=-.65
+        this.bounce = true
+      }
+      if(this.bounce && Math.abs(this.vy) <= 1) {
+        this.ay = 0
+        this.vy = 0
+        if(this.count <= 0) effects.push(new burst(this.x, this.y))
+        this.count < 50 ? this.count ++ : this.count = 0
+      }
+      this.y+=this.vy
+      this.vy+=this.ay
+    }
+  }
+
+  function burst(x, y){
+    this.x = x
+    this.y = y
+    this.rad = 1
+    this.alpha = .75
+    this.draw = function(){
+      DrawStroke(this.x, this.y, this.rad, `hsla(190, 100%, 50%, ${this.alpha})`, 20)
+      this.rad < 250 ? this.rad += 5 : this.lifetime = 0
+      this.alpha = (250 - this.rad) / 250 * .75
+    }
+  }
+
+
+  function fuseQ() {
+    this.x = 0;
+    this.y = -10;
+    this.start = new Date().getTime();
+    this.duration = 5000;
+    var split = 0;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      if (this.elapsed < 2000) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 320, 200);
+        ctx.fillStyle = "#fc5a03";
+        ctx.fillRect(0 + split, 90, 60, 60);
+        split += 5;
+      }
+
+      if (this.elapsed >= 2000) {
+        effects.push(
+          new moveableBar(
+            random(0, 360),
+            random(0, 200),
+            20,
+            20,
+            random(-5, 5),
+            random(-5, 5),
+            20 + random(-20, 20),
+            100 + random(-20, 20),
+            50,
+            0.9
+          )
+        );
+      }
+    };
+  }
+
+
+  function fuseZ() {
+      this.rad = 1
+      this.lifetime = 200
+    this.draw = function () {
+      DrawStroke(160, 100, this.rad, "red", 30)
+      DrawStroke(160, 100, this.rad * 1.5, "orange", 30)
+      DrawStroke(160, 100, this.rad * 2, "yellow", 30)
+      this.rad < 200 ? this.rad += 3 : effects.push(new fuseZHelp())
+      if(this.rad > 200) this.lifetime --
+    };
+  }
+
+  function fuseZHelp(){
+    this.x = Math.random() * 320
+    this.y = 200
+    this.vy = 0
+    this.ay = -.1
+    this.hue = Math.random() * 60
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.y / 10 + 10, `hsla(${this.hue}, 100%, 50%, 1)`)
+      this.y > -10 ? this.y += this.vy : this.lifetime = 0
+      this.vy += this.ay
+    }
+  }
+
+  function gibraltarZ() {
+    this.x = 0;
+    this.y = -10;
+    this.start = new Date().getTime();
+    this.duration = 11000;
+    this.squares = [];
+    var split = 0;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        zGoing = false;
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      if (this.elapsed < 4000) {
+        ctx.fillStyle = "red";
+        ctx.fillRect(160 + split, 0, 40, 200);
+        ctx.fillStyle = "red";
+        ctx.fillRect(160 - split - 40, 0, 40, 200);
+        split += 2;
+      }
+      if (this.elapsed >= 1000) {
+        if (this.squares.length < 5) {
+          this.squares.push(new fallingSquare(Math.random() * 320, this.y, 15));
+        }
+        this.squares.forEach((e, i) => {
+          e.Draw();
+          if (e.done) {
+            this.squares.splice(i, 1);
+          }
+        })
+      }
+    };
+  }
+
+  function HorizonZ(){
+    this.lifetime = 200
+    this.draw = function(){
+      effects.push(new horizonZHelp())
+      this.lifetime--
+    }
+  }
+
+  function horizonZHelp(){
+    this.rot = Math.random() * Math.PI * 2
+    this.rad = Math.random() * 50 + 150
+    this.hue = Math.random() * 50 + 190
+    this.draw = function(){
+      ctx.save()
+      ctx.translate(160, 100)
+      ctx.rotate(this.rot)
+      ctx.translate(-160, -100)
+      DrawCircle(160, 100 + this.rad, this.rad / 5 + 1, `hsla(${this.hue}, 100%, 50%, 1)`)
+      this.rot += .05
+      ctx.restore()
+      this.rad > 2 ? this.rad -- : this.lifetime = 0
+    }
+  }
+
+  function horizonQ() {
+    this.x = 0;
+    this.y = -10;
+    this.count = 2000;
+    this.size = 0;
+    this.start = new Date().getTime();
+    this.duration = 3000;
+    var split = 200;
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) this.lifetime = 0
+      ctx.fillStyle = "hsla(215, 100%, 3%, 0.5)"
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = "blue";
+      ctx.fillRect(0, split, 320, 60);
+      split -= 4;
+      effects.push(new horizonQHelp(split + 50))
+    };
+  }
+
+  function horizonQHelp(y){
+    this.x = Math.random() * 320
+    this.y = y
+    this.rad = 30
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsla(240, 100%, 50%, ${this.rad / 10})`)
+      this.rad > 1 ? this.rad-- : this.lifetime = 0
+    }
+  }
+
+  function lifelineZ() {
+    this.size = 0;
+    this.start = new Date().getTime();
+    this.duration = 3000;
+    var split = 0;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        zGoing = false
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      if (this.elapsed <= 1500) {
+        ctx.fillStyle = `hsla(220, 100%, 50%, ${split / 320})`;
+        ctx.fillRect(160 - split / 2, 0, split, 200);
+        split += 7;
+      }
+
+      if (this.elapsed > 1500) {
+        for (let index = 0; index < 3; index++) {
+          ctx.fillStyle = index != 1 ? "blue" : "#c2fffc";;
+          ctx.beginPath();
+          ctx.arc(160, 100, (this.size / index), 0, 2 * Math.PI);
+          ctx.fill();
+        }
+        this.size += 5;
+      }
+    };
+  }
+
+  function lobaZ() {
+      this.alpha = 0
+      this.rad = 1
+      this.count = 0
+      this.done = false
+      this.draw = function () {
+        DrawRect(0, 0, 320, 200, `hsla(0, 100%, 0%, ${this.alpha})`)
+        if(!this.done) this.alpha < .5 ? this.alpha += .025 : this.done = true
+        else {
+          DrawStroke(160, 100, this.rad, "cyan", 50)
+          if(this.count % 40 <= 0) effects.push(new lobaZHelp())
+          this.count++
+          this.rad < 300 ? this.rad += 6 : this.rad = 300
+          this.count > 160 ? this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0 : null
+        }
+      };
+    }
+
+    function lobaZHelp(){
+      this.y = 0
+      this.draw = function(){
+        DrawRect(this.y * 1.5, this.y - 15, 320 - 3 * this.y, 30, "white")
+        DrawRect(this.y * 1.5, 200 - this.y, 320 - 3 * this.y, 30, "white")
+        this.y < 100 ? this.y ++ : this.lifetime = 0
+      }
+    }
+
+  function maggieQ() {
+    this.effects = []
+    this.lifetime = 10;
+    this.y2 = 200;
+    this.count = 0;
+    this.start = Date.now()
+    this.start2 = Date.now();
+    this.draw = function () {
+      ctx.globalAlpha = .75;
+      DrawRect(0, this.y2, 320, 200, "black")
+      ctx.globalAlpha = 1;
+      if (this.y2 > 0 && !this.count) {
+        this.y2 -= 10;
+      } else if (this.y2 <= 0 && this.count < 300) {
+        this.count++;
+      } else {
+        this.y2 -= 10;
+      }
+      var elapsed = Date.now() - this.start;
+      var elapsed2 = Date.now() - this.start2;
+      if (elapsed > 100 && elapsed2 < 7800) {
+        this.start = Date.now()
+        this.effects.push(new maggieDot(0, 100, 10, 4, 40, 20, 3, "hsl(210, 95%, 65%)"))
+        this.effects.push(new maggieDot(0, Date.now() % 2 <= 0 ? 70 : 130, 10, 10, 40, 25, 9, "hsl(30, 100%, 55%)"))
+        this.effects.push(new maggieDot(0, Date.now() % 2 <= 0 ? 70 : 130, 10, 10, 40, 20, 8, "white"))
+        this.effects.push(new maggieDot(0, Date.now() % 2 <= 0 ? 90 : 110, 10, 10, 20, 15, 10, "hsl(30, 100%, 55%)"))
+        this.effects.push(new maggieDot(0, Date.now() % 2 <= 0 ? 90 : 110, 10, 10, 20, 10, 10, "white"))
+        this.effects.push(new maggieDot(0, 100, 6, 6, 6, 20, 4, "hsl(40, 100%, 55%)"))
+        this.effects.push(new maggieDot(0, 100, 6, 6, 6, 6, 4, "white"))
+      }
+      this.effects.forEach((ele, i) => {
+        ele.draw();
+        if (ele.lifetime  <= 0) {
+          this.effects.splice(i, 1)
+        }
+      });
+      if (elapsed2 > 9000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+
+  function maggieZ() {
+    this.y = 250;
+    this.y2 = 200;
+    this.count = 0;
+    this.lifetime = 10;
+    this.check = true;
+    this.effects = []
+    this.draw = function () {
+      ctx.globalAlpha = .75;
+      DrawRect(0, this.y2, 320, 200, "black")
+      ctx.globalAlpha = 1;
+      if (this.y2 > 0 && !this.count) {
+        this.y2 -= 10;
+      } else if (this.y2 <= 0 && this.count < 300) {
+        this.count++;
+      } else {
+        this.y2 -= 10;
+      }
+      this.effects.forEach((ele, i) => {
+        ele.draw();
+        if (ele.lifetime  <= 0) {
+          this.effects.splice(i, 1)
+        }
+      })
+      for (let i = 0; i < 3; i++) {
+        DrawCircle(160, this.y, Math.abs(Math.sin(this.y / 10)) * (i == 2 ? 50 : 60) + (30 - i * 10), i != 1 ? "cyan" : "grey")
+      }
+      this.y -= 1;
+      if (this.y % 30 <= 0) {
+        if (this.check) {
+          this.effects.push(new maggieZHelp(160, this.y, "right"))
+        } else {
+          this.effects.push(new maggieZHelp(160, this.y, "left"))
+        }
+        this.check = !this.check
+      }
+      this.y < -30 ? this.lifetime = 0 : null;
+      if(this.lifetime <= 0) zGoing = false
+    }
+  }
+
+
+  function newCastleQ() {
+    this.start = new Date().getTime();
+    this.ShieldArray = [];
+    this.notPushed = true;
+    this.elapsed;
+    this.circle;
+
+    this.Process = function () {
+      this.draw();
+      if (this.elapsed > 4700) {
+        stateMgr.Pop()
+      }
+    }
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start
+        if (this.circle == undefined) {
+          this.circle = new Circle()
+        }
+        if (this.elapsed < 2000) {
+          ctx.fillStyle = "black";
+          ctx.fillRect(0, 0, 320, 200);
+        }
+        this.circle.draw();
+      if (this.elapsed > 4500) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function dot(x, y){
+    this.x = x
+    this.y = y
+  }
+
+  function newCastleUlt() {
+    this.start = new Date().getTime();
+    this.dot = new dot(160, -50);
+    this.particles = [];
+    this.randomElectric = 1;
+    this.Process = function () {
+      this.draw();
+      if (this.elapsed > 7000) {
+        stateMgr.Pop()
+      }
+    }
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed < 3500) {
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 320, 200)
+      } else {
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(0,0%,0%,${(1 - ((this.elapsed - 3500)) / 1000)})`;
+        ctx.fillRect(0, 0, 320, 200)
+      }
+      if (this.elapsed < 1000 && this.dot.y < 190) {
+        ctx.beginPath();
+        ctx.arc(this.dot.x, this.dot.y, 50, 0, Math.PI * 2)
+        ctx.fillStyle = "hsla(190, 100%, 58%, 1)"
+        ctx.fill();
+        this.dot.y += 8;
+      } else if (this.pushed == undefined) {
+        for (let index = 0; index < 75; index++) {
+          this.particles.push(new ImpactParticle(160, 200, Math.random() * 20 + 10, "hsla(190, 100%, 58%, 1)"))
+          this.particles.push(new ImpactParticle(160, 200, Math.random() * 20 + 10, "hsla(190, 100%, 58%, 1)"))
+          this.pushed = true
+        }
+      }
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+    }
+  }
+
+  function octaneQ(){
+    this.x = -320
+    this.draw = function(){
+      let grad = ctx.createLinearGradient(this.x, 0, this.x + 320, 0)
+      grad.addColorStop(0, `hsla(110, 100%, 50%, 0)`)
+      grad.addColorStop(.5, `hsla(110, 100%, 50%, 1)`)
+      grad.addColorStop(1, `hsla(110, 100%, 50%, 0)`)
+      DrawRect(this.x, 0, 320, 200, grad)
+      this.x < 320 ? this.x += 8 : this.lifetime = 0
+    }
+  }
+
+  function octaneZ() {
+      this.y = 250
+      this.count = 0
+      this.lifetime = 200
+    this.draw = function () {
+      DrawCircle(160, this.y, 50, "green")
+      this.y > 100 ? this.y -= 3 : this.done = true
+      if(this.done){
+        if(this.count <= 0) effects.push(new octaneZHelp())
+        this.count < 5 ? this.count++ : this.count = 0
+      }
+      this.lifetime--
+    };
+  }
+
+  function octaneZHelp(){
+    this.rad = 1
+    this.alpha = Math.sin(Date.now() / 250) * .3 + .5
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, `hsla(100, 100%, 50%, ${this.alpha})`, 30)
+      this.rad < 300 ? this.rad += 5 : this.lifetime = 0
+    }
+  }
+
+  function pathfinderQ() {
+    this.x = 0;
+    this.y = -10;
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    var split = -300;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = "#0320fc";
+      ctx.fillRect(split, 80, 350, 60);
+      ctx.fillStyle = "#0320fc";
+      ctx.fillRect(250 + split, 60, 100, 60);
+      ctx.fillStyle = "#0320fc";
+      ctx.fillRect(250 + split, 100, 100, 60);
+      split += 11;
+    };
+  }
+
+
+  function pathfinderZ() {
+      this.width = 0
+      this.count = 1
+      this.alpha = 1
+      this.effects = []
+      this.draw = function () {
+        ctx.globalAlpha = this.alpha
+        DrawRect(0, 60, this.width, 20, "yellow")
+        this.width < 320 ? this.width += 10 : this.count++
+        if(this.count % 40 <= 0) {
+          this.effects.push(new pathfinderZHelp())
+          this.alpha >= .075 ? this.alpha -= .075 : this.lifetime = 0
+        }
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime  <= 0) this.effects.splice(i, 1)
+        })
+        ctx.globalAlpha = 1
+      };
+    }
+
+    function pathfinderZHelp(){
+      this.x = -30
+      this.hue = Math.random() * 360
+      this.draw = function(){
+        DrawCircle(this.x, 100, 30, `hsla(${this.hue}, 100%, 50%, 1)`)
+        this.x < 350 ? this.x += 8 : this.lifetime = 0
+      }
+    }
+
+
+  function rampartZ(){
+    this.count = 0
+    this.lifetime = 150;
+    this.draw = function(){
+      effects.push(new asheHelp(1, 40 + 120 * Math.random(), Math.random()))
+      this.count < 4 ? this.count++ : this.count = 0
+      if(this.count <= 0) effects.push(new gunHelp())
+      this.lifetime--
+    }
+  }
+
+  function gunHelp(){
+    this.x = -20
+    this.y = Math.random() * 80 + 60
+    this.mod = Math.random() 
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20, "white")
+      this.x < 350 ? this.x += 10 : this.lifetime = 0
+    }
+  }
+
+  function asheHelp(x, y, rand){
+    this.x = x ? x : 160 + 80 - Math.random() * 160
+    this.y = y ? y : 100 + 80 - Math.random() * 160
+    this.rand = rand
+    this.lifetime = 100;
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.lifetime / 3, this.rand ? `hsl(${this.rand * 60}, 100%, 50%)` : "orange")
+      this.lifetime--
+      this.x += 10 - Math.random() * 20
+      this.y += 10 - Math.random() * 20
+    }
+  }
+
+  function seerQ() {
+    this.x = 0;
+    this.y = -10;
+    this.start = new Date().getTime();
+    this.duration = 1200;
+    this.count = 2000;
+    this.color = "#00f2ff";
+    this.color2 = "#00f2ff";
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 320, 200);
+        var pctUp = this.count / 2000;
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 40;
+        ctx.beginPath();
+        ctx.arc(160, 100, 200 - 200 * pctUp, 0, 2 * Math.PI);
+        ctx.stroke();
+        if (this.count < 100) {
+          this.count = 2000;
+        } else {
+          this.count -= 75;
+        }
+    };
+  }
+
+  function seerZ() {
+      this.lifetime = 150
+    this.draw = function () {
+      if(Math.random() > .5) effects.push(new seerXHelp())
+      this.lifetime--
+    };
+  }
+
+  function seerXHelp(){
+    this.x = Math.random() * 320
+    this.y = Math.random() * 200
+    this.rot = Math.random() * Math.PI * 2
+    this.rad = Math.random() * 20
+    this.done = false
+    this.alpha = 0
+    this.mod = Math.random() > .5 ? 1 : -1
+    this.draw = function(){
+      let tempX = Math.cos(this.rot) * this.rad + this.x
+      let tempY = Math.sin(this.rot) * this.rad + this.y
+      DrawCircle(tempX, tempY, 30, `hsla(60, 100%, 50%, ${this.alpha})`)
+      this.x += Math.random() * 2
+      this.y += Math.random() * 2
+      if(!this.done) this.alpha < 1 ? this.alpha += .05 : this.done = true
+      else this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+      this.rad ++
+      this.rot += .15 * this.mod
+    }
+  }
+
+  function valkQ() {
+    this.draw = function () {
+      for(let i = 0; i < 5; i++) effects.push(new valkQHelp(i * 65 + 10))
+      this.lifetime = 0
+    };
+  }
+
+  function valkQHelp(x){
+    this.x = x
+    this.y = 200
+    this.draw = function(){
+      DrawCircle(this.x + 15, this.y, 15, `hsl(0, 100%, 20%)`)
+      DrawRect(this.x, this.y, 30, 100, "white")
+      DrawRect(this.x - 10, this.y + 80, 50, 20, "white")
+      if(this.y % 2 <= 0) effects.push(new valkQFire(this.x + Math.random() * 30, this.y + 120))
+      this.y > -300 ? this.y -= 5 : this.lifetime = 0
+    }
+  }
+
+  function valkQFire(x, y){
+    this.x = x
+    this.y = y
+    this.rad = 20
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsl(${this.rad * 3}, 100%, 50%)`)
+      this.rad > 1 ? this.rad-- : this.lifetime = 0
+    }
+  }
+
+  function valkUltimate() {
+    this.y = 200
+    this.alpha = 0
+    this.count = 0
+    this.done = false
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(120, 100%, 50%, ${this.alpha / 2})`)
+      if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.count < 100 ? this.count++ : this.done = true
+      else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      ctx.beginPath()
+      ctx.moveTo(-20, this.y + 80)
+      ctx.lineTo(160, this.y)
+      ctx.lineTo(340, this.y + 80)
+      ctx.lineWidth = 50
+      ctx.strokeStyle = `hsla(100, 100%, 80%, ${this.alpha})`
+      ctx.stroke()
+      this.y > -80 ? this.y -= 10 : this.y = 200
+    };
+  }
+
+  var batPath = "M.5,67.48,35.14,55.37,66.65,23.54,78.71.23,68.9,23.7l51.93,8.84L159.57,85S102.43,53,80,98.62c0,0-31.24-47.1-35.1-3.21,0,0-9.3-32.8-44.44-19.46Z"
+
+  function vantageQ() {
+    this.x = 160;
+    this.y = 150;
+    this.vy = 0;
+    this.half = false;
+    this.rotate = -.5
+    this.count = 0;
+    this.lifetime = 10;
+    this.alpha = 0;
+    this.draw = function () {
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, "black")
+      ctx.globalAlpha = 1;
+      if (this.half) {
+        this.vy *= 1.15
+        this.count++
+        if (this.count > 7) this.rotate -= .1
+      } else {
+        this.rotate += .04
+        this.vy = Math.abs(50 - this.y) / 8
+        if (this.vy < 1) {
+          this.half = true;
+          this.vy = 1;
+        }
+      }
+      this.y -= this.vy;
+      ctx.save()
+      ctx.translate(this.x, this.y)
+      ctx.rotate(-this.rotate)
+      ctx.translate(-this.x, -this.y)
+      DrawPath(this.x, this.y, batPath, "hsl(0, 0%, 55%)", 1, 1)
+      ctx.restore()
+      ctx.save()
+      ctx.translate(this.x, this.y)
+      ctx.rotate(this.rotate)
+      ctx.translate(-this.x, -this.y)
+      DrawPath(this.x, this.y, batPath, "hsl(0, 0%, 55%)", -1, 1)
+      ctx.restore()
+      DrawTriangle(this.x, this.y + 125, this.x - 25, this.y + 60, this.x + 25, this.y + 60, "hsl(0, 0%, 55%)")
+      DrawTriangle(this.x, this.y + 30, this.x - 25, this.y + 60, this.x + 25, this.y + 60, "hsl(0, 0%, 55%)")
+      if (this.y < -200) {
+        this.alpha >= .03 ? this.alpha -= .03 : this.lifetime = 0;
+      } else {
+        this.alpha <= .9 ? this.alpha += .1 : this.alpha = 1;
+      }
+    }
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function vantageNoAmmo() {
+    this.start = Date.now()
+    this.alpha = 0;
+    this.lifetime = 10;
+    this.draw = function () {
+      var elapsed = Date.now() - this.start;
+      var eIndex = 5 - Math.floor(elapsed / 300)
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, "black")
+      for (let i = 0; i <= eIndex; i++) {
+        DrawRect(i * 55, 0, 40, 200, `hsl(${5 * eIndex}, 100%, 50%)`)
+      }
+      ctx.globalAlpha = 1;
+      if (eIndex < 1) {
+        this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0;
+      } else {
+        this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      }
+      if(this.lifetime <= 0) zGoing = false
+    }
+  }
+
+  function vantageLine(x1, y1, x2, y2, length) {
+    var distanceX = x2 - x1;
+    var distanceY = y2 - y1;
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.lineTo(x1 + distanceX * length, y1 + distanceY * length)
+    ctx.strokeStyle = "red"
+    ctx.lineWidth = 20
+    ctx.stroke()
+  }
+
+  function expandingStroke(x, y, speed, stroke, color) {
+    this.x = x;
+    this.y = y;
+    this.radius = 1;
+    this.speed = speed;
+    this.stroke = stroke;
+    this.color = color;
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawStroke(this.x, this.y, this.radius, this.color, this.stroke)
+      this.radius < 300 ? this.radius += this.speed : this.lifetime = 0;
+    }
+  }
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(cord1X, cord1Y);
+    ctx.lineTo(cord2X, cord2Y);
+    ctx.lineTo(cord3X, cord3Y);
+    ctx.lineTo(cord1X, cord1Y);
+    ctx.fill();
+  };
+
+
+  function wattsonQ() {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    let speed = 0;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+
+      for (let i = 0; i < 3; i++) {
+        ctx.fillStyle = "#03fce3";
+        ctx.fillRect(0, this.elapsed <= 1000 ? (0 + 30 * i) + speed : (350 + i * 30) - speed, 320, 17);
+      }
+      speed += 5
+    }
+  }
+
+
+  function wattsonZ() {
+      this.alpha = 1
+      this.count = 0
+      this.one = new lightning(10, "hsl(190, 100%, 80%)", 20)
+      this.draw = function () {
+        ctx.globalAlpha = this.alpha
+        DrawRect(0, 0, 320, 200, `hsla(240, 100%, ${40 + Math.random() * 10}%, 1)`)
+        this.one.draw()
+        ctx.globalAlpha = 1
+        this.count < 100 ? this.count ++ : this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
+      };
+    }
+
+    function lightning(size, color, width){
+      this.points = [];
+      this.color = color
+      this.width = width
+      while(this.points.length <= size){
+        this.points.push([this.points.length * (350 / size) - 25, 100])
+      }
+      this.draw = function(){
+        DrawLightning(this.points, this.color, this.width)
+        this.points.forEach((ele, i)=>{
+          var mod = Math.sin(Date.now() / (100000 * Math.random()))
+          switch(i){
+            case 0:
+              this.points[i][1] < 90 ? this.points[i][1]+=2 : 
+                this.points[i][1] > 110 ? this.points[i][1]-=2 : 
+                  this.points[i][1] += mod * 10;
+              break;
+            case this.points.length - 1:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                  this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                      this.points[i][1] += mod * 10;
+              break;
+            default:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                    this.points[i][1] += mod * 10;
+              this.points[i][0] < i * (320 / this.points.length) ? this.points[i][0]+=5 : 
+                this.points[i][0] > i * (320 / this.points.length) + (320 / this.points.length) ? this.points[i][0]-=5 : 
+                    this.points[i][0] += mod * 10;
+              break;
+          }
+        })
+      }
+    }
+
+  function WraithZ(){
+    this.lifetime = 150
+    this.draw = function(){
+      effects.push(new wraithZHelp())
+      this.lifetime--
+    }
+  }
+
+  function wraithZHelp(){
+    this.rad = 1
+    this.hue = Math.random() * 30 + 270
+    this.rot = Math.random() * Math.PI * 2
+    this.draw = function(){
+      ctx.save()
+      ctx.translate(160, 100)
+      ctx.rotate(this.rot)
+      ctx.translate(-160, -100)
+      DrawCircle(160, 100 + this.rad, this.rad / 5, `hsla(${this.hue}, 100%, 50%, 1)`)
+      this.rad < 300 ? this.rad += 2 : this.lifetime = 0
+      ctx.restore()
+      this.rot+= .04
+    }
+  }
+
+  function wraithQ() {
+    this.x = 0;
+    this.y = -10;
+    this.start = new Date().getTime();
+    this.duration = 1225;
+    var split = 0;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = "#bb00ee";
+      for (let i = 0; i < 2; i++) {
+        ctx.fillRect(split + 30 * i, 0, 30, 200);
+        ctx.fillRect((320 - 30 * i - 30) - split, 0, 30, 200);
+      }
+      split += 8;
+    };
+  }
+
+  //#endregion
+  //#region helper effects
+
+
+
+  function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+    var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+    var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+
+    return ({ x: x, y: y });
+  }
+
+  function CubicN(pct, a, b, c, d) {
+    var t2 = pct * pct;
+    var t3 = t2 * pct;
+    return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+      + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+      + (c * 3 - c * 3 * pct) * t2
+      + d * t3;
+  }
+
+
+
+  function drawArrow(x, y, width, height, color, lineWidth, rotation) {
+    ctx.beginPath();
+    ctx.save();
+    ctx.translate(x, y + height / 2);
+    ctx.rotate(rotation)
+    // ctx.moveTo(0,0+height/2);
+    // ctx.lineTo(0,0-height/2)
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
+    ctx.moveTo(0, 0)
+    ctx.moveTo(0 - 3, -height / 2);
+    ctx.lineTo(width / 2, height / 4)
+
+    ctx.moveTo(0 + 3, -height / 2);
+    ctx.lineTo(-width / 2, height / 4)
+    ctx.stroke();
+    ctx.restore();
+  }
+
+
+  function DrawHeart(x, y, xSize, Ysize, color) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(x, y);
+    // top left curve
+    ctx.bezierCurveTo(
+      x,
+      y,
+      x - xSize / 2,
+      y - Ysize,
+      x - xSize / 2,
+      y + Ysize / 4
+    );
+    ctx.bezierCurveTo(
+      x - xSize / 2,
+      y + Ysize / 4,
+      x - xSize / 2,
+      y + Ysize / 4,
+      x,
+      y + Ysize
+    );
+    ctx.bezierCurveTo(
+      x + xSize / 2,
+      y + Ysize / 4,
+      x + xSize / 2,
+      y + Ysize / 4,
+      x + xSize / 2,
+      y + Ysize / 4
+    );
+    ctx.bezierCurveTo(
+      x + xSize / 2,
+      y + Ysize / 4,
+      x + xSize / 2,
+      y - Ysize,
+      x,
+      y
+    );
+
+    ctx.fill()
+    ctx.restore()
+  };
+
+  function getNow() {
+    let d = new Date();
+    return d.getTime();
+  }
+
+  function drawSweep(nWidth, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, nWidth * 320, 200);
+  }
+
+  function drawSweepUp(nWidth, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 200 - nWidth * 200, 320, 200);
+  }
+
+
+  function PulseRippleState(color, hollow, duration, reverse) {
+    this.start = new Date().getTime();
+    this.duration = duration;
+    this.count = 2000;
+    this.color = color;
+    this.isHollow = hollow;
+    this.reverse = reverse;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        zGoing = false;
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      var pctUp = this.count / 2000;
+      ctx.strokeStyle = this.color;
+      ctx.fillStyle = this.color;
+      ctx.lineWidth = 40;
+      ctx.beginPath();
+      ctx.arc(160, 100, !this.reverse ? 200 * pctUp : 200 - 200 * pctUp, 0, 2 * Math.PI);
+      if (this.isHollow) {
+        ctx.stroke();
+      } else {
+        ctx.fill();
+      }
+      if (this.count < 100) {
+        this.count = 2000;
+      } else {
+        this.count -= 75;
+      }
+    };
+  }
+
+
+
+  function ExplodingOrbState(color1, color2, color3) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        zGoing = false;
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      draw3ColorSpiral(
+        160,
+        100,
+        this.color1,
+        this.color2,
+        this.color3,
+        this.count > 1000 ? 50 : 1000 - this.count,
+        this.count > 1000 ? -this.count : this.count
+      );
+      this.count -= 20;
+    };
+  }
+  function draw3ColorSpiral(spX, spY, cl1, cl2, cl3, radius, phase) {
+    var currentColor;
+    for (var i = 0; i < 360; i += 1) {
+      var radphase = i / 360;
+
+      var start = 2 * Math.PI * (i / 360);
+      var end = 2 * Math.PI * ((i + 1) / 360);
+      var offset = 2 * Math.PI * (phase / 360);
+
+      if (i < 60 || (i > 180 && i < 240)) {
+        currentColor = cl1;
+      }
+
+      if ((i > 60 && i < 120) || (i > 240 && i < 300)) {
+        currentColor = cl2;
+      }
+
+      if ((i > 120 && i < 180) || (i > 300 && i < 360)) {
+        currentColor = cl3;
+      }
+
+      ctx.fillStyle = currentColor;
+      ctx.beginPath();
+      try {
+        ctx.arc(spX, spY, radius, start + offset, end + offset);
+      } catch (err) {
+        ctx.arc(160, 100, 50, Math.PI, 2 * Math.PI);
+      }
+      ctx.lineTo(spX, spY);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+
+  function WallUpState(hue, sat, lit, alpha = 1) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 80;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.alpha >= .05 ? this.alpha -= .05 : stateMgr.Pop();
+      }
+      this.draw();
+    };
+
+    this.draw = function () {
+      var pctUp = 1 - this.count / 2000;
+      ctx.fillStyle =
+        'hsla(' +
+        (this.hue + random(-15, 15)) +
+        ',' +
+        (this.sat + random(-15, 15)) +
+        '%,' +
+        (this.lit + random(-15, 15)) +
+        '%,' +
+        this.alpha +
+        ')';
+      ctx.fillRect(0, 200 - 200 * pctUp, 320, 300);
+
+      this.count -= 28;
+
+      ctx.fillStyle =
+        'hsla(' +
+        (this.hue + random(-15, 15)) +
+        ',' +
+        (this.sat + random(-15, 15)) +
+        '%,' +
+        (this.lit + random(-15, 15)) +
+        '%,' +
+        this.alpha +
+        ')';
+      for (let index = 0; index < 4; index++) {
+        ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+      }
+      this.lifetime--;
+    };
+  }
+
+  //Square --------------------------------------------------------------------------------------------------------------------------
+  function fallingSquare(x, y, h) {
+    this.x = x;
+    this.y = y;
+    this.h = h;
+    this.done = false;
+
+    this.Draw = function () {
+      DrawCircle(this.x, this.y - 40, 10, `hsl(${this.h}, 100%, 80%)`)
+      DrawCircle(this.x, this.y - 35, 15, `hsl(${this.h}, 100%, 70%)`)
+      DrawCircle(this.x, this.y - 20, 20, `hsl(${this.h}, 100%, 60%)`)
+      DrawCircle(this.x, this.y, 25, `hsl(${this.h}, 100%, 50%)`)
+
+      this.y += 8;
+      if (this.y > 250) this.done = true;
+
+      Math.random() > .5 ? this.x += 1 : this.x -= 1;
+    }
+  }
+
+  //CIRCLES CLASS -------------------------------------------------------------------
+  function fadingCircles() {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.rad = 1;
+    this.lit = Math.random() * 50 + 50
+    this.Draw = function () {
+      DrawCircle(this.x, this.y, this.rad, `hsla(0, 0%, ${this.lit}%, ${1 - this.rad / 75})`)
+      this.rad < 75 ? this.rad += 2 : this.lifetime = 0
+    }
+  }
+
+
+  function random(min, max) {
+    // if min = 10 max = 15 random var = 0.1544465; it will return approximately 10 because of math.floor
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+
+  function moveableBar(x, y, width, height, xDirection, yDirection, hue, sat, lit, alpha) {
+    this.x = x;
+    this.y = y;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 50;
+    this.ydirection = yDirection;
+    this.xdirection = xDirection;
+    this.width = width;
+    this.height = height;
+
+    this.draw = function () {
+      ctx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
+      ctx.fillRect(this.x, this.y, this.height, this.width);
+      this.lifetime--;
+      this.y -= this.ydirection;
+      this.x += this.xdirection;
+    };
+  }
+
+  class movingBall {
+constructor(x, y, radius, speed, color, dur=3000) {
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.speed = speed;
+  this.col = color;
+  this.start = Date.now();
+  this.duration = dur;
+}
+draw() {
+  DrawCircle(this.x, this.y, this.radius, this.col)
+  this.x += this.speed.x;
+  this.y += this.speed.y;
+  this.elapsed = Date.now() - this.start;
+  if (this.elapsed > this.duration) {
+    this.lifetime = 0;
+  }
+}
+}
+
+function spark(x, y, scale,sparks,speed,color){
+    this.startX = x
+    this.endX = x + (30 - Math.random() * 60)
+    this.stepX = (this.endX - this.startX) / 5
+    this.startY = y
+    this.endY = y + (30 - Math.random() * 60)
+    this.stepY = (this.endY - this.startY) / 5
+    this.count = 1
+    this.scale = scale
+    this.done = false
+    this.lifetime = 10
+    this.color = color
+    this.draw = function(){
+      if(this.scale < .1) this.lifetime = 0;
+      ctx.beginPath()
+      ctx.moveTo(this.startX, this.startY)
+      ctx.lineTo(this.startX + this.stepX * this.count, this.startY + this.stepY * this.count)
+      if(this.count < 5){
+        this.count+=speed
+        if(this.count >= 5) {
+          sparks.push(new spark(this.endX, this.endY, this.scale * .8,sparks,speed,{h:this.color.h +5,s:this.color.s,l:this.color.l}))
+          if(Math.random() > .75) sparks.push(new spark(this.endX, this.endY, this.scale * .8,sparks,speed,{h:this.color.h +5,s:this.color.s,l:this.color.l}))
+          if(!this.done){
+            this.done = true
+            setTimeout(()=>{
+              this.lifetime = 0;
+            }, 1000 - (9 * speed))
+          }
+        }
+      }
+      ctx.lineWidth = 15 * this.scale
+      ctx.strokeStyle = `hsla(${this.color.h},${this.color.s}%,${this.color.l}%)`;
+      ctx.stroke()
+    }
+  }
+
+function trailParticle(x,y,size,color,duration, colorspeed =0){
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.color = color;
+    this.duration = duration;
+    this.start = Date.now();
+    this.draw = function(){
+      this.elapsed = (Date.now() - this.start);
+      this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
+      ctx.globalAlpha = this.alpha;
+      if (colorspeed != 0){
+        this.color.h -= colorspeed;
+        DrawCircle(this.x,this.y,this.size*this.alpha,`hsla(${this.color.h},${this.color.s}%,${this.color.l}%)`)
+      } else {
+        DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
+      }
+   
+      ctx.globalAlpha = 1;
+      if(this.elapsed > this.duration){
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  //Ellipse ---------------------------------------------------------------------------------------------------------------
+  function ellipseFade(radiusX, radiusY) {
+        this.x = 0;
+        this.y = 0;
+        this.radiusX = radiusX;
+        this.radiusY = radiusY;
+        this.lifetime = 10;
+
+        this.draw = function () {
+          ctx.save()
+          ctx.setTransform(.5, 1, -1, .5, 160, 100);
+          ctx.beginPath();
+          ctx.ellipse(this.x, this.y, this.radiusX, this.radiusY, Math.PI, 0, 2 * Math.PI, false);
+          ctx.fillStyle = `hsl(215, 100%, ${1500 / this.radiusX}%)`;
+          ctx.fill();
+          ctx.restore()
+          this.radiusX --;
+          if (this.radiusX <= 5) {
+            this.lifetime = 0;
+          }
+        }
+    }
+
+  function Circle() {
+    this.start = new Date().getTime()
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      var gradient = ctx.createRadialGradient(160, 110, 0, 160, 110, 200);
+      this.animSpeed = 0.7;
+      if (this.elapsed < 3000) {
+        this.mathVal = -1400 * Math.floor(this.elapsed / 1000) + this.elapsed / this.animSpeed;
+        gradient.addColorStop(SetRange((-800 + this.mathVal), 0, 1000) / 1000, 'hsla(178, 100%, 58%, 1)');
+        gradient.addColorStop(SetRange((-400 + this.mathVal), 0, 1000) / 1000, 'hsla(217, 100%, 30%, 1)');
+        gradient.addColorStop(SetRange((0 + this.mathVal), 0, 1000) / 1000, 'hsla(178, 100%, 58%, 1)');
+      } else {
+        gradient.addColorStop(SetRange((0 + -1400 * 3 + this.elapsed / this.animSpeed), 0, 1000) / 1000, 'hsla(178, 100%, 58%, 1)');
+        gradient.addColorStop(SetRange((-400 + -1400 * 3 + this.elapsed / this.animSpeed), 0, 1000) / 1000, 'hsla(0,0%,0%,0)')
+      }
+      if (this.elapsed < 1000) {
+        gradient.addColorStop(SetRange((100 + this.elapsed / this.animSpeed), 0, 1000) / 1000, 'hsl(0,0%,0%)')
+      }
+      ctx.beginPath()
+      ctx.fillStyle = gradient;
+      ctx.arc(160, 120, 200, 0, Math.PI * 2)
+      ctx.fill()
+    }
+  }
+  function SetRange(num, min, max) {
+    return Math.min(Math.max(num, min), max)
+  }
+
+
+
+  function BuildRect(index, width, height, color) {
+    this.start = new Date().getTime();
+    this.index = index;
+    this.width = width;
+    this.height = height;
+    this.color = color;
+    this.draw = function () {
+      this.elapsed = (new Date().getTime() - this.start);
+      ctx.beginPath();
+      ctx.fillStyle = this.color
+      ctx.fillRect((160 - this.width / 2) + width * this.index, 200, this.width, -(SetRange(this.elapsed < 4000 ? this.elapsed / 5 : this.height - (this.elapsed - 4000) / 1000 * this.height, 0, this.height)));
+    }
+  }
+
+
+  function ImpactParticle(x, y, radius, color) {
+    this.radius = radius;
+    this.color = color;
+    this.x = x;
+    this.vx = 7 * Math.sin(radius);
+    this.y = y;
+    this.vy = Math.random() * -20;
+    this.ay = 0.5;
+    this.lifetime = 10;
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vy += this.ay;
+      if (this.y > 200) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function DrawDrone(x, y, rotation, size) {
+    ctx.beginPath();
+    ctx.save();
+    ctx.fillStyle = "grey";
+    ctx.translate(x, y);
+    ctx.rotate(rotation)
+    ctx.ellipse(0, 0, size, size / 2, 0, 0, Math.PI * 2)
+    ctx.fillRect(0 - size, 0, size / 2, size / 1.5)
+    ctx.fillRect(0 + size / 2, 0, size / 2, size / 1.5)
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function getPointX(c1, c2, radius, angle) {
+    return c1 + Math.cos(angle) * radius;
+  }
+
+  function getPointY(c1, c2, radius, angle) {
+    return c2 + Math.sin(angle) * radius;
+  }
+
+  function degrees_to_radians(degrees) {
+    var pi = Math.PI;
+    return degrees * (pi / 180);
+  }
+
+  function radians_to_degrees(radians) {
+    var pi = Math.PI;
+    return radians * (180 / pi);
+  }
+
+
+  function maggieZHelp(x, y, direction) {
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 20, `hsl(200, 100%, ${60 + Math.sin(this.x / 75) * 10}%)`);
+      this.direction == "left" ? this.x -= 5 : this.x += 5;
+      if (this.x > 350 || this.x < -30) {
+        this.lifetime = 0;
+      }
+    }
+  }
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function maggieDot(x, y, speed, amp, per, radius, mod, color) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.amp = amp;
+    this.per = per;
+    this.radius = radius;
+    this.color = color;
+    this.lifetime = 10;
+    this.mod = mod;
+    this.draw = function () {
+      var mod = Math.sin(Date.now() / 1000) * this.mod;
+      DrawCircle(this.x, this.y, this.radius, this.color);
+      this.x += this.speed;
+      this.y += Math.cos(this.x / this.per) * this.amp;
+      this.mod ? this.per += mod : null;
+      if (this.x > 350) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function BurstRippleState(color1, color2, color3, reverse) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.reverse = reverse;
+    this.size = !this.reverse ? 0 : 320;
+    this.x = 160;
+    this.y = 100;
+    this.alpha = 1;
+    this.length = 0;
+    this.vignette = ctx.createRadialGradient(160, 100, 100, 160, 100, 200)
+    this.vignette.addColorStop(0, "hsla(0, 0%, 0%, 0)")
+    this.vignette.addColorStop(.45, "hsla(0, 0%, 0%, 0)")
+    this.vignette.addColorStop(.65, "hsla(0, 0%, 0%, 1)")
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+
+      let color = "";
+      if (character == "Vantage") {
+        color = engine.vision.ultCheck;
+      }
+      if (this.elapsed > this.duration || (character == "Vantage" && color[0] > 180 && color[0] < 225 && color[1] > 25 && color[1] < 50 && color[2] > 75 && color[2] < 100)) {
+        this.alpha >= .05 ? this.alpha -= .05 : stateMgr.Pop();
+        zGoing = false;
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.globalAlpha = this.alpha;
+      if (character == "Vantage") {
+        vantageLine(50, 100, 160, 100, this.length)
+        vantageLine(160, 0, 160, 100, this.length)
+        vantageLine(270, 100, 160, 100, this.length)
+        vantageLine(160, 200, 160, 100, this.length)
+        this.length <= .98 ? this.length += .02 : this.length = 1;
+        DrawRect(0, 0, 320, 200, this.vignette)
+        if (this.length >= .95) {
+          effects.push(new expandingStroke(160, 100, 12, 200, "black"))
+          effects.push(new expandingStroke(160, 100, 10, 40, "white"))
+          this.start = Date.now() - 2000
+        }
+      } else {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 320, 200);
+
+        ctx.fillStyle = this.color1;
+        ctx.beginPath();
+        ctx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = this.color2;
+        ctx.beginPath();
+        ctx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = this.color1;
+        ctx.beginPath();
+        ctx.arc(160, 100, this.size, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = this.color2;
+        ctx.beginPath();
+        ctx.arc(160, 100, (this.size / 2), 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = this.color1;
+        ctx.beginPath();
+        ctx.arc(160, 100, (this.size / 3) + 10, 0, 2 * Math.PI);
+        ctx.fill();
+        if (this.reverse) {
+          if (this.size - 5 > 0) {
+            this.size -= 5;
+          }
+        } else {
+          this.size += 5;
+        }
+      }
+      ctx.globalAlpha = 1
+    };
+  }
+
+  function hexToHSL(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    (r /= 255), (g /= 255), (b /= 255);
+    var max = Math.max(r, g, b),
+      min = Math.min(r, g, b);
+    var h,
+      s,
+      l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    s = s * 100;
+    s = Math.round(s);
+    l = l * 100;
+    l = Math.round(l);
+    h = Math.round(360 * h);
+
+    return [h, s, l];
+  }
+  function SparkleEffect(hue, saturation, lightness, size) {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.hue = hue;
+    this.saturation = saturation;
+    this.lightness = lightness;
+    this.lifetime = 40;
+    this.size = size;
+    this.draw = function () {
+      ctx.fillStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + this.lightness + '%)';
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+      this.lifetime--;
+    };
+  }
+  //#endregion
+
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      // Exit early if we've got a long-term match.
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        //var fromZero = this.value === 0;
+        //var toZero = values[0] === 0;
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    };
+  }
+  function StateHandler() {
+    var stack = [];
+    var state = null;
+
+    var updateState = function () {
+      if (stack.length > 0) {
+        state = stack[stack.length - 1];
+      } else {
+        state = null;
+      }
+    };
+
+    this.Push = function (newState) {
+      stack.push(newState);
+      updateState();
+    };
+
+    this.Pop = function () {
+      stack.pop();
+      updateState();
+    };
+
+    this.Process = function () {
+      if (state != null) {
+        state.Process();
+      }
+    };
+  }
+
+  // ENGINE READY FUNCTION ---------------------------------------------------------------------------------------------
+  function onEngineReady() {
+    // Grab canvas and rendering context.
+    /** @type {HTMLCanvasElement} */
+    canvas = document.getElementById("exCanvas")
+    ctx = canvas.getContext("2d")
+    // Start updates *after* our engine is accessible and ready.
+    window.requestAnimationFrame(update)
+  }
+
+</script>

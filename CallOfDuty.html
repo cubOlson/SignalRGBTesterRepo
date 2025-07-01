@@ -1,0 +1,795 @@
+<head>
+    <title>Call of Duty Dev</title>
+    <meta description="Experience Call of Duty in full RGB. v2.02" />
+    <meta publisher="SignalRGB" />
+  
+      <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+      <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+      default="Custom"/>
+      <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+      <meta property="adjToggle" label="Adjustment toggle (turn off in-game)" type="boolean" default="0" />
+      <meta property="vertMeters" label="Vertical HUD" type="boolean" default="0" />
+      <meta property="hpOn" label="Health effects" type="boolean" default="1" />
+      <meta property="healthColor" label="Health Color" type="color" default="#00ff00" min="0" max="360" />
+      <meta property="healthX" label="Health bar X position" type="number" min="0" max="100" default="0" />
+      <meta property="healthY" label="Health bar Y position" type="number" min="0" max="100" default="25" />
+      <meta property="healthWidth" label="Health bar width" type="number" min="0" max="100" default="100" />
+      <meta property="healthHeight" label="Health bar height" type="number" min="0" max="100" default="15" />
+      <meta property="armorOn" label="Armor Effects" type="boolean" default="1" />
+      <meta property="ammoOn" label="Low Ammo Effect" type="boolean" default="1" />
+      <meta property="damageOn" label="Damage Effect" type="boolean" default="1" />
+      <meta property="deathOn" label="Death Effect" type="boolean" default="1" />
+      <meta property="xpOn" label="XP Effect" type="boolean" default="1" />
+
+      <!-- inGame1: Detects if player is in-game by monitoring top center UI element (left side) -->
+      <meta meter="inGame1" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4853" y="0.0132" width="0" height="0.0188" 
+        h="0-360" s="0-100" l="60-100" hdr-h="0-360" hdr-s="0-100" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.4925" y="0.0139" width="0.0002" height="0.0174"  />
+        <resolution aspect="24:10" x="0.4891" y="0.0139" width="0" height="0.0181"  />
+        <resolution aspect="16:11" x="0.4853" y="0.0131" width="0" height="0.0163" />
+
+        <resolution size="3840x2160" x="0.4853" y="0.0134" width="0" height="0.019"  />
+        <resolution size="2560x1080" x="0.4889" y="0.0139" width="0" height="0.0176"  />
+      </meta>
+
+      <!-- inGame2: Detects if player is in-game by monitoring top center UI element (right side) -->
+      <meta meter="inGame2" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.515" y="0.0139" width="-0.0003" height="0.0167" 
+        h="0-360" s="0-100" l="60-100" hdr-h="0-360" hdr-s="0-100" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.5073" y="0.0146" width="0" height="0.016"  />
+        <resolution aspect="24:10" x="0.5112" y="0.0132" width="0" height="0.0202"  />
+        <resolution aspect="16:11" x="0.515" y="0.0138" width="0" height="0.0156" />
+
+        <resolution size="3840x2160" x="0.515" y="0.0144" width="0" height="0.0189"  />
+        <resolution size="2560x1080" x="0.5111" y="0.0139" width="0" height="0.0195"  />
+      </meta>
+
+      <!-- inGame3: Additional in-game detection meter monitoring center UI element -->
+      <meta meter="inGame3" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4885" y="0.039" width="0.023" height="0.0104" 
+        h="50-90" s="50-100" l="75-100" hdr-h="50-90" hdr-s="40-100" hdr-l="50-100">
+        <resolution aspect="3.55:1" x="0.4938" y="0.0389" width="0.0125" height="0.0104"  />
+        <resolution aspect="24:10" x="0.492" y="0.0389" width="0.0172" height="0.0097"  />
+        <resolution aspect="16:11" x="0.4885" y="0.035" width="0.0234" height="0.0088" />
+
+        <resolution size="3840x2160" x="0.4876" y="0.0384" width="0.0256" height="0.0112"  />
+        <resolution size="2560x1080" x="0.492" y="0.0389" width="0.0176" height="0.0093"  />
+      </meta>
+
+      <!-- inGame3NotYellow: Verifies inGame3 detection by checking for non-yellow UI elements -->
+      <meta meter="inGame3NotYellow" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.492" y="0.0334" width="0.018" height="0.002" 
+        h="50-90" s="50-100" l="75-100" hdr-h="50-90" hdr-s="40-100" hdr-l="50-100">
+        <resolution aspect="3.55:1" x="0.497" y="0.0327" width="0.006" height="0.0007"  />
+        <resolution aspect="24:10" x="0.4943" y="0.0334" width="0.0111" height="0.0007"  />
+        <resolution aspect="16:11" x="0.4963" y="0.0306" width="0.0066" height="0" />
+
+        <resolution size="3840x2160" x="0.4986" y="0.0347" width="0.0044" height="0"  />
+        <resolution size="2560x1080" x="0.4967" y="0.0343" width="0.0078" height="0.0009"  />
+      </meta>
+
+      <!-- healthWhite: Detects player's health bar in normal state (white/default color) -->
+      <meta meter="healthWhite" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.0352" y="0.9507" width="0.0832" height="0.002" 
+        h="0-360" s="0-50" l="70-100" hdr-h="0-360" hdr-s="0-50" hdr-l="70-100">
+        <resolution aspect="3.55:1" x="0.0178" y="0.9507" width="0.0416" height="0.0007"  />
+        <resolution aspect="24:10" x="0.0265" y="0.9514" width="0.0622" height="0.0007"  />
+        <resolution aspect="16:11" x="0.0363" y="0.9568" width="0.0825" height="0" />
+
+        <resolution size="3840x2160" x="0.0352" y="0.9514" width="0.0838" height="0.0009"  />
+        <resolution size="2560x1080" x="0.027" y="0.9518" width="0.0617" height="0.0009"  />
+      </meta>
+
+      <!-- healthRed: Detects player's health bar when in low health state (red color) -->
+      <meta meter="healthRed" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.0352" y="0.9507" width="0.0832" height="0.002" 
+        h="-30-30" s="50-75" l="75-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.0178" y="0.9507" width="0.0416" height="0.0007"  />
+        <resolution aspect="24:10" x="0.0265" y="0.9514" width="0.0622" height="0.0007"  />
+        <resolution aspect="16:11" x="0.0363" y="0.9568" width="0.0825" height="0" />
+
+        <resolution size="3840x2160" x="0.0352" y="0.9514" width="0.0838" height="0.0009"  />
+        <resolution size="2560x1080" x="0.027" y="0.9518" width="0.0617" height="0.0009"  />
+      </meta>
+    
+      <!-- blueArmor: Detects player's blue armor plate status -->
+      <meta meter="blueArmor" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.036" y="0.9423" width="0.082" height="0.0014" 
+        h="200-280" s="60-100" l="75-100" hdr-h="190-260" hdr-s="60-100" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.0184" y="0.9423" width="0.041" height="0"  />
+        <resolution aspect="24:10" x="0.0273" y="0.9416" width="0.0608" height="0.0014"  />
+        <resolution aspect="16:11" x="0.0352" y="0.9481" width="0.0836" height="-0.0006" />
+  
+        <resolution size="3840x2160" x="0.0352" y="0.9421" width="0.0828" height="0.0005"  />
+        <resolution size="2560x1080" x="0.0277" y="0.9416" width="0.061" height="0.0019"  />
+      </meta>
+    
+      <!-- purpleArmor: Detects player's purple armor plate status -->
+      <meta meter="purpleArmor" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.036" y="0.9423" width="0.082" height="0.0014" 
+        h="300-360" s="60-100" l="75-100" hdr-h="300-360" hdr-s="60-100" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.0184" y="0.9423" width="0.041" height="0"  />
+        <resolution aspect="24:10" x="0.0273" y="0.9416" width="0.0608" height="0.0014"  />
+        <resolution aspect="16:11" x="0.0352" y="0.9481" width="0.0836" height="-0.0006" />
+    
+        <resolution size="3840x2160" x="0.0352" y="0.9421" width="0.0828" height="0.0005"  />
+        <resolution size="2560x1080" x="0.0277" y="0.9416" width="0.061" height="0.0019"  />
+      </meta>
+    
+      <!-- orangeArmor: Detects player's orange armor plate status -->
+      <meta meter="orangeArmor" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.036" y="0.9423" width="0.082" height="0.0014" 
+        h="10-40" s="50-80" l="85-100" hdr-h="10-40" hdr-s="50-80" hdr-l="70-100">
+        <resolution aspect="3.55:1" x="0.0184" y="0.9423" width="0.041" height="0"  />
+        <resolution aspect="24:10" x="0.0273" y="0.9416" width="0.0608" height="0.0014"  />
+        <resolution aspect="16:11" x="0.0352" y="0.9481" width="0.0836" height="-0.0006" />
+    
+        <resolution size="3840x2160" x="0.0352" y="0.9421" width="0.0828" height="0.0005"  />
+        <resolution size="2560x1080" x="0.0277" y="0.9416" width="0.061" height="0.0019"  />
+      </meta>
+
+      <!-- lowAmmoRed: Detects when player has low ammunition (red indicator) -->
+      <meta meter="lowAmmoRed" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.8085" y="0.8951" width="0.0106" height="0.0257" 
+        h="-30-30" s="50-75" l="50-100" hdr-h="-30-30" hdr-s="40-100" hdr-l="70-100">
+        <resolution aspect="3.55:1" x="0.9049" y="0.8958" width="0.0043" height="0.0229" />
+        <resolution aspect="24:10" x="0.8578" y="0.8958" width="0.007" height="0.0236" />
+        <resolution aspect="16:11" x="0.8089" y="0.9056" width="0.0094" height="0.0219" />
+
+        <resolution size="3840x2160" x="0.8101" y="0.8958" width="0.0081" height="0.0245"  />
+        <resolution size="2560x1080" x="0.8574" y="0.8962" width="0.0066" height="0.0241" />
+      </meta>
+
+      <!-- lowAmmoNotRed: Verifies low ammo detection by checking for non-red ammo indicator -->
+      <meta meter="lowAmmoNotRed" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.8116" y="0.9236" width="0.0055" height="0.0027" 
+      h="-30-30" s="50-75" l="50-100" hdr-h="0-45" hdr-s="40-100" hdr-l="70-100">
+        <resolution aspect="3.55:1" x="0.9099" y="0.9027" width="0" height="0.0111" />
+        <resolution aspect="24:10" x="0.8665" y="0.8978" width="0.0015" height="0.0188" />
+        <resolution aspect="16:11" x="0.8195" y="0.9074" width="0.0007" height="0.0169" />
+
+        <resolution size="3840x2160" x="0.8197" y="0.8986" width="0.0011" height="0.0143"  />
+        <resolution size="2560x1080" x="0.8656" y="0.899" width="0.0027" height="0.0157" />
+      </meta>
+
+      <!-- xpWhite: Detects experience points gained notification (white color) -->
+      <meta meter="xpWhite" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.5881" y="0.4595" width="0.0274" height="0.0159" 
+        h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100">
+        <resolution aspect="3.55:1" x="0.5454" y="0.459" width="0.0125" height="0.0166" />
+        <resolution aspect="24:10" x="0.5676" y="0.458" width="0.0177" height="0.0166" />
+        <resolution aspect="16:11" x="0.5912" y="0.463" width="0.0247" height="0.0168" />
+
+        <resolution size="3840x2160" x="0.5918" y="0.4576" width="0.0232" height="0.0172"  />
+        <resolution size="2560x1080" x="0.5666" y="0.431" width="0.0203" height="0.0185" />
+      </meta>
+
+      <!-- xpNotWhite1: First verification point for XP gain by checking non-white UI elements -->
+      <meta meter="xpNotWhite1" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.5893" y="0.451" width="0.0254" height="0.0049" 
+        h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100">
+        <resolution aspect="3.55:1" x="0.5507" y="0.4524" width="0.0043" height="0.0021" />
+        <resolution aspect="24:10" x="0.5714" y="0.4246" width="0.0105" height="0.0028" />
+        <resolution aspect="16:11" x="0.5991" y="0.4565" width="0.0121" height="0.0007" />
+
+        <resolution size="3840x2160" x="0.6017" y="0.4535" width="0.0081" height="0.0018"  />
+        <resolution size="2560x1080" x="0.5756" y="0.4254" width="0.0035" height="0.0009" />
+      </meta>
+
+      <!-- xpNotWhite2: Second verification point for XP gain by checking non-white UI elements -->
+      <meta meter="xpNotWhite2" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.5916" y="0.4753" width="0.0235" height="0.0021" 
+        h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100">
+        <resolution aspect="3.55:1" x="0.5505" y="0.476" width="0.0057" height="0.0007" />
+        <resolution aspect="24:10" x="0.572" y="0.451" width="0.0084" height="0.0021" />
+        <resolution aspect="16:11" x="0.6006" y="0.4816" width="0.0117" height="0.0006" />
+
+        <resolution size="3840x2160" x="0.6004" y="0.4771" width="0.0112" height="0.0018"  />
+        <resolution size="2560x1080" x="0.576" y="0.4523" width="0.0059" height="0" />
+      </meta>
+
+      <!-- deathNameRed: Detects player death by monitoring red player name -->
+      <meta meter="deathNameRed" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4748" y="0.8381" width="0.0481" height="0.0097" 
+        h="-30-30" s="40-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100">
+        <resolution aspect="3.55:1" x="0.495" y="0.8367" width="0.0131" height="0.0125" />
+        <resolution aspect="24:10" x="0.4879" y="0.8381" width="0.0288" height="0.0104" />
+        <resolution aspect="16:11" x="0.4803" y="0.8537" width="0.0476" height="0.0106" />
+
+        <resolution size="3840x2160" x="0.4686" y="0.8388" width="0.068" height="0.0111"  />
+        <resolution size="2560x1080" x="0.4846" y="0.8378" width="0.0359" height="0.0102" />
+      </meta>
+
+      <!-- deathGrey: Detects player death by monitoring grey screen overlay -->
+      <meta meter="deathGrey" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4463" y="0.0278" width="0.1098" height="0.0445" 
+        h="0-360" s="0-100" l="30-70" hdr-h="0-360" hdr-s="0-100" hdr-l="50-90">
+        <resolution aspect="3.55:1" x="0.4739" y="0.0299" width="0.0534" height="0.0417" />
+        <resolution aspect="24:10" x="0.4603" y="0.0271" width="0.0811" height="0.0459" />
+        <resolution aspect="16:11" x="0.4467" y="0.0256" width="0.109" height="0.0382" />
+
+        <resolution size="3840x2160" x="0.447" y="0.0292" width="0.1084" height="0.0421"  />
+        <resolution size="2560x1080" x="0.4603" y="0.0287" width="0.0817" height="0.0445" />
+      </meta>
+
+      <!-- skydiveWhite: Detects when player is skydiving (white parachute indicator) -->
+      <meta meter="skydiveWhite" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.7167" y="0.6213" width="0.0027" height="0.0118" 
+        h="0-360" s="0-100" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="80-100">
+        <resolution aspect="3.55:1" x="0.8584" y="0.6289" width="0.0009" height="0.0035" />
+        <resolution aspect="24:10" x="0.7892" y="0.6268" width="0.002" height="0.0063"  />
+        <resolution aspect="16:11" x="0.7171" y="0.6123" width="0.0019" height="0.0081"  />
+
+        <resolution size="3840x2160" x="0.7163" y="0.6267" width="0.0029" height="0.0055"  />
+        <resolution size="2560x1080" x="0.7878" y="0.6265" width="0.002" height="0.0046"  />
+      </meta>
+
+      <!-- skydiveRed: Detects when player is skydiving (red parachute indicator) -->
+      <meta meter="skydiveRed" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.7171" y="0.6407" width="0.0015" height="0.0118" 
+        h="-30-30" s="75-100" l="60-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="60-100">
+        <resolution aspect="3.55:1" x="0.8584" y="0.6414" width="0.0009" height="0.0035" />
+        <resolution aspect="24:10" x="0.7895" y="0.6421" width="0.0006" height="0.0042"  />
+        <resolution aspect="16:11" x="0.7171" y="0.6291" width="0.0015" height="0.0057"  />
+
+        <resolution size="3840x2160" x="0.7166" y="0.6415" width="0.0021" height="0.0042"  />
+        <resolution size="2560x1080" x="0.7878" y="0.6423" width="0.0008" height="0.0074"  />
+      </meta>
+
+      <!-- zoneBlack: Detects zone status by monitoring black UI elements -->
+      <meta meter="zoneBlack" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.0277" y="0.2849" width="0.0024" height="0.0007" 
+        h="0-360" s="0-100" l="0-70" hdr-h="0-360" hdr-s="0-100" hdr-l="0-70">
+        <resolution aspect="3.55:1" x="0.0162" y="0.2884" width="0.0002" height="0.0069" />
+        <resolution aspect="24:10" x="0.0212" y="0.2849" width="0.0012" height="0"  />
+        <resolution aspect="16:11" x="0.0332" y="0.2614" width="0" height="0.0025"  />
+
+        <resolution size="3840x2160" x="0.0328" y="0.2904" width="0.0008" height="0.0028"  />
+        <resolution size="2560x1080" x="0.0211" y="0.2854" width="0.0016" height="0.001"  />
+      </meta>
+
+      <!-- zoneColor: Detects zone type by monitoring zone indicator color -->
+      <meta meter="zoneColor" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="colormean" x="0.0281" y="0.2835" width="0.002" height="0" 
+        h="40-80" s="40-100" l="50-100" hdr-h="40-80" hdr-s="30-100" hdr-l="50-100">
+        <resolution aspect="3.55:1" x="0.0143" y="0.2835" width="0.0004" height="0" />
+        <resolution aspect="24:10" x="0.0209" y="0.2835" width="0.0018" height="0"  />
+        <resolution aspect="16:11" x="0.0285" y="0.2552" width="0.002" height="0"  />
+
+        <resolution size="3840x2160" x="0.0284" y="0.283" width="0.0021" height="0.0005"  />
+        <resolution size="2560x1080" x="0.0215" y="0.2836" width="0.0012" height="0"  />
+      </meta>
+
+      <!-- warzoneWinCyan: Detects Warzone victory by monitoring cyan UI elements -->
+      <meta meter="warzoneWinCyan" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.6626" y="0.4997" width="0.2346" height="0.0013" 
+        h="180-220" s="0-55" l="75-100" hdr-h="180-220" hdr-s="0-55" hdr-l="75-100">
+      </meta>
+
+      <!-- warzoneWinBlue: Detects Warzone victory by monitoring blue UI elements -->
+      <meta meter="warzoneWinBlue" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.9893" y="0.9701" width="0.0091" height="0.0236" 
+        h="200-240" s="50-100" l="0-50" hdr-h="200-240" hdr-s="50-100" hdr-l="0-50">
+      </meta>
+    </head>
+    
+    <body style="margin: 0; padding: 0; background: #000;">
+      <canvas id="exCanvas" width="320" height="200"></canvas>
+    </body>
+    
+    <script>
+      var canvas, ctx;
+      canvas = document.getElementById('exCanvas');
+      ctx = canvas.getContext('2d');
+      var width = 320;
+      var height = 200;
+      var effects = [];
+
+      let HUD = new healthHUD()
+      let gInGame = false;
+
+      let InGameMeter1 = new Meter(10, inGameHandler)
+      let InGameMeter2 = new Meter(10, inGameHandler)
+      let InGameMeter3 = new Meter(10, inGameHandler)
+
+      let DeathRedMeter = new Meter(10, deathHandler)
+      let DeathGreyMeter = new Meter(10, deathHandler)
+
+      let HealthMeter = new Meter(5, inGameHandler)
+      let HitMeter = new Meter(5, hitHandler)
+
+      let BlueArmorMeter = new Meter(5, armorHandler)
+      let PurpleArmorMeter = new Meter(5, armorHandler)
+      let OrangeArmorMeter = new Meter(5, armorHandler)
+
+      let SprintMeter = new Meter(5, ()=>"")
+
+      let LowAmmoMeter = new Meter(5, ammoHandler)
+
+      let XPMeter = new Meter(3, xpHandler)
+
+      let ParachuteWhiteMeter = new Meter(5, parachuteHandler)
+      let ParachuteRedMeter = new Meter(5, parachuteHandler)
+
+      let ZoneBlackMeter = new Meter(5, zoneHandler)
+      let ZoneHueMeter = new Meter(5, zoneHandler)
+      let ZoneLightnessMeter = new Meter(5, zoneHandler)
+
+      let WinCyan = new Meter(5, winHandler)
+      let WinBlue = new Meter(5, winHandler)
+
+      function update() {
+        DrawRect(0, 0, 320, 200, "black")
+        backgroundHandler()
+
+        InGameMeter1.setValue(engine.vision.inGame1)
+        InGameMeter2.setValue(engine.vision.inGame2)
+        InGameMeter3.setValue(engine.vision.inGame3)
+
+        ParachuteWhiteMeter.setValue(engine.vision.skydiveWhite)
+        ParachuteRedMeter.setValue(engine.vision.skydiveRed)
+        if(gInGame){
+          LowAmmoMeter.setValue(engine.vision.lowAmmoRed)
+          XPMeter.setValue(engine.vision.xpWhite)
+          HealthMeter.setValue(engine.vision.healthWhite)
+          HitMeter.setValue(engine.vision.healthRed)
+          BlueArmorMeter.setValue(engine.vision.blueArmor)
+          PurpleArmorMeter.setValue(engine.vision.purpleArmor)
+          OrangeArmorMeter.setValue(engine.vision.orangeArmor)
+          ZoneBlackMeter.setValue(engine.vision.zoneBlack)
+          ZoneHueMeter.setValue(engine.vision.zoneColor[0])
+          ZoneLightnessMeter.setValue(engine.vision.zoneColor[2])
+        } else {
+          DeathRedMeter.setValue(engine.vision.deathNameRed)
+          DeathGreyMeter.setValue(engine.vision.deathGrey)
+
+          WinCyan.setValue(engine.vision.winCyan)
+          WinBlue.setValue(engine.vision.winBlue)
+        }
+    
+        effects.forEach((ele, i) => {
+          ele.draw()
+          if(ele.lifetime <= 0){
+            effects.splice(i, 1)
+          }
+        })
+
+        HUD.draw()
+        
+        window.requestAnimationFrame(update);
+      };
+
+      function inGameHandler(){
+        if((InGameMeter1.value >= .95 && InGameMeter2.value >= .95 && engine.vision.inGame3NotYellow <= .1 && InGameMeter3.value >= .25)) {
+          gInGame = true
+        } 
+        if (InGameMeter1.value <= .05 && InGameMeter2.value <= .05 && InGameMeter3.value <= .05) {
+          gInGame = false
+          deathHandler()
+        }
+      }
+
+      function armorHandler(){
+        if(gInGame && BlueArmorMeter.increased && BlueArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(240))
+        if(gInGame && OrangeArmorMeter.increased && OrangeArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(40))
+        if(gInGame && PurpleArmorMeter.increased && PurpleArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(300))
+        if(gInGame && BlueArmorMeter.decreased && BlueArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(0))
+        if(gInGame && OrangeArmorMeter.decreased && OrangeArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(0))
+        if(gInGame && PurpleArmorMeter.decreased && PurpleArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(0))
+      }
+
+      let winGoing = false
+      function winHandler(){
+        if(!gInGame && WinBlue.meter >= .95 && WinCyan.value >= .95 && !winGoing){
+          effects.push(new warzoneWin(190))
+          winGoing = true
+        }
+      }
+
+      function hitHandler(){
+        if(gInGame && HitMeter.value >= .15 && HitMeter.diff > .1 && HealthMeter.value && damageOn){
+          effects.push(new hitGain(0))
+        }
+      }
+
+      function ammoHandler(){
+        if(gInGame && LowAmmoMeter.value >= .25 && LowAmmoMeter.diff > .15 && engine.vision.lowAmmoNotRed <= .1 && ammoOn){
+          effects.push(new lowAmmo())
+        }
+      }
+
+      let deathGoing = false
+      function deathHandler(){
+        if(!gInGame && !deathGoing && DeathGreyMeter.value >= .25 && DeathRedMeter.value >= .25 && deathOn){
+          effects.push(new playerDeath())
+          deathGoing = true
+        }
+      }
+
+      function xpHandler(){
+        if(gInGame && XPMeter.value >= .3 && XPMeter.diff >= .2 && engine.vision.xpNotWhite1 <= .1 && engine.vision.xpNotWhiteYellow2 <= .1 && xpOn){
+          effects.push(new xpGain())
+        }
+      }
+
+      var skyDiver = "M40.09,55.33v-5.94s43.27-15.85,53.17-2.97,19.16,29.72,19.49,38.97c0,0,.99,12.88,17.5,9.25s37.32-9.25,46.57-6.61,22.13,12.22,22.13,12.22c0,0,3.3-14.2,6.94-15.19s4.95-20.81,11.23-24.77c0,0-.33-23.78,11.89-24.11l8.26,4.29,10.9-24.11s2.64-15.85,5.94-15.85,14.86,.99,15.19,10.57-5.94,9.25-5.94,9.25l-1.65,11.56-8.26,5.94-5.61,12.55h1.65s-32.7,54.83-32.04,83.23l18.83,17.5,41.61,7.93,16.18-51.52s9.91-4.95,14.86-.66c0,0,6.28-8.92,2.31-14.2l-1.98-15.52s51.52-1.98,57.14,0,5.61,6.28,4.29,8.26-7.6,2.97-15.85,3.96l-18.83,13.21s-3.96-.99-4.29,5.28-3.96,4.62-3.96,4.62l3.3,5.61-9.91,6.28s-14.53,56.15-21.47,63.41c0,0-67.71,4.62-84.22-1.98,0,0-9.91,5.28-17.83,.33h-10.24s4.29,11.23,2.64,12.22-39.63,24.77-45.58,23.45l-10.57,8.59-3.3-2.97s-37.32,24.77-38.31,23.78-4.29-3.63-4.29-3.63l9.25-10.24-14.2,8.92-3.63-3.96,1.65-2.97-3.63-4.62,4.62-4.62-4.29-5.28s10.24-10.24,19.82-9.91c0,0-8.26-.33-11.23-5.94,0,0,17.83-6.61,31.38,.99l5.28-7.6,22.13-13.54s-14.2,5.28-22.79-5.94l-5.94,.66s-9.25-27.74-16.18-28.4c0,0-10.9,8.59-16.51,7.93s-8.26-7.93-6.94-10.57c0,0-8.59,0-5.94-7.27l-3.63-12.22-.99-7.09-1.32-4.8s7.27-27.08,23.45-25.76c0,0-9.25-22.46-3.96-27.08,0,0-27.08-6.94-38.31-.33l-5.94,2.97-10.9,14.53-3.63-3.96,2.31-7.93-4.62-.66-17.83,11.23v-3.96H.79l2.31-4.95-2.31-2.31s7.27-20.48,39.3-17.5Z"
+      parachuteGoing = false
+      function parachuteHandler(){
+        if(InGameMeter1.value >= .95 && InGameMeter2.value >= .95 && ParachuteRedMeter.value >= .95 && ParachuteWhiteMeter.value >= .95 && !parachuteGoing){
+          effects.push(new skydiving())
+          parachuteGoing = true
+        }
+        if(parachuteGoing && ParachuteRedMeter.value <= .1 && ParachuteWhiteMeter.value <= .1){
+          parachuteGoing = false
+        }
+      }
+
+      let zoneState = "safe"
+      function zoneHandler(){
+        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "danger" && (ZoneHueMeter.value >= 340 || ZoneHueMeter.value <= 10) && ZoneLightnessMeter.value <= 60){
+          effects.push(new warzoneZone(0, 50))
+          zoneState = "danger"
+        }
+        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "caution" && (ZoneHueMeter.value >= 40 && ZoneHueMeter.value <= 60) && ZoneLightnessMeter.value <= 60){
+          effects.push(new warzoneZone(60, 50))
+          zoneState = "caution"
+        }
+        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "safe" && ZoneLightnessMeter.value >= 80){
+          effects.push(new warzoneZone(0, 100))
+          zoneState = "safe"
+        }
+      }
+  
+    let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+    function healthHUD(){
+      this.val = 0
+      this.draw = function(){
+        DrawRect(healthX, healthY, healthWidth * 3.2 * this.val, healthHeight * 2, healthColor)
+        if(!gInGame) this.val > .05 ? this.val += (0 - this.val) / 10 : this.val = 0
+        else this.val += (HealthMeter.value - this.val) / 10
+      }
+    }
+
+    function warzoneWin(hue) {
+      this.lifetime = 10;
+      this.hue = hue
+      this.space = .5
+      this.width = 20
+      this.alpha = 1
+      this.done = false;
+      this.x = -50;
+      this.backA = 0;
+      this.draw = function () {
+        ctx.globalAlpha = this.alpha;
+        DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.backA})`)
+        this.backA <= .95 ? this.backA += .05 : this.backA = 1;
+
+        let fillGrad = ctx.createLinearGradient(160, 0, 160, 200)
+        fillGrad.addColorStop(.5 - this.space, `hsla(${this.hue}, 100%, 20%, 0)`)
+        fillGrad.addColorStop(.5, `hsla(${this.hue}, 100%, 50%, ${this.backA})`)
+        fillGrad.addColorStop(.5 + this.space, `hsla(${this.hue}, 100%, 20%, 0)`)
+
+        this.space > .1 ? this.space *= .99 : this.space = .1
+
+        DrawRect(0, 0, 320, 200, fillGrad)
+        DrawCircle(this.x, 100, 30, `hsla(0, 0%, 60%, ${this.backA})`)
+        ctx.beginPath()
+        ctx.moveTo(0, 100)
+        ctx.lineTo(320, 100)
+        ctx.lineWidth = this.width;
+        ctx.strokeStyle = `hsla(0, 0%, 60%, ${this.backA})`
+        ctx.stroke()
+        ctx.globalAlpha = 1;
+
+        this.x < 315 ? this.x += (320 - this.x) / 30 : this.done = true;
+        this.width > 5 ? this.width -= .5 : null;
+        if (this.done) this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0;
+        if(this.lifetime == 0) winGoing = false
+      }
+    }
+
+    function warzoneZone(hue, lit){
+      this.hue = hue
+      this.lit = lit
+      this.rad = 1
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, `hsla(${this.hue}, 100%, ${this.lit}%, ${.25 - Math.abs(150 - this.rad) / 450})`)
+        DrawStroke(160, 100, this.rad, `hsla(${this.hue}, 100%, ${this.lit}%, 1)`, this.rad / 1.5)
+        this.rad < 300 ? this.rad += 1.5 : this.lifetime = 0
+      }
+    }
+
+    function skydiving() {
+      this.x = 80;
+      this.y = 50;
+      this.rotate = 0;
+      this.backA = 0;
+      this.start = Date.now()
+      this.effects = []
+      this.lifetime = 10;
+      this.draw = function () {
+        DrawRect(0, 0, 320, 200, `hsla(200, 100%, 30%, ${this.backA})`)
+        if(parachuteGoing) this.backA <= .95 ? this.backA += .05 : this.backA = 1
+        else this.backA >= .05 ? this.backA -= .05 : this.lifetime = 0
+
+        let elapsed = Date.now() - this.start
+        if (elapsed > 200) {
+          this.start = Date.now()
+          this.effects.push(new cloud(Math.random() * 300 - 65, 200))
+        }
+
+        this.effects.forEach((ele, i) => {
+          ele.draw()
+          if (ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+
+        ctx.save()
+        ctx.translate(160, 0)
+        ctx.rotate(this.rotate)
+        ctx.translate(-160, 0)
+        DrawPath(this.x, this.y, skyDiver, "hsl(0, 0%, 10%)", .4, .4)
+        ctx.restore()
+
+        this.rotate = Math.sin(Date.now() / 600) * .2 - .1
+      }
+    }
+
+    function cloud(x, y) {
+      this.x = x;
+      this.y = y;
+      this.radius = 20 + Math.random() * 20
+      this.points = []
+      this.lifetime = 10;
+      for (let i = 0; i < Math.random() * 5 + 5; i++) {
+        this.points.push([Math.random() * 150, Math.random() * 75])
+      }
+      this.draw = function () {
+        this.points.forEach((ele, i) => {
+          DrawCircle(ele[0] + this.x, ele[1] + this.y, this.radius, "white")
+        })
+        this.y -= 7
+        if (this.y < -100) this.lifetime = 0;
+      }
+    }
+
+    function xpGain(){
+      this.draw = function(){
+        for(let i = 0; i < 20; i++) effects.push(new xpHelp(160, 100, 0))
+        this.lifetime = 0
+      }
+    }
+
+    function xpHelp(x, y, i){
+      this.x = x
+      this.y = y
+      this.vx = Math.random() * 6 - 3
+      this.vy = Math.random() * 6 - 3
+      this.mod = Math.random() * 30 + 50
+      this.lifetime = 100
+      this.i = i
+      this.draw = function(){
+        if(this.i >= 2) this.lifetime = 0
+        DrawCircle(this.x, this.y, 20, `hsla(60, 100%, ${this.mod}%, ${this.lifetime / 100})`)
+        this.x += this.vx + (Math.random() * 1 - .5)
+        this.y += this.vy + (Math.random() * 1 - .5)
+        this.lifetime--
+        if(Math.random() > .975) {
+          for(let i = 0; i < 5; i++) effects.push(new xpHelp(this.x, this.y, this.i + 1))
+          this.lifetime = 0
+        }
+      }
+    }
+
+    function lowAmmo(){
+      this.rad = 1
+      this.draw = function(){
+        DrawStroke(160, 100, this.rad, "hsl(0, 100%, 30%)", this.rad / 2)
+        this.rad <= 300 ? this.rad += 5 : this.lifetime = 0
+      }
+    }
+
+    function hitGain(hue) {
+      this.hue = hue;
+      this.inColor = 0
+      this.alpha = 0;
+      this.half = false;
+      this.lifetime = 10;
+      this.draw = function () {
+        let loopAlpha = 1 - this.inColor
+        let loopGrad = ctx.createRadialGradient(160, 100, 30, 160, 100, 250)
+        loopGrad.addColorStop(this.inColor, `hsla(${this.hue}, 90%, 40%, ${loopAlpha})`)
+        loopGrad.addColorStop(1, `hsl(${this.hue}, 90%, 40%)`)
+        ctx.globalAlpha = this.alpha;
+        DrawRect(0, 0, 320, 200, loopGrad)
+        ctx.globalAlpha = 1;
+        this.alpha <= .9 ? this.alpha += .1 : this.half = true;
+        if (this.half) this.inColor < .98 ? this.inColor += .02 : this.lifetime = 0;
+      }
+    }
+
+    var deathMask = "M245.09,116.71s22.46-46.24-33.03-94.68c-55.49-48.44-180.55,0-180.55,0,0,0-5.72,21.58-10.13,24.66-4.4,3.08-9.25,39.63-9.25,39.63l-3.52,40.07c-14.97,11.89-5.72,55.93,0,83.67,5.72,27.74,57.25,43.16,57.25,43.16l4.4,44.04c37.43,21.58,120.22,0,120.22,0v-40.07c7.49-14.53,53.28-46.68,53.28-46.68,13.21-36.99-1.76-66.5-1.76-66.5,11.89-9.25,3.08-27.3,3.08-27.3ZM62.34,203.1s-7.05,.8-13.65,.03c-6.61-.77-14.53-6.71-20.7-11.12-6.17-4.4-5.72-12.77-5.72-12.77,0,0-1.76-11.45,2.2-16.73,3.96-5.28,4.4-7.93,6.61-14.09,2.2-6.17,12.33-5.72,26.42-4.4s29.94,4.4,39.63,13.39c9.69,8.98,10.13,19.64,0,33.29-10.13,13.65-34.79,12.41-34.79,12.41Zm84.99,50.12l-14.53-16.29-16.95,16.29c-10.79-7.05-15.63-16.29-13.43-25.98,2.2-9.69,26.86-46.68,26.86-46.68,0,0,10.57,16.73,25.54,38.31s-7.49,34.35-7.49,34.35Zm82.79-85.43c-4.4,21.58-11.45,24.66-11.45,24.66,0,0-3.52,10.13-13.21,10.57s-27.74-.88-37.43-5.72c-9.69-4.84-19.8-14.61-18.94-20.52,0,0,3.08-29.25,13.65-31.89,10.57-2.64,43.16-8.81,43.16-8.81,0,0,28.62,10.13,24.22,31.71Z"
+    
+    function playerDeath() {
+      this.x = 0;
+      this.y = 200;
+      this.done = false;
+      this.radius = 1
+      this.backAlpha = 0;
+      this.alphaDone = 1;
+      this.count = 0;
+      this.lifetime = 10;
+      this.draw = function () {
+        ctx.globalAlpha = this.alphaDone;
+        DrawRect(0, 0, 320, 200, `hsla(0, 100%, 5%, ${this.backAlpha})`)
+        this.backAlpha <= .95 ? this.backAlpha += .05 : this.backAlpha = 1;
+        drawDeathMask(this.x, this.y)
+        this.y > 0 ? this.y /= 1.05 : this.y = 0;
+        if (this.y < 5) {
+          DrawStroke(160, 100, this.radius, "red", 20)
+          DrawStroke(160, 100, this.radius + 50, "red", 30)
+          this.radius < 300 ? this.radius += 3 : this.radius = 0;
+          this.count < 300 ? this.count++ : this.done = true;
+        }
+        if (this.done) this.alphaDone >= .01 ? this.alphaDone -= .01 : this.lifetime = 0;
+        if(this.lifetime == 0) deathGoing = false
+        ctx.globalAlpha = 1;
+      }
+    }
+
+  function drawDeathMask(x, y) {
+    DrawPath(x + 80, y, deathMask, "white", .6, .6)
+  }
+  
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+      ctx.fillStyle = color;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scaleX, scaleY)
+      let ex = new Path2D(path);
+      ctx.fill(ex);
+      ctx.restore();
+    };
+  
+    function DrawCircle(x, y, radius, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.fill();
+    };
+  
+    function DrawRect(x, y, width, height, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, width, height);
+    };
+  
+    function hexToRgb(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    function DrawStroke(x, y, radius, color, stroke) {
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.stroke();
+    };
+  
+    function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+  
+    window.requestAnimationFrame(update);
+  </script>

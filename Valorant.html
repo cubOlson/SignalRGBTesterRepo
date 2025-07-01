@@ -1,0 +1,4332 @@
+<head>
+  <title>Valorant Devv</title>
+  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.44" />
+  <meta publisher="SignalRGB" />
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Ambience"/>
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+  <meta property="selectedChamp" label="Agent selection" type="list"
+    values="Astra,Breach,Brimstone,Chamber,Clove,Cypher,Deadlock,Fade,Gekko,Harbor,ISO,Jett,Kayo,Killjoy,Neon,Omen,Phoenix,Raze,Reyna,Sage,Skye,Sova,Viper,Vyse,Yoru"
+    default="Vyse" />
+  <meta property="enableAgents" label="Agent skill effects" type="boolean" default="1" />
+  <meta property="enableHealth" label="Health effect" type="boolean" default="1" />
+  <meta property="enableBomb" label="Bomb effect" type="boolean" default="1" />
+  <meta property="enableShield" label="Shield effect" type="boolean" default="1" />
+
+  <meta meter="inGame1" tags="vlc,VALORANT" x="0.4885" y="0.1022" width="0.0062" height="0" 
+    h="0-360" s="0-30" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.5000" y="0.1212" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.5" y="0.1222" width=".0001" height=".0001" />
+    <resolution aspect="16:11" x="0.5006" y="0.1245" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.5000" y="0.1227" width="0" height="0.002" />
+    <resolution size="2560x1080" x="0.5" y="0.1222" width=".0001" height=".0001" />
+  </meta>
+  
+  <meta meter="inGame2" tags="vlc,VALORANT" x="0.3623" y="0.9305" width="0.0093" height="0" 
+    h="0-360" s="0-40" l="50-100" hdr-h="0-10" hdr-s="0-10" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.4953" y="0.1018" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.4914" y="0.1022" width="0.0026" height="0" />
+    <resolution aspect="16:11" x="0.3482" y="0.93" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.3629" y="0.9305" width="0" height="0" />
+    <resolution size="2560x1080" x=".4922" y=".1021" width=".0001" height=".0001" />
+  </meta>
+
+  <meta meter="ValidAbilities" tags="vlc,VALORANT" type="area" x="0.4111" y="0.9771" width="0.0008" height="0.0014"
+    h="0-360" s="0-40" l="40-100" hdr-h="0-10" hdr-s="0-10" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.565" y="0.9305" width="0.0027" height="0" />
+    <resolution aspect="24:10" x="0.5997" y="0.9299" width=".005" height="0.0001" />
+    <resolution aspect="16:11" x="0.4009" y="0.9781" width="0.0004" height="0" />
+
+    <resolution size="3840x2160" x="0.4113" y="0.9768" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.5997" y="0.9299" width=".005" height="0.0001" />
+  </meta>
+
+  <meta meter="health" tags="vlc,VALORANT" x="0.3029" y="0.9347" width="0.0343" height="0.0306" 
+    type="area" h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.401" y="0.9324" width="0.018" height="0.040" />
+    <resolution aspect="24:10" x="0.3523" y="0.9319" width="0.03" height="0.0350" />
+    <resolution aspect="16:11" x="0.2794" y="0.9337" width="0.0391" height="0.0307" />
+
+    <resolution size="3840x2160" x="0.3019" y="0.9333" width="0.0339" height="0.0292"  />
+    <resolution size="2560x1080" x="0.3517" y="0.9333" width="0.0262" height="0.0324" />
+  </meta>
+
+  <meta meter="healthred" tags="vlc,VALORANT" x="0.3029" y="0.9347" width="0.0343" height="0.0306" 
+    type="area" h="340-360" s="10-30" l="60-100" hdr-h="340-360" hdr-s="10-30" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.401" y="0.9324" width="0.018" height="0.040"/>
+    <resolution aspect="24:10" x="0.3523" y="0.9319" width="0.03" height="0.0350" />
+    <resolution aspect="16:11" x="0.2794" y="0.9337" width="0.0391" height="0.0307" />
+
+    <resolution size="3840x2160" x="0.3019" y="0.9333" width="0.0339" height="0.0292"  />
+    <resolution size="2560x1080" x="0.3517" y="0.9333" width="0.0262" height="0.0324" />
+  </meta>
+
+  <meta meter="shieldNotWhite" tags="vlc,VALORANT" type="area" x="0.2876" y="0.9388" width="0.0031" height="0.0014"
+    h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.3954" y="0.9407" width="0" height="0" />
+    <resolution aspect="24:10" x="0.3478" y="0.9535" width="-0.0001" height="-0.0001" />
+    <resolution aspect="16:11" x="0.2634" y="0.9412" width="0.0027" height="0" />
+
+    <resolution size="3840x2160" x="0.2891" y="0.9403" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.3408" y="0.9398" width="0.0002" height="0" />
+  </meta>
+
+  <meta meter="shieldWhite" tags="vlc,VALORANT" type="area" x="0.2837" y="0.9437" width="0.0098" height="0.0140"
+    h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.3925" y="0.9420" width="0.0045" height="0.0150" />
+    <resolution aspect="24:10" x="0.3390" y="0.9430" width="0.0080" height="0.0140" />
+    <resolution aspect="16:11" x="0.2603" y="0.9418" width="0.0110" height="0.0157" />
+
+    <resolution size="3840x2160" x="0.2844" y="0.9426" width="0.0096" height="0.0139" />
+    <resolution size="2560x1080" x="0.338" y="0.9416" width="0.0080" height="0.0167"  />
+  </meta>
+
+  <meta meter="ShieldBlue" tags="vlc,VALORANT" type="area" x="0.2876" y="0.9388" width="0.0031" height="0.0014"
+    h="120-200" s="10-60" l="25-75" hdr-h="130-180" hdr-s="20-60" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.3954" y="0.9407" width="0" height="0" />
+    <resolution aspect="24:10" x="0.3478" y="0.9535" width="-0.0001" height="-0.0001" />
+    <resolution aspect="16:11" x="0.3197" y="0.9556" width="0.0003" height="0.0075" />
+
+    <resolution size="3840x2160" x="0.2891" y="0.9403" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.3415" y="0.9639" width="0" height="0" />
+  </meta>
+
+  <meta meter="deadGreen" tags="vlc,VALORANT" type="linear" x="0.0711" y="0.795" width="0" height="0"
+    h="150-180" s="0-50" l="60-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
+    <resolution aspect="3.55:1" x="0.0354" y="0.7943" width="0" height="0"  />
+    <resolution aspect="24:10" x="0.054" y="0.7936" width="0" height="0"  />
+    <resolution aspect="16:11" x="0.0797" y="0.7949" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.0719" y="0.7939" width="0" height="0" />
+    <resolution size="2560x1080" x="0.0535" y="0.7943" width="0" height="0"  />
+  </meta>
+
+  <meta meter="deadWhite" tags="vlc,VALORANT" type="area" x="0.0735" y="0.8068" width="0" height="0" 
+    h="0-360" s="0-20" l="65-100" hdr-h="0-10" hdr-s="0-10" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.0367" y="0.8063" width="0" height="0" />
+    <resolution aspect="24:10" x="0.054" y="0.8045" height="0.005" width="0.001" />
+    <resolution aspect="16:11" x="0.0813" y="0.8074" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.0735" y="0.8069" width="0" height="0"  />
+    <resolution size="2560x1080"  x="0.0551" y="0.8063" width="0.0004" height="0" />
+  </meta>
+
+  <meta meter="cMeter" tags="vlc,VALORANT" x="0.3978" y="0.9653" width="0.0274" height="0.0062" 
+  h="140-180" s="40-80" l="70-100" hdr-h="140-180" hdr-s="0-40" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.4482" y="0.9704" width="0.0148" height="0.0001" />
+    <resolution aspect="21:9" x="0.4225" y="0.9687" width="0.0227" height="0" />
+    <resolution aspect="16:11" x="0.3857" y="0.9662" width="0.0309" height="0.005"  />
+
+    <resolution size="3840x2160" x="0.3965" y="0.9648" width="0.027" height="0.0065"  />
+    <resolution size="2560x1080" x="0.4225" y="0.9687" width="0.0227" height="0" />
+  </meta>
+
+  <meta meter="qMeter" tags="vlc,VALORANT" x="0.456" y="0.9653" width="0.0278" height="0.0062" 
+    h="140-180" s="40-80" l="70-100" hdr-h="160-180" hdr-s="20-40" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.478" y="0.9704" width="0.0148" height="0.0001" />
+    <resolution aspect="24:10" x="0.4657" y="0.9688" width=".024" height=".001" />
+    <resolution aspect="16:11" x="0.4513" y="0.965" width="0.0297" height="0.0062"   />
+
+    <resolution size="3840x2160" x="0.4564" y="0.9657" width="0.0268" height="0.006"  />
+    <resolution size="2560x1080" x="0.4657" y="0.9688" width=".024" height=".001" />
+  </meta>
+
+  <meta meter="eMeter" tags="vlc,VALORANT" x="0.5158" y="0.9646" width="0.0274" height="0.0069" 
+    h="140-180" s="40-80" l="70-100" hdr-h="140-180" hdr-s="0-40" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.5068" y="0.9704" width="0.0148" height="0.0001" />
+    <resolution aspect="24:10" x="0.5099" y="0.9688" width=".024" height=".001" />
+    <resolution aspect="16:11" x="0.5178" y="0.9662" width="0.0281" height="0.005" />
+
+    <resolution size="3840x2160" x="0.5147" y="0.9653" width="0.0279" height="0.0055" />
+    <resolution size="2560x1080" x="0.5099" y="0.9688" width=".024" height=".001" />
+  </meta>
+
+  <meta meter="xMeter" tags="vlc,VALORANT" x="0.5741" y="0.9646" width="0.0273" height="0.0069" 
+    h="140-180" s="40-80" l="70-100" hdr-h="140-180" hdr-s="0-40" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.5362" y="0.9704" width="0.0148" height="0.0001" />
+    <resolution aspect="24:10" x="0.5535" y="0.9688" width=".024" height=".001" />
+    <resolution aspect="16:11" x="0.5826" y="0.9656" width="0.0286" height="0.0063" />
+
+    <resolution size="3840x2160" x="0.5738" y="0.9643" width="0.0266" height="0.0065"  />
+    <resolution size="2560x1080" x="0.5535" y="0.9688" width=".024" height=".001" />
+  </meta>
+
+  <meta meter="jettX" tags="vlc,VALORANT" type="area" x="0.575" y="0.8481" height="0.0083" width="0.0016" h="150-176"
+    s="20-50" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
+    <resolution aspect="3.55:1" x="0.5372" y="0.851" width="0.0005" height="0.0001" />
+    <resolution aspect="24:10" x="0.5743" y="0.851" height="0.0083" width="0.0014" />
+    <resolution aspect="16:11" x="0.5838" y="0.8543" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.5754" y="0.8527" width="0" height="0.0033" />
+    <resolution size="2560x1080" x="0.5565" y="0.8545" width="0" height="0" />
+  </meta>
+
+  <meta meter="viperX" tags="vlc,VALORANT" type="area" x="0.5846" y="0.8555" width="0" height="0" h="150-176"
+    s="20-50" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
+    <resolution aspect="3.55:1" x="0.5419" y="0.851" width="0.0003" height="0.0001" />
+    <resolution aspect="24:10" x="0.5625" y="0.8493" height="0.0083" width="0.0005" />
+    <resolution aspect="16:11" x="0.5945" y="0.8494" height="0.0093" width="0.0005" />
+
+    <resolution size="3840x2160" x="0.585" y="0.8546" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.5635" y="0.8536" width="0" height="0"  />
+  </meta>
+
+  <meta meter="neonCharge" tags="vlc,VALORANT" type="ocr_numeric" x="0.4904" y="0.9055" width="0.0188" height="0.0139" 
+    confidence="70" hdr-h="140-180" hdr-s="0-40" hdr-l="65-100">
+    <resolution aspect="3.55:1" x="0.4957" y="0.905" width="0.0081" height="0.015" />
+    <resolution aspect="24:10" x="0.4941" y="0.9035" width="0.0120" height="0.0160" />
+    <resolution aspect="16:11" x="0.491" y="0.9046" width="0.019" height="0.018" />
+
+    <resolution size="3840x2160" x="0.4918" y="0.905" width="0.0161" height="0.013" />
+    <resolution size="2560x1080" x="0.4941" y="0.9028" width="0.014" height="0.0167" />
+  </meta>
+
+  <meta meter="neonUlt" tags="vlc,VALORANT" x="0.6796" y="0.9583" width="0.0086" height="0.0014" 
+    h="0-360" s="0-10" l="90-100" type="linear" hdr-h="0-360" hdr-s="0-40" hdr-l="65-100">
+    <resolution aspect="3.55:1" x="0.5903" y="0.9597" width="0.0031" height="0" />
+    <resolution aspect="24:10" x="0.655" y="0.9597" width="0.0082" height="-0.0014" />
+    <resolution aspect="16:11" x="0.6995" y="0.9593" width="0.0086" height="-0.0006" />
+
+    <resolution size="3840x2160" x="0.7059" y="0.9592" width="0.0034" height="0"  />
+    <resolution size="2560x1080" x="0.6354" y="0.9592" width="0.0055" height="0"/>
+  </meta>
+
+  <meta meter="chamberUlt" tags="vlc,VALORANT" x=".4771" y=".888" height=".0001" width=".0479" 
+    h="50-70" s="50-100" l="60-100" type="linear" hdr-h="45-90" hdr-s="20-70" hdr-l="65-100">
+    <resolution aspect="3.55:1" x="0.4905" y="0.888" width="0.0193" height="0" />
+    <resolution aspect="24:10" x=".4771" y=".888" width=".0479" height=".0001" />
+    <resolution aspect="16:11" x=".4771" y=".888" width=".0479" height=".0001" />
+
+    <resolution size="3840x2160" x="0.4798" y="0.8847" width="0.0404" height="0.0009" />
+    <resolution size="2560x1080" x=".4771" y=".888" width=".0479" height=".0001" />
+  </meta>
+
+  <meta meter="reynaE" tags="vlc,VALORANT" type="area" x="0.442" y="0.665" width="0" height="0" h="160-170"
+    s="20-100" l="60-100" hdr-h="140-180" hdr-s="50-70" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.4725" y="0.66" width="0" height="0" />
+    <resolution aspect="24:10" x="0.4649" y="0.665" height="0.003" width="0.001" />
+    <resolution aspect="16:11" x="0.4328" y="0.6602" height="0.0056" width="0.001" />
+
+    <resolution size="3840x2160" x="0.4436" y="0.6656" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4568" y="0.6654" width="0" height="0"   />
+  </meta>
+
+  <meta meter="reynaE2" tags="vlc,VALORANT" type="area" x="0.3163" y="0.8916" width="0" height="0"   h="185-200"
+    s="30-100" l="40-95" hdr-h="140-180" hdr-s="70-90" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.4087" y="0.89" width="0" height="0.0055" />
+    <resolution aspect="24:10" x="0.38" y="0.8937" width="0.0004" height="0.0111" />
+    <resolution aspect="16:11" x="0.313" y="0.9112" width="0.0043" height="-0.0006" />
+
+    <resolution size="3840x2160" x="0.3167" y="0.8912" width="-0.0007" height="0.012"  />
+    <resolution size="2560x1080" x="0.3595" y="0.8934" width="0" height="0" />
+  </meta>
+
+  <meta meter="PlantSpikeConfirmation" tags="vlc,VALORANT" type="area" x="0.4639" y="0.1633" width="0.0011" height="0" 
+    h="0-360" s="0-40" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.4931" y="0.1547" width="0.0112" height="0.0023" />
+    <resolution aspect="24:10" x="0.4734" y="0.1625" width="0.0006" height="0" />
+    <resolution aspect="16:11" x="0.4603" y="0.1632" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.4630" y="0.1634" width="0.0013" height="0"  />
+    <resolution size="2560x1080" x="0.4734" y="0.1625" width="0.0006" height="0" />
+  </meta>
+
+  <meta meter="PlantSpikeBar" tags="vlc,VALORANT" type="area" x="0.4342" y="0.1696" width="0.1316" height="0.0139"
+    h="50-70" s="10-40" l="80-100" hdr-h="0-5" hdr-s="0-5" hdr-l="95-100">
+    <resolution aspect="3.55:1" x="0.4674" y="0.175" width="0.0643" height="0.0001" />
+    <resolution aspect="24:10" x="0.4513" y="0.1716" width="0.0971" height="0.0007" />
+    <resolution aspect="16:11" x="0.4271" y="0.177" width="0.1454" height="-0.0006"/>
+
+    <resolution size="3840x2160" x="0.4332" y="0.1755" width="0.1326" height="0.0024"  />
+    <resolution size="2560x1080" x="0.4513" y="0.1716" width="0.0971" height="0.0007" />
+  </meta>
+
+  <meta meter="SpikeNotYellow" tags="vlc,VALORANT" type="area" x="0.4365" y="0.189" width="0.0262" height="0.0007"
+    h="50-70" s="10-40" l="80-100" hdr-h="0-80" hdr-s="0-25" hdr-l="75-80">
+    <resolution aspect="3.55:1" x="0.4681" y="0.1932" width="0.0642" height="0.0007" />
+    <resolution aspect="24:10" x="0.4519" y="0.1932" width="0.0956" height="0.0007" />
+    <resolution aspect="16:11" x="0.4279" y="0.1889" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.4358" y="0.1904" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4994" y="0.0743" width="0.0009" height="0.0014" />
+  </meta>
+
+  <meta meter="BombPlanted" tags="vlc,VALORANT" type="area" x="0.5064" y="0.0236" width="0.0036" height="0.0021" 
+    h="-20-20" s="80-100" l="80-100" hdr-h="0-30" hdr-s="60-100" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.5074" y="0.0238" width="0.0006" height="0.0042" />
+    <resolution aspect="24:10" x="0.5111" y="0.0241" width="0.0008" height="0.0074" />
+    <resolution aspect="16:11" x="0.5096" y="0.0294" width="0.0015" height="0.0044" />
+
+    <resolution size="3840x2160" x="0.5077" y="0.0255" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.4994" y="0.0743" width="0.0009" height="0.0014" />
+  </meta>
+
+  <meta meter="BombNotRed" tags="vlc,VALORANT" type="area" x="0.5119" y="0.0292" width="0.0008" height="0.0014" 
+    h="-20-20" s="80-100" l="80-100" hdr-h="0-30" hdr-s="60-100" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.5109" y="0.0176" width="0.0006" height="0.0041" />
+    <resolution aspect="24:10" x="0.517" y="0.0204" width="0.0016" height="0.0037" />
+    <resolution aspect="16:11" x="0.5057" y="0.0294" width="0.0007" height="0.005" />
+
+    <resolution size="3840x2160" x="0.5121" y="0.0301" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.5021" y="0.0297" width="0.0008" height="0.0009"  />
+  </meta>
+
+  <meta meter="VictoryLossConfirmation" tags="vlc,VALORANT" type="area" x="0.1102" y="0.6386" width="0" height="0"
+    h="0-360" s="0-12" l="87-100" hdr-h="0-10" hdr-s="0-10" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.055" y="0.6376" width="0" height="0" />
+    <resolution aspect="24:10" x="0.08" y="0.6340" width="0.0015" height="0.0021" />
+    <resolution aspect="16:11" x="0.1176" y="0.3625" width="0.0086" height="0.0014" />
+
+    <resolution size="3840x2160" x="0.1094" y="0.6373" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.0832" y="0.6376" width="0" height="0" />
+  </meta>
+
+  <meta meter="VictoryGreen" tags="vlc,VALORANT" type="area" x="0.4252" y="0.8492" width="0.0078" height="0" 
+    h="155-168" s="10-80" l="30-100" hdr-h="140-180" hdr-s="0-80" hdr-l="20-100">
+    <resolution aspect="3.55:1" x="0.4594" y="0.8454" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.4741" y="0.8493" height="0.0001" width="0.02" />
+    <resolution aspect="16:11" x="0.7671" y="0.3496" width="0" height="0"   />
+
+    <resolution size="3840x2160" x="0.7395" y="0.3233" width="0" height="0.0236" />
+    <resolution size="2560x1080" x="0.4741" y="0.8493" height="0.0001" width="0.02" />
+  </meta>
+
+  <meta meter="LossRed" tags="vlc,VALORANT" type="area" x="0.4252" y="0.8492" width="0.0078" height="0" 
+    h="0-20" s="47-100" l="30-100" hdr-h="0-20" hdr-s="47-100" hdr-l="30-100">
+    <resolution aspect="3.55:1" x="0.4594" y="0.8454" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.4741" y="0.8493" height="0.0001" width="0.02" />
+    <resolution aspect="16:11" x="0.7671" y="0.3496" width="0" height="0"   />
+
+    <resolution size="3840x2160" x="0.4260" y="0.8495" width="0.0049" height="0" />
+    <resolution size="2560x1080" x="0.4435" y="0.8489" width="0.0071" height="0" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  //variables
+  var canvas, ctx;
+  var bursts = [];
+  var stateMgr = new StateHandler();
+  var effects = [];
+  var oldHealth = 0;
+  var oldCharge = 100;
+  var neonFill = "#00ffff"
+  var ShouldTriggerEffects = false;
+  var champId;
+  var bombPushed = false;
+  var bombCancelTimer = Date.now();
+  var timeSinceLastFlicker = 0;
+  var healthState = "green";
+  var prevHealthState = "green";
+  var timeoutHp = Date.now();
+  let hasTriggered = false;
+  let basebrightness = 65;
+  var currentColHigh = false;
+  var recentColSwitch = false;
+  let runningArr = [" M 26,111 31,104 L 26 111 L 31 104 L 40 99 L 35 89 L 37 80 L 30 70 L 21 63 L 6 59 L 5 50 L 14 48 L 21 50 L 21 41 L 18 32 L 14 24 L 14 16 L 22 7 L 31 4 L 40 6 L 49 2 L 58 4 L 67 10 L 74 17 L 78 26 L 87 35 L 87 46 L 81 53 L 88 64 L 95 68 L 104 69 L 107 79 L 106 89 L 99 83 L 89 87 L 80 89 L 66 87 L 57 91 L 52 100 L 49 108 L 39 110 Z"," M 42,110 55,109 L 42 110 L 55 109 L 65 108 L 64 97 L 69 92 L 79 94 L 87 95 L 90 103 L 96 98 L 98 89 L 95 80 L 85 80 L 89 72 L 88 62 L 83 51 L 87 43 L 83 33 L 78 24 L 73 15 L 66 9 L 58 4 L 49 3 L 40 6 L 31 5 L 22 8 L 16 15 L 12 23 L 18 31 L 22 40 L 19 50 L 10 57 L 15 63 L 25 64 L 33 72 L 44 80 L 46 90 L 52 99 L 42 103 L 41 109 Z"," M 59,111 67,101 L 59 111 L 67 101 L 60 95 L 53 85 L 45 77 L 35 70 L 25 63 L 15 64 L 19 52 L 22 42 L 18 31 L 14 24 L 14 15 L 21 6 L 30 3 L 39 4 L 49 0 L 58 2 L 66 7 L 74 14 L 78 23 L 82 34 L 84 44 L 84 56 L 85 65 L 78 75 L 78 84 L 87 88 L 89 96 L 80 105 L 71 109 Z"," M 30,109 39,109 L 30 109 L 39 109 L 50 108 L 59 103 L 55 89 L 57 82 L 68 87 L 77 87 L 86 85 L 96 82 L 105 85 L 104 75 L 99 65 L 89 69 L 84 64 L 86 55 L 84 46 L 82 36 L 80 25 L 76 16 L 69 8 L 62 3 L 51 0 L 41 4 L 32 3 L 23 5 L 16 14 L 14 22 L 19 30 L 23 40 L 23 50 L 22 59 L 26 67 L 34 72 L 31 81 L 40 94 L 40 101 L 30 106 Z"," M 62,111 68,102 L 62 111 L 68 102 L 59 98 L 52 86 L 42 79 L 31 70 L 19 70 L 16 60 L 23 55 L 23 46 L 19 36 L 16 28 L 15 19 L 22 11 L 30 7 L 39 9 L 48 4 L 57 5 L 66 9 L 74 16 L 78 25 L 82 35 L 85 48 L 84 57 L 86 67 L 80 77 L 77 86 L 87 92 L 90 99 L 82 108 Z"," M 42,110 38,105 L 42 110 L 38 105 L 50 101 L 46 91 L 45 81 L 34 73 L 24 63 L 14 63 L 10 56 L 19 50 L 22 41 L 18 32 L 13 24 L 15 16 L 21 8 L 30 5 L 39 7 L 48 2 L 57 3 L 65 6 L 72 13 L 77 22 L 82 31 L 87 41 L 85 50 L 87 59 L 90 69 L 83 79 L 93 80 L 99 87 L 96 97 L 91 104 L 87 95 L 78 94 L 68 92 L 64 98 L 65 108 L 56 109 Z"]
+  let sharkSVG ="M629.8,398.2c-11.5-34.4-66-98.3-82.3-98.3c-16.2,0-21.3,104.5-57.4,113.6c-34.6,8.7-203.7,48.8-203.7,48.8s-27.8-22.7-36.3-21c-7.1,1.4-10.6,33.1-32.5,34.8c-21.8,1.7-50.6,0.4-50.6,0.4C116.4,375,10,369.5,10,369.5c54.6,81.3,107.2,134.8,32.6,247.7c51.6,0,117.6-78.4,122.4-95.6c18.3-4.8,39.3-4.7,50.7,8.6c8.6,10.1,8.8,14.7,15.5,16.6c6.7,1.9,14.1-14.7,25.6-14.7c11.5,0,67.1,17.6,81.3,22c14.2,4.4,28.7,54.5,46.9,56.4c18.2,1.9,59.3-33.5,68.8-33.5c9.6,0,80.3,10.5,158.7,7.6c13.4,14.4,30.6,43.3-4.4,97.6c-6.7,10.5-4.8,27.7,17.2,10.5c22-17.2,62.6-41.4,103.7-115.9C771.2,573,990,519.6,990,480.4C990,441.2,749.3,394.4,629.8,398.2z"
+  let gPlantBar = 0
+
+  //Generic meters --------------------------------------------------------------------------
+
+  var healthMeter = new Meter(8, onHealthMeterChanged);
+  var healthRedMeter = new Meter(3, onHealthMeterChanged);
+  var shieldNotWhiteMeter = new Meter(10, onShieldMeterChanged);
+  var shieldWhiteMeter = new Meter(10, onShieldMeterChanged);
+  var bombMeter = new Meter(5, onBombMeterChanged);
+  var deadGreenMeter = new Meter(5, () => "");
+  var deadWhiteMeter = new Meter(5, () => "");
+  var cAbilityMeter = new Meter(15, cAbilityCallback);
+  var qAbilityMeter = new Meter(15, qAbilityCallback);
+  var xAbilityMeter = new Meter(15, xAbilityCallback);
+  var eAbilityMeter = new Meter(15, eAbilityCallback);
+
+  var ReynaEAbilityMeter = new Meter(10, () => "");
+  var ReynaE2AbilityMeter = new Meter(10, () => "");
+  var Chamber_ult_meter = new Meter(10, onChamber_x);
+  var Viper_Ult_meter = new Meter(10, onViper_x);
+  var chamberUltAnim = false;
+  var Neon_ult_meter = new Meter(5, () => "");
+  var Jett_x_meter = new Meter(10, onJett_x);
+  var PlantSpikeMeter = new Meter(15, ()=>"")
+  var VictoryGreenMeter = new Meter(10, VictoryCallback);
+  var LossRedMeter = new Meter(10, LossCallback);
+  var VictoryLossConfirmationMeter = new Meter(10, checkGameEnd);
+  let shieldBlueMeter = new Meter(10, onShieldMeterChanged)
+
+  //UPDATE LOOP ------------------------------------------------------------------------------
+  function update() {
+    if (effects.length == 0) {
+      bombPushed = false;
+    }
+    checkChanges();
+    VictoryLossConfirmationMeter.setValue(engine.vision.VictoryLossConfirmation);
+    VictoryGreenMeter.setValue(engine.vision.VictoryGreen);
+    LossRedMeter.setValue(engine.vision.LossRed);
+    deadGreenMeter.setValue(engine.vision.deadGreen);
+    deadWhiteMeter.setValue(engine.vision.deadWhite);
+    if (enableHealth && ShouldTriggerEffects && (deadWhiteMeter.value != 1 && deadGreenMeter.value != 1)) {
+      healthMeter.setValue(engine.vision.health);
+      healthRedMeter.setValue(engine.vision.healthred);
+    }
+    if (enableShield && ShouldTriggerEffects && (deadWhiteMeter.value != 1 && deadGreenMeter.value != 1)) {
+      shieldNotWhiteMeter.setValue(engine.vision.shieldNotWhite);
+      shieldWhiteMeter.setValue(engine.vision.shieldWhite);
+      shieldBlueMeter.setValue(engine.vision.ShieldBlue);
+    }
+    if (champId != "Astra") {
+      if (enableBomb) {
+        bombMeter.setValue(engine.vision.BombPlanted);
+        PlantSpikeMeter.setValue(engine.vision.PlantSpikeConfirmation)
+      }
+    }
+    if (engine.vision.inGame1 > 0.5 && engine.vision.inGame2 > 0.5 && (deadGreenMeter.value != 1 && deadWhiteMeter.value != 1)) {
+      if (enableHealth) {
+        if (engine.vision.health > 0) {
+          healthMeter.setValue(engine.vision.health);
+        }
+      }
+      if (enableAgents && (deadGreenMeter.value != 1 && deadWhiteMeter.value != 1)) {
+        ReynaEAbilityMeter.setValue(engine.vision.reynaE);
+        ReynaE2AbilityMeter.setValue(engine.vision.reynaE2);
+        cAbilityMeter.setValue(engine.vision.cMeter);
+        qAbilityMeter.setValue(engine.vision.qMeter);
+        eAbilityMeter.setValue(engine.vision.eMeter);
+        xAbilityMeter.setValue(engine.vision.xMeter);
+
+
+        if (engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5) {
+          if (champId == "Neon") {
+            Neon_ult_meter.setValue(engine.vision.neonUlt);
+            onNeon_e();
+          } else if (champId == "Chamber") {
+            Chamber_ult_meter.setValue(engine.vision.chamberUlt);
+          } else if (champId == "Jett") {
+            Jett_x_meter.setValue(engine.vision.jettX);
+          } else if (champId == "Viper") {
+            Viper_Ult_meter.setValue(engine.vision.viperX);
+          }
+        }
+      }
+    }
+
+    DrawRect(0, 0, 320, 200, "black")
+    backgroundHandler()
+
+    stateMgr.Process();
+    effects.forEach((ele, i)=>{
+      ele.draw()
+      if(ele.lifetime <= 0) effects.splice(i, 1)
+    })
+
+    if (enableBomb) {
+      if (PlantSpikeMeter.value >= .95 && engine.vision.PlantSpikeBar > .01 && engine.vision.SpikeNotYellow <= 0) gPlantBar += (engine.vision.PlantSpikeBar - gPlantBar) / 10
+      else if (PlantSpikeMeter.value <= .1 || bombMeter.value >= .75 || engine.vision.PlantSpikeBar <= .05) gPlantBar > 0 ? gPlantBar-=5 : gPlantBar = 0
+      ctx.beginPath();
+      ctx.fillStyle = "hsla(60,75%,70%,1)"
+      ctx.fillRect(0, 0, gPlantBar * 320, 200)
+    }
+    window.requestAnimationFrame(update);
+  }
+
+    let proBack = [0, 0, 0]
+    function onbackColorChanged(){
+      let temp = hexToHSL(backColor)
+      proBack = [temp.h, temp.s, temp.l]
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+  function checkChanges() {
+    ShouldTriggerEffects = engine.vision.ValidAbilities >= 0.95 ? (deadGreenMeter.value < 0.8 && deadWhiteMeter.value < 0.8) ? true : false : false;
+    if (healthState != prevHealthState) {
+      effects.push(new BackgroundFade(500, healthState));
+      prevHealthState = healthState;
+    }
+
+    if (champId != selectedChamp) {
+      CharacterSelectEffect();
+    }
+    champId = selectedChamp;
+  }
+  //END UPDATE LOOP --------------------------------------------------------------------------
+  //GENERAL METER CALLBACKS --------------------------------------------------------------------------
+  function onHealthMeterChanged() {
+    if (healthMeter.value > 0.2 && healthMeter.increased && Date.now() - timeoutHp > 500) {
+      healthState = "#00ff00";
+    } else if (healthMeter.value < 0.1 ) {
+      healthState = "#ff9900";
+    } else if (healthRedMeter.increased && healthRedMeter.value > 0.03 && healthMeter.decreased && healthMeter.value < 0.07) {
+      healthState = "#ff0000";
+      timeoutHp = Date.now();
+    }
+  }
+
+  function onShieldMeterChanged() {
+    if (!hasTriggered && shieldWhiteMeter.value >= .15 && shieldNotWhiteMeter.value <= .05 && shieldBlueMeter.value >= .95 && ShouldTriggerEffects) {
+      stateMgr.Push(new ShieldIncreaseState("#2effab"));
+      hasTriggered = true;
+    }
+     if(shieldWhiteMeter.value <= .05 && shieldBlueMeter.value <= .05){
+      hasTriggered = false;
+     }
+  }
+
+  function checkGameEnd() {
+    VictoryCallback()
+    LossCallback()
+  }
+
+  function VictoryCallback() {
+    if (VictoryGreenMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95 && !ShouldTriggerEffects && healthMeter.value <= .05) {
+      effects.push(new VictoryEffect())
+    }
+  }
+
+  function LossCallback() {
+    if (LossRedMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95 && !ShouldTriggerEffects && healthMeter.value <= .05) {
+      effects.push(new DefeatEffect())
+    }
+  }
+
+  function onBombMeterChanged() {
+    if (bombMeter.value >= .95 && engine.vision.BombNotRed <= .05 && !bombPushed && PlantSpikeMeter.value >= .95) {
+      bombPushed = true;
+      stateMgr.Push(new AlertState("#ff1100"));
+      effects.push(new SpikeProgressionEffect());
+    } else if (bombMeter.decreased && bombMeter.value == 0) {
+      bombPushed = false;
+    }
+    if (recentColSwitch) {
+      recentColSwitch = false;
+    }
+  }
+
+  function SpikeLoading(){
+      this.width = 0
+      this.draw = function(){
+        this.width < 100 ? this.width += .5 : this.lifetime = 0
+        DrawRect(0, 0, this.width * 3.2, 200, "hsla(60,75%,70%,1)")
+      }
+    }
+  //END GENERAL METER CALLBACKS --------------------------------------------------------------------------
+  //CHARACTER METER CALLBACKS --------------------------------------------------------------------------
+  function onJett_x() {
+    if (xAbilityMeter.value >= .5 && Jett_x_meter.increased) {
+      effects.push(new JettX())
+    }
+    if (xAbilityMeter.value >= .5 && Jett_x_meter.decreased) {
+      effects.push(new JettX())
+    }
+  }
+
+  function cAbilityCallback() {
+    if (cAbilityMeter.decreased && cAbilityMeter.diff > 0.1  && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+      switch (champId) {
+        case "Astra":
+          effects.push(new rippleEffect(["#9d00ff"], 8, true, "in", 2000, "black", 2, 200, 20))
+          break;
+        case "Breach":
+          effects.push(new breachq());
+          break;
+        case "Brimstone":
+          PulseRippleStateKayo("#ffa600", "00ffe5", false)
+          break;
+        case "Chamber":
+          effects.push(new chamberC());
+          break;
+        case "Clove":
+          effects.push(new CloveC());
+          break;
+        case "Cypher":
+          effects.push(new CypherC())
+          break;
+        case "Deadlock":
+          effects.push(new DeadlockC());
+          break;
+        case "Fade":
+          effects.push(new FadeC())
+          break;
+        case "Gekko":
+          effects.push(new GekkoC())
+          break;
+        case "Harbor":
+          effects.push(new HarborC())
+          break;
+        case "Jett":
+          effects.push(new JettC())
+          break;
+        case "Kayo":
+          effects.push(new rippleEffect(["#ff00fb", "#00fbff", "#ff00fb"], 6, false, "out", 2000, "black", 0, 20, 0, false))
+          effects.push(new rippleEffect(["#ff00fb", "#00fbff", "#ff00fb"], 3, false, "out", 2000, "null", 0, 30, 0, false))
+          break;
+        case "Killjoy":
+          effects.push(new SwarmState("#4287f5", "#ff00fb", "#fc74fa"));
+          break;
+        case "ISO":
+          effects.push(new ISOC());
+          break;
+        case "Neon":
+          effects.push(new neonWall());
+          break;
+        case "Omen":
+          effects.push(new omenq());
+          break;
+        case "Phoenix":
+          stateMgr.Push(new WallUpState("#ff8c00", "#fc8c03", "#ff5e00", "up"));
+          break;
+        case "Raze":
+          effects.push(new RotatingBeam("#ffb121", "#1fffe9"));
+          break;
+        case "Reyna":
+          effects.push(new ReynaC())
+          
+          break;
+        case "Sage":
+          stateMgr.Push(new WallUpState("#00ffff", "#00aaff", "#0066ff", "up"));
+          
+          break;
+        case "Skye":
+          effects.push(new SkyeC())
+          
+          break;
+        case "Sova":
+          effects.push(new RotatingBeam("#1900ff", "#dfdee3"));
+          
+          break;
+        case "Viper":
+          effects.push(new ViperC())
+          
+          break;
+        case "Vyse":
+          effects.push(new VyseC())
+          
+          break;
+        case "Yoru":
+          FootstepState("#0040ff", "#00c3ff", "#2974ff")
+          
+          break;
+      }
+    }
+  }
+
+  function qAbilityCallback() {
+    if (qAbilityMeter.decreased && qAbilityMeter.diff > 0.1   && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+      
+      
+      switch (champId) {
+        case "Astra":
+          var colors = hexToHSL("#db44fc");
+          for (let i = 0; i < 15 * 3; i++) {
+            effects.push(
+              new moveableBar(
+                160,
+                random(0, 200),
+                40,
+                20,
+                random(-6, 6),
+                0,
+                colors.h + random(-20, 20),
+                colors.s + random(-20, 20),
+                colors.l,
+                0.9
+              )
+            );
+          }
+          break;
+        case "Breach":
+          stateMgr.Push(new ExplodingOrbState("#fcba03", "#ff5900", "#ffffff", true, true));
+          
+          break;
+        case "Brimstone":
+          stateMgr.Push(new ExplodingOrbState("#fffef7", "#ff7b00", "#ff3700", false, true));
+          
+          setTimeout(() => {
+            effects.push(new rippleEffect(["#ff9400", "#ff0000", "#b300ff"], 6, false, "out", 1500, "black", 0, 20, 0, false))
+            effects.push(new rippleEffect(["#ff9400", "#ff0000", "#b300ff", "ff9400"], 3, false, "out", 1500, "null", 0, 30, 0, false))
+            
+          }, 800);
+          break;
+        case "Chamber":
+          effects.push(new chamberQ())
+          
+          break;
+        case "Clove":
+          effects.push(new CloveQ());
+          
+          break;
+        case "Cypher":
+          effects.push(new CypherQ())
+          
+          break;
+        case "Deadlock":
+          effects.push(new DeadlockQ());
+          
+          break;
+        case "Fade":
+          effects.push(new FadeQ())
+          
+          break;
+        case "Gekko":
+          effects.push(new GekkoQ())
+          
+          break;
+        case "Harbor":
+          effects.push(new HarborQ())
+          
+          break;
+        case "Jett":
+        var colors = hexToHSL("#11f8ff");
+            for (let i = 0; i < 20; i++) {
+              setTimeout(function () {
+                effects.push(
+                  new moveableBar(i * 20, 160, 100, 20, 0, -5, colors[0] + random(-20, 20), colors[1] + random(-20, 20), colors[2], 0.9)
+                );
+              }, i * 30);
+              setTimeout(function () {
+                effects.push(
+                  new moveableBar(i * 20, 160, 100, 20, 0, 5, colors[0] + random(-20, 20), colors[1] + random(-20, 20), colors[2], 0.9)
+                );
+              }, i * 30);
+            }
+          break;
+        case "Kayo":
+            stateMgr.Push(new ExplodingOrbState("#fffef7", "#ff7b00", "#ff3700", false, true));
+            
+            setTimeout(() => {
+              effects.push(new rippleEffect(["#ff9400", "#ff0000", "#b300ff"], 6, false, "out", 1500, "black", 0, 20, 0, false))
+              effects.push(new rippleEffect(["#ff9400", "#ff0000", "#b300ff", "ff9400"], 3, false, "out", 1500, "null", 0, 30, 0, false))
+              
+            }, 800);
+          break;
+        case "Killjoy":
+          effects.push(new rippleEffect(["ff1177"], 5, false, "out", 2000, "black", 0, 0, 0, false))
+          effects.push(new bounceBar(0, 0, 320, 30, { x: 0, y: 5 }, 1, "cyan"))
+          
+          break;
+        case "ISO":
+          effects.push(new ISOQ());
+          
+          break;
+        case "Neon":
+          effects.push(new NeonQ())
+          
+          break;
+        case "Omen":
+          stateMgr.Push(new EffectCloudState("#0030ff", "#ffaa00", "#bb00ff"));
+          
+          break;
+        case "Phoenix":
+          stateMgr.Push(new ExplodingOrbState("#ff7700", "#ff9911", "#ffcc00", 1, 1, "black", 2));
+          
+          break;
+        case "Raze":
+          effects.push(new RazeQ())
+          
+          break;
+        case "Reyna":
+          effects.push(new ReynaQ())
+          
+          break;
+        case "Sage":
+          stateMgr.Push(new EffectCloudState("#00ffff", "#00aaff", "#0066ff"));
+          
+          break;
+        case "Skye":
+          effects.push(new SkyeDogEffect());
+          
+          break;
+        case "Sova":
+          effects.push(new SovaQ())
+          
+          break;
+        case "Viper":
+            stateMgr.Push(new EffectCloudState("#48ff00", "#00b31e", "#bbdb00", "hsla(0,0%,0%,0)"));
+            
+            setTimeout(()=>{
+              stateMgr.Push(new EffectCloudState("#48ff00", "#00b31e", "#bbdb00", "hsla(0,0%,0%,0)"));
+              
+            }, 1500)
+          break;
+        case "Vyse":
+          effects.push(new VyseQ())
+          
+          break;
+        case "Yoru":
+          stateMgr.Push(new ExplodingOrbState("#0040ff", "#0000ff", "#2974ff", 1, 1, "black", 1));
+          
+          break;
+      }
+    }
+  }
+
+  function eAbilityCallback() {
+    if (eAbilityMeter.decreased && eAbilityMeter.diff > 0.1 && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+      
+      
+      switch (champId) {
+        case "Astra":
+          effects.push(new rippleEffect(["#9d00ff", "#fff200", "#9d00ff"], 6, false, "out", 2000, "black", 0, 20, 0, false))
+          effects.push(new rippleEffect(["#9d00ff", "#fff200", "#9d00ff"], 3, false, "out", 2000, "null", 0, 30, 0, false))
+          
+          break;
+        case "Breach":
+          stateMgr.Push(new HorizontalExpandState("#fcba03", "#ff5900", "#ffffff"));
+          
+          break;
+        case "Brimstone":
+          effects.push(new brimstoneE())
+          
+          break;
+        case "Chamber":
+          var colors = hexToHSL("#ffee00");
+          for (let i = 0; i < 40; i++) {
+            effects.push(
+              new moveableBar(
+                160,
+                random(0, 200),
+                40,
+                20,
+                random(-6, 6),
+                0,
+                colors.h + random(-20, 20),
+                colors.s + random(-20, 20),
+                colors.l,
+                0.9
+              )
+            );
+            
+          }
+          break;
+        case "Clove":
+          effects.push(new CloveE());
+          
+          break;
+        case "Cypher":
+          var colors = hexToHSL("#4d94ff");
+          for (let i = 0; i < 20 * 2; i++) {
+            setTimeout(function () {
+              effects.push(new moveableBar(-30, Math.random() * 200, 10, 30, 10, 0, colors.h + random(-10, 10), colors.s, colors.l, 0.9));
+              
+            }, Math.random() * 2000);
+            setTimeout(function () {
+              effects.push(new moveableBar(320, Math.random() * 200, 10, 30, -10, 0, colors.h + random(-10, 10), colors.s, colors.l, 0.9));
+              
+            }, Math.random() * 2000);
+          }
+          break;
+        case "Deadlock":
+          effects.push(new DeadlockE());
+          
+          break;
+        case "Fade":
+          effects.push(new FadeE())
+          
+          break;
+          case "Gekko" :
+            effects.push(new GekkoE())
+            
+            break;
+        case "Harbor":
+          effects.push(new HarborE())
+          
+          break;
+        case "Jett":
+          effects.push(new JettE())
+          
+          break;
+        case "Kayo":
+          PulseRippleStateKayo("#ff00fb", "#001eff", false)
+          
+          break;
+        case "Killjoy":
+          stateMgr.Push(new TurretState("#4287f5", "#ff00fb", "#fc74fa"));
+          
+          break;
+        case "ISO":
+          effects.push(new ISOE());
+          
+          break;
+        case "Neon":
+          effects.push(new neonWall());
+          
+          break;
+        case "Omen":
+          stateMgr.Push(new ExplodingOrbState("#6600ff", "#9900dd", "#101010", false));
+          
+          break;
+        case "Phoenix":
+          effects.push(new PhoenixE())
+          
+          break;
+        case "Raze":
+          stateMgr.Push(new RazeE());
+          
+          break;
+        case "Reyna":
+          if (ReynaEAbilityMeter.increased) {
+            stateMgr.Push(new EffectCloudState("#ee00ff", "#400066", "#220066"));
+            
+          }
+          if (ReynaEAbilityMeter.value <= 0 && ReynaE2AbilityMeter.increased) {
+            stateMgr.Push(new WallUpState("#ee00ff", "#400066", "#220066", "down"));
+            
+          }
+          break;
+        case "Sage":
+          effects.push(new SageE())
+          
+          break;
+        case "Skye":
+          effects.push(new SkyeE())
+          
+          break;
+        case "Sova":
+          effects.push(new rippleEffect(["#0048ff"], 8, true, "out", 2000, "black", 2, 200, 20))
+          
+          break;
+        case "Viper":
+          stateMgr.Push(new WallUpState("#48ff00", "#00b31e", "#00db5f", "up"));
+          
+          break;
+        case "Vyse":
+          effects.push(new VyseE())
+          
+          break;
+        case "Yoru":
+            effects.push(new rippleEffect(["#0800ff", "#ff5500cc", "#0800ff"], 6, false, "out", 2000, "black", 0, 20, 0, false))
+            effects.push(new rippleEffect(["#0800ff", "#ff5500cc", "#0800ff"], 3, false, "out", 2000, "null", 0, 30, 0, false))
+            effects.push(new rippleEffect(["#0800ff", "#ff5500cc", "#000000"], 3, false, "out", 3000, "null", 0, 40, 0, false))
+            
+          break;
+      }
+    }
+  }
+
+  function onNeon_e() {
+    if (ShouldTriggerEffects) {
+      var charge = engine.vision.neonCharge;
+      if (charge != -1 && charge != oldCharge) {
+        var direction = charge < oldCharge
+        oldCharge = charge;
+        if (charge < 20 && charge != -1) {
+          neonFill = "#ff0015";
+        } else if (charge < 40 && charge != -1) {
+          neonFill = "#ff00d4";
+        } else if (charge < 60 && charge != -1) {
+          neonFill = "#6a00ff";
+        } else if (charge < 80 && charge != -1) {
+          neonFill = "#002aff";
+        } else {
+          neonFill = "#00ffff";
+        }
+        for (let i = 0; i < 5; i++) {
+          effects.push(new neonRun(neonFill, direction));
+          setTimeout(() => { effects.push(new neonRun(neonFill, direction)) }, 100)
+          setTimeout(() => { effects.push(new neonRun(neonFill, direction)) }, 200)
+        }
+      }
+    }
+  }
+
+  function xAbilityCallback() {
+    if (xAbilityMeter.decreased && xAbilityMeter.diff > 0.1  && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+      
+      switch (champId) {
+        case "Astra":
+          stateMgr.Push(new WallUpState("#c64aff", "#8c00ff", "#ffff66", "up"));
+          
+          break;
+        case "Breach":
+          effects.push(new breachX());
+          
+          break;
+        case "Brimstone":
+          effects.push(new brimstoneX())
+          
+          break;
+        case "Chamber":
+          PulseRippleStateKayo("#ffa600", "#00ffe5", true)
+          stateMgr.Push(new chamberUltSights());
+          
+          break;
+        case "Clove":
+          effects.push(new CloveX());
+          
+          break;
+        case "Cypher":
+          effects.push(new CypherX())
+          
+          break;
+        case "Deadlock":
+          effects.push(new DeadlockX());
+          
+          break;
+        case "Fade":
+          effects.push(new FadeX())
+          
+          break;
+          case "Gekko" :
+          effects.push(new GekkoX())
+          
+          break;
+        case "Harbor":
+          effects.push(new HarborX())
+          
+          break;
+        case "ISO":
+          effects.push(new ISOX());
+          
+          break;
+        case "Kayo":
+          stateMgr.Push(new kayoZ("#ff00fb", "#001eff"));
+          
+          break;
+        case "Killjoy":
+          PulseRippleStateKayo("#ff00fb", "#001eff", false)
+          
+          break;
+        case "Omen":
+          effects.push(new OmenX())
+          
+          break;
+        case "Phoenix":
+          stateMgr.Push(new CollapseState("#ff8c00", "#ff5100", "#ff5e00"));
+          
+          break;
+        case "Raze":
+          effects.push(new RazeX())
+          
+          break;
+        case "Reyna":
+          effects.push(new ReynaX())
+          
+          break;
+        case "Sage":
+          var colors = hexToHSL("#00f7ff");
+          effects.push(new CenterWave(colors.h, colors.s, colors.l, 1));
+          
+          break;
+        case "Skye":
+          effects.push(new SkyeX())
+          
+          break;
+        case "Sova":
+          effects.push(new SovaX())
+          
+          break;
+        case "Vyse":
+          effects.push(new VyseX())
+          
+          break;
+        case "Yoru":
+          effects.push(new YoruX())
+          
+          break;
+      }
+    } else if (champId == "Chamber") {
+      onChamber_x();
+    }
+  }
+
+  function VyseX(){
+      this.count = 0
+      this.lifetime = 500
+       this.draw = function(){
+        if(!this.count) effects.push(new vyseXHelp())
+        this.count < 10 ? this.count++ : this.count = 0
+        this.lifetime--
+       }
+    }
+
+    function vyseXHelp(){
+      this.x = Math.random() * 220 + 50
+      this.y = Math.random() * 100 + 50
+      this.mod1 = Math.random() * 400 - 200
+      this.mod2 = Math.random() * 400 - 200
+      this.alpha = 0
+      this.half = false
+      this.draw = function(){
+        DrawCircle(this.x + Math.cos(Date.now() / 200) * this.mod1, this.y + Math.sin(Date.now() / 200) * this.mod2, 10, `hsla(280, 30%, 50%, ${this.alpha})`)
+        DrawCircle(this.x + Math.cos(Date.now() / 200 - 100) * this.mod1, this.y + Math.sin(Date.now() / 200 - 100) * this.mod2, 15, `hsla(280, 20%, 50%, ${this.alpha})`)
+        DrawCircle(this.x + Math.cos(Date.now() / 200 - 200) * this.mod1, this.y + Math.sin(Date.now() / 200 - 200) * this.mod2, 20, `hsla(280, 10%, 50%, ${this.alpha})`)
+        DrawCircle(this.x + Math.cos(Date.now() / 200 - 300) * this.mod1, this.y + Math.sin(Date.now() / 200 - 300) * this.mod2, 15, `hsla(280, 5%, 50%, ${this.alpha})`)
+        DrawCircle(this.x + Math.cos(Date.now() / 200 - 400) * this.mod1, this.y + Math.sin(Date.now() / 200 - 400) * this.mod2, 10, `hsla(280, 0%, 50%, ${this.alpha})`)
+        if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
+        else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      }
+    }
+
+    function VyseE(){
+      this.rot = 0
+      this.alpha = 0
+      this.half = false
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+        ctx.save()
+        ctx.translate(160, 100)
+        ctx.rotate(this.rot)
+        ctx.translate(-160, -100)
+        DrawTriangle(160, 100, 160, 30, 300, 100, `hsla(0, 0%, 50%, ${this.alpha})`)
+        ctx.translate(160, 100)
+        ctx.rotate(Math.PI * 2 / 3)
+        ctx.translate(-160, -100)
+        DrawTriangle(160, 100, 160, 30, 300, 100, `hsla(0, 0%, 50%, ${this.alpha})`)
+        ctx.translate(160, 100)
+        ctx.rotate(Math.PI * 2 / 3)
+        ctx.translate(-160, -100)
+        DrawTriangle(160, 100, 160, 30, 300, 100, `hsla(0, 0%, 50%, ${this.alpha})`)
+        ctx.restore()
+        this.rot -= .075
+        if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
+        else this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
+      }
+    }
+
+    function VyseQ(){
+      this.alpha = 0
+      this.half = false
+      this.draw = function(){
+        vyseQHelp(0, 0, 320, 150, 25, `hsla(0, 0%, 50%, ${this.alpha})`)
+        vyseQHelp(0, 0, 320, 115, 20, `hsla(60, 100%, 50%, ${this.alpha})`)
+        vyseQHelp(0, 0, 320, 105, 15, `hsla(30, 90%, 50%, ${this.alpha})`)
+        vyseQHelp(0, 0, 320, 90, 10, `hsla(0, 80%, 50%, ${this.alpha})`)
+        vyseQHelp(0, 0, 320, 80, 5, `hsla(260, 100%, 40%, ${this.alpha})`)
+        if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
+        else this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
+      }
+    }
+
+    function vyseQHelp(x, y, width, height, mod, color){
+      ctx.beginPath()
+      ctx.moveTo(x, y)
+      ctx.lineTo(x + width, y)
+      for(let i = 0; i < 11; i++){
+        ctx.lineTo(320 - i * 32, Math.sin(i + Date.now() / 500) * mod + height)
+      }
+      ctx.lineTo(x, y)
+      ctx.fillStyle = color
+      ctx.fill()
+    }
+
+    function VyseC(){
+      this.rot = 0
+      this.alpha = 1
+      this.draw = function(){
+        vyseCHelp(160, 100, 150, 0, this.rot * 3, `hsla(0, 0%, 50%, ${this.alpha})`, 100)
+        vyseCHelp(160, 100, 120, 0, this.rot * 2.5, `hsla(260, 100%, 40%, ${this.alpha})`, 75)
+        vyseCHelp(160, 100, 100, 0, this.rot * 2, `hsla(0, 80%, 50%, ${this.alpha})`, 60)
+        vyseCHelp(160, 100, 80, 0, this.rot * 1.5, `hsla(30, 90%, 50%, ${this.alpha})`, 50)
+        vyseCHelp(160, 100, 50, 0, this.rot, `hsla(60, 100%, 50%, ${this.alpha})`, 25)
+        this.rot < Math.PI * 2 ? this.rot += Math.PI / 50 : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+      }
+    }
+
+    function vyseCHelp(x, y, radius, start, end, color, stroke){
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke;
+      ctx.arc(x, y, radius, start, end)
+      ctx.stroke();
+    }
+
+
+  function onChamber_x() {
+    if (champId == "Chamber" && ShouldTriggerEffects) {
+      if (xAbilityMeter.value > .8 && Chamber_ult_meter.value >= .95 && !chamberUltAnim) {
+        stateMgr.Push(new chamberUltSights());
+        chamberUltAnim = true;
+      }
+    }
+  }
+
+  function ViperC(){
+    this.lifetime = 150
+    this.draw = function(){
+      effects.push(new ViperCHelp())
+      this.lifetime--
+    }
+  }
+
+  function ViperCHelp(){
+    this.x = Math.random() * 320
+    this.y = Math.random() * 200
+    this.rad = 1
+    this.alpha = 1
+    this.hue = Math.random() * 30 + 90
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsla(${this.hue}, 100%, 50%, ${this.alpha})`)
+      this.rad < 25 ? this.rad ++ : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+    }
+  }
+
+    function onViper_x() {
+      var colors = hexToHSL("#00fa32");
+      for (let i = 100; i < 200; i = i + 10) {
+        for (let j = 0; j < 10; j++) {
+          setTimeout(function () {
+            effects.push(
+              new moveableBar(
+                random(0, 360),
+                i - 50,
+                50,
+                20,
+                0,
+                -2,
+                colors[0] + random(-20, 20),
+                colors[1] + random(-20, 20),
+                colors[2],
+                0.9
+              )
+            );
+          }, Math.random() * 2000);
+          setTimeout(function () {
+            effects.push(
+              new moveableBar(
+                random(0, 360),
+                200 - i + 50,
+                50,
+                20,
+                0,
+                2,
+                colors[0] + random(-20, 20),
+                colors[1] + random(-20, 20),
+                colors[2],
+                0.9
+              )
+            );
+          }, Math.random() * 2000);
+        }
+      }
+  }
+  //END CHARACTER METER CALLBACKS --------------------------------------------------------------------------
+  //EFFECTS
+  function AlertState(color) {
+    var colors = hexToHSL(color);
+    var y = 0;
+    var y2 = 200;
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    effects.push(new bounceBar(0, 0, 320, 30, { x: 0, y: 5 }, 1, "white"))
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      var norm_elapsed = this.elapsed / this.duration;
+      var phaseBrightness = norm_elapsed * Math.PI * 3;
+      var bright = 20 + Math.abs(Math.sin(phaseBrightness)) * 30;
+      ctx.fillStyle = "hsl(" + colors.h + "," + 100 + "%," + bright + "%)";
+      ctx.fillRect(0, 0, 320, 200);
+    };
+  }
+
+  function BackgroundFade(speed, color) {
+    this.alpha = 0;
+    this.there = false;
+    this.start = Date.now();
+    this.lifetime = 10
+    this.stop = 0;
+    this.a = 0;
+    this.color = hexToHSL(color)
+    this.draw = function () {
+      var fadeGrad = ctx.createRadialGradient(160, 100, 10, 160, 100, 250)
+      fadeGrad.addColorStop(0, `hsla(${this.color.h}, ${this.color.s}%, ${this.color.l}%, 0)`)
+      fadeGrad.addColorStop(this.stop, color)
+      this.stop <= (1 - this.a) ? this.stop += this.a : null;
+      this.a += .0002
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, fadeGrad);
+      ctx.globalAlpha = 1;
+      if (this.there) {
+        this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0;
+      } else {
+        this.alpha <= .98 ? this.alpha += .02 : this.there = true;
+      }
+    }
+  }
+
+  function CloveX(){
+      this.alpha = 0
+      this.start = Date.now()
+      this.draw = function(){
+        let elapsed = Date.now() - this.start
+        DrawRect(0, 0, 320 * (1 - elapsed / 15000), 200, `hsla(${190 + elapsed / 15000 * 170}, 90%, 60%, ${this.alpha})`)
+        this.alpha < 1 ? this.alpha += .05 : this.alpha = 1
+      }
+    }
+
+    function CloveC(){
+      this.count = 0
+      this.draw = function(){
+        this.count < 85 ? this.count++ : this.lifetime = 0
+        if(this.count % 10 == 0) effects.push(new cloveCHelp(this.count))
+      }
+    }
+
+    function cloveCHelp(val){
+      this.y = 200
+      this.color = `hsl(${190 + val * 2}, 90%, 60%)`
+      this.draw = function(){
+        ctx.beginPath()
+        ctx.moveTo(0, this.y + 50)
+        ctx.lineTo(160, this.y)
+        ctx.lineTo(320, this.y + 50)
+        ctx.strokeStyle = this.color
+        ctx.lineWidth = 50
+        ctx.stroke()
+        this.y > -60 ? this.y -= 5 : this.lifetime = 0
+      }
+    }
+
+    function CloveE(){
+      this.lifetime = 200
+      this.draw = function(){
+        effects.push(new cloveEHelp(this.lifetime))
+        this.lifetime--
+      }
+    }
+
+    function cloveEHelp(val){
+      this.x = Math.random() * 320
+      this.y = 210
+      this.vy = -.5
+      this.color = `hsla(${Math.random() * 160 + 200}, 100%, ${val / 2}%, 1)`
+      this.draw = function(){
+        DrawCircle(this.x, this.y, 20, this.color)
+        this.y > -10 ? this.y += this.vy : this.lifetime = 0
+        this.vy -= .01
+      }
+    }
+
+    function CloveQ(){
+      this.rad = 1
+      this.count = 0
+      this.color1 = "purple"
+      this.color2 = "purple"
+      this.color3 = "purple"
+      this.alpha = 1
+      this.draw = function(){
+        this.count++
+        ctx.globalAlpha = this.alpha
+        if(this.count < 10){
+          this.rad < 20 ? this.rad += 5 : this.rad = 20
+        } else if(this.count < 30){
+          this.color2 = "pink"
+          this.color3 = "cyan"
+        } else {
+          this.rad += 4
+          this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+        }
+        DrawCircle(160, 100, this.rad, this.color1)
+        DrawCircle(160, 100, this.rad * .8, this.color2)
+        DrawCircle(160, 100, this.rad * .3, this.color3)
+      }
+    }
+
+  function RazeQ(){
+      this.lifetime = 5
+      this.draw = function(){
+        for(let i = 0; i < 30; i++) effects.push(new RazeQHelp())
+        this.lifetime--
+      }
+    }
+
+    function RazeQHelp(){
+    this.x = 160
+    this.y = 100
+    this.vx = 6 - Math.random() * 12
+    this.vy = 6 - Math.random() * 12
+    this.hue = Math.random() <= .33 ? "red" : Math.random() <= .33 ? "orange" : "green"
+    this.lifetime = 100
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20, this.hue)
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime--
+    }
+  }
+
+  function bounceBar(x, y, width, height, speed, bA, color) {
+    this.reverse = false;
+    this.speed = speed;
+    this.color = color;
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.bA = bA;
+    this.bounces = 0;
+
+    this.draw = function () {
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+      this.y += this.speed.y;
+      this.x += this.speed.x;
+      if (this.y > 200 - height) {
+        this.speed.y = -this.speed.y;
+        this.bounces++;
+      }
+      if (this.y < 0) {
+        this.speed.y = -this.speed.y;
+        this.bounces++;
+      }
+      if (this.x < 0) {
+        this.speed.x = -this.speed.x;
+        this.bounces++;
+      }
+      if (this.x > 320 - width) {
+        this.speed.x = -this.speed.x;
+        this.bounces++;
+      }
+      if (this.bounces > this.bA) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function ReynaC(){
+      this.effects = []
+      this.alpha = 2
+      this.draw = function(){
+        this.effects.push(new reynaCHelp())
+        ctx.globalAlpha = this.alpha
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        if(this.effects.length > 20) this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+        DrawCircle(160, 100, 50, "purple")
+        ctx.beginPath()
+        ctx.moveTo(140, 100)
+        ctx.lineTo(160, 0)
+        ctx.lineTo(180, 100)
+        ctx.lineTo(160, 200)
+        ctx.lineTo(140, 100)
+        ctx.fillStyle = "black"
+        ctx.fill()
+        ctx.globalAlpha = 1
+      }
+    }
+
+    function reynaCHelp(){
+    this.x = 160
+    this.y = 100
+    this.vx = 5 - Math.random() * 10
+    this.vy = 5 - Math.random() * 10
+    this.hue = Math.random() * 60 + 300
+    this.lifetime = 100
+    this.draw = function(){
+      this.color = `hsla(${this.hue}, 100%, 50%, ${this.lifetime / 100})`
+      DrawCircle(this.x, this.y, 40, this.color)
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime-=4
+    }
+  }
+
+    function ReynaQ(){
+      this.alpha = 1.5
+      this.one = new lightning(10, "purple", 30)
+      this.two = new lightning(10, "pink", 20)
+      this.three = new lightning(10, "white", 10)
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        this.one.draw()
+        this.two.draw()
+        this.three.draw()
+        ctx.globalAlpha = 1
+        this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      }
+    }
+
+    function ReynaX(){
+      this.lifetime = 100
+      this.alpha = 0
+      this.done = false
+      this.one = new ReynaXHelp(1)
+      this.two = new ReynaXHelp(-1)
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, `hsla(300, 100%, 0%, ${this.alpha})`)
+        this.one.draw()
+        this.two.draw()
+        if(!this.done) this.alpha < .5 ? this.alpha += .01 : this.done = true
+        else this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
+      }
+    }
+
+    function ReynaXHelp(rot){
+      this.width = 100
+      this.rot = rot
+      this.draw = function(){
+        ctx.save()
+        ctx.translate(160, 100)
+        ctx.rotate(this.rot)
+        ctx.translate(-160, -100)
+        DrawRect(160 - this.width / 2, -100, this.width, 400, `hsla(300, 100%, 50%, 1)`)
+        DrawRect(160 - this.width / 4, -100, this.width / 2, 400, `hsla(300, 100%, 60%, 1)`)
+        DrawRect(160 - this.width / 8, -100, this.width / 4, 400, `hsla(300, 100%, 75%, 1)`)
+        DrawRect(160 - this.width / 16, -100, this.width / 8, 400, `hsla(300, 100%, 90%, 1)`)
+        ctx.restore()
+        this.width >= 3 ? this.width -= 1.5 : this.width = .1
+      }
+    }
+
+  function breachq() {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    effects.push(new rippleEffect(["ffb300", "#f6ff00", "#bf6913"], 6, false, "out", 1500, "black", 0, 20, 0, false))
+    effects.push(new rippleEffect(["ffb300", "#f6ff00", "#bf6913"], 3, false, "out", 1500, "null", 0, 30, 0, false))
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.duration > 1935) {
+        this.duration--;
+      }
+      else {
+        stateMgr.Push(new EffectCloudState("#ff9500", "#9e5e05", "#de8f21", "hsla(0,0%,0%,0)"));
+      }
+      if (this.elapsed > 2000) {
+        this.lifetime = 0;
+      }
+
+    };
+  }
+
+  function breachX(){
+      this.count = 0
+      this.effects = []
+      this.draw = function(){
+        if(this.count % 20 == 0 && this.count < 200){
+          for(let i = 0; i < 11; i++){
+            this.effects.push(new breachXHelp(i * 32 - 10, 200, "grey", 10, 20))
+            this.effects.push(new breachXHelp(i * 32, 200, "grey", 10, 20))
+            this.effects.push(new breachXHelp(i * 32 + 10, 200, "grey", 10, 20))
+            this.effects.push(new breachXHelp(i * 32 - 10, 200, "grey", 9, 16))
+            this.effects.push(new breachXHelp(i * 32, 200, "grey", 9, 16))
+            this.effects.push(new breachXHelp(i * 32 + 10, 200, "grey", 9, 16))
+            this.effects.push(new breachXHelp(i * 32 - 5, 200, "red", 8, 14))
+            this.effects.push(new breachXHelp(i * 32 + 5, 200, "red", 8, 14))
+            this.effects.push(new breachXHelp(i * 32, 200, "orange", 7, 12))
+            this.effects.push(new breachXHelp(i * 32, 200, "yellow", 6, 10))
+          }
+        }
+        ctx.save()
+        ctx.translate(160, 100)
+        ctx.scale((200 - this.count) / 200 * .9 + .1, (200 - this.count) / 200 * .9 + .1)
+        ctx.translate(-160, -100)
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        ctx.restore()
+        this.count < 200 ? this.count++ : this.effects.length > 0 ? null : this.lifetime = 0
+      }
+    }
+
+    function breachXHelp(x, y, color, speed, rad){
+      this.color = color
+      this.speed = speed
+      this.rad = rad
+      this.x = x
+      this.y = y
+      this.alpha = 1
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        DrawCircle(this.x, this.y, this.rad, this.color)
+        ctx.globalAlpha = 1
+        this.y -= this.speed
+        this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
+      }
+    }
+
+    function brimstoneX(){
+      this.rad = 1
+      this.stroke = 1
+      this.count = 0
+      this.draw = function(){
+        DrawCircle(160, 100, this.rad, `hsla(40, 100%, 50%, ${this.rad / 100 * (100 - this.count) / 100})`)
+        DrawStroke(160, 100, this.rad, `hsla(20, 100%, 50%, ${this.rad / 100 * (100 - this.count) / 100})`, this.stroke)
+        this.rad < 50 ? this.rad += 2 : this.stroke < 20 ? this.stroke += 4 : this.count < 100 ? this.count++ : this.lifetime = 0
+        if(this.count > 50) effects.push(new brimstoneXHelp())
+      }
+    }
+
+    function brimstoneXHelp(){
+      this.x = 100 - Math.random() * 200 + 150
+      this.y = 200
+      this.height = 0
+      this.color = `hsl(${Math.random() * 50}, 100%, 50%)`
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        DrawRect(this.x, this.y, 20, this.height, this.color)
+        ctx.globalAlpha = 1
+        this.height > - 400 ? this.height -= 10 : this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
+      }
+    }
+
+    function brimstoneE(){
+      this.rad = 1
+      this.stroke = 1
+      this.count = 0
+      this.draw = function(){
+        DrawCircle(160, 100, this.rad, `hsla(40, 100%, 50%, ${this.rad / 100 * (100 - this.count) / 100})`)
+        DrawStroke(160, 100, this.rad, `hsla(20, 100%, 50%, ${this.rad / 100 * (100 - this.count) / 100})`, this.stroke)
+        this.rad < 50 ? this.rad += 2 : this.stroke < 20 ? this.stroke += 4 : this.count < 100 ? this.count++ : this.lifetime = 0
+        if(this.count > 50) effects.push(new brimstoneEHelp())
+      }
+    }
+
+    function brimstoneEHelp(){
+      this.x = Math.random() * 320
+      this.y = 240
+      this.rad = 40
+      this.vy = 0
+      this.ay = -.1
+      this.draw = function(){
+        DrawCircle(this.x, this.y, this.rad, "grey")
+        this.y += this.vy
+        this.vy += this.ay
+        this.rad > 1 ? this.rad -= .3 : this.lifetime = 0;
+      }
+    }
+
+    function CenterWave() {
+    this.lifetime = 200;
+    this.size = 0;
+    this.draw = function () {
+      ctx.fillStyle = `hsla(190, 100%, 50%, ${this.lifetime / 100})`;
+      ctx.fillRect(0, 0, this.size * 160, 200);
+      ctx.fillRect(320, 0, -this.size * 160, 200);
+      if (this.size < 1) {
+        this.size += 0.03;
+      } else {
+        effects.push(new SageXHelp())
+        this.lifetime--;
+      }
+    };
+  }
+
+  function chamberQ(){
+      this.done = false
+      this.rad = 300
+      this.draw = function(){
+        if(!this.done){
+          DrawStroke(160, 100, this.rad, "yellow", 20)
+          this.rad >= 10 ? this.rad -= 10 : this.done = true
+        } else {
+          DrawCircle(160, 100, this.rad, `hsla(190, 100%, 50%, ${(300 - this.rad) / 300})`)
+          this.rad < 300 ? this.rad += 10 : this.lifetime = 0 
+        }
+      }
+    }
+
+    function chamberC() {
+    this.rad = 1
+    this.alpha = 0
+    this.done = false
+    this.draw = function () {
+      ctx.globalAlpha = this.alpha
+      DrawStroke(160, 100, this.rad, "yellow", 20)
+      DrawStroke(160, 100, this.rad * 1.6, "yellow", 20)
+      DrawStroke(160, 100, this.rad * 2.2, "yellow", 20)
+      let tempX = Math.cos(Date.now() / 500) * 40 + 160
+      let tempY = Math.sin(Date.now() / 500) * 40 + 100
+      DrawCircle(tempX, tempY, 40, "purple")
+      DrawCircle(tempX, tempY, 30, "orange")
+      DrawCircle(tempX, tempY, 20, "yellow")
+      this.rad < 100 ? this.rad += 10 : this.rad = 100
+      ctx.globalAlpha = 1
+      !this.done ? this.alpha < 1 ? this.alpha += .05 : this.done = true: this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+    }
+  }
+
+  function chamberUltSights() {
+    this.radius = 0;
+    this.start = Date.now()
+    this.Process = function () {
+      if (Date.now() - this.start > 6000) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+
+      ctx.fillStyle = "orange";
+      ctx.beginPath();
+      ctx.arc(160, 100, 10, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(160, 100, this.radius + 50, 0, Math.PI * 2);
+      ctx.lineWidth = 20;
+      ctx.strokeStyle = "yellow";
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.strokeStyle = "purple";
+      ctx.arc(160, 100, this.radius, 0, Math.PI * 2);
+      ctx.stroke();
+      this.radius += 2;
+      if (this.radius > 200) {
+        this.radius = 0;
+      }
+    }
+  }
+
+  function SageE(){
+    this.lifetime = 100
+    this.draw = function(){
+      effects.push(new SageEHelp())
+      this.lifetime--
+    }
+  }
+
+  function SageEHelp(){
+    this.x = Math.random() * 320
+    this.y = 220
+    this.lifetime = 150
+    this.vy = 0
+    this.ay = -.1
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20, `hsla(240, 100%, 50%, ${this.lifetime/ 100})`)
+      this.y += this.vy
+      this.vy += this.ay
+      this.lifetime--
+    }
+  }
+
+  function SageXHelp(){
+    this.x = Math.random() * 320
+    this.y = 230
+    this.vy = 0
+    this.ay = -.1
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20, "blue")
+      this.y > -30 ? this.y += this.vy : this.lifetime = 0
+      this.vy += this.ay
+    }
+  }
+
+  function CollapseState(color1, color2, color3) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+        for(let i = 0; i < 40; i++) effects.push(new PhoenixUltHelp())
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = this.color1;
+      var pctUp = this.count / 2000;
+      ctx.beginPath();
+      draw3ColorSpiral(
+        160,
+        100,
+        this.color1,
+        this.color2,
+        this.color3,
+        200 * pctUp,
+        -this.count
+      );
+      ctx.fill();
+      ctx.fillStyle = "white";
+      ctx.beginPath();
+      ctx.arc(160, 100, 20, 0, 2 * Math.PI);
+      ctx.fill();
+
+      this.count -= 25;
+    };
+  }
+
+  function CypherC(){
+      this.x = 160
+      this.y = 90
+      this.width = 0
+      this.height = 20
+      this.alpha = 1
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        DrawRect(this.x, this.y, this.width, this.height, "blue")
+        ctx.globalAlpha = 1
+        this.x > 0 ? this.x-= 3 : this.y > 0 ? this.y -= 2 : this.y = 0
+        this.width < 320 ? this.width += 6 : this.height < 200 ? this.height += 4 : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      }
+    }
+
+  function CypherQ(){
+      this.alpha = 0
+      this.done = false
+      this.rot = 0
+      this.rad = 1
+      this.draw = function(){
+        if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
+        else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+        ctx.save()
+        ctx.translate(160, 100)
+        ctx.rotate(this.rot)
+        ctx.translate(-160, -100)
+        DrawStroke(160, 100, this.rad, `hsla(190, 100%, 90%, ${this.alpha})`, 20)
+        DrawTriangle(160, 100, 260, -100, 60, -100, `hsla(190, 100%, 50%, ${this.alpha})`)
+        DrawTriangle(160, 100, 260, 300, 60, 300, `hsla(190, 100%, 50%, ${this.alpha})`)
+        ctx.restore()
+        this.rot+=.1
+        this.rad < 200 ? this.rad += 5 : this.rad = 1
+      }
+    }
+
+    function CypherX(){
+      this.y = 200
+      this.alpha = .33
+      for(let i = 0; i < 5; i++) effects.push(new cypherXHelp())
+      setTimeout(()=>{
+        for(let i = 0; i < 5; i++) effects.push(new cypherXHelp())
+      }, 500)
+      setTimeout(()=>{
+        for(let i = 0; i < 5; i++) effects.push(new cypherXHelp())
+      }, 1000)
+      this.draw = function(){
+        DrawRect(0, this.y, 320, 200, `hsla(60, 100%, 50%, ${this.alpha})`)
+        this.y > 0 ? this.y -= 3 : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      }
+    }
+
+    function cypherXHelp(){
+      this.x = Math.random() * 360
+      this.points = [[this.x, 200]]
+      this.draw = function(){
+        let tempY = this.points[this.points.length - 1][1] - Math.random() * 20
+        this.points.push([this.points[this.points.length - 1][0] + (20 - Math.random() * 40), tempY])
+        if(tempY < -100) this.lifetime = 0
+        ctx.beginPath()
+        ctx.moveTo(this.points[0][0], this.points[0][1])
+        this.points.forEach(ele=>{
+          ctx.lineTo(ele[0], ele[1])
+        })
+        ctx.strokeStyle = "cyan"
+        ctx.lineWidth = 10
+        ctx.stroke()
+        if(this.points.length > 10) this.points.shift()
+      }
+    }
+
+    function OmenX(){
+    this.x = 0
+    this.done = false
+    this.effects = []
+    this.draw = function(){
+      if(!this.done) this.effects.push(new OmenXHelp())
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) this.effects.splice(i, 1)
+      })
+      DrawRect(this.x, 0, 30, 200, "cyan")
+      DrawRect(290 - this.x, 0, 30, 200, "cyan")
+      if(!this.done) this.x < 290 ? this.x += 5 : this.done = true
+      else this.x > 0 ? this.x -= 5 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+    }
+  }
+
+  function OmenXHelp(){
+    this.alpha = 0
+    this.done = false
+    this.mod = Math.random() * 2000
+    this.rad = Math.random() * 100
+    this.lit = Math.random() * 50
+    this.draw = function(){
+      if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
+      else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      let tempX = Math.cos((Date.now() + this.mod) / 250) * this.rad + 160
+      let tempY = Math.sin((Date.now() + this.mod) / 250) * this.rad + 100
+      DrawCircle(tempX, tempY, 30 , `hsla(300, 100%, ${this.lit}%, ${this.alpha})`)
+    }
+  }
+
+  function DiagonalLine() {
+    this.start = new Date().getTime();
+    this.duration = 1500;
+    this.x = -200;
+    this.y = 200;
+    this.width = 20;
+    var speed = 8;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.beginPath();
+      ctx.strokeStyle = "#86f4f7";
+      ctx.fillStyle = "#86f4f7";
+      drawRotatedRect(ctx, this.x, this.y, 400, 320, 40)
+      this.x += speed;
+      this.y -= speed;
+    };
+  }
+
+  function DeadlockX(){
+      this.effects = []
+      this.count = 0
+      this.rot = 0
+      this.rad = 400
+      this.alpha = 0
+      this.alpha2 = 1
+      this.draw = function(){
+        if(this.alpha2 < 0) this.alpha2 = 0
+        ctx.globalAlpha = this.alpha2
+        DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+        this.alpha < .5 ? this.alpha += .05 : this.alpha = .5;
+        if(this.count % 3 == 0) this.effects.push(new DeadXHelp(this.rot))
+        this.count++
+        if(this.count > 300) this.alpha2 > 0 ? this.alpha2 -= .01 : this.lifetime = 0;
+        this.rot+=.2
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        DrawStroke(160, 100, this.rad, "cyan", 40)
+        ctx.globalAlpha = 1
+        this.rad > 5 ? this.rad -= 5 : this.rad = 400
+      }
+    }
+
+    function DeadXHelp(rot){
+      this.x = -30;
+      this.rot = rot
+      this.color = `hsl(${210 + Math.sin(Date.now()/100) * 30}, 100%, 50%)`
+      this.alpha = 1
+      this.draw = function(){
+        ctx.save()
+        ctx.translate(160, 100)
+        ctx.rotate(this.rot)
+        ctx.translate(-160, -100)
+        DrawCircle(this.x, 100, 35, this.color)
+        ctx.restore()
+        this.rot+=.05
+        this.x < 155 ? this.x+=3 : this.lifetime = 0;
+      }
+    }
+
+    function DeadlockE(){
+      this.effects = []
+      this.count = 0
+      this.alpha = 1
+      this.draw = function(){
+        if(this.count % 20 == 0) this.effects.push(new DeadEHelp(this.count))
+        this.count < 200 ? this.count++ : this.alpha > 0 ? this.alpha -= .0025 : this.lifetime = 0;
+        if(this.alpha < 0) this.alpha = 0
+        ctx.globalAlpha = this.alpha
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        ctx.globalAlpha = 1
+      }
+    }
+
+    function DeadEHelp(y){
+      this.y = y
+      this.width = 0
+      this.draw = function(){
+        DrawRect(0, this.y, this.width, 20, `hsla(${200 + this.y / 3}, 100%, 50%, 1)`)
+        DrawRect(Math.sin((Date.now() + this.y * 6) / 250) * (this.width / 2 - this.width / 5) + (this.width / 2 - this.width / 10) - this.y * 3 / 5, this.y + 1, (this.width + this.y * 6) / 5, 18, `hsla(225, 100%, 50%, 1)`)
+        if(this.width < 320) this.width += 10
+      }
+    }
+
+    function DeadlockQ(){
+      this.y = 200
+      this.rad = 1
+      this.alpha = .6
+      this.count = 0
+      this.draw = function(){
+        DrawRect(0, this.y, 320, 200, `hsla(230, 100%, 50%, ${this.alpha * 1.5})`)
+        DrawStroke(160, 210, this.rad, `hsla(200, 100%, 50%, ${this.alpha})`, 40)
+        DrawStroke(160, 210, this.rad * 1.5, `hsla(200, 100%, 50%, ${this.alpha})`, 40)
+        DrawStroke(160, 210, this.rad * 2, `hsla(200, 100%, 50%, ${this.alpha})`, 40)
+        this.y > 0 ? this.y -= 5 : this.rad < 300 ? this.rad += 3 : this.rad = 1;
+        if( this.y <= 0 && this.rad == 1) this.count++
+        if(this.count > 2) this.alpha > 0 ? this.alpha -= .05 : this.lifetime = 0;
+      }
+    }
+
+    function DeadlockC(){
+      this.effects = []
+      this.alpha = 0
+      for(let i = 0; i < 8; i++){
+        this.effects.push(new DeadCHelp([i * 50 - 25, 0], [i * 50 + 70 - 25, 200]))
+        this.effects.push(new DeadCHelp([i * 50 + 70 - 25, 0], [i * 50 - 25, 200]))
+      }
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+        if(this.effects.length) this.alpha < .5 ? this.alpha += .05 : this.alpha = .5;
+        else this.alpha > 0 ? this.alpha -= .05 : this.lifetime = 0
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+      }
+    }
+
+    function DeadCHelp(start, end){
+      this.start = start
+      this.stepX = (end[0] - start[0]) / 30
+      this.stepY = (end[1] - start[1]) / 30
+      this.count = 0
+      this.count2 = 0
+      this.draw = function(){
+        ctx.beginPath()
+        ctx.moveTo(this.start[0] + this.stepX * this.count2 / 5, this.start[1] + this.stepY * this.count2 / 5)
+        ctx.lineTo(this.start[0] + this.stepX * this.count, this.start[1] + this.stepY * this.count)
+        ctx.lineWidth = 20
+        ctx.strokeStyle = `hsla(${220 + Math.sin(Date.now() / 100) * 15}, 100%, 50%, 1)`
+        ctx.stroke()
+        this.count < 30 ? this.count++ : this.count2 < 150 ? this.count2++: this.lifetime = 0;
+      }
+    }
+
+  function DefeatEffect() {
+    this.start = Date.now();
+    this.STAGE1TIME = 1600;
+    this.STAGE2TIME = 2200;
+    this.STAGE3TIME = 3200;
+    this.ENDSTAGE = 6000;
+    this.calculateVal = 0;
+    this.stripes = [];
+
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed < this.STAGE2TIME) {
+
+        ctx.beginPath();
+        ctx.moveTo(0, 100);
+        ctx.lineTo(this.elapsed / 5, 100);
+        ctx.lineWidth = this.elapsed < this.STAGE1TIME ? 5 : (this.elapsed - this.STAGE1TIME) / 3;
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+      } else if (this.elapsed < this.STAGE3TIME) {
+        let gradient = ctx.createLinearGradient(-100, 0, 420, 0)
+        if (this.calculateVal < 1000) {
+          this.calculateVal = -1440 * Math.floor(((this.elapsed - this.STAGE2TIME) / 1440) / 1) + (((this.elapsed - this.STAGE2TIME) / 1440) * (1440 / 1));
+        }
+        gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "red");
+        gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0.9)");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 320, 200);
+      } else {
+        if (this.elapsed < this.ENDSTAGE) {
+          ctx.beginPath()
+          ctx.fillStyle = "hsla(0, 0%, 0%,0.9)";
+          ctx.fillRect(0, 0, 320, 200);
+          let tempVal = Math.random();
+          this.stripes.push(new stripe({ x: tempVal * 320, y: -50 }, { x: tempVal * 320, y: 250 }, 50, 30, 5, `hsla(0,100%,${30 + Math.random() * 50}%)`, 2000))
+          this.stripes.forEach(element => {
+            ctx.globalAlpha = 1 - (((this.elapsed) - (this.ENDSTAGE - 800)) / 800);
+            element.draw();
+            ctx.globalAlpha = 1;
+          });
+        } else {
+          let gradient = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+          this.calculateVal = -1660 * Math.floor(((this.elapsed - this.ENDSTAGE) / 1660) / 1) + (((this.elapsed - this.ENDSTAGE) / 1660) * (1660 / 1));
+          gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0.9)");
+          gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 100%, 50%,1)");
+          gradient.addColorStop(SetRange((-400 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+          ctx.fillStyle = gradient;
+          ctx.fillRect(0, 0, 320, 200)
+          if (this.elapsed > 7200) {
+            this.lifetime = 0;
+          }
+        }
+      }
+    }
+  }
+
+  function SkyeX(){
+    this.x = -50
+    this.lifetime = 200
+    this.draw = function(){
+      DrawCircle(this.x, 100, 50, "green")
+      this.x < 360 ? this.x += 8 : effects.push(new SkyeXHelp())
+      this.lifetime--
+    }
+  }
+
+  function SkyeXHelp(){
+    this.x = 320
+    this.y = 100
+    this.vx = Math.random() * - 5
+    this.vy = 5 - Math.random() * 10
+    this.lifetime = 100
+    this.hue = Math.random() * 60 + 60
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20, `hsla(${this.hue}, 100%, 50%, ${this.lifetime / 100})`)
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime--
+    }
+  }
+
+  function SkyeC(){
+    this.rad = 1
+    this.lifetime = 200
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, "green", 30)
+      this.rad < 150 ? this.rad += 3 : effects.push(new SkyeCHelp())
+      this.lifetime--
+    }
+  }
+
+  function SkyeCHelp(){
+      this.alpha = 0
+      this.done = false
+      this.mod = Math.random() * 2000
+      this.rad = Math.random() * 75
+    this.draw = function(){
+      if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
+      else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      let tempX = Math.cos((Date.now() + this.mod) / 500) * this.rad + 160
+      let tempY = Math.sin((Date.now() + this.mod) / 500) * this.rad + 100
+      DrawCircle(tempX, tempY, 20, `hsla(60, 100%, 50%, ${this.alpha})`)
+    }
+  }
+
+  function SkyeE(){
+    this.y = 200
+    this.draw = function(){
+      DrawSkyeBird(this.y + 120, .1)
+      DrawSkyeBird(this.y + 80, .3)
+      DrawSkyeBird(this.y + 40, .6)
+      DrawSkyeBird(this.y, 1)
+      this.y > -300 ? this.y -= 5 : this.lifetime = 0
+    }
+  }
+
+  function DrawSkyeBird(y, alpha){
+    ctx.globalAlpha = alpha
+    ctx.beginPath()
+    ctx.moveTo(160, y - 20)
+    ctx.lineTo(240, y + 75)
+    ctx.lineTo(180, y + 75)
+    ctx.lineTo(160, y + 200)
+    ctx.lineTo(140, y + 75)
+    ctx.lineTo(80, y + 75)
+    ctx.lineTo(160, y - 20)
+    ctx.fillStyle = "yellow"
+    ctx.fill()
+    ctx.beginPath()
+    ctx.moveTo(160, y)
+    ctx.lineTo(240, y + 75)
+    ctx.lineTo(180, y + 75)
+    ctx.lineTo(160, y + 150)
+    ctx.lineTo(140, y + 75)
+    ctx.lineTo(80, y + 75)
+    ctx.lineTo(160, y)
+    ctx.fillStyle = "green"
+    ctx.fill()
+    ctx.globalAlpha = 1
+  }
+
+    function SkyeDogEffect() {
+      this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+      this.grad.addColorStop(.5, `hsla(120, 100%, 50%, 0)`)
+      this.grad.addColorStop(1, `hsla(120, 100%, 50%, 1)`)
+      this.alpha = 0
+      this.done = false
+      this.draw = function () {
+        if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
+        else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+        ctx.globalAlpha = this.alpha
+        DrawRect(0, 0, 320, 200, this.grad)
+        effects.push(new SkyeDogHelp())
+        ctx.globalAlpha = 1
+      };
+    }
+
+    function SkyeDogHelp(){
+      this.alpha = 0
+      this.done = false
+      this.mod = Math.random() * 2000
+      this.rad = Math.random() * 100
+      this.hue = Math.random() * 60 + 60
+      this.lit = Math.random() * 50
+    this.draw = function(){
+      if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
+      else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      let tempX = Math.cos((Date.now() + this.mod) / 250) * this.rad + 160
+      let tempY = Math.sin((Date.now() + this.mod) / 250) * this.rad + 100
+      DrawCircle(tempX, tempY, 30 , `hsla(${this.hue}, 100%, ${this.lit}%, ${this.alpha})`)
+    }
+  }
+
+  function EffectCloudState(color1, color2, color3, bg = "null") {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.particles = [];
+    this.bg = bg;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      if (this.bg == "null") {
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
+        ctx.fillRect(0, 0, 320, 200);
+      } else {
+        ctx.fillStyle = this.bg;
+        ctx.fillRect(0, 0, 320, 200);
+      }
+
+      if (this.particles.length < 200) {
+        this.particles.push(new SmokeParticle(this.color1));
+        this.particles.push(new SmokeParticle(this.color2));
+        this.particles.push(new SmokeParticle(this.color3));
+        this.particles.push(new SmokeParticle(this.color1));
+      }
+      for (i = 0; i < this.particles.length; i++) {
+        this.particles[i].Draw();
+      }
+
+      for (j = 0; j < this.particles.length; j++) {
+        if (this.particles[j].IsFinished()) {
+          this.particles.splice(j, 1);
+        }
+      }
+    };
+  }
+
+  function PhoenixE(){
+    effects.push(new rippleEffect(["#ff9400", "#ff0000", "#ffc812"], 10, true, "out", 1000, "black", 0, 20, 10, false))
+    for(let i = 0; i < 30; i++) effects.push(new phParticle())
+    this.draw = function(){
+      this.lifetime = 0
+    }
+  }
+
+  function phParticle(){
+    this.x = 160
+    this.y = 100
+    this.vx = 5 - Math.random() * 10
+    this.vy = 5 - Math.random() * 10
+    this.hue = Math.random() * 50
+    this.lifetime = 100
+    this.draw = function(){
+      this.color = `hsla(${this.hue}, 100%, 50%, ${this.lifetime / 100})`
+      DrawCircle(this.x, this.y, 25, this.color)
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime--
+    }
+  }
+
+  function PhoenixUltHelp(){
+    this.x = 160
+    this.y = 100
+    this.vx = 6 - Math.random() * 12
+    this.vy = 6 - Math.random() * 12
+    this.color = `hsl(${Math.random() * 60}, 100%, ${Math.random() * 50 + 25}%)`
+    this.lifetime = 100
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20, this.color)
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime--
+    }
+  }
+
+  function ExplodingOrbStateGek(color1, color2, color3, followUp = true, shouldRise = false, background = "null", rotateSpeed = 1) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.followUp = followUp;
+    this.shouldRise = shouldRise;
+    this.y = shouldRise ? 200 : 100;
+    this.background = background;
+    this.rotateSpeed = rotateSpeed;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      if (background != "null") {
+        ctx.fillStyle = background;
+        ctx.fillRect(0, 0, 320, 200);
+      }
+      if (this.count > 1000) {
+        ctx.globalAlpha = .5
+        draw3ColorSpiral(
+          160,
+          this.y,
+          this.color1,
+          this.color2,
+          this.color3,
+          200,
+          -this.count * this.rotateSpeed
+        );
+        ctx.globalAlpha = 1
+      }
+      if (shouldRise && this.y > 100) {
+        this.y -= 3;
+      }
+      this.count -= 5;
+    };
+  }
+
+  function ExplodingOrbState(color1, color2, color3, followUp = true, shouldRise = false, background = "null", rotateSpeed = 1) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.followUp = followUp;
+    this.shouldRise = shouldRise;
+    this.y = shouldRise ? 200 : 100;
+    this.background = background;
+    this.rotateSpeed = rotateSpeed;
+    this.alpha = .75
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.alpha >= .05 ? this.alpha -= .05 : stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      if (background != "null") {
+        ctx.fillStyle = background;
+        ctx.fillRect(0, 0, 320, 200);
+      }
+      if (this.count > 1000) {
+        ctx.globalAlpha = this.alpha
+        draw3ColorSpiral(
+          160,
+          this.y,
+          this.color1,
+          this.color2,
+          this.color3,
+          200,
+          -this.count * this.rotateSpeed
+        );
+        ctx.globalAlpha = 1
+      }
+      if (shouldRise && this.y > 100) {
+        this.y -= 3;
+      }
+      this.count -= 5;
+    };
+  }
+
+  function SovaX(){
+      this.count = 0
+      this.one = new lightning(10, "white", 10)
+      this.two = new lightning(10, "cyan", 20)
+      this.three = new lightning(10, "blue", 30)
+      this.alpha = 1
+      this.effects = []
+      this.draw = function(){
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        if(this.count < 100) {
+          this.effects.push(new SovaXHelp())
+          this.count++
+        } else {
+          ctx.globalAlpha = this.alpha
+          this.three.draw()
+          this.two.draw()
+          this.one.draw()
+          ctx.globalAlpha = 1
+          this.alpha > .005 ? this.alpha -= .005 : this.lifetime = 0
+        }
+      }
+    }
+
+    function SovaXHelp(){
+      this.x = Math.cos(Math.random() * Math.PI * 2) * 200 + 160
+      this.y = Math.sin(Math.random() * Math.PI * 2) * 200 + 100
+      this.lifetime = 100
+      this.draw = function(){
+        DrawCircle(this.x, this.y, 10, "blue")
+        this.x += (160 - this.x) / 20
+        this.y += (100 - this.y) / 20
+        this.lifetime--
+      }
+    }
+
+    function SovaQ(){
+      this.x = -110
+      this.count = 1
+      this.draw = function(){
+        drawArrow(this.x, 0, 50, 200, "blue", 20, Math.PI / 2)
+        this.x < 400 ? this.x += 15 : this.count++
+        if(this.count % 3 == 0) effects.push(new SovaQHelp())
+        if(this.count> 150) this.lifetime = 0
+      }
+    }
+
+    function SovaQHelp(){
+      this.x = 160
+      this.y = 100
+      this.points = [[this.x, this.y]]
+      this.lifetime = 50
+      this.draw = function(){
+        this.points.push([this.points[this.points.length - 1][0] + (20 - Math.random() * 40), this.points[this.points.length - 1][1] + (20 - Math.random() * 40)])
+        ctx.beginPath()
+        ctx.moveTo(this.points[0][0], this.points[0][1])
+        this.points.forEach(ele=>{
+          ctx.lineTo(ele[0], ele[1])
+        })
+        ctx.strokeStyle = "cyan"
+        ctx.lineWidth = 10
+        ctx.stroke()
+        if(this.points.length > 15) this.points.shift()
+        this.lifetime--
+      }
+    }
+
+  function FadeC() {
+    this.y1 = 200;
+    this.y2 = 0;
+    this.lifetime = 160;
+    this.draw = function () {
+      this.y1 = Math.abs(Math.sin(Date.now() / 250) * 60) + 160;
+      this.y2 = Math.abs(Math.sin((Date.now() - 2000) / 250) * 60) - 20;
+      ctx.globalAlpha = .3;
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.lifetime / 80})`)
+      ctx.globalAlpha = 1;
+      for (let index = 0; index < 5; index++) {
+        let value = index * 80;
+        DrawTriangle(0 + value, this.y1, 40 + value, this.y1 - 80, 80 + value, this.y1, `hsla(300, 100%, 60%, ${this.lifetime / 80})`);
+        DrawTriangle(-40 + value, this.y2, 0 + value, this.y2 + 80, 40 + value, this.y2, `hsla(300, 100%, 60%, ${this.lifetime / 80})`);
+      }
+      DrawRect(0, this.y1, 320, 50, `hsla(300, 100%, 60%, ${this.lifetime / 80})`);
+      DrawRect(0, this.y2, 320, -40, `hsla(300, 100%, 60%, ${this.lifetime / 80})`);
+      this.lifetime--;
+    }
+  }
+
+  function FadeQ() {
+    this.start = Date.now()
+    this.lifetime = 160;
+    this.alpha = 0;
+    this.radius1 = 1;
+    this.radius2 = 1;
+    this.draw = function () {
+      var elapsed = Date.now() - this.start;
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, "red")
+      ctx.globalAlpha = 1;
+      DrawStroke(160, 100, this.radius2, "cyan", 30)
+      DrawCircle(160, 100, this.radius1, "red")
+      DrawStroke(160, 100, this.radius1, "rgb(20, 20, 20)", 40)
+
+      if (elapsed < 400) {
+        this.radius1 += 4;
+      } else if (elapsed < 550) {
+        this.alpha += .1
+      } else if (elapsed < 700) {
+        this.radius1 -= 8
+        this.radius2 += 12
+        this.alpha > .1 ? this.alpha -= .1 : null;
+      } else if (elapsed < 1000) {
+        this.radius2 += 12
+      } else {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function FadeE() {
+    this.start = Date.now()
+    this.lifetime = 160;
+    this.alpha = 0;
+    this.radius1 = 1;
+    this.radius2 = 1;
+    this.effects = []
+    this.draw = function () {
+      var elapsed = Date.now() - this.start;
+      ctx.globalAlpha = this.alpha;
+      DrawStroke(160, 100, this.radius2, "rgb(20, 20, 20)", 30)
+      DrawCircle(160, 100, this.radius1 + Math.sin(Date.now() / 20), "rgb(20, 20, 20)")
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+        if (ele.lifetime <= 0) {
+          this.effects.splice(i, 1)
+        }
+      });
+      DrawCircle(120, 100, 20 + Math.sin(Date.now() / 20), "red")
+      DrawCircle(200, 100, 20 + Math.sin(Date.now() / 20), "red")
+      if (elapsed > 100) {
+        this.effects.push(new fadeParticle(120, 100, "left", elapsed % 2 == 0 ? "blue" : "purple"))
+        this.effects.push(new fadeParticle(200, 100, "right", elapsed % 2 == 0 ? "purple" : "blue"))
+        this.start = Date.now()
+      }
+      ctx.globalAlpha = 1;
+      this.alpha < 1 ? this.alpha += .04 : this.alpha = 1;
+      this.radius1 < 70 ? this.radius1 += 4 : this.radius1 = 70;
+      this.radius2 < 200 ? this.radius2 += 8 : this.radius2 = 1;
+      this.lifetime--;
+    }
+  }
+
+  function FadeX() {
+    this.start = Date.now()
+    this.lifetime = 160;
+    this.y = 200;
+    this.alpha = 0;
+    this.count = 0;
+    this.effects = []
+    this.draw = function () {
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, this.y, 320, 200, "black");
+      ctx.globalAlpha = 1;
+      if (this.count < 150) {
+        this.y > 0 ? this.y -= 10 : this.y = 0;
+        this.alpha < 1 ? this.alpha += .05 : this.alpha = 1;
+        this.effects.push(new fadeXParticle())
+        this.effects.push(new fadeXParticle())
+        this.effects.push(new fadeRisePart())
+        this.count++;
+      } else {
+        this.y >= -200 ? this.y -= 10 : this.y = 0;
+        this.alpha > 0 ? this.alpha -= .05 : this.alpha = 0;
+      }
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+        if (ele.lifetime <= 0) {
+          this.effects.splice(i, 1)
+        }
+      })
+      if (this.count == 150 && this.y <= -160) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function GekkoX(){
+    this.counter = 0;
+    this.particles = [];
+    this.randColors = ["yellow","purple","#ce54b7","#fbb279"];
+    this.start = Date.now();
+    this.draw = function(){
+      ctx.beginPath();
+      ctx.fillStyle = `hsla(0,0%,0%,1 )`;
+      ctx.fillRect(0,-8000+this.counter,320,8000);
+      this.counter+=5;
+      if (Date.now() - this.start < 5000){
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(160,100 + Math.sin(this.counter/100 -Math.PI/2)*20);
+      ctx.rotate(Math.sin(this.counter/100)*0.2);
+      ctx.scale(0.5,1);
+      ctx.translate(20,-100);
+      DrawPath(0,0,0.2,sharkSVG,`purple`);
+      ctx.restore();
+
+      this.particles.push(new shotParticle(170,100 + Math.sin(this.counter/100 -Math.PI/2)*20,{x: -Math.random()*5-2, y:  (Math.random()-0.5)*4},20,this.randColors[Math.floor(Math.random()* this.randColors.length)],1000))
+      for (let i = 0; i < this.particles.length; i++) {
+        this.particles[i].draw();
+        if (this.particles[i].lifetime <= 0) {
+          this.particles.splice(i, 1);
+        }
+      }
+    } else {
+      stateMgr.Push(new ExplodingOrbStateGek("yellow","purple","#ce54b7",true,false, "black"))
+      this.lifetime =0;
+    }
+    }
+  }
+
+  function drawArrow(x, y, width, height, color, lineWidth, rotation) {
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(x, y + height / 2);
+      ctx.rotate(rotation)
+      // ctx.moveTo(0,0+height/2);
+      // ctx.lineTo(0,0-height/2)
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.moveTo(0, 0)
+      ctx.moveTo(0 - 3, -height / 2);
+      ctx.lineTo(width / 2, height / 4)
+  
+      ctx.moveTo(0 + 3, -height / 2);
+      ctx.lineTo(-width / 2, height / 4)
+      ctx.stroke();
+      ctx.restore();
+    }
+
+  function GekkoQ(){
+    this.counter = 0;
+    this.length =2000;
+    this.rad = 1
+    this.start = Date.now();
+    this.alpha = 1
+    this.draw = function (){
+      ctx.globalAlpha = this.alpha
+      if(200 - this.counter / 4 <= -60){
+        DrawStroke(160, 100, this.rad, "blue", 20)
+        DrawStroke(160, 100, this.rad * .75, "purple", 20)
+        this.rad < 200 ? this.rad += 5 : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      }
+      ctx.beginPath();
+      ctx.fillStyle = `hsla(0,0%,0%,0.9 )`;
+      ctx.fillRect(0,0-this.length+this.counter,320,this.length);
+      this.counter+=8;
+        ctx.beginPath();
+        ctx.save();
+        ctx.translate(160,100);
+        ctx.scale(-1,1);
+        ctx.translate(200-this.counter/4 > -60 ? 200 - this.counter / 4 : -60,-80);
+        DrawPath(0,0,1.2,runningArr[(Math.floor(this.counter/50))%runningArr.length],`purple`);
+        DrawPath(10,10,1,runningArr[(Math.floor(this.counter/50))%runningArr.length],`yellow`);
+        ctx.restore();
+        ctx.globalAlpha = 1
+    }
+  }
+
+  function GekkoE(){
+      this.start = Date.now();
+      this.counter = 0;
+      this.pos = {x: 0, y: 120};
+      this.shotParticles = [];
+      this.draw = function (){
+        this.pos.y = 120 + Math.sin(this.counter/100)*-50;
+        this.pos.x = this.counter
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(0,0%,0%,0.9 )`;
+        ctx.fillRect(0,0 + this.counter*5-1500,320,1500);
+        DrawCircle(this.pos.x,this.pos.y,10,`cyan`);
+        ctx.beginPath();
+        ctx.strokeStyle = `cyan`;
+        ctx.lineWidth = 20;
+        let size = this.counter>80 ? this.counter-80 : 0;
+        if (size>80){
+          if (this.shotParticles.length ==0 && size <100){
+            for (let index = 0; index < 20; index++) {
+              this.shotParticles.push(new shotParticle(this.pos.x,this.pos.y,{x: (Math.random()-0.5)*10, y: 1 + Math.random()*4},20,`hsl(200,100%,50%)`,1000))
+            }  
+          }
+        }
+        ctx.arc(this.pos.x, this.pos.y, 15, 0, SetRange(size/10,0,2 * Math.PI))
+        ctx.stroke();
+        this.counter+=2;
+        for (let i = this.shotParticles.length - 1; i >= 0; i--) {
+          this.shotParticles[i].draw();
+          if (this.shotParticles[i].lifetime <= 0) {
+            this.shotParticles.splice(i, 1);
+          }
+        }
+      }
+  }
+
+  function GekkoC(){
+    this.start = Date.now();
+    this.lifetime = 1000;
+    this.throwBalls = [];
+    this.arcSize = 0;
+    this.intenseCounter = 50;
+    this.pulseBalls = [];
+    for (let index = 0; index < 5; index++) {
+        setTimeout(() => {
+          this.throwBalls.push(new throwBall({x: 0, y: 100}, {x: 160, y: 100}, 3, `hsl(${100+index*5},100%, ${50-index*2}%)`, 15))
+        }, index*50); 
+      }
+
+    this.draw = function (){
+
+      if (this.throwBalls.length>0){
+        for (let i = this.throwBalls.length - 1; i >= 0; i--) {
+        this.throwBalls[i].draw();
+        if (this.throwBalls[i].lifetime <= 0) {
+          this.throwBalls.splice(i, 1);
+        }
+      }
+      } else {
+     
+        if (this.arcSize>200 && this.intenseCounter<100){
+          this.arcSize= 200;
+          this.intenseCounter += 1;
+        } else if (this.intenseCounter>=100) {
+          this.arcSize-=6
+          if (this.arcSize<=0){
+            this.lifetime = 0;
+            this.arcSize = 0;
+          }
+        }
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${100},100%, ${50}%,${SetRange(this.arcSize/200,0,0.9)})`;
+        ctx.arc(160, 100, this.arcSize, 0, 2 * Math.PI)
+        ctx.fill();
+        this.arcSize+=4;
+        if (Math.random()<(1- this.arcSize/600)){
+          this.pulseBalls.push(new pulseBall(160+(Math.random()-0.5)*this.arcSize*1.5,100+(Math.random()-0.5) *this.arcSize,0,20,`hsl(${100},100%, ${10}%)`,this.intenseCounter))
+        }
+        for (let i = this.pulseBalls.length - 1; i >= 0; i--) {
+          this.pulseBalls[i].draw();
+          if (this.pulseBalls[i].lifetime <= 0) {
+            this.pulseBalls.splice(i, 1);
+          }
+        }
+      }  
+    }
+  }
+
+  function ISOX(){
+      this.rad = 300
+      this.rad2 = 11
+      this.half = false
+      this.alpha = 1
+      this.draw = function(){
+        if(!this.half) {
+          DrawStroke(160, 100, this.rad, "black", 40)
+          DrawStroke(160, 100, this.rad * 1.5, "blue", 40)
+          DrawStroke(160, 100, this.rad * 2, "cyan", 40)
+          DrawStroke(160, 100, this.rad * 2.5, "white", 40)
+          this.rad > 1 ? this.rad -= 3 : this.half = true
+        }
+        else {
+          ctx.globalAlpha = this.alpha
+          DrawCircle(160, 100, this.rad2 + Math.sin(Date.now() / 200) * 10, "red")
+          this.rad2 < 30 ? this.rad2+=2 : this.rad2 = 30
+          this.rad < 300 ? this.rad += 5 : this.rad = 1
+          DrawStroke(160, 100, this.rad, "red", 50)
+          DrawStroke(160, 100, this.rad * 3, "red", 50)
+          ctx.globalAlpha = 1
+          this.alpha >= .002 ? this.alpha -= .002 : this.lifetime = 0
+        }
+      }
+    }
+
+    function ISOE(){
+      this.alpha = 0
+      this.half = false
+      this.rad = 1
+      this.draw = function(){
+        let grad = ctx.createRadialGradient(160, 100, 50, 160, 100, 200)
+        grad.addColorStop(0, `hsla(290, 100%, 50%, 0)`)
+        grad.addColorStop(.75 + Math.sin(Date.now() / 500) * .25, `hsla(290, 100%, 50%, .25)`)
+        grad.addColorStop(1, `hsla(290, 100%, 50%, ${this.alpha})`)
+        DrawRect(0, 0, 320, 200, grad)
+        DrawStroke(160, 100, this.rad, "purple", 20)
+        DrawStroke(160, 100, this.rad * 1.5, "purple", 20)
+        DrawStroke(160, 100, this.rad * 2, "purple", 20)
+        this.rad < 300 ? this.rad += 3 : this.rad = 300
+        if(!this.half) this.alpha <= .975 ? this.alpha += .025 : this.half = true;
+        else this.alpha >= .002 ? this.alpha -= .002 : this.lifetime = 0
+      }
+    }
+
+    function ISOQ(){
+      this.draw = function(){
+        for(let i = 0; i < 6; i++){
+          setTimeout(()=>{
+            effects.push(new ISOQHelp(i))
+          },i * 50)
+          this.lifetime = 0
+        }
+      }
+    }
+
+    function ISOQHelp(i){
+      this.i = i
+      this.alpha = 1
+      this.color;
+      this.rad = 30
+      if(this.i == 0) this.color = "hsla(0, 100%, 90%, 1)"
+      else if(i == 1) this.color = "hsla(280, 100%, 40%, .5)"
+      else if(i == 2) this.color = "hsla(280, 100%, 40%, 1)"
+      else if(i == 3) this.color = "hsla(190, 100%, 70%, 1)"
+      else if(i == 4) this.color = "blue"
+      else if(i == 5) this.color = "hsla(190, 100%, 70%, 1)"
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        DrawStroke(160, 100, i * this.rad + 10, this.color, 30)
+        ctx.globalAlpha = 1
+        this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+        this.rad > 1 ? this.rad -= .5 : this.lifetime = 0
+      }
+    }
+
+    function ISOC(){
+      this.count = 0
+      this.count2 = 0
+      this.switch = false
+      this.draw = function(){
+        if(this.count == 0){
+          for(let i = 0; i < 6; i++) effects.push(new ISOCHelp(i * 100 - (this.switch ? 50 : 0), 250))
+          this.switch = !this.switch
+          this.count2++
+        }
+        this.count < 35 ? this.count++ : this.count = 0
+        if(this.count2 > 5) this.lifetime = 0
+      }
+    }
+
+    function ISOCHelp(x, y){
+      this.x = x
+      this.y = y
+      this.draw = function(){
+        let grad = ctx.createRadialGradient(this.x, this.y, 10, this.x, this.y, 50)
+        grad.addColorStop(.3, "hsl(250, 100%, 30%)")
+        grad.addColorStop(1, "hsl(240, 100%, 80%)")
+        DrawCircle(this.x, this.y, 50, grad)
+        this.y > -50 ? this.y-=2 : this.lifetime = 0
+      }
+    }
+
+    function JettC(){
+      this.rot = 0
+      this.draw = function(){
+        this.rot < Math.PI * 5 ? this.rot += .1 : this.lifetime = 0
+        effects.push(new JettCHelp(this.rot))
+        effects.push(new JettCHelp(this.rot + Math.PI))
+      }
+    }
+
+    function JettCHelp(rot){
+      this.rot = rot
+      this.y = 0
+      this.color = `hsl(${190 + Math.random() * 50}, 100%, 50%)`
+      this.draw = function(){
+        ctx.save()
+        ctx.translate(160, 100)
+        ctx.rotate(this.rot)
+        ctx.translate(-160, -100)
+        DrawCircle(160, 100 + this.y, 20, this.color)
+        ctx.restore()
+        this.y < 200 ? this.y += 3 : this.lifetime = 0
+      }
+    }
+
+    function JettX(){
+      this.y = 200
+      this.hue = 190
+      this.alpha = .5
+      this.done = false
+      this.draw = function(){
+        if(!this.done) this.alpha <= .45 ? this.alpha += .05 : this.done = true
+        else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+        DrawRect(0, 0, 320, 200, `hsla(${this.hue}, 100%, 50%, ${this.alpha})`)
+        DrawRect(0, this.y, 320, 50, "cyan")
+        this.y > -50 ? this.y -= 10 : this.hue < 240 ? this.hue += 2 : this.done = true
+      }
+    }
+
+    function JettE(){
+      this.x = 0
+      this.done = false
+      this.draw = function(){
+        effects.push(new JettEHelp(this.x + 10))
+        DrawRect(this.x, 0, 10, 200, "blue")
+        DrawRect(this.x + 10, 0, 10, 200, "white")
+        if(!this.done) this.x < 320 ? this.x += 3 : this.done = true
+        else this.x > 0 ? this.x -= 3 : this.lifetime = 0
+      }
+    }
+
+    function JettEHelp(x){
+      this.x = x
+      this.y = Math.random() * 200
+      this.rad = 20
+      this.color = `hsl(${190 + Math.random() * 50}, 100%, 50%)`
+      this.draw = function(){
+        DrawCircle(this.x, this.y, this.rad, this.color)
+        this.rad > 1 ? this.rad -= .33 : this.lifetime = 0
+      }
+    }
+
+    function NeonQ(){
+      this.rad1 = 1
+      this.rad2 = 1
+      this.stroke = 1
+      this.alpha = 1
+      this.draw = function(){
+        ctx.globalAlpha = this.alpha
+        DrawCircle(160, 100, this.rad1, `hsla(190, 100%, 50%, .5)`)
+        DrawStroke(160, 100, this.rad2, "yellow", this.stroke)
+        ctx.globalAlpha = 1
+        this.rad1 < 200 ? this.rad1 += 5 : this.rad2 < 300 ? this.rad2 += 8 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        if(this.rad1 >= 200) this.stroke+=5
+      }
+    }
+
+  function shotParticle(x,y,speed,size,color, duration){
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.size = size;
+    this.color = color;
+    this.duration = duration;
+    this.start = Date.now();
+    this.draw = function(){
+      this.x += this.speed.x;
+      this.y += this.speed.y;
+      DrawCircle(this.x,this.y,this.size,this.color);
+      if (Date.now() - this.start > this.duration){
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function pulseBall (x,y,smallSize, bigSize, color, speed){
+    this.x = x;
+    this.y = y;
+    this.smallSize = smallSize;
+    this.bigSize = bigSize;
+    this.color = color;
+    this.speed = speed;
+    this.currentSize = this.smallSize;
+    this.sizeDiff = this.bigSize - this.smallSize;
+    this.currentSize = 0
+    this.counter = 0;
+    this.draw = function(){
+      this.counter += this.speed
+      this.currentSize = this.smallSize + (Math.sin(this.counter/1000)*this.sizeDiff);
+      DrawCircle(this.x,this.y,this.currentSize,this.color);
+      if (this.counter+this.speed >= Math.PI*1000){
+        this.lifetime = 0;
+      }
+    }
+  }
+  
+  function throwBall(startpos,endpos,speed,color,size){
+      this.startPos = startpos;
+      this.endPos = endpos;
+      this.speed = speed;
+      this.color = color;
+      this.size = size;
+      this.currentPos = {x: this.startPos.x, y: this.startPos.y};
+      let tempAngle = Math.atan2(this.endPos.y - this.startPos.y, this.endPos.x - this.startPos.x);
+      this.dirSpeed = {x: Math.cos(tempAngle) * this.speed, y: Math.sin(tempAngle) * this.speed};
+      this.draw = function(){
+        let percentage = getPercentageBasedOnPoints(this.startPos,this.endPos,this.currentPos);
+        this.currentPos.x += this.dirSpeed.x;
+        this.currentPos.y += this.dirSpeed.y;
+        let sizeMod =1- Math.abs(percentage - 50) / 50;
+        if (percentage<100){
+          DrawCircle(this.currentPos.x,this.currentPos.y,this.size+ (sizeMod*this.size*2),this.color);
+        } else {
+          this.lifetime = 0;
+        }
+      }
+  }
+  
+  
+
+  function getPercentageBasedOnPoints(startPoint, endPoint, point) {
+   
+  const totalDistance = Math.sqrt((endPoint.x - startPoint.x) ** 2 + (endPoint.y - startPoint.y) ** 2);
+
+  const distanceToPoint = Math.sqrt((point.x - startPoint.x) ** 2 + (point.y - startPoint.y) ** 2);
+
+  return (distanceToPoint / totalDistance) * 100;
+}
+
+
+  function HorizontalExpandState(color1, color2, color3) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = "rgba(0,0,0,0.5)";
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = this.color2;
+      var pctUp = this.count / 2000;
+      var pctUpN = 1 - this.count / 2000;
+      var xPos = pctUp * 160;
+      var width = pctUpN * 320;
+      ctx.fillRect(xPos, 0, width, 200);
+
+      ctx.fillStyle = this.color1;
+      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+      ctx.fillStyle = this.color3;
+      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+
+      this.count -= 25;
+    };
+  }
+
+  function HarborX() {
+    this.start = Date.now()
+    this.alpha = 0
+    this.count = 0;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      DrawRect(0, 0, 320, 200, `hsla(190, 60%, 40%, ${this.alpha})`)
+      this.alpha <= .29 ? this.alpha += .01 : this.alpha = .3
+      if (elapsed > 1000) {
+        this.count++
+        this.start = Date.now()
+        for (let i = 0; i < 20; i++) {
+          effects.push(new harborXHelp(this.count % 3 == 0 ? 10 : this.count % 2 == 0 ? 160 : 300))
+        }
+      }
+      if (this.count > 10) this.lifetime = 0;
+    }
+  }
+
+  function harborXHelp(x) {
+    this.x = x;
+    this.y = 220 - Math.random() * 50;
+    this.vx = 3 - Math.random() * 6
+    this.vy = -5 - Math.random() * 5
+    this.ay = .3;
+    this.lifetime = 10;
+    this.start = Date.now() - Math.random() * 500
+    this.draw = function () {
+      let elapsed = Date.now() - this.start
+      DrawCircle(this.x, this.y, 20, `hsl(${240 - elapsed / 30}, 100%, 50%)`)
+      this.x += this.vx;
+      this.y < 230 ? this.y += this.vy : this.lifetime = 0;
+      this.vy += this.ay;
+    }
+  }
+
+  function HarborC() {
+    this.effects = []
+    this.count = 0;
+    this.alpha = 1;
+    this.switch = false;
+    this.lifetime = 10;
+    this.draw = function () {
+      if (this.count % 30 == 0) {
+        this.switch = !this.switch
+        this.effects.push(new harborCHelp(this.switch))
+      }
+      this.count++
+      ctx.globalAlpha = this.alpha
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+        if (ele.lifetime <= 0) this.effects.splice(i, 1)
+      })
+      ctx.globalAlpha = 1;
+      if (this.count > 250) this.alpha > .01 ? this.alpha -= .01 : this.lifetime = 0;
+    }
+  }
+
+  function harborCHelp(type) {
+    this.x = type ? 0 : 160
+    this.y = 200;
+    this.lifetime = 10;
+    this.draw = function () {
+      this.grad = ctx.createLinearGradient(this.x, this.y, this.x, this.y + 200)
+      this.grad.addColorStop(0, "white")
+      this.grad.addColorStop(.3, "#00838F")
+      this.grad.addColorStop(1, "#01579B")
+      DrawRect(this.x, this.y, 200, 200, this.grad)
+      this.y > -200 ? this.y -= 3 : this.lifetime = 0;
+    }
+  }
+
+  function HarborQ() {
+    this.radius = 1;
+    this.start = Date.now()
+    this.alpha = 0;
+    this.lifetime = 10;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      ctx.globalAlpha = this.alpha;
+      DrawCircle(160, 100, this.radius, "hsl(160, 100%, 50%)")
+      DrawCircle(160, 100, this.radius * 1.3, "hsla(160, 0%, 90%, .3)")
+      DrawCircle(160, 100, this.radius * 1.9, "hsla(60, 100%, 50%, .2)")
+      DrawStroke(160, 100, this.radius * 1.9, "yellow", 20)
+      ctx.globalAlpha = 1;
+      this.alpha <= .99 ? this.alpha += .01 : this.alpha = 1;
+      if (elapsed > 1000 && elapsed < 5000) this.radius < 50 ? this.radius += 10 : this.radius = Math.sin(Date.now() / 350) * 10 + 60;
+      if (elapsed > 5000) this.radius > 10 ? this.radius -= 10 : this.lifetime = 0;
+    }
+  }
+
+  function HarborE() {
+    this.start = Date.now()
+    this.grad = ctx.createLinearGradient(160, 0, 160, 200)
+    this.grad.addColorStop(.6, "hsla(0, 0%, 100%, 0)")
+    this.grad.addColorStop(1, "hsla(0, 0%, 100%, 1)")
+    this.width = 1;
+    this.height = 200;
+    this.alpha = 1;
+    this.mid = .5
+    this.lifetime = 10;
+    this.draw = function () {
+      this.grad2 = ctx.createLinearGradient(160, 0, 160, 200)
+      this.grad2.addColorStop(.1, "hsla(160, 80%, 40%, 1)")
+      this.grad2.addColorStop(this.mid - .1, "hsla(240, 90%, 40%, 1)")
+      this.grad2.addColorStop(this.mid + .1, "hsla(240, 90%, 40%, 1)")
+      this.grad2.addColorStop(.9, "hsla(60, 80%, 40%, 1)")
+      let elapsed = Date.now() - this.start;
+      ctx.globalAlpha = this.alpha
+      DrawRect(0, this.height, 320, 200, this.grad2)
+      DrawRect(0, 0, this.width, 200, this.grad)
+      ctx.globalAlpha = 1
+      this.mid = Math.sin(Date.now() / 500) * .2 + .5;
+      this.width < 320 ? this.width += 20 : this.width = 320;
+      if (elapsed > 2000) {
+        this.height > 0 ? this.height -= 10 : this.height = 0;
+      }
+      if (elapsed > 6000) {
+        this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0;
+      }
+    }
+  }
+
+  function kayoZ(color, color2) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color = color;
+    this.color2 = color2;
+    var speed = 0;
+    var speed2 = 0;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      var pctUp = this.count / 2000;
+      if (speed <= 160) {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(0 + speed, 0, 50, 200);
+        ctx.fillRect(270 - speed, 0, 50, 200);
+        speed += 8;
+      }
+      else {
+        ctx.fillStyle = this.color2;
+        ctx.fillRect(0 + speed - speed2, 0, 50, 200);
+        ctx.fillRect(270 - speed + speed2, 0, 50, 200);
+        speed2 += 5;
+      }
+      if (this.count < 100) {
+        this.count = 2000;
+      } else {
+        this.count -= 75;
+      }
+    };
+  }
+
+  function moveableBar(x, y, width, height, xDirection, yDirection, hue, sat, lit, alpha) {
+    this.x = x;
+    this.y = y;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 50;
+    this.size = 0;
+    this.ydirection = yDirection;
+    this.xdirection = xDirection;
+    this.width = width;
+    this.height = height;
+
+    this.draw = function () {
+      ctx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
+      ctx.fillRect(this.x, this.y, this.height, this.width);
+      this.lifetime--;
+      this.y -= this.ydirection;
+      this.x += this.xdirection;
+    };
+  }
+
+
+  function neonRun(color, direction) {
+    this.offset = direction ? -75 : 75;
+    this.lifetime = 50;
+    this.direction = direction
+    this.hue = Math.floor(Math.random() * 360);
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200 + this.offset;
+    this.draw = function () {
+      if (Neon_ult_meter.value > .75) {
+        ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
+        ctx.globalAlpha = .2;
+        ctx.fillRect(0, 0, 320, 200);
+        ctx.globalAlpha = 1;
+      }
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.rect(this.x, this.y, 15, 50);
+      ctx.fill();
+      if (this.direction) {
+        this.y += 10;
+      } else {
+        this.y -= 10;
+      }
+      this.lifetime--;
+    }
+  }
+
+  function neonWall() {
+      this.alpha = 0
+      this.done = false
+      this.y = 200
+      this.count = 0
+      this.draw = function () {
+        DrawRect(0, 0, 320, 200, `hsl(220, 100%, 50%, ${this.alpha})`)
+        if(!this.done) this.alpha <= .75 ? this.alpha += .05 : this.count < 100 ? this.count++ : this.done = true
+        else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+        DrawRect(0, this.y, 320, 50, `hsla(60, 100%, 50%, ${this.alpha})`)
+        this.y >= -50 ? this.y -= 10 : this.y = 200
+      }
+    }
+
+    function omenq() {
+      this.lifetime = 2000;
+      this.draw = function () {
+        this.lifetime--;
+        if (this.lifetime == 1975) {
+          stateMgr.Push(new EffectCloudState("#0048ff", "#0091ff", "#ffffff"));
+        }
+      };
+    }
+
+  function PulseRippleState3Color(color1, color2, color3, hollow) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.colors = [color1, color2, color3];
+    effects.push(new rippleEffect([color1, color2, color3], 4, hollow, "out", 700, "null", 0, 30, 0, false));
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      var pctUp = this.count / 2000;
+      if (this.count <= 500) {
+        for (let index = 0; index < 30; index++) {
+          ctx.fillStyle = index < 10 ? color1 : index < 20 ? color2 : color3;
+          ctx.fillRect(Math.random() * 320, Math.random() * 200, 50, 50);
+        }
+      };
+      this.count -= 50;
+    }
+  }
+
+  function RocketState(color1, color2, color3, speed, size) {
+    this.start = new Date().getTime();
+    this.x = 0;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.speed = speed;
+    this.size = size;
+    this.rotateTimer = new Date().getTime();
+    this.rotation;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > 1000) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      this.rotation = new Date().getTime() - this.rotateTimer;
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = this.color1;
+      if (this.x < 320) {
+        this.start = new Date().getTime();
+        this.x += this.speed;
+        ctx.beginPath();
+        draw3ColorSpiral(
+          this.x,
+          100,
+          this.color1,
+          this.color2,
+          this.color3,
+          20,
+          -this.rotation / 2
+        );
+        ctx.fill();
+      } else {
+        ctx.beginPath();
+        draw3ColorSpiral(
+          320,
+          100,
+          this.color1,
+          this.color2,
+          this.color3,
+          this.size,
+          this.rotation / 2
+        );
+        ctx.fill();
+      }
+    };
+  }
+
+  function SpikeProgressionEffect() {
+    this.stage = 0;
+    this.fullElapsed = 0;
+    this.elapsed;
+    this.start = Date.now();
+    this.bars = [];
+    this.stripes = [];
+    let startExplosion = 0;
+    let queueExplosion = false;
+    this.spikeEffect = true;
+    this.flickerCounter = 900;
+    this.bombRed = 0;
+    this.lastElapsed;
+
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      this.fullElapsed = Date.now() - this.start;
+
+      let redBezelGradient = ctx.createRadialGradient(160, 100, this.stage < 2 ? SetRange(300 - this.elapsed / 50, 180, 300) : 180, 160, 100, this.stage < 2 ? SetRange(400 - this.elapsed / 50, 250, 500) : 250)
+      redBezelGradient.addColorStop(0, "hsla(0,0%,0%,0)");
+      redBezelGradient.addColorStop(1, `hsl(0,${Math.sin(Date.now() / 1000) * 25 + 75}%,50%)`);
+
+      switch (this.stage) {
+        case 0:
+
+          DrawCircle(160, 100, 550, redBezelGradient)
+          if (this.fullElapsed > 25000) {
+            this.stage++;
+            this.flickerCounter = 750
+            this.lastElapsed = this.elapsed
+          }
+          break;
+        case 1:
+          let bounceGradient = ctx.createRadialGradient(160, 100, SetRange(300 - this.elapsed / 50, 500, 700), 160, 100, SetRange(400 - this.elapsed / 50, 550, 600))
+          bounceGradient.addColorStop(0, "hsla(0,0%,0%,0)");
+          bounceGradient.addColorStop(0.3, `hsl(50,100%,50%)`);
+          bounceGradient.addColorStop(1, `hsl(50,100%,50%)`);
+          if (this.bars.length == 0) {
+            this.bars.push(new bounceBar(0, 0, 320, 30, { x: 0, y: 5 }, 1, bounceGradient))
+          }
+          DrawCircle(160, 100, 550, redBezelGradient)
+          this.bars.forEach(element => {
+            element.draw();
+            if (element.lifetime <= 0) {
+              this.bars.splice(this.bars.indexOf(element), 1)
+              this.bars.push(new bounceBar(0, 0, 320, 30, { x: 0, y: 5 }, 1, bounceGradient))
+            }
+          });
+          if (this.fullElapsed > 35000) {
+            this.stage++;
+            this.start = Date.now();
+            this.flickerCounter = 500
+            this.lastElapsed = this.elapsed
+            setTimeout(() => {
+              this.stage = 3;
+              startExplosion = Date.now();
+            }, 8700);
+          }
+          break;
+        case 2:
+          DrawCircle(160, 100, 550, redBezelGradient)
+          if (Math.random() > 0.9) {
+            this.stripes.push(new stripe({ x: Math.random() > 0.5 ? 0 : 320, y: Math.random() * 200 }, { x: 160, y: 100 }, 40, 10, 5, "hsl(0, 0%, 75%)", 500));
+            this.stripes.push(new stripe({ x: Math.random() * 320, y: Math.random() > 0.5 ? 0 : 200 }, { x: 160, y: 100 }, 40, 10, 5, "hsl(0, 0%, 75%)", 500))
+          }
+          this.stripes.forEach(element => {
+            element.draw();
+            if (element.shouldStop == true) {
+              this.stripes.splice(this.stripes.indexOf(element), 1);
+            }
+          });
+          DrawCircle(160, 100, this.elapsed / 120, "hsl(0, 0%, 75%)")
+          var innerLit = this.bombRed + Math.sin(Date.now() / 250) * 20 >= 0 ? this.bombRed + Math.sin(Date.now() / 250) * 10 : 0;
+          DrawCircle(160, 100, SetRange(this.elapsed / 120 - 10, 0, 100), `hsl(0, 100%, ${innerLit}%)`)
+          this.bombRed < 50 ? this.bombRed += .1 : null;
+          break;
+        case 3:
+          DrawCircle(160, 100, 550, redBezelGradient)
+          DrawCircle(160, 100, SetRange(this.elapsed / 100 - ((Date.now() - startExplosion) * 20) / 120, 0, 150), "white")
+          DrawCircle(160, 100, SetRange(this.elapsed / 100 - 10 - ((Date.now() - startExplosion) * 20) / 120, 0, 100), "black")
+          if (this.elapsed / 100 - ((Date.now() - startExplosion) * 20) / 120 < 0) {
+            effects.push(new rippleEffect(["black", "grey"], 8, true, "out", 7000, "null", 5, 30, 30, false))
+            this.lifetime = 0;
+            bombPushed = false;
+            setTimeout(() => {
+              this.lifetime = 0;
+              bombPushed = false;
+            }, 2000);
+
+          }
+          break;
+        default:
+          break;
+      }
+      if (!bombPushed) {
+        this.lifetime = 0;
+        bombPushed = false;
+      }
+    }
+  }
+
+  function stripe(beginPoint, endPoint, width, height, speed, color, duration) {
+    this.x = beginPoint.x;
+    this.y = beginPoint.y;
+    this.endPoint = endPoint;
+    this.endX = endPoint.x;
+    this.endY = endPoint.y;
+    this.width = width;
+    this.height = height;
+    this.speed = speed;
+    this.color = color;
+    this.start = Date.now();
+    this.duration = duration;
+
+    this.rot = Math.atan2(this.endY - this.y, this.endX - this.x);
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rot);
+      ctx.fillStyle = this.color;
+      ctx.fillRect(0, 0, this.width, this.height);
+      ctx.restore();
+      this.x += this.speed * Math.cos(this.rot);
+      this.y += this.speed * Math.sin(this.rot);
+
+      if (Date.now() - this.start > this.duration) {
+        this.shouldStop = true;
+      }
+
+    }
+  }
+
+  function RazeE() {
+    this.x = 0;
+    this.y = -10;
+    this.start = new Date().getTime();
+    this.duration = 3000;
+    var split = 0;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+        effects.push(
+          new moveableBar(
+            random(0, 360),
+            random(0, 200),
+            20,
+            20,
+            random(-5, 5),
+            random(-5, 5),
+            20 + random(-20, 20),
+            100 + random(-20, 20),
+            50,
+            0.9
+          )
+        );
+    };
+  }
+
+  function RazeX(){
+    this.x = -50
+    this.draw = function(){
+      DrawCircle(this.x, 100, 50, "orange")
+      this.x < 370 ? this.x += 5 : this.lifetime = 0
+      if(this.lifetime == 0){
+        for(let i = 0; i < 20; i++) effects.push(new razeXHelp())
+        setTimeout(()=>{
+          for(let i = 0; i < 20; i++) effects.push(new razeXHelp())
+        }, 300)
+      }
+    }
+  }
+
+  function razeXHelp(){
+    this.x = 320
+    this.y = 100
+    this.vx = -Math.random() * 10
+    this.vy = 5 - Math.random() * 10
+    this.hue = Math.random() * 50
+    this.lifetime = 100
+    this.draw = function(){
+      this.color = `hsla(${this.hue}, 100%, 50%, ${this.lifetime / 100})`
+      DrawCircle(this.x, this.y, 25, this.color)
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime--
+    }
+  }
+
+  function rippleEffect(colors, speed, isHollow, direction, duration, backgroundcol = "null", repeatAmount = 0, circleDistance = 50, strokeSize = 1, autodelete = true) {
+    this.start = new Date().getTime();
+    this.isHollow = isHollow;
+    this.direction = direction;
+    this.colors = colors;
+    this.speed = speed
+    this.duration = duration;
+    this.autodelete = autodelete;
+
+    this.radius = [];
+    this.strokeSize = strokeSize;
+    this.background = backgroundcol;
+    let colLength = this.colors.length;
+    for (let index = 0; index < repeatAmount; index++) {
+      for (let i = 0; i < colLength; i++) {
+        this.colors.push(colors[i]);
+      }
+    }
+    colors.forEach((color, i) => {
+      if (this.direction == "out") {
+        this.radius.push((-circleDistance * i));
+      } else {
+        this.radius.push(200 + (circleDistance * i));
+      }
+    });
+
+    this.draw = function () {
+      if (this.background != "null") {
+        ctx.fillStyle = this.background;
+        ctx.fillRect(0, 0, 320, 200);
+      }
+      this.elapsed = new Date().getTime() - this.start;
+      colors.forEach((color, i) => {
+        ctx.beginPath();
+        ctx.arc(160, 100, SetRange(this.radius[i], 0, 500), 0, 2 * Math.PI);
+        if (this.isHollow) {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = this.strokeSize;
+          ctx.stroke();
+        } else {
+          if (this.radius[i] < 200 || !this.autodelete) {
+            ctx.fillStyle = color;
+            ctx.fill();
+          }
+        }
+        if (this.direction == "out") {
+          this.radius[i] += this.speed;
+        } else {
+          this.radius[i] -= this.speed;
+        }
+      });
+      if (this.elapsed > this.duration) this.lifetime = 0;
+    }
+  }
+
+  function RotatingBeam(color1, color2) {
+    this.start = new Date().getTime();
+    this.duration = 3000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      ctx.fillStyle = this.color1;
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(160, 100);
+      ctx.rotate(this.elapsed / 200);
+      ctx.fillStyle = this.color2;
+      ctx.fillRect(-15, 0, 30, 200);
+      ctx.restore();
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0;
+        for(let i = 0; i < 50; i++) effects.push(new BeamHelp(this.color1, this.color2))
+      }
+    };
+  }
+
+  function BeamHelp(color1, color2){
+    this.x = 160
+    this.y = 100
+    this.vx = 6 - Math.random() * 12
+    this.vy = 6 - Math.random() * 12
+    this.color = Math.random() <= .5 ? color1 : color2
+    this.lifetime = 100
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20, this.color)
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime--
+    }
+  }
+
+  function ShieldIncreaseState(color) {
+    this.start = new Date().getTime();
+    this.duration = 3000;
+    this.count = 0;
+    this.color = color;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = this.color;
+      var effectHeight = 200 - 200 * (this.count / 2000);
+      ctx.fillRect(0, effectHeight, 320, 200);
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, effectHeight, 320, 40);
+      this.count += 43;
+    };
+  }
+
+  function SparkleEffect(hue, saturation, lightness, size) {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.hue = hue;
+    this.saturation = saturation;
+    this.lightness = lightness;
+    this.lifetime = 40;
+    this.size = size;
+    this.draw = function () {
+      ctx.fillStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + this.lightness + '%)';
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+      this.lifetime--;
+    };
+  }
+
+  function SweepState(bars, dur, background) {
+    this.start = new Date().getTime();
+    this.duration = dur;
+    this.background = background;
+    bars.forEach(bar => {
+      effects.push(new bounceBar(bar.x, bar.y, bar.width, bar.height, bar.speed, bar.bA, bar.color));
+    });
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = this.background;
+      ctx.fillRect(0, 0, 320, 200);
+    };
+  }
+
+  function SwarmState(color1, color2, color3) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+      }
+      effects.push(new swarmHelp())
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+    };
+  }
+
+  function swarmHelp(){
+    this.mod = Math.random() * 100 + 50
+    this.color = Math.random() >= .5 ? 220 : 330
+    this.alpha = 0
+    this.done = false
+    this.draw = function(){
+      if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
+      else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      this.x = Math.cos(Date.now() / (this.mod * 3)) * this.mod + 160
+      this.y = Math.sin(Date.now() / (this.mod * 3)) * this.mod + 100
+      DrawCircle(this.x, this.y, 30, `hsla(${this.color}, 100%, 50%, ${this.alpha})`)
+    }
+  }
+
+  function TripwireState(color) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color = color;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 360, 200);
+      var pct = this.count / 2000;
+      var negPct = 1 - this.count / 2000;
+      var xPos = 160 * pct;
+      ctx.fillStyle = this.color;
+      ctx.fillRect(xPos, 100, negPct * 360, 10);
+
+      this.count -= 50;
+    };
+  }
+
+  function TurretState(color1, color2, color3) {
+    this.start = new Date().getTime();
+    this.duration = 3000;
+    this.count = 3000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.bullets = [];
+    this.alpha = 1
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.alpha >= .01 ? this.alpha -= .01 : stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      ctx.globalAlpha = this.alpha
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      if (Math.random() > 0.9) {
+        let rngvar = Math.random();
+        this.bullets.push(new bullet(rngvar < 0.3 ? color1 : color2));
+      }
+      this.bullets.forEach(element => {
+        element.draw();
+      });
+      ctx.globalAlpha = 1
+    };
+  }
+
+  function bullet(col) {
+    this.x = 0;
+    this.col = col;
+    this.draw = function () {
+      ctx.fillStyle = this.col;
+      ctx.fillRect(this.x, 0, 30, 200);
+      this.x += 5;
+    }
+  }
+
+  function VictoryEffect() {
+    this.elapsed = 0;
+    this.start = Date.now();
+    this.calculateVal = 0;
+    this.stripeHolder = [];
+    this.colors = ["hsla(169, 100%, 23%, 1)", "hsla(134, 100%, 25%, 1)"];
+    this.endEffect = false;
+    this.ripple = -1;
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      let gradient = ctx.createLinearGradient(-100, 0, 420, 0)
+      if (this.calculateVal < 1000) {
+        this.calculateVal = -1440 * Math.floor((this.elapsed / 1440) / 2) + ((this.elapsed / 1440) * (1440 / 2));
+      }
+      gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+      gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0.9)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 320, 200);
+
+
+      DrawPoints([{ x: 110, y: 50 }, { x: 160, y: 150 }, { x: 210, y: 50 }], SetRange(2 - (this.elapsed / 2000), 1, 2), 20, `hsla(101, 100%, ${SetRange(Math.sin(this.elapsed / 800) * 100, 50, 70)}%, 1)`)
+      if (this.elapsed > 2000) {
+        if (this.ripple == -1) {
+          this.ripple = new rippleEffect(["hsla(169, 100%, 73%, 1)"], 5, true, "out", 4000, "null", 0, 10, 20)
+        } else {
+          this.ripple.draw();
+        }
+      }
+      if (this.elapsed > 3500) {
+        let randomVal = Math.random() * 320;
+        let randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+        this.stripeHolder.push(new stripe({ x: randomVal, y: 260 }, { x: randomVal, y: -20 }, 50, 30, 5, randomColor, 2000))
+      }
+      this.stripeHolder.forEach(element => {
+        element.draw();
+      });
+      if (this.elapsed > 8000 && !this.endEffect) {
+        this.endEffect = true;
+        effects.push(new rippleEffect(["hsla(169, 100%, 23%, 1)", "hsla(134, 100%, 25%, 1)"], 5, true, "out", 4000, "null", 5, 20, 40))
+        setTimeout(() => {
+          this.lifetime = 0;
+        }, 1000);
+      }
+    }
+  }
+
+  function DrawPoints(points, size, lineWidth, color) {
+    let tempCanvas = canvas.cloneNode();
+    tempCanvasctx = tempCanvas.getContext("2d");
+    tempCanvasctx.clearRect(0, 0, 320, 200);
+
+    tempCanvasctx.beginPath();
+    tempCanvasctx.scale(size, size);
+    tempCanvasctx.moveTo(points[0].x / size, points[0].y)
+    for (let index = 1; index < points.length; index++) {
+      tempCanvasctx.lineTo(points[index].x / size, points[index].y)
+    }
+    tempCanvasctx.lineWidth = lineWidth;
+
+    tempCanvasctx.strokeStyle = color;
+    tempCanvasctx.stroke();
+    ctx.drawImage(tempCanvas, 0 - ((size - 1) * 320) / 2, 0, 320 * size, 200 * size)
+
+  }
+
+  function WallUpState(color1, color2, color3, direction) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.color1 = color1;
+    this.color2 = color2;
+    this.color3 = color3;
+    this.direction = direction;
+    this.y = direction == "up" ? 200 : 0;
+    this.speed = direction == "up" ? -2.5 : 2.5;
+      this.alpha = 1
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.alpha >= .01 ? this.alpha -= .01 : stateMgr.Pop()
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.globalAlpha = this.alpha
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.fillStyle = this.color1;
+      ctx.fillRect(0, this.y, 320, 600);
+      ctx.fillStyle = this.color2;
+      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
+      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
+      ctx.fillStyle = this.color3;
+      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
+      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
+      this.y += this.speed;
+      ctx.globalAlpha = 1
+    };
+  }
+
+  //END EFFECTS
+  //START HELPER FUNCTIONS
+
+  function CharacterSelectEffect() {
+    var colors = hexToHSL("#ffff00");
+    for (let i = 0; i < 7; i++) {
+      setTimeout(function () {
+        effects.push(
+          new moveableBar(-50, random(0, 200), 100, 20, 15, 0, colors.h + random(-20, 20), colors.s + random(-20, 20), colors.l, 0.7)
+        );
+      }, random(0, 800));
+      setTimeout(function () {
+        effects.push(
+          new moveableBar(360, random(0, 200), 100, 20, -15, 0, colors.h + random(-20, 20), colors.s + random(-20, 20), colors.l, 0.7)
+        );
+      }, random(0, 800));
+    }
+  }
+
+  function fadeParticle(x, y, direction, color) {
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
+    this.color = color;
+    this.lifetime = 50;
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 20, this.color)
+      if (this.direction == "left") {
+        this.x -= Math.random() * 3 + 1;
+        this.y -= Math.random() * 3 + 1;
+      } else {
+        this.x += Math.random() * 3 + 1;
+        this.y -= Math.random() * 3 + 1;
+      }
+      this.lifetime--;
+    }
+  }
+
+  function fadeXParticle() {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.radius = Math.random() * 25 + 1;
+    this.alpha = .6;
+    this.lifetime = 10;
+    this.draw = function () {
+      var vx = Math.random() * 30 - 15
+      var vy = Math.random() * 30 - 15
+      ctx.globalAlpha = this.alpha;
+      DrawCircle(this.x, this.y, this.radius, "rgb(25, 25, 50)");
+      ctx.globalAlpha = 1;
+      this.alpha > 0 ? this.alpha -= .01 : this.lifetime = 0;
+      this.x += vx;
+      this.y += vy;
+    }
+  }
+
+  function YoruX(){
+    this.alpha = 1
+    this.count = 200
+    this.draw = function(){
+      ctx.globalAlpha = this.alpha
+      DrawRect(0, 0, 320, 200, `hsla(240, 100%, 20%, ${Math.sin(Date.now() / 500) * .25 + .5})`)
+      ctx.globalAlpha = 1
+      this.count > 0 ? this.count-- : this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
+    }
+  }
+
+  function FootstepState(color1, color2) {
+    for (let index = 0; index < 10; index++) {
+      setTimeout(() => {
+        effects.push(new Footstep(index * 60, Math.random() * 25 + 75, color1));
+      }, 500 * index);
+
+      setTimeout(() => {
+        effects.push(new Footstep(index * 60 + 30, Math.random() * 25 + 75, color2));
+      }, 500 * index + 250);
+    }
+  }
+
+
+
+  function Footstep(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.lifetime = 90; // Frames.
+  }
+
+  Footstep.prototype.draw = function () {
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.x, this.y, 30, 30);
+    this.lifetime--;
+  };
+
+  function hexToHSL(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    (r /= 255), (g /= 255), (b /= 255);
+    var max = Math.max(r, g, b),
+      min = Math.min(r, g, b);
+    var h,
+      s,
+      l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    s = s * 100;
+    s = Math.round(s);
+    l = l * 100;
+    l = Math.round(l);
+    h = Math.round(360 * h);
+
+    var colors = [];
+    colors['h'] = h;
+    colors['s'] = s;
+    colors['l'] = l;
+
+    return colors;
+  }
+
+  function PulseRippleStateKayo(color, color2, hollow) {
+    effects.push(new rippleEffect([color], 8, hollow ? true : false, "out", 550, "black", 0, 200, 20))
+    setTimeout(() => {
+      effects.push(new rippleEffect([color2], 8, hollow ? false : true, "out", 2000, "black", 2, 200, 20))
+    }, 550);
+  }
+
+
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  function SetRange(num, min, max) {
+    return Math.min(Math.max(num, min), max)
+  }
+
+  function SmokeParticle(color) {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.frames = 0;
+    this.color = color;
+    this.complete = false;
+
+    this.Draw = function () {
+      if (this.frames > 10) {
+        this.complete = true;
+      }
+
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, 50, 50);
+
+      this.frames += 1;
+    };
+
+    this.IsFinished = function () {
+      return this.complete;
+    };
+  }
+  //END HELPER FUNCTIONS
+  //DRAW FUNCTIONS
+
+  function drawRotatedRect(ctx, x, y, width, height, angle) {
+    angle *= Math.PI / 180
+    ctx.lineWidth = height / 2
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    ctx.lineTo(x + width * Math.cos(angle), y + width * Math.sin(angle))
+    ctx.stroke()
+  }
+
+  function draw3ColorSpiral(spX, spY, cl1, cl2, cl3, radius, phase) {
+    ctx.save()
+    ctx.translate(160, 100)
+    ctx.scale(radius / 100, radius / 100)
+    ctx.rotate(phase / 100)
+    ctx.translate(-160, -100)
+    DrawTriangle(160, 100, -15, -200, 335, -200, cl1)
+    ctx.translate(160, 100)
+    ctx.rotate(Math.PI / 3)
+    ctx.translate(-160, -100)
+    DrawTriangle(160, 100, -15, -200, 335, -200, cl2)
+    ctx.translate(160, 100)
+    ctx.rotate(Math.PI / 3)
+    ctx.translate(-160, -100)
+    DrawTriangle(160, 100, -15, -200, 335, -200, cl3)
+    ctx.translate(160, 100)
+    ctx.rotate(Math.PI / 3)
+    ctx.translate(-160, -100)
+    DrawTriangle(160, 100, -15, -200, 335, -200, cl1)
+    ctx.translate(160, 100)
+    ctx.rotate(Math.PI / 3)
+    ctx.translate(-160, -100)
+    DrawTriangle(160, 100, -15, -200, 335, -200, cl2)
+    ctx.translate(160, 100)
+    ctx.rotate(Math.PI / 3)
+    ctx.translate(-160, -100)
+    DrawTriangle(160, 100, -15, -200, 335, -200, cl3)
+    ctx.restore()
+  }
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+  
+  function DrawPath(x, y, scale, path, color) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale, scale)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(cord1X, cord1Y);
+    ctx.lineTo(cord2X, cord2Y);
+    ctx.lineTo(cord3X, cord3Y);
+    ctx.lineTo(cord1X, cord1Y);
+    ctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function lightning(size, color, width){
+      this.points = [];
+      this.color = color
+      this.width = width
+      while(this.points.length <= size){
+        this.points.push([this.points.length * (350 / size) - 25, 100])
+      }
+      this.draw = function(){
+        drawLightning(this.points, this.color, this.width)
+        this.points.forEach((ele, i)=>{
+          var mod = Math.sin(Date.now() / (100000 * Math.random()))
+          switch(i){
+            case 0:
+              this.points[i][1] < 90 ? this.points[i][1]+=2 : 
+                this.points[i][1] > 110 ? this.points[i][1]-=2 : 
+                  this.points[i][1] += mod * 10;
+              break;
+            case this.points.length - 1:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                  this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                      this.points[i][1] += mod * 10;
+              break;
+            default:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                    this.points[i][1] += mod * 10;
+              this.points[i][0] < i * (320 / this.points.length) ? this.points[i][0]+=5 : 
+                this.points[i][0] > i * (320 / this.points.length) + (320 / this.points.length) ? this.points[i][0]-=5 : 
+                    this.points[i][0] += mod * 10;
+              break;
+          }
+        })
+      }
+    }
+
+  function drawLightning(array, color, width) {
+    ctx.beginPath()
+    ctx.moveTo(...array[0])
+    array.forEach((ele, i) => {
+      if (i) {
+        ctx.lineTo(...array[i])
+      }
+    });
+    ctx.strokeStyle = color;
+    ctx.lineJoin = "round";
+    ctx.lineWidth = width + Math.random() * width;
+    ctx.stroke()
+  }
+  //END DRAW FUNCTIONS
+
+  function StateHandler() {
+    this.stack = [];
+    this.state = null;
+
+    this.updateState = function () {
+      if (this.stack.length > 0) {
+        this.state = this.stack[this.stack.length - 1];
+      } else {
+        this.state = null;
+      }
+    };
+
+    this.Push = function (newState) {
+      this.stack.push(newState);
+      this.updateState();
+    };
+
+    this.Pop = function () {
+      this.stack.pop();
+      this.updateState();
+    };
+
+    this.Process = function () {
+      if (this.state != null) {
+        this.state.Process();
+      }
+    };
+  }
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      // Exit early if we've got a long-term match.
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        //var fromZero = this.value === 0;
+        //var toZero = values[0] === 0;
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    };
+  }
+
+  function onEngineReady() {
+    // Grab canvas and rendering context. 
+    canvas = document.getElementById("exCanvas");
+    ctx = canvas.getContext("2d");
+    // Start updates *after* our engine is accessible and ready. 
+
+    window.requestAnimationFrame(update);
+  }  
+</script>

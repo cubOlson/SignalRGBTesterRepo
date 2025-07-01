@@ -1,0 +1,2000 @@
+<head>
+  <title>Minecraft Java Devv</title>
+  <meta description="Game integration for Minecraft Java edition. Set your GUI scale to Auto. v1.06" />
+  <meta publisher="SignalRGB" />
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Ambience"/>
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+  <meta property="enableHud" label="enable Hud Effects" type="boolean" default="1" />
+  <meta property="adjMeter" label="Adjust Bar(Turn on only when not in Game)" type="boolean" default="0" />
+  <meta property="twinklyBars" label="Switch HUD Style" type="boolean" default="0" />
+  <meta property="enableHealth" label="Health effect" type="boolean" default="1" />
+  <meta property="healthColor" label="Health Color" type="color" default="#ff0000" min="0" max="360" />
+  <meta property="healthY" label="Health Y position" type="number" min="0" max="100" default="35" />
+  <meta property="healthX" label="Health X position" type="number" min="0" max="100" default="0" />
+  <meta property="healthWidth" label="Health width [Switch Size]" type="number" min="0" max="100" default="100" />
+  <meta property="healthHeight" label="Health height [Switch Heart Amount]" type="number" min="0" max="100" default="15" />
+  <meta property="enableHunger" label="enable Hunger effect" type="boolean" default="1" />
+  <meta property="foodColor" label="Food Color" type="color" default="#ffaa00" min="0" max="360" />
+  <meta property="foodY" label="Food Y position" type="number" min="0" max="100" default="45" />
+  <meta property="foodX" label="Food X position" type="number" min="0" max="100" default="0" />
+  <meta property="foodWidth" label="Food width [Switch Size]" type="number" min="0" max="100" default="100" />
+  <meta property="foodHeight" label="Food height [Switch Meat Amount]" type="number" min="0" max="100" default="15" />
+  <meta property="enableXP" label="enable XP effect" type="boolean" default="1" />
+  <meta property="enableSleep" label="enable Sleep effect" type="boolean" default="1" />
+  <meta property="enableMenu" label="enable Crafting/Menu effect" type="boolean" default="1" />
+  <meta property="enableStatus" label="enable Status effect" type="boolean" default="1" />
+  <meta property="enableBoss" label="enable Boss effects" type="boolean" default="1" />
+  <meta property="enableRecipe" label="enable Recipe effects" type="boolean" default="1" />
+  <meta property="enableMount" label="enable Mount effects" type="boolean" default="1" />
+  <meta property="enableUnderwater" label="enable Underwater effect" type="boolean" default="1" />
+
+  <meta meter="bubble1" tags="minecraft, vlc" x="0.7007" y="0.7978" width="0.0027" height="0" 
+    h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+    <resolution aspect="3.55:1" x="0.5813" y="0.8204" width="0.000" height="0.0001" />
+    <resolution aspect="24:10" x="0.6499" y="0.7971" width="0.0029" height="0.0007" />
+    <resolution aspect="16:11" x="0.6819" y="0.8193" width="0.0016" height="0" />
+
+    <resolution size="3840x2160" x=".699" y=".7965" width=".003" height=".0001" />
+    <resolution size="2560x1080" x="0.6352" y="0.8194" width=".0007" height=".0001" />
+  </meta>
+
+  <meta meter="bubble2" tags="minecraft, vlc" x="0.7003" y="0.8019" width="0.0027" height="0"
+    h="180-220" s="80-100" l="80-100" hdr-h="175-240" hdr-s="75-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.5818" y="0.8241" width="0.0002" height="0.0002" />
+    <resolution aspect="24:10" x="0.6369" y="0.8021" width="0.0006" height="0.0005" />
+    <resolution aspect="16:11" x="0.6811" y="0.823" width="0.0012" height="0" />
+    
+    <resolution size="3840x2160" x=".699" y=".801" width=".003" height=".0001" />
+    <resolution size="2560x1080" x="0.6346" y="0.8248" width="0.0008" height="0.001"/>
+  </meta>
+
+  <meta meter="bubble3" tags="minecraft, vlc" x="0.6999" y="0.8117" width="0.0004" height="-0.0007" 
+    h="180-220" s="0-40" l="80-100" hdr-h="175-240" hdr-s="0-60" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.5807" y="0.8315" width="0.000" height="0.0001" />
+    <resolution aspect="24:10" x="0.6496" y="0.8103" width="0.002" height="0.0007" />
+    <resolution aspect="16:11" x="0.6807" y="0.8305" width="0.0008" height="0" />
+    
+    <resolution size="3840x2160" x=".699" y=".809" width=".003" height=".0001" />
+    <resolution size="2560x1080" x="0.6352" y="0.8306" width=".0007" height=".0001" />
+  </meta>
+
+  <meta meter="health" tags="minecraft, vlc" x="0.2892" y="0.8513" width="0.1829" height="0" 
+    h="-30-30" s="70-100" l="70-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4060" y="0.8676" width="0.0807" height="0.0010" />
+    <resolution aspect="24:10" x="0.3443" y="0.8471" width="0.1364" height="0.0007" />
+    <resolution aspect="16:11" x="0.2876" y="0.8693" width="0.1852" height="-0.0019" />
+    
+    <resolution size="3840x2160" x=".291" y=".8489" width=".1625" height=".001" />
+    <resolution size="2560x1080" x=".363" y=".869" width=".1070" height=".001" />
+  </meta>
+
+  <meta meter="Food" tags="minecraft, vlc" x="0.7089" y="0.868" width="0.0004" height="0.002" 
+    h="35-75" s="0-30" l="80-100" hdr-h="0-30" hdr-s="0-30" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.5930" y="0.8833" width="0.000" height="0.000" />
+    <resolution aspect="24:10" x="0.6287" y="0.8687" width="0.0006" height="0.0013" />
+    <resolution aspect="16:11" x="0.7097" y="0.8831" width="0" height="0" />
+    
+    <resolution size="3840x2160" x=".6523" y=".8687" width=".0007" height=".001" />
+    <resolution size="2560x1080" x=".6020" y=".88233" width=".0007" height=".001" />
+  </meta>
+
+  <meta meter="FoodBar" tags="minecraft, vlc" x="0.5252" y="0.852" width="0.1798" height="0.0014" 
+    h="0-50" s="40-80" l="65-100" hdr-h="0-50" hdr-s="40-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.5120" y="0.8630" width="0.0776" height="0.0021" />
+    <resolution aspect="24:10" x="0.5202" y="0.852" width="0.1332" height="0" />
+    <resolution aspect="16:11" x="0.5256" y="0.8655" width="0.1739" height="0.0007" />
+    
+    <resolution size="3840x2160" x="0.527" y="0.8453" width="0.1753" height="0.0028" />
+    <resolution size="2560x1080" x=".5210" y=".865" width="0.12" height=".002" />
+  </meta>
+
+  <meta meter="lowHp" tags="minecraft, vlc" x="0.2896" y="0.8513" width="0.0441" height="0" 
+    h="-30-30" s="70-100" l="70-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4062" y="0.8713" width="0.0229" height="0.0001" />
+    <resolution aspect="24:10" x="0.3446" y="0.8478" width="0.0328" height="0.0035" />
+    <resolution aspect="16:11" x="0.288" y="0.868" width="0.0535" height="0.0013" />
+    
+    <resolution size="3840x2160" x=".291" y=".8529" width=".04" height=".001" />
+    <resolution size="2560x1080" x=".363" y=".869" width=".0280" height=".001" />
+  </meta>
+
+  <meta meter="LastHealth" tags="minecraft, vlc" x="0.2915" y="0.8513" width="0.009" height="0.0014" 
+    h="-30-30" s="70-100" l="70-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4068" y="0.8704" width="0.0028" height="-0.0007" />
+    <resolution aspect="24:10" x="0.3463" y="0.8527" width="0.0064" height="0.0021" />
+    <resolution aspect="16:11" x="0.2907" y="0.8724" width="0.009" height="-0.0012" />
+    
+    <resolution size="3840x2160" x="0.2902" y="0.8532" width="0.0101" height="0.0004" />
+    <resolution size="2560x1080" x="0.3611" y="0.8703" width="0.0058" height="0" />
+  </meta>
+
+  <meta meter="healthB" tags="minecraft, vlc" x="0.2966" y="0.8527" width="0.0004" height="-0.0007" 
+    h="160-205" s="20-60" l="80-100" hdr-h="0-30" hdr-s="0-30" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4096" y="0.8685" width="0.000" height="0.0000" />
+    <resolution aspect="24:10" x="0.3491" y="0.8532" width="0.0009" height="0.0001" />
+    <resolution aspect="16:11" x="0.2954" y="0.8693" width="0.002" height="0" />
+    
+    <resolution size="3840x2160" x="0.2964" y="0.8527" width="0.0006" height="-0.0005"  />
+    <resolution size="2560x1080" x="0.365" y="0.8684" width="0" height="0" />
+  </meta>
+
+  <meta meter="healthG" tags="minecraft, vlc" x="0.2915" y="0.8513" width="0.009" height="0.0014" 
+    h="30-70" s="60-100" l="35-75" hdr-h="45-90" hdr-s="50-100" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4096" y="0.8685" width="0.0003" height="0.0001" />
+    <resolution aspect="24:10" x="0.3463" y="0.8527" width="0.0064" height="0.0021" />
+    <resolution aspect="16:11" x="0.2954" y="0.8693" width="0.002" height="0" />
+    
+    <resolution size="3840x2160" x=".291" y=".8529" width=".0130" height=".001" />
+    <resolution size="2560x1080" x="0.3599" y="0.8656" width="0" height="0" />
+  </meta>
+
+  <meta meter="xp" tags="minecraft, vlc" x="0.2896" y="0.8888" width="0.4193" height="0.0007" 
+    h="70-110" s="30-70" l="55-100" hdr-h="80-100" hdr-s="30-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4070" y="0.9000" width="0.1854" height="0.0020" />
+    <resolution aspect="24:10" x="0.3446" y="0.8888" width="0.312" height="0.0014" />
+    <resolution aspect="16:11" x="0.2892" y="0.9031" width="0.4205" height="-0.0013"/>
+    
+    <resolution size="3840x2160" x=".2898" y=".8861" width=".376" height=".002" />
+    <resolution size="2560x1080" x=".3615" y=".9010" width=".2765" height=".001" />
+  </meta>
+
+  <meta meter="boss" tags="minecraft, vlc" x="0.2923" y="0.0556" width="0.4134" height="0.0007" 
+    h="260-330" s="80-100" l="70-100" hdr-h="260-330" hdr-s="80-100" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.4073" y="0.0500" width="0.1839" height="0.0002" />
+    <resolution aspect="24:10" x="0.346" y="0.0584" width="0.3091" height="0.0007" />
+    <resolution aspect="16:11" x="0.2915" y="0.0488" width="0.4139" height="0.0031" />
+    
+    <resolution size="3840x2160" x="0.2890" y="0.0576" width="0.4198" height="0.0001" />
+    <resolution size="2560x1080" x=".362" y=".0490" width=".27" height=".002" />
+  </meta>
+
+  <meta meter="bossWhite" tags="minecraft, vlc" type="area" x="0.4642" y="0.0208" width="0.0633" height="0.0202" 
+    h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.4982" y="0.0083" width="0.0375" height="0.0270" />
+    <resolution aspect="24:10" x="0.4985" y="0.01125" width="0.0619" height="0.0280" />
+    <resolution aspect="16:11" x="0.4542" y="0.0194" width="0.1010" height="0.0019" />
+    
+    <resolution size="3840x2160" x="0.4635" y="0.0208" width="0.0691" height="0.0209" />
+    <resolution size="2560x1080" x="0.4650" y="0.0194" width="0.0750" height="0.0019" />
+  </meta>
+
+  <meta meter="inGame1" tags="minecraft, vlc" x="0.2903" y="0.9138" width="0.4147" height="0.0028" 
+    h="0-360" s="0-10" l="45-85" hdr-h="0-360" hdr-s="0-50" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4057" y="0.9241" width="0.1859" height="0.001" />
+    <resolution aspect="24:10" x="0.3452" y="0.9138" width="0.3096" height="0.0014" />
+    <resolution aspect="16:11" x="0.2892" y="0.9243" width="0.4193" height="0.0025" />
+    
+    <resolution size="3840x2160" x="0.2896" y="0.9138" width="0.4169" height="0.0021" />
+    <resolution size="2560x1080" x=".3615" y=".925" width=".2765" height=".001" />
+  </meta>
+
+  <meta meter="goodStatusGrey" tags="minecraft, vlc" type="area" x="0.832" y="0.0104" width="0.159" height="-0.0014"
+    h="0-360" s="0-10" l="15-55" hdr-h="0-45" hdr-s="0-30" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.9162" y="0.009" width="0.0807" height="0.0014" />
+    <resolution aspect="24:10" x="0.8552" y="0.0972" width="0.1100" height="0.0002" />
+    <resolution aspect="16:11" x="0.8316" y="0.0882" width="0.1606" height="-0.0013"/>
+    
+    <resolution size="3840x2160" x="0.8142" y="0.0090" width="0.1785" height="0.0021" />
+    <resolution size="2560x1080" x="0.8865" y="0.0083" width="0.1083" height="0.0019" />
+  </meta>
+
+  <meta meter="goodStatusBlack" tags="minecraft, vlc" type="area" x="0.8312" y="0.0063" width="0.1606" height="0"
+    h="0-30" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.9154" y="0.0889" width="0.0807" height="0.0006" />
+    <resolution aspect="24:10" x="0.8552" y="0.1021" width="0.1100" height="0.0002" />
+    <resolution aspect="16:11" x="0.8316" y="0.0926" width="0.1606" height="-0.0013"  />
+    
+    <resolution size="3840x2160" x="0.8142" y="0.1019" width="0.1785" height="0.0021" />
+    <resolution size="2560x1080" x="0.8865" y="0.0047" width="0.1083" height="0.0019" />
+  </meta>
+
+  <meta meter="goodMain" tags="minecraft, vlc" type="colormean" x="0.9691" y="0.0479" width="0.0004" height="0.0056"
+    h="0-10" s="90-100" l="1-71" hdr-h="0-10" hdr-s="90-100" hdr-l="1-71">
+    <resolution aspect="3.55:1" x="0.9836" y="0.0479" width="0.0004" height="0.007" />
+    <resolution aspect="24:10" x="0.9794" y="0.0521" width="0" height="0.0056" />
+    <resolution aspect="16:11" x="0.9714" y="0.0463" width="0.0010" height="0.0028" />
+    
+    <resolution size="3840x2160" x="0.97" y="0.051" width="0.0025" height="0.0045" />
+    <resolution size="2560x1080" x="0.9785" y="0.0463" width="0.0010" height="0.0028" />
+  </meta>
+
+  <meta meter="goodAccent" tags="minecraft, vlc" type="colormean" x="0.9738" y="0.0618" width="0.0004" height="0.0049"
+    h="0-10" s="0-20" l="88-100" hdr-h="0-10" hdr-s="0-20" hdr-l="88-100">
+    <resolution aspect="3.55:1" x="0.9875" y="0.0479" width="0" height="0.0084" />
+    <resolution aspect="24:10" x="0.9826" y="0.0514" width="0.0017" height="0" />
+    <resolution aspect="16:11" x="0.9789" y="0.0419" width="0.0008" height="0.0019" />
+    
+    <resolution size="3840x2160" x="0.9730" y="0.0396" width="0.0015" height="0.0042" />
+    <resolution size="2560x1080" x="0.9825" y="0.0333" width="0.0016" height="0.0037" />
+  </meta>
+
+  <meta meter="badStatusGrey" tags="minecraft, vlc" type="area" x="0.8324" y="0.1174" width="0.1598" height="0.0007"
+    h="0-360" s="0-10" l="15-55" hdr-h="0-45" hdr-s="0-30" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.9198" y="0.1833" width="0.0803" height="0.0001" />
+    <resolution aspect="24:10" x="0.8672" y="0.2056" width="0.1000" height="0.0002" />
+    <resolution aspect="16:11" x="0.8316" y="0.1851" width="0.1606" height="-0.0006" />
+    
+    <resolution size="3840x2160" x="0.8142" y="0.1181" width="0.1785" height="0.0021" />
+    <resolution size="2560x1080" x="0.8865" y="0.1046" width="0.1083" height="0.0019" />
+  </meta>
+
+  <meta meter="badStatusBlack" tags="minecraft, vlc" type="area" x="0.8312" y="0.114" width="0.1598" height="0.0007"
+    h="0-100" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.9198" y="0.1880" width="0.0803" height="0" />
+    <resolution aspect="24:10" x="0.8672" y="0.2090" width="0.1000" height="0.0002" />
+    <resolution aspect="16:11" x="0.8316" y="0.1882" width="0.1602" height="0.0007" />
+    
+    <resolution size="3840x2160" x="0.8142" y="0.1132" width="0.1785" height="0.0021" />
+    <resolution size="2560x1080" x="0.8865" y="0.1012" width="0.1083" height="0.0019" />
+  </meta>
+
+  <meta meter="badMain" tags="minecraft, vlc" type="colormean" x="0.9668" y="0.155" width="0.0004" height="0.0083"
+    h="230-250" s="90-100" l="1-71" hdr-h="230-250" hdr-s="90-100" hdr-l="1-71">
+    <resolution aspect="3.55:1" x="0.9911" y="0.1241" width="0.0006" height="0.0030" />
+    <resolution aspect="24:10" x="0.9776" y="0.1598" width="0.0003" height="0.0035" />
+    <resolution aspect="16:11" x="0.9832" y="0.1232" width="0.002" height="0.0025" />
+    
+    <resolution size="3840x2160" x="0.9683" y="0.1465" width="0.0009" height="0.0042" />
+    <resolution size="2560x1080" x="0.9800" y="0.1296" width="0.0010" height="0.0028" />
+  </meta>
+
+  <meta meter="badAccent" tags="minecraft, vlc" type="colormean" x="0.9742" y="0.1689" width="0.0012" height="0.0041"
+    h="0-10" s="0-20" l="88-100" hdr-h="0-10" hdr-s="0-20" hdr-l="88-100">
+    <resolution aspect="3.55:1" x="0.9878" y="0.1222" width="0" height="0.0020" />
+    <resolution aspect="24:10" x="0.9817" y="0.1654" width="0" height="0.0042" />
+    <resolution aspect="16:11" x="0.973" y="0.1238" width="0.0039" height="0.0057" />
+    
+    <resolution size="3840x2160" x="0.9762" y="0.1653" width="0.0023" height="0.0028" />
+    <resolution size="2560x1080" x="0.9835" y="0.1444" width="0.0016" height="0.0037" />
+  </meta>
+
+  <meta meter="inMenuBlack" tags="minecraft, vlc" type="area" x="0.5303" y="0.155" width="0.1657" height="0"
+    h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.4089" y="0.4574" width="0.000" height="0.0150" />
+    <resolution aspect="24:10" x="0.4859" y="0.155" width="0.1561" height="0.0007" />
+    <resolution aspect="16:11" x="0.6174" y="0.1895" width="0.0008" height="0" />
+    
+    <resolution size="3840x2160" x="0.6605" y="0.1542" width="0.0002" height="0.001" />
+    <resolution size="2560x1080" x="0.619" y="0.1926" width="0.0047" height="0.0019" />
+  </meta>
+
+  <meta meter="inMenuWhite" tags="minecraft, vlc" type="area" x="0.5326" y="0.1605" width="0.1595" height="0"
+    h="0-360" s="0-100" l="90-100" hdr-h="0-360" hdr-s="0-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.4102" y="0.5454" width="0.0005" height="0.0035" />
+    <resolution aspect="24:10" x="0.4853" y="0.1591" width="0.1643" height="0.0021" />
+    <resolution aspect="16:11" x="0.5893" y="0.1951" width="0.0039" height="0.0006" />
+    
+    <resolution size="3840x2160" x="0.6469" y="0.1604" width="0.0102" height="0.0042" />
+    <resolution size="2560x1080" x="0.629" y="0.1981" width="0.0036" height="0.0028" />
+  </meta>
+
+  <meta meter="anvilWhiteHammer" tags="minecraft, vlc" type="area" x="0.3669" y="0.1946" width="0.0016" height="0.0187"
+    h="0-360" s="0-20" l="80-100" hdr-h="0-30" hdr-s="0-20" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.4435" y="0.2519" width="0.0010" height="0.0030" />
+    <resolution aspect="24:10" x="0.4120" y="0.2347" width="0.0000" height="0.0000" />
+    <resolution aspect="16:11" x="0.3701" y="0.2445" width="0.0023" height="0" />
+    
+    <resolution size="3840x2160" x="0.3701" y="0.2307" width="0.0016" height="0.0018" />
+    <resolution size="2560x1080" x="0.4120" y="0.2347" width="0.0000" height="0.0000" />
+  </meta>
+
+  <meta meter="enchantmentTableBrown" tags="minecraft, vlc" type="area" x="0.3603" y="0.3287" width="0.0074" height="-0.0007"
+    h="30-45" s="50-75" l="50-75" hdr-h="0-45" hdr-s="50-75" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.4398" y="0.3454" width="0.0018" height="0.0001" />
+    <resolution aspect="24:10" x="0.4003" y="0.3257" width="0.0038" height="0.0001" />
+    <resolution aspect="16:11" x="0.3634" y="0.3402" width="0.0063" height="0.0019" />
+    
+    <resolution size="3840x2160" x="0.3623" y="0.3265" width="0.0068" height="0.0019" />
+    <resolution size="2560x1080" x="0.408" y="0.3475" width="0.0054" height="-0.0018"/>
+  </meta>
+
+  <meta meter="smithingTable" type="area" tags="minecraft, vlc" x="0.3619" y="0.2349" width="0.0027" height="0.0035" 
+    h="173-213" s="6-46" l="41-81" hdr-h="180-250" hdr-s="0-30" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.4396" y="0.2667" width="0.0002" height="0.0002" />
+    <resolution aspect="24:10" x="0.3984" y="0.2342" width="0.002" height="0.0062" />
+    <resolution aspect="16:11" x="0.3638" y="0.2633" width="0.0008" height="0" />
+    
+    <resolution size="3840x2160" x="0.363" y="0.2356" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4091" y="0.266" width="0" height="0" />
+  </meta>
+
+  <meta meter="lChestBlack" type="area" tags="minecraft, vlc" x="0.6788" y="0.0389" width="0.0047" height="0"
+    h="0-15" s="0-15" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.5826" y="0.0898" width="0.0008" height="0.0001" />
+    <resolution aspect="24:10" x="0.6235" y="0.0396" width="0.0020" height="0.0001" />
+    <resolution aspect="16:11" x="0.6753" y="0.0851" width="0.0047" height="-0.0019" />
+    
+    <resolution size="3840x2160" x="0.6632" y="0.0403" width="0.0034" height="-0.0005" />
+    <resolution size="2560x1080" x="0.6069" y="0.0908" width="0.009" height="0"/>
+  </meta>
+
+  <meta meter="lChestWhite" type="area" tags="minecraft, vlc" x="0.6721" y="0.0473" width="0.0075" height="-0.0007"
+    h="0-40" s="0-40" l="90-100" hdr-h="0-40" hdr-s="0-40" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.5813" y="0.0944" width="0.0021" height="0.0002" />
+    <resolution aspect="24:10" x="0.6331" y="0.0479" width="0.0003" height="0.0001" />
+    <resolution aspect="16:11" x="0.676" y="0.0907" width="0.0059" height="0" />
+    
+    <resolution size="3840x2160" x="0.6456" y="0.1133" width="0.0007" height="0.04" />
+    <resolution size="2560x1080" x="0.6018" y="0.0973" width="0.0125" height="0.0009" />
+  </meta>
+
+  <meta meter="sChestWhite" type="area" tags="minecraft, vlc" x="0.6452" y="0.2265" width="0.0008" height="0.04" 
+    h="0-40" s="0-40" l="90-100" hdr-h="0-40" hdr-s="0-40" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.5802" y="0.1991" width="0.0021" height="0.0001" />
+    <resolution aspect="24:10" x="0.6092" y="0.2286" width="0.0006" height="0.04" />
+    <resolution aspect="16:11" x="0.6737" y="0.1895" width="0.0035" height="0.0031" />
+    
+    <resolution size="3840x2160" x="0.6456" y="0.2272" width="0.0004" height="0.04" />
+    <resolution size="2560x1080" x="0.6139" y="0.1965" width="0.0051" height="0"  />
+  </meta>
+
+  <meta meter="sChestBlack" type="area" tags="minecraft, vlc" x="0.671" y="0.1522" width="0.0035" height="0.0007"
+    h="0-15" s="0-15" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.5807" y="0.1898" width="0.0013" height="0.0001" />
+    <resolution aspect="24:10" x="0.6267" y="0.1528" width="0.0003" height="0.0001" />
+    <resolution aspect="16:11" x="0.6823" y="0.1864" width="0.0043" height="-0.0013" />
+    
+    <resolution size="3840x2160" x="0.6757" y="0.1519" width="0.0057" height="-0.0004"  />
+    <resolution size="2560x1080" x="0.6049" y="0.1909" width="0.0024" height="0"/>
+  </meta>
+
+  <meta meter="newRecipePurple" type="area" tags="minecraft, vlc" x="0.9461" y="0.0313" width="0.0004" height="0.033" 
+    h="269-309" s="46-100" l="20-60" hdr-h="240-360" hdr-s="40-100" hdr-l="50-100" >
+    <resolution aspect="3.55:1" x="0.9732" y="0.0315" width="0.0044" height="0.0170" />
+    <resolution aspect="24:10" x="0.7735" y="0.0264" width="0.011" height="0.033" />
+    <resolution aspect="16:11" x="0.8648" y="0.0244" width="0.1059" height="0.025" />   
+
+    <resolution size="3840x2160" x="0.8648" y="0.0273" width="0.1058" height="0.0287"  />
+    <resolution size="2560x1080" x="0.9086" y="0.0259" width="0.0726" height="0.0251" />
+  </meta>
+
+  <meta meter="newRecipeWhite" type="area" tags="minecraft, vlc" x="0.984" y="0.0479" width="-0.0004" height="0.0188" 
+    h="0-360" s="0-100" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.9938" y="0.0361" width="0.0008" height="0.0260" />
+    <resolution aspect="24:10" x="0.7712" y="0.0299" width="0.0017" height="0.025" />
+    <resolution aspect="16:11" x="0.9328" y="0.0686" width="0" height="0" />    
+
+    <resolution size="3840x2160" x="0.9854" y="0.0398" width="-0.0005" height="0.0362" />
+    <resolution size="2560x1080" x="0.9918" y="0.0287" width="-0.0024" height="0.0501" />
+  </meta>
+
+  <meta meter="inCraftingGreen" type="area" tags="minecraft, vlc" x="0.3275" y="0.3238" width="0.0011" height="0.0021" 
+    h="95-135" s="13-53" l="30-70" hdr-h="100-180" hdr-s="20-50" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.4242" y="0.3463" width="0.001" height="0.0002" />
+    <resolution aspect="24:10" x="0.3728" y="0.3238" width="0.0011" height="0.0028" />
+    <resolution aspect="16:11" x="0.3294" y="0.3433" width="0" height="0" />
+    
+    <resolution size="3840x2160" x="0.3294" y="0.3287" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3861" y="0.3438" width="0" height="0" />
+  </meta>
+
+  <meta meter="inCraftingGreenOpenBook" type="area" tags="minecraft, vlc" x="0.508" y="0.3218" width="0.002" height="0.0027" 
+    h="95-135" s="13-53" l="30-70" hdr-h="100-180" hdr-s="20-50" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.5036" y="0.3463" width="0.000" height="0.0002" />
+    <resolution aspect="24:10" x="0.5068" y="0.3231" width="0.0015" height="0.0035" />
+    <resolution aspect="16:11" x="0.5086" y="0.3457" width="0" height="0" />
+    
+    <resolution size="3840x2160" x="0.5092" y="0.3259" width="0" height="0" />
+    <resolution size="2560x1080" x="0.5064" y="0.3448" width="0" height="0" />
+  </meta>
+
+  <meta meter="inFurnaceGreen" type="area" tags="minecraft, vlc" x="0.3623" y="0.3231" width="0.0023" height="0.0035" 
+    h="95-135" s="13-53" l="30-70" hdr-h="100-180" hdr-s="20-50" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.4396" y="0.3463" width="0.001" height="0.000" />
+    <resolution aspect="24:10" x="0.3991" y="0.3250" width="0" height="0" />
+    <resolution aspect="16:11" x="0.3794" y="0.3438" width="0" height="0" />
+    
+    <resolution size="3840x2160" x="0.3642" y="0.328" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4088" y="0.3429" width="0" height="0" />
+  </meta>
+
+  <meta meter="inFurnaceGreenOpenBook" type="area" tags="minecraft, vlc" x="0.5424" y="0.3231" width="0.002" height="0.0035" 
+    h="95-135" s="13-53" l="30-70" hdr-h="100-180" hdr-s="20-50" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.5206" y="0.3454" width="0.0007" height="0.0002" />
+    <resolution aspect="24:10" x="0.5295" y="0.3438" width="0" height="0" />
+    <resolution aspect="16:11" x="0.5424" y="0.3421" width="0.0012" height="0" />
+    
+    <resolution size="3840x2160" x="0.5447" y="0.3266" width="0" height="0" />
+    <resolution size="2560x1080" x="0.5295" y="0.3438" width="0" height="0" />
+  </meta>
+
+  <meta meter="mountBlack" type="area" tags="minecraft, vlc" x="0.6995" y="0.8694" width="0.0047" height="-0.0007" 
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-15">
+    <resolution aspect="3.55:1" x="0.5813" y="0.8833" width="0.002" height="0.002" />
+    <resolution aspect="24:10" x="0.6502" y="0.8687" width="0.0023" height="0.0007" />
+    <resolution aspect="16:11" x="0.6444" y="0.8837" width="0.0016" height="-0.0013" />
+    
+    <resolution size="3840x2160" x="0.6989" y="0.855" width="0.001" height="0.0023" />
+    <resolution size="2560x1080" x="0.6335" y="0.8721" width="0" height="0" />
+  </meta>
+
+  <meta meter="mountRed" type="area" tags="minecraft, vlc" x="0.7073" y="0.8478" width="0.0008" height="0.0035" 
+    h="0-25" s="59-99" l="40-95" hdr-h="0-50" hdr-s="59-100" hdr-l="40-100">
+    <resolution aspect="3.55:1" x="0.5844" y="0.8639" width="0" height="0.0005" />
+    <resolution aspect="24:10" x="0.6546" y="0.8443" width="0.0008" height="0.0125" />
+    <resolution aspect="16:11" x="0.6759" y="0.873" width="0" height="0" />
+    
+    <resolution size="3840x2160" x="0.6968" y="0.8564" width="0.0013" height="0.0005" />
+    <resolution size="2560x1080" x="0.6323" y="0.8721" width="0" height="0" />
+  </meta>
+
+  <meta meter="sleepWhite" tags="minecraft, vlc" type="area" x="0.4381" y="0.8590" width="0.1211" height="0.0305"
+    h="0-360" s="0-100" l="60-100" hdr-h="0-30" hdr-s="0-30" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.4922" y="0.8574" width="0.0089" height="0.0005" />
+    <resolution aspect="24:10" x="0.4547" y="0.8570" width="0.0901" height="0.0300" />
+    <resolution aspect="16:11" x="0.4377" y="0.8749" width="0.1211" height="0.0257" />
+    
+    <resolution size="3840x2160" x="0.4381" y="0.8597" width="0.1204" height="0.0282"  />
+    <resolution size="2560x1080" x="0.4588" y="0.8800" width="0.0816" height="0.0230" />
+  </meta>
+
+  <meta meter="sleepBlack" tags="minecraft, vlc" type="area" x="0.2669" y="0.8353" width="0.4631" height="-0.0007"
+    h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.4922" y="0.854" width="0.0089" height="0.0005" />
+    <resolution aspect="24:10" x="0.3271" y="0.8353" width="0.3466" height=".0007" />
+    <resolution aspect="16:11" x="0.4443" y="0.8519" width="0.0182" height="0.0028" />
+    
+    <resolution size="3840x2160" x="0.4793" y="0.8347" width="0.0105" height="0.0007" />
+    <resolution size="2560x1080" x="0.4443" y="0.8519" width="0.0182" height="0.0028" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  // ADD POISON EFFECT
+  // ADJUST ALL METERS COLOR
+  // ADJUST ALL METERS POSITION
+  // SMOOTH ALL ANIMATIONS
+  // ELIMINATE LOBBY ANIMATIONS AND EXTRAS
+  let canvas, ctx;
+  canvas = document.getElementById("exCanvas");
+  ctx = canvas.getContext("2d");
+
+  let healthMeter = new Meter(12, onHealthMeterChanged);
+  let lastHealthMeter = new Meter(5, () => "")
+  let lowHpMeter = new Meter(5, onLowHpChanged)
+  let bubbleMeter = new Meter(5, onBubblechanged)
+  let freezeMeter = new Meter(5, onFreezeChange)
+  let poisonMeter = new Meter(5, () => "")
+
+  let foodBarMeter = new Meter(15, () => "")
+  let lowFoodMeter = new Meter(10, onFoodMeterChanged)
+
+  let xpMeter = new Meter(10, onXpMeterChanged);
+
+  let bossMeter = new Meter(10, onBossMeterChanged);
+  let bossWhiteMeter = new Meter(10, onBossMeterChanged);
+
+  let inGameMeter = new Meter(5, onGameChanged)
+  
+  let gStatGreyMeter = new Meter(8, goodStatusChanged)
+  let gStatBlackMeter = new Meter(3, () => "")
+  let gStatMainMeter = new Meter(3, () => "")
+  let gStatAccentMeter = new Meter(3, () => "")
+  let bStatGreyMeter = new Meter(8, badStatusChanged)
+  let bStatBlackMeter = new Meter(3, () => "")
+  let bStatMainMeter = new Meter(3, () => "")
+  let bStatAccentMeter = new Meter(3, () => "")
+
+  let inMenuBlackMeter = new Meter(5, menuChanged)
+  let inMenuWhiteMeter = new Meter(5, menuChanged)
+
+  let anvilWhiteHammerMeter = new Meter(6, anvilChanged)
+
+  let enchantmentTableBrownMeter = new Meter(6, enchantChanged)
+
+  let smithingTableBlueMeter = new Meter(6, smithChanged)
+
+  let furnaceGreenMeter = new Meter(6, furnaceChanged)
+  let furnaceGreenBookMeter = new Meter(6, furnaceChanged)
+
+  let craftingTableGreenMeter = new Meter(6, craftingChanged)
+  let craftingTableGreenBookMeter = new Meter(6, craftingChanged)
+
+  let sleepWhiteMeter = new Meter(15, inSleepChanged)
+  let sleepBlackMeter = new Meter(15, inSleepChanged)
+
+  let lChestBlackMeter = new Meter(3, chestChanged)
+  let lChestWhiteMeter = new Meter(3, chestChanged)
+  let sChestBlackMeter = new Meter(3, chestChanged)
+  let sChestWhiteMeter = new Meter(3, chestChanged)
+
+  let newRecipePMeter = new Meter(6, onRecipeChanged)
+  let newRecipeWMeter = new Meter(6, onRecipeChanged)
+
+  let onMountBlackMeter = new Meter(6, onMountChanged)
+  let onMountRedMeter = new Meter(6, onMountChanged)
+
+  let effects = [];
+  let sleep = [];
+  let bossEffects = [];
+  let inGame = false;
+  let freezeGoing = false;
+  let bubblegoing = false;
+  let lowHpGoing = false;
+  let bossGoing = false;
+  let goodStatusGoing = false;
+  let badStatusGoing = false;
+  let menuGoing = false;
+  let anvilGoing = false;
+  let enchantGoing = false;
+  let sleepGoing = false;
+  let bossKillGoing = false;
+  let bossKillListen = false;
+  let inChest = false;
+  let onMountGoing = false;
+
+  let horseAnim= [" M 29,88 49,99 L 29 88 L 49 99 L 78 85 L 103 103 L 122 133 L 122 163 L 117 188 L 93 205 L 92 235 L 81 265 L 60 292 L 72 304 L 85 284 L 105 267 L 119 259 L 115 244 L 138 215 L 164 193 L 194 198 L 224 201 L 254 202 L 284 196 L 290 219 L 297 249 L 292 279 L 266 306 L 274 326 L 293 297 L 321 269 L 318 239 L 335 240 L 365 262 L 392 288 L 414 315 L 433 319 L 421 302 L 395 272 L 376 243 L 353 215 L 364 185 L 368 155 L 392 150 L 422 144 L 452 131 L 481 124 L 488 113 L 458 107 L 428 115 L 398 129 L 368 137 L 338 125 L 308 118 L 278 119 L 248 117 L 218 106 L 188 96 L 158 84 L 128 62 L 98 43 L 70 21 L 60 32 L 46 62 Z"," M 21,97 40,112 L 21 97 L 40 112 L 68 96 L 97 113 L 116 143 L 121 173 L 109 200 L 85 223 L 78 253 L 80 283 L 96 283 L 88 261 L 98 231 L 126 213 L 123 236 L 111 266 L 99 296 L 89 325 L 112 325 L 113 298 L 125 268 L 142 238 L 157 208 L 184 200 L 214 202 L 244 203 L 274 200 L 300 200 L 311 230 L 336 257 L 335 287 L 319 317 L 340 314 L 350 284 L 364 254 L 357 239 L 387 253 L 413 280 L 437 303 L 449 292 L 430 279 L 406 249 L 382 226 L 361 202 L 372 172 L 379 150 L 409 150 L 439 141 L 469 126 L 491 113 L 479 103 L 449 110 L 419 123 L 389 136 L 359 131 L 329 119 L 299 117 L 269 120 L 239 117 L 209 108 L 179 100 L 149 91 L 119 70 L 89 53 L 61 32 L 51 43 L 37 73 Z"," M 17,114 38,123 L 17 114 L 38 123 L 68 110 L 96 128 L 113 157 L 118 187 L 109 217 L 86 247 L 64 274 L 62 304 L 85 298 L 84 272 L 109 244 L 136 215 L 157 217 L 157 247 L 157 277 L 155 307 L 163 326 L 169 297 L 173 267 L 177 237 L 182 207 L 212 207 L 242 205 L 272 200 L 302 191 L 318 218 L 346 243 L 369 273 L 377 303 L 367 333 L 390 319 L 388 289 L 378 259 L 363 231 L 389 229 L 411 254 L 428 277 L 452 283 L 440 265 L 419 242 L 405 212 L 377 206 L 367 187 L 374 157 L 394 152 L 424 150 L 454 138 L 484 123 L 497 103 L 467 107 L 437 120 L 407 131 L 377 135 L 347 119 L 317 114 L 287 116 L 257 120 L 227 118 L 197 110 L 167 106 L 137 95 L 107 77 L 77 63 L 57 53 L 50 66 L 27 96 Z"," M 23,123 40,141 L 23 123 L 40 141 L 68 123 L 96 135 L 114 165 L 117 195 L 109 225 L 89 254 L 70 283 L 53 312 L 75 315 L 83 290 L 104 261 L 128 233 L 150 206 L 178 215 L 190 245 L 201 275 L 210 305 L 218 325 L 220 295 L 214 265 L 208 235 L 210 211 L 240 208 L 270 202 L 300 190 L 319 211 L 347 227 L 377 239 L 403 265 L 422 292 L 443 297 L 431 281 L 424 262 L 440 256 L 419 246 L 409 216 L 399 189 L 369 193 L 371 169 L 380 146 L 410 155 L 440 151 L 470 136 L 495 113 L 483 107 L 453 120 L 423 131 L 393 136 L 363 122 L 333 111 L 303 110 L 273 117 L 243 122 L 213 120 L 183 114 L 153 111 L 123 95 L 93 80 L 64 61 L 52 68 L 41 98 Z"," M 32,129 52,140 L 32 129 L 52 140 L 81 126 L 107 144 L 122 174 L 129 204 L 128 234 L 116 264 L 106 294 L 86 323 L 115 307 L 127 277 L 144 247 L 161 218 L 188 217 L 210 240 L 226 270 L 242 300 L 262 325 L 276 316 L 257 301 L 242 271 L 230 241 L 220 212 L 250 207 L 280 197 L 305 194 L 327 214 L 357 217 L 382 219 L 381 249 L 411 268 L 436 286 L 441 258 L 421 240 L 415 210 L 399 193 L 380 182 L 371 166 L 377 140 L 407 152 L 437 154 L 467 145 L 495 125 L 482 117 L 452 126 L 422 131 L 392 131 L 362 117 L 332 106 L 302 107 L 272 115 L 242 121 L 212 122 L 182 117 L 152 112 L 122 94 L 92 79 L 72 69 L 65 80 L 44 109 Z"," M 43,127 61,144 L 43 127 L 61 144 L 89 127 L 113 144 L 135 174 L 153 204 L 167 233 L 162 263 L 173 293 L 170 323 L 197 309 L 180 279 L 184 249 L 195 219 L 216 234 L 233 263 L 258 291 L 288 300 L 290 280 L 263 275 L 238 245 L 230 215 L 256 205 L 286 193 L 313 205 L 343 211 L 362 218 L 356 248 L 382 272 L 383 245 L 374 224 L 390 204 L 397 232 L 406 262 L 423 266 L 413 247 L 408 217 L 408 187 L 383 182 L 365 170 L 371 140 L 392 141 L 422 153 L 452 155 L 482 150 L 493 136 L 467 132 L 437 131 L 407 125 L 377 120 L 347 105 L 317 102 L 287 107 L 257 118 L 227 122 L 197 118 L 167 117 L 137 98 L 107 82 L 82 66 L 74 77 L 57 107 Z"," M 53,127 73,137 L 53 127 L 73 137 L 103 124 L 123 148 L 143 178 L 160 207 L 190 219 L 209 238 L 222 262 L 243 288 L 247 318 L 263 327 L 266 303 L 250 273 L 280 275 L 284 258 L 258 262 L 237 242 L 229 212 L 259 203 L 289 193 L 319 207 L 348 208 L 336 238 L 342 268 L 358 267 L 349 246 L 360 216 L 379 205 L 376 235 L 387 265 L 403 256 L 391 235 L 392 205 L 391 177 L 361 180 L 363 160 L 367 130 L 392 135 L 422 152 L 452 160 L 482 159 L 482 146 L 452 136 L 422 125 L 392 115 L 362 112 L 332 100 L 302 100 L 272 111 L 242 120 L 212 121 L 182 118 L 152 102 L 122 82 L 95 61 L 83 67 L 73 96 L 54 125 Z"," M 62,113 82,126 L 62 113 L 82 126 L 111 111 L 129 137 L 147 167 L 159 197 L 167 222 L 164 246 L 194 257 L 224 274 L 252 296 L 282 296 L 270 272 L 242 272 L 231 248 L 225 219 L 247 206 L 277 196 L 307 207 L 335 222 L 311 251 L 316 281 L 334 276 L 330 252 L 354 222 L 352 236 L 357 266 L 375 260 L 368 236 L 379 206 L 378 181 L 348 182 L 362 156 L 363 126 L 393 137 L 423 153 L 453 163 L 481 165 L 475 151 L 445 135 L 415 122 L 385 115 L 355 113 L 325 102 L 295 103 L 265 114 L 235 120 L 205 114 L 175 106 L 145 80 L 115 62 L 98 56 L 91 72 L 68 102 Z"," M 64,97 83,112 L 64 97 L 83 112 L 111 96 L 129 121 L 141 151 L 151 181 L 133 196 L 118 213 L 141 242 L 167 257 L 197 267 L 226 283 L 256 272 L 234 256 L 209 260 L 202 234 L 218 207 L 248 203 L 278 195 L 303 219 L 319 246 L 290 268 L 292 298 L 315 291 L 315 266 L 326 277 L 347 260 L 351 235 L 376 207 L 356 191 L 344 181 L 362 152 L 369 126 L 399 138 L 429 150 L 459 164 L 474 162 L 468 145 L 438 127 L 408 117 L 378 114 L 348 115 L 318 105 L 288 107 L 258 116 L 228 116 L 198 106 L 171 89 L 142 63 L 113 42 L 96 36 L 88 63 L 66 93 Z"," M 57,85 77,97 L 57 85 L 77 97 L 106 83 L 126 109 L 132 139 L 136 169 L 120 186 L 94 197 L 92 227 L 98 254 L 121 259 L 109 242 L 106 215 L 129 203 L 159 200 L 168 209 L 148 237 L 172 256 L 201 269 L 224 245 L 198 244 L 175 244 L 187 218 L 214 202 L 244 201 L 274 195 L 297 217 L 305 242 L 296 270 L 284 296 L 283 324 L 299 304 L 318 276 L 345 255 L 352 234 L 357 213 L 329 200 L 357 172 L 362 142 L 381 128 L 411 136 L 441 146 L 471 162 L 477 150 L 450 125 L 420 114 L 390 112 L 360 118 L 330 111 L 300 107 L 270 114 L 240 114 L 210 104 L 180 90 L 150 62 L 120 38 L 96 22 L 90 36 L 69 66 Z"," M 57,85 77,97 L 57 85 L 77 97 L 106 83 L 126 109 L 132 139 L 136 169 L 120 186 L 94 197 L 92 227 L 98 254 L 121 259 L 109 242 L 106 215 L 129 203 L 159 200 L 168 209 L 148 237 L 172 256 L 201 269 L 224 245 L 198 244 L 175 244 L 187 218 L 214 202 L 244 201 L 274 195 L 297 217 L 305 242 L 296 270 L 284 296 L 283 324 L 299 304 L 318 276 L 345 255 L 352 234 L 357 213 L 329 200 L 357 172 L 362 142 L 381 128 L 411 136 L 441 146 L 471 162 L 477 150 L 450 125 L 420 114 L 390 112 L 360 118 L 330 111 L 300 107 L 270 114 L 240 114 L 210 104 L 180 90 L 150 62 L 120 38 L 96 22 L 90 36 L 69 66 Z"," M 48,81 67,96 L 48 81 L 67 96 L 95 80 L 119 104 L 129 134 L 129 164 L 122 189 L 92 205 L 82 235 L 80 264 L 97 277 L 92 256 L 99 226 L 126 209 L 122 217 L 146 245 L 173 258 L 194 247 L 169 244 L 143 221 L 173 205 L 203 200 L 233 200 L 263 198 L 286 216 L 313 242 L 285 255 L 269 277 L 275 293 L 285 274 L 313 258 L 324 277 L 313 307 L 321 325 L 332 296 L 343 266 L 338 236 L 328 208 L 357 179 L 362 149 L 381 134 L 411 138 L 441 141 L 471 153 L 481 146 L 454 122 L 424 114 L 394 115 L 364 123 L 334 117 L 304 112 L 274 115 L 244 114 L 214 102 L 184 93 L 154 69 L 124 44 L 95 23 L 78 18 L 72 48 L 50 78 Z"]
+
+  function update() {
+    DrawRect(0, 0, 320, 200, "black")
+    backgroundHandler()
+    
+    inGameMeter.setValue(engine.vision.inGame1)
+
+    healthMeter.setValue(engine.vision.health);
+    lastHealthMeter.setValue(engine.vision.LastHealth)
+    lowHpMeter.setValue(engine.vision.lowHp)
+    freezeMeter.setValue(engine.vision.healthB)
+    poisonMeter.setValue(engine.vision.healthG)
+    foodBarMeter.setValue(engine.vision.FoodBar)
+    
+    sleepWhiteMeter.setValue(engine.vision.sleepWhite)
+    sleepBlackMeter.setValue(engine.vision.sleepBlack)
+    
+    newRecipePMeter.setValue(engine.vision.newRecipePurple)
+    newRecipeWMeter.setValue(engine.vision.newRecipeWhite)
+    
+    onMountBlackMeter.setValue(engine.vision.mountBlack)
+    onMountRedMeter.setValue(engine.vision.mountRed)
+
+    smithingTableBlueMeter.setValue(engine.vision.smithingTable)
+  
+    furnaceGreenMeter.setValue(engine.vision.inFurnaceGreen)
+    furnaceGreenBookMeter.setValue(engine.vision.inFurnaceGreenOpenBook)
+
+    craftingTableGreenMeter.setValue(engine.vision.inCraftingGreen)
+    craftingTableGreenBookMeter.setValue(engine.vision.inCraftingGreenOpenBook)
+
+    anvilWhiteHammerMeter.setValue(engine.vision.anvilWhiteHammer)
+
+    enchantmentTableBrownMeter.setValue(engine.vision.enchantmentTableBrown)
+
+    lChestBlackMeter.setValue(engine.vision.lChestBlack)
+    lChestWhiteMeter.setValue(engine.vision.lChestWhite)
+    sChestBlackMeter.setValue(engine.vision.sChestBlack)
+    sChestWhiteMeter.setValue(engine.vision.sChestWhite)
+    
+    inMenuBlackMeter.setValue(engine.vision.inMenuBlack)
+    inMenuWhiteMeter.setValue(engine.vision.inMenuWhite)
+
+    if (inGame) {
+      xpMeter.setValue(engine.vision.xp);
+
+      bossMeter.setValue(engine.vision.boss);
+      bossWhiteMeter.setValue(engine.vision.bossWhite);
+
+      bubbleMeter.setValue(engine.vision.bubble1)
+      lowFoodMeter.setValue(engine.vision.Food)
+
+      gStatGreyMeter.setValue(engine.vision.goodStatusGrey)
+      gStatBlackMeter.setValue(engine.vision.goodStatusBlack)
+      gStatMainMeter.setValue(engine.vision.goodMain)
+      gStatAccentMeter.setValue(engine.vision.goodAccent)
+      bStatGreyMeter.setValue(engine.vision.badStatusGrey)
+      bStatBlackMeter.setValue(engine.vision.badStatusBlack)
+      bStatMainMeter.setValue(engine.vision.badMain)
+      bStatAccentMeter.setValue(engine.vision.badAccent)
+    }
+
+    if (enableBoss && bossKillListen) {
+      if (bossWhiteMeter.value <.1 && bossWhiteMeter.decreased && !bossKillGoing &&
+        engine.vision.inMenuWhite != 1 && engine.vision.inMenuWhite != 1) {
+          bossEffects.push(new bossKill())
+          bossKillGoing = true;
+          bossKillListen = false;
+      }
+    }
+
+    //Effect handler 
+    effects.forEach((ele, i) => {
+      ele.draw();
+      if(ele.lifetime <= 0) effects.splice(i, 1)
+    })
+    sleep.forEach((ele, i) => {
+      ele.draw();
+      if(ele.lifetime <= 0) sleep.splice(i, 1)
+    })
+    bossEffects.forEach((ele, i) => {
+      ele.draw();
+      if(ele.lifetime <= 0) bossEffects.splice(i, 1)
+    })
+    if (enableHud) {
+      UpdateUi(adjMeter);
+    }
+    window.requestAnimationFrame(update);
+  }
+
+  let proBack = [0, 0, 0]
+    function onbackColorChanged(){
+      let proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+  let heartSVG = "m0,0v84.57h84.57V0H0Zm80.09,43.61h-7.07v7.07h-6.71v7.24h-7.07v6.36h-6.36v6.89h-7.24v6.54h-7.24v-6.71h-6.36v-6.71h-6.89v-6.36h-6.89v-6.89h-7.07v-7.24h-6.71v-20.32h6.89v-7.07h7.07l-.18-6.54h13.78v6.89h7.24v6.71h6.71v-6.8h6.54v-6.8h13.78v6.8h6.54v6.8h7.24v20.14Z"
+function heartBar(){
+  this.lifetime = 10;
+  this.y = healthY * 2
+  this.x = healthX * 3.2
+  this.width = 320
+  this.draw = function(){
+    this.y = healthY * 2
+    this.x = healthX * 3.2
+    let barNumber = Math.ceil(healthHeight / 10) > 0 ? Math.ceil(healthHeight / 10) : 1
+    this.width = ((healthMeter.value * 1.3) + (lastHealthMeter.value / 10)) * 310
+    ctx.save()
+    ctx.translate(this.x, this.y)
+    ctx.scale(healthWidth / 50, healthWidth / 50)
+    if(inGame || adjMeter){
+      DrawRect(0, 0, 320, 318 / barNumber, "black")
+      DrawRect(1, 0, adjMeter ? 319 : this.width, 318 / barNumber, healthColor)
+      for(let i = 0; i < barNumber; i++){
+        DrawPath(i * 318 / barNumber, this.width < 160 ? Math.sin((Date.now() - i * 100) / 100) * 1 : 0, 4 / barNumber, heartSVG, "black")
+        DrawRect(i * 318 / barNumber, -1, 320 / barNumber, 2, "black")
+      }
+    }
+    ctx.restore()
+    if((!inGame && !adjMeter) || !twinklyBars){
+      this.lifetime = 0
+      healthPushed = false
+    }
+  }
+}
+
+let hungerSVG = "m0,0v84.57h84.57V0H0Zm78.82,69.05h-8.01v7.84h-16.88v-15.51h-24.55v-7.5h-8.77v-7.84h-7.43v-7.84H4.66v-15.17h8.35v-7.67h8.35l-.76-7.67h17.12v7.84h8.35v7.5h8.18v7.67h8.35v23.01h16.2v15.34Z"
+function hungerBar(){
+  this.lifetime = 10;
+  this.y = foodY * 2
+  this.x = foodX * 3.2
+  this.width = 320
+  this.draw = function(){
+    this.y = foodY * 2
+    this.x = foodX * 3.2
+    this.width = (foodBarMeter.value * 2.95) * 320
+    let barNumber = Math.ceil(foodHeight / 10) > 0 ? Math.ceil(foodHeight / 10) : 1
+    ctx.save()
+    ctx.translate(this.x, this.y)
+    ctx.scale(foodWidth / 50, foodWidth / 50)
+    if((inGame && !onMountGoing) || adjMeter){
+      DrawRect(0, 0, 320, 318 / barNumber, "black")
+      DrawRect(1, 0, adjMeter ? 319 : this.width, 318 / barNumber, foodColor)
+      for(let i = 0; i < barNumber; i++){
+        DrawPath(i * 318 / barNumber, this.width < 160 ? Math.sin((Date.now() - i * 100) / 100) * 1 : 0, 4 / barNumber, hungerSVG, "black")
+        DrawRect(i * 318 / barNumber, -1, 320 / barNumber, 2, "black")
+      }
+    }
+    ctx.restore()
+    if((!inGame && !adjMeter) || !twinklyBars){
+      this.lifetime = 0
+      hungerPushed = false
+    }
+  }
+}
+
+  let healthPushed = false;
+  let hungerPushed = false;
+  function UpdateUi(adj) {
+    if (!twinklyBars && adj && !inGame) {
+      ctx.fillStyle = healthColor;
+      //HealthBar
+      ctx.fillRect(healthX * 3.2, healthY * 2, ((0.745 * 1.3) + (1 / 10)) * healthWidth * 3.2, healthHeight)
+      ctx.fillStyle = foodColor;
+      ctx.fillRect(foodX * 3.2, foodY * 2, (0.36 * 2.95) * foodWidth * 3.2, foodHeight * 2)
+    }
+    if(twinklyBars && !healthPushed){
+      bossEffects.push(new heartBar())
+      healthPushed = true
+    } 
+    if(twinklyBars && !hungerPushed){
+      bossEffects.push(new hungerBar())
+      hungerPushed = true
+    } 
+    if (!twinklyBars && inGame) {
+      ctx.fillStyle = healthColor;
+      //HealthBar
+      ctx.fillRect(healthX * 3.2, healthY * 2, ((healthMeter.value * 1.3) + (lastHealthMeter.value / 10)) * healthWidth * 3.2, healthHeight)
+      ctx.fillStyle = foodColor;
+      if (!onMountGoing) ctx.fillRect(foodX * 3.2, foodY * 2, (foodBarMeter.value * 2.95) * foodWidth * 3.2, foodHeight * 2)
+    }
+  }
+
+  //Callbacks
+  function onGameChanged() {
+    if (inGameMeter.value >= .75 && (healthMeter.value > .1 || freezeMeter.value > .1 || lowHpMeter.value > .1 || poisonMeter.value > .1 || lowFoodMeter.value > .1)) {
+      inGame = true;
+      inChest = false
+      menuGoing = false
+    } else if (inGameMeter.value < .05){
+        inGame = false
+    } 
+  }
+
+  function inSleepChanged() {
+    if (sleepBlackMeter.value >= .95 && sleepWhiteMeter.value > .3 && healthMeter.value <.1 && !sleepGoing && enableSleep && !inGame) {
+      sleep.push(new sleeping())
+      sleepGoing = true;
+    }
+  }
+
+  function onRecipeChanged(){
+    if (newRecipePMeter.value >= .25 && newRecipeWMeter.value >= .95 && enableRecipe && inGame){
+      effects.push(new recipeUnlocked())
+    }
+  }
+
+  let horseXPDelay = false
+  function onMountChanged (){
+    if (onMountBlackMeter.value >= .95 && onMountRedMeter.value >= .95 && inGame && !onMountGoing && enableMount){
+      effects.push(new onMountEffect())
+      onMountGoing = true;
+      horseXPDelay = true
+    } else if ((onMountBlackMeter.value <.1 || onMountRedMeter.value <.1) && onMountGoing){
+      onMountGoing = false;
+      setTimeout(()=>{
+        horseXPDelay = false
+      }, 1000)
+    }
+  }
+
+  function chestChanged(){
+    if (((lChestBlackMeter.value >= .95 && lChestWhiteMeter.value >= .95) || (sChestBlackMeter.value >= .95 && sChestWhiteMeter.value >= .95)) && !inChest && enableMenu) {
+        inChest = true;
+        effects.push(new openChestEffect())
+    } else if (lChestBlackMeter.value <= .05 && lChestWhiteMeter.value <= .05 && sChestBlackMeter.value <= .05 && sChestWhiteMeter.value <= .05) inChest = false
+  }
+
+  function anvilChanged(){
+    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu) {
+      if(anvilWhiteHammerMeter.value >= .95){
+        effects.push(new inAnvil())
+        menuGoing = true;
+      }
+    }
+  }
+
+  function enchantChanged(){
+    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu) {
+      if(enchantmentTableBrownMeter.value >= .95){
+        sleep.push(new inEnchanter())
+        menuGoing = true;
+      }
+    }
+  }
+
+  function smithChanged(){
+    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu) {
+      if(smithingTableBlueMeter.value >= .95){
+        effects.push(new isSmithing())
+        menuGoing = true;
+      }
+    }
+  }
+
+  function furnaceChanged(){
+    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu) {
+      if(furnaceGreenBookMeter.value >= .95 || furnaceGreenMeter.value >= .95){
+        effects.push(new furnaceEffect())
+        menuGoing = true;
+      }
+    }
+  }
+
+  function craftingChanged(){
+    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu) {
+      if((craftingTableGreenBookMeter.value >= .95 || craftingTableGreenMeter.value >= .95) && anvilWhiteHammerMeter.value <= .1){
+        effects.push(new genericMenu())
+        menuGoing = true;
+      }
+    }
+  }
+
+  function menuChanged() {
+    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu) {
+      effects.push(new genericEffectTimer())
+    } else if((inMenuBlackMeter.value <= .25 && inMenuWhiteMeter.value <= .25) || inGame) menuGoing = false
+  }
+
+  function genericEffectTimer(){
+    this.count = 0
+    this.draw = function(){
+      if (!menuGoing) this.count++
+      if(this.count > 20 && !menuGoing){
+        effects.push(new genericMenu())
+        menuGoing = true;
+      }
+      if(menuGoing || inGame) this.lifetime = 0
+    }
+  }
+
+  function goodStatusChanged() {
+    if (gStatGreyMeter.value >= .2 && gStatGreyMeter.increased && gStatGreyMeter.diff >= .2 &&
+      gStatBlackMeter.value >= .2 && Math.abs(gStatBlackMeter.value - gStatGreyMeter.value) < 0.05 && enableStatus) {
+      effects.push(new statusEffect(true, `hsl(${gStatMainMeter.value[0]}, ${gStatMainMeter.value[1]}%, 50%)`, `hsl(${gStatAccentMeter.value[0]}, ${gStatAccentMeter.value[1]}%, 50%)`))
+    }
+  }
+
+  function badStatusChanged() {
+    if (bStatGreyMeter.value >= .2 && bStatGreyMeter.increased && bStatGreyMeter.diff >= .1 &&
+      bStatBlackMeter.value >= .2 && Math.abs(bStatBlackMeter.value - bStatGreyMeter.value) < 0.05 && enableStatus) {
+      effects.push(new statusEffect(false, `hsl(${bStatMainMeter.value[0]}, ${bStatMainMeter.value[1]}%, 50%)`, `hsl(${bStatAccentMeter.value[0]}, ${bStatAccentMeter.value[1]}%, 50%)`))
+    }
+  }
+
+  function onLowHpChanged() {
+    if (inGame && !lowHpGoing && lowHpMeter.value < 0.7 && lastHealthMeter.value >= .5 && enableHealth) {
+      effects.push(new lowHealthState())
+      lowHpGoing = true;
+    }
+  }
+
+  function onFreezeChange() {
+    if (freezeMeter.value > 0.2 && freezeGoing == false && enableStatus) {
+      effects.push(new FreezeEffect())
+      freezeGoing = true;
+    }
+  }
+
+  function onBubblechanged() {
+    if (bubbleMeter.value >= .95 && engine.vision.bubble2 >= .95 && engine.vision.bubble3 >= .95 && inGame && enableUnderwater) {
+      effects.push(new bubbleEffect("hsla(222, 100%, 46%, 0.7)", "hsla(189, 100%, 46%, 1)", "hsla(243, 100%, 46%, 1)"))
+      bubblegoing = true;
+    }
+  }
+
+  function onHealthMeterChanged() {
+    if (enableHealth && inGame && freezeMeter.value <.1 && poisonMeter.value <.1 && lastHealthMeter.value >= .5 && !lowHpGoing) {
+      if (healthMeter.decreased) {
+        for (let index = 0; index < 20; index++) {
+          setTimeout(() => {
+            effects.push(new DamageState(160, 200, Math.random() * 10 + 15, "red"));
+          }, 20);
+
+        }
+
+      } else if (healthMeter.increased && healthMeter.diff < 0.1) {
+        effects.push(new HealState());
+      }
+    }
+    onGameChanged();
+  }
+
+  let oldXP = 0
+  function onXpMeterChanged() {
+    if (((xpMeter.increased && xpMeter.value > 0.01 && xpMeter.diff > 0.05) || (xpMeter.decreased && xpMeter.value && xpMeter.diff > 0.5)) && oldXP != xpMeter.value) {
+      if(enableXP && !horseXPDelay){
+          effects.push(new XpUpState());
+          oldXP = xpMeter.value
+      } 
+    }
+  }
+
+  function onFoodMeterChanged() {
+    if (enableHunger) {
+      if (lowFoodMeter.value < 0.3 && !onMountGoing && inGame) {
+        effects.push(new FoodState());
+      }
+    }
+  }
+  
+  function onBossMeterChanged(Gamecheck) {
+    if (enableBoss) {
+      if (Gamecheck && bossGoing) {
+        bossEffects.push(new BossState());
+      }
+      if (bossMeter.increased != bossGoing) {
+        bossEffects.push(new BossState());
+      }
+    }
+  }
+
+  function bossKill() {
+    this.lifetime = 15;
+    this.alpha = 0;
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+      this.alpha <= .99 ? this.alpha += .01 : this.lifetime--;
+      if(!inGame){
+        this.lifetime = 0
+        return;
+      }
+      if (this.lifetime <= 0) {
+        bossKillGoing = false;
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            for (let j = 0; j < 20; j++) {
+              effects.push(new xpParticle())
+            }
+          }, i * 300)
+        }
+      }
+    }
+  }
+
+  function furnaceEffect(){
+    this.count = 0
+    this.alpha = 0
+    this.done = false
+    this.stop = false
+    this.rot = 0
+    this.effects = []
+    this.draw = function (){
+      if(!this.done) this.alpha <= .975 ? this.alpha += .025 : this.done = true
+      else this.count < 100 ? this.count+=.1 : this.count = 100
+      if(Date.now() % 5 == 0) this.effects.push(new furnaceHelp())
+      DrawRect(0, 0, 320, 200, `hsla(0, 100%, ${this.count / 2}%, ${this.alpha})`)
+      ctx.save()
+      ctx.translate(160, 100)
+      ctx.rotate(this.rot)
+      ctx.translate(-160, -100)
+      DrawRect(140, 60, 40, 80, `hsla(0, 100%, ${this.count}%, ${this.alpha})`)
+      ctx.restore()
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) this.effects.splice(i, 1)
+      })
+      DrawRect(0, 0, 80, 200, `hsla(0, 100%, ${this.count / 20}%, ${this.alpha})`)
+      DrawRect(240, 0, 80, 200, `hsla(0, 100%, ${this.count / 20}%, ${this.alpha})`)
+      DrawRect(0, 0, 320, 50, `hsla(0, 100%, ${this.count / 20}%, ${this.alpha})`)
+      DrawRect(0, 150, 320, 50, `hsla(0, 100%, ${this.count / 20}%, ${this.alpha})`)
+      this.rot += .005
+      this.rot %= Math.PI * 2
+      if(!menuGoing || inGame) this.stop = true
+      if(this.stop) this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+    }
+  }
+
+  function furnaceHelp(){
+    this.x = Math.random() * 180 + 70
+    this.y = 200
+    this.vy = -.5
+    this.hue = Math.random() * 60
+    this.draw = function(){
+      DrawCircle(this.x + Math.cos(Date.now() / 500) * 10, this.y, 20, `hsla(${this.hue}, 100%, 50%, .5)`)
+      this.y > 0 ? this.y += this.vy : this.lifetime = 0
+      this.vy -= .1
+    }
+  }
+
+  function lerp(a, b, speed) {
+    return a + speed * (b - a)
+  }
+
+  function recipeUnlocked(){
+    this.start = Date.now();
+    this.particles = new childArray();
+    this.draw = function (){
+      let elapsed = Date.now() - this.start;
+      if (200 - elapsed / 20 > 10){
+      for (let index = 0; index < 3; index++) {
+        let rot = elapsed / 600 + ((Math.PI * 2 / 3) * index);
+        let x = 160 + Math.cos(rot) * (200 - elapsed / 20);
+        let y = 100 + Math.sin(rot) * (200 - elapsed / 20);
+        this.particles.push(new TrailParticle(x, y, 20, "purple", 1000))
+      }
+      } else {
+        if (elapsed < 8000){
+          this.particles.push(new ExplosionParticle(160,100,Math.random()*30,"purple",1,{x:Math.random()*10-5,y:Math.random()*10-5}))
+        } else if (elapsed > 10000){
+          this.lifetime = 0;
+        }
+      }
+      this.particles.draw();
+    }
+  }
+
+  function TrailParticle(x=160,y=100,size=10,color="red",duration=2000){
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.color = color;
+      this.duration = duration;
+      this.start = Date.now();
+      this.draw = function(){
+        this.elapsed = (Date.now() - this.start);
+        this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
+        ctx.globalAlpha = this.alpha;
+        DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
+        ctx.globalAlpha = 1;
+        if(this.elapsed > this.duration){
+          this.lifetime = 0;
+        }
+      }
+    }
+
+    function SetRange(num, min, max) {
+      return Math.min(Math.max(num, min), max)
+    }
+
+    function openChestEffect(){
+    this.y = 0
+    this.alpha = 0
+    this.half = false
+    this.draw = function (){
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+      DrawRect(0, this.y, 320, 100, `hsla(20, 100%, 29%, ${this.alpha})`)
+      DrawRect(0, 100 - this.y, 320, 100, `hsla(20, 100%, 15%, ${this.alpha})`)
+      DrawRect(135, this.y + 75, 50, 50, `hsla(20, 0%, 50%, ${this.alpha})`)
+      if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.y > -100 ? this.y-- : this.half = true
+      else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+    }
+  }
+
+  class ExplosionParticle {
+    constructor(x, y, radius, color, fadeSpeed, velocity) {
+      this.x = x;
+      this.y = y;
+      this.color = color;
+      this.radius = radius;
+      this.velocity = velocity;
+      this.alpha = 1 * fadeSpeed;
+    }
+    draw() {
+      ctx.globalAlpha = this.alpha;
+      ctx.beginPath()
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+      ctx.fillStyle = this.color
+      ctx.fill()
+      this.x += this.velocity.x
+      this.y += this.velocity.y
+      this.alpha -= 0.01
+      ctx.globalAlpha = 1;
+      if (this.alpha <= 0) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function childArray(){
+    this.children = [];
+    this.push = function(child){
+      this.children.push(child);
+    }
+    this.draw = function(){
+      this.children.forEach((child,i) => {
+        child.draw();
+        if (child.lifetime <=0){
+          this.children.splice(i,1);
+        }
+      });
+    }
+    this.clear = function(){
+      this.children = [];
+    }
+  }
+
+  function xpParticle() {
+    this.x = 160;
+    this.y = 100;
+    this.radius = Math.random() * 10 + 10;
+    this.vx = 10 - Math.random() * 20;
+    this.vy = 10 - Math.random() * 20;
+    this.lifetime = 10;
+    this.color = Math.floor(Math.random() * 10) % 2 == 0 ? "green" : "yellow";
+    this.draw = function () {
+      DrawCircle(this.x, this.y, this.radius, this.color)
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vx > 0 ? this.vx -= .005 : this.vx += .005;
+      this.vy += .5;
+      this.y > 250 ? this.lifetime = 0 : null;
+    }
+  }
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function sleeping() {
+    this.start = Date.now();
+    this.rot1 = -2;
+    this.rot2 = -2;
+    this.y1 = 200;
+    this.hue = 240;
+    this.sat = 0;
+    this.lit = 0;
+    this.night = false;
+    this.morning = false;
+    this.done = false;
+    this.alpha2 = 1;
+    this.lifetime = 10;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (this.morning) {
+        ctx.globalAlpha = this.alpha2;
+      } else {
+        ctx.globalAlpha = (200 - this.y1) / 200;
+      }
+      DrawRect(0, this.y1, 320, 200, `hsl(${this.hue}, ${this.sat}%, ${this.lit}%)`)
+      if (!this.morning) {
+        ctx.globalAlpha = 1;
+      }
+      this.y1 > 0 ? this.y1 -= 3 : this.night = true;
+      if (this.morning) {
+        ctx.save()
+        ctx.translate(160, 200)
+        ctx.rotate(this.rot2)
+        ctx.translate(-160, -200)
+        DrawRect(135, 75, 50, 50, "yellow")
+        ctx.restore()
+        this.rot2 < 0 ? this.rot2 += .03 : this.done = true;
+        this.hue = 40;
+        this.lit = 50 + this.rot2 * 25
+        this.sat = 50 - (this.rot2 * 25)
+      } else if (this.night) {
+        ctx.save()
+        ctx.translate(160, 200)
+        ctx.rotate(this.rot1)
+        ctx.translate(-160, -200)
+        DrawRect(135, 75, 50, 50, "white")
+        ctx.restore()
+        this.rot1 < 2 ? this.rot1 += .03 : this.morning = true;
+        this.lit = 24 - (Math.abs(this.rot1) * 12)
+        this.sat = 50 - (Math.abs(this.rot1) * 25)
+      }
+      ctx.globalAlpha = 1;
+
+      this.done ? this.alpha2 > .01 ? this.alpha2 -= .01 : this.lifetime = 0 : null;
+      this.lifetime == 0 ? sleepGoing = false : null;
+    }
+  }
+
+  function inEnchanter() {
+    this.lifetime = 10;
+    this.start = Date.now();
+    this.alpha = 0
+    this.alpha2 = 0
+    this.count = 0
+    this.done = false;
+    this.cover1 = new pageOpen(160, 70, 160, 120, "hsl(28, 57%, 33%)", 100, true);
+    this.cover2 = new pageOpen(160, 70, 160, 120, "hsl(28, 57%, 33%)", 100, false);
+    this.page1 = new pageOpen(160, 70, 160, 120, "hsl(48, 43%, 72%)", 85, true);
+    this.page2 = new pageOpen(160, 70, 160, 120, "hsl(48, 43%, 72%)", 85, false);
+    this.page3 = new pageOpen(160, 70, 160, 120, "hsl(56, 43%, 76%)", 80, true);
+    this.page4 = new pageOpen(160, 70, 160, 120, "hsl(56, 43%, 76%)", 80, false);
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha2})`);
+      DrawRect(0, 0, 320, 200, `hsla(240, 100%, 50%, ${this.alpha})`)
+      ctx.save()
+      ctx.translate(0, Math.sin(Date.now() / 800) * 10)
+      let elapsed = Date.now() - this.start;
+      this.cover1.draw(this.done)
+      this.cover2.draw(this.done)
+      if (elapsed > 500) {
+        this.page1.draw(this.done)
+        this.page2.draw(this.done)
+      }
+      if (elapsed > 1000) {
+        this.page3.draw(this.done)
+        this.page4.draw(this.done)
+      }
+      ctx.restore()
+      if(!menuGoing || inGame) this.done = true
+      if(this.done) this.alpha >= .01 ? this.alpha -= .01 : this.alpha2 >= .01 ? this.alpha2 -= .01 : this.lifetime = 0
+      else this.alpha2 <= .95 ? this.alpha2 += .05 : this.alpha = Math.abs(Math.sin(Date.now() / 500)) * .15 + .15
+    };
+  }
+
+  function pageOpen(x, y, x2, y2, color, scale, direction) {
+    this.dir = direction;
+    this.x = x;
+    this.y = y;
+    this.ox = x;
+    this.x2 = x;
+    this.y2 = y2;
+    this.height = scale;
+    this.color = color;
+    this.rot = Math.PI / 2
+    this.draw = function (done) {
+      ctx.beginPath()
+      ctx.moveTo(this.x, this.y)
+      ctx.lineTo(this.x2, this.y2)
+      ctx.lineTo(this.x2, this.y2 + this.height)
+      ctx.lineTo(this.x, this.y + this.height)
+      ctx.lineTo(this.x, this.y)
+      ctx.fillStyle = this.color;
+      ctx.fill()
+      if (done) {
+        if (this.dir) {
+          if(this.x < this.ox) this.x += (this.ox - this.x) / 30
+        } else {
+          if(this.x > this.ox) this.x -= (this.x - this.ox) / 30
+        }
+      } else {
+        if (this.dir) {
+          if(this.x > (this.x2 - this.height * .8)) this.x -= (this.x - (this.x2 - this.height * .8)) / 30
+        } else {
+          if(this.x < (this.x2 + this.height * .8)) this.x += ((this.x2 + this.height * .8) - this.x) / 30
+        }
+      }
+    }
+  }
+
+  function inAnvil() {
+    this.start = Date.now()
+    this.x = 85;
+    this.rotate = 0;
+    this.alpha = 0;
+    this.alpha2 = .1;
+    this.dir = false;
+    this.oldDir = false;
+    this.lifetime = 800;
+    this.done = false
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
+      DrawRect(0, 0, 320, 200, `hsla(0, 100%, 50%, ${this.alpha2})`)
+      ctx.save()
+      ctx.translate(this.x, 130)
+      ctx.rotate(this.rotate)
+      ctx.translate(-this.x, -130)
+      anvilHammer(this.x, 130)
+      ctx.restore()
+      if (this.dir) {
+        this.rotate < Math.PI / 2 - .01 ? this.rotate += (Math.PI / 2 - this.rotate) / 8 : this.dir = false;
+      } else {
+        this.rotate > .01 ? this.rotate -= this.rotate / 8 : this.dir = true;
+      }
+      if (this.dir != this.oldDir) {
+        for (let i = 0; i < 10; i++) {
+          setTimeout(() => {
+            effects.push(new spark(155, 150))
+          }, i * 25)
+        }
+        this.oldDir = this.dir
+      }
+      if(!menuGoing || inGame) this.done = true
+      if (this.done) this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      else {
+        this.alpha2 = Math.abs(Math.sin(this.rotate)) * .1 + .1;
+        this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      }
+    }
+  }
+
+  function isSmithing() {
+    this.x = 40;
+    this.rotate = 0;
+    this.alpha = 0;
+    this.alpha2 = .1;
+    this.dir = false;
+    this.oldDir = false;
+    this.lifetime = 10;
+    this.done = false
+    this.draw = function () {
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, `hsl(0, 100%, ${10 + Math.sin(this.rotate) * 5}%)`)
+      ctx.save()
+      ctx.translate(this.x, 110)
+      ctx.scale(1.4, 1.4)
+      ctx.rotate(this.rotate)
+      ctx.translate(-this.x, -110)
+      anvilHammer(this.x, 110,"hsl(0, 100%, 90%)")
+      ctx.restore()
+      ctx.globalAlpha = 1
+      if (this.dir) {
+        this.rotate < Math.PI / 2 ? this.rotate += .015 + (Math.PI / 2 - Math.abs(this.rotate)) / 10 : this.dir = false;
+      } else {
+        this.rotate > 0 ? this.rotate -= .015 + (Math.PI / 2 - Math.abs(this.rotate)) / 10 : this.dir = true;
+      }
+      if (this.dir != this.oldDir) {
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            effects.push(new spark(155, 150))
+          }, i * 25)
+        }
+        this.oldDir = this.dir
+      }
+      if(!menuGoing || inGame) this.done = true
+      if (this.done){
+        this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0;
+      } else {
+        this.alpha2 = Math.abs(Math.sin(Date.now() / 500)) * .1 + .1;
+        this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      }
+    }
+  }
+
+  function anvilHammer(x, y, color = "white") {
+    DrawRect(x, y, 10, -100, "hsl(28, 57%, 25%)")
+    DrawRect(x - 33, y - 100, 75, 40, color)
+  }
+
+  function onMountEffect(){
+    this.x = 70;
+    this.y = 30;
+    this.animationSpeed = 5;
+    this.index = 0;
+    this.arr = horseAnim;
+    this.size = 0.55;
+    this.particles = new childArray();
+    this.draw = function(){
+      DrawRect(0,0,320,200,"hsl(219, 70%, 8%)")
+      this.particles.draw();
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.scale(0.7, 0.7);
+      ctx.rotate(this.rotation * Math.PI / 180);
+      for (let index = 0; index < 2; index++) {
+        DrawPath(0+ index*10, 0+ index*10, this.size - index*0.05, this.arr[(Math.floor(this.index/this.animationSpeed))%this.arr.length], index == 0 ? "gold" : "hsl(30,100%,10%)");
+      }
+      ctx.restore();
+      this.index++;
+      if(!onMountGoing) this.lifetime = 0;
+    }
+  }
+
+  function DrawPath(x, y, scale, path, color) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale, scale)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function spark(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = Math.random() * 10 + 5;
+    this.lifetime = 60;
+    this.dir = Math.random() < .5;
+    this.mod = Math.random() * 3 + 1
+    this.mod2 = Math.random() * 3 + 1
+    this.hue = Math.random() * 60
+    this.draw = function () {
+      DrawCircle(this.x, this.y, this.radius, `hsla(${this.hue}, 100%, 50%, ${this.lifetime / 100})`)
+      this.x += this.dir ? Math.random() * this.mod : -Math.random() * this.mod;
+      this.y -= Math.random() * this.mod2
+      this.lifetime--;
+    }
+  }
+
+  function genericMenu() {
+    this.lifetime = 10;
+    this.done = false;
+    this.alpha = 0;
+    this.alpha2 = .1;
+    this.count = 0;
+    this.redo = false;
+    this.effects = [];
+    this.stop = false
+    this.draw = function () {
+      this.count++
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
+      DrawRect(0, 0, 320, 200, `hsla(120, 100%, 50%, ${this.alpha2})`)
+      if (this.redo) {
+        this.effects = [];
+        this.redo = false;
+        this.done = false;
+      }
+      let count = 0;
+      if (this.effects.length < 8) {
+        this.effects.push(new menuRow(this.effects.length * 40))
+      }
+      ctx.globalAlpha = this.alpha
+      this.effects.forEach((ele, i) => {
+        ele.draw(this.done);
+        ele.done ? count++ : null;
+      })
+      ctx.globalAlpha = 1
+      if (count == 8 && !this.done) {
+        this.done = true
+        setTimeout(() => {
+          this.redo = true;
+        }, 500)
+      }
+      if(!menuGoing || inGame || enchantmentTableBrownMeter.value >= .75) this.stop = true
+      if (this.stop) {
+        this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        if(enchantmentTableBrownMeter.value >= .75 && this.lifetime == 0) sleep.push(new inEnchanter())
+      } else {
+        this.alpha2 = Math.abs(Math.sin(Date.now() / 500)) * .1 + .1;
+        this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      }
+    }
+  }
+
+  function menuRow(x) {
+    this.x = x;
+    this.start = Date.now();
+    this.speed = Math.random() * 800 + 800;
+    this.effects = [];
+    this.done = false;
+    this.draw = function (donezo) {
+      let elapsed = Date.now() - this.start;
+      let count = 0;
+      if (elapsed > this.speed && this.effects.length < 5) {
+        this.effects.push(new menuSquare(this.x, 200 - (this.effects.length * 40 + 40), 5, 40, 40))
+        this.start = Date.now()
+      }
+      this.effects.forEach((ele, i) => {
+        ele.draw(donezo);
+        if (ele.done) {
+          count++;
+          if (this.effects[i - 1]) {
+            this.effects[i - 1].grass = false;
+          }
+        }
+      })
+      count == 5 ? this.done = true : null;
+    }
+  }
+
+  function menuSquare(x, y2, speed, width, height) {
+    this.x = x;
+    this.y = 0;
+    this.alpha = 1;
+    this.width = width;
+    this.height = height;
+    this.y2 = y2;
+    this.speed = speed;
+    this.grass = true;
+    this.done = false;
+    this.draw = function (donezo) {
+      ctx.globalAlpha = this.alpha;
+      DrawRect(this.x, this.y, this.width, this.height, "rgb(130, 60, 35)")
+      this.grass ? DrawRect(this.x, this.y, this.width, this.height * .75, "green") : null;
+      ctx.globalAlpha = 1;
+      this.y <= this.y2 - this.speed ? this.y += this.speed : this.done = true;
+      donezo ? this.alpha >= .05 ? this.alpha -= .05 : this.alpha = 0 : null;
+    }
+  }
+
+  function statusEffect(direction, color1, color2) {
+    this.lifetime = 150;
+    this.dir = direction;
+    this.c1 = color1;
+    this.c2 = color2;
+    this.start = Date.now()
+    this.draw = function () {
+      ctx.globalAlpha = this.lifetime > 100 ? (150 - this.lifetime) * .02 : this.lifetime / 100;
+      DrawRect(0, 0, 320, 200, "black")
+      ctx.globalAlpha = 1;
+      let elapsed = Date.now() - this.start;
+      if (elapsed > 250) {
+        effects.push(new effectSpiral(Date.now() % 2 == 0 ? this.c1 : this.c2, Math.random() * 2 + 2, this.dir))
+        this.start = Date.now()
+      }
+      this.lifetime -= .6;
+      if (this.lifetime <= 0) {
+        this.dir ? goodStatusGoing = false : badStatusGoing = false;
+      }
+    }
+  }
+
+  function effectSpiral(color, scale, dir) {
+    this.x = Math.random() * 200 + 60;
+    this.dir = dir;
+    this.y = this.dir ? 220 : -20;
+    this.lifetime = 10;
+    this.scale = scale;
+    this.color = color;
+    this.rotate = 0;
+    this.start = Date.now()
+    this.mod = Math.random() * 10;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (elapsed > 200) {
+        this.rotate += (Math.PI / 2)
+        this.start = Date.now()
+      }
+      ctx.save()
+      ctx.translate(this.x, this.y)
+      ctx.rotate(-this.rotate)
+      ctx.translate(-this.x, -this.y)
+      ctx.save()
+      for (let i = 0; i < 18; i++) {
+        ctx.translate(this.x, this.y)
+        ctx.rotate(.6)
+        ctx.translate(-this.x, -this.y)
+        DrawCircle(this.x, this.y + i * this.scale, this.scale * 2, this.color)
+      }
+      ctx.restore()
+      ctx.restore()
+      if (this.dir) {
+        this.y > -20 ? this.y -= 3 : this.lifetime = 0;
+      } else {
+        this.y < 220 ? this.y += 3 : this.lifetime = 0;
+      }
+      this.x += Math.sin(Date.now() / (50 * this.mod)) * 3
+    }
+  }
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function XpUpState() {
+    this.start = new Date().getTime();
+    this.lifetime = 60;
+    this.draw = function () {
+      this.lifetime--
+      effects.push(new xpUpHelp())
+    };
+  }
+
+  function xpUpHelp(){
+    this.x = Math.random() * 320
+    this.y = Math.random() * 200
+    this.lifetime = 50
+    this.col = Math.random() > .5 ? 120 : 240
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 30, `hsla(${this.col}, 100%, 50%, ${1 - Math.abs(25 - this.lifetime) / 25})`)
+      this.lifetime--
+    }
+  }
+
+  function FreezeEffect() {
+    this.start = Date.now();
+    this.lifetime = 500;
+    this.snowflakes = [new freezeCrack(50, 250, 25, 25, true, 1), new freezeCrack(270, 250, 25, 25, true, -1)];
+    this.split = false;
+    this.alpha = 0;
+    this.draw = function () {
+      ctx.fillStyle = `hsla(206, 100%, 40%, ${this.alpha})`;
+      this.alpha <= .975 ? this.alpha += .025 : this.alpha = 1;
+      ctx.globalAlpha = this.lifetime / 150
+      ctx.fillRect(0, 0, 320, 200)
+      this.snowflakes.forEach((ele) => {
+        ele.draw()
+        if (ele.done && !ele.cracked && ele.width > 5) {
+          if (this.split) {
+            this.snowflakes.push(new freezeCrack(ele.x2, ele.y2, ele.width * .9, ele.speed * 1.1, true, 1))
+            this.snowflakes.push(new freezeCrack(ele.x2, ele.y2, ele.width * .9, ele.speed * 1.1, true, -1))
+            this.split = false;
+          } else {
+            this.snowflakes.push(new freezeCrack(ele.x2, ele.y2, ele.width * .9, ele.speed * 1.1, false, 0))
+            this.split = true;
+          }
+          ele.cracked = true;
+        }
+      })
+      ctx.globalAlpha = 1
+      this.lifetime--
+      if (freezeMeter.value == 0 || this.lifetime == 0) {
+        this.lifetime = 0;
+        freezeGoing = false;
+      }
+    }
+  }
+
+  function freezeCrack(x, y, width, speed, set, dir) {
+    this.x = x;
+    this.y = y;
+    this.x1 = x;
+    this.y1 = y;
+    this.x2 = !set ? (Math.random() * 80 - 40) + this.x : (Math.random() * 10 + 40) * dir + this.x;
+    this.y2 = this.y - (Math.random() * 10 + 30);
+    this.width = width;
+    this.speed = speed;
+    this.done = false;
+    this.cracked = false;
+    this.vx = (this.x2 - this.x) / this.speed;
+    this.vy = (this.y2 - this.y) / this.speed;
+    this.draw = function () {
+      ctx.beginPath()
+      ctx.moveTo(this.x, this.y)
+      ctx.lineTo(this.x1, this.y1)
+      ctx.lineWidth = this.width;
+      ctx.strokeStyle = "white";
+      ctx.stroke()
+      if (Math.abs(this.x1 - this.x2) > 1 || Math.abs(this.y1 - this.y2) > 1) {
+        this.x1 += this.vx;
+        this.y1 += this.vy;
+      } else {
+        this.done = true;
+      }
+    }
+  }
+
+  function bubbleEffect(bgColor, BubblecColor, strokecolor) {
+    this.bgColor = bgColor;
+    this.bubbleColor = BubblecColor;
+    this.strokeColor = strokecolor;
+    this.bubbles = [];
+    for (let index = 0; index < 15; index++) {
+      this.bubbles.push(new Bubble(this.bubbleColor, this.strokeColor, 30))
+    }
+
+    this.draw = function () {
+      ctx.fillStyle = this.bgColor;
+      ctx.fillRect(0, 0, 320, 200)
+      this.bubbles.forEach((bubble, i) => {
+        bubble.draw();
+        if (bubble.y < -50) {
+          this.bubbles.splice(i, 1)
+          this.bubbles.push(new Bubble(this.bubbleColor, this.strokeColor, 30))
+        }
+      });
+      if ((bubbleMeter.value <= .1 && engine.vision.bubble2 <= .1 && engine.vision.bubble3 <= .1) || !inGame) {
+        this.lifetime = 0;
+        bubblegoing = false;
+      }
+    }
+  }
+
+  function DamageState(x, y, radius, color) {
+    this.radius = radius;
+    this.color = color;
+    this.x = x;
+    this.vx = 2 - Math.random() * 4;
+    this.y = y;
+    this.vy = Math.random() * -8
+    this.ay = .2;
+    this.lifetime = 10;
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vy += this.ay;
+      if (this.y > 200) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function HealState() {
+    this.rad = 1
+    this.lifetime = 45;
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(311,100%,50%, ${1 - Math.abs(100 - this.rad) / 100})`)
+      DrawStroke(160, 100, this.rad, "white", 30)
+      this.rad < 199 ? this.rad += (200 - this.rad) / 30 : this.lifetime = 0
+    };
+  }
+
+  function lowHealthState() {
+    this.lifetime = 10;
+    this.start = getTime();
+    this.draw = function () {
+      this.duration = getTime() - this.start;
+      ctx.fillStyle = `hsla(0, 100%, 50%, ${((Math.sin(this.duration / 600) + 1) / 3) + 0.1})`
+      ctx.fillRect(0, 0, 320, 200);
+      if (lowHpMeter.value == 0 || lowHpMeter.value > 0.8 || !inGame || healthMeter.value >= .25) {
+        this.lifetime = 0;
+        lowHpGoing = false;
+      }
+    }
+  }
+
+  function BossState() {
+    bossGoing = true;
+    this.draw = function () {
+      ctx.fillStyle = "hsla(282, 100%, 50%, 0.4)"
+      ctx.fillRect(0, 0, bossMeter.value * 350, 200)
+      if (bossMeter.value == 0) {
+        this.lifetime = 0;
+        bossGoing = false;
+        bossKillListen = true;
+      }
+    }
+  }
+
+  function FoodState() {
+    this.start = getTime();
+    this.lifetime = 100;
+    this.arrow = new ArrowEffect("down", "orange", 1, 0.5, 3000)
+    this.draw = function () {
+      this.dur = getTime() - this.start;
+      ctx.beginPath();
+      ctx.fillStyle = "hsla(26, 100%, 50%, 0.4)"
+      ctx.fillRect(0, 0, 320, 200)
+      if (this.dur % 3000 < 100) {
+        this.arrow = new ArrowEffect("down", "orange", 1, 0.5, 3000)
+      }
+      this.arrow.draw();
+      if ((lowFoodMeter.value >= .95 && lowFoodMeter.increased) || onMountGoing || !inGame || inChest) {
+        this.lifetime = 0;
+        if(!inChest) effects.push(new RippleEffect(160, 100, 10, 3000, 30, "orange", "out", "stroke", 10))
+      }
+    };
+  }
+
+  function getTime() {
+    return new Date().getTime();
+  }
+
+  function ArrowEffect(direction, color, amount, speed, duration) {
+    this.start = getTime();
+    this.speed = speed;
+    this.duration = duration;
+    this.lifetime = this.duration;
+    this.direction = direction;
+    this.color = color;
+    this.amount = amount;
+    this.draw = function () {
+      if (this.direction == 'up') {
+        this.speed = -this.speed;
+        ctx.fillStyle = this.color;
+        for (let i = 0; i < this.amount; i++) {
+          ctx.beginPath();
+          ctx.moveTo(160, this.lifetime / 1.5 - 150 - (200 * i));
+          ctx.lineTo(320, this.lifetime / 1.5 - (200 * i));
+          ctx.lineTo(320, this.lifetime / 1.5 - (200 * i) + 100);
+          ctx.lineTo(160, this.lifetime / 1.5 - (200 * i) - 100);
+          ctx.lineTo(0, this.lifetime / 1.5 - (200 * i) + 100);
+          ctx.lineTo(0, this.lifetime / 1.5 - (200 * i));
+          ctx.lineTo(160, this.lifetime / 1.5 - (200 * i) - 150);
+          ctx.fill();
+        }
+      } else {
+        ctx.fillStyle = this.color;
+        for (let i = 0; i < this.amount; i++) {
+          ctx.beginPath();
+          ctx.moveTo(160, 300 - this.lifetime / 2.5 + (200 * i));
+          ctx.lineTo(320, 240 - this.lifetime / 2.5 + (200 * i));
+          ctx.lineTo(320, 180 - this.lifetime / 2.5 + (200 * i));
+          ctx.lineTo(160, 240 - this.lifetime / 2.5 + (200 * i));
+          ctx.lineTo(0, 180 - this.lifetime / 2.5 + (200 * i));
+          ctx.lineTo(0, 240 - this.lifetime / 2.5 + (200 * i));
+          ctx.lineTo(160, 300 - this.lifetime / 2.5 + (200 * i));
+          ctx.fill();
+        }
+      }
+      this.Ymin += this.speed;
+      this.elapsed = new Date().getTime() - this.start;
+      this.lifetime = this.duration - this.elapsed;
+    }
+  }
+  function RippleEffect(x, y, speed, duration, rippleWidth, color, inOrOut, fillOrStroke, amountOfRipples, background) {
+    this.col = color;
+    this.speed = speed;
+    this.dur = duration;
+    this.width = rippleWidth;
+    this.start = getTime();
+    this.lifetime;
+    this.x = x;
+    this.y = y;
+    this.fill = fillOrStroke;
+    this.radius = 0;
+    this.amount = amountOfRipples;
+    this.background = background;
+    if (inOrOut == "in") {
+      this.radius = 200 + (this.width * (this.amount * 2));
+      this.speed = -this.speed
+    }
+    this.draw = function () {
+      if (this.background) {
+        DrawBackground("black");
+      }
+
+
+      ctx.lineWidth = this.width;
+      ctx.beginPath();
+      for (let i = 0; i < this.amount; i++) {
+        if (this.radius - i * (this.width * 2) > 0) {
+          ctx.arc(this.x, this.y, this.radius - i * (this.width * 2), 0, 2 * Math.PI);
+        }
+      }
+      if (this.fill == "fill") {
+        ctx.fillStyle = this.col;
+        ctx.fill();
+      } else {
+        ctx.strokeStyle = this.col;
+        ctx.stroke();
+      }
+      this.radius += this.speed;
+      this.lifetime = this.dur - (getTime() - this.start);
+      if (this.lifetime <= 0) {
+        utilityPlayed = false;
+      }
+    }
+  }
+
+  class Bubble {
+    constructor(bubbleColor, strokeColor, bubbleSize) {
+      this.bubbleColor = bubbleColor
+      this.strokeColor = strokeColor;
+      this.size = bubbleSize;
+      this.x = Math.random() * 320;
+      this.lifetime = 100;
+      this.startval = Math.random() * 100;
+      this.y = 200 + Math.random() * 400;
+      this.start = getTime();
+      this.speed = 5;
+    }
+    draw() {
+      ctx.lineWidth = 5;
+      this.lifetime = (getTime() - this.start);
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
+      ctx.strokeStyle = this.strokeColor;
+      ctx.fillStyle = this.bubbleColor;
+      ctx.fill();
+      ctx.stroke();
+      this.x += (Math.sin((this.lifetime / 400 + this.startval)) * 2)
+      this.y -= this.speed
+    }
+  }
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    let values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      // Exit early if we've got a long-term match.
+      for (let i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        //let fromZero = this.value === 0;
+        //let toZero = values[0] === 0;
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+
+        callback();
+      }
+    };
+  }
+
+  function hexToHSL(hex) {
+    // Remove the '#' if present
+    hex = hex.replace("#", "");
+
+    // Convert hex to RGB
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+
+    // Normalize RGB values
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    // Calculate HSL values
+    let max = Math.max(r, g, b);
+    let min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // Achromatic
+    } else {
+      let d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+
+      h /= 6;
+    }
+
+    // Convert to percentages
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+
+    return [h, s, l];
+  }
+
+    window.requestAnimationFrame(update);
+</script>
