@@ -98,17 +98,6 @@
         <resolution size="2560x1080" x="0.0277" y="0.9416" width="0.061" height="0.0019"  />
       </meta>
     
-      <!-- purpleArmor: Detects player's purple armor plate status -->
-      <meta meter="purpleArmor" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.036" y="0.9423" width="0.082" height="0.0014" 
-        h="300-360" s="60-100" l="75-100" hdr-h="300-360" hdr-s="60-100" hdr-l="75-100">
-        <resolution aspect="3.55:1" x="0.0184" y="0.9423" width="0.041" height="0"  />
-        <resolution aspect="24:10" x="0.0273" y="0.9416" width="0.0608" height="0.0014"  />
-        <resolution aspect="16:11" x="0.0352" y="0.9481" width="0.0836" height="-0.0006" />
-    
-        <resolution size="3840x2160" x="0.0352" y="0.9421" width="0.0828" height="0.0005"  />
-        <resolution size="2560x1080" x="0.0277" y="0.9416" width="0.061" height="0.0019"  />
-      </meta>
-    
       <!-- orangeArmor: Detects player's orange armor plate status -->
       <meta meter="orangeArmor" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.036" y="0.9423" width="0.082" height="0.0014" 
         h="10-45" s="60-100" l="60-100" hdr-h="10-50" hdr-s="60-100" hdr-l="60-100">
@@ -291,7 +280,6 @@
       let HitMeter = new Meter(5, hitHandler)
 
       let BlueArmorMeter = new Meter(5, armorHandler)
-      let PurpleArmorMeter = new Meter(5, armorHandler)
       let OrangeArmorMeter = new Meter(5, armorHandler)
 
       let SprintMeter = new Meter(5, ()=>"")
@@ -326,7 +314,6 @@
           HealthMeter.setValue(engine.vision.healthWhite)
           HitMeter.setValue(engine.vision.healthRed)
           BlueArmorMeter.setValue(engine.vision.blueArmor)
-          PurpleArmorMeter.setValue(engine.vision.purpleArmor)
           OrangeArmorMeter.setValue(engine.vision.orangeArmor)
           ZoneBlackMeter.setValue(engine.vision.zoneBlack)
           ZoneHueMeter.setValue(engine.vision.zoneColor[0])
@@ -364,10 +351,8 @@
       function armorHandler(){
         if(gInGame && BlueArmorMeter.increased && BlueArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(240))
         if(gInGame && OrangeArmorMeter.increased && OrangeArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(40))
-        if(gInGame && PurpleArmorMeter.increased && PurpleArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(300))
         if(gInGame && BlueArmorMeter.decreased && BlueArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(0))
         if(gInGame && OrangeArmorMeter.decreased && OrangeArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(0))
-        if(gInGame && PurpleArmorMeter.decreased && PurpleArmorMeter.diff > .15 && armorOn) effects.push(new hitGain(0))
       }
 
       let winGoing = false
