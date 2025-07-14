@@ -10,15 +10,15 @@
   <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" type="boolean" default="0" />
   <meta property="HUDBack" label="Custom HUD Background" type="boolean" default="0" />
   <meta property="healthColor" label="Health HUD Color" type="color" default="#12ff00" min="0" max="360" />
-  <meta property="HealthBarX" label="Health Bar X" type="number" min="0" max="320" default="0" />
-  <meta property="HealthBarY" label="Health Bar Y" type="number" min="0" max="200" default="50" />
-  <meta property="HealthBarWidth" label="Health Bar Width" type="number" min="0" max="320" default="320" />
-  <meta property="HealthBarHeight" label="Health Bar Height" type="number" min="0" max="200" default="30" />
+  <meta property="HealthBarX" label="Health Bar X" type="number" min="0" max="100" default="0" />
+  <meta property="HealthBarY" label="Health Bar Y" type="number" min="0" max="100" default="25" />
+  <meta property="HealthBarWidth" label="Health Bar Width" type="number" min="0" max="100" default="100" />
+  <meta property="HealthBarHeight" label="Health Bar Height" type="number" min="0" max="100" default="15" />
   <meta property="ShieldColor" label="Shield HUD Color" type="color" default="#00c3ff" min="0" max="360" />
-  <meta property="ShieldBarX" label="Shield Bar X" type="number" min="0" max="320" default="0" />
-  <meta property="ShieldBarY" label="Shield Bar Y" type="number" min="0" max="200" default="80" />
-  <meta property="ShieldBarWidth" label="Shield Bar Width" type="number" min="0" max="320" default="320" />
-  <meta property="ShieldBarHeight" label="Shield Bar Height" type="number" min="0" max="200" default="30" />
+  <meta property="ShieldBarX" label="Shield Bar X" type="number" min="0" max="100" default="0" />
+  <meta property="ShieldBarY" label="Shield Bar Y" type="number" min="0" max="100" default="40" />
+  <meta property="ShieldBarWidth" label="Shield Bar Width" type="number" min="0" max="100" default="100" />
+  <meta property="ShieldBarHeight" label="Shield Bar Height" type="number" min="0" max="100" default="15" />
   <meta property="enableHealing" label="Healing effect" type="boolean" default="1" />
   <meta property="enableDamage" label="Damage effect" type="boolean" default="1" />
   <meta property="enableVehicle" label="Vehicle effect" type="boolean" default="1" />
@@ -392,19 +392,19 @@
     if (inGame) {
       ctx.beginPath()
       ctx.fillStyle = healthColor;
-      ctx.fillRect(HealthBarX, HealthBarY, healthM.value * HealthBarWidth, HealthBarHeight)
+      ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), healthM.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
       //shield
       ctx.beginPath()
       ctx.fillStyle = ShieldColor;
-      ctx.fillRect(ShieldBarX, ShieldBarY, shieldsM.value * ShieldBarWidth, ShieldBarHeight)
+      ctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), shieldsM.value * (ShieldBarWidth * 3.2), (ShieldBarHeight * 2))
     } else if (adjToggle) {
       ctx.beginPath()
       ctx.fillStyle = healthColor;
-      ctx.fillRect(HealthBarX, HealthBarY, HealthBarWidth, HealthBarHeight)
+      ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
       //shield
       ctx.beginPath()
       ctx.fillStyle = ShieldColor;
-      ctx.fillRect(ShieldBarX, ShieldBarY, ShieldBarWidth, ShieldBarHeight)
+      ctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), (ShieldBarWidth * 3.2), (ShieldBarHeight*2))
     }
     //health
   }
