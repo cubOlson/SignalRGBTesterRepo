@@ -1,6 +1,6 @@
 <head>
   <title>Valorant Devv</title>
-  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.44" />
+  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.43" />
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -567,7 +567,7 @@
   }
 
   function onBombMeterChanged() {
-    if (bombMeter.value >= .95 && engine.vision.BombNotRed <= .05 && !bombPushed && PlantSpikeMeter.value >= .95) {
+    if (bombMeter.value >= .95 && engine.vision.BombNotRed <= .05 && !bombPushed ) {
       bombPushed = true;
       stateMgr.Push(new AlertState("#ff1100"));
 
