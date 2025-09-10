@@ -1,6 +1,6 @@
 <head>
   <title>Minecraft Java Devv</title>
-  <meta description="Game integration for Minecraft Java edition. Set your GUI scale to Auto. v1.06" />
+  <meta description="Game integration for Minecraft Java edition. Set your GUI scale to Auto. v1.07" />
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -921,7 +921,7 @@ function hungerBar(){
   }
 
   function menuChanged() {
-    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu) {
+    if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu && lChestBlackMeter.value <.1 && sChestBlackMeter.value <.1) {
       effects.push(new genericEffectTimer())
     } else if((inMenuBlackMeter.value <= .25 && inMenuWhiteMeter.value <= .25) || inGame) menuGoing = false
   }
@@ -929,7 +929,7 @@ function hungerBar(){
   function genericEffectTimer(){
     this.count = 0
     this.draw = function(){
-      if (!menuGoing) this.count++
+      if (!menuGoing) this.count++ 
       if(this.count > 20 && !menuGoing){
         effects.push(new genericMenu())
         menuGoing = true;
