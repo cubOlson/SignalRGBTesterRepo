@@ -1,6 +1,6 @@
 <head>
   <title>GTA V</title>
-  <meta description="Go on an adventure in GTA V with metering and ambience effects. v1.01" />
+  <meta description="Go on an adventure in GTA V with metering and ambience effects. v1.02" />
   <meta publisher="SignalRGB" />
   <meta property="enableHealth" label="Low Health effect" type="boolean" default="1" />
   <meta property="enableMoney" label="Money effect" type="boolean" default="1" />
@@ -366,9 +366,9 @@
 
   function moneyHandler() {
     if (enableMoney) {
-      if (redMoneyMeter.value > .2 && black1MoneyMeter.value > .05) {
+      if (redMoneyMeter.value >= .2 && black1MoneyMeter.value > .05) {
         effects.push(new MoneyEffect("red"));
-      } else if ((green1MoneyMeter.value > .2 || green2MoneyMeter.value > .15) && (black1MoneyMeter.value > .05 || black2MoneyMeter.value > .05)) {
+      } else if ((green1MoneyMeter.value >= .2 || green2MoneyMeter.value >= .15) && (black1MoneyMeter.value >= .05 || black2MoneyMeter.value >= .05)) {
         effects.push(new MoneyEffect("green"));
       }
     }
@@ -376,7 +376,7 @@
 
   var activePolice = false;
   function policeEffect() {
-    if (firstStarMeter.value > 0.8 && engine.vision.firstStarBlack1 > .95 && engine.vision.firstStarBlack2 > .95 && activePolice == false) {
+    if (firstStarMeter.value >= 0.8 && engine.vision.firstStarBlack1 >= .95 && engine.vision.firstStarBlack2 >= .95 && activePolice == false) {
       if(enableWanted){
         effects.push(new PoliceEffect());
         activePolice = true;
@@ -385,8 +385,8 @@
   }
 
   function wastedEffect() {
-    if ((engine.vision.wastedW > .2 && engine.vision.wastedT > .2 && engine.vision.wastedD > .2 && engine.vision.wastedNotRed <= 0.1) || (engine.vision.wastedWhiteW > .2 && engine.vision.wastedWhiteT > .2 && engine.vision.wastedWhiteD > .2 && engine.vision.wastedWhiteNotWhite <= 0.1 )) {
-      if (topLeftBlackMeter.value > 0.4 || bottomRightBlackMeter.value > 0.4 || lowHealthGoing == true) {
+    if ((engine.vision.wastedW >= .2 && engine.vision.wastedT >= .2 && engine.vision.wastedD >= .2 && engine.vision.wastedNotRed <= 0.1) || (engine.vision.wastedWhiteW >= .2 && engine.vision.wastedWhiteT >= .2 && engine.vision.wastedWhiteD >= .2 && engine.vision.wastedWhiteNotWhite <= 0.1 )) {
+      if (topLeftBlackMeter.value >= 0.4 || bottomRightBlackMeter.value >= 0.4 || lowHealthGoing == true) {
         if (!wastedGoing && enableWasted) {
           stateHdlr.Push(new WastedEffect());
           wastedGoing = true;
