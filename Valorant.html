@@ -1,6 +1,6 @@
 <head>
   <title>Valorant Devv</title>
-  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.43" />
+  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.44" />
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -55,7 +55,7 @@
   </meta>
 
   <meta meter="healthred" tags="vlc,VALORANT" x="0.3029" y="0.9347" width="0.0343" height="0.0306" 
-    type="area" h="-30-30" s="10-20" l="90-100" hdr-h="-30-30" hdr-s="10-30" hdr-l="60-100">
+    type="area" h="-30-30" s="10-20" l="90-100" hdr-h="-30-30" hdr-s="0-50" hdr-l="60-100">
     <resolution aspect="3.55:1" x="0.401" y="0.9324" width="0.018" height="0.040"/>
     <resolution aspect="24:10" x="0.3523" y="0.9319" width="0.03" height="0.0350" />
     <resolution aspect="16:11" x="0.2794" y="0.9337" width="0.0391" height="0.0307" />
@@ -74,7 +74,7 @@
     <resolution size="2560x1080" x="0.3408" y="0.9398" width="0.0002" height="0" />
   </meta>
 
-  <meta meter="shieldWhite" tags="vlc,VALORANT" type="area" x="0.2837" y="0.9437" width="0.0098" height="0.0140"
+  <meta meter="shieldWhite" tags="vlc,VALORANT" type="area" x="0.2844" y="0.9437" width="0.0098" height="0.0140"
     h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.3925" y="0.9420" width="0.0045" height="0.0150" />
     <resolution aspect="24:10" x="0.3390" y="0.9430" width="0.0080" height="0.0140" />
@@ -85,8 +85,8 @@
   </meta>
 
   <meta meter="deadGreen" tags="vlc,VALORANT" type="linear" x="0.0711" y="0.795" width="0" height="0"
-    h="150-180" s="0-50" l="60-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
-    <resolution aspect="3.55:1" x="0.0354" y="0.7943" width="0" height="0"  />
+    h="100-220" s="0-50" l="60-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
+    <resolution aspect="3.55:1" x="0.0354" y="0.7926" width="0" height="0"  />
     <resolution aspect="24:10" x="0.054" y="0.7936" width="0" height="0"  />
     <resolution aspect="16:11" x="0.0797" y="0.7949" width="0" height="0" />
 
@@ -144,8 +144,8 @@
     <resolution size="2560x1080" x="0.5535" y="0.9688" width=".024" height=".001" />
   </meta>
 
-  <meta meter="jettX" tags="vlc,VALORANT" type="area" x="0.575" y="0.8481" height="0.0083" width="0.0016" h="150-176"
-    s="20-50" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
+  <meta meter="jettX" tags="vlc,VALORANT" type="area" x="0.575" y="0.8481" height="0.0083" width="0.0016" 
+    h="150-176" s="20-50" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
     <resolution aspect="3.55:1" x="0.5372" y="0.851" width="0.0005" height="0.0001" />
     <resolution aspect="24:10" x="0.5743" y="0.851" height="0.0083" width="0.0014" />
     <resolution aspect="16:11" x="0.5838" y="0.8543" width="0" height="0" />
@@ -154,8 +154,8 @@
     <resolution size="2560x1080" x="0.5565" y="0.8545" width="0" height="0" />
   </meta>
 
-  <meta meter="viperX" tags="vlc,VALORANT" type="area" x="0.5846" y="0.8555" width="0" height="0" h="150-176"
-    s="20-50" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
+  <meta meter="viperX" tags="vlc,VALORANT" type="area" x="0.5846" y="0.8555" width="0" height="0" 
+    h="150-176" s="20-50" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="65-100">
     <resolution aspect="3.55:1" x="0.5419" y="0.851" width="0.0003" height="0.0001" />
     <resolution aspect="24:10" x="0.5625" y="0.8493" height="0.0083" width="0.0005" />
     <resolution aspect="16:11" x="0.5945" y="0.8494" height="0.0093" width="0.0005" />
@@ -184,18 +184,18 @@
     <resolution size="2560x1080" x="0.6354" y="0.9592" width="0.0055" height="0"/>
   </meta>
 
-  <meta meter="chamberUlt" tags="vlc,VALORANT" x=".4771" y=".888" height=".0001" width=".0479" 
-    h="50-70" s="50-100" l="60-100" type="linear" hdr-h="45-90" hdr-s="20-70" hdr-l="65-100">
+  <meta meter="chamberUlt" tags="vlc,VALORANT" x="0.4627" y="0.8888" width="0.0162" height="-0.0009"
+    h="45-90" s="75-100" l="75-100" type="linear" hdr-h="45-90" hdr-s="70-100" hdr-l="65-100">
     <resolution aspect="3.55:1" x="0.4905" y="0.888" width="0.0193" height="0" />
     <resolution aspect="24:10" x=".4771" y=".888" width=".0479" height=".0001" />
     <resolution aspect="16:11" x=".4771" y=".888" width=".0479" height=".0001" />
 
-    <resolution size="3840x2160" x="0.4798" y="0.8847" width="0.0404" height="0.0009" />
+    <resolution size="3840x2160" x="0.4801" y="0.8888" width="0.0151" height="0" />
     <resolution size="2560x1080" x=".4771" y=".888" width=".0479" height=".0001" />
   </meta>
 
-  <meta meter="reynaE" tags="vlc,VALORANT" type="area" x="0.442" y="0.665" width="0" height="0" h="160-170"
-    s="20-100" l="60-100" hdr-h="140-180" hdr-s="50-70" hdr-l="90-100">
+  <meta meter="reynaE" tags="vlc,VALORANT" type="area" x="0.442" y="0.665" width="0" height="0" 
+    h="160-170" s="20-100" l="60-100" hdr-h="140-180" hdr-s="20-100" hdr-l="60-100">
     <resolution aspect="3.55:1" x="0.4725" y="0.66" width="0" height="0" />
     <resolution aspect="24:10" x="0.4649" y="0.665" height="0.003" width="0.001" />
     <resolution aspect="16:11" x="0.4328" y="0.6602" height="0.0056" width="0.001" />
@@ -204,14 +204,14 @@
     <resolution size="2560x1080" x="0.4568" y="0.6654" width="0" height="0"   />
   </meta>
 
-  <meta meter="reynaE2" tags="vlc,VALORANT" type="area" x="0.3163" y="0.8916" width="0" height="0"   h="185-200"
-    s="30-100" l="40-95" hdr-h="140-180" hdr-s="70-90" hdr-l="90-100">
+  <meta meter="reynaE2" tags="vlc,VALORANT" type="area" x="0.3509" y="0.9117" width="0.0024" height="0"   
+    h="185-200" s="30-100" l="40-95" hdr-h="140-180" hdr-s="70-90" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.4087" y="0.89" width="0" height="0.0055" />
-    <resolution aspect="24:10" x="0.38" y="0.8937" width="0.0004" height="0.0111" />
+    <resolution aspect="24:10" x="0.3878" y="0.9097" width="0.0015" height="0.0000" />
     <resolution aspect="16:11" x="0.313" y="0.9112" width="0.0043" height="-0.0006" />
 
     <resolution size="3840x2160" x="0.3209" y="0.9092" width="0.0031" height="0.0005"   />
-    <resolution size="2560x1080" x="0.3595" y="0.8934" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3853" y="0.9101" width="0.0016" height="0"/>
   </meta>
 
   <meta meter="PlantSpikeConfirmation" tags="vlc,VALORANT" type="area" x="0.4639" y="0.1633" width="0.0011" height="0" 
@@ -245,17 +245,17 @@
   </meta>
 
   <meta meter="BombPlanted" tags="vlc,VALORANT" type="area" x="0.5064" y="0.0236" width="0.0036" height="0.0021" 
-    h="-30-30" s="80-100" l="80-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="50-100">
+    h="-30-30" s="80-100" l="80-100" hdr-h="0-1" hdr-s="99-100" hdr-l="99-100">
     <resolution aspect="3.55:1" x="0.5074" y="0.0238" width="0.0006" height="0.0042" />
     <resolution aspect="24:10" x="0.5111" y="0.0241" width="0.0008" height="0.0074" />
     <resolution aspect="16:11" x="0.5096" y="0.0294" width="0.0015" height="0.0044" />
 
-    <resolution size="3840x2160" x="0.5077" y="0.0255" width="0" height="0"  />
+    <resolution size="3840x2160" x="0.5111" y="0.0352" width="0.0015" height="0.0023"   />
     <resolution size="2560x1080" x="0.4994" y="0.0743" width="0.0009" height="0.0014" />
   </meta>
 
   <meta meter="BombNotRed" tags="vlc,VALORANT" type="area" x="0.5119" y="0.0292" width="0.0008" height="0.0014" 
-    h="-30-30" s="80-100" l="80-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="50-100">
+    h="-30-30" s="80-100" l="80-100" hdr-h="0-1" hdr-s="99-100" hdr-l="99-100">
     <resolution aspect="3.55:1" x="0.5109" y="0.0176" width="0.0006" height="0.0041" />
     <resolution aspect="24:10" x="0.517" y="0.0204" width="0.0016" height="0.0037" />
     <resolution aspect="16:11" x="0.5057" y="0.0294" width="0.0007" height="0.005" />
@@ -284,7 +284,7 @@
     <resolution size="2560x1080" x="0.68" y="0.3475" width="0" height="0.0056"  />
   </meta>
 
-  <meta meter="LossRed" tags="vlc,VALORANT" type="area" x="0.4252" y="0.8492" width="0.0078" height="0" 
+  <meta meter="LossRed" tags="vlc,VALORANT" type="area" x="0.4242" y="0.8489" width="0.0015" height="0" 
     h="-30-30" s="47-100" l="30-100" hdr-h="-30-30" hdr-s="47-100" hdr-l="30-100">
     <resolution aspect="3.55:1" x="0.4594" y="0.8454" width="0.0001" height="0.0001" />
     <resolution aspect="24:10" x="0.4741" y="0.8493" height="0.0001" width="0.02" />
@@ -416,7 +416,7 @@
 
     if (enableBomb) {
       if (PlantSpikeMeter.value >= .95 && engine.vision.PlantSpikeBar > .01 && engine.vision.SpikeNotYellow <= 0) gPlantBar += (engine.vision.PlantSpikeBar - gPlantBar) / 10
-      else if (PlantSpikeMeter.value <= .1 || bombMeter.value >= .75 || engine.vision.PlantSpikeBar <= .05) gPlantBar > 0 ? gPlantBar-=5 : gPlantBar = 0
+      else if (PlantSpikeMeter.value <= .1 || bombMeter.value >= .95 || engine.vision.PlantSpikeBar <= .05) gPlantBar > 0 ? gPlantBar-=5 : gPlantBar = 0
       ctx.beginPath();
       ctx.fillStyle = "hsla(60,75%,70%,1)"
       ctx.fillRect(0, 0, gPlantBar * 320, 200)
@@ -512,11 +512,14 @@
     } else {
       ShouldTriggerEffects = false;
     }
-    if ((healthState != prevHealthState) && ShouldTriggerEffects) {
-      effects.push(new BackgroundFade(500, healthState));
-      prevHealthState = healthState;
-    }
+    if (ShouldTriggerEffects){
+      if(healthState != prevHealthState) {
+        effects.push(new BackgroundFade(500, healthState));
+        prevHealthState = healthState;
+      }
 
+    }
+    
     if (champId != selectedChamp) {
       CharacterSelectEffect();
     }
@@ -551,18 +554,14 @@
   }
 
   function VictoryCallback() {
-    if (VictoryGreenMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95  && !ShouldTriggerEffects && healthMeter.value <= .05) {
-
+    if (VictoryGreenMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95  && !ShouldTriggerEffects ) {
       effects.push(new VictoryEffect())
-
     }
   }
 
   function LossCallback() {
-    if (LossRedMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95 && !ShouldTriggerEffects && healthMeter.value <= .05) {
-
+    if (LossRedMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95 && !ShouldTriggerEffects ) {
       effects.push(new DefeatEffect())
-
     }
   }
 
@@ -1225,8 +1224,8 @@
 
 
   function onChamber_x() {
-    if (champId == "Chamber" && ShouldTriggerEffects) {
-      if (xAbilityMeter.value > .8 && Chamber_ult_meter.value >= .95 && !chamberUltAnim) {
+    if (champId == "Chamber") {
+      if (xAbilityMeter.value >= .8 && Chamber_ult_meter.value >= .7 && !chamberUltAnim && ShouldTriggerEffects) {
         stateMgr.Push(new chamberUltSights());
         chamberUltAnim = true;
       }
