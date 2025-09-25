@@ -1,6 +1,6 @@
 <head>
     <title>Call of Duty Dev</title>
-    <meta description="Experience Call of Duty in full RGB. v2.02" />
+    <meta description="Experience Call of Duty in full RGB. v2.03" />
     <meta publisher="SignalRGB" />
   
       <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
@@ -8,7 +8,6 @@
       default="Custom"/>
       <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
       <meta property="adjToggle" label="Adjustment toggle (turn off in-game)" type="boolean" default="0" />
-      <meta property="vertMeters" label="Vertical HUD" type="boolean" default="0" />
       <meta property="hpOn" label="Health effects" type="boolean" default="1" />
       <meta property="healthColor" label="Health Color" type="color" default="#00ff00" min="0" max="360" />
       <meta property="healthX" label="Health bar X position" type="number" min="0" max="100" default="0" />
@@ -68,7 +67,7 @@
       <!-- healthWhite: Detects player's health bar in normal state (white/default color) -->
       <meta meter="healthWhite" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.0352" y="0.9507" width="0.0832" height="0.002" 
         h="0-360" s="0-50" l="70-100" hdr-h="0-360" hdr-s="0-50" hdr-l="70-100">
-        <resolution aspect="3.55:1" x="0.0178" y="0.9507" width="0.0416" height="0.0007"  />
+        <resolution aspect="3.55:1" x="0.0178" y="0.9507" width="0.0416" height="0.0001"  />
         <resolution aspect="24:10" x="0.0265" y="0.9514" width="0.0622" height="0.0007"  />
         <resolution aspect="16:11" x="0.0363" y="0.9568" width="0.0825" height="0" />
 
@@ -78,7 +77,7 @@
 
       <!-- healthRed: Detects player's health bar when in low health state (red color) -->
       <meta meter="healthRed" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.0352" y="0.9507" width="0.0832" height="0.002" 
-        h="-30-30" s="60-100" l="50-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="75-100">
+        h="-30-30" s="60-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="75-100">
         <resolution aspect="3.55:1" x="0.0178" y="0.9507" width="0.0416" height="0.0007"  />
         <resolution aspect="24:10" x="0.0265" y="0.9514" width="0.0622" height="0.0007"  />
         <resolution aspect="16:11" x="0.0363" y="0.9568" width="0.0825" height="0" />
@@ -125,21 +124,21 @@
       h="-30-30" s="50-75" l="50-100" hdr-h="0-45" hdr-s="40-100" hdr-l="70-100">
         <resolution aspect="3.55:1" x="0.9099" y="0.9027" width="0" height="0.0111" />
         <resolution aspect="24:10" x="0.8665" y="0.8978" width="0.0015" height="0.0188" />
-        <resolution aspect="16:11" x="0.8195" y="0.9074" width="0.0007" height="0.0169" />
+        <resolution aspect="16:11" x="0.8195" y="0.9060" width="0.0007" height="0.0169" />
 
         <resolution size="3840x2160" x="0.8197" y="0.8986" width="0.0011" height="0.0143"  />
         <resolution size="2560x1080" x="0.8656" y="0.899" width="0.0027" height="0.0157" />
       </meta>
 
       <!-- xpYellow: Detects experience points gained notification (yellow color) -->
-      <meta meter="xpYellow" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.5881" y="0.4595" width="0.0274" height="0.0159" 
+      <meta meter="xpYellow" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.5890" y="0.4595" width="0.0274" height="0.0159" 
         h="40-60" s="50-85" l="60-100" hdr-h="30-70" hdr-s="50-85" hdr-l="50-100">
         <resolution aspect="3.55:1" x="0.5454" y="0.459" width="0.0125" height="0.0166" />
         <resolution aspect="24:10" x="0.5676" y="0.458" width="0.0190" height="0.0166" />
         <resolution aspect="16:11" x="0.5930" y="0.463" width="0.0247" height="0.0150" />
 
         <resolution size="3840x2160" x="0.5918" y="0.4576" width="0.0250" height="0.0172"  />
-        <resolution size="2560x1080" x="0.5682" y="0.4564" width="0.0195" height="0.0200"  />
+        <resolution size="2560x1080" x="0.5682" y="0.4590" width="0.0195" height="0.0170"  />
       </meta>
 
       <!-- xpNotYellow1: First verification point for XP gain by checking non-yellow UI elements -->
@@ -177,7 +176,7 @@
 
       <!-- deathGrey: Detects player death by monitoring grey screen overlay -->
       <meta meter="deathGrey" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4463" y="0.0278" width="0.1098" height="0.0445" 
-        h="0-360" s="0-100" l="30-70" hdr-h="0-360" hdr-s="0-100" hdr-l="50-90">
+        h="0-360" s="0-100" l="30-70" hdr-h="0-360" hdr-s="0-100" hdr-l="50-100">
         <resolution aspect="3.55:1" x="0.4739" y="0.0299" width="0.0534" height="0.0417" />
         <resolution aspect="24:10" x="0.4603" y="0.0271" width="0.0811" height="0.0459" />
         <resolution aspect="16:11" x="0.4467" y="0.0256" width="0.109" height="0.0382" />
@@ -223,7 +222,7 @@
       <meta meter="zoneColor" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="colormean" x="0.0281" y="0.2835" width="0.002" height="0" 
         h="40-80" s="40-100" l="50-100" hdr-h="40-80" hdr-s="30-100" hdr-l="50-100">
         <resolution aspect="3.55:1" x="0.0143" y="0.2835" width="0.0004" height="0" />
-        <resolution aspect="24:10" x="0.0209" y="0.2835" width="0.0018" height="0"  />
+        <resolution aspect="24:10" x="0.0230" y="0.3035" width="0.000" height="0"  />
         <resolution aspect="16:11" x="0.0285" y="0.2552" width="0.002" height="0"  />
 
         <resolution size="3840x2160" x="0.0297" y="0.2839" width="0" height="0"  />
@@ -232,7 +231,7 @@
 
       <!-- warzoneWinCyan: Detects Warzone victory by monitoring cyan UI elements -->
       <meta meter="warzoneWinCyan" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4842" y="0.8992" width="0.0039" height="0.0007"
-        h="180-220" s="0-55" l="75-100" hdr-h="180-220" hdr-s="0-55" hdr-l="75-100">
+        h="180-220" s="0-55" l="75-100" hdr-h="180-220" hdr-s="0-55" hdr-l="50-100">
         <resolution aspect="3.55:1" x="0.4891" y="0.8963" width="0.0039" height="0.0001" />
         <resolution aspect="24:10" x="0.4842" y="0.8992" width="0.0039" height="0.0007" />
         <resolution aspect="16:11" x="0.4783" y="0.8593" width="0.0043" height="0" />
@@ -243,7 +242,7 @@
 
       <!-- warzoneWinBlue: Detects Warzone victory by monitoring blue UI elements -->
       <meta meter="warzoneWinBlue" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4521" y="0.7978" width="0.0024" height="0.0007"
-        h="180-240" s="50-75" l="75-100" hdr-h="180-240" hdr-s="50-100" hdr-l="50-100">
+        h="180-240" s="50-75" l="75-100" hdr-h="180-240" hdr-s="40-100" hdr-l="50-100">
         <resolution aspect="3.55:1" x="0.4766" y="0.7972" width="0.0005" height="0.0001" />
         <resolution aspect="24:10" x="0.4521" y="0.7978" width="0.0024" height="0.0007" />
         <resolution aspect="16:11" x="0.4521" y="0.7978" width="0.0024" height="0.0007"  />
@@ -266,7 +265,6 @@
       var height = 200;
       var effects = [];
 
-      let HUD = new healthHUD()
       let gInGame = false;
 
       let InGameMeter1 = new Meter(10, inGameHandler)
@@ -333,7 +331,8 @@
           }
         })
 
-        HUD.draw()
+       
+        healthHUD()
         
         window.requestAnimationFrame(update);
       };
@@ -499,12 +498,14 @@
     }
 
     function healthHUD(){
-      this.val = 0
-      this.draw = function(){
-        DrawRect(healthX, healthY, healthWidth * 3.2 * this.val, healthHeight * 2, healthColor)
-        if(!gInGame) this.val > .05 ? this.val += (0 - this.val) / 10 : this.val = 0
-        else this.val += (HealthMeter.value - this.val) / 10
-      }
+
+        if(gInGame) {
+          DrawRect(healthX, healthY, HealthMeter.value * (healthWidth * 3.2), (healthHeight * 2), healthColor)
+        }
+        else if(adjToggle){
+          DrawRect(healthX, healthY, (healthWidth * 3.2) , (healthHeight * 2), healthColor)
+        }
+
     }
 
     function warzoneWin(hue) {
