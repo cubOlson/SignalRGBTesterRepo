@@ -1,6 +1,6 @@
 <head>
   <title>Fortnite Dev</title>
-  <meta description="Ambience and metering for Fortnite. v2.34" />
+  <meta description="Ambience and metering for Fortnite. v2.35" />
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -28,8 +28,10 @@
   <meta property="enableKill" label="Kill effect" type="boolean" default="1" />
   <meta property="enableBattlebus" label="Battlebus effect" type="boolean" default="1" />
   <meta property="enableSprinting" label="Sprinting effect" type="boolean" default="1" />
+  <meta property="enableBuild" label="Build effect" type="boolean" default="1" />
+  <meta property="enableWin" label="Win effect" type="boolean" default="1" />
 
-  <!-- 19 Meters -->
+  <!-- 26 Meters -->
   <meta meter="inGame1" type="area" tags="vlc,fortnite" x="0.4934" y="0.0174" width="0.0137" height="0.0174" 
     h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.4965" y="0.019" width="0.0076" height="0.0167" />
@@ -70,7 +72,7 @@
     <resolution size="2560x1080" x="0.8957" y="0.3077" width="0.0023" height="0" />
   </meta>
 
-  <meta meter="BuildHealth" type="area" tags="vlc,fortnite" x="0.0484" y="0.9451" width="0.1680" height="0.0000" 
+  <meta meter="Health" type="area" tags="vlc,fortnite" x="0.0484" y="0.9451" width="0.1680" height="0.0000" 
     h="95-135" s="65-100" l="60-100" hdr-h="90-130" hdr-s="50-90" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.2750" y="0.9431" width="0.0850" height="0.0021" />
     <resolution aspect="24:10" x="0.1648" y="0.9444" width="0.1265" height="0.0014" />
@@ -80,8 +82,8 @@
     <resolution size="2560x1080" x="0.1613" y="0.9426" width="0.1289" height="0.0009" />
   </meta>
 
-  <meta meter="BuildHealthRed" type="area" tags="vlc,fortnite" x="0.0484" y="0.9451" width="0.1680" height="0.0000" 
-    h="320-360" s="80-100" l="60-100" hdr-h="310-350" hdr-s="80-100" hdr-l="80-100">
+  <meta meter="HealthRed" type="area" tags="vlc,fortnite" x="0.0484" y="0.9451" width="0.1680" height="0.0000" 
+    h="-30-30" s="80-100" l="60-100" hdr-h="-30-30" hdr-s="80-100" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.2750" y="0.9431" width="0.0850" height="0.0021" />
     <resolution aspect="24:10" x="0.1648" y="0.9444" width="0.1265" height="0.0014" />
     <resolution aspect="16:11" x="0.0492" y="0.9475" width="0.1707" height="0.0056" />
@@ -90,7 +92,7 @@
     <resolution size="2560x1080" x="0.1613" y="0.9426" width="0.1289" height="0.0009" />
   </meta>
 
-  <meta meter="BuildShields" type="area" tags="vlc,fortnite" x="0.0492" y="0.9139" width="0.1703" height="0.0007" 
+  <meta meter="Shields" type="area" tags="vlc,fortnite" x="0.0492" y="0.9139" width="0.1703" height="0.0007" 
     h="180-220" s="80-100" l="60-100" hdr-h="160-200" hdr-s="80-100" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.2748" y="0.9139" width="0.0846" height="0.0005" />
     <resolution aspect="24:10" x="0.1642" y="0.9125" width="0.1276" height="0.0005" />
@@ -100,7 +102,7 @@
     <resolution size="2560x1080" x="0.1617" y="0.9139" width="0.1277" height="0.0000" />
   </meta>
 
-  <meta meter="BuildShields2" type="area" tags="vlc,fortnite" x="0.0492" y="0.915" width="0.1703" height="0.0007" 
+  <meta meter="Shields2" type="area" tags="vlc,fortnite" x="0.0492" y="0.915" width="0.1703" height="0.0007" 
     h="180-220" s="80-100" l="60-100" hdr-h="160-200" hdr-s="80-100" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.2744" y="0.9222" width="0.0852" height="0.0005" />
     <resolution aspect="24:10" x="0.1642" y="0.9135" width="0.1276" height="0.0005" />
@@ -121,7 +123,7 @@
   </meta>
 
   <meta meter="xp" type="area" tags="vlc,fortnite" x="0.0418" y="0.3843" width="0.0117" height="0.0007"
-    h="-120-50" s="70-100" l="75-100" hdr-h="-120-50" hdr-s="70-100" hdr-l="75-100">
+    h="-120-50" s="70-100" l="75-100" hdr-h="-120-50" hdr-s="50-100" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.0211" y="0.3843" width="0.0070" height="0.002" />
     <resolution aspect="24:10" x="0.0323" y="0.3840" width="0.0087" height="0.0002" />
     <resolution aspect="16:11" x="0.0426" y="0.3458" width="0.0117" height="-0.0012" />
@@ -131,7 +133,7 @@
   </meta>
 
   <meta meter="xp2" type="area" tags="vlc,fortnite" x="0.0434" y="0.3982" width="0.1825" height="0.0028"  
-    h="230-300" s="40-100" l="0-50" hdr-h="230-300" hdr-s="40-100" hdr-l="0-50">
+    h="230-300" s="40-100" l="0-50" hdr-h="230-300" hdr-s="80-100" hdr-l="30-50">
     <resolution aspect="3.55:1" x="0.0221" y="0.3991" width="0.0300" height="0.002" />
     <resolution aspect="24:10" x="0.0328" y="0.3958" width="0.1363" height="0.0021" />
     <resolution aspect="16:11" x="0.0445" y="0.359" width="0.1775" height="-0.0007" />
@@ -190,18 +192,18 @@
     <resolution size="2560x1080" x="0.8929" y="0.3095" width="0.0008" height="0"/>
   </meta>
 
-  <meta meter="killRed" type="area" tags="vlc,fortnite" x="0.4600" y="0.6908" width="0.0504" height="0.002" 
-    h="-30-30" s="75-100" l="50-100" hdr-h="-20-60" hdr-s="50-90" hdr-l="80-100">
-    <resolution aspect="3.55:1" x="0.4800" y="0.6868" width="0.0377" height="0.0118" />
+  <meta meter="killRed" type="area" tags="vlc,fortnite" x="0.4900" y="0.6908" width="0.0504" height="0.002" 
+    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.4900" y="0.6868" width="0.0377" height="0.0118" />
     <resolution aspect="24:10" x="0.4800" y="0.6854" width="0.0590" height="0.0125" />
     <resolution aspect="16:11" x="0.4700" y="0.7169" width="0.0641" height="0.0119" />
   
-    <resolution size="3840x2160" x="0.4700" y="0.6892" width="0.0547" height="0.0046" />
-    <resolution size="2560x1080" x="0.4689" y="0.6905" width="0.0383" height="0.0037" />
+    <resolution size="3840x2160" x="0.4800" y="0.6892" width="0.0547" height="0.0046" />
+    <resolution size="2560x1080" x="0.4800" y="0.6905" width="0.0383" height="0.0037" />
   </meta>
 
-  <meta meter="killNotRed1" type="area" tags="vlc,fortnite" x="0.4682" y="0.7095" width="0.03" height="0.0007"
-    h="-30-30" s="75-100" l="50-100" hdr-h="-20-60" hdr-s="50-90" hdr-l="80-100">
+  <meta meter="killNotRed" type="area" tags="vlc,fortnite" x="0.4682" y="0.7095" width="0.03" height="0.0007"
+    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
       <resolution aspect="3.55:1" x="0.4826" y="0.6681" width="0.0092" height="-0.0007" />
       <resolution aspect="24:10" x="0.4765" y="0.6674" width="0.0235" height="-0.0007" />
       <resolution aspect="16:11" x="0.4547" y="0.6937" width="0.0254" height="0.0025" />
@@ -210,15 +212,88 @@
       <resolution size="2560x1080" x="0.4799" y="0.6701" width="0.0144" height="0.0009" />
   </meta>
 
-  <meta meter="killNotRed2" type="area" tags="vlc,fortnite" x="0.5279" y="0.6678" width="0.0161" height="0.0056"
-    h="-30-30" s="75-100" l="50-100" hdr-h="-20-60" hdr-s="50-90" hdr-l="80-100">
-    <resolution aspect="3.55:1" x="0.4789" y="0.7097" width="0.0098" height="0.0014" />
-    <resolution aspect="24:10" x="0.4776" y="0.7083" width="0.0186" height="0.0014" />
-    <resolution aspect="16:11" x="0.4543" y="0.7362" width="0.0234" height="0.0019" />
-
-    <resolution size="3840x2160" x="0.4642" y="0.7124" width="0.0138" height="0.0009" />
-    <resolution size="2560x1080" x="0.4709" y="0.7060" width="0.0297" height="0" />
+  <meta meter="killWhite" type="area" tags="vlc,fortnite" x="0.431" y="0.683" width="0.0547" height="0.0149"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.4650" y="0.6868" width="0.0377" height="0.0118" />
+    <resolution aspect="24:10" x="0.4350" y="0.6854" width="0.0590" height="0.0110" />
+    <resolution aspect="16:11" x="0.4263" y="0.7150" width="0.0602" height="0.0110"/>
+  
+    <resolution size="3840x2160" x="0.4176" y="0.6850" width="0.0633" height="0.011" />
+    <resolution size="2560x1080" x="0.4467" y="0.683" width="0.0414" height="0.0121" />
   </meta>
+
+  <meta meter="winYellow" type="area" tags="vlc,fortnite" x="0.3885" y="0.23" width="0.0028" height="0.0010"
+    h="0-90" s="50-80" l="75-100" hdr-h="0-90" hdr-s="0-70" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.4435" y="0.2231" width="0.00326" height="0.0014" />
+    <resolution aspect="24:10" x="0.4169" y="0.2257" width="0.0044" height="0.0007" />
+    <resolution aspect="16:11" x="0.3759" y="0.2239" width="0.0032" height="0" />
+  
+    <resolution size="3840x2160" x="0.3905" y="0.2172" width="0.0026" height="0.0028" />
+    <resolution size="2560x1080" x="0.4142" y="0.1881" width="0.0032" height="-0.0009" />
+  </meta>
+
+  <meta meter="winDarkBlue" type="area" tags="vlc,fortnite" x="0.6602" y="0.0853" width="0.0032" height="0"
+    h="180-250" s="75-100" l="75-100" hdr-h="180-250" hdr-s="75-100" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.5789" y="0.0843" width="0.0025" height="0.0028" />
+    <resolution aspect="24:10" x="0.6203" y="0.0826" width="0.0020" height="0.0012" />
+    <resolution aspect="16:11" x="0.6788" y="0.0807" width="0.0066" height="0.0012" />
+  
+    <resolution size="3840x2160" x="0.6569" y="0.0801" width="0.005" height="0"  />
+    <resolution size="2560x1080" x="0.6155" y="0.0825" width="0.0054" height="0.0046"  />
+  </meta>
+
+  <meta meter="winOrange" type="area" tags="vlc,fortnite" x="0.6585" y="0.132" width="0.0035" height="0.0014"
+    h="0-90" s="50-80" l="75-100" hdr-h="0-90" hdr-s="0-70" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.5773" y="0.1333" width="0.0033" height="0.0014" />
+    <resolution aspect="24:10" x="0.6145" y="0.1285" width="0.0023" height="0.0007" />
+    <resolution aspect="16:11" x="0.6721" y="0.1307" width="0.0071" height="0.005" />
+  
+    <resolution size="3840x2160" x="0.6533" y="0.1274" width="0.0075" height="0.006" />
+    <resolution size="2560x1080" x="0.6182" y="0.1316" width="0.0047" height="0.0019" />
+  </meta>
+
+   <meta meter="buildRed" type="area" tags="vlc,fortnite" x="0.5003" y="0.4847" width="0" height="0.0102" 
+    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.4995" y="0.4981" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.5000" y="0.4833" width="0.0006" height="0.0100" />
+    <resolution aspect="16:11" x="0.4998" y="0.4866" width="0.0004" height="0.0087" />
+  
+    <resolution size="3840x2160" x="0.5004" y="0.4836" width="0.0003" height="0.0134" />
+    <resolution size="2560x1080" x="0.4689" y="0.6905" width="0.0383" height="0.0037" />
+  </meta>
+
+  <meta meter="buildNotRed" type="area" tags="vlc,fortnite" x="0.5023" y="0.481" width="0" height="0.0046" 
+    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.5010" y="0.4833" width="0.0003" height="0.0020" />
+    <resolution aspect="24:10" x="0.5023" y="0.4833" width="0.0006" height="0.0040"/>
+    <resolution aspect="16:11" x="0.5025" y="0.4847" width="0.0004" height="0.005" />
+  
+    <resolution size="3840x2160" x="0.502" y="0.4826" width="0" height="0.0047" />
+    <resolution size="2560x1080" x="0.4689" y="0.6905" width="0.0383" height="0.0037" />
+  </meta>
+
+  <meta meter="buildWhite" type="area" tags="vlc,fortnite" x="0.5003" y="0.4847" width="0" height="0.0102"
+    h="0-360" s="0-10" l="60-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.4995" y="0.4981" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.5000" y="0.4833" width="0.0006" height="0.0100" />
+    <resolution aspect="16:11" x="0.4998" y="0.4866" width="0.0004" height="0.0087" />
+  
+    <resolution size="3840x2160" x="0.5004" y="0.4836" width="0.0003" height="0.0134" />
+    <resolution size="2560x1080" x="0.4689" y="0.6905" width="0.0383" height="0.0037" />
+  </meta>
+
+    <meta meter="buildNotWhite" type="area" tags="vlc,fortnite" x="0.5023" y="0.481" width="0" height="0.0046"
+    h="0-360" s="0-10" l="60-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.5010" y="0.4833" width="0.0003" height="0.0020" />
+    <resolution aspect="24:10" x="0.5023" y="0.4833" width="0.0006" height="0.0040" />
+    <resolution aspect="16:11" x="0.5025" y="0.4847" width="0.0004" height="0.005" />
+  
+    <resolution size="3840x2160" x="0.502" y="0.4826" width="0" height="0.0047" />
+    <resolution size="2560x1080" x="0.4689" y="0.6905" width="0.0383" height="0.0037" />
+  </meta>
+
+
+
 </head>
 
 <body style="margin: 0; padding: 0; background: #000;">
@@ -232,7 +307,7 @@
   var sat = 100;
   var latency = 6;
   var stateMgr = new StateHandler();
-  var inGame = false;
+  var gInGame = false;
   var vehiclePhase = 0;
   var BuildingAnim = false;
   var lobbyAnim = false;
@@ -267,6 +342,13 @@
   let SprintMeter = new Meter(5, sprintHelper)
 
   let KillMeter = new Meter(5, killHelper)
+  let KillWhiteMeter = new Meter(5,killHelper)
+
+  let winDarkBlueMeter = new Meter(5,winHelper)
+  let winYellowMeter = new Meter(5,winHelper)
+  let winOrangeMeter = new Meter(5,winHelper)
+  let buildRedMeter = new Meter(5,buildHelper)
+  let buildWhiteMeter = new Meter(5,buildHelper)
 
   function update() {
     inGame1Meter.setValue(engine.vision.inGame1)
@@ -277,17 +359,22 @@
     
     
     KillMeter.setValue(engine.vision.killRed)
+    KillWhiteMeter.setValue(engine.vision.killWhite)
     if(engine.vision.sprintNoWhite < .1) SprintMeter.setValue(engine.vision.sprintWhite)
     ParachuteMeter.setValue(engine.vision.parachute)
     vehicleM.setValue(engine.vision.vehicle);
-    healthM.setValue(engine.vision.BuildHealth);
-    healthDamageM.setValue(engine.vision.BuildHealthRed);
-    shieldsM.setValue(engine.vision.BuildShields);
-    shields2M.setValue(engine.vision.BuildShields2);
+    healthM.setValue(engine.vision.Health);
+    healthDamageM.setValue(engine.vision.HealthRed);
+    shieldsM.setValue(engine.vision.Shields);
+    shields2M.setValue(engine.vision.Shields2);
     xpM1.setValue(engine.vision.xp);
     xpM2.setValue(engine.vision.xp2);
     cloudCloseM.setValue(engine.vision.cloudClose);
-    
+    winDarkBlueMeter.setValue(engine.vision.winDarkBlue)
+    winYellowMeter.setValue(engine.vision.winYellow)
+    winOrangeMeter.setValue(engine.vision.winOrange)
+    buildRedMeter.setValue(engine.vision.buildRed)
+    buildWhiteMeter.setValue(engine.vision.buildWhite)
 
     if (engine.vision.battlebus || engine.vision.exit) {
       enableVehicle = false;
@@ -355,9 +442,31 @@
         }
     }
 
+
+  let buildGoing = false
+  function buildHelper(){
+    if(enableBuild){
+      if((buildRedMeter.valeu >=.95 && engine.vision.buildNotRed <.1) || (buildWhiteMeter.value >=.95 && engine.vision.buildNotWhite <.1) && !buildGoing){
+        buildGoing = true
+        effects.push(new buildOpen())
+      }
+
+    }
+  }
+
+  let winGoing = false
+  function winHelper(){
+    if(enableWin){
+      if((winDarkBlueMeter.value >= .95 || winOrangeMeter.value >=.95) && winYellowMeter.value >=.95 && !winGoing){
+        effects.push(new victoryEffect())
+        winGoing = true
+      }
+    }
+  }
+
   let KillGoing = false
   function killHelper(){
-    if(KillMeter.value >= .3 && engine.vision.killNotRed1 < .1 && engine.vision.killNotRed2 < .1 && !KillGoing){
+    if(KillMeter.value >= .3 && engine.vision.killNotRed < .1 && KillWhiteMeter.value >=.3 < .1 && !KillGoing){
       if(enableKill) effects.push(new kill())
       KillGoing = true
     }
@@ -365,7 +474,7 @@
 
   let SprintGoing = false
   function sprintHelper(){
-    if(SprintMeter.value > .05 && engine.vision.sprintNoWhite < .1 && !SprintGoing){
+    if(SprintMeter.value >= .1 && engine.vision.sprintNoWhite < .1 && !SprintGoing){
       if(enableSprinting) effects.push(new sprinting())
       SprintGoing = true
     }
@@ -380,15 +489,15 @@
   }
 
   function onGameChanged() {
-    if (inGame1Meter.value >= 0.33 && inGame2Meter.value >= .8 && engine.vision.notInGame2 < .1 && engine.vision.BuildHealth) {
+    if (inGame1Meter.value >= 0.33 && inGame2Meter.value >= .8 && engine.vision.notInGame2 < .1 && engine.vision.Health) {
       setTimeout(() => {
-        inGame = true;
+        gInGame = true;
       }, 1000);
-    } else if (engine.vision.BuildHealth < .05 && engine.vision.BuildHealthRed) inGame = false;
+    } else if (engine.vision.Health < .05 && engine.vision.HealthRed) gInGame = false;
   }
 
   function DrawHUD() {
-    if (inGame) {
+    if (gInGame) {
       ctx.beginPath()
       ctx.fillStyle = healthColor;
       ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), healthM.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
@@ -396,7 +505,7 @@
       ctx.beginPath()
       ctx.fillStyle = ShieldColor;
       ctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), shieldsM.value * (ShieldBarWidth * 3.2), (ShieldBarHeight * 2))
-    } else if (adjToggle) {
+    } else if (adjToggle || !gInGame) {
       ctx.beginPath()
       ctx.fillStyle = healthColor;
       ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
@@ -409,7 +518,7 @@
   }
     
   function shieldHelper() {
-    if (inGame) {
+    if (gInGame) {
       if (shieldsM.decreased && shieldsM.value != shieldPrev && healthM.value > .1 && Math.abs(shieldsM.value - shields2M.value) < .05 && shieldsM.diff > 0.05) {
         if (enableDamage) {
           effects.push(new Wave('#ffffff', "down"));
@@ -429,7 +538,7 @@
   };
 
   function healthHelper() {
-    if (inGame) {
+    if (gInGame) {
       if (healthM.diff < 0.95) {
         if (healthM.decreased && healthM.value != healthPrev && healthM.value > .1 && !engine.vision.battlebus && healthM.diff > 0.08) {
           if (enableDamage) {
@@ -451,11 +560,11 @@
   };
 
   function xpHelper() {
-    if (inGame) {
-      if (xpM1.value > 0.9 && xpM2.value > 0.85 && !xpAnim) {
+    if (gInGame) {
+      if (xpM1.value >= 0.9 && xpM2.value >= 0.85 && !xpAnim) {
         if (enableXP) effects.push(new xpGain())
         xpAnim = true;
-      } else if (xpM1.value == 0 || !inGame) {
+      } else if (xpM1.value == 0 || !gInGame) {
         xpAnim = false;
       };
     }
@@ -491,6 +600,118 @@
         knockedGoing = true
       }
     };
+  }
+
+  function closePulse(hue) {
+      this.lifetime = 500;
+      this.hue = hue;
+      this.pulses = 0; 
+      this.active = true;
+
+      this.draw = function () {
+        if (!this.active) return;
+
+        ctx.strokeStyle = `hsl(${this.hue}, 100%, 50%)`;
+        ctx.lineWidth = 50;
+        ctx.beginPath();
+        ctx.arc(160, 100, this.lifetime, 0, Math.PI * 2);
+        ctx.stroke();
+
+        this.lifetime -= 10;
+
+       
+        if (this.lifetime <= 0) {
+          this.pulses++;
+          if (this.pulses < 1) {
+            this.lifetime = 500; 
+          } else {
+            this.active = false; 
+          }
+        }
+      };
+  
+  }
+
+  function buildOpen() {
+    this.lifetime = 10;
+    this.done = false;
+    this.alpha = 0;
+    this.alpha2 = .1;
+    this.count = 0;
+    this.redo = false;
+    this.effects = []; 
+    this.draw = function () {
+      this.count++
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
+  
+      this.alpha2 = Math.abs(Math.sin(Date.now() / 500)) * .1 + .1;
+      this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      if (this.redo) {
+        this.effects = [];
+        this.redo = false;
+        this.done = false;
+      }
+      let count = 0;
+      if (this.effects.length < 3) {
+        this.effects.push(new menuRow(this.effects.length * 110))
+      }
+      this.effects.forEach((ele, i) => {
+        ele.draw(this.done);
+        ele.done ? count++ : null;
+      })
+      if (buildRedMeter.value <.1 && buildWhiteMeter.value <.1 && !this.done) {
+        this.done = true
+        buildGoing = false
+        effects.push(new closePulse(170))
+      }
+    }
+  }
+
+  function menuRow(x) {
+    this.x = x;
+    this.start = Date.now();
+    this.speed = Math.random() * 800 + 800;
+    this.effects = [];
+    this.done = false;
+    this.draw = function (donezo) {
+      let elapsed = Date.now() - this.start;
+      let count = 0;
+      if (elapsed > this.speed && this.effects.length < 5) {
+        this.effects.push(new menuSquare(this.x, 200 - (this.effects.length * 40 + 40), 5, 110, 40))
+        this.start = Date.now()
+      }
+      this.effects.forEach((ele, i) => {
+        ele.draw(donezo);
+        if (ele.done) {
+          count++;
+          if (this.effects[i - 1]) {
+            this.effects[i - 1].grass = false;
+          }
+        }
+      })
+      count == 5 ? this.done = true : null;
+    }
+  }
+
+  function menuSquare(x, y2, speed, width, height) {
+    this.x = x;
+    this.y = 0;
+    this.alpha = 1;
+    this.width = width;
+    this.height = height;
+    this.y2 = y2;
+    this.speed = speed;
+    this.grass = true;
+    this.done = false;
+    this.draw = function (donezo) {
+      ctx.globalAlpha = this.alpha;
+      DrawRect(this.x, this.y, this.width, this.height, `hsla(220, 100%, 50%, 0.9)`)
+      this.grass ? DrawRect(this.x, this.y, this.width, this.height * .75, `hsla(200, 100%, 50%, 0.3)`) : null;
+      ctx.globalAlpha = 1;
+      let dy = 4; 
+      this.y < this.y2 ? this.y += dy : this.done = true;
+      donezo ? this.alpha >= .05 ? this.alpha -= .05 : this.alpha = 0 : null;
+    }
   }
 
   function kill(){
@@ -575,7 +796,7 @@
             DrawRect(0, 0, 320, 200, `hsla(240, 100%, 30%, ${this.alpha})`)
             effects.push(new battlebusHelp())
             if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
-            if(engine.vision.BuildHealth > .75 || engine.vision.parachute > .25) this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
+            if(engine.vision.Health > .75 || engine.vision.parachute >= .25) this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
             if(this.lifetime == 0) effects.push(new parachute())
         }
     }
@@ -628,27 +849,96 @@
       }
     }
 
-  function knocked(){
-        this.alpha = .5
+    function victoryEffect() {
+      this.draw = function() {
+        effects.push(new victoryBalls());
+        ctx.fillStyle = "hsl(200, 80%, 30%)"; 
+        ctx.fillRect(0, 0, 320, 200);
+        if(winDarkBlueMeter.value <.1 && winYellowMeter.value <.1 && winGoing){
+          winGoing = false
+          this.lifetime = 0
+        }
+      };
+    }
+
+    function victoryBalls(){
+        this.x = Math.random() * 320
+        this.y = Math.random() * 200
+        this.alpha = 0
+        this.half = false
         this.draw = function(){
-          this.alpha = Math.sin(Date.now() / 500) * .25 + .75
-          let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
-          grad.addColorStop(0, "red")
-          grad.addColorStop(.75, "black")
-          ctx.globalAlpha = this.alpha
-          DrawRect(0, 0, 320, 200, grad)
-          ctx.globalAlpha = 1
-          if(healthM.value > .1 || healthDamageM.value < .1 || !inGame){
-            this.lifetime = 0
-            knockedGoing = false
-          }
+            DrawCircle(this.x, this.y, 30, `hsla(50, 100%, 50%, ${this.alpha})`)
+            if(!this.half) this.alpha < 1 ? this.alpha += .1 : this.half = true
+            else this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
+            this.x += 5 - Math.random() * 10
+            this.y += 5 - Math.random() * 10
         }
     }
+
+    function knocked() {
+      this.timer = 0;
+      this.active = true;
+      this.fadeAlpha = 1;
+      this.fading = false; 
+      
+
+      this.draw = function() {
+        if (!this.active) return;
+
+
+        if (healthDamageM.value <.1) {
+          this.lifetime = 0;
+          this.fading = true
+          knockedGoing = false
+        }
+
+        this.timer += 0.05;
+
+        if (this.fading) {
+          this.fadeAlpha -= 0.02;  
+          if (this.fadeAlpha <= 0) {
+            this.active = false;   
+            return;
+          }
+        }
+
+        ctx.globalAlpha = 0.9 * this.fadeAlpha;
+        ctx.fillStyle = "hsl(0, 100%, 10%)";
+        ctx.fillRect(0, 0, 320, 200);
+        ctx.globalAlpha = 1;
+
+        let bigPulse = (Math.sin(this.timer) + 1) / 2;
+        let bigRadius = 100 + bigPulse * 110;
+        ctx.beginPath();
+        ctx.fillStyle = "hsl(0, 100%, 30%)";
+        ctx.globalAlpha = 0.6 * this.fadeAlpha;
+        ctx.arc(160, 100, bigRadius, 0, Math.PI * 2);
+        ctx.fill();
+
+        let mediumPulse = Math.max(0, (bigPulse - 0.3) / 0.7);
+        ctx.beginPath();
+        ctx.fillStyle = "hsl(0, 100%, 45%)";
+        ctx.globalAlpha = mediumPulse * this.fadeAlpha;
+        ctx.arc(160, 100, 120 * mediumPulse, 0, Math.PI * 2);
+        ctx.fill();
+
+        let smallPulse = Math.max(0, (bigPulse - 0.6) / 0.4);
+        ctx.beginPath();
+        ctx.fillStyle = "hsl(0, 100%, 60%)";
+        ctx.globalAlpha = smallPulse * this.fadeAlpha;
+        ctx.arc(160, 100, 80 * smallPulse, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.globalAlpha = 1;
+      };
+    }
+
+
 
   function lowHealth(){
         this.draw = function(){
             effects.push(new lowHealthHelp())
-            if(healthM.value < .1 || healthM.value > .4 || !inGame){
+            if(healthM.value < .1 || healthM.value > .4 || !gInGame){
               this.lifetime = 0
               lowHealthGoing = false
             }
@@ -687,7 +977,7 @@
           this.rot+=.2
           this.rot%=Math.PI*2
           this.x < 330 ? this.x += 5 : this.x = -320
-          if(healthM.value < 0.1 || vehicleM.value < .1 || !inGame){
+          if(healthM.value < 0.1 || vehicleM.value < .1 || !gInGame){
             this.lifetime = 0
             vehicleGoing = false
           }
