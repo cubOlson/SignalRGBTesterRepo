@@ -1,5 +1,5 @@
 <head>
-  <title>Fortnite Dev</title>
+  <title>Fortnite Dev Update</title>
   <meta description="Ambience and metering for Fortnite. v2.35" />
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
@@ -350,6 +350,8 @@
   let buildRedMeter = new Meter(5,buildHelper)
   let buildWhiteMeter = new Meter(5,buildHelper)
 
+  let theHUD = new DrawHUD()
+
   function update() {
     inGame1Meter.setValue(engine.vision.inGame1)
     inGame2Meter.setValue(engine.vision.inGame2)
@@ -392,7 +394,7 @@
       }
     }
     
-    if(enableHUD) DrawHUD();
+    if(enableHUD) theHUD.draw();
     stateMgr.Process();
     window.requestAnimationFrame(update);
   }
@@ -446,11 +448,10 @@
   let buildGoing = false
   function buildHelper(){
     if(enableBuild){
-      if((buildRedMeter.valeu >=.95 && engine.vision.buildNotRed <.1) || (buildWhiteMeter.value >=.95 && engine.vision.buildNotWhite <.1) && !buildGoing){
+      if(((buildRedMeter.value >=.95 && engine.vision.buildNotRed <.1) || (buildWhiteMeter.value >=.95 && engine.vision.buildNotWhite <.1)) && !buildGoing && ParachuteMeter.value <= .1){
         buildGoing = true
         effects.push(new buildOpen())
       }
-
     }
   }
 
@@ -466,7 +467,7 @@
 
   let KillGoing = false
   function killHelper(){
-    if(KillMeter.value >= .3 && engine.vision.killNotRed < .1 && KillWhiteMeter.value >=.3 < .1 && !KillGoing){
+    if(KillMeter.value >= .3 && engine.vision.killNotRed < .1 && KillWhiteMeter.value >=.3 && !KillGoing){
       if(enableKill) effects.push(new kill())
       KillGoing = true
     }
@@ -497,24 +498,29 @@
   }
 
   function DrawHUD() {
-    if (gInGame) {
-      ctx.beginPath()
-      ctx.fillStyle = healthColor;
-      ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), healthM.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
-      //shield
-      ctx.beginPath()
-      ctx.fillStyle = ShieldColor;
-      ctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), shieldsM.value * (ShieldBarWidth * 3.2), (ShieldBarHeight * 2))
-    } else if (adjToggle || !gInGame) {
-      ctx.beginPath()
-      ctx.fillStyle = healthColor;
-      ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
-      //shield
-      ctx.beginPath()
-      ctx.fillStyle = ShieldColor;
-      ctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), (ShieldBarWidth * 3.2), (ShieldBarHeight*2))
+    this.val1 = 0
+    this.val2 = 0
+    this.draw = function(){
+      this.val1 += (healthM.value - this.val1) / 20
+      this.val2 += (shieldsM.value - this.val2) / 20
+      if (gInGame) {
+        ctx.beginPath()
+        ctx.fillStyle = healthColor;
+        ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), healthM.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+        //shield
+        ctx.beginPath()
+        ctx.fillStyle = ShieldColor;
+        ctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), shieldsM.value * (ShieldBarWidth * 3.2), (ShieldBarHeight * 2))
+      } else if (adjToggle && !gInGame) {
+        ctx.beginPath()
+        ctx.fillStyle = healthColor;
+        ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+        //shield
+        ctx.beginPath()
+        ctx.fillStyle = ShieldColor;
+        ctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), (ShieldBarWidth * 3.2), (ShieldBarHeight*2))
+      }
     }
-    //health
   }
     
   function shieldHelper() {
@@ -638,21 +644,16 @@
     this.alpha = 0;
     this.alpha2 = .1;
     this.count = 0;
-    this.redo = false;
-    this.effects = []; 
+    this.effects = [];
     this.draw = function () {
       this.count++
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
   
       this.alpha2 = Math.abs(Math.sin(Date.now() / 500)) * .1 + .1;
       this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
-      if (this.redo) {
-        this.effects = [];
-        this.redo = false;
-        this.done = false;
-      }
+
       let count = 0;
-      if (this.effects.length < 3) {
+      if (this.effects.length < 4) {
         this.effects.push(new menuRow(this.effects.length * 110))
       }
       this.effects.forEach((ele, i) => {
@@ -664,20 +665,22 @@
         buildGoing = false
         effects.push(new closePulse(170))
       }
+      if(this.done) this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
     }
   }
 
   function menuRow(x) {
     this.x = x;
     this.start = Date.now();
-    this.speed = Math.random() * 800 + 800;
+    this.speed = 100;
     this.effects = [];
     this.done = false;
     this.draw = function (donezo) {
       let elapsed = Date.now() - this.start;
       let count = 0;
       if (elapsed > this.speed && this.effects.length < 5) {
-        this.effects.push(new menuSquare(this.x, 200 - (this.effects.length * 40 + 40), 5, 110, 40))
+        let check = this.effects.length % 2 == 0
+        this.effects.push(new menuSquare(this.x + (check ? 0 : -55), 200 - (this.effects.length * 40 + 40), 5, 110, 40))
         this.start = Date.now()
       }
       this.effects.forEach((ele, i) => {
@@ -707,12 +710,21 @@
       ctx.globalAlpha = this.alpha;
       DrawRect(this.x, this.y, this.width, this.height, `hsla(220, 100%, 50%, 0.9)`)
       this.grass ? DrawRect(this.x, this.y, this.width, this.height * .75, `hsla(200, 100%, 50%, 0.3)`) : null;
+      strokeRect(this.x, this.y, this.width, this.height, `hsla(190, 100%, 60%, 0.9)`, 10)
       ctx.globalAlpha = 1;
-      let dy = 4; 
+      let dy = 10 
       this.y < this.y2 ? this.y += dy : this.done = true;
       donezo ? this.alpha >= .05 ? this.alpha -= .05 : this.alpha = 0 : null;
     }
   }
+
+    function strokeRect(x, y, width, height, color, stroke){
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke
+      ctx.rect(x, y, width, height);
+      ctx.stroke()
+    }
 
   function kill(){
         this.alpha = 1
@@ -820,7 +832,7 @@
         this.draw = function(){
             DrawRect(0, 0, 320, 200, `hsla(240, 100%, 1%, ${this.alpha})`)
             if(engine.vision.parachute > .1) this.alpha < 1 ? this.alpha += .025 : this.alpha = 1
-            else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+            else this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
             if(Math.random() > .95) this.effects.push(new paraFront())
             this.effects.forEach((ele, i)=>{
                 ele.draw()
