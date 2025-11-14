@@ -1,0 +1,2276 @@
+<head>
+  <title>Destiny 2</title>
+  <meta description="Explore the solar system with RGB effects. Set screen bounds to full screen size - v1.03" />
+  <meta publisher="SignalRGB" />
+
+  <meta property="keyScreenBrightness" label="Ambience brightness" type="number" min="0" max="100" default="100" />
+  <meta property="backColor" label="Background Color" type="color" default="#020202" min="0" max="360" />
+  <meta property="gameMode" label="Game mode" type="combobox" values="Campaign/Vanguard,Crucible"
+  default="Campaign/Vanguard" />
+  <meta property="grenadeOn" label="Grenade Effect" type="boolean" default="1" />
+  <meta property="meleeOn" label="Melee Effect" type="boolean" default="1" />
+  <meta property="classOn" label="Class Effect" type="boolean" default="1" />
+  <meta property="ultimateOn" label="Ultimate Effect" type="boolean" default="1" />
+  <meta property="hpOn" label="Health Effect" type="boolean" default="1" />
+  <meta property="ammoOn" label="Ammo Change Effect" type="boolean" default="1" />
+  <meta property="pulicEventsOn" label="Public event Effect" type="boolean" default="1" />
+  <meta property="vehicleOn" label="Vehicle Effect" type="boolean" default="1" />
+  <meta property="deathOn" label="Death Effect" type="boolean" default="1" />
+  <meta property="menuOn" label="Swirling Planet Idle Effect" type="boolean"  default="1" />
+  <meta property="merchantOn" label="Merchant Effect" type="boolean"  default="1" />
+  <meta property="resultOn" label="Crucible Win/Loss" type="boolean" default="1" />
+  <meta property="winningOn" label="Crucible Winning" type="boolean" default="1" />
+
+  <meta meter="inGame" tags="Destiny 2, VLC" x="0.2919" y="0.8909" width="0.0039" height="0" 
+    h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.3958" y="0.8907" width="0.0026" height="0" />
+    <resolution aspect="24:10" x="0.3448" y="0.8917" width="0.0029" height="0.0007" />
+    <resolution aspect="16:11" x="0.2646" y="0.8542" width="0.0085" height=".001" />
+
+    <resolution size="3840x2160" x="0.2919" y="0.8909" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3398" y="0.8907" width="0.0085" height=".001" />
+  </meta>
+
+  <meta meter="ab1Orange" tags="Destiny 2" x="0.0667" y="0.8694" width="0.002" height=".04" 
+    h="0-30" s="60-90" l="65-100" hdr-h="15-55" hdr-s="55-90" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.2840" y="0.9100" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.1776" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.0667" y="0.8331" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.0667" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1747" y="0.8741" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab2Orange" tags="Destiny 2" x="0.1011" y="0.8694" width="0.002" height=".04" 
+    h="0-30" s="60-90" l="65-100" hdr-h="15-55" hdr-s="50-95" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.3010" y="0.9040" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2029" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1010" y="0.8281" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1011" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2008" y="0.8667" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab3Orange" tags="Destiny 2" x="0.1363" y="0.8645" width="0.002" height=".04" 
+    h="0-30" s="60-90" l="65-100" hdr-h="15-55" hdr-s="50-90" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.3180" y="0.9020" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2291" y="0.8632" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1344" y="0.8250" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1363" y="0.8645" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2266" y="0.8648" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab1Purple" tags="Destiny 2" x="0.0667" y="0.8694" width="0.002" height=".04" 
+    h="250-360" s="15-55" l="25-65" hdr-h="260-300" hdr-s="15-60" hdr-l="40-100" type="area">
+    <resolution aspect="3.55:1" x="0.2840" y="0.9100" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.1776" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.0667" y="0.8331" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.0667" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1747" y="0.8741" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab2Purple" tags="Destiny 2" x="0.1011" y="0.8694" width="0.002" height=".04" 
+    h="250-360" s="15-55" l="25-65" hdr-h="260-300" hdr-s="15-60" hdr-l="40-100" type="area">
+    <resolution aspect="3.55:1" x="0.3010" y="0.9040" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2029" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1010" y="0.8281" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1011" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2008" y="0.8667" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab3Purple" tags="Destiny 2" x="0.1363" y="0.8645" width="0.002" height=".04" 
+    h="250-360" s="15-55" l="25-65" hdr-h="260-300" hdr-s="15-60" hdr-l="40-100" type="area">
+    <resolution aspect="3.55:1" x="0.3180" y="0.9020" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2291" y="0.8632" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1344" y="0.8250" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1363" y="0.8645" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2266" y="0.8648" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab1DarkBlue" tags="Destiny 2" x="0.0667" y="0.8694" width="0.002" height=".04"
+    h="196-230" s="55-90" l="70-100" hdr-h="196-230" hdr-s="55-90" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.2840" y="0.9100" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.1776" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.0667" y="0.8331" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.0667" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1747" y="0.8741" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab2DarkBlue" tags="Destiny 2" x="0.1011" y="0.8694" width="0.002" height=".04" 
+    h="196-230" s="55-90" l="70-100" hdr-h="196-230" hdr-s="55-90" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.3010" y="0.9040" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2029" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1010" y="0.8281" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1011" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2008" y="0.8667" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab3DarkBlue" tags="Destiny 2" x="0.1363" y="0.8645" width="0.002" height=".04" 
+    h="196-230" s="55-90" l="70-100" hdr-h="196-230" hdr-s="55-90" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.3180" y="0.9020" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2291" y="0.8632" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1344" y="0.8250" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1363" y="0.8645" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2266" y="0.8648" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab1Blue" tags="Destiny 2" x="0.0667" y="0.8694" width="0.002" height=".04" 
+    h="145-195" s="25-60" l="50-90" hdr-h="145-195" hdr-s="0-60" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.2840" y="0.9100" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.1776" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.0667" y="0.8331" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.0667" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1747" y="0.8741" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab2Blue" tags="Destiny 2" x="0.1011" y="0.8694" width="0.002" height=".04" 
+    h="145-195" s="25-60" l="50-90" hdr-h="145-195" hdr-s="0-60" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.3010" y="0.9040" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2029" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1010" y="0.8281" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1011" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2008" y="0.8667" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab3Blue" tags="Destiny 2" x="0.1363" y="0.8645" width="0.002" height=".04" 
+    h="145-195" s="25-60" l="50-90" hdr-h="145-195" hdr-s="0-60" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.3180" y="0.9020" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2291" y="0.8632" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1344" y="0.8250" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1363" y="0.8645" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2266" y="0.8648" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab1Green" tags="Destiny 2" x="0.0667" y="0.8694" width="0.002" height=".04" 
+    h="120-150" s="45-80" l="30-70" hdr-h="120-150" hdr-s="45-80" hdr-l="30-70" type="area">
+    <resolution aspect="3.55:1" x="0.2840" y="0.9100" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.1776" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.0667" y="0.8331" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.0667" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1747" y="0.8741" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab2Green" tags="Destiny 2" x="0.1011" y="0.8694" width="0.002" height=".04" 
+    h="120-150" s="45-80" l="30-70" hdr-h="120-150" hdr-s="45-80" hdr-l="30-70" type="area">
+    <resolution aspect="3.55:1" x="0.3010" y="0.9040" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2029" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1010" y="0.8281" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1011" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2008" y="0.8667" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab3Green" tags="Destiny 2" x="0.1363" y="0.8645" width="0.002" height=".04" 
+    h="120-150" s="45-80" l="30-70" hdr-h="120-150" hdr-s="45-80" hdr-l="30-70" type="area">
+    <resolution aspect="3.55:1" x="0.3180" y="0.9020" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2291" y="0.8632" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1344" y="0.8250" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1363" y="0.8645" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2266" y="0.8648" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab1White" tags="Destiny 2" x="0.0667" y="0.8694" width="0.002" height=".04"
+    h="0-360" s="0-25" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.2840" y="0.9100" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.1776" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.0667" y="0.8331" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.0667" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1747" y="0.8741" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab2White" tags="Destiny 2" x="0.1011" y="0.8694" width="0.002" height=".04"
+    h="0-360" s="0-25" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.3010" y="0.9040" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2029" y="0.8674" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1010" y="0.8281" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1011" y="0.8694" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2008" y="0.8667" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ab3White" tags="Destiny 2" x="0.1363" y="0.8645" width="0.002" height=".04" 
+    h="0-360" s="0-25" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.3180" y="0.9020" width="0.001" height="0.002" />
+    <resolution aspect="24:10" x="0.2291" y="0.8632" width="0.002" height=".04" />
+    <resolution aspect="16:11" x="0.1344" y="0.8250" width="0.002" height=".04" />
+
+    <resolution size="3840x2160" x="0.1363" y="0.8645" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2266" y="0.8648" width="0.002" height=".04" />
+  </meta>
+
+  <meta meter="ultIcon" tags="Destiny 2" x="0.0363" y="0.8256" width="0.004" height=".001" 
+    h="20-90" s="30-80" l="60-100" hdr-h="20-90" hdr-s="30-80" hdr-l="60-100" type="area">
+    <resolution aspect="3.55:1" x="0.2708" y="0.8204" width="0.0013" height="0.0014" />
+    <resolution aspect="24:10" x="0.1590" y="0.8250" width="0.004" height=".001" />
+    <resolution aspect="16:11" x="0.0410" y="0.7956" width="0.004" height=".001" />
+
+    <resolution size="3840x2160" x="0.0363" y="0.8256" width="0" height="0" />
+    <resolution size="2560x1080" x="0.029" y="0.82569" width="0.004" height=".001" />
+  </meta>
+
+  <meta meter="ultWhite" tags="Destiny 2" x="0.0364" y="0.8472" width="0.015" height=".015" 
+    h="0-360" s="0-35" l="75-100" hdr-h="0-360" hdr-s="0-35" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.2706" y="0.8574" width="0.0034" height="0.0046" />
+    <resolution aspect="24:10" x="0.1560" y="0.8479" width="0.015" height=".015" />
+    <resolution aspect="16:11" x="0.0354" y="0.8102" width="0.015" height=".015" />
+
+    <resolution size="3840x2160" x="0.0364" y="0.8472" width="0" height="0" />
+    <resolution size="2560x1080" x="0.026" y="0.8472" width="0.015" height=".015" />
+  </meta>
+
+  <meta meter="ultFirstBar" tags="Destiny 2" x="0.2976" y="0.8340" width="0.003" height=".001" 
+    h="20-90" s="30-80" l="60-100" hdr-h="20-90" hdr-s="30-80" hdr-l="60-100" type="area">
+    <resolution aspect="3.55:1" x="0.3977" y="0.8352" width="0.0013" height="0.0014" />
+    <resolution aspect="24:10" x="0.3404" y="0.8354" width="0.003" height=".001" />
+    <resolution aspect="16:11" x="0.2809" y="0.8000" width="0.003" height=".001" />
+
+    <resolution size="3840x2160" x="0.2976" y="0.8340" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2215" y="0.841" width="0.003" height=".001" />
+  </meta>
+
+  <meta meter="ammoColorWhite" tags="Destiny 2" x="0.3015" y="0.8435" width="0.0005" height=".02" 
+    h="0-360" s="0-20" l="85-100" hdr-h="0-360" hdr-s="0-20" hdr-l="85-100" type="area">
+    <resolution aspect="3.55:1" x="0.4008" y="0.8481" width="0.0003" height="0.0204" />
+    <resolution aspect="24:10" x="0.3526" y="0.8507" width="0.0005" height=".02" />
+    <resolution aspect="16:11" x="0.3022" y="0.8274" width="0" height="0"  />
+
+    <resolution size="3840x2160" x="0.3015" y="0.8435" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3516" y="0.8517" width="0.0005" height=".02" />
+  </meta>
+
+  <meta meter="ammoColorPurple" tags="Destiny 2" x="0.3015" y="0.8435" width="0.0005" height=".02"
+    h="250-280" s="25-50" l="75-100" hdr-h="200-360" hdr-s="25-50" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.4008" y="0.8481" width="0.0003" height="0.0204" />
+    <resolution aspect="24:10" x="0.3526" y="0.8507" width="0.0005" height=".02" />
+    <resolution aspect="16:11" x="0.3022" y="0.8274" width="0" height="0"  />
+
+    <resolution size="3840x2160" x="0.3015" y="0.8435" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3516" y="0.8517" width="0.0005" height=".02" />
+  </meta>
+
+  <meta meter="ammoColorGreen" tags="Destiny 2" x="0.3015" y="0.8435" width="0.0005" height=".02"
+    h="110-160" s="15-60" l="65-100" hdr-h="110-160" hdr-s="15-60" hdr-l="65-100" type="area">
+    <resolution aspect="3.55:1" x="0.4008" y="0.8481" width="0.0003" height="0.0204" />
+    <resolution aspect="24:10" x="0.3526" y="0.8507" width="0.0005" height=".02" />
+    <resolution aspect="16:11" x="0.3022" y="0.8274" width="0" height="0"  />
+
+    <resolution size="3840x2160" x="0.3015" y="0.8435" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3516" y="0.8517" width="0.0005" height=".02" />
+  </meta>
+
+  <meta meter="downedGhostRed" tags="Destiny 2" x="0.0330" y="0.0787" width="0.006" height=".001" 
+    h="0-20" s="30-100" l="50-100" hdr-h="0-20" hdr-s="30-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.2682" y="0.0862" width="0.0010" height="0.0028" />
+    <resolution aspect="24:10" x="0.1526" y="0.0806" width="0.006" height=".001" />
+    <resolution aspect="16:11" x="0.0359" y="0.1213" width="0.006" height=".001" />
+
+    <resolution size="3840x2160" x="0.0330" y="0.0787" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1520" y="0.0787" width="0.006" height=".001" />
+  </meta>
+
+  <meta meter="downedWhiteG" tags="Destiny 2" x="0.0960" y="0.1398" width="0.001" height=".001" 
+    h="0-360" s="0-30" l="60-80" hdr-h="0-360" hdr-s="0-30" hdr-l="60-100" type="area">
+    <resolution aspect="3.55:1" x="0.2917" y="0.1336" width="0.0013" height="0.0028" />
+    <resolution aspect="24:10" x="0.1922" y="0.1451" width="0.0032" height="0.0063" />
+    <resolution aspect="16:11" x="0.2292" y="0.1843" width="0.001" height=".001" />
+
+    <resolution size="3840x2160" x="0.0960" y="0.1398" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1895" y="0.1360" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="crucDeathR" tags="Destiny 2" x="0.0332" y="0.2614" width="0.005" height=".002" 
+    h="0-25" s="50-80" l="40-60" hdr-h="0-30" hdr-s="30-80" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.2674" y="0.2614" width="0.0013" height="0.002" />
+    <resolution aspect="24:10" x="0.1520" y="0.2618" width="0.005" height=".002" />
+    <resolution aspect="16:11" x="0.0328" y="0.2861" width="0.005" height=".002" />
+
+    <resolution size="3840x2160" x="0.0332" y="0.2614" width="0" height="0" />
+    <resolution size="2560x1080" x="0.0265" y="0.261" width="0.0005" height=".002" />
+  </meta>
+
+  <meta meter="crucDeathW" tags="Destiny 2" x="0.0322" y="0.2881" width="0.005" height=".001" 
+    h="0-360" s="0-40" l="70-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.2654" y="0.2824" width="0.0005" height="0.0028" />
+    <resolution aspect="24:10" x="0.1520" y="0.2882" width="0.005" height=".001" />
+    <resolution aspect="16:11" x="0.0302" y="0.2926" width="0.005" height=".001" />
+
+    <resolution size="3840x2160" x="0.0322" y="0.2881" width="0" height="0" />
+    <resolution size="2560x1080" x="0.0240" y="0.287" width="0.005" height=".001" />
+  </meta>
+
+  <meta meter="crucDefeatG" tags="Destiny 2" x="0.4958" y="0.537" width="0.01" height=".001" 
+    h="20-90" s="0-25" l="50-100" hdr-h="0-90" hdr-s="0-25" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.4970" y="0.5370" width="0.0005" height="0.0028" />
+    <resolution aspect="24:10" x="0.4956" y="0.5375" width="0.01" height=".001" />
+    <resolution aspect="16:11" x="0.4958" y="0.5333" width="0.01" height=".001" />
+
+    <resolution size="3840x2160" x="0.4958" y="0.537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4960" y="0.5375" width="0.01" height=".001" />
+  </meta>
+
+  <meta meter="crucDefeatB1" tags="Destiny 2" x="0.4969" y="0.4315" width="0.005" height=".001" 
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-15" type="area">
+    <resolution aspect="3.55:1" x="0.4970" y="0.4370" width="0.0005" height="0.0028" />
+    <resolution aspect="24:10" x="0.4971" y="0.4319" width="0.005" height=".001" />
+    <resolution aspect="16:11" x="0.4958" y="0.438" width="0.005" height=".001" />
+
+    <resolution size="3840x2160" x="0.4969" y="0.4315" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4971" y="0.4319" width="0.005" height=".001" />
+  </meta>
+
+  <meta meter="crucDefeatB2" tags="Destiny 2" x="0.4969" y="0.6185" width="0.003" height=".001" 
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-15" type="area">
+    <resolution aspect="3.55:1" x="0.4970" y="0.6170" width="0.0005" height="0.0028" />
+    <resolution aspect="24:10" x="0.4971" y="0.6181" width="0.003" height=".001" />
+    <resolution aspect="16:11" x="0.4958" y="0.6046" width="0.003" height=".001" />
+
+    <resolution size="3840x2160" x="0.4969" y="0.6185" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4971" y="0.6181" width="0.003" height=".001" />
+  </meta>
+
+  <meta meter="crucVictoryW" tags="Destiny 2" x="0.4859" y="0.5046" width="0.001" height=".001" 
+    h="0-360" s="0-25" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.4970" y="0.4620" width="0.0005" height="0.0028" />
+    <resolution aspect="24:10" x="0.4948" y="0.4611" width="0.001" height=".001" />
+    <resolution aspect="16:11" x="0.4927" y="0.462" width="0.001" height=".001" />
+
+    <resolution size="3840x2160" x="0.4859" y="0.5046" width="0" height="0" />
+    <resolution size="2560x1080" x="0.49" y="0.51" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="crucVictoryR" tags="Destiny 2" x="0.4885" y="0.5481" width="0.001" height=".001" 
+    h="0-25" s="75-100" l="60-90" hdr-h="0-30" hdr-s="80-100" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.5050" y="0.5450" width="0.0005" height="0.0028" />
+    <resolution aspect="24:10" x="0.5016" y="0.5576" width="0.01" height=".001" />
+    <resolution aspect="16:11" x="0.4911" y="0.5491" width="0.001" height=".001" />
+
+    <resolution size="3840x2160" x="0.4885" y="0.5481" width="0" height="0" />
+    <resolution size="2560x1080" x="0.49" y="0.54" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="crucVictoryB" tags="Destiny 2" x="0.4885" y="0.613" width="0.001" height=".001" 
+    h="0-180" s="0-100" l="0-20" hdr-h="0-180" hdr-s="0-100" hdr-l="0-20" type="area">
+    <resolution aspect="3.55:1" x="0.4950" y="0.6010" width="0.0005" height="0.0028" />
+    <resolution aspect="24:10" x="0.4915" y="0.6097" width="0.004" height=".001" />
+    <resolution aspect="16:11" x="0.488" y="0.6019" width="0.001" height=".001" />
+
+    <resolution size="3840x2160" x="0.4885" y="0.613" width="0" height="0" />
+    <resolution size="2560x1080" x="0.49" y="0.605" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="VehicleBarMeter" tags="VLC,Destiny 2" x="0.1010" y="0.9102" width="0.0019" height="0" 
+    h="0-360" s="0-53" l="78-100" hdr-h="0-360" hdr-s="0-53" hdr-l="78-100" type="area">
+    <resolution aspect="3.55:1" x="0.3005" y="0.9102" width="0.0018" height="0.0005" />
+    <resolution aspect="24:10" x="0.2035" y="0.9104" width="0.0029" height="0.0014" />
+    <resolution aspect="16:11" x="0.1012" y="0.8688" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.1010" y="0.9102" width="0" height="0" />
+    <resolution size="2560x1080" x="0.2008" y="0.9102" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="VehicleMeter" tags="VLC,Destiny 2" x="0.0740" y="0.8829" width="0.0090" height="0.009" 
+    h="0-360" s="0-18" l="77-100" hdr-h="0-360" hdr-s="0-18" hdr-l="77-100" type="area">
+    <resolution aspect="3.55:1" x="0.2865" y="0.8880" width="0.0090" height="0.009" />
+    <resolution aspect="24:10" x="0.1826" y="0.8835" width="0.0120" height="0.009" />
+    <resolution aspect="16:11" x="0.0746" y="0.8481" width="0.0114" height="0.0041" />
+
+    <resolution size="3840x2160" x="0.0823" y="0.8829" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1816" y="0.8852" width="0.0090" height=".001" />
+  </meta>
+
+  <meta meter="WhiteHp" tags="VLC,Game,Destiny 2" x="0.3916" y="0.0931" width="0.0164" height="0.0049" 
+    h="0-360" s="0-43" l="62-100" hdr-h="0-360" hdr-s="0-43" hdr-l="62-100" type="area">
+    <resolution aspect="3.55:1" x="0.4445" y="0.1694" width="0.0036" height="0.0019" />
+    <resolution aspect="24:10" x="0.4177" y="0.0931" width="0.0164" height="0.0049" />
+    <resolution aspect="16:11" x="0.3898" y="0.1326" width="0.001" height="0.0058"  />
+
+    <resolution size="3840x2160" x="0.3916" y="0.0931" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4177" y="0.0931" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="RedHp" tags="VLC,Game,Destiny 2" x="0.3884" y="0.0931" width="0.0164" height="0.0049" 
+    h="0-50" s="60-100" l="22-100" hdr-h="0-50" hdr-s="60-100" hdr-l="22-100" type="area">
+    <resolution aspect="3.55:1" x="0.4445" y="0.1694" width="0.0036" height="0.0019" />
+    <resolution aspect="24:10" x="0.4177" y="0.0931" width="0.0164" height="0.0049" />
+    <resolution aspect="16:11" x="0.3898" y="0.1326" width="0.001" height="0.0058"  />
+
+    <resolution size="3840x2160" x="0.3884" y="0.0931" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4177" y="0.0931" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="JoinPublic" tags="VLC,Game,Destiny 2" x="0.0692" y="0.0605" width="0.0001" height="0.0001" 
+    h="4-44" s="73-100" l="27-87" hdr-h="4-44" hdr-s="73-100" hdr-l="27-87" type="area">
+    <resolution aspect="3.55:1" x="0.1982" y="0.1074" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.0517" y="0.1069" width="0.0001" height="0.0001" /> 
+    <resolution aspect="16:11" x="0.0375" y="0.141" width="0.0031" height="0.0058"  />
+
+    <resolution size="3840x2160" x="0.0692" y="0.0605" width="0" height="0" />
+    <resolution size="2560x1080" x="0.06" y="0.060" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="InPublic" tags="VLC,Game,Destiny 2" x="0.0406" y="0.2391" width="0.0001" height="0.0001" 
+    h="184-224" s="32-100" l="5-45" hdr-h="184-224" hdr-s="32-100" hdr-l="5-45" type="area">
+    <resolution aspect="3.55:1" x="0.1839" y="0.2352" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.0302" y="0.2361" width="0.0001" height="0.0001" />
+    <resolution aspect="16:11" x="0.05" y="0.2827" width="0.0001" height="0.0001"  />
+
+    <resolution size="3840x2160" x="0.0406" y="0.2391" width="0" height="0" />
+    <resolution size="2560x1080" x="0.04" y="0.239" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="MerchantYellow" tags="VLC,Game,Destiny 2" x="0.0356" y="0.7616" width="0.0457" height="0.0018" 
+    h="31-71" s="1-41" l="49-89" hdr-h="0-360" hdr-s="0-30" hdr-l="60-100" type="area">
+    <resolution aspect="3.55:1" x="0.2823" y="0.7593" width="0.0081" height="0.0014" />
+    <resolution aspect="24:10" x="0.1602" y="0.7562" width="0.0457" height="0.0018" />
+    <resolution aspect="16:11" x="0.0365" y="0.7348" width="0.0385" height="0"  />
+
+    <resolution size="3840x2160" x="0.0356" y="0.7616" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1570" y="0.761" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="InTower" tags="VLC,Game,Destiny 2" x="0.0672" y="0.1161" width="0" height="0" 
+    h="194-234" s="17-77" l="23-83" hdr-h="194-234" hdr-s="17-77" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.2833" y="0.1167" width="0.00" height="0.00" />
+    <resolution aspect="24:10" x="0.1779" y="0.1167" width="0" height="0" />   
+    <resolution aspect="16:11" x="0.0676" y="0.1562" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.0672" y="0.1161" width="0" height="0" />
+    <resolution size="2560x1080" x="0.1754" y="0.1176" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="MerchantColor" tags="VLC,Game,Destiny 2" x="0.6686" y="0.984" width="0.0059" height="0.0049" 
+    h="0-30" s="40-84" l="48-88" hdr-h="0-30" hdr-s="40-84" hdr-l="48-88" type="colormean">
+    <resolution aspect="3.55:1" x="0.6471" y="0.9658" width="0.0036" height="0.0019" />
+    <resolution aspect="24:10" x="0.7081" y="0.9722" width="0.0059" height="0.0049" />
+    <resolution aspect="16:11" x="0.9109" y="0.9808" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.6686" y="0.984" width="0" height="0" />
+    <resolution size="2560x1080" x="0.66" y="0.984" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="CrucibleRedWinning" tags="VLC,Game,Destiny 2" x="0.5074" y="0.0389" width="0.0247" height="0.0" 
+    h="0-30" s="40-84" l="48-88" hdr-h="0-30" hdr-s="50-80" hdr-l="70-100" type="linear">
+    <resolution aspect="3.55:1" x="0.5026" y="0.0389" width="0.0036" height="0.00" />
+    <resolution aspect="24:10" x="0.5052" y="0.0389" width="0.0247" height="0" />
+    <resolution aspect="16:11" x="0.5081" y="0.0850" width="0" height="0"  />
+
+    <resolution size="3840x2160" x="0.5068" y="0.0389" width="0" height="0" />
+    <resolution size="2560x1080" x="0.5051" y="0.0389" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="CrucibleBlueWinning" tags="VLC,Game,Destiny 2" x="0.4928" y="0.0389" width="-0.025" height="0" 
+    h="192-232" s="7-58" l="29-69" hdr-h="150-200" hdr-s="20-50" hdr-l="70-100" type="linear">
+    <resolution aspect="3.55:1" x="0.4758" y="0.038" width="0.0036" height="0.00" />
+    <resolution aspect="24:10" x="0.4933" y="0.0382" width="0.0036" height="0.001" />
+    <resolution aspect="16:11" x="0.4918" y="0.0856" width="0.001" height="0.001"  />
+
+    <resolution size="3840x2160" x="0.4928" y="0.0389" width="0.001" height="0.001" />
+    <resolution size="2560x1080" x="0.4934" y="0.038" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="CrucibleAimCheckRed" tags="VLC,Game,Destiny 2" x="0.5074" y="0.0451" width="0" height="0" 
+    h="0-30" s="40-84" l="48-88" hdr-h="0-30" hdr-s="50-80" hdr-l="70-100" type="linear">
+    <resolution aspect="3.55:1" x="0.5039" y="0.0408" width="0.0036" height="0.00" />
+    <resolution aspect="24:10" x="0.5058" y="0.0451" width="0.001" height="0.001" />
+    <resolution aspect="16:11" x="0.5078" y="0.0900" width="0.001" height="0.001"  />
+
+    <resolution size="3840x2160" x="0.5115" y="0.0403" width="0" height="0" />
+    <resolution size="2560x1080" x="0.5051" y="0.0450" width="0.001" height=".001" />
+  </meta>
+
+  <meta meter="CrucibleAimCheckBlue" tags="VLC,Game,Destiny 2" x="0.4904" y="0.0437" width="0" height="0" 
+    h="192-232" s="7-58" l="29-69" hdr-h="150-200" hdr-s="20-50" hdr-l="70-100" type="linear">
+    <resolution aspect="3.55:1" x="0.4911" y="0.0408" width="0.0036" height="0.00" />
+    <resolution aspect="24:10" x="0.4939" y="0.0444" width="0" height="0" />
+    <resolution aspect="16:11" x="0.4918" y="0.0906" width="0.001" height="0.001"  />
+
+    <resolution size="3840x2160" x="0.4904" y="0.0403" width="0.001" height="0.001" />
+    <resolution size="2560x1080" x="0.4938" y="0.0463" width="0.001" height=".001" />
+  </meta>
+
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  let canvas, ctx;
+  canvas = document.getElementById('exCanvas');
+  ctx = canvas.getContext('2d');
+  let width = 320;
+  let height = 200;
+  let stateHdlr = new StateHandler();
+  let effects = [];
+  let ab1Activated = false;
+  let ab2Activated = false;
+  let ab3Activated = false;
+  let ultCharged = false;
+  let downedPushed = false;
+  let ultInUse = false;
+  let inGame = false;
+  let inMenu = false
+  let inMerchant = false;
+  let inTower = false;
+  let skull = "M8.05,64.93S-10.76,9.44,56.44,2.51c0,0,65.88,4.29,48.05,62.42,0,0,4,9.58-.66,18.5,0,0,6.27,9.9,1.65,12.22l4.62,8.91s-8.25,20.81-16.51,11.56c0,0-6.28-21.68-12.55,2.37,0,0,4.62,18.11-6.61,29l-4.29-2.31-3,5.94-3.31-4.29-3.3,4.29-4.12-2-4.14,2L49,147.5l-3,3.63-3.63-5.28-4.3,2.64s-3.63-9.91-6.27-11.23-5.62-14.86-.66-18.49-7.27-18.5-14.53.66c0,0-7.93,1-13.88-15.53l5-7.92s-3.64-4.63,1-10.24C8.71,85.74.45,73.85,8.05,64.93Z";
+  let publicEventsvg = "M 107.500 11.897 C 98.150 17.308, 85.550 24.614, 79.500 28.132 L 68.500 34.529 68 40.381 L 67.500 46.233 45.327 58.930 C 33.131 65.914, 22.438 72.222, 21.563 72.948 C 20.159 74.113, 20.004 78.031, 20.236 106.330 L 20.500 138.392 41.841 150.641 C 70.685 167.196, 68 165.068, 68 171.368 C 68 177.955, 67.022 177.107, 89.500 190.022 C 99.400 195.709, 111.226 202.532, 115.781 205.182 C 125.754 210.985, 124.238 210.942, 133.167 205.674 C 137.200 203.294, 149.050 196.480, 159.500 190.530 C 183.101 177.094, 181.997 178.048, 182.014 171.095 L 182.028 165.500 205.557 152 C 221.776 142.694, 229.228 137.879, 229.544 136.500 C 229.795 135.400, 229.889 120.813, 229.751 104.085 L 229.500 73.669 223.500 70.002 C 220.200 67.984, 214.867 64.870, 211.649 63.080 C 184.995 48.261, 182.516 46.517, 182.233 42.389 C 181.686 34.395, 182.538 35.106, 153.106 18.115 C 137.754 9.252, 125.037 2.013, 124.847 2.029 C 124.656 2.045, 116.850 6.486, 107.500 11.897 M 98 20.938 L 72.500 35.763 72.198 41.446 C 71.914 46.788, 71.678 47.260, 68.259 49.314 C 66.258 50.516, 55.594 56.694, 44.560 63.042 L 24.500 74.584 24.236 105.666 L 23.972 136.747 47.941 150.466 L 71.909 164.185 72.205 170.342 L 72.500 176.498 98 191.211 C 128.582 208.856, 121.418 208.856, 152 191.211 L 177.500 176.498 177.793 170.424 L 178.086 164.350 184.793 160.364 C 188.482 158.172, 199.269 151.928, 208.764 146.488 L 226.028 136.598 225.764 105.665 L 225.500 74.732 212 66.872 C 204.575 62.548, 193.887 56.462, 188.250 53.346 L 178 47.681 178 41.926 L 178 36.171 152.506 21.494 C 138.484 13.421, 126.221 6.658, 125.256 6.465 C 124.290 6.271, 112.025 12.784, 98 20.938 M 103 29.940 C 75.372 45.877, 75.338 43.725, 103.466 59.839 L 125.004 72.178 146.461 59.839 C 174.608 43.652, 174.575 45.971, 146.890 30.101 C 121.721 15.674, 127.693 15.696, 103 29.940 M 52.468 70.366 L 34.500 80.732 34.233 105.677 L 33.966 130.623 48.233 138.801 C 56.080 143.299, 64.292 148.071, 66.482 149.405 C 72.047 152.795, 72 152.938, 72 132.627 L 72 114.372 78.926 110.471 C 86.938 105.958, 86.953 106.264, 78.491 101.532 L 72 97.902 72 78.951 C 72 68.528, 71.648 60, 71.218 60 C 70.787 60, 62.350 64.665, 52.468 70.366 M 82 75.818 L 82 91.850 87.250 94.726 C 90.138 96.307, 93.454 98.213, 94.620 98.960 C 98.236 101.277, 119.500 88.519, 119.500 84.032 C 119.500 81.149, 94.577 64.824, 83.250 60.287 C 82.281 59.899, 82 63.392, 82 75.818 M 156.446 65.819 C 150.976 69.020, 142.763 73.802, 138.196 76.446 C 126.219 83.379, 126.539 84.957, 141.693 93.725 L 152.886 100.201 160.443 95.902 L 168 91.602 168 75.801 C 168 67.110, 167.638 60, 167.196 60 C 166.755 60, 161.917 62.619, 156.446 65.819 M 178 78.834 L 178 97.883 171.007 101.691 C 162.530 106.308, 162.550 105.640, 170.751 110.500 L 177.500 114.500 177.772 133.326 C 177.922 143.680, 178.384 152.005, 178.799 151.826 C 179.213 151.647, 187.753 146.794, 197.776 141.042 L 216 130.584 216 105.872 L 216 81.160 198.746 71.143 C 189.257 65.634, 180.707 60.825, 179.746 60.456 C 178.122 59.833, 178 61.119, 178 78.834 M 130 106.044 C 130 109.962, 130.342 113.017, 130.760 112.833 C 142.494 107.689, 143.232 106.190, 135.988 102.211 L 130 98.922 130 106.044 M 112.764 102.811 C 106.851 106.169, 106.850 106.160, 113.485 109.905 C 120.460 113.841, 120 114.081, 120 106.500 C 120 99.019, 119.705 98.869, 112.764 102.811 M 89.261 116.359 L 82.022 120.500 82.011 136.274 L 82 152.048 85.289 150.274 C 127.627 127.438, 127.514 127.803, 97 112.469 C 96.725 112.331, 93.243 114.081, 89.261 116.359 M 140.250 119.238 C 127.677 126.625, 126.787 128.933, 134.825 133.308 C 137.479 134.753, 145.857 139.549, 153.444 143.967 C 161.030 148.385, 167.409 152, 167.619 152 C 167.828 152, 168 144.895, 168 136.210 L 168 120.421 161.130 116.710 C 152.465 112.030, 152.531 112.022, 140.250 119.238 M 102.750 152.129 C 74.323 168.620, 73.301 164.927, 112.641 187.868 L 124.783 194.948 146.141 182.635 C 174.877 166.068, 174.811 168.220, 147.086 152.168 C 121.966 137.624, 127.746 137.629, 102.750 152.129" 
+  let publicEventsvg2 ="M 119.500 22.583 C 117.300 23.886, 114.600 25.412, 113.500 25.974 C 110.851 27.327, 107.622 29.361, 107 30.069 C 106.725 30.382, 104.362 31.660, 101.750 32.908 C 98.533 34.446, 97 35.795, 97 37.089 C 97 38.140, 96.564 39, 96.031 39 C 95.499 39, 95.322 38.325, 95.638 37.500 C 95.955 36.675, 95.716 36, 95.107 36 C 94.498 36, 94 36.450, 94 37 C 94 37.550, 93.568 38, 93.041 38 C 91.213 38, 83 43.491, 83 44.713 C 83 45.918, 105.806 60, 107.758 60 C 108.306 60, 109.279 60.631, 109.920 61.403 C 110.560 62.175, 113.532 64.004, 116.523 65.467 C 119.514 66.931, 122.221 68.549, 122.540 69.064 C 123.229 70.180, 126.692 70.319, 127.167 69.250 C 127.350 68.837, 129.735 67.407, 132.466 66.072 C 135.197 64.737, 136.885 63.462, 136.216 63.239 C 135.547 63.016, 135 62.391, 135 61.849 C 135 61.308, 135.882 61.145, 136.959 61.487 C 139.459 62.280, 157 53.042, 157 50.933 C 157 50.454, 157.675 50.322, 158.500 50.638 C 159.325 50.955, 160 50.716, 160 50.107 C 160 49.498, 160.492 49, 161.092 49 C 161.693 49, 163.381 48.030, 164.842 46.844 C 166.340 45.628, 166.736 44.960, 165.750 45.312 C 164.787 45.656, 164 45.539, 164 45.052 C 164 44.565, 164.530 43.990, 165.177 43.774 C 166.441 43.353, 160.018 39, 158.132 39 C 157.509 39, 157 38.637, 157 38.192 C 157 37.443, 144.945 31, 143.544 31 C 143.199 31, 141.936 30.087, 140.739 28.971 C 132.924 21.690, 125.019 19.313, 119.500 22.583 M 178.976 80.500 L 178.922 99.500 174.015 101.888 C 168.717 104.466, 166.743 107, 170.031 107 C 171.114 107, 172 107.669, 172 108.487 C 172 109.304, 173.575 110.631, 175.500 111.436 C 178.295 112.604, 179.009 113.462, 179.045 115.699 C 179.070 117.240, 179.051 125.578, 179.002 134.229 L 178.914 149.958 188.707 144.387 C 194.093 141.322, 199.719 137.957, 201.210 136.908 C 202.700 135.858, 204.612 135, 205.460 135 C 206.307 135, 207 134.550, 207 134 C 207 133.450, 207.493 133, 208.096 133 C 208.698 133, 210.541 132.039, 212.190 130.865 L 215.189 128.729 214.829 106.615 C 214.558 89.961, 214.127 83.981, 213.086 82.397 C 211.253 79.610, 205.502 76.572, 203.915 77.552 C 203.041 78.092, 202.847 77.841, 203.276 76.724 C 203.949 74.971, 197.949 72.295, 196.020 73.488 C 195.459 73.834, 195 73.581, 195 72.925 C 195 71.012, 189.661 66.899, 187.784 67.367 C 186.840 67.602, 186.165 67.311, 186.284 66.720 C 186.403 66.128, 185.150 65.168, 183.500 64.585 C 181.850 64.003, 180.169 63.070, 179.765 62.513 C 179.361 61.956, 179.006 70.050, 178.976 80.500 M 64.727 65 C 63.329 66.100, 61.875 67, 61.497 67 C 61.118 67, 59.395 68.013, 57.667 69.250 C 55.939 70.487, 52.791 72.284, 50.671 73.242 C 48.508 74.220, 46.577 75.902, 46.270 77.077 C 45.927 78.387, 45.461 78.746, 45.023 78.038 C 44.234 76.761, 38.410 79.420, 36.360 81.995 C 35.517 83.053, 35.171 90.159, 35.177 106.326 L 35.184 129.163 41.071 132.968 C 44.309 135.060, 48.093 137.057, 49.479 137.405 C 50.866 137.753, 52 138.480, 52 139.019 C 52 139.559, 52.620 140, 53.378 140 C 54.135 140, 55.341 140.706, 56.058 141.570 C 56.774 142.433, 58.179 142.925, 59.180 142.663 C 60.271 142.378, 61 142.724, 61 143.526 C 61 144.788, 64.618 146.629, 66.250 146.198 C 66.662 146.089, 67 146.450, 67 147 C 67 147.550, 67.675 148, 68.500 148 C 69.772 148, 70 145.515, 70 131.635 C 70 115.378, 71.369 109.282, 74.808 110.229 C 76.920 110.811, 82.979 106.679, 81.907 105.388 C 81.283 104.637, 80.435 104.231, 80.020 104.487 C 79.606 104.743, 78.462 104.063, 77.479 102.976 C 76.495 101.889, 74.876 101, 73.880 101 C 70.632 101, 70 97.589, 70 80.066 C 70 61.540, 69.811 61.001, 64.727 65 M 83.098 76.025 C 82.940 89.984, 85.435 96.374, 89.671 92.858 C 90.428 92.229, 91.337 92.004, 91.691 92.357 C 92.044 92.711, 91.808 93, 91.167 93 C 90.525 93, 90 93.450, 90 94 C 90 94.550, 90.675 95, 91.500 95 C 92.325 95, 93 95.398, 93 95.883 C 93 97.378, 97.069 97.926, 99.601 96.772 C 100.920 96.171, 102 95.376, 102 95.006 C 102 94.636, 102.565 94.333, 103.256 94.333 C 104.751 94.333, 112.556 89.527, 113.475 88.041 C 113.829 87.468, 114.977 87, 116.028 87 C 117.398 87, 117.757 86.530, 117.299 85.336 C 116.869 84.217, 117.043 83.909, 117.830 84.395 C 118.517 84.820, 119 84.522, 119 83.673 C 119 82.878, 117.537 81.471, 115.750 80.546 C 113.963 79.621, 110.700 77.775, 108.500 76.444 C 106.300 75.113, 103.914 74.238, 103.198 74.500 C 102.482 74.763, 102.144 74.576, 102.447 74.086 C 103.168 72.919, 96.489 69, 93.776 69 C 92.616 69, 91.970 68.696, 92.341 68.325 C 93.191 67.475, 87.914 63.935, 86.812 64.616 C 86.366 64.892, 86 64.641, 86 64.059 C 86 63.477, 85.380 63, 84.623 63 C 83.531 63, 83.214 65.700, 83.098 76.025 M 160.293 65.331 C 157.980 66.524, 156.258 68.012, 156.468 68.637 C 156.699 69.322, 156.096 69.576, 154.950 69.277 C 153.803 68.977, 151.821 69.814, 149.948 71.390 C 148.242 72.825, 146.238 74, 145.495 74 C 144.751 74, 143.548 74.589, 142.821 75.309 C 142.095 76.029, 139.120 77.910, 136.212 79.489 C 132.712 81.389, 131.106 82.833, 131.462 83.761 C 131.758 84.533, 132 85.577, 132 86.082 C 132 86.587, 133.125 87, 134.500 87 C 135.875 87, 137 87.411, 137 87.914 C 137 88.975, 146.485 95, 148.155 95 C 148.773 95, 149.821 95.741, 150.483 96.647 C 151.787 98.429, 160.795 95.062, 164.420 91.437 C 166.094 89.763, 166.880 62.905, 165.250 63.081 C 164.838 63.125, 162.607 64.137, 160.293 65.331 M 93.500 116.049 C 91.850 117.169, 89.083 118.699, 87.350 119.450 C 83.772 121, 81.603 137.007, 83.888 145 C 84.770 148.085, 93 147.015, 93 143.815 C 93 143.367, 93.653 143, 94.450 143 C 95.248 143, 96.301 142.285, 96.790 141.410 C 97.279 140.536, 97.977 139.861, 98.340 139.910 C 100.121 140.152, 100.967 139.898, 102.204 138.750 C 102.945 138.063, 105.677 136.425, 108.276 135.111 C 110.874 133.797, 113 132.061, 113 131.254 C 113 130.329, 113.582 130.010, 114.574 130.390 C 118.708 131.976, 119.785 126.400, 115.732 124.397 C 110.698 121.908, 101.820 116.987, 99.759 115.543 C 97 113.611, 97.105 113.603, 93.500 116.049 M 146.555 117.523 C 143.284 119.333, 140.073 121.548, 139.417 122.445 C 138.761 123.341, 137.837 124.009, 137.362 123.929 C 136.888 123.849, 135.463 124.116, 134.196 124.523 C 131.318 125.446, 131.365 130.590, 134.250 130.361 C 135.213 130.285, 136 130.758, 136 131.412 C 136 132.066, 137.912 133.589, 140.250 134.796 C 146.127 137.832, 151.309 140.753, 152.500 141.703 C 153.050 142.141, 154.850 143.156, 156.500 143.957 C 158.150 144.758, 160.255 146.036, 161.178 146.797 C 165.049 149.987, 166.098 147.287, 166.173 133.931 L 166.244 121.500 163.372 119.755 C 161.792 118.796, 159.938 118.008, 159.250 118.005 C 158.563 118.002, 157.100 117.100, 156 116 C 153.548 113.548, 153.815 113.505, 146.555 117.523 M 118 145.201 C 114.975 146.876, 112.275 148.529, 112 148.873 C 111.393 149.634, 105.655 152.801, 97.262 157.007 C 93.832 158.726, 90.682 160.675, 90.262 161.338 C 89.843 162, 88.218 163.106, 86.652 163.794 C 84.707 164.650, 83.993 165.541, 84.402 166.605 C 84.731 167.462, 85 168.771, 85 169.514 C 85 170.257, 86.004 171.184, 87.231 171.573 C 88.458 171.963, 90.665 173.171, 92.136 174.258 C 93.685 175.404, 95.335 175.911, 96.059 175.463 C 96.868 174.964, 97.057 175.099, 96.595 175.845 C 96.190 176.501, 96.468 177, 97.238 177 C 97.983 177, 99.472 177.693, 100.547 178.539 C 104.647 181.770, 119.622 190.159, 122.234 190.689 C 123.737 190.994, 124.723 191.639, 124.425 192.122 C 123.099 194.267, 132.738 188.842, 134.235 186.601 C 134.639 185.995, 134.976 185.851, 134.985 186.279 C 134.993 186.708, 136.912 185.914, 139.250 184.516 C 141.588 183.118, 144.287 181.702, 145.250 181.370 C 146.213 181.038, 147 179.919, 147 178.883 C 147 177.848, 147.477 177, 148.059 177 C 148.641 177, 148.804 177.508, 148.420 178.130 C 147.992 178.822, 148.260 179.064, 149.111 178.755 C 149.875 178.477, 150.369 177.689, 150.209 177.002 C 150.029 176.228, 150.525 175.987, 151.518 176.369 C 154.069 177.347, 166 170.024, 166 167.480 C 166 165.296, 158.225 159, 155.530 159 C 154.753 159, 153.865 158.590, 153.556 158.090 C 152.716 156.732, 140.159 150, 138.466 150 C 137.660 150, 137 149.588, 137 149.085 C 137 147.978, 128.495 143.113, 125.583 142.555 C 124.437 142.335, 121.025 143.526, 118 145.201" 
+  let damageType = "purple";
+  let inVehicle = false;
+  let lowhp = false;
+  let inPublicEvent = false;
+  let screenAmbyOffsetX = 0;
+  let screenAmbyOffsetY = 0;
+  let forcedAmbyColor = -1;
+  let showOrbit = false;
+  let showPlanetName = false;
+
+  let InGameMeter = new timedMeter(20, GameStateHandler);
+  let TowerMeter = new Meter(20, towerHandler);
+
+  let Ability1OrangeMeter = new timedMeter(20, grenadeHandler);
+  let Ability2OrangeMeter = new timedMeter(20, meleeHandler);
+  let Ability3OrangeMeter = new timedMeter(20, zoneHandler);
+  let Ability1PurpleMeter = new timedMeter(20, grenadeHandler);
+  let Ability2PurpleMeter = new timedMeter(20, meleeHandler);
+  let Ability3PurpleMeter = new timedMeter(20, zoneHandler);
+  let Ability1BlueMeter = new timedMeter(20, grenadeHandler);
+  let Ability2BlueMeter = new timedMeter(20, meleeHandler);
+  let Ability3BlueMeter = new timedMeter(20, zoneHandler);
+  let Ability1DarkBlueMeter = new timedMeter(15, grenadeHandler);
+  let Ability2DarkBlueMeter = new timedMeter(15, meleeHandler);
+  let Ability3DarkBlueMeter = new timedMeter(15, zoneHandler);
+  let Ability1GreenMeter = new timedMeter(15, grenadeHandler);
+  let Ability2GreenMeter = new timedMeter(15, meleeHandler);
+  let Ability3GreenMeter = new timedMeter(15, zoneHandler);
+  
+  let Ability1WhiteMeter = new Meter(6, () => "");
+  let Ability2WhiteMeter = new Meter(6, () => "");
+  let Ability3WhiteMeter = new Meter(6, () => "");
+
+  let UltimateIconMeter = new Meter(15, ultimateHandler);
+  let UltimateBarMeter = new Meter(5, ultimateHandler);
+  let UltimateWhiteMeter = new Meter(5, ultimateHandler);
+
+  let AmmoColorPurpleMeter = new Meter(10, ammoTypeHandler);
+  let AmmoColorWhiteMeter = new Meter(10, ammoTypeHandler);
+  let AmmoColorGreenMeter = new Meter(10, ammoTypeHandler);
+
+  let DownedGhostRedMeter = new Meter(20, downedHandler);
+  let DownedWhiteGMeter = new Meter(20, downedHandler);
+
+  let CrucibleDeathRedMeter = new Meter(5, crucibleDeathHandler);
+  let CrucibleDeathWhiteMeter = new Meter(5, crucibleDeathHandler);
+  let CrucibleDefeatGreyMeter = new Meter(10, crucibleDefeatHandler);
+  let CrucibleDefeatBlack1Meter = new Meter(10, crucibleDefeatHandler);
+  let CrucibleDefeatBlack2Meter = new Meter(10, crucibleDefeatHandler);
+  let CrucibleVictoryRedMeter = new Meter(10, crucibleVictoryHandler);
+  let CrucibleVictoryWhiteMeter = new Meter(10, crucibleVictoryHandler);
+  let CrucibleVictoryBlackMeter = new Meter(10, crucibleVictoryHandler);
+  let CrucibleRedAheadMeter = new Meter(10, crucibleAheadHandler);
+  let CrucibleBlueAheadMeter = new Meter(10, crucibleAheadHandler);
+  let CrucibleRedMeter = new Meter(3, ()=>"");
+  let CrucibleBlueMeter = new Meter(3, ()=>"");
+
+  let VehicleIconMeter = new Meter(10, vehicleHandler);
+  let VehicleYellowBarMeter = new Meter(30, vehicleHandler);
+
+  let whiteHpMeter = new Meter(10, hpHandler);
+  let redHpMeter = new Meter(10, hpHandler);
+
+  let JoinPublicMeter = new Meter(30, publicEventHandler);
+  let InPublicEventMeter = new Meter(20, publicEventHandler);
+
+  let MerchantYellowMeter = new Meter(20, merchantHandler);
+  let menuMeter = new Meter(30, menuHandler);
+
+  let ab1Ready = false;
+  let ab2Ready = false;
+  let ab3Ready = false;
+  let blueAhead = false;
+
+  let publicRippleCounter = 0;
+
+  function update() {
+    InGameMeter.setValue(engine.vision.inGame);
+    menuMeter.setValue(engine.vision.inGame);
+    MerchantYellowMeter.setValue(engine.vision.MerchantYellow);
+    TowerMeter.setValue(engine.vision.InTower);
+    if (gameMode == "Campaign/Vanguard"){
+      VehicleIconMeter.setValue(engine.vision.VehicleMeter);
+    VehicleYellowBarMeter.setValue(engine.vision.VehicleBarMeter);
+    }
+    if (inGame) {
+      if (Ability1BlueMeter.value >= .95 || Ability1OrangeMeter.value >= .95 || Ability1PurpleMeter.value >= .95 || Ability1DarkBlueMeter.value >= .95 || Ability1GreenMeter.value >= .95) {
+        ab1Ready = true;
+      }
+      if (Ability2BlueMeter.value >= .95 || Ability2OrangeMeter.value >= .95 || Ability2PurpleMeter.value >= .95 || Ability2DarkBlueMeter.value >= .95 || Ability2GreenMeter.value >= .95) {
+        ab2Ready = true;
+      }
+      if (Ability3BlueMeter.value >= .95 || Ability3OrangeMeter.value >= .95 || Ability3PurpleMeter.value >= .95 || Ability3DarkBlueMeter.value >= .95 || Ability3GreenMeter.value >= .95) {
+        ab3Ready = true;
+      }
+
+      if (hpOn) {
+        whiteHpMeter.setValue(engine.vision.WhiteHp);
+        redHpMeter.setValue(engine.vision.RedHp);
+      }
+
+      if (grenadeOn) {
+        Ability1OrangeMeter.setValue(engine.vision.ab1Orange);
+        Ability1PurpleMeter.setValue(engine.vision.ab1Purple);
+        Ability1BlueMeter.setValue(engine.vision.ab1Blue);
+        Ability1DarkBlueMeter.setValue(engine.vision.ab1DarkBlue)
+        Ability1GreenMeter.setValue(engine.vision.ab1Green);
+        Ability1WhiteMeter.setValue(engine.vision.ab1White);
+
+      }
+      if (meleeOn) {
+        Ability2OrangeMeter.setValue(engine.vision.ab2Orange);
+        Ability2PurpleMeter.setValue(engine.vision.ab2Purple);
+        Ability2BlueMeter.setValue(engine.vision.ab2Blue);
+        Ability2DarkBlueMeter.setValue(engine.vision.ab2DarkBlue)
+        Ability2GreenMeter.setValue(engine.vision.ab2Green);
+        Ability2WhiteMeter.setValue(engine.vision.ab2White);
+      }
+      if (classOn) {
+        Ability3OrangeMeter.setValue(engine.vision.ab3Orange);
+        Ability3PurpleMeter.setValue(engine.vision.ab3Purple);
+        Ability3BlueMeter.setValue(engine.vision.ab3Blue);
+        Ability3DarkBlueMeter.setValue(engine.vision.ab3DarkBlue)
+        Ability3GreenMeter.setValue(engine.vision.ab3Green);
+        Ability3WhiteMeter.setValue(engine.vision.ab3White);
+      }
+      if (ultimateOn) {
+        UltimateIconMeter.setValue(engine.vision.ultIcon);
+        UltimateBarMeter.setValue(engine.vision.ultFirstBar);
+        UltimateWhiteMeter.setValue(engine.vision.ultWhite);
+      }
+    }
+
+    AmmoColorPurpleMeter.setValue(engine.vision.ammoColorPurple);
+    AmmoColorWhiteMeter.setValue(engine.vision.ammoColorWhite);
+    AmmoColorGreenMeter.setValue(engine.vision.ammoColorGreen);
+
+    if (gameMode == "Campaign/Vanguard") {
+      if (deathOn) {
+        DownedGhostRedMeter.setValue(engine.vision.downedGhostRed);
+        DownedWhiteGMeter.setValue(engine.vision.downedWhiteG)
+      }
+
+      if (pulicEventsOn){
+        JoinPublicMeter.setValue(engine.vision.JoinPublic);
+        InPublicEventMeter.setValue(engine.vision.InPublic);
+      }
+
+    } else if (gameMode == "Crucible") {
+      if (deathOn) {
+        CrucibleDeathRedMeter.setValue(engine.vision.crucDeathR);
+        CrucibleDeathWhiteMeter.setValue(engine.vision.crucDeathW);
+      }
+
+      CrucibleRedAheadMeter.setValue(engine.vision.CrucibleAimCheckRed);
+      CrucibleBlueAheadMeter.setValue(engine.vision.CrucibleAimCheckBlue);
+      CrucibleBlueMeter.setValue(engine.vision.CrucibleBlueWinning);
+      CrucibleRedMeter.setValue(engine.vision.CrucibleRedWinning);
+
+      if (resultOn) {
+        CrucibleDefeatGreyMeter.setValue(engine.vision.crucDefeatG);
+        CrucibleDefeatBlack1Meter.setValue(engine.vision.crucDefeatB1);
+        CrucibleDefeatBlack2Meter.setValue(engine.vision.crucDefeatB2);
+        CrucibleVictoryRedMeter.setValue(engine.vision.crucVictoryR);
+        CrucibleVictoryWhiteMeter.setValue(engine.vision.crucVictoryW);
+        CrucibleVictoryBlackMeter.setValue(engine.vision.crucVictoryB);
+      }
+    // } else if (gameMode == "Gambit") {
+    //   if (deathOn) {
+    //     CrucibleDeathRedMeter.setValue(engine.vision.crucDeathR);
+    //     CrucibleDeathWhiteMeter.setValue(engine.vision.crucDeathW);
+    //   }
+    };
+
+    if(inPublicEvent){
+      publicRippleCounter++
+      if (publicRippleCounter % 50 == 0){
+        effects.push(new simpleRipple(160,100,`hsla(42, 100%, 55%,0.7)`,1.5,10))
+      }
+
+      for (let i = 0; i < effects.length; i++) {
+        effects[i].draw();
+        if(effects[i].size > 600){
+          effects.splice(i,1)
+        }
+      }
+    }
+
+    drawRect(0, 0, 320, 200, `hsl(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%})`);
+
+    if (keyScreenBrightness > 5) {
+      copyScreen(1);
+    }
+
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw();
+      if (effects[i].lifetime <= 0) {
+        effects.splice(i, 1);
+      }
+    };
+
+    stateHdlr.Process();
+    window.requestAnimationFrame(update);
+  };
+
+  let proBack = [0, 0, 0]
+  function onbackColorChanged(){
+    proBack = hexToHSL(backColor)
+  }
+
+  function onmenuOnChanged(){
+    menuHandler()
+  }
+
+//#region  callbacks
+
+function AfterClearCheck() {
+    downedHandler();
+  }
+
+  function ammoTypeHandler() {
+    if (inGame && ammoOn) {
+      if (AmmoColorGreenMeter.value == 1 && AmmoColorGreenMeter.diff > .8 && !ultInUse) {
+        effects.push(new ammoType("green"))
+      }
+      if (AmmoColorPurpleMeter.value == 1 && AmmoColorPurpleMeter.diff > .8 && !ultInUse) {
+        effects.push(new ammoType("purple"))
+      }
+      if (AmmoColorWhiteMeter.value == 1 && AmmoColorWhiteMeter.diff > .8 && !ultInUse) {
+        effects.push(new ammoType("white"))
+      }
+    }
+    GameStateHandler();
+  }
+  
+
+  function checkIfFalse(){
+    if (InPublicEventMeter.value > 0.6){
+      inPublicEvent = true;
+    } else {
+      inPublicEvent = false;
+      stateHdlr.Push(new publicEventCompletionEffect())
+    }
+  }
+  
+  function crucibleAheadHandler(){
+    if (CrucibleBlueAheadMeter.value == 1 && CrucibleBlueMeter.value > .8 && !blueAhead && winningOn){
+      blueAhead = true;
+      effects.push(new crucibleAheadEffect("blue"))
+    } else if (CrucibleRedAheadMeter.value == 1 && CrucibleRedMeter.value > .8 && blueAhead  && winningOn){
+      blueAhead = false;
+      effects.push(new crucibleAheadEffect("red"))
+    }
+  }
+
+  function ClearEffects() {
+    if(!inVehicle && !inPublicEvent )
+    screenAmbyOffsetX = 0;
+    screenAmbyOffsetY = 0;
+    forcedAmbyColor = -1;
+    downedPushed = false;
+    ultInUse = false;
+    lowhp = false;
+  }
+
+  function crucibleDeathHandler() {
+    if (CrucibleDeathRedMeter.value > .7
+      && CrucibleDeathWhiteMeter.value > .3
+      && CrucibleDeathRedMeter.diff > .5
+      && CrucibleDeathWhiteMeter.increased
+      && !downedPushed) {
+      effects.push(new downed())
+      downedPushed = true;
+    }
+  }
+
+  function crucibleVictoryHandler() {
+    if (CrucibleVictoryBlackMeter.value == 1 && CrucibleVictoryRedMeter.value == 1 && CrucibleVictoryWhiteMeter.value == 1) {
+      effects.push(new crucibleVictory())
+    }
+  }
+
+  function crucibleDefeatHandler() {
+    if (CrucibleDefeatBlack1Meter.value > .8 && CrucibleDefeatBlack2Meter.value > .8 && CrucibleDefeatGreyMeter.value > .8) {
+      effects.push(new crucibleDefeat())
+    }
+  }
+
+  function damageSetter(m1, m2, m3, m4,m5) {
+    let orange = m1
+    let purple = m2
+    let blue = m3
+    let darkBlue = m4;
+    let green = m5;
+
+    if (orange.diff > purple.diff && orange.diff > blue.diff && orange.diff > darkBlue.diff && orange.diff > green.diff) {
+      damageType = "orange"
+    } else if (purple.diff > orange.diff && purple.diff > blue.diff && purple.diff > darkBlue.diff && purple.diff > green.diff) {
+      damageType = "purple"
+    } else if (blue.diff > orange.diff && blue.diff > purple.diff && blue.diff > darkBlue.diff  && blue.diff > green.diff) {
+      damageType = "blue"
+    } else if (darkBlue.diff > orange.diff && darkBlue.diff > purple.diff && darkBlue.diff > blue.diff && darkBlue.diff > green.diff) {
+      damageType = "darkBlue"
+    } else if ( green.diff > orange.diff && green.diff > purple.diff && green.diff > blue.diff && green.diff > darkBlue.diff){
+      damageType = "green"
+    }else if (orange.diff == purple.diff && orange.diff == 1 ) {
+      orange.elapsed < purple.elapsed ? damageType = "orange" : damageType = "purple";
+    } else if (purple.diff == blue.diff && purple.diff == 1) {
+      purple.elapsed < blue.elapsed ? damageType = "purple" : damageType = "blue";
+    } else if (blue.diff == orange.diff && blue.diff == 1) {
+      blue.elapsed < orange.elapsed ? damageType = "blue" : damageType = "orange";
+    }
+
+    if (damageType == "orange") {
+      m2.diff = 0;
+      m3.diff = 0;
+      m4.diff = 0;
+      m5.diff = 0;
+    }
+    if (damageType == "purple") {
+      m1.diff = 0;
+      m3.diff = 0;
+      m4.diff = 0;
+      m5.diff =0
+    }
+    if (damageType == "blue") {
+      m2.diff = 0;
+      m1.diff = 0;
+      m4.diff = 0;
+      m5.diff = 0;
+    }
+    if (damageType == "darkBlue") {
+      m2.diff = 0;
+      m3.diff = 0;
+      m1.diff = 0;
+      m5.diff = 0;
+    }
+    if (damageType == "green") {
+      m2.diff = 0;
+      m3.diff = 0;
+      m1.diff = 0;
+      m4.diff = 0;
+    }
+  }
+
+  function downedHandler() {
+    if (DownedGhostRedMeter.value == 1 && DownedWhiteGMeter.value == 1 && DownedGhostRedMeter.increased && !downedPushed) {
+      effects.push(new downed())
+      downedPushed = true;
+    }
+  }
+
+  function GameStateHandler() {
+    if (InGameMeter.value >= .95 && (AmmoColorGreenMeter.value > .8 || AmmoColorPurpleMeter.value > .8 || AmmoColorWhiteMeter.value > .8) && !inGame) {
+      ClearEffects();
+      inGame = true;
+      inMenu = false;
+      inTower = false;
+      inMerchant = false;
+    } else if (inGame && InGameMeter.value <= .25) {
+      ClearEffects();
+      AfterClearCheck();
+      if (TowerMeter.value >= .95){
+        inTower = true;
+      }
+      inGame = false;
+    }
+  }
+
+  function hpHandler(){
+    if (hpOn) {
+      if (whiteHpMeter.decreased && whiteHpMeter.diff > .6 && !lowhp && redHpMeter.value > .6) {
+        lowhp = true;
+        effects.push(new lowHpEffect());
+      } else if (redHpMeter.value < .05 && lowhp == true){
+        lowhp = false;
+      }
+    }
+  }
+
+  function merchantHandler(){
+    if (MerchantYellowMeter.value >= .8 && inMenu && !inMerchant && merchantOn){
+      inMerchant = true;
+      stateHdlr.Pop();
+      inMenu = false;
+      stateHdlr.Push(new merchantEffect());
+    } else if (MerchantYellowMeter.value < .2 && inMenu&& inMerchant && merchantOn){
+      inMerchant = false;
+    }
+  }
+
+  function menuHandler(){
+    if (menuMeter.value == 0 && !inVehicle && !inMenu && menuOn){
+      inMenu = true;
+      stateHdlr.Push(new menuEffect());
+    } else if(menuMeter.value == 1) {
+      inMenu = false;
+    }
+  }
+
+  function publicEventHandler(){
+  if (JoinPublicMeter.value == 1 && InPublicEventMeter.value > .9 && !inPublicEvent){
+    inPublicEvent = true;
+    stateHdlr.Push(new publicEventEffect())
+  } else if (InPublicEventMeter.value < .2 && inPublicEvent){
+    setTimeout(() => {
+        checkIfFalse();        
+    }, 5000);
+  }
+}
+
+function towerHandler(){
+    if(TowerMeter.value == 1 && !inTower){
+      inTower = true;
+      inMenu = false;
+      inMerchant = false;
+    } else if (TowerMeter.value < 1 && inTower){
+      inTower = false;
+      if (InGameMeter.value == 0 && inMenu == false && JoinPublicMeter.value == 0 && menuOn){  
+        inMenu = true;
+        stateHdlr.Push(new menuEffect());
+      }
+    }
+  }
+
+  
+  function vehicleHandler(){
+    if (vehicleOn) {
+      if (VehicleIconMeter.value > .3 && !inVehicle && VehicleYellowBarMeter.value > .9 && !inGame && inTower){
+        inVehicle = true;
+        effects.push(new vehicleEffect())
+      } else if ((inVehicle && inGame) || (inVehicle && VehicleYellowBarMeter.value < 0.4)){
+        inVehicle = false;
+      }
+    }
+  }
+
+  //ability callbacks
+  function grenadeHandler() {
+    damageSetter(Ability1OrangeMeter, Ability1PurpleMeter, Ability1BlueMeter, Ability1DarkBlueMeter, Ability1GreenMeter)
+    if (inGame) {
+      if ((Ability1WhiteMeter.value < .06 || Ability1WhiteMeter.value == 1) && !ab1Activated && ab1Ready) {
+        ab1Activated = true;
+        if (Ability1OrangeMeter.decreased && Ability1OrangeMeter.diff > 0.9 && damageType == "orange") {
+          effects.push(new grenade(damageType));
+          ab1Ready = false;
+        }
+        if (Ability1BlueMeter.decreased && Ability1BlueMeter.diff > 0.9 && damageType == "blue") {
+          effects.push(new grenade(damageType));
+          ab1Ready = false;
+        }
+        if (Ability1PurpleMeter.decreased && Ability1PurpleMeter.diff > 0.9 && damageType == "purple") {
+          effects.push(new grenade(damageType));
+          ab1Ready = false;
+        }
+
+        if (Ability1DarkBlueMeter.decreased && Ability1DarkBlueMeter.diff > 0.9 && damageType == "darkBlue") {
+          effects.push(new grenade(damageType));
+          ab1Ready = false;
+        }
+        if (Ability1GreenMeter.decreased && Ability1GreenMeter.diff > 0.9 && damageType == "green") {
+          effects.push(new grenade(damageType));
+          ab1Ready = false;
+        }
+        setTimeout(() => { ab1Activated = false }, 1000)
+      }
+    }
+  }
+
+  function meleeHandler() {
+    damageSetter(Ability2OrangeMeter, Ability2PurpleMeter, Ability2BlueMeter, Ability2DarkBlueMeter,Ability2GreenMeter)
+    if (inGame) {
+      if ((Ability2WhiteMeter.value < .06 || Ability2WhiteMeter.value == 1) && !ab2Activated && ab2Ready) {
+        if (Ability2OrangeMeter.decreased && Ability2OrangeMeter.diff > 0.9 && damageType == "orange") {
+          effects.push(new punch(damageType));
+          ab2Ready = false;
+        }
+        if (Ability2BlueMeter.decreased && Ability2BlueMeter.diff > 0.9 && damageType == "blue") {
+          effects.push(new punch(damageType));
+          ab2Ready = false;
+        }
+        if (Ability2PurpleMeter.decreased && Ability2PurpleMeter.diff > 0.9 && damageType == "purple") {
+          effects.push(new punch(damageType));
+          ab2Ready = false;
+        }
+        if (Ability2DarkBlueMeter.decreased && Ability2DarkBlueMeter.diff > 0.9 && damageType == "darkBlue") {
+          effects.push(new punch(damageType));
+          ab1Ready = false;
+        } 
+        if(Ability2GreenMeter.decreased && Ability2GreenMeter.diff > 0.9 && damageType == "green"){
+          effects.push(new punch(damageType));
+          ab2Ready = false;
+        }
+      }
+    }
+  }
+
+  function zoneHandler() {
+    damageSetter(Ability3OrangeMeter, Ability3PurpleMeter, Ability3BlueMeter, Ability3DarkBlueMeter,Ability3GreenMeter)
+    if (inGame) {
+      if ((Ability3WhiteMeter.value < .06 || Ability3WhiteMeter.value == 1) && !ab3Activated && ab3Ready) {
+        ab3Activated = true;
+        if (Ability3OrangeMeter.decreased && Ability3OrangeMeter.diff > 0.9 && damageType == "orange") {
+          effects.push(new classParticleHandler(flameParticle))
+          ab3Ready = false;
+        }
+        if (Ability3BlueMeter.decreased && Ability3BlueMeter.diff > 0.9 && damageType == "blue") {
+          effects.push(new classParticleHandler(arcParticle))
+          ab3Ready = false;
+        }
+        if (Ability3PurpleMeter.decreased && Ability3PurpleMeter.diff > 0.9 && damageType == "purple") {
+          effects.push(new classParticleHandler(voidParticle))
+          ab3Ready = false;
+        }
+        if (Ability3DarkBlueMeter.decreased && Ability3DarkBlueMeter.diff > 0.9 && damageType == "darkBlue") {
+          effects.push(new classParticleHandler(arcParticle))
+          ab3Ready = false;
+        }
+        if (Ability3GreenMeter.decreased && Ability3GreenMeter.diff > 0.9 && damageType == "green") {
+          effects.push(new classParticleHandler(greenParticle))
+          ab3Ready = false;
+        }
+        setTimeout(() => { ab3Activated = false }, 1000)
+      }
+    }
+  }
+
+  function ultimateHandler() {
+    if (inGame && UltimateIconMeter.value >= .95 && UltimateBarMeter.value >= .95 && UltimateWhiteMeter.value > .1 && !ultCharged) {
+      effects.push(new ultimateCharged())
+      ultCharged = true;
+    }
+    if (inGame && UltimateBarMeter.decreased && UltimateBarMeter.diff > .4 && UltimateWhiteMeter.value > .1 && ultCharged) {
+      effects.push(new ultimateInUse(175))
+      ultInUse = true;
+    }
+    if (inGame && UltimateIconMeter.value == 0 && UltimateBarMeter.value == 0 && ultCharged) {
+      effects.push(new ultimateDone())
+      ultCharged = false;
+    }
+  }
+  if (UltimateIconMeter.value == 0) {
+    ultCharged = false;
+  }
+  //#endregion
+
+  //#region MainEffects
+  function ammoType(color) {
+    this.start = 0;
+    this.clear = true;
+    this.elapsed = 0;
+    this.color = color;
+    this.lifetime = 10;
+    this.y = 300;
+    this.draw = function () {
+      let xlet = Math.cos(Date.now() / 100) * 20
+      drawRect(0, this.y, 320, 300, "black");
+      for (let i = 0; i < 4; i++) {
+        drawRect(60 + xlet + i * 50, this.y * 3 / 2 + 75, 30, 50, this.color);
+      }
+      if (this.y > 0) {
+        this.y -= 15;
+      } else if (this.y == 0 && this.elapsed < 450) {
+        if (!this.start) {
+          this.start = Date.now();
+        }
+        this.elapsed = Date.now() - this.start;
+      } else {
+        this.y -= 15;
+      }
+      if (this.y < -300) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function crucibleAheadEffect(color){
+    this.start = Date.now()
+    this.color = color
+    this.y = 240;
+    this.draw = function(){
+      this.elapsed = Date.now() - this.start
+      drawRect(0,200 - this.elapsed/5,canvas.width,canvas.height*2.3,"hsl(0,0%,0%,0.9)")
+      if (this.y>100 && this.elapsed <1000){
+        this.y-=5
+      } else if (this.elapsed > 2000){
+        this.y-=5
+      }
+      drawCrown(160,this.y,60,60, this.color)
+
+      if (this.elapsed >1000){
+        ctx.beginPath();
+        ctx.strokeStyle =  this.color;
+        ctx.lineWidth =20;
+        ctx.arc(160,100,(this.elapsed-1000)/5,0,Math.PI*2)
+        ctx.stroke();
+      }
+    }
+  }
+
+  function crucibleDefeat() {
+    this.lifetime = 10;
+    this.lightness1 = 100;
+    this.lightness2 = 100;
+    this.lightness3 = 100;
+    this.alpha = 1;
+
+    this.draw = function () {
+      let grd = ctx.createLinearGradient(160, 0, 160, 200);
+      grd.addColorStop(0, `hsl(0, 100%, ${this.lightness1}%)`);
+      grd.addColorStop(.5, `hsl(0, 100%, ${this.lightness2}%)`);
+      grd.addColorStop(1, `hsl(0, 100%, ${this.lightness3}%)`);
+      this.lightness1 > 50 ? this.lightness1-- : this.lightness2 > 50 ? this.lightness2-- : this.lightness3 > 50 ? this.lightness3-- : null;
+      this.lightness3 <= 50 ? this.alpha -= .01 : null;
+      ctx.globalAlpha = this.alpha
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, 320, 200);
+      renderPath(105, 15, skull, "white");
+      DrawCircle(140, 90, 15, `hsl(0, 100%, ${this.lightness2}%)`)
+      DrawCircle(180, 90, 15, `hsl(0, 100%, ${this.lightness2}%)`)
+      ctx.globalAlpha = 1;
+      this.alpha <= 0 ? this.lifetime = 0 : null;
+    }
+  }
+
+  function crucibleVictory() {
+    this.start = Date.now();
+    this.lifetime = 10;
+    this.effects = []
+    this.hues = ["black", `hsl(0, 100%, 25%)`, "red", "white"]
+    this.done = false;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (!this.done) {
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => { this.effects.push(new crucibleV(160, 150 - i * 25, 5, this.hues[i])) }, i * 200)
+        }
+        this.done = true;
+      }
+      if (elapsed < 2000) {
+        this.effects.forEach((ele, i) => {
+          ele.draw();
+          if (ele.lifetime <= 0) {
+            this.effects.splice(i, 1);
+          }
+        });
+      } else {
+        for (let i = 0; i < 40; i++) {
+          effects.push(new downedParticle("red"))
+          setTimeout(() => { effects.push(new downedParticle("white")) }, 300)
+        }
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function classParticleHandler(cb) {
+    this.start = Date.now();
+    this.effects = [];
+    this.lifetime = 20;
+    this.y = 300;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (elapsed < 1500 && this.effects.length < 60) {
+        this.effects.push(new cb())
+      } else if (this.effects.length == 0) {
+        this.lifetime = 0;
+      }
+      if (this.y > 0) {
+        this.y -= 15;
+      } else if (this.y == 0 && elapsed < 2000) {
+        null;
+      } else {
+        this.y -= 15;
+      }
+      drawRect(0, this.y, 320, 300, "black");
+      this.effects.forEach((ele, i) => {
+        ele.draw();
+        if (ele.lifetime <= 0) {
+          this.effects.splice(i, 1);
+        }
+      });
+    }
+  }
+
+
+  function downed() {
+    this.lifetime = 10;
+    this.radius = 1;
+    this.change = .001
+    this.effects = [];
+
+    this.draw = function () {
+      stateHdlr.Pop();
+      drawRect(0, 0, 320, 200, "black");
+      this.effects.forEach((ele, i) => {
+        ele.draw();
+        if (ele.lifetime <= 0) {
+          this.effects.splice(i, 1);
+        }
+      });
+      DrawCircle(160, 100, this.radius, "grey")
+      ctx.globalAlpha = 1;
+      this.radius += this.change;
+      this.change += .01
+      this.effects.push(new downedParticle("red"))
+      if (this.radius >= 200) {
+        this.lifetime = 0;
+        downedPushed = false;
+      }
+    }
+  }
+
+  function grenade(color) {
+    this.color = color == "darkBlue" ? "hsl(218, 74%, 62%)" : color;
+    this.start = Date.now();
+    this.radius = 15;
+    this.lifetime = 10;
+    this.y = 300;
+    this.done = false;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (this.y > 0) {
+        this.y -= 15;
+      } else if (this.y == 0 && elapsed < 1000) {
+        this.y = 0;
+      }
+      drawRect(0, this.y, 320, 300, "black");
+      if (elapsed < 400) {
+        DrawCircle(160, 100, this.radius, this.color);
+        this.radius += 10;
+      } else if (elapsed < 600) {
+        DrawCircle(160, 100, this.radius, "white");
+        this.radius -= 20;
+        this.radius <= 0 ? this.radius = .01 : null;
+      } else {
+        if (!this.done) {
+          setTimeout(() => { this.lifetime = 0 }, 1000)
+          for (let i = 0; i < 35; i++) {
+            effects.push(new explosionParticle(160, 100, 50, this.color))
+          }
+          setTimeout(() => {
+            for (let i = 0; i < 35; i++) {
+              effects.push(new explosionParticle(160, 100, 50, this.color))
+            }
+          }, 200)
+          this.done = true;
+        }
+        this.y -= 10;
+      }
+    }
+  }
+
+  function lowHpEffect(){
+      this.counter = 0;
+      forcedAmbyColor=0;
+      whiteHpMeter.diff = 0;
+      this.draw = function(){
+        screenAmbyOffsetX = (Math.random()-0.5)*10;
+        screenAmbyOffsetY = (Math.random()-0.5)*10;
+        if (lowhp == false){
+          this.lifetTime = -1;
+          screenAmbyOffsetX = 0;
+          screenAmbyOffsetY = 0;
+          forcedAmbyColor = -1;
+        }
+      }
+  }
+
+  function merchantEffect(){
+    this.movingArrows = [];
+    this.dir = false;
+    this.globalAlpha =0
+    this.Process = function(){
+
+      if (inMerchant && this.globalAlpha < 1){
+        this.globalAlpha += 0.01
+      } else if (!inMerchant && this.globalAlpha > 0){
+        this.globalAlpha -= 0.01
+      }
+      ctx.globalAlpha = this.globalAlpha
+      drawRect(0,0,canvas.width,canvas.height,"hsla(0, 0%, 0%,0.9)")
+
+      if (this.movingArrows.length == 0){
+        if (this.dir){
+          this.movingArrows.push(new movingArrow({x:30,y:70},{x:50,y:20},{x:0.4,y:0},0,"hsla(42, 100%, 55%,1)"))
+          this.movingArrows.push(new movingArrow({x:300,y:130},{x:50,y:20},{x:-0.4,y:0}, Math.PI,`hsla(${engine.vision.MerchantColor[0]}, 100%, 55%,1)`))
+        }  else {
+          this.movingArrows.push(new movingArrow({x:300,y:70},{x:50,y:20},{x:-0.4,y:0},Math.PI,`hsla(${engine.vision.MerchantColor[0]}, 100%, 55%,1)`))
+          this.movingArrows.push(new movingArrow({x:30,y:130},{x:50,y:20},{x:0.4,y:0}, 0,"hsla(42, 100%, 55%,1)"))
+        }
+        this.dir = !this.dir;
+      }
+
+      for (let i = 0; i < this.movingArrows.length; i++) {
+        this.movingArrows[i].draw();
+        if(this.movingArrows[i].lifetime <= 0){
+          this.movingArrows.splice(i,1);
+        }
+      }
+      ctx.globalAlpha = 1;
+      if (!inMerchant && this.globalAlpha <= 0){
+        stateHdlr.Pop();
+      }
+    }
+  }
+
+  function menuEffect(){
+    this.planets = [];
+    this.stars = [];
+    this.start = Date.now();
+    this.elapsed = 0;
+    let solarSystemSize = 80 * 0.0125;
+    let calcSpeed = 48000;
+    let planetSize =20;
+    this.alpha = 0;
+    this.planets.push(new Planet(18 * solarSystemSize, "hsla(204, 100%, 63%, 1)", 0 * solarSystemSize, 10, "Earth", 10 * solarSystemSize));
+    this.planets.push(new Planet(10 * solarSystemSize, "hsla(24, 100%, 53%, 1)", 40 * solarSystemSize, 500, "Mars", 10 * solarSystemSize));
+    this.planets.push(new Planet(8 * solarSystemSize, "hsla(200, 100%, 80%, 1)", 60 * solarSystemSize, 800, "Mars", 10 * solarSystemSize));
+    this.planets.push(new Planet(12 * solarSystemSize, "hsla(04, 100%, 50%, 1)", 90 * solarSystemSize, 1200, "Mars", 10 * solarSystemSize));
+    this.planets.push(new Planet(12 * solarSystemSize, "hsla(120, 100%, 50%, 1)", 120 * solarSystemSize, 1500, "Mars", 10 * solarSystemSize));
+
+    for (let index = 0; index < 130; index++) {
+      this.stars.push(new star(Math.random() * 320, Math.random() * 200, 0, 1));
+    }
+
+    this.Process = function (){
+      if(inMenu && this.alpha<0.9 && !inGame && !inVehicle && !inTower){
+        this.alpha += 0.005;
+      } else {
+        this.alpha -= 0.01;
+      }
+      this.elapsed = Date.now() - this.start;
+      
+      if(this.alpha > 0 && menuOn){
+        ctx.globalAlpha = this.alpha;
+        drawRect(0,0,320,200,"hsla(270, 100%, 3%,1)")
+      for (let index = 0; index < this.stars.length; index++) {
+        this.stars[index].draw();
+      }
+      for (let index = 0; index < this.planets.length; index++) {
+        this.planets[index].draw();
+      }
+      ctx.globalAlpha = 1;
+      } else {
+        inMenu = false;
+        stateHdlr.Pop();
+      }
+    }
+  }
+
+
+
+  function publicEventEffect (){
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.scale = 0.7;
+    this.moveY = -50;
+    this.sinY = 0
+    this.ripples = [];
+    this.counter = 0;
+    this.endTimer = 0;
+    this.endStart = 0;
+    this.globalAlpha =0;
+    this.Process = function (){
+      if (this.endStart == 0){
+        this.globalAlpha = setRange((this.elapsed/1000),0,1)
+      } else {
+        this.globalAlpha = setRange((1- (this.endTimer/2000)),0,1)
+      }
+    
+      this.elapsed = Date.now() - this.start;
+      drawRect(0,0,320,200,`hsla(209, 100%, 9%, ${this.globalAlpha})`)
+      if(this.moveY<0){
+        this.moveY += 1;
+      }
+
+      this.counter++
+      if (this.counter % 50 == 0){
+        this.ripples.push(new simpleRipple(160,100,`hsla(42, 100%, 55%,${this.globalAlpha})`,1.5,10))
+      }
+
+      for (let i = 0; i < this.ripples.length; i++) {
+        this.ripples[i].draw();
+        if(this.ripples[i].size > 600){
+          this.ripples.splice(i,1)
+        }
+      }
+      this.sinY = Math.sin(this.elapsed/500)*10
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(160,100)
+      ctx.scale(this.scale,this.scale)
+      ctx.translate(-160,-100)
+      ctx.translate(37 ,-10+ this.moveY + this.sinY)
+      renderPath(0,0,publicEventsvg,`hsla(42, 68%, 55%,${this.globalAlpha})`)
+       renderPath(0,0,publicEventsvg2,`hsla(42, 68%, 100%,${this.globalAlpha})`)
+       ctx.restore();
+
+      if (this.elapsed > 5000){
+        if (this.endStart == 0){
+          this.endStart = Date.now();
+        } 
+        this.endTimer = Date.now() - this.endStart;
+        if (this.endTimer > 5000){
+          this.lifetime = 0;
+          stateHdlr.Pop();
+        }
+    }
+  }}
+
+  function publicEventCompletionEffect (){
+    this.particles = [];
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.y = 120;
+    this.Process = function (){
+      this.elapsed = Date.now() - this.start;
+
+      this.yMoveVal = this.elapsed <6000?-200+setRange(this.elapsed/5,0,200): setRange((this.elapsed-6000)/5,0,200)
+      drawRect(0,this.yMoveVal,320,200,"hsla(0,0%,0%,1)")
+      drawRect(110,this.y+this.yMoveVal,100,60,"hsla(0,0%,20%,1)")
+      if (this.elapsed > 2000){
+        if (this.elapsed < 3000){
+          for (let index = 0; index < 3; index++) {
+            setTimeout(() => {
+              this.particles.push(new gravityParticle({x:160 + (Math.random()-0.5)*10,y:this.y},{x:(Math.random()-0.5)*5,y:Math.random()*-8 -3},"hsla(180, 100%, 55%,1)",0.15,300,Math.random()*10+1))
+            }, Math.random()*1000);      
+          }     
+        }
+        for (let i = 0; i < this.particles.length; i++) {
+          this.particles[i].draw();
+          if(this.particles[i].lifetime == 0){
+            this.particles.splice(i,1)
+          }
+        }
+      }
+
+      if(this.elapsed>10000){
+        stateHdlr.Pop();
+      }
+    }
+  }
+
+  function punch(color) {
+    this.color = color == "darkBlue" ? "hsl(218, 74%, 62%)" : color;
+    this.start = Date.now();
+    this.y = 200;
+    this.lifetime = 10;
+    this.drew = false;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      ctx.globalAlpha = .75;
+      drawRect(0, 0, 320, 200, "black")
+      ctx.globalAlpha = 1;
+      drawRect(120, this.y, 70, 70, "white")
+      drawRect(170, this.y + 30, 35, 30, "white")
+      drawRect(130, this.y + 30, 50, 120, "white")
+      if (this.y > 65) {
+        this.y -= 20;
+      } else {
+        if (!this.drew) {
+          this.drew = true;
+          effects.push(new expandingRing(160, 100, 15, this.color))
+          setTimeout(() => { effects.push(new expandingRing(160, 100, 10, this.color)) }, 200)
+        }
+        setTimeout(() => { this.lifetime = 0 }, 200)
+      }
+    }
+  }
+
+  function ultimateDone() {
+    this.start = Date.now();
+    this.lifetime = 10;
+    this.lightness1 = 50;
+    this.lightness2 = 50;
+    this.lightness3 = 50;
+    this.alpha = 1;
+    this.clear = true;
+
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      let grd = ctx.createRadialGradient(160, 100, 100, 160, 100, 400);
+      grd.addColorStop(0, `hsl(0, 100%, ${this.lightness1}%)`);
+      grd.addColorStop(.5, `hsl(0, 100%, ${this.lightness2}%)`);
+      grd.addColorStop(1, `hsl(0, 100%, ${this.lightness3}%)`);
+      this.lightness1 > 0 ? this.lightness1-- : this.lightness2 > 0 ? this.lightness2-- : this.lightness3 > 0 ? this.lightness3-- : null;
+      this.lightness3 <= 0 ? this.alpha -= .05 : null;
+      ctx.globalAlpha = this.alpha
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, 320, 200);
+      ctx.globalAlpha = 1;
+      this.alpha <= 0 ? this.lifetime = 0 : null;
+      if (this.lifetime == 0) {
+        ultCharged = false;
+        ultInUse = false;
+      }
+    }
+  }
+
+  function ultimateInUse(speed) {
+    this.start = Date.now();
+    this.lifetime = 10;
+    this.speed = speed;
+    this.hue = 60;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (elapsed > this.speed) {
+        effects.push(new ultRect(45, 12, `hsl(${this.hue}, 100%, 50%)`));
+        this.hue > 0 ? this.hue-- : null;
+        this.start = Date.now()
+      }
+      if (UltimateIconMeter.value == 0) {
+        this.lifetime = 0;
+        ultInUse = false;
+      }
+    }
+  }
+
+  function ultimateCharged() {
+    this.start = Date.now();
+    this.radius = 5;
+    this.count = 0;
+    this.clear = true;
+    this.x = 0;
+    this.width = 160;
+    this.lifetime = 10;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (elapsed < 200) {
+        DrawCircle(160, 100, this.radius, "yellow");
+      } else if (this.radius < 75) {
+        DrawCircle(160, 100, this.radius, "yellow");
+        this.radius += 5;
+      } else if (this.x < 400) {
+        DrawCircle(160, 100, this.radius, "yellow")
+        drawRect(160 - this.x, 25, this.x, 150, "yellow");
+        drawRect(160, 25, this.x, 150, "yellow");
+        this.x += 15;
+      } else if (this.width > 0) {
+        drawRect(0, 25, this.width, 150, "yellow");
+        drawRect(320 - this.width, 25, this.width, 150, "yellow");
+        this.width -= 15;
+      } else {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function vehicleEffect(){
+    this.startY =95;
+    this.x = 230;
+    this.y = this.startY;
+    this.xSize = 80;
+    this.ySize = 60;
+    this.startTimer = 0;
+    this.endTimer =0;
+    this.endStart = 0;
+    this.elapsed = 0;
+    this.start = Date.now();
+    this.exhaustParticles = [];
+    this.randHue = Math.floor(Math.random()*360);
+    this.draw = function (){
+      this.elapsed = Date.now() - this.start;
+      if (this.startTimer < 200){
+        this.startTimer+=3;
+      } else {
+        this.startTimer = 200;
+      }
+
+      ctx.globalAlpha =(setRange(1- (this.endTimer/1000),0,1))
+  
+      drawRect(0,-200 + this.startTimer, 320, 200, "hsla(0,0%,0%,0.95)")
+      ctx.beginPath();
+      ctx.fillStyle = `hsl(${this.randHue}, 100%, 50%)`;
+      this.y = this.startY + Math.sin(this.elapsed/400)* 10
+      ctx.save();
+      ctx.translate(this.x,this.y)
+      ctx.rotate(Math.sin(this.elapsed/400 + (Math.PI/2))* Math.PI/20)
+      ctx.moveTo(0- this.xSize/2, 0+ this.ySize/2);
+      ctx.lineTo(0+ this.xSize/2, 0+ this.ySize/2);
+      ctx.lineTo(0- this.xSize/2, 0- this.ySize/2);
+      ctx.lineTo(0- this.xSize/2, 0+ this.ySize/2);
+      ctx.fill();
+      ctx.restore();
+
+
+      this.getXmodifier = Math.cos((Math.sin(this.elapsed/400 + (Math.PI/2))* Math.PI/10))
+      this.getYmodifier = -Math.sin((Math.sin(this.elapsed/400 + (Math.PI/2))* Math.PI/10))*2
+      this.exhaustParticles.push(new movingParticle({x:this.x-this.xSize/2,y:this.y + 10*this.getYmodifier + (Math.random()-0.5)*20},{x:-10 * this.getXmodifier,y:5*this.getYmodifier + (Math.random()-0.5)*3},Math.random() *10,`hsl(${Math.random() *50},100%,${40 + 60*Math.random()}%)`,100,true))
+
+      for (var i = 0; i < this.exhaustParticles.length; i++){
+        this.exhaustParticles[i].draw();
+        if (this.exhaustParticles[i].lifetime < 0){
+          this.exhaustParticles.splice(i,1)
+        }
+      }
+      ctx.globalAlpha = 1;
+
+      if(inVehicle == false){
+        if(this.endStart == 0){
+          this.endStart = Date.now();
+        } else {
+          this.endTimer = Date.now() - this.endStart;
+          if (this.endTimer > 1000){
+            this.lifetime = 0;
+          }
+        } 
+      }
+    }
+  }
+
+  //#endregion
+  //#region helperClasses
+  function arcParticle() {
+    this.effects = []
+    this.lifetime = 10;
+    this.x = Math.random() * 320;
+    this.y = 200;
+    this.vx = Math.random() > .5 ? 16 : -16;
+    this.vy = -16;
+    this.change = 1;
+    this.hue = Math.cos(Date.now()) * Math.random() * 30 + 215;
+    this.start = Date.now();
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (this.effects.length > 4) {
+        this.effects.shift();
+      }
+      this.effects.forEach((ele) => {
+        DrawCircle(ele[0], ele[1], 10, damageType == "darkBlue" ? "hsl(218, 74%, 62%)" : `hsl(${this.hue}, 100%, 50%)`)
+      });
+      DrawCircle(this.x, this.y, 15, damageType == "darkBlue" ? "hsl(218, 74%, 62%)" : `hsl(${this.hue}, 100%, 50%)`)
+      this.effects.push([this.x, this.y]);
+      if (elapsed > 50) {
+        this.start = Date.now();
+        this.change ? this.change = 0 : this.change = 1;
+      }
+      if (this.change) {
+        this.x += this.vx;
+      } else {
+        this.y += this.vy;
+      }
+      if (this.x > 320 || this.x < 0 || this.y > 200 || this.y < 0) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function crucibleV(x, y, speed, color) {
+    this.lifetime = 10;
+    this.x = x;
+    this.y = y - 200;
+    this.goal = y;
+    this.vy = speed;
+    this.color = color;
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.moveTo(this.x - 100, this.y - 30)
+      ctx.lineTo(this.x, this.y)
+      ctx.lineTo(this.x + 100, this.y - 30)
+      ctx.strokeStyle = this.color;
+      ctx.lineWidth = 25;
+      ctx.stroke()
+      this.y < this.goal ? this.y += this.vy : null;
+    }
+  }
+
+  function downedParticle(color) {
+    this.x = 160;
+    this.y = 100;
+    this.vx = (2 - Math.random() * 4) * 2;
+    this.vy = (2 - Math.random() * 4) * 2;
+    this.radius = 10 * Math.random() + 10;
+    this.color = color;
+    this.draw = function () {
+      DrawCircle(this.x, this.y, this.radius, this.color);
+      this.x += this.vx;
+      this.y += this.vy;
+    }
+  }
+
+  function expandingRing(x, y, speed, color) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.radius = 1;
+    this.color = color;
+    this.draw = function () {
+      DrawStroke(this.x, this.y, this.radius, this.color, 40)
+      this.radius += this.speed;
+      if (this.radius > 200) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function explosionParticle(x, y, min, color) {
+    this.x = x;
+    this.y = y;
+    this.vx = Math.random() * -min + min / 2;
+    this.vy = Math.random() * -min + min / 2;
+    this.min = min;
+    this.color = color;
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawCircle(this.x, this.y, Math.random() * 10 + 10, this.color)
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x > 320 || this.x < 0 || this.y > 200 || this.y < 0) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function flameParticle() {
+    this.lifetime = 10;
+    this.x = Math.random() * 320;
+    this.y = 200;
+    this.vx = Math.cos(Date.now() / 100) * 5;
+    this.vy = Math.random() * 10 + 3;
+    this.hue = Math.cos(Date.now()) * Math.random() * 30 + 35;
+    this.draw = function () {
+      this.vx = Math.cos(Date.now() / 75) * Math.random() * 10;
+      DrawCircle(this.x, this.y, Math.random() * 10 + 10, `hsl(${this.hue}, 100%, ${Math.cos(Date.now() / 200) * Math.random() * 10 + 60}%)`)
+      this.x += this.vx;
+      this.y -= this.vy;
+      if (this.y < 0) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function gravityParticle(pos,speed,color,gravity,lifetime,size){
+    this.pos = pos;
+    this.speed = speed;
+    this.color = color;
+    this.gravity = gravity;
+    this.lifetime = lifetime;
+    this.size = size;
+    this.trail = [];
+    this.draw = function (){
+      ctx.beginPath();
+      ctx.arc(this.pos.x,this.pos.y,this.size,0,Math.PI*2)
+      ctx.fillStyle = this.color;
+      ctx.fill();
+      this.pos.x += this.speed.x;
+      this.pos.y += this.speed.y;
+      this.speed.y += this.gravity;
+      this.lifetime--;
+      if (this.lifetime < 0){
+        this.lifetime = 0;
+      }
+      this.trail.push(new TrailParticle(this.pos.x,this.pos.y,this.size,this.color,20))
+      for (let i = 0; i < this.trail.length; i++) {
+        this.trail[i].draw();
+        if(this.trail[i].lifetime == 0){
+          this.trail.splice(i,1)
+        }
+      }
+    }
+  }
+
+  function greenParticle (){
+    this.lifetTime = 10;
+    this.dir = Math.random()>0.5
+    this.x = this.dir?0:320;
+    this.y = 80;
+    this.vx = this.dir?1+ Math.random() * 2:-1- Math.random() * 2;
+    this.vy = 1 + Math.random() * 1;
+    this.hue = Math.cos(Date.now()) * Math.random() * 30 + 120;
+    this.start = Date.now();
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 10, `hsl(${this.hue}, 100%, 50%)`)
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vy += .1;
+      if(this.y >200){
+        this.vy = -this.vy;
+        this.y = 200;
+      }
+      if (Date.now() - this.start > 2000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function movingArrow(pos,size,speed,rotation,color){
+    this.pos = pos;
+    this.size = size;
+    this.speed = speed;
+    this.rotation = rotation;
+    this.color = color;
+    this.lifetime = 400;
+    this.alpha = 0;
+    this.draw = function(){
+      if (this.lifetime > 300){
+        this.alpha += 0.01;
+      } else if (this.lifetime < 100){
+        this.alpha -= 0.01;
+      }
+      this.lifetime -= 1;
+      this.pos.x += this.speed.x;
+      this.pos.y += this.speed.y;
+      ctx.globalAlpha = this.alpha;
+      drawArrow(this.pos.x,this.pos.y,this.size.x,this.size.y,this.rotation,this.color);
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  function movingParticle(pos,speed,size,color,lifetime,trail){
+    this.pos = pos;
+    this.speed = speed;
+    this.size = size;
+    this.color = color;
+    this.lifetime = lifetime;
+    this.trail = trail;
+    this.trails = [];
+    this.draw = function(){
+      DrawCircle(this.pos.x,this.pos.y,this.size,this.color)
+      this.pos.x += this.speed.x;
+      this.pos.y += this.speed.y;
+      this.lifetime--;
+      if (this.trail){
+        this.trails.push(new TrailParticle(this.pos.x,this.pos.y,this.size,this.color,10))
+      }
+      for (var i = 0; i < this.trails.length; i++){
+        this.trails[i].draw();
+        if (this.trails[i].lifetime < 0){
+          this.trails.splice(i,1)
+        }
+      }
+    }
+  }
+
+  function Planet(size, color, orbitSize, orbitSpeed, name = "nothing", planetBloom = 0, orbitColor = color, orbitPlanet = null) {
+    this.size = size;
+    this.color = color;
+    this.orbitSize = orbitSize;
+    this.orbitSpeed = 100;
+    this.orbitColor = orbitColor;
+    this.planetBloom = planetBloom;
+    this.orbitPlanet = orbitPlanet;
+    this.name = name;
+    this.followPlanet = orbitPlanet;
+    this.x = 160;
+    this.y = 100;
+    this.start = Date.now();
+    this.elapsed = Date.now();
+    this.draw = function () {
+      if (this.planetBloom != 0) {
+
+        ctx.beginPath();
+        let grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.planetBloom + this.size);
+        grad.addColorStop(0, this.color);
+        grad.addColorStop(1, "hsla(0,0%,10%,0)");
+        ctx.fillStyle = grad;
+        ctx.arc(this.x, this.y, this.size + this.planetBloom, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      this.elapsed = Date.now() - this.start;
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      ctx.fill();
+      if (showOrbit && !this.orbitPlanet) {
+        ctx.beginPath();
+        ctx.fillStyle = this.orbitColor;
+        ctx.arc(160, 100, this.orbitSize, 0, 2 * Math.PI);
+        ctx.strokeStyle = this.orbitColor;
+        ctx.stroke();
+      } else if (showOrbit) {
+        ctx.beginPath();
+        ctx.fillStyle = this.orbitColor;
+        ctx.arc(this.orbitPlanet.x, this.orbitPlanet.y, this.orbitSize, 0, 2 * Math.PI);
+        ctx.strokeStyle = this.orbitColor;
+        ctx.stroke();
+      }
+
+      if (this.orbitSize > 0 && this.orbitPlanet == null) {
+        this.x = 160 + ((Math.sin(this.elapsed / orbitSpeed)) * (orbitSize));
+        this.y = 100 + ((Math.cos(this.elapsed / orbitSpeed)) * (orbitSize));
+      } else if (this.orbitPlanet != null) {
+        this.x = this.followPlanet.x + ((Math.sin(this.elapsed / orbitSpeed)) * (orbitSize));
+        this.y = this.followPlanet.y + ((Math.cos(this.elapsed / orbitSpeed)) * (orbitSize));
+      }
+
+      if (showPlanetName) {
+        ctx.beginPath();
+        ctx.font = "10px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(this.name, this.x, this.y - (this.size / 2));
+      }
+    }
+  }
+
+  function simpleRipple(x,y,color,speed,width){
+    this.x = x;
+    this.y = y;
+    this.size = 0;
+    this.color = color;
+    this.speed = speed;
+    this.draw = function (){
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.arc(this.x,this.y,this.size,0,Math.PI*2)
+      ctx.strokeStyle = this.color;
+      ctx.stroke();
+      this.size += this.speed;
+      if (this.size > 600){
+        this.lifetTime =0;
+      }
+    }
+  }
+
+  class star {
+    constructor(x, y, color, size) {
+      this.x = x;
+      this.y = y;
+      this.color = color;
+      this.offset = Math.random() * 2000;
+      this.size = size;
+    }
+
+    draw() {
+      ctx.beginPath();
+      let calcVal = Math.sin(Date.now() / 1000 + this.offset)
+      ctx.fillStyle = `hsl(${this.color},0%,${calcVal * 100}%)`;
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
+      ctx.fill();
+    }
+  }
+
+  function TrailParticle (x,y,size,color, lifetime){
+    this.totallifetime = lifetime;
+    this.lifetime = lifetime;
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.color = color;
+    this.draw = function () {
+
+      ctx.globalAlpha = this.lifetime/this.totallifetime;
+      DrawCircle(this.x, this.y, this.size * (this.lifetime/this.totallifetime), this.color)
+      ctx.globalAlpha = 1;
+      this.lifetime--;
+    }
+  }
+
+  function ultRect(height, speed, color) {
+    this.lifetime = 10;
+    this.y = 200;
+    this.height = height;
+    this.speed = speed;
+    this.color = color;
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.fillRect(0, this.y, 320, this.height);
+      this.y -= this.speed;
+      if (this.y < -30) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function voidParticle() {
+    this.lifetime = 10;
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.hue = Math.cos(Date.now()) * Math.random() * 30 + 290;
+    this.radius = 1;
+    this.start = Date.now();
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      DrawCircle(this.x, this.y, this.radius, `hsl(${this.hue}, 100%, 50%)`)
+      if (elapsed < 250) {
+        this.radius += 4;
+      } else {
+        this.radius--;
+        if (this.radius <= 0) {
+          this.lifetime = 0;
+        }
+      }
+    }
+  }
+
+//#endregion
+  //#region helperfunctions
+
+  function setRange(input,min,max){
+  return Math.min(Math.max(input,min),max);
+ }
+
+  function drawCrown(x,y,width,height,color){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+
+    ctx.beginPath();
+    ctx.moveTo(-height/2,-width/2);
+    ctx.lineTo(-height/2,width/2);
+    ctx.lineTo(0,height/2);
+    ctx.lineTo(height/2,width/2);
+    ctx.lineTo(height/2,-width/2);
+    let amount = width /6;
+    for (let index = 0; index < 7; index++) {
+      ctx.lineTo(index*-amount+width/2,index%2 == 0 ? -height/2 : -height/8);
+    
+    }
+    ctx.lineWidth = 3
+    ctx.stroke();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawArrow(x,y,width,height,rotation,color){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(rotation);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(width,0);
+    ctx.lineTo(width,height);
+    ctx.lineTo(width*2,0);
+    ctx.lineTo(width,-height);
+    ctx.lineTo(width,0);
+    
+    ctx.lineWidth = 10
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function renderPath(x, y, path, color, type="fill") {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  }
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function drawRect(x, y, height, width, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, height, width);
+  }
+
+  function copyScreen(alpha) {
+    let lightness = new Int8Array(engine.zone.lightness);
+    let sat = new Int8Array(engine.zone.saturation);
+    let hue = new Int16Array(engine.zone.hue);
+    ctx.save();
+    ctx.translate(screenAmbyOffsetX, screenAmbyOffsetY);
+    for (let iZone = 0; iZone < 560; iZone++) {
+      let iRow = Math.floor(iZone / 28);
+      let iCol = iZone % 28;
+      let iWidth = 320 / 28;
+      let iHeight = 200 / 20;
+      let iZx = iCol * iWidth;
+      let iZy = iRow * iHeight;
+      if(!inPublicEvent){
+        ctx.fillStyle =
+        "hsla(" +
+        (forcedAmbyColor!=-1? forcedAmbyColor: hue[iZone]) +
+        "," +
+        (forcedAmbyColor!=-1? 80: sat[iZone]) +
+        "%," +
+        lightness[iZone] * keyScreenBrightness / 100 +
+        "%, " +
+        `${alpha}` +
+        ")";
+      ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      } else{
+        ctx.fillStyle =
+        "hsla(" +
+        (forcedAmbyColor!=-1? forcedAmbyColor: setRange(hue[iZone],190,250)) +
+        "," +
+        (forcedAmbyColor!=-1? 80: sat[iZone] +30) +
+        "%," +
+        lightness[iZone] * keyScreenBrightness / 100 +
+        "%, " +
+        `${alpha}` +
+        ")";
+      ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      } 
+    }
+    ctx.restore();
+  }
+
+  //#endregion
+
+  function hexToHSL(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    (r /= 255), (g /= 255), (b /= 255);
+    var max = Math.max(r, g, b),
+      min = Math.min(r, g, b);
+    var h,
+      s,
+      l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    s = s * 100;
+    s = Math.round(s);
+    l = l * 100;
+    l = Math.round(l);
+    h = Math.round(360 * h);
+
+    return [h, s, l];
+  }
+
+  function StateHandler() {
+    let stack = [];
+    let state = null;
+
+    let updateState = function () {
+      if (stack.length > 0) {
+        state = stack[stack.length - 1];
+      } else {
+        state = null;
+      }
+    };
+
+    this.Push = function (newState) {
+      stack.push(newState);
+      updateState();
+    };
+
+    this.Pop = function () {
+      stack.pop();
+      updateState();
+    };
+
+    this.Process = function () {
+      if (state != null) {
+        state.Process();
+      }
+    };
+  }
+
+  function Meter(size, callback) {
+    this.size = size;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    let values = [];
+
+    this.setValue = function (updatedValue) {
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      for (let i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+      if (this.value !== values[0]) {
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    };
+  }
+
+  function timedMeter(size, callback) {
+    this.size = size;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    this.start = Date.now();
+    this.elapsed = 0;
+    let values = [];
+
+    this.setValue = function (updatedValue) {
+      values.push(updatedValue);
+      this.elapsed = Date.now() - this.start;
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      for (let i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+      if (this.value !== values[0]) {
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        this.start = Date.now();
+        callback();
+      }
+    };
+  }
+
+  inMenu = true;
+  stateHdlr.Push(new menuEffect())
+
+
+  window.requestAnimationFrame(update);
+</script>
