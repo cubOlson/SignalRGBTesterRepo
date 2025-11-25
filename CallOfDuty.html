@@ -1,6 +1,6 @@
 <head>
     <title>Call of Duty Dev</title>
-    <meta description="Experience Call of Duty in full RGB. v2.03" />
+    <meta description="Experience Call of Duty in full RGB. v2.04" />
     <meta publisher="SignalRGB" />
   
       <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
@@ -19,6 +19,10 @@
       <meta property="damageOn" label="Damage Effect" type="boolean" default="1" />
       <meta property="deathOn" label="Death Effect" type="boolean" default="1" />
       <meta property="xpOn" label="XP Effect" type="boolean" default="1" />
+      <meta property="skyDiverOn" label="Skydiver Effect" type="boolean" default="1" />
+      <meta property="zoneOn" label="Zone Effect" type="boolean" default="1" />
+      <meta property="winOn" label="Win Effect" type="boolean" default="1" />
+
 
       <!-- inGame1: Detects if player is in-game by monitoring top center UI element (left side) -->
       <meta meter="inGame1" tags="vlc,COD,Call of Duty,Modern Warfare,VLC media player" type="area" x="0.4853" y="0.0132" width="0" height="0.0188" 
@@ -356,7 +360,7 @@
 
       let winGoing = false
       function winHandler(){
-        if(!gInGame && WinBlue.value >= .95 && WinCyan.value >= .95 && !winGoing){
+        if(!gInGame && WinBlue.value >= .95 && WinCyan.value >= .95 && !winGoing && winOn){
           effects.push(new warzoneWin(190))
           winGoing = true
         }
@@ -391,7 +395,7 @@
       var skyDiver = "M40.09,55.33v-5.94s43.27-15.85,53.17-2.97,19.16,29.72,19.49,38.97c0,0,.99,12.88,17.5,9.25s37.32-9.25,46.57-6.61,22.13,12.22,22.13,12.22c0,0,3.3-14.2,6.94-15.19s4.95-20.81,11.23-24.77c0,0-.33-23.78,11.89-24.11l8.26,4.29,10.9-24.11s2.64-15.85,5.94-15.85,14.86,.99,15.19,10.57-5.94,9.25-5.94,9.25l-1.65,11.56-8.26,5.94-5.61,12.55h1.65s-32.7,54.83-32.04,83.23l18.83,17.5,41.61,7.93,16.18-51.52s9.91-4.95,14.86-.66c0,0,6.28-8.92,2.31-14.2l-1.98-15.52s51.52-1.98,57.14,0,5.61,6.28,4.29,8.26-7.6,2.97-15.85,3.96l-18.83,13.21s-3.96-.99-4.29,5.28-3.96,4.62-3.96,4.62l3.3,5.61-9.91,6.28s-14.53,56.15-21.47,63.41c0,0-67.71,4.62-84.22-1.98,0,0-9.91,5.28-17.83,.33h-10.24s4.29,11.23,2.64,12.22-39.63,24.77-45.58,23.45l-10.57,8.59-3.3-2.97s-37.32,24.77-38.31,23.78-4.29-3.63-4.29-3.63l9.25-10.24-14.2,8.92-3.63-3.96,1.65-2.97-3.63-4.62,4.62-4.62-4.29-5.28s10.24-10.24,19.82-9.91c0,0-8.26-.33-11.23-5.94,0,0,17.83-6.61,31.38,.99l5.28-7.6,22.13-13.54s-14.2,5.28-22.79-5.94l-5.94,.66s-9.25-27.74-16.18-28.4c0,0-10.9,8.59-16.51,7.93s-8.26-7.93-6.94-10.57c0,0-8.59,0-5.94-7.27l-3.63-12.22-.99-7.09-1.32-4.8s7.27-27.08,23.45-25.76c0,0-9.25-22.46-3.96-27.08,0,0-27.08-6.94-38.31-.33l-5.94,2.97-10.9,14.53-3.63-3.96,2.31-7.93-4.62-.66-17.83,11.23v-3.96H.79l2.31-4.95-2.31-2.31s7.27-20.48,39.3-17.5Z"
       parachuteGoing = false
       function parachuteHandler(){
-        if(InGameMeter1.value >= .95 && InGameMeter2.value >= .95 && ParachuteRedMeter.value >= .95 && ParachuteWhiteMeter.value >= .95 && !parachuteGoing){
+        if(InGameMeter1.value >= .95 && InGameMeter2.value >= .95 && ParachuteRedMeter.value >= .95 && ParachuteWhiteMeter.value >= .95 && !parachuteGoing && skyDiverOn){
           effects.push(new skydiving())
           parachuteGoing = true
         }
@@ -402,15 +406,15 @@
 
       let zoneState = "safe"
       function zoneHandler(){
-        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "danger" && (ZoneHueMeter.value >= 340 || ZoneHueMeter.value <= 10) && ZoneLightnessMeter.value <= 60){
+        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "danger" && (ZoneHueMeter.value >= 340 || ZoneHueMeter.value <= 10) && ZoneLightnessMeter.value <= 60 && zoneOn){
           effects.push(new warzoneZone(0, 50))
           zoneState = "danger"
         }
-        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "caution" && (ZoneHueMeter.value >= 40 && ZoneHueMeter.value <= 60) && ZoneLightnessMeter.value <= 60){
+        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "caution" && (ZoneHueMeter.value >= 40 && ZoneHueMeter.value <= 60) && ZoneLightnessMeter.value <= 60 && zoneOn){
           effects.push(new warzoneZone(60, 50))
           zoneState = "caution"
         }
-        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "safe" && ZoneLightnessMeter.value >= 80){
+        if(gInGame && ZoneBlackMeter.value >= .95 && zoneState != "safe" && ZoneLightnessMeter.value >= 80 && zoneOn){
           effects.push(new warzoneZone(0, 100))
           zoneState = "safe"
         }
