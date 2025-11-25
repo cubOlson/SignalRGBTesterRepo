@@ -1,0 +1,1133 @@
+<head>
+  <title>Hogwarts Legacy</title>
+  <meta description="Explore a magical world with RGB ambience and effects! - v1.02" />
+  <meta publisher="SignalRGB" />
+
+  <meta property="keyScreenBrightness" label="Ambience Brightness" type="number" default="50" min="0" max="100">
+  <meta property="effectBrightness" label="Effect Brightness" type="number" default="100" min="0" max="100">
+  <meta property="adjustHUD" label="Adjust HUD Elements" type="boolean" default="0" />
+  <meta property="healthOn" label="Health HUD Effect" type="boolean" default="1" />
+  <meta property="hpX" label="HP X-Position" type="number" min="0" max="100" default="0" />
+  <meta property="hpY" label="HP Y-position" type="number" min="0" max="100" default="30" />
+  <meta property="hpHeight" label="HP height" type="number" min="1" max="100" default="10" />
+  <meta property="hpWidth" label="HP width" type="number" min="1" max="100" default="100" />
+  <meta property="spell1On" label="Spell Effect 1 (Top)" tooltip="Empty Spell Slots may trigger the effect" type="boolean" default="1" />
+  <meta property="spell2On" label="Spell Effect 2 (Right)" tooltip="Empty Spell Slots may trigger the effect" type="boolean" default="1" />
+  <meta property="spell3On" label="Spell Effect 3 (Bottom)" tooltip="Empty Spell Slots may trigger the effect" type="boolean" default="1" />
+  <meta property="spell4On" label="Spell Effect 4 (Left)" tooltip="Empty Spell Slots may trigger the effect" type="boolean" default="1" />
+  <meta property="ancientOn" label="Ancient Magic Effect" type="boolean" default="1" />
+  <meta property="deathOn" label="Death Effect" type="boolean" default="1" />
+  <meta property="genericOn" label="Idle Menu Effect" type="boolean" default="1" />
+  <meta property="merchantOn" label="Merchant EFfect" type="boolean" default="1" />
+  <meta property="loadOn" label="Loading Screen Effect" type="boolean" default="1" />
+
+  <meta meter="inGamePurple" tags="hogwarts,VLC,legacy" x="0.0833" y="0.8630" width="0.0005" height="0.0005" 
+      h="200-300" s="40-100" l="40-100" hdr-h="200-300" hdr-s="20-80" hdr-l="40-100" type="area">
+      <resolution aspect="3.55:1" x="0.0417" y="0.863" width="0.0006" height="0.0005" />
+      <resolution aspect="24:10" x="0.0619" y="0.8632" width="0.0006" height="0.0014" />
+      <resolution aspect="16:11" x="0.0918" y="0.8681" width="0.0006" height=".0014" />
+
+      <resolution size="3840x2160" x="0.0833" y="0.8630" width="0.0005" height="0.0005" />
+      <resolution size="2560x1080" x="0.0619" y="0.8632" width="0.0006" height="0.0014" />
+  </meta>
+
+  <meta meter="contCheckBlack" tags="hogwarts" x="0.8734" y="0.9646" width="0.0035" height="0.0021" 
+      h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.938" y="0.9638" width="0.0005" height="0.0005" />
+      <resolution aspect="24:10" x="0.9058" y="0.9646" width="0.0017" height="0.0021" />
+      <resolution aspect="16:11" x="0.8602" y="0.9631" width="0.0017" height=".0021" />
+
+      <resolution size="3840x2160" x="0.8734" y="0.9646" width="0.0035" height="0.0021" />
+      <resolution size="2560x1080" x="0.9058" y="0.9646" width="0.0017" height="0.0021" />
+  </meta>
+
+  <meta meter="contCheckWhite" tags="hogwarts" x="0.8574" y="0.7965" width="0.0012" height="0.0028" 
+      h="0-360" s="0-25" l="90-100" hdr-h="0-300" hdr-s="0-100" hdr-l="0-10" type="area">
+      <resolution aspect="3.55:1" x="0.9289" y="0.7962" width="0.0005" height="0.0014" />
+      <resolution aspect="24:10" x="0.8939" y="0.7972" width="0.0015" height="0.0028" />
+      <resolution aspect="16:11" x="0.8422" y="0.7994" width="0.0005" height=".0014" />
+
+      <resolution size="3840x2160" x="0.8574" y="0.7965" width="0.0012" height="0.0028" />
+      <resolution size="2560x1080" x="0.8939" y="0.7972" width="0.0015" height="0.0028" />
+  </meta>
+
+  <meta meter="contSpellTop" tags="hogwarts" x="0.9172" y="0.7757" width="0.0020" height="0.0125" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9586" y="0.7768" width="0.0005" height="0.0069" />
+      <resolution aspect="24:10" x="0.9384" y="0.7757" width="0.0015" height="0.0097" />
+      <resolution aspect="16:11" x="0.9074" y="0.7837" width="0.0015" height=".0097" />
+
+      <resolution size="3840x2160" x="0.9172" y="0.7757" width="0.0020" height="0.0125" />
+      <resolution size="2560x1080" x="0.9384" y="0.7757" width="0.0015" height="0.0097" />
+  </meta>
+
+  <meta meter="topBlack" tags="hogwarts" x="0.9125" y="0.7854" width="0.0121" height="0.0049" 
+      h="0-360" s="0-40" l="0-30" hdr-h="0-360" hdr-s="0-40" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.9565" y="0.7834" width="0.0044" height="0.0032" />
+      <resolution aspect="24:10" x="0.9363" y="0.7799" width="0.0058" height="0.0111" />
+      <resolution aspect="16:11" x="0.9055" y="0.7944" width="0.0058" height=".0111" />
+
+      <resolution size="3840x2160" x="0.9125" y="0.7854" width="0.0121" height="0.0049" />
+      <resolution size="2560x1080" x="0.9363" y="0.7799" width="0.0058" height="0.0111" />
+  </meta>
+
+  <meta meter="contSpellRight" tags="hogwarts" x="0.9664" y="0.8674" width="0.0051" height="0.0049" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9760" y="0.8388" width="0.0008" height="0.0046" />
+      <resolution aspect="24:10" x="0.9765" y="0.8681" width="0.0023" height="0.0049" />
+      <resolution aspect="16:11" x="0.9586" y="0.9644" width="0.0051" height=".0049" />
+
+      <resolution size="3840x2160" x="0.9664" y="0.8674" width="0.0051" height="0.0049" />
+      <resolution size="2560x1080" x="0.9765" y="0.8681" width="0.0023" height="0.0049" />
+  </meta>
+
+  <meta meter="rightBlack" tags="hogwarts" x="0.9477" y="0.8444" width="0.0090" height="0.0049" 
+      h="0-360" s="0-40" l="0-30" hdr-h="0-360" hdr-s="0-40" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.9734" y="0.8444" width="0.0042" height="0.0023" />
+      <resolution aspect="24:10" x="0.9642" y="0.8410" width="0.0015" height="0.0125" />
+      <resolution aspect="16:11" x="0.9422" y="0.8445" width="0.0090" height=".0049" />
+
+      <resolution size="3840x2160" x="0.9477" y="0.8444" width="0.0090" height="0.0049" />
+      <resolution size="2560x1080" x="0.9642" y="0.8410" width="0.0015" height="0.0125" />
+  </meta>
+
+  <meta meter="contSpellBot" tags="hogwarts" x="0.8988" y="0.9333" width="0.0043" height="0.0049" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9664" y="0.9288" width="0.0010" height="0.0023" />
+      <resolution aspect="24:10" x="0.9241" y="0.9278" width="0.0012" height="0.0042" />
+      <resolution aspect="16:11" x="0.8883" y="0.9325" width="0.0043" height=".0049" />
+
+      <resolution size="3840x2160" x="0.8988" y="0.9333" width="0.0043" height="0.0049" />
+      <resolution size="2560x1080" x="0.9241" y="0.9278" width="0.0012" height="0.0042" />
+  </meta>
+
+  <meta meter="botBlack" tags="hogwarts" x="0.9109" y="0.9174" width="0.0156" height="0.0035" 
+      h="0-360" s="0-40" l="0-30" hdr-h="0-360" hdr-s="0-40" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.9552" y="0.9186" width="0.0078" height="0.0019" />
+      <resolution aspect="24:10" x="0.9366" y="0.9153" width="0.0055" height="0.0042" />
+      <resolution aspect="16:11" x="0.9020" y="0.9137" width="0.0055" height=".0035" />
+
+      <resolution size="3840x2160" x="0.9109" y="0.9174" width="0.0156" height="0.0035" />
+      <resolution size="2560x1080" x="0.9366" y="0.9153" width="0.0055" height="0.0042" />
+  </meta>
+
+  <meta meter="contSpellLeft" tags="hogwarts" x="0.8813" y="0.8403" width="0.0043" height="0.0035" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9417" y="0.838" width="0.0005" height="0.0046" />
+      <resolution aspect="24:10" x="0.9119" y="0.8375" width="0.0006" height="0.0104" />
+      <resolution aspect="16:11" x="0.8684" y="0.8400" width="0.0006" height=".0104" />
+
+      <resolution size="3840x2160" x="0.8813" y="0.8403" width="0.0043" height="0.0035" />
+      <resolution size="2560x1080" x="0.9119" y="0.8375" width="0.0006" height="0.0104" />
+  </meta>
+
+  <meta meter="leftBlack" tags="hogwarts" x="0.881" y="0.8389" width="0.0059" height="0.0083" 
+      h="0-360" s="0-40" l="0-30" hdr-h="0-360" hdr-s="0-40" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.9401" y="0.8436" width="0.0031" height="0.0028" />
+      <resolution aspect="24:10" x="0.9110" y="0.8410" width="0.0038" height="0.0125" />
+      <resolution aspect="16:11" x="0.8692" y="0.8500" width="0.0038" height=".0125" />
+
+      <resolution size="3840x2160" x="0.881" y="0.8389" width="0.0059" height="0.0083" />
+      <resolution size="2560x1080" x="0.9110" y="0.8410" width="0.0038" height="0.0125" />
+  </meta>
+
+  <meta meter="contHP" tags="hogwarts" x="0.7680" y="0.9639" width="0.0844" height="0.0021" 
+      h="0-135" s="75-100" l="50-100" hdr-h="75-100" hdr-s="50-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.8846" y="0.9648" width="0.0414" height="0.0005" />
+      <resolution aspect="24:10" x="0.8311" y="0.9639" width="0.0587" height="0.0035" />
+      <resolution aspect="16:11" x="0.7461" y="0.9639" width="0.0844" height=".0035" />
+
+      <resolution size="3840x2160" x="0.7680" y="0.9639" width="0.0844" height="0.0021" />
+      <resolution size="2560x1080" x="0.8311" y="0.9625" width="0.0587" height="0.0035" />
+  </meta>
+
+  <meta meter="contMagic1" tags="hogwarts" x="0.767" y="0.9361" width="0.0234" height="0.0014" 
+      h="180-225" s="50-100" l="50-100" hdr-h="180-225" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8828" y="0.9362" width="0.0115" height="0.0005" />
+      <resolution aspect="24:10" x="0.8265" y="0.9361" width="0.0157" height="0.0021" />
+      <resolution aspect="16:11" x="0.7461" y="0.9361" width="0.0157" height=".0021" />
+
+      <resolution size="3840x2160" x="0.7979" y="0.9361" width="0.0234" height="0.0014" />
+      <resolution size="2560x1080" x="0.8265" y="0.9361" width="0.0157" height="0.0021" />
+  </meta>
+
+  <meta meter="contMagic2" tags="hogwarts" x="0.795" y="0.9361" width="0.0230" height="0.0007" 
+      h="180-225" s="50-100" l="50-100" hdr-h="180-225" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8974" y="0.9362" width="0.0109" height="0.0009" />
+      <resolution aspect="24:10" x="0.8474" y="0.9361" width="0.0163" height="0.0021" />
+      <resolution aspect="16:11" x="0.7730" y="0.9361" width="0.0163" height=".0021" />
+
+      <resolution size="3840x2160" x="0.8258" y="0.9361" width="0.0230" height="0.0007" />
+      <resolution size="2560x1080" x="0.8474" y="0.936" width="0.0163" height="0.0021" />
+  </meta>
+
+  <meta meter="keyCheckBlack" tags="hogwarts" x="0.9630" y="0.9648" width="0.0017" height="0.0005" 
+      h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+      <resolution aspect="3.55:1" x="0.9805" y="0.9648" width="0.0026" height="0.0005" />
+      <resolution aspect="24:10" x="0.9712" y="0.9639" width="0.0017" height="0.0021" />
+      <resolution aspect="16:11" x="0.9586" y="0.9656" width="0.0017" height=".0021" />
+
+      <resolution size="3840x2160" x="0.9630" y="0.9648" width="0.0017" height="0.0005" />
+      <resolution size="2560x1080" x="0.9712" y="0.9630" width="0.0017" height="0.0021" />
+  </meta>
+
+  <meta meter="keyCheckWhite" tags="hogwarts" x="0.9807" y="0.7444" width="0.0047" height="0.0000" 
+      h="0-360" s="0-10" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.992" y="0.7445" width="0.001" height="0.0005" />
+      <resolution aspect="24:10" x="0.9852" y="0.7444" width="0.0032" height="0.0000" />
+      <resolution aspect="16:11" x="0.9777" y="0.7438" width="0.0032" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.9807" y="0.7444" width="0.0047" height="0.0000" />
+      <resolution size="2560x1080" x="0.9852" y="0.7425" width="0.0032" height="0.0000" />
+  </meta>
+
+  <meta meter="keySpell1" tags="hogwarts" x="0.7818" y="0.8250" width="0.0026" height="0.0056" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9000" y="0.7908" width="0.0016" height="0.0060" />
+      <resolution aspect="24:10" x="0.8378" y="0.8236" width="0.0023" height="0.0076" />
+      <resolution aspect="16:11" x="0.7590" y="0.8281" width="0.0023" height=".0056" />
+
+      <resolution size="3840x2160" x="0.7818" y="0.8250" width="0.0026" height="0.0056" />
+      <resolution size="2560x1080" x="0.8378" y="0.8236" width="0.0023" height="0.0076" />
+  </meta>
+
+  <meta meter="keySpell1Black" tags="hogwarts" x="0.8010" y="0.7889" width="0.0016" height="0.0037" 
+      h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+      <resolution aspect="3.55:1" x="0.9000" y="0.7908" width="0.0016" height="0.0060" />
+      <resolution aspect="24:10" x="0.8515" y="0.7875" width="0.0009" height="0.0042" />
+      <resolution aspect="16:11" x="0.7789" y="0.7925" width="0.0009" height=".0042" />
+
+      <resolution size="3840x2160" x="0.8010" y="0.7889" width="0.0016" height="0.0037" />
+      <resolution size="2560x1080" x="0.8515" y="0.7875" width="0.0009" height="0.0042" />
+  </meta>
+
+  <meta meter="keySpell2" tags="hogwarts" x="0.8323" y="0.8250" width="0.0016" height="0.0037" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9255" y="0.7898" width="0.0013" height="0.0056" />
+      <resolution aspect="24:10" x="0.8744" y="0.8243" width="0.0023" height="0.0056" />
+      <resolution aspect="16:11" x="0.8141" y="0.8281" width="0.0016" height=".0037" />
+
+      <resolution size="3840x2160" x="0.8323" y="0.8250" width="0.0016" height="0.0037" />
+      <resolution size="2560x1080" x="0.8744" y="0.8243" width="0.0023" height="0.0056" />
+  </meta>
+
+  <meta meter="keySpell2Black" tags="hogwarts" x="0.8516" y="0.7898" width="0.0016" height="0.0037" 
+      h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.9255" y="0.7898" width="0.0013" height="0.0056" />
+      <resolution aspect="24:10" x="0.8892" y="0.7882" width="0.0020" height="0.0049" />
+      <resolution aspect="16:11" x="0.8355" y="0.7925" width="0.0020" height=".0049" />
+
+      <resolution size="3840x2160" x="0.8516" y="0.7898" width="0.0016" height="0.0037" />
+      <resolution size="2560x1080" x="0.8892" y="0.7882" width="0.0020" height="0.0049" />
+  </meta>
+
+  <meta meter="keySpell3" tags="hogwarts" x="0.8828" y="0.8241" width="0.0021" height="0.0056" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9516" y="0.7898" width="0.0005" height="0.0060" />
+      <resolution aspect="24:10" x="0.9122" y="0.8250" width="0.0023" height="0.0042" />
+      <resolution aspect="16:11" x="0.8723" y="0.8281" width="0.0021" height=".0056" />
+
+      <resolution size="3840x2160" x="0.8828" y="0.8241" width="0.0021" height="0.0056" />
+      <resolution size="2560x1080" x="0.9122" y="0.8250" width="0.0023" height="0.0042" />
+  </meta>
+
+  <meta meter="keySpell3Black" tags="hogwarts" x="0.9026" y="0.7907" width="0.0016" height="0.0037" 
+      h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+      <resolution aspect="3.55:1" x="0.9516" y="0.7898" width="0.0005" height="0.0060" />
+      <resolution aspect="24:10" x="0.9273" y="0.7882" width="0.0012" height="0.0035" />
+      <resolution aspect="16:11" x="0.8926" y="0.7925" width="0.0012" height=".0035" />
+
+      <resolution size="3840x2160" x="0.9026" y="0.7907" width="0.0016" height="0.0037" />
+      <resolution size="2560x1080" x="0.9273" y="0.7882" width="0.0012" height="0.0035" />
+  </meta>
+
+  <meta meter="keySpell4" tags="hogwarts" x="0.9344" y="0.8259" width="0.0010" height="0.0037" 
+      h="90-135" s="50-75" l="75-100" hdr-h="90-135" hdr-s="50-75" hdr-l="75-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.9768" y="0.7898" width="0.0005" height="0.0060" />
+      <resolution aspect="24:10" x="0.9500" y="0.8243" width="0.0029" height="0.0063" />
+      <resolution aspect="16:11" x="0.9270" y="0.8281" width="0.0029" height=".0037" />
+
+      <resolution size="3840x2160" x="0.9344" y="0.8259" width="0.0010" height="0.0037" />
+      <resolution size="2560x1080" x="0.9500" y="0.8243" width="0.0029" height="0.0063" />
+  </meta>
+
+  <meta meter="keySpell4Black" tags="hogwarts" x="0.9536" y="0.7907" width="0.0021" height="0.0037" 
+      h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+      <resolution aspect="3.55:1" x="0.9768" y="0.7898" width="0.0005" height="0.0060" />
+      <resolution aspect="24:10" x="0.9651" y="0.7882" width="0.0017" height="0.0042" />
+      <resolution aspect="16:11" x="0.9496" y="0.7925" width="0.0017" height=".0042" />
+
+      <resolution size="3840x2160" x="0.9536" y="0.7907" width="0.0021" height="0.0037" />
+      <resolution size="2560x1080" x="0.9651" y="0.7882" width="0.0017" height="0.0042" />
+  </meta>
+
+  <meta meter="keyHP" tags="hogwarts" x="0.8589" y="0.9657" width="0.0818" height="0.0000" 
+      h="0-135" s="75-100" l="50-100" hdr-h="0-135" hdr-s="75-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.9281" y="0.9648" width="0.0422" height="0.0000" />
+      <resolution aspect="24:10" x="0.8977" y="0.9646" width="0.0576" height="0.0007" />
+      <resolution aspect="16:11" x="0.8410" y="0.9646" width="0.0818" height=".0007" />
+
+      <resolution size="3840x2160" x="0.8589" y="0.9657" width="0.0818" height="0.0000" />
+      <resolution size="2560x1080" x="0.8977" y="0.9646" width="0.0576" height="0.0007" />
+  </meta>
+
+  <meta meter="keyMagic1" tags="hogwarts" x="0.8547" y="0.9370" width="0.0229" height="0.0000" 
+      h="180-225" s="50-100" l="50-100" hdr-h="180-225" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.9276" y="0.9362" width="0.0107" height="0.0009" />
+      <resolution aspect="24:10" x="0.8922" y="0.9368" width="0.0154" height="0.0007" />
+      <resolution aspect="16:11" x="0.8391" y="0.9368" width="0.0229" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.8547" y="0.9370" width="0.0229" height="0.0000" />
+      <resolution size="2560x1080" x="0.8922" y="0.9368" width="0.0154" height="0.0007" />
+  </meta>
+
+  <meta meter="keyMagic2" tags="hogwarts" x="0.8828" y="0.9361" width="0.0224" height="0.0000" 
+      h="180-225" s="50-100" l="50-100" hdr-h="180-225" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.9417" y="0.9352" width="0.0109" height="0.0009" />
+      <resolution aspect="24:10" x="0.9131" y="0.9361" width="0.0160" height="0.0007" />
+      <resolution aspect="16:11" x="0.8703" y="0.9361" width="0.0224" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.8828" y="0.9361" width="0.0224" height="0.0000" />
+      <resolution size="2560x1080" x="0.9131" y="0.9361" width="0.0160" height="0.0007" />
+  </meta>
+
+  <meta meter="loadingGrey" tags="hogwarts" x="0.0005" y="0.0333" width="0.0005" height="0.1454" 
+      h="180-225" s="25-50" l="25-50" hdr-h="180-225" hdr-s="25-50" hdr-l="25-60" type="area">
+      <resolution aspect="3.55:1" x="0.0005" y="0.0333" width="0.0005" height="0.1454" />
+      <resolution aspect="24:10" x="0.0006" y="0.0021" width="0.0003" height="0.1854" />
+      <resolution aspect="16:11" x="0.0006" y="0.0231" width="0.0003" height=".1854" />
+
+      <resolution size="3840x2160" x="0.0005" y="0.0333" width="0.0005" height="0.1454" />
+      <resolution size="2560x1080" x="0.0006" y="0.0021" width="0.0003" height="0.1854" />
+  </meta>
+
+  <meta meter="merchantGold" tags="hogwarts" x="0.0635" y="0.1667" width="0.2365" height="0.0005" 
+      h="45-90" s="25-50" l="75-100" hdr-h="0-90" hdr-s="0-50" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.2820" y="0.1658" width="0.1198" height="0.0005" />
+      <resolution aspect="24:10" x="0.2186" y="0.1667" width="0.1660" height="0.0014" />
+      <resolution aspect="16:11" x="0.0664" y="0.1663" width="0.1660" height=".0014" />
+
+      <resolution size="3840x2160" x="0.0635" y="0.1667" width="0.2365" height="0.0005" />
+      <resolution size="2560x1080" x="0.2186" y="0.1690" width="0.1660" height="0.0014" />
+  </meta>
+
+  <meta meter="deathGold" tags="hogwarts" x="0.3969" y="0.7991" width="0.2068" height="0.0000" 
+      h="38-90" s="0-100" l="0-100" hdr-h="40-90" hdr-s="0-100" hdr-l="0-100" type="area">
+      <resolution aspect="3.55:1" x="0.4440" y="0.6556" width="0.1117" height="0.0000" />
+      <resolution aspect="24:10" x="0.4177" y="0.5535" width="0.1619" height="0.0000" />
+      <resolution aspect="16:11" x="0.3605" y="0.5539" width="0.1619" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.3969" y="0.7991" width="0.2068" height="0.0000" />
+      <resolution size="2560x1080" x="0.4246" y="0.5540" width="0.1000" height="0.0000" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var canvas, ctx;
+  canvas = document.getElementById('exCanvas');
+  ctx = canvas.getContext('2d');
+  var width = 320;
+  var height = 200;
+  var effects = [];
+  var hudElements = []
+
+  var ancientPath = "M33.4,360.17s3.96-24.22,14.53-29.06c0,0-3.96-7.93-19.82-10.57,0,0-15.41-20.26-12.33-45.36L.82,257.13s-7.93-34.79,55.49-84.11c0,0,17.61-22.02,13.65-33.47,0,0,22.9,4.84,24.66-10.57s-3.52-30.39-22.02-41.83C54.1,75.7,89.33,3.04,89.33,3.04c0,0-8.37,61.65-5.28,72.22s25.1,44.92,25.1,44.92c0,0,14.53,25.1,0,36.11s-71.78,51.96-75.74,61.21-20.26,29.06-12.77,48.88c0,0,37.82-48,56.12-56.81s46.05-42.28,46.05-49.32,.88-39.19-14.53-60.33c0,0,10.57-3.52,28.18,40.95s12.33,49.32-11.01,80.59-61.65,44.48-61.65,44.48l-20.26,22.02,25.98,20.26,44.48-31.27s23.34-12.77,29.5-37.87,11.45,6.17,10.57,8.37-22.11,29.94-33.91,31.71c0,0-6.61,4.4,6.61,6.61l-41.39,30.39s29.5,27.3,27.74,40.95l-35.78-31.71-10.02,8.81s24.66,26.42,21.58,35.67l-29.06-29.5-26.42,19.82Z"
+  var load1 = "M176.11,63.03c-8.37-8.37-27.3,.44-27.3,.44-16.29,14.53-24.66,7.05-24.66,7.05l13.21-44.92-18.06-15.41c10.57-9.69,0-9.69,0-9.69C82.75,1.38,35.63,19.88,35.63,19.88l17.61,15.41,29.06,7.05-9.25,6.61-39.19,.88S14.49,42.78,3.04,107.95c-11.45,65.17,19.46,92.92,19.46,92.92,0,0,16.21-.44,5.64-4.84-10.57-4.4-3.52-16.29-.88-18.06s-3.08-29.06-3.08-29.06l8.81,12.77c48.88-10.13,36.11,16.29,36.11,16.29l7.93-4.4s14.09,.88,8.54-11.45-38.93-11.45-38.93-11.45c19.38-12.77,50.64,0,50.64,0l.44-7.49h5.28c1.32-7.05-4.4-8.37-4.4-8.37-25.74,3.28-30.39-2.2-30.39-2.2l9.25-9.25c-3.96-20.26,8.1-26.42,8.1-26.42,5.46,28.18,10.83,16.73,10.83,16.73l14.09,18.94c12.77-9.25,19.38,5.72,19.38,5.72,0,0,7.93-10.13,2.64-16.73-5.28-6.61-22.02,0-22.02,0l.44-18.5,18.94-2.2,22.46-30.39c11.01-1.76,15.41,8.81,15.41,8.81l3.52-10.57,4.84,3.69s8.37-1.05,0-9.41ZM69.1,20.32c5.72-11.01,13.21-3.52,13.21-3.52-6.17,8.81-13.21,3.52-13.21,3.52Z"
+  var load2 = "M181.43,71.42c28.18,9.25,34.79-14.53,34.79-14.53-12.77,7.93-27.3-5.28-27.3-5.28,33.47-10.13,22.02-33.47,22.02-33.47-10.13,19.82-24.22,10.13-24.22,10.13,17.61-15.85,1.32-24.22,1.32-24.22,5.72,9.69-15.41,13.65-15.41,13.65-36.11,6.61-29.5,24.22-29.5,24.22,21.58,21.14-14.86,29.5-14.86,29.5,0,0-15.08-19.38-13.32-21.58s11.89,0,11.89,0c9.25-11.45-29.33-16.73-29.33-16.73-12.16,8.37-16.03,16.73-8.54,18.5,7.49,1.76,5.72,22.02,5.72,22.02,0,0-7.49-5.72-21.58-10.57-14.09-4.84,1.76-23.34,1.76-23.34,0,0,1.32-14.97-24.66-20.7S29.06,1.85,29.06,1.85c-15.85,14.09,3.08,28.18,3.08,28.18C15.41,38.84,5.28,18.14,5.28,18.14-6.17,49.85,29.5,52.49,29.5,52.49,24.66,63.94,.88,57.77,.88,57.77c10.57,23.78,36.11,12.77,36.11,12.77-6.61,14.97-29.06,18.06-29.06,18.06,8.81,19.82,36.55,4.4,36.55,4.4-9.25,22.02-29.94,14.53-29.94,14.53,29.5,29.5,50.64-5.55,50.64-5.55,.44,8.54-13.65,28.45-13.65,28.45,30.39,12.33,40.95-24.22,40.95-24.22,7.49,16.29-15.85,34.35-21.14,35.67-5.28,1.32-8.81-4.84-8.81-4.84l-6.17,2.64,3.96,9.25c7.49-4.4,15.41,7.05,15.41,7.05,6.61-3.96,3.52-8.81,3.52-8.81,7.49-5.28,18.23,.44,18.23,.44-.27,11.45-12.06,8.37-12.06,8.37,5.72,20.26,14.09,4.4,14.09,4.4-2.64,15.85,9.69,21.58,9.69,21.58,9.25-5.28,7.93-18.5,7.93-18.5,19.38,6.61,13.65-7.05,13.65-7.05-6.17,4.84-12.77-10.13-12.77-10.13l21.14-.44-2.2,5.72,9.69,4.84-1.32-4.4s19.82-2.64,17.17-11.01c-2.64-8.37-16.73,0-16.73,0-30.83-8.81-19.38-35.67-19.38-35.67,4.84,36.99,42.72,24.66,42.72,24.66-12.77-2.64-14.53-25.98-14.53-25.98,24.21,33.16,45.8,2.64,45.8,2.64-22.02,7.05-24.66-11.01-24.66-11.01,33.91,9.25,35.23-7.49,35.23-7.49-11.89,3.96-29.5-16.73-29.5-16.73Zm-72.88-26.86l-4.18-5.28h8.37l-4.18,5.28Z"
+  var load3 = "M165.78,102.67s-22.02-34.52-27.74-44.65c-5.72-10.13-.44-16.29,.88-18.5s2.2,7.49,2.2,7.49l11.45-5.28-2.64-11.89s1.32-4.4-11.01-3.96-14.97,29.5-8.37,33.47c6.61,3.96,29.5,47.12,29.5,47.12,10.13,31.71-13.65,9.25-13.65,9.25l-43.86-41.83s7.75,1.32,2.91-5.28,9.25-35.67,9.25-35.67l-8.37-18.94,8.37-7.93s-6.61-7.93-7.93-4.84-13.21,4.84-13.21,4.84l-3.08-2.2h-27.3l-3.08,7.05-13.65,1.32-.88,3.96c-.88,3.96,7.49,10.57,7.49,10.57,13.21-7.93,14.53,7.93,14.53,7.93l-13.21-.88v6.17l14.09,.88c-10.13,11.01-22.46,3.52-22.46,3.52-6.17,9.69,6.61,10.13,6.61,10.13l-8.81,6.61h-7.93l-7.49-15.41s-11.45-7.49-18.5-10.13C2.85,32.92-.23,25.43,.65,43.05c.88,17.61,21.14,12.77,21.14,12.77l4.4,18.94s-3.96-8.37-3.96,3.08,23.34,8.81,23.34,8.81l4.4,10.43s-27.3-2.95-32.15-2.95-11.45,13.65-11.45,13.65l5.72,1.32-3.52,7.93s7.05,.88,10.57,.88,13.65-10.57,18.06-11.01,22.9,14.09,28.18,14.09,14.53-18.32,14.53-18.32c8.37-1.59,22.63,6.87,22.63,6.87-8.63,0-23.95,14.97-27.04,18.06s4.84,8.37,8.37,9.25,8.37,20.26,8.37,20.26c0,0-16.29-2.2-22.9-3.96-6.61-1.76-6.17,7.05-6.17,7.05,0,0,2.64,5.28,7.05,11.01,4.4,5.72,8.81-4.84,8.81-4.84l23.51-.88v-23.34l8.63-2.2s14.53,29.06,18.05,26.42c3.52-2.64,20.7-3.52,20.7-3.52l-2.64,18.94-3.96-3.08c-14.24-4.4-11.01,14.97-11.01,14.97l23.34-6.17s12.33-27.3,7.93-27.74c-4.4-.44-14.97-11.01-14.97-11.01l-3.08-23.34c13.21,8.37,22.02,7.49,27.3,0,5.28-7.49-7.05-22.72-7.05-22.72ZM68.46,13.54l-2.2-4.84h10.13l-7.93,4.84Z"
+  var load4 = "M158.55,155.95l-5.28-.88s1.32,14.09-3.52,16.29c-4.84,2.2-11.89,3.96-19.82,3.52s-26.86-9.25-33.03-20.7-16.06-28.62-16.06-28.62c0,0,19.58-6.17,36.75,11.01,0,0-5.28-41.39-29.94-57.69C63,62.59,26,45.42,24.24,33.53c-1.76-11.89-10.57-19.82,8.37-21.14,0,0,27.3,3.96,35.67,18.06,8.37,14.09,28.18,20.7,28.18,20.7l1.76-3.96-12.77-7.93,22.02-3.52-.44,6.17,10.13-10.13-26.86-15.85S70.48,21.2,55.51,.5H26.89S11.03,9.75,10.15,23.4c-.88,13.65,2.64,29.5,2.64,29.5,0,0,30.83,25.89,55.49,37.61,24.66,11.72,31.27,27.57,31.27,27.57,0,0-15.85-6.17-25.54-4.84,0,0-11.45-17.61-20.7-20.26-9.25-2.64-35.23-4.4-35.23-4.4,0,0-20.7,19.82-17.17,36.99,0,0,37.91,10.13,57.93,3.08l29.27,36.55,7.93,13.21s17.61,8.37,46.24,0c28.62-8.37,16.29-22.46,16.29-22.46ZM88.54,21.64l9.25,8.37h-9.25v-8.37ZM23.36,116.76c-9.25-1.32-8.37-17.61-8.37-17.61,18.5-7.05,35.23,17.61,35.23,17.61,0,0-17.61,1.32-26.86,0Z"
+
+  var playerInGame = false;
+  var controllerLayout = 0;
+
+  var InGameMeter = new Meter(9, inGameCallback)
+
+  var ContBlackMeter = new Meter(10, layoutCallback)
+  var ContWhiteMeter = new Meter(10, layoutCallback)
+  var KeyBlackMeter = new Meter(10, layoutCallback)
+  var KeyWhiteMeter = new Meter(10, layoutCallback)
+
+  var Ability1HueMeter = new Meter(10, spell1Callback)
+  var Ability2HueMeter = new Meter(10, spell2Callback)
+  var Ability3HueMeter = new Meter(10, spell3Callback)
+  var Ability4HueMeter = new Meter(10, spell4Callback)
+
+  var Ability1LightMeter = new Meter(1, ()=>"")
+  var Ability2LightMeter = new Meter(1, ()=>"")
+  var Ability3LightMeter = new Meter(1, ()=>"")
+  var Ability4LightMeter = new Meter(1, ()=>"")
+
+  var Black1Meter = new Meter(4, spell1Callback)
+  var Black2Meter = new Meter(4, spell2Callback)
+  var Black3Meter = new Meter(4, spell3Callback)
+  var Black4Meter = new Meter(4, spell4Callback)
+
+  var Magic1Meter = new Meter(15, ancientMagicCallback)
+  var Magic2Meter = new Meter(15, ancientMagicCallback)
+
+  var HPMeter = new Meter(5, ()=>{})
+
+  var LoadGreyMeter = new Meter(8, inGameCallback)
+
+  var MerchantMeter = new Meter(8, inGameCallback)
+
+  var DeathMeter = new Meter(8, inGameCallback)
+
+  function update() {
+
+    DrawRect(0, 0, 320, 200, "black")
+    copyScreen(1)
+
+    InGameMeter.setValue(engine.vision.inGamePurple)
+
+    if(playerInGame){
+        ContBlackMeter.setValue(engine.vision.contCheckBlack)
+        ContWhiteMeter.setValue(engine.vision.contCheckWhite)
+        KeyBlackMeter.setValue(engine.vision.keyCheckBlack)
+        KeyWhiteMeter.setValue(engine.vision.keyCheckWhite)
+
+        if(controllerLayout == 1){
+          Ability1HueMeter.setValue(engine.vision.contSpellTop[0])
+          Ability2HueMeter.setValue(engine.vision.contSpellRight[0])
+          Ability3HueMeter.setValue(engine.vision.contSpellBot[0])
+          Ability4HueMeter.setValue(engine.vision.contSpellLeft[0])
+
+          Black1Meter.setValue(engine.vision.topBlack)
+          Black2Meter.setValue(engine.vision.rightBlack)
+          Black3Meter.setValue(engine.vision.botBlack)
+          Black4Meter.setValue(engine.vision.leftBlack)
+
+          Ability1LightMeter.setValue(engine.vision.contSpellTop[2])
+          Ability2LightMeter.setValue(engine.vision.contSpellRight[2])
+          Ability3LightMeter.setValue(engine.vision.contSpellBot[2])
+          Ability4LightMeter.setValue(engine.vision.contSpellLeft[2])
+
+          Magic1Meter.setValue(engine.vision.contMagic1)
+          Magic2Meter.setValue(engine.vision.contMagic2)
+          HPMeter.setValue(engine.vision.contHP)
+        } else if(controllerLayout == 2){
+          Ability1HueMeter.setValue(engine.vision.keySpell1[0])
+          Ability2HueMeter.setValue(engine.vision.keySpell2[0])
+          Ability3HueMeter.setValue(engine.vision.keySpell3[0])
+          Ability4HueMeter.setValue(engine.vision.keySpell4[0])
+
+          Black1Meter.setValue(engine.vision.keySpell1Black)
+          Black2Meter.setValue(engine.vision.keySpell2Black)
+          Black3Meter.setValue(engine.vision.keySpell3Black)
+          Black4Meter.setValue(engine.vision.keySpell4Black)
+
+          Ability1LightMeter.setValue(engine.vision.keySpell1[2])
+          Ability2LightMeter.setValue(engine.vision.keySpell2[2])
+          Ability3LightMeter.setValue(engine.vision.keySpell3[2])
+          Ability4LightMeter.setValue(engine.vision.keySpell4[2])
+
+          Magic1Meter.setValue(engine.vision.keyMagic1)
+          Magic2Meter.setValue(engine.vision.keyMagic2)
+          HPMeter.setValue(engine.vision.keyHP)
+        }
+    } else {
+        LoadGreyMeter.setValue(engine.vision.loadingGrey)
+        MerchantMeter.setValue(engine.vision.merchantGold)
+        DeathMeter.setValue(engine.vision.deathGold)
+    }
+    
+    ctx.globalAlpha = effectBrightness / 100
+      hudElements.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) hudElements.splice(i, 1)
+      })
+
+      effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) effects.splice(i, 1)
+      })
+      ctx.globalAlpha = 1;
+
+      if (adjustHUD) {
+          if(healthOn) DrawRect(hpX * 3.2, hpY * 2, hpWidth * 3.2, hpHeight * 2, "green")
+      }
+
+      if (hudElements.length < 1) {
+          if(healthOn) hudElements.push(new genHUD(hpX * 3.2, hpY * 2, "hp"))
+      }
+
+    window.requestAnimationFrame(update);
+  };
+
+  function genHUD(x, y, type) {
+  this.x = x;
+  this.y = y;
+  this.width = 0;
+  this.height = 0;
+  this.color = "black"
+  this.type = type;
+  this.lifetime = 10;
+  this.draw = function () {
+      this.x = hpX * 3.2
+      this.y = hpY * 2
+      this.width = hpWidth * 3.2 * HPMeter.value
+      this.height = hpHeight * 2
+      this.color = "green"
+    if (playerInGame) DrawRect(this.x, this.y, this.width, this.height, this.color)
+  }
+}
+
+  var magic1 = false;
+  var magic2 = false;
+  function ancientMagicCallback(){
+      if(Magic1Meter.value < .25 && Magic1Meter.decreased && Magic1Meter.diff > .5 && magic1 && ancientOn && HPMeter.value > 0){
+          effects.push(new ancientMagic())
+          magic1 = false
+      } else if (Magic1Meter.value == 1 && !magic1){
+          magic1 = true
+      }
+      if(Magic2Meter.value < .25 && Magic2Meter.decreased && Magic2Meter.diff > .5 && magic2 && ancientOn && HPMeter.value > 0){
+          effects.push(new ancientMagic())
+          magic2 = false
+      } else if (Magic2Meter.value == 1 && !magic2){
+          magic2 = true
+      }
+  }
+
+  var spell1 = false;
+  var spell2 = false;
+  var spell3 = false;
+  var spell4 = false;
+  function spell1Callback(){
+      if(Black1Meter.value > .3 && Black1Meter.diff > .3 && Black1Meter.increased && !spell1 && engine.vision.inGamePurple > .75 && Ability1LightMeter.value < 8){
+          spell1 = true;
+          if(spell1On) effects.push(new spellBox(Ability1HueMeter.value))
+      } else if(Black1Meter.value < .1 && Black1Meter.decreased && spell1 && engine.vision.inGamePurple > .75 && Ability1LightMeter.value > 6){
+          spell1 = false;
+      }
+  }
+
+  function spell2Callback(){
+      if(Black2Meter.value > .3 && Black2Meter.diff > .3 && Black2Meter.increased && !spell2 && engine.vision.inGamePurple > .75 && Ability2LightMeter.value < 8){
+          spell2 = true;
+          if(spell2On) effects.push(new spellBox(Ability2HueMeter.value))
+      } else if(Black2Meter.value < .1 && Black2Meter.decreased && spell2 && engine.vision.inGamePurple > .75 && Ability2LightMeter.value > 6){
+          spell2 = false;
+      }
+  }
+
+  function spell3Callback(){
+      if(Black3Meter.value > .3 && Black3Meter.diff > .2 && Black3Meter.increased && !spell3 && engine.vision.inGamePurple > .75 && Ability3LightMeter.value < 8){
+          spell3 = true;
+          if(spell3On) effects.push(new spellBox(Ability3HueMeter.value))
+      } else if(Black3Meter.value < .1 && Black3Meter.decreased && spell3 && engine.vision.inGamePurple > .75 && Ability3LightMeter.value > 6){
+          spell3 = false;
+      }
+  }
+
+  function spell4Callback(){
+      if(Black4Meter.value > .3 && Black4Meter.diff > .3 && Black4Meter.increased && !spell4 && engine.vision.inGamePurple > .75 && Ability4LightMeter.value < 8){
+          spell4 = true;
+          if(spell4On) effects.push(new spellBox(Ability4HueMeter.value))
+      } else if(Black4Meter.value < .1 && Black4Meter.decreased && spell4 && engine.vision.inGamePurple > .75 && Ability4LightMeter.value > 6 ){
+          spell4 = false;
+      }
+  }
+
+  function layoutCallback(){
+      if(ContBlackMeter.value == 1  && KeyWhiteMeter.value != 1){
+          controllerLayout = 1;
+      } 
+      else if(KeyBlackMeter.value == 1 && KeyWhiteMeter.value == 1 && ContWhiteMeter.value != 1){
+          controllerLayout = 2;
+      } else  controllerLayout = 0;
+  }
+
+  var merchantGo = false;
+  var genericGo = false;
+  var loadingGo = false;
+  var deathGo = false;
+  function inGameCallback(){
+      if(InGameMeter.value == 1){
+          playerInGame = true;
+          loadingGo = false
+          genericGo = false;
+          merchantGo = false;
+          deathGo = false;
+      } 
+      else if(InGameMeter.value == 0) {
+          playerInGame = false;
+          if(LoadGreyMeter.value == 1 && !loadingGo && loadOn) {
+              effects.push(new loadMenu())
+              loadingGo = true
+          } else if(MerchantMeter.value > .75 && !merchantGo && merchantOn) {
+              effects.push(new merchantMenu())
+              merchantGo = true
+          }  else if(DeathMeter.value == 1 && !deathGo && deathOn){
+              effects.push(death())
+              deathGo = true
+          } else if(!genericGo && genericOn){
+              effects.push(new genericMenu())
+              genericGo = true
+          }
+      }
+  }
+
+  function death(){
+  this.effects = []
+  this.alpha = 1;
+  this.lifetime = 10;
+  this.backAlpha = 0;
+  for(let i = 0; i < 3; i++){
+    this.effects.push(new deathSquiggle())
+  }
+  this.draw = function(){
+      ctx.globalAlpha = this.alpha
+    this.backAlpha < .95 ? this.backAlpha += .05 : this.backAlpha = 1;
+    DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.backAlpha})`)
+    this.effects.forEach((ele, i)=>{
+      ele.draw()
+      this.alpha = 1 - ele.width / 100
+      if(ele.lifetime <= 0) this.effects.splice(i, 1)
+    })
+    ctx.globalAlpha = 1
+    if(this.alpha <= 0){
+      this.lifetime = 0;
+      deathGo = false
+    } 
+  }
+}
+
+function deathSquiggle(){
+  this.x = 160
+  this.y = 100
+  this.hue = 60
+  this.points = []
+  this.mod = 1;
+  this.width = 1;
+  this.start = Date.now()
+  this.draw = function(){
+    let elapsed = Date.now() - this.start
+    if(elapsed > 100){
+      this.start = Date.now()
+      this.x+=((20 * this.mod) - Math.random() * (40 * this.mod))
+      this.y+=((20 * this.mod) - Math.random() * (40 * this.mod))
+      this.points.push([this.x, this.y])
+    }
+    ctx.moveTo(160, 100)
+    if(this.points.length > 0){
+      this.points.forEach((ele)=>{
+        ctx.lineTo(ele[0], ele[1])
+      })
+    }
+    ctx.strokeStyle = `hsl(${this.hue}, 100%, 50%)`
+    this.hue > 0 ? this.hue-=.5 : this.hue = 0;
+    ctx.lineWidth = this.width;
+    this.width < 120 ? this.width+=.3 : this.lifetime = 0;
+    this.mod < 3 ? this.mod+=.01 : this.mod = 3;
+    ctx.stroke()
+  }
+}
+
+function lightning(size, color, width){
+    this.points = [];
+    this.color = color
+    this.width = width
+    while(this.points.length <= size){
+      this.points.push([this.points.length * (350 / size) - 25, 100])
+    }
+    this.draw = function(){
+      drawLightning(this.points, this.color, this.width)
+      this.points.forEach((ele, i)=>{
+        var mod = Math.sin(Date.now() / (100000 * Math.random()))
+        switch(i){
+          case 0:
+            this.points[i][1] < 90 ? this.points[i][1]+=2 : 
+              this.points[i][1] > 110 ? this.points[i][1]-=2 : 
+                this.points[i][1] += mod * 10;
+            break;
+          case this.points.length - 1:
+            this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                    this.points[i][1] += mod * 10;
+            break;
+          default:
+            this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+              this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                  this.points[i][1] += mod * 10;
+            this.points[i][0] < i * (320 / this.points.length) ? this.points[i][0]+=5 : 
+              this.points[i][0] > i * (320 / this.points.length) + (320 / this.points.length) ? this.points[i][0]-=5 : 
+                  this.points[i][0] += mod * 10;
+            break;
+        }
+      })
+    }
+  }
+
+  function drawLightning(array, color, width){
+      ctx.beginPath()
+      ctx.moveTo(...array[0])
+      array.forEach((ele, i)=>{
+        if(i){
+          ctx.lineTo(...array[i])
+        }
+      });
+      ctx.strokeStyle = color;
+      ctx.lineJoin = "round";
+      ctx.lineWidth = width + Math.random() * width;
+      ctx.stroke()
+  }
+
+function ancientMagic(){
+  this.lit = new lightning(10, "cyan", 25)
+  this.lit2 = new lightning(10, "cyan", 25)
+  this.lit3 = new lightning(10, "cyan", 25)
+  this.alpha = 1;
+  this.radius = 1;
+  this.backAlpha = 0;
+  this.count = 0;
+  this.draw = function(){
+    ctx.globalAlpha = this.alpha
+    this.backAlpha < .97 ? this.backAlpha += .03 : this.backAlpha = 1;
+    DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.backAlpha})`)
+    DrawStroke(160, 100, this.radius, "grey", this.radius / 2)
+    this.radius+=4
+    this.lit.draw()
+    ctx.save()
+    ctx.translate(160, 100)
+    ctx.rotate(Math.PI / 4)
+    ctx.translate(-160, -100)
+    this.lit2.draw()
+    ctx.translate(160, 100)
+    ctx.rotate(3 * Math.PI / 2)
+    ctx.translate(-160, -100)
+    this.lit3.draw()
+    ctx.restore()
+    this.lit.color = `hsla(${this.count}, 100%, 50%, ${this.backAlpha})`
+    this.lit2.color = `hsla(${this.count + 30}, 100%, 50%, ${this.backAlpha})`
+    this.lit3.color = `hsla(${this.count + 60}, 100%, 50%, ${this.backAlpha})`
+    this.count < 360 ? this.count+=2.5 : this.lifetime = 0;
+    this.alpha = 1 - this.count / 360
+    ctx.globalAlpha = 1
+  }
+}
+
+  function merchantMenu(){
+  this.lifetime = 10;
+  this.backAlpha = 1
+  this.alpha = 0;
+  this.start = Date.now()
+  this.effects = []
+  this.draw = function(){
+    ctx.globalAlpha = this.backAlpha
+    DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+    this.alpha < .65 ? this.alpha+=.05 : this.alpha = .65;
+    let elapsed = Date.now() - this.start
+    if(elapsed > 400){
+      this.start = Date.now()
+      this.effects.push(new merchantCoin())
+    }
+    this.effects.forEach((ele, i)=>{
+      ele.draw()
+      if(ele.lifetime <= 0) this.effects.splice(i, 1)
+    })
+    ctx.globalAlpha = 1
+    if(playerInGame || LoadGreyMeter.value == 1 || InGameMeter.value == 1 || MerchantMeter.value == 0) this.backAlpha > .05 ? this.backAlpha -= .05 : this.lifetime = 0;
+    if(!this.lifetime) merchantGo = false
+  }
+}
+
+function merchantCoin(){
+  this.x = Math.random() * 320
+  this.y = -30;
+  this.rotate = Math.random() * 5;
+  this.mod = Math.random()
+  this.mod2 = Math.random() * 1000
+  this.draw = function(){
+    if(this.mod > .5){
+      ctx.beginPath()
+      ctx.ellipse(this.x, this.y, 30, Math.sin((Date.now() - this.mod2) / 250) * 14 + 16, 0, 0, Math.PI * 2)
+      ctx.fillStyle = "gold"
+      ctx.fill()
+    } else {
+      ctx.save()
+      ctx.translate(this.x, this.y)
+      ctx.rotate(this.rotate)
+      ctx.translate(-this.x, -this.y)
+      DrawRect(this.x - 30, this.y - 5, 60, 10, "gold")
+      ctx.restore()
+    }
+    this.rotate+=.05
+    this.y < 250 ? this.y++ : this.lifetime = 0;
+  }
+}
+
+  function loadMenu(){
+  this.lifetime = 10;
+  this.paths = [[125, 50, load1, 60], [110, 60, load2, 220], [120, 60, load3, 0], [130, 55, load4, 120]]
+  this.index = 0;
+  this.alpha = 1;
+  this.backAlpha = 1;
+  this.go = false;
+  this.scale = 1;
+  this.draw = function(){
+      ctx.globalAlpha = this.backAlpha
+    DrawRect(0, 0, 320, 200, `hsla(190, 50%, 50%, ${this.alpha})`)
+    this.scale = Math.sin(Date.now() / 1000) * .5 + 1
+    this.alpha = this.scale / 3
+    if(this.scale < .6 && !this.go){
+      this.index < 3 ? this.index++ : this.index = 0;
+      this.go = true;
+      for(let i = 0; i < 10; i++){
+        effects.push(new splashHelp(160, 100, 190, 10, true, 20, true))
+      }
+    } else if (this.scale > .6) this.go = false;
+    ctx.save()
+    ctx.translate(160, 100)
+    ctx.scale(this.scale, this.scale)
+    ctx.translate(-160, -100)
+    DrawPath(this.paths[this.index][0], this.paths[this.index][1], .5, this.paths[this.index][2], `hsl(${this.paths[this.index][3]}, 100%, ${100 - this.scale / 1.5 * 50}%)`)
+    ctx.restore()
+    ctx.globalAlpha = 1
+    if(playerInGame || InGameMeter.value == 1 || LoadGreyMeter.value < 1 || MerchantMeter.value > .75) this.backAlpha > .05 ? this.backAlpha-=.05 : this.lifetime = 0;
+    if(!this.lifetime) loadingGo = false
+  }
+}
+
+  function genericMenu(){
+  this.effects = []
+  this.alpha = 0;
+  this.start = Date.now()
+  this.lifetime = 10;
+  this.draw = function(){
+      if(playerInGame || LoadGreyMeter.value == 1 || MerchantMeter.value > .75 || DeathMeter.value == 1) this.alpha > .05 ? this.alpha-=.05 : this.lifetime = 0;
+      else this.alpha < .999 ? this.alpha += .001 : this.alpha = 1;
+    
+    ctx.globalAlpha = this.alpha
+    this.scale = Math.sin(Date.now() / 700) * .1 + .9
+    let elapsed = Date.now() - this.start
+    if(elapsed > 1000){
+      this.start = Date.now()
+      this.effects.push(new menuRing())
+      for(let i = 0; i < 10; i++){
+        this.effects.push(new menuParticle())
+      }
+    }
+
+    this.effects.forEach((ele, i)=>{
+      ele.draw()
+      if(ele.lifetime <= 0) this.effects.splice(i, 1)
+    })
+
+    ctx.save()
+    ctx.translate(160, 100)
+    ctx.scale(this.scale, this.scale)
+    ctx.translate(-160, -100)
+    DrawPath(120, 5, .5, ancientPath, `hsl(50, 100%, ${this.scale / 1.1 * 90}%)`)
+    ctx.restore()
+    ctx.globalALpha = 1;
+    if(!this.lifetime) genericGo = false
+  }
+}
+
+function menuRing(){
+  this.radius = 1;
+  this.lifetime = 10;
+  this.alpha = 0;
+  this.draw = function(){
+    DrawCircle(160, 100, this.radius, `hsla(${220}, 70%, 20%, .3)`)
+    this.radius < 300 ? this.radius++ : this.lifetime = 0;
+  }
+}
+
+function menuParticle(){
+  this.x = Math.random() * 320
+  this.y = 210
+  this.vy = Math.random() + 1
+  this.vx = 1 - Math.random() * 2
+  this.radius = Math.random() * 10
+  this.lifetime = 10;
+  this.draw = function(){
+    DrawCircle(this.x, this.y, this.radius, "hsla(40, 80%, 50%, .3)")
+    this.x+=this.vx
+    this.y-=this.vy
+    if(this.x < 0 || this.x > 320 || this.y < 0) this.lifetime = 0;
+  }
+}
+
+  function spellBox(hue){
+      this.lifetime = 150;
+      this.hue = hue
+      this.anim = Math.floor(Math.random() * 2.999)
+      this.effects = []
+      this.go = false;
+      this.backAlpha = 0;
+      this.draw = () => {
+        ctx.globalAlpha = this.lifetime / 150
+        this.backAlpha <= .95 ? this.backAlpha += .05 : this.backAlpha = 1;
+        DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.backAlpha})`)
+        if(!this.go){
+          this.go = true
+          if(this.anim == 0){
+            for(let i = 0; i < 10; i++){
+              this.effects.push(new ringHelp(this.hue, 200 - 20 * i + 1, 20, i))
+            }
+          } else if(this.anim == 1){
+              for(let i = 0; i < 20; i++){
+                  this.effects.push(new splashHelp(160, 100, this.hue, 20, true, 50))
+              }
+          } else if(this.anim == 2){
+              this.effects.push(new spiralHelp(this.hue))
+          }
+        }
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        this.lifetime--
+        if(controllerLayout == 0) this.lifetime = 0
+      }
+  }
+
+function ringHelp(hue, radius, stroke, offset){
+  this.hue = hue;
+  this.radius = radius;
+  this.stroke = stroke
+  this.offset = offset
+  this.draw = () => {
+    this.alpha = Math.sin(Date.now() / 250 - 100 * this.offset) * .25 + .5
+    DrawStroke(160, 100, this.radius, `hsla(${this.hue}, 100%, 50%, ${this.alpha})`, this.stroke)
+  }
+}
+
+function splashHelp(x, y, hue, radius, scatter, lifetime, lit){
+  this.x = x;
+  this.y = y;
+  this.vx = 2.5 - Math.random() * 5
+  this.vy = 2.5 - Math.random() * 5
+  this.radius = radius;
+  this.hue = hue;
+  this.lit = lit
+  this.scatter = scatter;
+  this.alpha = 1;
+  this.lifetime = lifetime;
+  this.draw = function(){
+    DrawCircle(this.x, this.y, this.radius, `hsla(${this.hue}, ${this.lit? 50 : 100}%, ${this.lit? 90 : 50}%, ${this.alpha})`)
+    this.x+=this.vx;
+    this.y+=this.vy;
+    this.lifetime--;
+    if(this.scatter){
+      if(this.lifetime <= 0){
+        for(let i = 0; i < 10; i++){
+          effects.push(new splashHelp(this.x, this.y, this.hue, this.radius / 2, false, 90, this.lit))
+        }
+      }
+    }
+  }
+}
+
+function spiralHelp(hue){
+  this.x = 160;
+  this.y = 100;
+  this.hue = hue;
+  this.radius = 1;
+  this.lifetime = 10;
+  this.rotate = 0;
+  this.draw = function(){
+    let tempX = Math.cos(this.rotate) * this.radius + 160
+    let tempY = Math.sin(this.rotate) * this.radius + 100
+    let tempX2 = Math.cos(this.rotate) * -this.radius + 160
+    let tempY2 = Math.sin(this.rotate) * -this.radius + 100
+    effects.push(new spiralBall(tempX, tempY, this.hue))
+    effects.push(new spiralBall(tempX2, tempY2, this.hue))
+    this.radius < 200 ? this.radius += 3 : this.lifetime = 0;
+    this.rotate+=.2
+  }
+}
+
+function spiralBall(x, y, hue){
+  this.x = x;
+  this.y = y;
+  this.radius = 10
+  this.hue = hue;
+  this.lifetime = 75;
+  this.draw = function(){
+    DrawCircle(this.x, this.y, this.radius, `hsla(${this.hue}, 100%, 50%, ${this.lifetime / 75})`)
+    this.lifetime--;
+    this.radius+=.5
+  }
+}
+
+  function DrawPath(x, y, scale, path, color) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale, scale)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function StrokePath(x, y, scale, stroke, path, color) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale, scale)
+    let ex = new Path2D(path);
+    ctx.stroke(ex);
+    ctx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(cord1X, cord1Y);
+    ctx.lineTo(cord2X, cord2Y);
+    ctx.lineTo(cord3X, cord3Y);
+    ctx.lineTo(cord1X, cord1Y);
+    ctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function DrawHex(x, y, color, size) {
+    ctx.beginPath();
+    for (var i = 0; i < 7; i++) {
+      ctx.lineTo(x + size * Math.cos(2 * Math.PI / 6 * i), y + size * 0.9 * Math.sin(2 * Math.PI / 6 * i));
+    }
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = "black"
+    ctx.stroke()
+  };
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  function hexToHSL(H) {
+  // Convert hex to RGB first
+  let r = 0, g = 0, b = 0;
+  if (H.length == 4) {
+    r = "0x" + H[1] + H[1];
+    g = "0x" + H[2] + H[2];
+    b = "0x" + H[3] + H[3];
+  } else if (H.length == 7) {
+    r = "0x" + H[1] + H[2];
+    g = "0x" + H[3] + H[4];
+    b = "0x" + H[5] + H[6];
+  }
+  // Then to HSL
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  let cmin = Math.min(r,g,b),
+      cmax = Math.max(r,g,b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0;
+
+  if (delta == 0)
+    h = 0;
+  else if (cmax == r)
+    h = ((g - b) / delta) % 6;
+  else if (cmax == g)
+    h = (b - r) / delta + 2;
+  else
+    h = (r - g) / delta + 4;
+
+  h = Math.round(h * 60);
+
+  if (h < 0)
+    h += 360;
+
+  l = (cmax + cmin) / 2;
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+
+  return [h, s, l];
+}
+
+  function copyScreen(alpha) {
+    var shine = engine.vision.ShineMeter
+    let lightness = new Int8Array(engine.zone.lightness);
+    let sat = new Int8Array(engine.zone.saturation);
+    let hue = new Int16Array(engine.zone.hue);
+    for (var iZone = 0; iZone < 560; iZone++) {
+      var iRow = Math.floor(iZone / 28);
+      var iCol = iZone % 28;
+      var iWidth = 320 / 28;
+      var iHeight = 200 / 20;
+      var iZx = iCol * iWidth;
+      var iZy = iRow * iHeight;
+      ctx.fillStyle =
+        "hsla(" +
+        hue[iZone] +
+        "," +
+        sat[iZone] +
+        "%," +
+        lightness[iZone] * keyScreenBrightness / 100 +
+        "%, " +
+        `${alpha}` +
+        ")";
+
+      ctx.fillRect(iZx, iZy, iWidth, iHeight);
+    }
+
+  }
+
+  function Meter(size, callback) {
+    this.size = size;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+      if (this.value !== values[0]) {
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    }
+  }
+
+  window.requestAnimationFrame(update);
+</script>
