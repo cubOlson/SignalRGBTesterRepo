@@ -1,6 +1,6 @@
 <head>
   <title>Cyberpunk 2077 Dev</title>
-  <meta description="Do it for Jackie (in full RGB). v1.3" />
+  <meta description="Do it for Jackie (in full RGB). v1.31" />
   <meta publisher="SignalRGB" />
 
   <meta property="screenBrightness" label="Ambience Brightness" type="number" default="100" min="0" max="100">
@@ -227,33 +227,33 @@
     <resolution size="2560x1080" x="0.3888" y="0.7067" width="0.0157" height="0.0049" />
   </meta>
 
-  <meta meter="scanRed1" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.3568" y="0.4983" width="0.0004" height="0"
+  <meta meter="scanRed1" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.5034" y="0.5246" width="0" height="0"
     h="-30-30" s="40-80" l="75-100" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
     <resolution aspect="3.55:1" x="0.4284" y="0.4991" width="0.0003" height="0.0000" />
     <resolution aspect="24:10" x="0.3933" y="0.4965" width="0.0003" height="0" />
     <resolution aspect="16:11" x="0.3564" y="0.4978" width="0.0008" height="0.0006" />
 
-    <resolution size="3840x2160" x="0.5486" y="0.6068" width="-0.0003" height="0" />
+    <resolution size="3840x2160" x="0.4639" y="0.6887" width="0.0011" height="0" />
     <resolution size="2560x1080" x="0.3923" y="0.4977" width="0.0008" height="0" />
   </meta>
 
-  <meta meter="scanRed2" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.4994" y="0.5448" width="0.0008" height="0"
+  <meta meter="scanRed2" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.4638" y="0.6905" width="0.0015" height="-0.0019"
     h="-30-30" s="40-80" l="75-100" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
     <resolution aspect="3.55:1" x="0.4831" y="0.6889" width="0.0008" height="0" />
     <resolution aspect="24:10" x="0.4744" y="0.6868" width="0.0012" height="0.000" />
     <resolution aspect="16:11" x="0.465" y="0.6704" width="0.0024" height="0" />
 
-    <resolution size="3840x2160" x="0.5962" y="0.6058" width="0" height="0"/>
+    <resolution size="3840x2160" x="0.4639" y="0.6887" width="0.0011" height="0"/>
     <resolution size="2560x1080" x="0.4744" y="0.6905" width="0.0012" height="0" />
   </meta>
 
-  <meta meter="scanNotRed" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.5462" y="0.5956" width="0.0047" height="0.0079" 
+  <meta meter="scanNotRed" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.4643" y="0.6821" width="0.0031" height="-0.0009" 
     h="-30-30" s="40-70" l="15-50" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
     <resolution aspect="3.55:1" x="0.5237" y="0.4955" width="0.0012" height="0.0062" />
     <resolution aspect="24:10" x="0.5347" y="0.4955" width="0.0032" height="0.0069" />
     <resolution aspect="16:11" x="0.5483" y="0.5897" width="0.0004" height="-0.0006"   />
 
-    <resolution size="3840x2160" x="0.5475" y="0.5994" width="0.0008" height="0" />
+    <resolution size="3840x2160" x="0.465" y="0.6809" width="0.0026" height="0" />
     <resolution size="2560x1080" x="0.5347" y="0.4955" width="0.0032" height="0.0069" />
   </meta>
 
@@ -552,6 +552,7 @@
   };
 
   function inGameCallback(){
+    //if((InGameBlue1.value >= .75 || InGameRed1.value >= .75 || InGameGreen1.value >= .75) && ((InGameBlue2.value >= .75 || InGameRed2.value >= .75) || (InGameBlue3.value >= .75 || InGameRed3.value >= .75))){
     if(((InGameBlue2.value >= .75 || InGameRed2.value >= .75) || (InGameBlue3.value >= .75 || InGameRed3.value >= .75))){
       gInGame = true
     } 
