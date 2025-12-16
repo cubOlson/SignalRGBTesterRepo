@@ -1,0 +1,918 @@
+<head>
+  <title>Rainbow Six: Siege</title>
+  <meta description="Metering and ambience for Tom Clancy's Rainbow Six: Siege. v1.02" />
+  <meta publisher="SignalRGB" />
+
+  <meta property="keyScreenBrightness" label="Ambience brightness" type="number" min="0" max="100" default="100" />
+  <meta property="adjOn" label="HUD Adjustment (turn off in-game)" type="boolean" default="0" />
+  <meta property="RotateBar" label="RotateBars" type="boolean" default="0" />
+  <meta property="healthColor" label="Health Bar Color" type="color" default="#12ff00" min="0" max="360" />
+  <meta property="HealthBarX" label="HealthBarX" type="number" min="0" max="320" default="0" />
+  <meta property="HealthBarY" label="HealthBarY" type="number" min="0" max="200" default="50" />
+  <meta property="HealthBarWidth" label="HealthBarWidth" type="number" min="0" max="320" default="320" />
+  <meta property="HealthBarHeight" label="HealthBarHeight" type="number" min="0" max="200" default="30" />
+  <meta property="hudOn" label="enable HUD effect" type="boolean" default="1" />
+  <meta property="killOn" label="enable Kill effect" type="boolean" default="1" />
+  <meta property="ammoOn" label="enable Ammo effect" type="boolean" default="1" />
+  <meta property="droneOn" label="enable Drone effects" type="boolean" default="1" />
+  <meta property="defuserOn" label="enable defuser effect" type="boolean" default="1" />
+  <meta property="grenadeOn" label="enable utility effect" type="boolean" default="1" />
+  <meta property="searchOn" label="enable search effect" type="boolean" default="1" />
+  <meta property="setupOn" label="enable setup effect" type="boolean" default="1" />
+
+  <meta meter="searchBlue" tags="VLC,Rainbow Six" x="0.3587" y="0.0007" width="0.0075" height="-0.0007"
+    h="180-220" s="50-75" l="50-75" hdr-h="180-220" hdr-s="40-70" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.4349" y="0.0046" width="0.0047" height="0.0001" />
+    <resolution aspect="24:10" x="0.4084" y="0.0000" width="0.0038" height="0.0020" />
+    <resolution aspect="16:11" x="0.3599" y="0.0507" width="0.0016" height="0" />
+
+    <resolution size="3840x2160" x="0.33" y="0" width="0.0076" height="0" />
+    <resolution size="2560x1080" x="0.3390" y="0.0046" width="0.0098" height="0" />
+  </meta>
+
+  <meta meter="lobbyBlack" tags="VLC,Rainbow Six"  x="0.0012" y="0.0743" width="0.0102" height="0.0006" 
+    h="0-360" s="0-100" l="0-25" hdr-h="0-360" hdr-s="0-100" hdr-l="0-30" type="area">
+    <resolution aspect="3.55:1" x="0.2911" y="0.0462" width="0.0090" height="0.0000" />
+    <resolution aspect="24:10" x="0.1828" y="0.0458" width="0.0157" height="0.0007" />
+    <resolution aspect="16:11" x="0.002" y="0.0938" width="0.0019" height="0" />
+
+    <resolution size="3840x2160" x="0.0018" y="0.0602" width="0.0050" height="0.0006" />
+    <resolution size="2560x1080" x="0.0027" y="0.05" width="0.002" height="0" />
+  </meta>
+
+  <meta meter="selectingStageRed" tags="VLC,Rainbow Six" x="0.0684" y="0.1772" width="0.2735" height="0"
+    h="-30-30" s="50-100" l="60-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.2841" y="0.1759" width="0.1357" height="0.0001" />
+    <resolution aspect="24:10" x="0.1782" y="0.1764" width="0.2038" height="0.0001" />
+    <resolution aspect="16:11" x="0.0676" y="0.2095" width="0.2743" height="0.0006" />
+
+    <resolution size="3840x2160" x="0.0677" y="0.1774" width="0.2743" height="0" />
+    <resolution size="2560x1080" x="0.1785" y="0.1806" width="0.1300" height="0" />
+  </meta>
+
+  <meta meter="droneBlack" tags="VLC,Rainbow Six" x="0.1359" y="0.7701" width="0.0001" height="0.0015"
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="50-100" hdr-l="0-30" type="area">
+    <resolution aspect="3.55:1" x="0.3112" y="0.7694" width="0.0013" height="0.0000" />
+    <resolution aspect="24:10" x="0.2288" y="0.7694" width="0.0010" height="0.0015" />
+    <resolution aspect="16:11" x="0.1508" y="0.7694" width="0.0010" height="-0.0006" />
+
+    <resolution size="3840x2160" x="0.1357" y="0.7694" width="0.0010" height="0.0012" />
+    <resolution size="2560x1080" x="0.2281" y="0.7676" width="0" height="0" />
+  </meta>
+
+  <meta meter="droneWhite" tags="VLC,Rainbow Six" x="0.1485" y="0.7401" width="-0.0008" height="0.0007"
+    h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.3240" y="0.7417" width="0.0000" height="0.0005" />
+    <resolution aspect="24:10" x="0.2381" y="0.7389" width="0.0000" height="0.0014" />
+    <resolution aspect="16:11" x="0.1645" y="0.7398" width="-0.0004" height="0.0019" />
+
+    <resolution size="3840x2160" x="0.1474" y="0.7406" width="0" height="0.0019" />
+    <resolution size="2560x1080" x="0.236" y="0.7424" width="0" height="0.0018" />
+  </meta>
+
+  <meta meter="droneJump" tags="VLC,Rainbow Six" x="0.8765" y="0.9069" width="0.0008" height="0"
+    h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.6883" y="0.9046" width="0.0000" height="0.0002" />
+    <resolution aspect="24:10" x="0.7799" y="0.9042" width="0.0006" height="0.0021" />
+    <resolution aspect="16:11" x="0.8633" y="0.9056" width="0.0004" height="0" />
+
+    <resolution size="3840x2160" x="0.8771" y="0.9069" width="0.0007" height="0.0019" />
+    <resolution size="2560x1080" x="0.7809" y="0.9028" width="0.0008" height="0" />
+  </meta>
+
+  <meta meter="health" tags="VLC,Rainbow Six" x="0.0273" y="0.9444" width="0.0852" height="0.0063" 
+    h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.2638" y="0.9436" width="0.0378" height="0.0005" />
+    <resolution aspect="24:10" x="0.1483" y="0.9403" width="0.0619" height="0.0001" />
+    <resolution aspect="16:11" x="0.0301" y="0.9418" width="0.093" height="0.0032" />
+    
+    <resolution size="3840x2160" x="0.0273" y="0.9444" width="0.0852" height="0.0063" />
+    <resolution size="2560x1080" x="0.1454" y="0.9388" width="0.0641" height="0.0074" />
+  </meta>
+
+  <meta meter="redAmmo" tags="VLC,process" x="0.8937" y="0.9013" width="0.0125" height="0.0110" 
+    h="-30-30" s="15-30" l="50-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.6969" y="0.8907" width="0.0049" height="0.0160" />
+    <resolution aspect="24:10" x="0.7930" y="0.8833" width="0.009" height="0.0319" />
+    <resolution aspect="16:11" x="0.8824" y="0.9018" width="0.0121" height="0.0110"  />
+
+    <resolution size="3840x2160" x="0.8942" y="0.9004" width="0.0102" height="0.0100" />
+    <resolution size="2560x1080" x="0.7956" y="0.9027" width="0.009" height="0.0100" />
+  </meta> 
+
+  <meta meter="gunSelected" tags="VLC,process" x="0.8558" y="0.9006" width="0" height="0.0014"
+    h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.6776" y="0.8898" width="0.0000" height="0.0050" />
+    <resolution aspect="24:10" x="0.7642" y="0.8771" width="0.0000" height="0.0110" />
+    <resolution aspect="16:11" x="0.8398" y="0.8956" width="0" height="0.0037" />
+
+    <resolution size="3840x2160" x="0.8557" y="0.8981" width="0.0003" height="0.0010" />
+    <resolution size="2560x1080" x="0.7648" y="0.8741" width="0" height="0.0014" />
+  </meta> 
+
+  <meta meter="defendingBlue" tags="VLC,Rainbow Six" x="0.4326" y="0.0486" width="0.0012" height="0"
+    h="180-220" s="20-60" l="0-50" hdr-h="180-220" hdr-s="0-50" hdr-l="0-75" type="area">
+    <resolution aspect="3.55:1" x="0.4659" y="0.0481" width="0.0010" height="0.0001" />
+    <resolution aspect="24:10" x="0.4497" y="0.0514" width="0.0012" height="0.0001" />
+    <resolution aspect="16:11" x="0.4263" y="0.0488" width="0.0012" height="0.0006" />
+
+    <resolution size="3840x2160" x="0.4327" y="0.0482" width="0.0008" height="-0.0005"/>
+    <resolution size="2560x1080" x="0.449" y="0.0491" width="0.0008" height="0" />
+  </meta>
+
+  <meta meter="useGrenadeWhite" tags="VLC,Rainbow Six" x="0.7527" y="0.8938" width="0.0008" height="0.0056"
+    h="0-360" s="0-29" l="77-100" hdr-h="0-360" hdr-s="0-29" hdr-l="77-100" type="area">
+    <resolution aspect="3.55:1" x="0.6265" y="0.8907" width="0.0001" height="0.0005" />
+    <resolution aspect="24:10" x="0.6881" y="0.8917" width="0.000" height="0.0069" />
+    <resolution aspect="16:11" x="0.7261" y="0.8924" width="0" height="0.0094" />
+
+    <resolution size="3840x2160" x="0.7541" y="0.8921" width="-0.0008" height="0.0056"/>
+    <resolution size="2560x1080" x="0.6901" y="0.8981" width="0.0004" height="0.0074" />
+    <resolution size="1920x1080" x="0.7541" y="0.8921" width="0.0008" height="0.0025" />
+  </meta>
+
+  <meta meter="useGrenadeWhite2" tags="VLC,Rainbow Six" x="0.7527" y="0.9271" width="0.0004" height="0.0056"
+    h="0-360" s="0-29" l="77-100" hdr-h="0-360" hdr-s="0-29" hdr-l="77-100" type="area">
+    <resolution aspect="3.55:1" x="0.6265" y="0.9296" width="0.0002" height="0.0100" />
+    <resolution aspect="24:10" x="0.6881" y="0.9299" width="0.0003" height="0.0110" />
+    <resolution aspect="16:11" x="0.7265" y="0.9237" width="-0.0004" height="0.0063" />
+
+    <resolution size="3840x2160" x="0.7536" y="0.9259" width="0" height="0.0056" />
+    <resolution size="2560x1080" x="0.6887" y="0.9250" width="0" height="0.0028" />
+    <resolution size="1920x1080" x="0.7536" y="0.9259" width="0.0008" height="0.0025" />
+  </meta>
+
+  <meta meter="InMatch" tags="VLC,Rainbow Six" x="0.4412" y="0.0639" width="0.0031" height="0"
+    h="150-250" s="0-75" l="0-50" hdr-h="150-250" hdr-s="0-75" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.4763" y="0.0611" width="0.0029" height="0.0005" />
+    <resolution aspect="24:10" x="0.4619" y="0.0632" width="0.0026" height="0.0001" />
+    <resolution aspect="16:11" x="0.4447" y="0.0638" width="0.0027" height="0" />
+
+    <resolution size="3840x2160" x="0.4572" y="0.0635" width="0.0059" height="-0.0005" />
+    <resolution size="2560x1080" x="0.4662" y="0.0639" width="0.002" height="0" />
+  </meta>
+
+  <meta meter="blueKill1" tags="VLC,Rainbow Six" x="0.3052" y="0.0542" width="0" height="0"
+    h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4021" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.3544" y="0.0565" width="0" height="0" />
+    <resolution aspect="16:11" x="0.2833" y="0.0557" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.3052" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3537" y="0.0593" width="0" height="0"  />
+  </meta> 
+
+  <meta meter="blueKill2" tags="VLC,Rainbow Six" x="0.3298" y="0.0549" width="0" height="0"
+    h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4146" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.3727" y="0.0565" width="0.0006" height="0.0005" />
+    <resolution aspect="16:11" x="0.3111" y="0.0544" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.3299" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3734" y="0.0593" width="0" height="0" />
+  </meta> 
+
+  <meta meter="blueKill3" tags="VLC,Rainbow Six" x="0.3552" y="0.0542" width="0" height="0"
+    h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4271" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.3915" y="0.0565" width="0.0006" height="0.0005" />
+    <resolution aspect="16:11" x="0.3396" y="0.0538" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.3550" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.3912" y="0.0593" width="0" height="0"  />
+  </meta> 
+
+  <meta meter="blueKill4" tags="VLC,Rainbow Six" x="0.3798" y="0.0549" width="0" height="0"
+    h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4396" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.4099" y="0.0565" width="0.0006" height="0.0005" />
+    <resolution aspect="16:11" x="0.3111" y="0.0544" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.3799" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4105" y="0.0593" width="0" height="0" />
+  </meta> 
+
+  <meta meter="blueKill5" tags="VLC,Rainbow Six" x="0.4048" y="0.0556" width="0" height="0" 
+    h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.4521" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.4285" y="0.0565" width="0.0006" height="0.0005" />
+    <resolution aspect="16:11" x="0.3951" y="0.055" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.4051" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4291" y="0.0593" width="0" height="0" />
+  </meta> 
+
+  <meta meter="redKill1" tags="VLC,Rainbow Six" x="0.5944" y="0.0549" width="0" height="0"
+    h="-30-30" s="90-100" l="80-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.5469" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.5703" y="0.0555" width="0.0001" height="0.0001" />
+    <resolution aspect="16:11" x="0.6051" y="0.0563" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.5948" y="0.0532" width="0" height="0" />
+    <resolution size="2560x1080" x="0.5699" y="0.0593" width="0.0001" height="0.0001"  />
+  </meta> 
+
+  <meta meter="redKill2" tags="VLC,Rainbow Six" x="0.6194" y="0.0535" width="0" height="0"
+    h="-30-30" s="90-100" l="80-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.5594" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.5892" y="0.0555" width="0.0001" height="0.0001" />
+    <resolution aspect="16:11" x="0.6327" y="0.0569" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.6193" y="0.0532" width="0" height="0" />
+    <resolution size="2560x1080" x="0.5897" y="0.0593" width="0.0001" height="0.0001" />
+    <resolution size="1920x1080" x="0.6193" y="0.0551" width="0" height="0" />
+  </meta> 
+
+  <meta meter="redKill3" tags="VLC,Rainbow Six" x="0.646" y="0.0563" width="0" height="0"
+    h="-30-30" s="90-100" l="70-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.5719" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.6076" y="0.0555" width="0.0001" height="0.0001" />
+    <resolution aspect="16:11" x="0.66" y="0.0557" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.6443" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.6078" y="0.0593" width="0.0001" height="0.0001" />
+    <resolution size="1920x1080" x="0.6443" y="0.0551" width="0" height="0" />
+  </meta> 
+
+  <meta meter="redKill4" tags="VLC,Rainbow Six" x="0.6694" y="0.0542" width="0" height="0"
+    h="-30-30" s="90-100" l="70-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.5844" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.6262" y="0.0555" width="0.0006" height="0.0005" />
+    <resolution aspect="16:11" x="0.6889" y="0.0538" width="0" height="0" />
+
+    <resolution size="3840x2160" x="0.6695" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.6276" y="0.0593" width="0.0001" height="0.0001"  />
+  </meta> 
+
+  <meta meter="redKill5" tags="VLC,Rainbow Six" x="0.6952" y="0.0542" width="0" height="0" 
+    h="-30-30" s="90-100" l="65-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.5969" y="0.0564" width="0.001" height="0.0005" />
+    <resolution aspect="24:10" x="0.6442" y="0.0555" width="0.0006" height="0.0005" />
+    <resolution aspect="16:11" x="0.7159" y="0.0544" width="0" height="0" />
+    
+    <resolution size="3840x2160" x="0.6945" y="0.0537" width="0" height="0" />
+    <resolution size="2560x1080" x="0.6463" y="0.0593" width="0.0001" height="0.0001" />
+  </meta> 
+
+  <meta meter="defuserRed" tags="VLC,Rainbow Six" x="0.4973" y="0.0063" width="0.0001" height="0.0001" 
+    h="-30-30" s="75-100" l="75-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4973" y="0.0063" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.4973" y="0.0063" width="0.0001" height="0.0001" />
+    <resolution aspect="16:11" x="0.4973" y="0.0063" width="0.0001" height="0.0001" />
+    
+    <resolution size="3840x2160" x="0.4973" y="0.0063" width="0.0001" height="0.0001" />
+    <resolution size="2560x1080" x="0.4973" y="0.0063" width="0.0001" height="0.0001" />
+  </meta> 
+
+  <meta meter="defuserYellow" tags="VLC,Rainbow Six" x="0.4997" y="0.0426" width="0.0001" height="0.0001" 
+    h="25-50" s="75-100" l="75-100" hdr-h="50-100" hdr-s="75-100" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4997" y="0.0426" width="0.0001" height="0.0001" />
+    <resolution aspect="24:10" x="0.4997" y="0.0426" width="0.0001" height="0.0001" />
+    <resolution aspect="16:11" x="0.4997" y="0.0426" width="0.0001" height="0.0001" />
+    
+    <resolution size="3840x2160" x="0.4996" y="0.0426" width="0.0001" height="0.0001" />
+    <resolution size="2560x1080" x="0.5025" y="0.038" width="0" height="0"   />
+  </meta> 
+
+<body style=" margin: 0; padding: 0; background: #000;">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var canvas, ctx;
+  var stateMgr = new StateHandler();
+  var effects = [];
+  var isInGame = false;
+  var calculatedHealthValue = 0;
+  var usingDrone = false;
+  const a = 2 * Math.PI / 6;
+  var blueKills = 0;
+  var oldBlueKills = 0;
+  var redKills = 0;
+  var oldRedKills = 0;
+
+  var healthMeter = new Meter(5, HealthChanged)
+  var lobbyMeter = new Meter(5, () => "")
+  var searchMeter = new Meter(5, SearchChanged)
+  var selectingStageRedMeter = new Meter(15, SelectingStageChanged)
+  var droneWhiteMeter = new Meter(8, DroneChanged)
+  var droneBlackMeter = new Meter(8, DroneChanged)
+  var droneJumpMeter = new Meter(10, DroneJumpChanged)
+  var weaponOnMeter = new Meter(10, () => "")
+  var ammoRedMeter = new Meter(1, ReloadChanged)
+  var defendBlueMeter = new Meter(5, () => "")
+  var GrenadeMeter = new Meter(3, GrenadeChanged)
+  var inGameMeter = new Meter(5, inGameChanged)
+  var blue1Meter = new Meter(5, blueKillChanged)
+  var blue2Meter = new Meter(5, blueKillChanged)
+  var blue3Meter = new Meter(5, blueKillChanged)
+  var blue4Meter = new Meter(5, blueKillChanged)
+  var blue5Meter = new Meter(5, blueKillChanged)
+  var red1Meter = new Meter(5, redKillChanged)
+  var red2Meter = new Meter(5, redKillChanged)
+  var red3Meter = new Meter(5, redKillChanged)
+  var red4Meter = new Meter(5, redKillChanged)
+  var red5Meter = new Meter(5, redKillChanged)
+  var dRedMeter = new Meter(5, defuserHandler)
+  var dYellowMeter = new Meter(5, defuserHandler)
+
+  function update() {
+    inGameMeter.setValue(engine.vision.InMatch)
+    healthMeter.setValue(engine.vision.health)
+    lobbyMeter.setValue(engine.vision.lobbyBlack)
+    searchMeter.setValue(engine.vision.searchBlue)
+    selectingStageRedMeter.setValue(engine.vision.selectingStageRed)
+    droneBlackMeter.setValue(engine.vision.droneBlack)
+    droneWhiteMeter.setValue(engine.vision.droneWhite)
+    droneJumpMeter.setValue(engine.vision.droneJump)
+    weaponOnMeter.setValue(engine.vision.gunSelected)
+    ammoRedMeter.setValue(engine.vision.redAmmo)
+    defendBlueMeter.setValue(engine.vision.defendingBlue)
+    blue1Meter.setValue(engine.vision.blueKill1)
+    blue2Meter.setValue(engine.vision.blueKill2)
+    blue3Meter.setValue(engine.vision.blueKill3)
+    blue4Meter.setValue(engine.vision.blueKill4)
+    blue5Meter.setValue(engine.vision.blueKill5)
+    red1Meter.setValue(engine.vision.redKill1)
+    red2Meter.setValue(engine.vision.redKill2)
+    red3Meter.setValue(engine.vision.redKill3)
+    red4Meter.setValue(engine.vision.redKill4)
+    red5Meter.setValue(engine.vision.redKill5)
+    dRedMeter.setValue(engine.vision.defuserRed)
+    dYellowMeter.setValue(engine.vision.defuserYellow)
+    if (defendBlueMeter.value >=.95) {
+      GrenadeMeter.setValue(engine.vision.useGrenadeWhite)
+    } else {
+      GrenadeMeter.setValue(engine.vision.useGrenadeWhite2)
+    }
+    copyScreen(1);
+
+    if(hudOn){
+      DrawHUD();
+    }
+
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw();
+      if (effects[i].lifetime <= 0) {
+        effects.splice(i, 1);
+      }
+    }
+    stateMgr.Process();
+
+    window.requestAnimationFrame(update);
+  }
+
+  function inGameChanged() {
+    if (inGameMeter.value >=.95) {
+      isInGame = true;
+    } else {
+      isInGame = false;
+    }
+  }
+
+  function HealthChanged() {
+    if (healthMeter.increased && healthMeter.diff > 0.8) {
+      calculatedHealthValue = (1 - healthMeter.value) + 1;
+    }
+  }
+
+  function SearchChanged() {
+    if (searchMeter.value >=.95 && lobbyMeter.value >=.95 && !isInGame && searchOn) {
+      effects.push(new SearchingEffect())
+    }
+  }
+
+  function SelectingStageChanged() {
+    if (lobbyMeter.value >=.95 && selectingStageRedMeter.value >= 0.1 && setupOn) {
+      effects.push(new SelectingEffect())
+    }
+  }
+
+  function DroneChanged() {
+    if (droneBlackMeter.value >=.95 && droneWhiteMeter.value >=.95 && droneOn) {
+      effects.push(new DroneEffect())
+      usingDrone = true;
+    } else {
+      usingDrone = false;
+    }
+  }
+
+  function DroneJumpChanged() {
+    if (usingDrone && droneJumpMeter.increased && droneJumpMeter.diff > .5 && droneOn) {
+      effects.push(new Wave("yellow", "up"))
+      setTimeout(() => {
+        effects.push(new Wave("yellow", "up"))
+      }, 200);
+    }
+  }
+
+  function blueKillChanged() {
+    blueKills = 0;
+    if(blue1Meter.value >=.95) blueKills++;
+    if(blue2Meter.value >=.95) blueKills++;
+    if(blue3Meter.value >=.95) blueKills++;
+    if(blue4Meter.value >=.95) blueKills++;
+    if(blue5Meter.value >=.95) blueKills++;
+    if(blueKills != oldBlueKills && isInGame && killOn){
+      effects.push(new killEffect(true, blueKills))
+      oldBlueKills = blueKills;
+    }
+  }
+
+  function redKillChanged() {
+    redKills = 0;
+    if(red1Meter.value >=.95) redKills++;
+    if(red2Meter.value >=.95) redKills++;
+    if(red3Meter.value >=.95) redKills++;
+    if(red4Meter.value >=.95) redKills++;
+    if(red5Meter.value >=.95) redKills++;
+    if(redKills != oldRedKills && isInGame && killOn){
+      effects.push(new killEffect(false, redKills))
+      oldRedKills = redKills;
+    }
+  }
+
+  function ReloadChanged() {
+    if (isInGame && ammoRedMeter.value >= .01 && weaponOnMeter.value >=.95 && ammoOn) {
+      for (let i = 0; i < 4; i++){
+        setTimeout(()=>{
+          effects.push(new lowAmmoEffect())
+        }, 75 * i)
+      }
+    }
+  }
+
+  function GrenadeChanged() {
+    if (GrenadeMeter.value >=.95 && GrenadeMeter.increased && isInGame && weaponOnMeter.value >=.95 && grenadeOn) {
+      effects.push(new GrenadeEffect())
+    }
+  }
+
+  function defuserHandler(){
+    if(isInGame && dRedMeter.value >=.95 && dYellowMeter.value >=.95 && defuserOn){
+      effects.push(new defuserEffect())
+    }
+  }
+
+  function defuserEffect(){
+    this.lifetime = 10;
+    this.y1 = 1;
+    this.y2 = 30;
+    this.draw = function(){
+      DrawStroke(160, 100, this.y1, "red", 20)
+      DrawStroke(160, 100, this.y2, "red", 20)
+      ctx.beginPath()
+      ctx.moveTo(160, 50)
+      ctx.lineTo(210, 100)
+      ctx.lineTo(160, 155)
+      ctx.lineTo(110, 100)
+      ctx.lineTo(160, 50)
+      ctx.lineTo(210, 100)
+      ctx.lineWidth = 20;
+      ctx.strokeStyle = "yellow"
+      ctx.stroke()
+      DrawCircle(160, 100, 10, "yellow")
+      this.y1 < 250 ? this.y1 += 5 : this.y1 = 1;
+      this.y2 < 250 ? this.y2 += 5 : this.y2 = 1;
+      if(dRedMeter.value < .5 || dYellowMeter < .5){
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function lowAmmoEffect(){
+    this.alpha = .5;
+    this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 300);
+    this.grad.addColorStop(0, 'hsla(0, 100%, 50%, 0)');
+    this.grad.addColorStop(.5, 'hsla(0, 100%, 50%, .3)');
+    this.grad.addColorStop(1, 'hsla(0, 100%, 50%, 1)');
+    this.draw = function(){
+      ctx.globalAlpha = this.alpha;
+      DrawCircle(160, 100, 300, this.grad)
+      ctx.globalAlpha = 1;
+      this.alpha >= .0025 ? this.alpha-=.0025 : this.lifetime = 0;
+    }
+  }
+
+  function killEffect(team, num){
+    this.team = team;
+    this.num = 5 - num;
+    this.y = 220;
+    this.up = false;
+    this.flash = false;
+    this.alpha = 0;
+    this.lifetime = 10;
+    this.i = 0;
+    this.draw = function(){
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, this.y - 1, 320, 200, "black")
+      for(let i = 0; i < this.num; i++){
+        var color = team ? "blue" : `hsl(16, 100%, 50%)`;
+        if(this.up && !this.flash && Math.floor(this.i / 10) == i){
+          color = "white"
+        }
+          DrawRect((160 - this.num * 33) + i * 70, this.y * .75 + 50, 50, 100, color)
+
+      }
+      ctx.globalAlpha = 1;
+      if(!this.up){
+        this.y > 0 ? this.y-=(this.y / 6) : null;
+        this.alpha < 1 ? this.alpha += .05 : this.alpha = 1;
+        this.y < 1 ? this.up = true : null;
+      } else if (!this.flash){
+        this.i < this.num * 10 ? this.i++ : this.flash = true;
+      } else {
+        this.y-=(Math.abs(this.y - 1) * .1)
+        this.alpha-=.005
+      }
+      this.y < -200 ? this.lifetime = 0 : null;
+    }
+  }
+
+
+  function DrawHUD() {
+    if (isInGame) {
+      ctx.beginPath()
+      ctx.save()
+      ctx.translate(HealthBarX, RotateBar ? 200 : HealthBarY)
+      if (RotateBar) {
+        ctx.rotate(-90 / 180 * Math.PI)
+      }
+      ctx.fillStyle = healthColor;
+      ctx.fillRect(0, 0, (healthMeter.value * calculatedHealthValue) * SetRange(HealthBarWidth, 0, RotateBar ? 200 : 320), HealthBarHeight)
+      ctx.restore();
+    } else if (adjOn) {
+
+      ctx.beginPath()
+      ctx.save()
+      ctx.translate(HealthBarX, RotateBar ? 200 : HealthBarY)
+
+      if (RotateBar) {
+        ctx.rotate(-90 / 180 * Math.PI)
+      }
+      ctx.fillStyle = healthColor;
+      ctx.fillRect(0, 0, SetRange(HealthBarWidth, 0, RotateBar ? 200 : 320), HealthBarHeight)
+      ctx.restore()
+    }
+  }
+
+  function SetRange(num, min, max) {
+    return Math.min(Math.max(num, min), max)
+  }
+
+  function SelectingEffect(){
+    this.lifetime = 10;
+    this.effects = []
+    this.draw = function(){
+      if(this.effects.length < 30) this.effects.push(new selectRect())
+      DrawRect(0, 0, 320, 200, "hsl(235, 50%, 25%)")
+      ctx.save()
+      ctx.rotate(.52)
+      for (let i = 0; i < this.effects.length; i++) {
+        this.effects[i].draw();
+        if (this.effects[i].lifetime <= 0) {
+          this.effects.splice(i, 1);
+        }
+      };
+      ctx.restore()
+      if (selectingStageRedMeter.value == 0) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function selectRect(){
+    this.lifetime = Math.random() * 900 + 100;
+    this.x = Math.random() * 420 - 50;
+    this.y = Math.random() * 300 - 50;
+    this.height = Math.random() * 150 + 30;
+    this.width = Math.random() * 10 + 5;
+    this.color = `hsl(${Math.random() * 180 + 180}, 40%, 65%)`
+    this.direction = Date.now() % 2 == 0;
+    this.alpha = 0;
+    this.draw = function(){
+      ctx.globalAlpha = this.alpha;
+      DrawRect(this.x, this.y, this.width, this.height, this.color)
+      ctx.globalAlpha = 1;
+      this.direction ? this.y+=Math.random() : this.y-=Math.random();
+      this.alpha < this.lifetime / 1000 ? this.alpha+=.01 : this.alpha = this.lifetime / 1000;
+      this.lifetime--;
+    }
+  }
+
+  function DroneEffect() {
+    this.start = Date.now();
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      ctx.beginPath();
+      let gradient = ctx.createLinearGradient(-200, -100, 620, 100)
+      this.calculateVal = -2980 * Math.floor((this.elapsed / 2980) / 1) + ((this.elapsed / 2980) * (2980 / 1));
+      gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(209, 100%, 50%,0.5)");
+      gradient.addColorStop(SetRange((-600 + (this.calculateVal)), 0, 1000) / 1000, "hsla(287, 100%, 50%,0.5)");
+      gradient.addColorStop(SetRange((-1200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(209, 100%, 50%,0.5)");
+      ctx.fillStyle = gradient;
+      drawRect(0, 0, 320, 200, gradient)
+      if (!usingDrone) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function Wave(color, direction) {
+    this.color = color;
+    this.direction = direction;
+    this.lifetime = 300;
+
+    this.draw = function () {
+      if (this.direction == "up") {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(160, this.lifetime - 100);
+        ctx.lineTo(320, this.lifetime);
+        ctx.lineTo(320, this.lifetime + 50);
+        ctx.lineTo(160, this.lifetime - 50);
+        ctx.lineTo(0, this.lifetime + 50);
+        ctx.lineTo(0, this.lifetime);
+        ctx.lineTo(160, this.lifetime - 100);
+        ctx.fill();
+      } else if (this.direction = "down") {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(160, 300 - this.lifetime);
+        ctx.lineTo(320, 200 - this.lifetime);
+        ctx.lineTo(320, 100 - this.lifetime);
+        ctx.lineTo(160, 200 - this.lifetime);
+        ctx.lineTo(0, 100 - this.lifetime);
+        ctx.lineTo(0, 200 - this.lifetime);
+        ctx.lineTo(160, 300 - this.lifetime);
+        ctx.fill();
+      }
+      this.lifetime -= 5;
+    };
+  };
+
+  function GrenadeEffect() {
+    this.start = Date.now()
+    this.speed = {
+      x: 1.8,
+      y: -5
+    }
+    this.pos = {
+      x: -10,
+      y: 150
+    }
+    this.bounceCount = 0;
+    this.size = 40;
+    this.ExplosionParticles = [];
+    this.hasBeenPushed = false;
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      if (this.bounceCount < 2) {
+        DrawCircle(this.pos.x, this.pos.y, this.size, "yellow")
+        this.pos.x += this.speed.x;
+        this.pos.y += this.speed.y;
+        this.speed.y += 0.2
+        if (this.pos.y + this.size >= 200) {
+          this.speed.y = -this.speed.y
+          this.bounceCount++;
+        }
+      } else {
+        if (!this.hasBeenPushed) {
+          this.hasBeenPushed = true;
+          for (let index = 0; index < 60; index++) {
+            this.ExplosionParticles.push(new ExplosionParticle(this.pos.x, this.pos.y, { x: (Math.random() - 0.5) * 6, y: -(Math.random() * 2) }, Math.random() * 20 + 3, `hsla(${(Math.random() - 0.5) * 30 + 40},100%,50%,1)`, Math.random() * 5000 + 500, 5));
+          }
+        }
+        this.ExplosionParticles.forEach((element, i) => {
+          element.draw();
+          if (element.lifetime <= 0) {
+            this.ExplosionParticles.splice(i, 1)
+          }
+        });
+        if (this.ExplosionParticles.length == 0) {
+          this.lifetime = 0;
+        }
+      }
+    }
+  }
+
+  class ExplosionParticle {
+    constructor(x, y, speed, size, col, duration, sinSpeed) {
+      this.x = x;
+      this.y = y;
+      this.speed = speed;
+      this.size = size;
+      this.color = col;
+      this.sinSpeed = sinSpeed;
+      this.duration = duration;
+      this.start = Date.now();
+      this.alpha = 1;
+      this.lifetime = 1;
+    }
+
+    draw() {
+      this.elapsed = Date.now() - this.start;
+      ctx.beginPath();
+      ctx.globalAlpha = this.alpha;
+      DrawCircle(this.x, this.y, this.size, this.color)
+      this.x += this.speed.x;
+      this.y += this.speed.y;
+      if (this.elapsed > ((this.duration / 3) * 2)) {
+        this.alpha = SetRange(1 - ((this.elapsed) - (this.duration / 3 * 2)) / 1000, 0, 1)
+        this.lifetime = this.alpha;
+      }
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function drawRect(x, y, height, width, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, height, width);
+  }
+
+  function copyScreen(alpha) {
+    var shine = engine.vision.ShineMeter
+    let lightness = new Int8Array(engine.zone.lightness);
+    let sat = new Int8Array(engine.zone.saturation);
+    let hue = new Int16Array(engine.zone.hue);
+    for (var iZone = 0; iZone < 560; iZone++) {
+      var iRow = Math.floor(iZone / 28);
+      var iCol = iZone % 28;
+      var iWidth = 320 / 28;
+      var iHeight = 200 / 20;
+      var iZx = iCol * iWidth;
+      var iZy = iRow * iHeight;
+      ctx.fillStyle =
+        "hsla(" +
+        hue[iZone] +
+        "," +
+        sat[iZone] +
+        "%," +
+        lightness[iZone] * keyScreenBrightness / 100 +
+        "%, " +
+        `${alpha}` +
+        ")";
+
+      ctx.fillRect(iZx, iZy, iWidth, iHeight);
+    }
+
+  }
+  function SearchingEffect() {
+    this.start = Date.now();
+    this.alpha = .01;
+    this.color = "rgb(50, 200, 255)"
+
+    this.draw = function () {
+      var elapsed = Date.now() - this.start;
+      ctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, this.color)
+      ctx.globalAlpha = 1;
+      if(elapsed > 300){
+        effects.push(new searchSquare(Math.random() * 350 - 30))
+        this.start = Date.now()
+      }
+      if (searchMeter.value != 1) {
+        this.alpha-=.025
+        this.color = "cyan"
+      } else {
+        this.alpha < 1 ? this.alpha += .05 : this.alpha = 1;
+      }
+      if(this.alpha <= 0){
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function searchSquare(x){
+    this.x = x;
+    this.movement = Date.now() % 2 == 0 ? true : false;
+    this.speed = this.movement ? Math.random() * 3 + 1 : (Math.random() * 3 + 1) * -1;
+    this.scale = Math.random() * 100 + 50;
+    this.alpha = Math.random() * .8;
+    this.a = 0;
+    this.lifetime = 10;
+    this.draw = function(){
+      ctx.beginPath();
+      ctx.moveTo(this.x, 0)
+      ctx.lineTo(this.x + this.scale, 0);
+      ctx.lineTo(this.x + this.scale - this.scale / 4, 200)
+      ctx.lineTo(this.x - this.scale / 4, 200)
+      ctx.globalAlpha = this.a;
+      ctx.fillStyle = "white"
+      ctx.fill()
+      ctx.globalAlpha = 1;
+      this.x+=this.speed;
+      this.a < this.alpha ? this.a+=.01 : this.a = this.alpha;
+      if(this.x < -30 || this.x > 350){
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function drawWave(y, color, frequency, direction, waveSize) {
+
+    ctx.beginPath();
+
+    ctx.moveTo(0, y);
+    for (let i = 0; i < 320; i++) {
+      ctx.lineTo(i, y + Math.sin(i * 0.01 + frequency) * waveSize);
+    }
+    ctx.lineTo(320, direction == "up" ? 200 : 0)
+    ctx.lineTo(0, direction == "up" ? 200 : 0)
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+
+  function StateHandler() {
+    var stack = [];
+    var state = null;
+
+    var updateState = function () {
+      if (stack.length > 0) {
+        state = stack[stack.length - 1];
+      } else {
+        state = null;
+      }
+    }
+
+    this.Push = function (newState) {
+      stack.push(newState);
+      updateState();
+    }
+
+    this.Pop = function () {
+      stack.pop();
+      updateState();
+    }
+
+    this.Process = function () {
+      if (state != null) {
+        state.Process();
+      }
+    }
+  }
+
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.  
+      values.push(updatedValue);
+      if (values.length > this.size) { values.shift(); }
+
+      // Exit early if we've got a long-term match.
+      for (var i = 0; i < (values.length - 1); i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        //var fromZero = this.value === 0;
+        //var toZero = values[0] === 0;      
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    }
+  }
+
+  function onEngineReady() {
+    canvas = document.getElementById('exCanvas');
+    ctx = canvas.getContext('2d');
+    window.requestAnimationFrame(update);
+  }
+  onEngineReady()
+
+</script>
