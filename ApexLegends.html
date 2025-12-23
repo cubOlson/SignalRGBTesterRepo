@@ -1,6 +1,6 @@
 <head>
   <title>Apex Legends Devv</title>
-  <meta description="Meters and ambiance for Apex Legends. v1.03" />
+  <meta description="Meters and ambiance for Apex Legends. v1.04" />
   <meta publisher="SignalRGB" />
 
   <meta property="character" label="Legends" type="list"
@@ -8,7 +8,7 @@
     default="Alter" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
-  default="Custom"/>
+  default="Ambience"/>
   <meta property="backColor" label="Custom Color" type="color" default="#050505" min="0" max="360" />
   <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
     tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
@@ -68,9 +68,9 @@
   </meta>
 
   <meta meter="WhiteInGame" tags="apex,VLC,process" type="area" x="0.7465" y="0.9660" width="0.00025" height="0.0007"
-    h="0-360" s="0-30" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100">
+    h="0-360" s="0-30" l="75-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100">
     <resolution aspect="3.55:1" x="0.8820" y="0.937" width="0.0005" height=".0001" />
-    <resolution aspect="24:10" x="0.8108" y="0.9653" width="0.00009" height="0.0021" />
+    <resolution aspect="24:10" x="0.8058" y="0.9639" width="0.0000" height="0.0021" />
     <resolution aspect="16:11"  x="0.7465" y="0.9660" width="0.00025" height="0.0007"/>
 
     <resolution size="3840x2160" x="0.7473" y="0.9657" width="0" height="0.0014" />
@@ -106,8 +106,8 @@
   </meta>
 
   <meta meter="whiteVal" tags="apex,VLC,process" type="area" x="0.4863" y="0.8771" width="0.0285" height="0.0472" 
-    h="0-360" s="0-5" l="95-100" hdr-h="0-360" hdr-s="0-5" hdr-l="95-100">
-    <resolution aspect="3.55:1" x="0.4930" y="0.8778" width="0.0141" height="0.0250" />
+    h="0-360" s="0-10" l="95-100" hdr-h="0-360" hdr-s="0-5" hdr-l="95-100">
+    <resolution aspect="3.55:1" x="0.4930" y="0.8778" width="0.0141" height="0.0450" />
     <resolution aspect="24:10" x="0.4910" y="0.8813" width="0.0180" height="0.0403" />
     <resolution aspect="16:11"  x="0.4900" y="0.8795" width="0.0180" height="0.0460"/>
 
@@ -177,11 +177,11 @@
 
   <meta meter="osdEscOn" tags="apex,VLC,process" x="0.034" y="0.9444" width="0.016" height="-0.0014"
     h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-10" hdr-l="80-100" type="linear">
-    <resolution aspect="3.55:1" x="0.1721" y="0.9426" width="0.0008" height="0.0002" />
+    <resolution aspect="3.55:1" x="0.9477" y="0.9806" width="0.0008" height="0.0002" />
     <resolution aspect="24:10" x="0.0258" y="0.9409" width="0.0168" height="0.0007" />
-    <resolution aspect="16:11"  x="0.034" y="0.9481" width="0.0176" height="0.0025"/>
+    <resolution aspect="16:11"  x="0.8953" y="0.9831" width="0.0015" height="0"/>
 
-    <resolution size="3840x2160" x="0.0344" y="0.9444" width="0.0187" height="-0.0009" />
+    <resolution size="3840x2160" x="0.8968" y="0.981" width="0.0016" height="0.0005" />
     <resolution size="2560x1080" x="0.0258" y="0.9416" width="0.0117" height="0.0009" />
   </meta>
 
@@ -285,7 +285,7 @@
   </meta>
 
   <meta meter="valkz" tags="apex,VLC,process" type="area" x="0.6882" y="0.3878" width="0.0015" height="0"  
-    h="145-155" s="70-100" l="87-100" hdr-h="150-180" hdr-s="60-80" hdr-l="80-100">
+    h="145-180" s="70-100" l="75-100" hdr-h="150-180" hdr-s="60-80" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.5943" y="0.3908" width="0.0005" height="0.0001" />
     <resolution aspect="24:10" x="0.6415" y="0.3899" width="0.0008" height="0.0055" />
     <resolution aspect="16:11"  x="0.6889" y="0.4015" width="0.0024" height="0.025"/>
@@ -301,7 +301,7 @@
     <resolution aspect="16:11" x="0.1481" y="0.2683" width="0" height="0"/>
 
     <resolution size="3840x2160" x="0.1456" y="0.3001" width="0.0016" height="0.0019"  />
-    <resolution size="2560x1080" x="0.1094" y="0.2994" width="0.0008" height="0.0027" />
+    <resolution size="2560x1080" x="0.1102" y="0.3012" width="0" height="0" />
   </meta>
 
   <meta meter="OrangeStormBar" tags="apex,VLC,process" type="linear" x="0.031" y="0.2993" width="0.1156" height="0.0035"
@@ -426,11 +426,9 @@
   let gUltAnimPlayed = false;
   let gZGoing = false;
   let healthHistory = [];
-  var menuHandler = false;
 
   let healAnimLength = 1000;
   var effects = [];
-  var stateMgr = new StateHandler();
   var gInGame = false;
   var gVantageReady = true;
   var gStormObj = false;
@@ -527,7 +525,7 @@
     
 
     if (((gUltCharged && !gUltAnimPlayed) || gVantageReady) && gInGame && enableUlt) {
-      stateMgr.Push(new BurstRippleState(effectHex, '#ffffff', effectHex))
+      effects.push(new BurstRippleState(effectHex, '#ffffff', effectHex))
       gUltAnimPlayed = true;
       gVantageReady = false;
     }
@@ -585,7 +583,6 @@
     }
 
     theHUD.draw();
-
     for (let i = 0; i < effects.length; i++) {
       effects[i].draw();
       if (effects[i].lifetime  <= 0) {
@@ -595,11 +592,6 @@
 
     if (effects.length === 0) {
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-    }
-    stateMgr.Process();
-
-    if (menuHandler != false) {
-      menuHandler.update();
     }
 
     window.requestAnimationFrame(update);
@@ -794,8 +786,8 @@
   }
 
   function CheckCryptoUlt() {
-    if (crypMeter.value <= 0 && healthMeter.value <= 0 && gUltCharged && inGameMeter.value <= 0 && character == "Crypto") {
-      stateMgr.Push(new BurstRippleState("#0000ff", "#00ffff", "#00ff00"));
+    if (crypMeter.value >= .95 && healthMeter.value <= 0 && gUltCharged && inGameMeter.value <= 0 && character == "Crypto") {
+      effects.push(new BurstRippleState("#0000ff", "#00ffff", "#00ff00"));
       gUltCharged = false;
     }
   }
@@ -805,72 +797,69 @@
       if (valkUltMeter.value >= .95) {
         effects.length = 0;
         effects.push(new valkUltimate());
-
-        
       }
     }
   }
 
   function InGame() {
-    if (engine.vision.InGameOrange >= .95 && engine.vision.WhiteInGame >= .95 && engine.vision.health > 0 && !gInGame) {
+    if (engine.vision.InGameOrange >= .95 && engine.vision.WhiteInGame >= .95 && engine.vision.health > 0  && !gInGame) {
       gInGame = true;
 
       setTimeout(() => {
         effects.length = 0;
-        stateMgr.stack = [];
       }, 300);
       setTimeout(() => {
         effects.length = 0;
       }, 500);
       effects.length = 0;
-      stateMgr.stack = [];
-    } else if (gInGame && (inGameMeter.value != 1 || whiteInGameMeter.value != 1|| engine.vision.health  <= 0 )) {
+      
+    } else if (gInGame && ((inGameMeter.value <.1 || whiteInGameMeter.value <.1) && engine.vision.health  <.1 )) {
       gInGame = false;
       setTimeout(() => {
         effects.length = 0;
       }, 300);
       effects.length = 0;
 
-      stateMgr.stack = [];
+   
     }
   }
 
   function baseMenuCallback() {
-    if ( osdEscOn_Meter.value >= .95) {
-      if (menuHandler == false) {
-        menuHandler = new StagedMenuHandler
-        menuHandler.state = "BaseMenu"
-        gStormObj = false;
-      } else {
-        menuHandler.state = "BaseMenu"
+    if(enableMenu){
+      if ((osdEscOn_Meter.value >= .95 || osdEsc_Meter.value >=.95) && engine.vision.InGameOrange < .1 ) {
+        effects.push(new BaseMenuEffect())
       }
     }
   }
 
   function selectMenuCallback() {
-    if (YellowSelectMenuMeter.value >= .95) {
-      if (menuHandler != false) {
-        menuHandler.state = "SelectMenu"
+    if(enableMenu){
+      if (YellowSelectMenuMeter.value >= .95) {
+        effects.push(new SelectMenuEffect())
+        
       }
     }
+    
   }
 
   function dropShipMenuCallback() {
-    if (engine.vision.InGameOrange >= .95 && engine.vision.ShieldBar  <= 0.1 && engine.vision.health >= 0.8 && menuHandler != false) {
-      if (InDropShipOrangeMeter.value >= .95 || InDropShipWhiteMeter.value >= 0.95) {
-        menuHandler.state = "InDropShip"
-      } else if (engine.vision.ShieldBarColor[2] > 70 && menuHandler != false) {
-        if (InDropShipWhiteMeter.decreased && InDropShipWhiteMeter.value < 0.3 && menuHandler.state != "outDropShip" && menuHandler.state == "InDropShip") {
-          menuHandler.state = "outDropShip"
-        }
+    if(enableDrop){
+        if (engine.vision.InGameOrange >= .95) {
+          if (InDropShipOrangeMeter.value >= .95 || InDropShipWhiteMeter.value >= .95) {
+          effects.push(new DropShipEffect())
+          }else if (InDropShipWhiteMeter.decreased && InDropShipWhiteMeter.diff > 0.3 && engine.vision.InGameOrange >= .95 ) {
+            effects.push(new outDropShipEffect()) 
+          }
+        
       }
     }
+    
   }
 
   var defeatPushed = false;
   function LossCallback() {
-    if (LossRedMeter.value >= .95 && engine.vision.lossNoRed < .1 && enableVD && WinLossConfirmMeter.value >= .95 && !gInGame && osdEsc_Meter.value <= 0 && !defeatPushed && menuHandler == false) {
-      stateMgr.Push(new LossEffect())
+    if (LossRedMeter.value >= .95 && engine.vision.lossNoRed < .1 && enableVD && WinLossConfirmMeter.value >= .95 && !gInGame && osdEsc_Meter.value <= 0 && !defeatPushed) {
+      effects.push(new LossEffect())
 
       gStormObj = false;
       defeatPushed = true;
@@ -917,28 +906,28 @@
             effects.push(new AlterQ());
             break;
           case "Ash":
-            stateMgr.Push(new Ash_Q());
+            effects.push(new Ash_Q());
             break;
           case "Bangalore":
-            stateMgr.Push(new bangaloreQ())
+            effects.push(new bangaloreQ())
             break;
           case "Ballistic" : 
             effects.push(new BallisticQ())
             break;
           case "Bloodhound":
-            stateMgr.Push(new PulseRippleState("#ff7300", true, 1150, true))
+            effects.push(new PulseRippleState("#ff7300", true, 1150, true))
             break;
           case "Catalyst":
-            stateMgr.Push(new CatalystQ);
+            effects.push(new CatalystQ);
             break;
           case "Caustic":
-            stateMgr.Push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
+            effects.push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
             break;
           case "Conduit":
             effects.push(new ConduitQ());
             break;
           case "Fuse":
-            stateMgr.Push(new fuseQ())
+            effects.push(new fuseQ())
             break;
           case "Gibraltar":
             effects.push(new GibraltarQ())
@@ -947,36 +936,36 @@
             effects.push(new horizonQ())
             break;
           case "Lifeline":
-            stateMgr.Push(new BurstRippleState("#09ff00", "#63ffef", "#63ffef"))
+            effects.push(new BurstRippleState("#09ff00", "#63ffef", "#63ffef"))
             break;
           case "Loba":
             if (!loba_t.decreased) {
-              stateMgr.Push(new BurstRippleState("#ffffff", "#8400ff", "#ffffff", true))
+              effects.push(new BurstRippleState("#ffffff", "#8400ff", "#ffffff", true))
             }
             break;
           case "Mad Maggie":
             effects.push(new maggieQ())
             break;
           case "Mirage":
-            stateMgr.Push(new BurstRippleState("#0004ff", "#63ffef", "#0004ff"));
+            effects.push(new BurstRippleState("#0004ff", "#63ffef", "#0004ff"));
             break;
           case "NewCastle":
-            stateMgr.Push(new newCastleQ())
+            effects.push(new newCastleQ())
             break;
           case "Octane":
             effects.push(new octaneQ())
             break;
           case "Pathfinder":
-            stateMgr.Push(new pathfinderQ());
+            effects.push(new pathfinderQ());
             break
           case "Rampart":
-            stateMgr.Push(new WallUpState(314, 73, 50, 0.85));
+            effects.push(new WallUpState(314, 73, 50, 0.85));
             break;
           case "Revenant":
             effects.push(new RevenantQ());
             break;
           case "Seer":
-            stateMgr.Push(new seerQ());
+            effects.push(new seerQ());
             break;
           case "Valkyrie":
             if (grey_Z_Meter.value >= .95 || (z_TotalHue.value < 30 && z_Total.value > 50))
@@ -986,10 +975,10 @@
             effects.push(new vantageQ)
             break;
           case "Wattson":
-            stateMgr.Push(new wattsonQ())
+            effects.push(new wattsonQ())
             break;
           case "Wraith":
-            stateMgr.Push(new wraithQ())
+            effects.push(new wraithQ())
             break;
         }
       } else if (q_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q_Meter.value > .5 && q_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
@@ -1008,17 +997,17 @@
       if (q1_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q1_Meter.value < .5 && q1_Meter.diff > 0.5) {
         switch (character) {
           case "Caustic":
-            stateMgr.Push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
+            effects.push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
       
             break;
 
           case "Rampart":
-            stateMgr.Push(new WallUpState(314, 73, 50, 0.85));
+            effects.push(new WallUpState(314, 73, 50, 0.85));
     
             break;
 
           case "Wattson":
-            stateMgr.Push(new wattsonQ())
+            effects.push(new wattsonQ())
       
             break;
         }
@@ -1050,15 +1039,15 @@
       if (q2_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q2_Meter.value < .5 && q2_Meter.diff > 0.5) {
         switch (character) {
           case "Bangalore":
-            stateMgr.Push(new bangaloreQ())
+            effects.push(new bangaloreQ())
   
             break;
           case "Fuse":
-            stateMgr.Push(new fuseQ())
+            effects.push(new fuseQ())
      
             break;
           case "Wattson":
-            stateMgr.Push(new wattsonQ())
+            effects.push(new wattsonQ())
    
             break;
         }
@@ -1087,19 +1076,19 @@
       if (q3_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q3_Meter.value < .5 && q3_Meter.diff > 0.5) {
         switch (character) {
           case "Catalyst":
-            stateMgr.Push(new CatalystQ);
+            effects.push(new CatalystQ);
      
             break;
           case "Caustic":
-            stateMgr.Push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
+            effects.push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
     
             break;
           case "Rampart":
-            stateMgr.Push(new WallUpState(314, 73, 50, 0.85));
+            effects.push(new WallUpState(314, 73, 50, 0.85));
      
             break;
           case "Wattson":
-            stateMgr.Push(new wattsonQ())
+            effects.push(new wattsonQ())
       
             break;
         }
@@ -1138,23 +1127,23 @@
           effects.push(new AshZ())
           break;
         case "Bangalore":
-          stateMgr.Push(new bangaloreZ())
+          effects.push(new bangaloreZ())
           break;
         case "Ballistic":
           effects.push(new BallisticZ())
           break;
         case "Bloodhound":
-          stateMgr.Push(new BloodhoundZ());
+          effects.push(new BloodhoundZ());
           break;
         case "Crypto":
-          stateMgr.Push(new BurstRippleState("#0000ff", "#00ffff", "#00ff00"));
+          effects.push(new BurstRippleState("#0000ff", "#00ffff", "#00ff00"));
           gUltCharged = false;
           break;
         case "Catalyst":
-          stateMgr.Push(new CatalystZ);
+          effects.push(new CatalystZ);
           break;
         case "Caustic":
-          stateMgr.Push(new causticZ());
+          effects.push(new causticZ());
           break;
         case "Conduit":
           effects.push(new ConduitZ());
@@ -1163,13 +1152,13 @@
           effects.push(new fuseZ())
           break;
         case "Gibraltar":
-          stateMgr.Push(new gibraltarZ())
+          effects.push(new gibraltarZ())
           break;
         case "Horizon":
           effects.push(new HorizonZ())
           break;
         case "Lifeline":
-          stateMgr.Push(new lifelineZ())
+          effects.push(new lifelineZ())
           break;
         case "Loba":
           effects.push(new lobaZ())
@@ -1181,7 +1170,7 @@
           effects.push(new MirageZ())
           break;
         case "NewCastle":
-          stateMgr.Push(new newCastleUlt())
+          effects.push(new newCastleUlt())
           break;
         case "Octane":
           effects.push(new octaneZ());
@@ -1191,7 +1180,6 @@
           break
         case "Rampart":
           effects.push(new rampartZ());
-        
           break;
         case "Revenant":
           effects.push(new RevenantZ());
@@ -1507,20 +1495,17 @@
         
       }, 200 * i)
     }
-
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-        gZGoing = false;
-      }
-      this.Draw();
-    };
-
-    this.Draw = function () {
+      
+    this.draw = function () {
       ctx.fillStyle = `hsla(0,100%,50%,${Math.sin(Date.now() / 500) * .25 + .5})`
       ctx.fillRect(0, 0, 320, 200);
       this.bird.draw()
+
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+        gZGoing = false;
+      }
     };
   }
 
@@ -1737,7 +1722,7 @@
     this.state = { prevNumber: 0, state: 0, nextState: 0, prevNextState: 0, countState: 0 }
     this.endCount = 0;
 
-    stateMgr.Push(new PulseRippleState("orange", true, 2000, false))
+    effects.push(new PulseRippleState("orange", true, 2000, false))
 
     this.draw = function () {
       this.elapsed = Date.now() - this.start;
@@ -1791,92 +1776,27 @@
     }
   }
 
-  function StagedMenuHandler() {
-    this.state = null;
-    this.prevState = null;
-    this.effect = null;
-    this.menuGoing = true;
-    this.transitionTime = 0;
-    this.transition = null;
-    this.popTime = 0;
-    this.update = function () {
-      if (gInGame == true) {
-        if (this.popTime > 100) {
-          menuHandler = false;
-        }
-        this.popTime++;
-      } else {
-        this.popTime = 0;
-      }
-      if (this.state != this.prevState) {
-        if (this.state == "BaseMenu" && enableMenu) {
-          this.effect = new BaseMenuEffect;
-          this.prevState = this.state;
-        } else if (this.state == "SelectMenu" && enableMenu) {
-          this.effect = new SelectMenuEffect
-          this.transition = null;
-          this.prevState = this.state;
-        } else if (this.state == "InDropShip" && enableDrop) {
-          this.effect = new DropShipEffect;
-          this.prevState = this.state;
-          this.transition = "RingIn"
-          this.transitionTime = Date.now();
-        } else if (this.state == "outDropShip" && enableDrop) {
-          this.prevState = this.state;
-          this.transition = "RingOut"
-          this.transitionTime = Date.now();
-          setTimeout(() => {
-            this.effect = new outDropShipEffect;
-          }, 1200);
-        }
-      }
-      if (this.effect != null && this.transition == null) {
-        this.effect.draw();
-      }
-      if (this.transition != null) {
-        switch (this.transition) {
-          case "RingIn":
-            let gradient = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
-            this.elapsed = Date.now() - this.transitionTime + 200;
-            this.calculateVal = -1440 * Math.floor((this.elapsed / 1440) / -1) + ((this.elapsed / 1440) * (1440 / -1));
-            gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
-            gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
-            DrawCircle(160, 100, 300, gradient)
-            if (Date.now() - this.transitionTime > 1300) {
-              this.transition = null;
-            }
-            break;
-          case "RingOut":
-            let gradient2 = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
-            this.elapsed = Date.now() - this.transitionTime;
-            this.calculateVal = -1440 * Math.floor((this.elapsed / 1440) / 1) + ((this.elapsed / 1440) * (1440 / 1));
-            gradient2.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
-            gradient2.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
-            DrawCircle(160, 100, 300, gradient2)
-            if (Date.now() - this.transitionTime > 1200) {
-              this.transition = null;
-            }
-            break;
-        }
-      }
-    }
-  }
 
   function BaseMenuEffect() {
     this.stripes = [];
-    this.draw = function () {
-      if (Math.random() > 0.9) {
-        this.stripes.push(new baseMenuParticle(`hsla(${engine.vision.SelectMenuColor[0] + (Math.random() - 0.5) * 80},80%,${engine.vision.SelectMenuColor[2]}%,0.7)`))
-      }
-
-      this.stripes.forEach((element, i) => {
-        element.draw();
-        if (element.lifetime  <= 0) {
-          this.stripes.splice(i, 1);
+    
+      this.draw = function () {
+        if (Math.random() > 0.9) {
+          this.stripes.push(new baseMenuParticle(`hsla(${engine.vision.SelectMenuColor[0] + (Math.random() - 0.5) * 80},80%,${engine.vision.SelectMenuColor[2]}%,0.7)`))
         }
-      });
+
+        this.stripes.forEach((element, i) => {
+          element.draw();
+          if (element.lifetime  <= 0) {
+            this.stripes.splice(i, 1);
+          }
+        });
+        if(engine.vision.InGameOrange >=.95 || YellowSelectMenuMeter.value >= .95){
+          this.lifetime = 0;
+        }
+      }
     }
-  }
+  
 
   function baseMenuParticle(color) {
     this.x = Math.random() * 320;
@@ -1888,7 +1808,12 @@
     this.draw = function () {
       var loopX = this.x + Math.sin(Date.now() / 500 * this.mod) * 15
       DrawCircle(loopX, this.y, this.radius, this.color)
-      this.y > -20 ? this.y -= this.mod : this.lifetime = 0;
+      if (this.y > -20) {
+        this.y -= this.mod;
+        
+      } else{
+        this.lifetime = 0
+      }
     }
   }
 
@@ -1935,6 +1860,9 @@
           }
         }
       }
+      if(YellowSelectMenuMeter.value <.1 && inGameMeter.value >=.95){
+        this.lifetime = 0
+      }
     }
   }
 
@@ -1957,13 +1885,16 @@
           this.flares.splice(i, 1)
         }
       });
+      if((InDropShipOrangeMeter.value <.1 && InDropShipWhiteMeter.value <.1) || inGameMeter.value <.1){
+        this.lifetime = 0
+      }
     }
   }
 
   function outDropShipEffect() {
     this.stripes = [];
     this.draw = function () {
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 1; i++) {
         this.stripes.push(new fallingParticle())
       }
       this.stripes.forEach((element, i) => {
@@ -1972,6 +1903,7 @@
           this.stripes.splice(i, 1);
         }
       });
+      if ((checkMeter.value >=.95 && whiteInGameMeter.value >=.95 )|| inGameMeter.value <.1) this.lifetime = 0;
     }
   }
 
@@ -2035,21 +1967,6 @@
     this.orbs = [];
     gLossPlaying = true;
 
-    this.Process = function () {
-      this.elapsed = Date.now() - this.start;
-      if (this.elapsed < 10000) {
-        this.draw();
-      } else {
-        gLossPlaying = false
-        menuHandler = new StagedMenuHandler
-        menuHandler.state = "BaseMenu"
-        menuHandler.transition = "RingOut"
-        menuHandler.transitionTime = Date.now();
-        defeatPushed = false;
-        stateMgr.Pop();
-      }
-    }
-
     this.draw = function () {
       DrawRect(0, 0, 320, this.elapsed / 5, "black")
       if ((200 - this.elapsed / 50) > 60) {
@@ -2061,6 +1978,13 @@
         this.orbs.forEach(element => {
           element.draw();
         });
+
+      }
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed > 10000) {
+        gLossPlaying = false;
+        defeatPushed = false;
+        this.lifetime = 0;
       }
     }
   }
@@ -2256,15 +2180,11 @@
       this.count = 0;
       this.elapsed = 0;
 
-      this.Process = function () {
-        this.elapsed = new Date().getTime() - this.start;
-        if (this.elapsed > this.duration) {
-          stateMgr.Pop();
-        }
-        this.Draw();
-      };
+      
+        
+      
 
-      this.Draw = function () {
+      this.draw = function () {
         let colorAdj = Math.sin(this.elapsed / 300) * 15 + 40;
 
         ctx.fillStyle = `hsla(0, 0%, 0%, ${(6000 - this.elapsed) / 6000})`;
@@ -2281,6 +2201,11 @@
         ctx.arc(160, 100, this.count, 0, 2 * Math.PI);
         ctx.stroke();
         this.count += 2;
+        this.elapsed = new Date().getTime() - this.start;
+        if (this.elapsed > this.duration) {
+          this.lifetime = 0
+        }
+        
       };
     }
 
@@ -2390,15 +2315,11 @@
       this.circles = [];
       this.done = false
       this.alpha = 0
-    this.Process = function () {
-      this.elapsed = Date.now() - this.start;
-      if (this.elapsed > this.duration) {
-        this.alpha >= .01 ? this.alpha -= .01 : stateMgr.Pop();
-      }
-      this.Draw();
-    };
+    
+      
+    
 
-    this.Draw = function () {
+    this.draw = function () {
       if(!this.done) this.alpha <= .75 ? this.alpha += .025 : this.done = true
       ctx.globalAlpha = this.alpha
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, 1)`)
@@ -2410,6 +2331,11 @@
         }
       })
       ctx.globalAlpha = 1
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed > this.duration) {
+        this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      }
+      
     };
   }
 
@@ -2421,15 +2347,10 @@
     this.squares = [];
     var split = 0;
 
-    this.Process = function () {
-      this.elapsed = getNow() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-        gZGoing = false;
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+    
+      
+   
+    this.draw = function () {
       if (this.elapsed < 1500) {
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, 320, 200);
@@ -2457,6 +2378,12 @@
           effects.push(new SparkleEffect(42 + random(-10, 10), 60, 50, 30));
         }
       }
+      this.elapsed = getNow() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+        gZGoing = false;
+      }
+      
     };
   }
 
@@ -2471,15 +2398,11 @@
     }
     this.streaks.push(new PathStreak(path, 4000, 50, 2, "blue", 30));
 
-    this.Process = function () {
-      this.elapsed = getNow() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
+    
+      
+    
 
-    this.Draw = function () {
+    this.draw = function () {
       if (Date.now() - this.start > 4000) {
         this.elapsed = Date.now() - (this.start + 4000);
         let gradient = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
@@ -2495,6 +2418,11 @@
         });
         DrawCircle(160, 100, 10 + (Math.sin((Date.now() - this.start) / 100) + 1) / 2 * 20, "blue");
       }
+      this.elapsed = getNow() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+      }
+      
     };
   }
 
@@ -2508,15 +2436,10 @@
     for (let index = 0; index < 320; index++) {
       offset.push(Math.random() * 200);
     }
-    this.Process = function () {
-      this.elapsed = getNow() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-        gZGoing = false
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+    
+      
+    
+    this.draw = function () {
       for (let i = 0; i < 3; i++) {
         ctx.beginPath();
         ctx.moveTo(0, 100);
@@ -2538,6 +2461,12 @@
           }
         });
       }
+      this.elapsed = getNow() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+        gZGoing = false
+      }
+      
     }
   }
 
@@ -2592,15 +2521,10 @@ this.start = new Date().getTime();
 this.duration = 3000;
 var split = 0;
 this.alpha = 1
-this.Process = function () {
-  this.elapsed = new Date().getTime() - this.start;
-  if (this.elapsed > this.duration) {
-    this.alpha >= .05 ? this.alpha -= .05 : stateMgr.Pop();
-    gZGoing = false;
-  }
-  this.Draw();
-};
-this.Draw = function () {
+
+  
+
+this.draw = function () {
   ctx.globalAlpha = this.alpha
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, 320, 200);
@@ -2628,6 +2552,12 @@ this.Draw = function () {
     this.size += 3;
   }
   ctx.globalAlpha = 1
+  this.elapsed = new Date().getTime() - this.start;
+  if (this.elapsed > this.duration) {
+    this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0 ;
+    gZGoing = false;
+  }
+  
 };
 }
 
@@ -2725,14 +2655,10 @@ this.Draw = function () {
     this.start = new Date().getTime();
     this.duration = 5000;
     var split = 0;
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+   
+      
+   
+    this.draw = function () {
       if (this.elapsed < 2000) {
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, 320, 200);
@@ -2757,6 +2683,11 @@ this.Draw = function () {
           )
         );
       }
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0;
+      }
+      
     };
   }
 
@@ -2793,15 +2724,10 @@ this.Draw = function () {
     this.duration = 11000;
     this.squares = [];
     var split = 0;
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-        gZGoing = false;
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+   
+      
+   
+    this.draw = function () {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, 320, 200);
       if (this.elapsed < 4000) {
@@ -2822,6 +2748,12 @@ this.Draw = function () {
           }
         })
       }
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0;
+        gZGoing = false;
+      }
+      
     };
   }
 
@@ -2885,15 +2817,10 @@ this.Draw = function () {
     this.duration = 3000;
     var split = 0;
 
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-        gZGoing = false
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+  
+      
+    
+    this.draw = function () {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, 320, 200);
       if (this.elapsed <= 1500) {
@@ -2911,6 +2838,12 @@ this.Draw = function () {
         }
         this.size += 5;
       }
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0;
+        gZGoing = false
+      }
+      
     };
   }
 
@@ -3033,12 +2966,10 @@ this.Draw = function () {
     this.elapsed;
     this.circle;
 
-    this.Process = function () {
-      this.draw();
-      if (this.elapsed > 4700) {
-        stateMgr.Pop()
-      }
-    }
+   
+      
+      
+   
     this.draw = function () {
       this.elapsed = new Date().getTime() - this.start
         if (this.circle == undefined) {
@@ -3052,6 +2983,7 @@ this.Draw = function () {
       if (this.elapsed > 4500) {
         this.lifetime = 0;
       }
+      
     }
   }
 
@@ -3065,12 +2997,10 @@ this.Draw = function () {
     this.dot = new dot(160, -50);
     this.particles = [];
     this.randomElectric = 1;
-    this.Process = function () {
-      this.draw();
-      if (this.elapsed > 7000) {
-        stateMgr.Pop()
-      }
-    }
+    
+     
+      
+    
     this.draw = function () {
       this.elapsed = new Date().getTime() - this.start;
       if (this.elapsed < 3500) {
@@ -3098,6 +3028,9 @@ this.Draw = function () {
       this.particles.forEach(particle => {
         particle.draw();
       });
+      if (this.elapsed > 7000) {
+        this.lifetime = 0
+      }
     }
   }
 
@@ -3143,14 +3076,11 @@ this.Draw = function () {
     this.start = new Date().getTime();
     this.duration = 2000;
     var split = -300;
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+    
+      
+     
+  
+    this.draw = function () {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, 320, 200);
       ctx.fillStyle = "#0320fc";
@@ -3160,6 +3090,11 @@ this.Draw = function () {
       ctx.fillStyle = "#0320fc";
       ctx.fillRect(250 + split, 100, 100, 60);
       split += 11;
+
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+      }
     };
   }
 
@@ -3201,7 +3136,7 @@ this.Draw = function () {
     this.draw = function(){
       effects.push(new asheHelp(1, 40 + 120 * Math.random(), Math.random()))
       this.count < 4 ? this.count++ : this.count = 0
-      if(this.count <= 0) effects.push(new gunHelp())
+      if(this.count == 0) effects.push(new gunHelp())
       this.lifetime--
     }
   }
@@ -3237,14 +3172,11 @@ this.Draw = function () {
     this.count = 2000;
     this.color = "#00f2ff";
     this.color2 = "#00f2ff";
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+    
+      
+      
+    
+    this.draw = function () {
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, 320, 200);
         var pctUp = this.count / 2000;
@@ -3257,6 +3189,10 @@ this.Draw = function () {
           this.count = 2000;
         } else {
           this.count -= 75;
+        }
+        this.elapsed = new Date().getTime() - this.start;
+        if (this.elapsed > this.duration) {
+          this.lifetime = 0
         }
     };
   }
@@ -3470,14 +3406,11 @@ this.Draw = function () {
     this.duration = 2000;
     let speed = 0;
 
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+    
+      
+      
+    
+    this.draw = function () {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, 320, 200);
 
@@ -3486,6 +3419,10 @@ this.Draw = function () {
         ctx.fillRect(0, this.elapsed <= 1000 ? (0 + 30 * i) + speed : (350 + i * 30) - speed, 320, 17);
       }
       speed += 5
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+      }
     }
   }
 
@@ -3568,14 +3505,11 @@ this.Draw = function () {
     this.start = new Date().getTime();
     this.duration = 1225;
     var split = 0;
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+   
+      
+      
+    
+    this.draw = function () {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, 320, 200);
       ctx.fillStyle = "#bb00ee";
@@ -3584,6 +3518,10 @@ this.Draw = function () {
         ctx.fillRect((320 - 30 * i - 30) - split, 0, 30, 200);
       }
       split += 8;
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+      }
     };
   }
 
@@ -3697,15 +3635,11 @@ this.Draw = function () {
     this.isHollow = hollow;
     this.reverse = reverse;
 
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-        gZGoing = false;
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
+    
+      
+      
+    
+    this.draw = function () {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, 320, 200);
       var pctUp = this.count / 2000;
@@ -3724,6 +3658,11 @@ this.Draw = function () {
       } else {
         this.count -= 75;
       }
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+        gZGoing = false;
+      }
     };
   }
 
@@ -3737,16 +3676,12 @@ this.Draw = function () {
     this.color2 = color2;
     this.color3 = color3;
 
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-        gZGoing = false;
-      }
-      this.Draw();
-    };
+    
+      
+      
+    
 
-    this.Draw = function () {
+    this.draw = function () {
       draw3ColorSpiral(
         160,
         100,
@@ -3757,6 +3692,11 @@ this.Draw = function () {
         this.count > 1000 ? -this.count : this.count
       );
       this.count -= 20;
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.lifetime = 0
+        gZGoing = false;
+      }
     };
   }
   function draw3ColorSpiral(spX, spY, cl1, cl2, cl3, radius, phase) {
@@ -3803,13 +3743,10 @@ this.Draw = function () {
     this.alpha = alpha;
     this.lifetime = 80;
 
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        this.alpha >= .05 ? this.alpha -= .05 : stateMgr.Pop();
-      }
-      this.draw();
-    };
+      //this.elapsed = new Date().getTime() - this.start;
+      //if (this.elapsed > this.duration) {
+       // this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+     // }
 
     this.draw = function () {
       var pctUp = 1 - this.count / 2000;
@@ -3851,7 +3788,7 @@ this.Draw = function () {
     this.h = h;
     this.done = false;
 
-    this.Draw = function () {
+    this.draw = function () {
       DrawCircle(this.x, this.y - 40, 10, `hsl(${this.h}, 100%, 80%)`)
       DrawCircle(this.x, this.y - 35, 15, `hsl(${this.h}, 100%, 70%)`)
       DrawCircle(this.x, this.y - 20, 20, `hsl(${this.h}, 100%, 60%)`)
@@ -3870,7 +3807,7 @@ this.Draw = function () {
     this.y = Math.random() * 200;
     this.rad = 1;
     this.lit = Math.random() * 50 + 50
-    this.Draw = function () {
+    this.draw = function () {
       DrawCircle(this.x, this.y, this.rad, `hsla(0, 0%, ${this.lit}%, ${1 - this.rad / 75})`)
       this.rad < 75 ? this.rad += 2 : this.lifetime = 0
     }
@@ -4175,21 +4112,19 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     this.vignette.addColorStop(.45, "hsla(0, 0%, 0%, 0)")
     this.vignette.addColorStop(.65, "hsla(0, 0%, 0%, 1)")
 
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
+   
+      
 
       let color = "";
       if (character == "Vantage") {
         color = engine.vision.ultCheck;
       }
-      if (this.elapsed > this.duration || (character == "Vantage" && color[0] > 180 && color[0] < 225 && color[1] > 25 && color[1] < 50 && color[2] > 75 && color[2] < 100)) {
-        this.alpha >= .05 ? this.alpha -= .05 : stateMgr.Pop();
-        gZGoing = false;
-      }
-      this.Draw();
-    };
+      
+      
+    
 
-    this.Draw = function () {
+    this.draw = function () {
+      this.elapsed = new Date().getTime() - this.start;
       ctx.globalAlpha = this.alpha;
       if (character == "Vantage") {
         vantageLine(50, 100, 160, 100, this.length)
@@ -4240,6 +4175,10 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
         }
       }
       ctx.globalAlpha = 1
+      if (this.elapsed > this.duration || (character == "Vantage" && color[0] > 180 && color[0] < 225 && color[1] > 25 && color[1] < 50 && color[2] > 75 && color[2] < 100)) {
+        this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        gZGoing = false;
+      }
     };
   }
 
@@ -4333,34 +4272,7 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
       }
     };
   }
-  function StateHandler() {
-    var stack = [];
-    var state = null;
-
-    var updateState = function () {
-      if (stack.length > 0) {
-        state = stack[stack.length - 1];
-      } else {
-        state = null;
-      }
-    };
-
-    this.Push = function (newState) {
-      stack.push(newState);
-      updateState();
-    };
-
-    this.Pop = function () {
-      stack.pop();
-      updateState();
-    };
-
-    this.Process = function () {
-      if (state != null) {
-        state.Process();
-      }
-    };
-  }
+  
 
   // ENGINE READY FUNCTION ---------------------------------------------------------------------------------------------
   function onEngineReady() {
