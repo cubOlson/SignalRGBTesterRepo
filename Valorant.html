@@ -1,6 +1,6 @@
 <head>
   <title>Valorant Devv</title>
-  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.45" />
+  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.46" />
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -10,9 +10,13 @@
     values="Astra,Breach,Brimstone,Chamber,Clove,Cypher,Deadlock,Fade,Gekko,Harbor,ISO,Jett,Kayo,Killjoy,Neon,Omen,Phoenix,Raze,Reyna,Sage,Skye,Sova,Viper,Vyse,Yoru"
     default="Vyse" />
   <meta property="enableAgents" label="Agent skill effects" type="boolean" default="1" />
-  <meta property="enableHealth" label="Health effect" type="boolean" default="1" />
-  <meta property="enableBomb" label="Bomb effect" type="boolean" default="1" />
   <meta property="enableShield" label="Shield effect" type="boolean" default="1" />
+  <meta property="enableSpike" label="Spike effect" type="boolean" default="1" />
+  <meta property="enableDamage" label="Damage effect" type="boolean" default="1" />
+  <meta property="enableHeal" label="Heal effect" type="boolean" default="1" />
+  <meta property="enableVictory" label="Victory effect" type="boolean" default="1" />
+  <meta property="enableDefeat" label="Defeat effect" type="boolean" default="1" />
+  <meta property="enableBomb" label="Bomb effect" type="boolean" default="1" />
 
   <meta meter="inGame1" tags="vlc,VALORANT" x="0.4885" y="0.1022" width="0.0062" height="0" 
     h="0-360" s="0-30" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="70-100" type="area">
@@ -361,50 +365,31 @@
     LossRedMeter.setValue(engine.vision.LossRed);
     deadGreenMeter.setValue(engine.vision.deadGreen);
     deadWhiteMeter.setValue(engine.vision.deadWhite);
-    if (enableHealth && ShouldTriggerEffects && (deadWhiteMeter.value != 1 && deadGreenMeter.value != 1)) {
-      healthMeter.setValue(engine.vision.health);
-      healthRedMeter.setValue(engine.vision.healthred);
+    healthMeter.setValue(engine.vision.health);
+    healthRedMeter.setValue(engine.vision.healthred);
+    shieldNotWhiteMeter.setValue(engine.vision.shieldNotWhite);
+    shieldWhiteMeter.setValue(engine.vision.shieldWhite);
+    bombMeter.setValue(engine.vision.BombPlanted);
+    PlantSpikeMeter.setValue(engine.vision.PlantSpikeConfirmation)
+    ReynaEAbilityMeter.setValue(engine.vision.reynaE);
+    ReynaE2AbilityMeter.setValue(engine.vision.reynaE2);
+    cAbilityMeter.setValue(engine.vision.cMeter);
+    qAbilityMeter.setValue(engine.vision.qMeter);
+    eAbilityMeter.setValue(engine.vision.eMeter);
+    xAbilityMeter.setValue(engine.vision.xMeter);
+        
+    if (champId == "Neon") {
+      Neon_ult_meter.setValue(engine.vision.neonUlt);
+      onNeon_e();
+    } else if (champId == "Chamber") {
+      Chamber_ult_meter.setValue(engine.vision.chamberUlt);
+    } else if (champId == "Jett") {
+      Jett_x_meter.setValue(engine.vision.jettX);
+    } else if (champId == "Viper") {
+      Viper_Ult_meter.setValue(engine.vision.viperX);
     }
-    if (enableShield && ShouldTriggerEffects && (deadWhiteMeter.value != 1 && deadGreenMeter.value != 1)) {
-      shieldNotWhiteMeter.setValue(engine.vision.shieldNotWhite);
-      shieldWhiteMeter.setValue(engine.vision.shieldWhite);
-    }
-    if (champId != "Astra") {
-      if (enableBomb) {
-        bombMeter.setValue(engine.vision.BombPlanted);
-        PlantSpikeMeter.setValue(engine.vision.PlantSpikeConfirmation)
-      }
-    }
-    if (engine.vision.inGame1 > 0.5 && engine.vision.inGame2 > 0.5 && (deadGreenMeter.value != 1 && deadWhiteMeter.value != 1)) {
-      if (enableHealth) {
-        if (engine.vision.health > 0) {
-          healthMeter.setValue(engine.vision.health);
-        }
-      }
-      if (enableAgents && (deadGreenMeter.value != 1 && deadWhiteMeter.value != 1)) {
-        ReynaEAbilityMeter.setValue(engine.vision.reynaE);
-        ReynaE2AbilityMeter.setValue(engine.vision.reynaE2);
-        cAbilityMeter.setValue(engine.vision.cMeter);
-        qAbilityMeter.setValue(engine.vision.qMeter);
-        eAbilityMeter.setValue(engine.vision.eMeter);
-        xAbilityMeter.setValue(engine.vision.xMeter);
-
-
-        if (engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5) {
-          if (champId == "Neon") {
-            Neon_ult_meter.setValue(engine.vision.neonUlt);
-            onNeon_e();
-          } else if (champId == "Chamber") {
-            Chamber_ult_meter.setValue(engine.vision.chamberUlt);
-          } else if (champId == "Jett") {
-            Jett_x_meter.setValue(engine.vision.jettX);
-          } else if (champId == "Viper") {
-            Viper_Ult_meter.setValue(engine.vision.viperX);
-          }
-        }
-      }
-    }
-
+             
+    
     DrawRect(0, 0, 320, 200, "black")
     backgroundHandler()
 
@@ -414,7 +399,7 @@
       if(ele.lifetime <= 0) effects.splice(i, 1)
     })
 
-    if (enableBomb) {
+    if (enableSpike) {
       if (PlantSpikeMeter.value >= .95 && engine.vision.PlantSpikeBar > .01 && engine.vision.SpikeNotYellow <= 0) gPlantBar += (engine.vision.PlantSpikeBar - gPlantBar) / 10
       else if (PlantSpikeMeter.value <= .1 || bombMeter.value >= .95 || engine.vision.PlantSpikeBar <= .05) gPlantBar > 0 ? gPlantBar-=5 : gPlantBar = 0
       ctx.beginPath();
@@ -528,22 +513,25 @@
   //END UPDATE LOOP --------------------------------------------------------------------------
   //GENERAL METER CALLBACKS --------------------------------------------------------------------------
   function onHealthMeterChanged() {
-    if (healthMeter.value > 0.2 && healthMeter.increased && Date.now() - timeoutHp > 500) {
+    if (healthMeter.value > 0.2 && healthMeter.increased && Date.now() - timeoutHp > 500 && enableHeal) {
       healthState = "#00ff00";
-    } else if (healthRedMeter.increased && healthRedMeter.value > .5 && healthMeter.decreased && healthMeter.value < 0.07) {
+    } else if (healthRedMeter.increased && healthRedMeter.value > .5 && healthMeter.decreased && healthMeter.value < 0.07 && enableDamage) {
       healthState = "#ff0000";
       timeoutHp = Date.now();
     }
   }
 
   function onShieldMeterChanged() {
-    if (!hasTriggered && shieldWhiteMeter.value >= 0.01 && shieldNotWhiteMeter.value <= 0  && ShouldTriggerEffects) {
-      stateMgr.Push(new ShieldIncreaseState("#2effab"));
-      hasTriggered = true;
+    if(enableShield){
+        if (!hasTriggered && shieldWhiteMeter.value >= 0.01 && shieldNotWhiteMeter.value <= 0  && ShouldTriggerEffects) {
+          stateMgr.Push(new ShieldIncreaseState("#2effab"));
+          hasTriggered = true;
+        }
+        if(shieldWhiteMeter.value < 0.01){
+          hasTriggered = false;
+        }
     }
-     if(shieldWhiteMeter.value < 0.01){
-      hasTriggered = false;
-     }
+    
   }
 
   function checkGameEnd() {
@@ -552,28 +540,38 @@
   }
 
   function VictoryCallback() {
-    if (VictoryGreenMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95  && !ShouldTriggerEffects ) {
-      effects.push(new VictoryEffect())
+    if(enableVictory){
+      if (VictoryGreenMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95  && !ShouldTriggerEffects ) {
+        effects.push(new VictoryEffect())
+      }
     }
+    
   }
 
   function LossCallback() {
-    if (LossRedMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95 && !ShouldTriggerEffects ) {
-      effects.push(new DefeatEffect())
+    if(enableDefeat){
+      if (LossRedMeter.value >= .95 && VictoryLossConfirmationMeter.value >= .95 && !ShouldTriggerEffects ) {
+        effects.push(new DefeatEffect())
+      }
     }
+
   }
 
   function onBombMeterChanged() {
-    if (bombMeter.value >= .95 && engine.vision.BombNotRed <= .05 && !bombPushed ) {
-      bombPushed = true;
-      effects.push(new SpikeProgressionEffect());
 
-    } else if (bombMeter.decreased && bombMeter.value == 0) {
-      bombPushed = false;
+    if(enableBomb){
+      if (bombMeter.value >= .95 && engine.vision.BombNotRed <= .05 && !bombPushed ) {
+        bombPushed = true;
+        effects.push(new SpikeProgressionEffect());
+
+      } else if (bombMeter.decreased && bombMeter.value == 0) {
+        bombPushed = false;
+      }
+      if (recentColSwitch) {
+        recentColSwitch = false;
+      }
     }
-    if (recentColSwitch) {
-      recentColSwitch = false;
-    }
+    
   }
 
   function SpikeLoading(){
@@ -586,18 +584,18 @@
   //END GENERAL METER CALLBACKS --------------------------------------------------------------------------
   //CHARACTER METER CALLBACKS --------------------------------------------------------------------------
   function onJett_x() {
-    if (xAbilityMeter.value >= .5 && Jett_x_meter.increased) {
+    if (xAbilityMeter.value >= .5 && Jett_x_meter.increased && enableAgents) {
       effects.push(new JettX())
 
     }
-    if (xAbilityMeter.value >= .5 && Jett_x_meter.decreased) {
+    if (xAbilityMeter.value >= .5 && Jett_x_meter.decreased && enableAgents) {
       effects.push(new JettX())
 
     }
   }
 
   function cAbilityCallback() {
-    if (cAbilityMeter.decreased && cAbilityMeter.diff > 0.1  && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+    if (cAbilityMeter.decreased && cAbilityMeter.diff > 0.1  && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects && enableAgents) {
 
 
       switch (champId) {
@@ -705,7 +703,7 @@
   }
 
   function qAbilityCallback() {
-    if (qAbilityMeter.decreased && qAbilityMeter.diff > 0.1   && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+    if (qAbilityMeter.decreased && qAbilityMeter.diff > 0.1   && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects && enableAgents) {
       switch (champId) {
         case "Astra":
           var colors = hexToHSL("#db44fc");
@@ -850,7 +848,7 @@
   }
 
   function eAbilityCallback() {
-    if (eAbilityMeter.decreased && eAbilityMeter.diff > 0.1 && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+    if (eAbilityMeter.decreased && eAbilityMeter.diff > 0.1 && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects && enableAgents) {
 
       switch (champId) {
         case "Astra":
@@ -992,7 +990,7 @@
   }
 
   function onNeon_e() {
-    if (ShouldTriggerEffects) {
+    if (ShouldTriggerEffects && enableAgents) {
       var charge = engine.vision.neonCharge;
       if (charge != -1 && charge != oldCharge) {
         var direction = charge < oldCharge
@@ -1018,7 +1016,7 @@
   }
 
   function xAbilityCallback() {
-    if (xAbilityMeter.decreased && xAbilityMeter.diff > 0.1  && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects) {
+    if (xAbilityMeter.decreased && xAbilityMeter.diff > 0.1  && engine.vision.inGame1 > .5 && engine.vision.inGame2 > .5 && ShouldTriggerEffects && enableAgents) {
      
       switch (champId) {
         case "Astra":
@@ -1738,6 +1736,7 @@
     this.start = Date.now()
     this.Process = function () {
       if (Date.now() - this.start > 6000) {
+        chamberUltAnim = false
         stateMgr.Pop();
       }
       this.Draw();
