@@ -1,41 +1,41 @@
 <head>
   <title>Apex Legends Devv</title>
-  <meta description="Meters and ambiance for Apex Legends. v1.04" />
+  <meta description="Meters and ambiance for Apex Legends. v1.05" />
   <meta publisher="SignalRGB" />
 
   <meta property="character" label="Legends" type="list"
-    values="Alter,Ash,Ballistic,Bangalore,Bloodhound,Catalyst,Caustic,Conduit,Crypto,Fuse,Gibraltar,Horizon,Lifeline,Loba,Mad Maggie,Mirage,NewCastle,Octane,Pathfinder,Rampart,Revenant,Seer,Valkyrie,Vantage,Wattson,Wraith"
-    default="Alter" />
-  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
-  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+    values="Alter,Ash,Ballistic,Bangalore,Bloodhound,Catalyst,Caustic,Conduit,Crypto,Fuse,Gibraltar,Horizon,Lifeline,Loba,Mad Maggie,Mirage,NewCastle,Octane,Pathfinder,Rampart,Revenant,Seer,Sparrow,Valkyrie,Vantage,Wattson,Wraith"
+    default="Sparrow" />
+  <meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background effect." type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes the background mode." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
   default="Ambience"/>
-  <meta property="backColor" label="Custom Color" type="color" default="#050505" min="0" max="360" />
+  <meta property="backColor" label="Custom Color" tooltip="Changes the color of custom background modes." type="color" default="#050505" min="0" max="360" />
   <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
-    tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
+    tooltip="Enable this toggle to place health and shield bar effects on your devices."
     type="boolean" default="0" />
-  <meta property="HUDOn" label="HUD Effects" type="boolean" default="1" />
-  <meta property="enableHealth" label="Health effects" type="boolean" default="1" />
-  <meta property="HealthBarX" label="HealthBarX" type="number" min="0" max="100" default="0" />
-  <meta property="HealthBarY" label="HealthBarY" type="number" min="0" max="100" default="25" />
-  <meta property="HealthBarWidth" label="HealthBarWidth" type="number" min="0" max="100" default="100" />
-  <meta property="HealthBarHeight" label="HealthBarHeight" type="number" min="0" max="100" default="30" />
-  <meta property="enableShield" label="Shield effects" type="boolean" default="1" />
-  <meta property="ShieldBarX" label="ShieldBarX" type="number" min="0" max="100" default="0" />
-  <meta property="ShieldBarY" label="ShieldBarY" type="number" min="0" max="100" default="40" />
-  <meta property="ShieldBarWidth" label="ShieldBarWidth" type="number" min="0" max="100" default="100" />
-  <meta property="ShieldBarHeight" label="ShieldBarHeight" type="number" min="0" max="100" default="30" />
-  <meta property="effectHex" label="Legends Select Color" type="color" min="0" max="360" default="#efff00" />
-  <meta property="enableUlt" label="Ult effects" type="boolean" default="1" />
-  <meta property="enableQ" label="Q effects" type="boolean" default="1" />
-  <meta property="enableVD" label="Victory/Defeat effects" type="boolean" default="1" />
-  <meta property="enableStorm" label="Storm effects" type="boolean" default="1" />
-  <meta property="enableDrop" label="Dropship effects" type="boolean" default="1" />
-  <meta property="enableTeam" label="Teammate Death effect" type="boolean" default="1" />
-  <meta property="enableMenu" label="Menu effects" type="boolean" default="1" />
-  <meta property="enableRevive" label="Revive effects" type="boolean" default="1" />
-  <meta property="enableSyringe" label="Syringe effects" type="boolean" default="1" />
-  <meta property="enablePhoenix" label="Phoenix Kit effects" type="boolean" default="1" />
-
+  <meta property="HPHUDOn" label="Health Bar Effect." tooltip="Enables the health bar effect." type="boolean" default="1" />
+  <meta property="HealthBarX" label="Health Bar X" tooltip="Moves the health bar left and right." type="number" min="0" max="100" default="0" />
+  <meta property="HealthBarY" label="Health Bar Y" tooltip="Moves the health bar up and down." type="number" min="0" max="100" default="25" />
+  <meta property="HealthBarWidth" label="HealthBarWidth" tooltip="Changes the maximum width of the health bar." type="number" min="0" max="100" default="100" />
+  <meta property="HealthBarHeight" label="HealthBarHeight" tooltip="Changes the maximum height of the health bar." type="number" min="0" max="100" default="15" />
+  <meta property="ShieldHUDOn" label="Shield Bar Effect" tooltip="Enables the shield bar effect." type="boolean" default="1" />
+  <meta property="ShieldBarX" label="ShieldBarX" tooltip="Moves the shield bar left and right." type="number" min="0" max="100" default="0" />
+  <meta property="ShieldBarY" label="ShieldBarY" tooltip="Moves the shield bar up and down." type="number" min="0" max="100" default="40" />
+  <meta property="ShieldBarWidth" label="ShieldBarWidth" tooltip="Changes the maximum width of the shield bar." type="number" min="0" max="100" default="100" />
+  <meta property="ShieldBarHeight" label="ShieldBarHeight" tooltip="Changes the maximum height of the shield bar." type="number" min="0" max="100" default="15" />
+  <meta property="effectHex" label="Legends Select Color"  tooltip="Changes the color of the legend selection effect." type="color" min="0" max="360" default="#efff00" />
+  <meta property="enableHealth" label="Health effects" tooltip="Enable the damage and healing effects." type="boolean" default="1" />
+  <meta property="enableShield" label="Shield Effects" tooltip="Enable shield pickup and damage effects." type="boolean" default="1" />
+  <meta property="enableUlt" label="Ultimate effect" tooltip="Enables the ultimate ability charged effect." type="boolean" default="1" />
+  <meta property="enableQ" label="Ability effect" tooltip="Enables the champion ability effect." type="boolean" default="1" />
+  <meta property="enableVD" label="Victory/Defeat effects" tooltip="Enables victory and defeat effects." type="boolean" default="1" />
+  <meta property="enableStorm" label="Storm effects" tooltip="Enables the strom state effect." type="boolean" default="1" />
+  <meta property="enableDrop" label="Dropship effects" tooltip="Enables the dropship effect." type="boolean" default="1" />
+  <meta property="enableTeam" label="Teammate Death effect" tooltip="Enables the team death effect." type="boolean" default="1" />
+  <meta property="enableMenu" label="Menu effects" tooltip="Enables the champion select effect." type="boolean" default="1" />
+  <meta property="enableRevive" label="Revive effects" tooltip="Enables the reviving effect." type="boolean" default="1" />
+  <meta property="enableSyringe" label="Syringe effects" tooltip="Enables the healing syringe effect." type="boolean" default="1" />
+  <meta property="enablePhoenix" label="Phoenix Kit effects" tooltip="Enables the phoenix kit effect." type="boolean" default="1" />
 
   <meta meter="check" tags="apex,VLC,process" type="linear" x="0.2668" y="0.9583" width="0.0003" height=".0001" 
     h="0-360" s="0-25" l="50-100" hdr-h="0-360" hdr-s="0-25" hdr-l="50-100">
@@ -68,8 +68,8 @@
   </meta>
 
   <meta meter="WhiteInGame" tags="apex,VLC,process" type="area" x="0.7465" y="0.9660" width="0.00025" height="0.0007"
-    h="0-360" s="0-30" l="75-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100">
-    <resolution aspect="3.55:1" x="0.8820" y="0.937" width="0.0005" height=".0001" />
+    h="0-360" s="0-30" l="60-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.0105" y="0.8585" width="0.0033" height="0.0229" />
     <resolution aspect="24:10" x="0.8058" y="0.9639" width="0.0000" height="0.0021" />
     <resolution aspect="16:11"  x="0.7465" y="0.9660" width="0.00025" height="0.0007"/>
 
@@ -106,7 +106,7 @@
   </meta>
 
   <meta meter="whiteVal" tags="apex,VLC,process" type="area" x="0.4863" y="0.8771" width="0.0285" height="0.0472" 
-    h="0-360" s="0-10" l="95-100" hdr-h="0-360" hdr-s="0-5" hdr-l="95-100">
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-5" hdr-l="95-100">
     <resolution aspect="3.55:1" x="0.4930" y="0.8778" width="0.0141" height="0.0450" />
     <resolution aspect="24:10" x="0.4910" y="0.8813" width="0.0180" height="0.0403" />
     <resolution aspect="16:11"  x="0.4900" y="0.8795" width="0.0180" height="0.0460"/>
@@ -420,8 +420,14 @@
   //tags="apex, apex legends"
 
   //#region Variable declaration
+  let canvas, ctx;
+  canvas = document.getElementById("exCanvas")
+  ctx = canvas.getContext("2d")
+  const hiddenCanvas = document.createElement('canvas');
+  hiddenCanvas.width = 320;
+  hiddenCanvas.height = 200;
+  const hiddenCtx = hiddenCanvas.getContext('2d');
 
-  var canvas, ctx;
   let gUltCharged = false;
   let gUltAnimPlayed = false;
   let gZGoing = false;
@@ -523,7 +529,6 @@
       MenuColorMeter.setValue(engine.vision.SelectMenuColor[0])
     }
     
-
     if (((gUltCharged && !gUltAnimPlayed) || gVantageReady) && gInGame && enableUlt) {
       effects.push(new BurstRippleState(effectHex, '#ffffff', effectHex))
       gUltAnimPlayed = true;
@@ -538,22 +543,18 @@
     if (enablePhoenix && gInGame) {
       if (engine.vision.phoenixKit > 0.1 && confirmCharge > 0.8) {
         drawSweep(engine.vision.phoenixKit, "rgba(139, 35, 224, 0.9)");
-       
       }
-
       if (engine.vision.phoenixKit > 0.95 && confirmCharge > 0.8) {
         effects.push(new ColorBurst(160, 100, "rgb(139, 35, 224"));
-      
       }
     }
+
     if (enableSyringe) {
       if (engine.vision.syringeCharge > 0.1 && confirmCharge > 0.8) {
         drawSweep(engine.vision.syringeCharge, "rgba(255, 0, 0, 0.9");
       }
-
       if (engine.vision.syringeCharge > 0.95 && confirmCharge > 0.8) {
         effects.push(new ColorBurst(160, 100, `hsla(${engine.vision.ShieldBarColor[0]}, ${engine.vision.ShieldBarColor[1]}%, ${engine.vision.ShieldBarColor[2]}%, 1)`));
-     
       }
     }
 
@@ -564,17 +565,15 @@
 
       if (engine.vision.shieldCharge > 0.95 && confirmCharge > 0.8 && engine.vision.check >= .95) {
         effects.push(new ColorBurst(160, 100, "rgb(19, 101, 183"));
-     
       }
     }
+
     if (enableRevive && reviveConfirmationMeter.value >= .95) {
       if (engine.vision.revive > 0.1) {
         drawSweepUp(engine.vision.revive, "rgba(123, 174, 0, 0.9");
       }
-
       if (engine.vision.revive > 0.95) {
         effects.push(new ColorBurst(160, 100, "rgb(123, 174, 0"));
-    
       }
     }
 
@@ -583,16 +582,15 @@
     }
 
     theHUD.draw();
-    for (let i = 0; i < effects.length; i++) {
-      effects[i].draw();
-      if (effects[i].lifetime  <= 0) {
-        effects.splice(i, 1);
-      }
-    }
+
+    effects.forEach(ele => ele.draw())
+    effects = effects.filter(ele => !(ele.lifetime <= 0))
 
     if (effects.length === 0) {
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      hiddenCtx.setTransform(1, 0, 0, 1, 0, 0);
     }
+
+    ctx.drawImage(hiddenCanvas, 0, 0)
 
     window.requestAnimationFrame(update);
   }
@@ -663,7 +661,7 @@
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
         if (engine.vision.health < 0.35 && engine.vision.health > 0 && gInGame) {
-            ctx.fillStyle =
+            hiddenCtx.fillStyle =
             "hsla(" +
             0 +
             "," +
@@ -674,7 +672,7 @@
             ambienceAlpha * 0.01 +
             ")";
         } else if ((engine.vision.mini > 0.7 && character == "Rampart") || (engine.vision.dprotection > .7 && character == "Revenant") && gInGame) {
-          ctx.fillStyle =
+          hiddenCtx.fillStyle =
             "hsla(" +
             30 +
             "," +
@@ -685,7 +683,7 @@
             ambienceAlpha * 0.01 +
             ")";
         } else if (engine.vision.cyrp >= .8 && character == "Crypto" && gInGame) {
-            ctx.fillStyle =
+            hiddenCtx.fillStyle =
             "hsla(" +
             115 +
             "," +
@@ -696,9 +694,9 @@
             ambienceAlpha * 0.01 +
             ")";
         } else {
-          ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+          hiddenCtx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
         }
-        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
   
@@ -714,7 +712,7 @@
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
         if (engine.vision.health < 0.35 && engine.vision.health > 0 && gInGame) {
-            ctx.fillStyle =
+            hiddenCtx.fillStyle =
             "hsla(" +
             0 +
             "," +
@@ -725,7 +723,7 @@
             ambienceAlpha * 0.01 +
             ")";
         } else if ((engine.vision.mini > 0.7 && character == "Rampart") || (engine.vision.dprotection > .7 && character == "Revenant") && gInGame) {
-          ctx.fillStyle =
+          hiddenCtx.fillStyle =
             "hsla(" +
             30 +
             "," +
@@ -736,7 +734,7 @@
             ambienceAlpha * 0.01 +
             ")";
         } else if (engine.vision.cyrp >= .8 && character == "Crypto" && gInGame) {
-            ctx.fillStyle =
+            hiddenCtx.fillStyle =
             "hsla(" +
             115 +
             "," +
@@ -747,9 +745,9 @@
             ambienceAlpha * 0.01 +
             ")";
         } else {
-          ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+          hiddenCtx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
         }
-        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
 
@@ -759,9 +757,9 @@
     this.red = false;
     this.white = false;
     this.draw = function () {
-      if (adjToggle) {
-        DrawRect(HealthBarX, HealthBarY, HealthBarWidth * 3.2, HealthBarHeight * 2, "green")
-        DrawRect(ShieldBarX, ShieldBarY, ShieldBarWidth * 3.2, ShieldBarHeight * 2, "blue")
+      if (adjToggle && !gInGame) {
+        DrawRect(HealthBarX * 3.2, HealthBarY * 2, HealthBarWidth * 3.2, HealthBarHeight * 2, "green")
+        DrawRect(ShieldBarX * 3.2, ShieldBarY * 2, ShieldBarWidth * 3.2, ShieldBarHeight * 2, "blue")
       } else if (gInGame) {
         if (Math.abs(HealthBarWidth * 3.2 * healthMeter.value - this.oldHPWidth)<-2) {
           this.white = true;
@@ -771,16 +769,18 @@
           this.HPAlpha = 1
         }
         this.oldHPWidth = HealthBarWidth * 3.2 * healthMeter.value;
-        if (enableHealth && HUDOn) DrawRect(HealthBarX, HealthBarY, HealthBarWidth * 3.2 * healthMeter.value, HealthBarHeight * 2, `hsla(${healthMeter.value > 0.7 ? 116 : healthMeter.value > 0.5 ? 42 : healthMeter.value > 0.3 ? 321 : Math.sin(Date.now() / 200) * 5 + 10},100%,50%)`)
-        ctx.globalAlpha = this.HPAlpha
-        DrawRect(HealthBarX, HealthBarY, HealthBarWidth * 3.2 * healthMeter.value, HealthBarHeight * 2, this.white ? "white" : this.red ? "red" : "hsla(0, 0%, 0%, 0)")
-        ctx.globalAlpha = 1;
+        if (HPHUDOn) {
+          DrawRect(HealthBarX * 3.2, HealthBarY * 2, HealthBarWidth * 3.2 * healthMeter.value, HealthBarHeight * 2, `hsla(${healthMeter.value > 0.7 ? 116 : healthMeter.value > 0.5 ? 42 : healthMeter.value > 0.3 ? 321 : Math.sin(Date.now() / 200) * 5 + 10},100%,50%)`)
+          hiddenCtx.globalAlpha = this.HPAlpha
+          DrawRect(HealthBarX * 3.2, HealthBarY * 2, HealthBarWidth * 3.2 * healthMeter.value, HealthBarHeight * 2, this.white ? "white" : this.red ? "red" : "hsla(0, 0%, 0%, 0)")
+          hiddenCtx.globalAlpha = 1;
+        }
         this.HPAlpha > .05 ? this.HPAlpha -= .05 : this.HPAlpha = 0;
         if (this.HPAlpha <= 0) {
           this.white = false;
           this.red = false;
         }
-        if (enableShield && HUDOn) DrawRect(ShieldBarX, ShieldBarY, ShieldBarWidth * 3.2 * shieldBar_Meter.value * 1.1, ShieldBarHeight * 2, `hsl(${shieldBarCol_Meter.value},100%,50%)`)
+        if (ShieldHUDOn) DrawRect(ShieldBarX * 3.2, ShieldBarY * 2, ShieldBarWidth * 3.2 * shieldBar_Meter.value * 1.1, ShieldBarHeight * 2, `hsl(${shieldBarCol_Meter.value},100%,50%)`)
       }
     }
   }
@@ -802,7 +802,7 @@
   }
 
   function InGame() {
-    if (engine.vision.InGameOrange >= .95 && engine.vision.WhiteInGame >= .95 && engine.vision.health > 0  && !gInGame) {
+    if (engine.vision.InGameOrange >= .95 && engine.vision.WhiteInGame >= .45 && engine.vision.health > 0  && !gInGame) {
       gInGame = true;
 
       setTimeout(() => {
@@ -819,8 +819,6 @@
         effects.length = 0;
       }, 300);
       effects.length = 0;
-
-   
     }
   }
 
@@ -836,10 +834,8 @@
     if(enableMenu){
       if (YellowSelectMenuMeter.value >= .95) {
         effects.push(new SelectMenuEffect())
-        
       }
     }
-    
   }
 
   function dropShipMenuCallback() {
@@ -850,17 +846,14 @@
           }else if (InDropShipWhiteMeter.decreased && InDropShipWhiteMeter.diff > 0.3 && engine.vision.InGameOrange >= .95 ) {
             effects.push(new outDropShipEffect()) 
           }
-        
       }
     }
-    
   }
 
   var defeatPushed = false;
   function LossCallback() {
     if (LossRedMeter.value >= .95 && engine.vision.lossNoRed < .1 && enableVD && WinLossConfirmMeter.value >= .95 && !gInGame && osdEsc_Meter.value <= 0 && !defeatPushed) {
       effects.push(new LossEffect())
-
       gStormObj = false;
       defeatPushed = true;
     }
@@ -881,11 +874,10 @@
 
     if (team1White && enableTeam && engine.vision.teammate1[1] > 5 && engine.vision.teammate1[2] < 95) {
       effects.push(new teamDeath())
-    
     }
+
     if (team2White && enableTeam && engine.vision.teammate2[1] > 5 && engine.vision.teammate2[2] < 95){
       effects.push(new teamDeath())
-  
     } 
 
     if (engine.vision.teammate1[1] > 5 && engine.vision.teammate1[2] < 95) team1White = false
@@ -967,6 +959,9 @@
           case "Seer":
             effects.push(new seerQ());
             break;
+          case "Sparrow":
+            effects.push(new sparrowQ());
+            break;
           case "Valkyrie":
             if (grey_Z_Meter.value >= .95 || (z_TotalHue.value < 30 && z_Total.value > 50))
               effects.push(new valkQ());
@@ -983,90 +978,72 @@
         }
       } else if (q_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q_Meter.value > .5 && q_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
         effects.push(new AbilityRechargeEffect())
-   
       }
     }
   }
 
-
-
-
   function Q1_Effects() {
     if (checkMeter.value >= .95, osdEsc_Meter.value != 1 && engine.vision.health != 0 && gInGame && enableQ) {
-
       if (q1_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q1_Meter.value < .5 && q1_Meter.diff > 0.5) {
         switch (character) {
           case "Caustic":
             effects.push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
-      
             break;
-
           case "Rampart":
             effects.push(new WallUpState(314, 73, 50, 0.85));
-    
             break;
-
           case "Wattson":
             effects.push(new wattsonQ())
-      
+            break;
+          case "Sparrow":
+            effects.push(new sparrowQ());
             break;
         }
       } else if (q1_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q1_Meter.value > .5 && q1_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
         switch (character) {
           case "Caustic":
             effects.push(new AbilityRechargeEffect())
-
             break;
-
           case "Rampart":
             effects.push(new AbilityRechargeEffect())
-         
             break;
-
           case "Wattson":
             effects.push(new AbilityRechargeEffect())
-    
             break;
         }
-
       }
     }
   }
 
   function Q2_Effects() {
     if (checkMeter.value >= .95, osdEsc_Meter.value != 1 && engine.vision.health != 0 && gInGame && enableQ) {
-
       if (q2_Meter.decreased && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q2_Meter.value < .5 && q2_Meter.diff > 0.5) {
         switch (character) {
           case "Bangalore":
             effects.push(new bangaloreQ())
-  
             break;
           case "Fuse":
             effects.push(new fuseQ())
-     
             break;
           case "Wattson":
             effects.push(new wattsonQ())
-   
+            break;
+          case "Sparrow":
+            effects.push(new sparrowQ());
             break;
         }
       } else if (q2_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q2_Meter.value > .5 && q2_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
         switch (character) {
           case "Bangalore":
             effects.push(new AbilityRechargeEffect())
-   
             break;
           case "Fuse":
             effects.push(new AbilityRechargeEffect())
-     
             break;
           case "Wattson":
             effects.push(new AbilityRechargeEffect())
-      
             break;
         }
-
       }
     }
   }
@@ -1077,38 +1054,33 @@
         switch (character) {
           case "Catalyst":
             effects.push(new CatalystQ);
-     
             break;
           case "Caustic":
             effects.push(new BurstRippleState("#fcf003", "#1e7517", "#fcf003"));
-    
             break;
           case "Rampart":
             effects.push(new WallUpState(314, 73, 50, 0.85));
-     
             break;
           case "Wattson":
             effects.push(new wattsonQ())
-      
+            break;
+          case "Sparrow":
+            effects.push(new sparrowQ());
             break;
         }
       } else if (q2_Meter.increased && enableQ && engine.vision.check >= .95, engine.vision.osdEsc != 1 && q2_Meter.value > .5 && q2_Meter.diff > 0.5 && (grey_Z_Meter.value >= .95 || (z_Total.value > 70 && z_WhiteVal.value > 0.05))) {
         switch (character) {
           case "Catalyst":
             effects.push(new AbilityRechargeEffect())
-         
             break;
           case "Caustic":
             effects.push(new AbilityRechargeEffect())
-      
             break;
           case "Rampart":
             effects.push(new AbilityRechargeEffect())
-     
             break;
           case "Wattson":
             effects.push(new AbilityRechargeEffect())
-       
             break;
         }
       }
@@ -1187,6 +1159,9 @@
         case "Seer":
           effects.push(new seerZ());
           break;
+        case "Sparrow":
+          effects.push(new sparrowZ());
+          break;
         case "Vantage":
           gUltCharged = false
           gVantageReady = true;
@@ -1246,7 +1221,6 @@
         return checkBlue();
         break;
       case "Lifeline":
-
         return checkLightBlue();
         break;
       case "Loba":
@@ -1275,6 +1249,9 @@
         break;
       case "Seer":
         return checkBlue();
+        break;
+      case "Sparrow":
+        return checkGrey();
         break;
       case "Vantage":
         return checkGrey();
@@ -1331,14 +1308,13 @@
     if (shieldBar_Meter.decreased && shieldBar_Meter.diff > 0.05 && checkMeter.value >= .95 && gInGame && enableShield) {
       for (i = 0; i < 5; i++) {
         effects.push(new DamageDrop(Math.random() * 320, Math.random() * 200))
-    
       }
     }
   }
 
   function HpEffects() {
     InGame();
-    if (healthMeter.decreased && healthMeter.diff > 0.01 && checkMeter.value >= .95 && gInGame && enableHealth && engine.vision.WhiteInGame >= .95) {
+    if (healthMeter.decreased && healthMeter.diff > 0.01 && checkMeter.value >= .95 && gInGame && enableHealth && engine.vision.WhiteInGame >= .45) {
       for (let index = 0; index < 5; index++) {
         effects.push(new DamageDrop(Math.random() * 320, Math.random() * 200))
   
@@ -1373,7 +1349,7 @@
 
   function StormCallback() {
 
-    if (engine.vision.WhiteInGame >= .95 && enableStorm && engine.vision.OrangeStormBar >= 0.001 && WhiteStormBarMeter.value >= .95) {
+    if (engine.vision.WhiteInGame >= .45 && enableStorm && engine.vision.OrangeStormBar >= 0.001 && WhiteStormBarMeter.value >= .95) {
       if (gStormObj == false) {
         gStormObj = new stormEffect() 
       }
@@ -1383,12 +1359,12 @@
  
 
   function drawRadialGradient(color1, color2, inneRadius, fade) {
-    ctx.beginPath();
-    let gradient = ctx.createRadialGradient(160, 100, inneRadius, 160, 100, inneRadius + fade)
+    hiddenCtx.beginPath();
+    let gradient = hiddenCtx.createRadialGradient(160, 100, inneRadius, 160, 100, inneRadius + fade)
     gradient.addColorStop(0, color1);
     gradient.addColorStop(1, color2);
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 320, 200);
+    hiddenCtx.fillStyle = gradient;
+    hiddenCtx.fillRect(0, 0, 320, 200);
   }
 
   function getStormState(state) {
@@ -1437,7 +1413,7 @@
       this.alpha = 0
       this.effects = []
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawRect(0, 0, 320, 200, "black")
         if(!this.half) this.alpha <= .7 ? this.alpha += .05 : this.y > 100 ? this.y-=3 : this.count < 5 ? this.count ++ : this.half = true
         else {
@@ -1445,14 +1421,69 @@
           this.alpha = this.count / 100
           if(this.count % 20 <= 0) this.effects.unshift(new alterZHelp())
         }
-        ctx.globalAlpha = this.alpha / 2
+        hiddenCtx.globalAlpha = this.alpha / 2
       this.effects.forEach((ele, i)=>{
         ele.draw()
         if(ele.lifetime  <= 0) this.effects.splice(i, 1)
       })
         DrawCircle(160, this.y, 30, "purple")
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
       }
+    }
+
+    function sparrowZ(){
+      this.y = 200
+      this.sat = 0
+      this.strike1 = new lightning(20, getColorString(30, 100, 50, 1), 10)
+      this.strike2 = new lightning(20, getColorString(45, 100, 50, 1), 10)
+      this.lifetime = 500
+      this.count = -8
+      console.log("In Sparrow Z " + Date.now())
+      this.draw = function(){
+        DrawRect(150, this.y, 20, 100, getColorString(0, 0, 50, this.lifetime / 150))
+        DrawCircle(160, this.y, 30, getColorString(190, this.sat, 50, this.lifetime / 150))
+        DrawCircle(160, this.y, 30, getColorString(30, this.sat, 65, (1 - this.sat) * this.lifetime / 150))
+        DrawStroke(160, this.y, 100, getColorString(220, 100, 75, this.sat / 100 * this.lifetime / 150), 5)
+        if(this.y > 100){
+          this.y += (85 - this.y) / 20
+        } else {
+          this.count+=.1
+          this.count%=Math.PI*2
+          this.sat = Math.sin(this.count) * 50 + 50
+        }
+        if(this.sat < 50 && this.y < 105){
+          this.strike1.draw()
+          ctx.save()
+          ctx.translate(160, 100)
+          ctx.rotate(Math.PI / 2)
+          ctx.translate(-160, -100)
+          this.strike2.draw()
+          ctx.restore()
+        }
+        this.lifetime--
+      }
+    }
+
+    function sparrowQ(){
+      this.alpha = 0
+      this.half = false
+      this.rad = 1
+      this.draw = function(){
+        let grad = ctx.createRadialGradient(160, 100, 1, 160, 100, 200)
+        grad.addColorStop(0, getColorString(190, 100, 50, 0))
+        grad.addColorStop(.5, getColorString(190, 100, 50, this.alpha / 10))
+        grad.addColorStop(1, getColorString(190, 100, 50, this.alpha))
+
+        DrawCircle(160, 100, 200, grad)
+        DrawStroke(160, 100, this.rad, getColorString(210, 100, 75, 1), 30)
+        if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
+        else this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
+        this.rad+=3
+      }
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
     }
 
     function alterZHelp(val){
@@ -1471,7 +1502,7 @@
       this.alpha = 1
       this.rad = 1
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         if(!this.half) this.y < 100 ? this.y+=10 : this.count < 5 ? this.count ++ : this.half = true
         else {
           this.y > 0 ? this.y -= 5 : this.y = 0
@@ -1481,7 +1512,7 @@
           DrawCircle(160, 100, this.rad, "black")
         }
         DrawTriangle(160, this.y, 160 + this.y, 0, 160 - this.y, 0, "purple")
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
       }
     }
 
@@ -1497,8 +1528,8 @@
     }
       
     this.draw = function () {
-      ctx.fillStyle = `hsla(0,100%,50%,${Math.sin(Date.now() / 500) * .25 + .5})`
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = `hsla(0,100%,50%,${Math.sin(Date.now() / 500) * .25 + .5})`
+      hiddenCtx.fillRect(0, 0, 320, 200);
       this.bird.draw()
 
       this.elapsed = new Date().getTime() - this.start;
@@ -1513,23 +1544,23 @@
     this.mod = -70
     this.y = 200
     this.draw = function(){
-      ctx.beginPath()
-      ctx.moveTo(160, 50 + this.y)
-      ctx.lineTo(170, 70 + this.y)
-      ctx.lineTo(180, 85 + this.y)
-      ctx.lineTo(180, 85 + this.y)
-      ctx.lineTo(300, 110 + this.mod + this.y)
-      ctx.lineTo(180, 120 + this.y)
-      ctx.lineTo(170, 125 + this.y)
-      ctx.lineTo(190, 150 + this.y)
-      ctx.lineTo(130, 150 + this.y)
-      ctx.lineTo(150, 125 + this.y)
-      ctx.lineTo(140, 120 + this.y)
-      ctx.lineTo(20, 110 + this.mod + this.y)
-      ctx.lineTo(140, 85 + this.y)
-      ctx.lineTo(150, 70 + this.y)
-      ctx.fillStyle = "black"
-      ctx.fill()
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(160, 50 + this.y)
+      hiddenCtx.lineTo(170, 70 + this.y)
+      hiddenCtx.lineTo(180, 85 + this.y)
+      hiddenCtx.lineTo(180, 85 + this.y)
+      hiddenCtx.lineTo(300, 110 + this.mod + this.y)
+      hiddenCtx.lineTo(180, 120 + this.y)
+      hiddenCtx.lineTo(170, 125 + this.y)
+      hiddenCtx.lineTo(190, 150 + this.y)
+      hiddenCtx.lineTo(130, 150 + this.y)
+      hiddenCtx.lineTo(150, 125 + this.y)
+      hiddenCtx.lineTo(140, 120 + this.y)
+      hiddenCtx.lineTo(20, 110 + this.mod + this.y)
+      hiddenCtx.lineTo(140, 85 + this.y)
+      hiddenCtx.lineTo(150, 70 + this.y)
+      hiddenCtx.fillStyle = "black"
+      hiddenCtx.fill()
       this.y > 10 ? this.y += (2 - this.y) / 20 : this.mod < 70 ? this.mod += (80 - this.mod) / 10 : this.mod = 70;
       if(this.mod > 20) this.y += (-300 - this.y) / 50
       this.y--
@@ -1634,9 +1665,9 @@
     this.color = revZCol[Math.floor(this.mod * 2.99)]
     this.alpha = 0
     this.draw = function(){
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       DrawRect(this.x, this.y, this.mod * 30 + 30, this.mod * 30 + 30, this.color)
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       this.y -= this.vy
       if(this.half) this.alpha > 0 ? this.alpha -= .05 : this.lifetime = 0
       else this.alpha < 1 ? this.alpha += .05 : this.half = true;
@@ -1647,11 +1678,11 @@
     this.lifetime = 100;
     this.radius = 1;
     this.draw = function () {
-      ctx.beginPath();
-      ctx.lineWidth = 25;
-      ctx.strokeStyle = `hsl(120, 100%, ${this.radius / 3 + 15}%)`;
-      ctx.arc(160, 100, this.radius, 0, 2 * Math.PI);
-      ctx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.lineWidth = 25;
+      hiddenCtx.strokeStyle = `hsl(120, 100%, ${this.radius / 3 + 15}%)`;
+      hiddenCtx.arc(160, 100, this.radius, 0, 2 * Math.PI);
+      hiddenCtx.stroke();
       this.radius < 250 ? this.radius += 8 : this.lifetime = 0;
     }
   }
@@ -1691,7 +1722,7 @@
     this.radius = 1;
     this.lifetime = 10;
     this.draw = function () {
-      ctx.fillStyle = "red";
+      hiddenCtx.fillStyle = "red";
       DrawCircle(this.x, this.y, 20, `hsla(0, 100%, 50%, ${this.alpha})`)
       DrawStroke(this.x, this.y, this.radius, "red", 10)
       this.radius < 250 ? this.radius += 6 : this.lifetime = 0;
@@ -1705,7 +1736,7 @@
     this.lifetime = 10;
     this.stop = .99;
     this.draw = function () {
-      var grad = ctx.createLinearGradient(160, -50, 160, 250)
+      var grad = hiddenCtx.createLinearGradient(160, -50, 160, 250)
       grad.addColorStop(0, "hsla(0, 0%, 0%, 0)")
       grad.addColorStop(this.stop, this.color)
       grad.addColorStop(1, "hsla(0, 0%, 0%, 0)")
@@ -1726,7 +1757,7 @@
 
     this.draw = function () {
       this.elapsed = Date.now() - this.start;
-      if (WhiteStormBarMeter.value <= 0 && engine.vision.WhiteInGame >= .95 && healthMeter.value > 0 && engine.vision.InGameOrange >= .95 && gInGame) {
+      if (WhiteStormBarMeter.value <= 0 && engine.vision.WhiteInGame >= .45 && healthMeter.value > 0 && engine.vision.InGameOrange >= .95 && gInGame) {
         if (this.endCount > 20) {
           gStormObj = false;
         }
@@ -1903,7 +1934,7 @@
           this.stripes.splice(i, 1);
         }
       });
-      if ((checkMeter.value >=.95 && whiteInGameMeter.value >=.95 )|| inGameMeter.value <.1) this.lifetime = 0;
+      if ((checkMeter.value >=.95 && whiteInGameMeter.value >= .45 )|| inGameMeter.value <.1) this.lifetime = 0;
     }
   }
 
@@ -1936,17 +1967,17 @@
     this.thirdPoint = { x: this.x - 60 + Math.random() * 100, y: this.y + 100 + Math.random() * 100 };
     this.fourthPoint = { x: -50, y: +150 + Math.random() * 100 }
     this.draw = function () {
-      ctx.beginPath();
+      hiddenCtx.beginPath();
       this.elapsed = Date.now() - this.start;
       this.point = getCubicBezierXYatPercent(this.firstPoint, this.secondPoint, this.thirdPoint, this.fourthPoint, this.elapsed / 1500)
-      ctx.moveTo(this.point.x, this.point.y);
+      hiddenCtx.moveTo(this.point.x, this.point.y);
       for (let index = 0; index < 20; index++) {
         let point2 = getCubicBezierXYatPercent(this.firstPoint, this.secondPoint, this.thirdPoint, this.fourthPoint, this.elapsed / 1500 + index / 100);
-        ctx.lineTo(point2.x, point2.y);
+        hiddenCtx.lineTo(point2.x, point2.y);
       }
-      ctx.strokeStyle = this.color
-      ctx.lineWidth = 7
-      ctx.stroke()
+      hiddenCtx.strokeStyle = this.color
+      hiddenCtx.lineWidth = 7
+      hiddenCtx.stroke()
       if (this.elapsed > 1500) {
         this.lifetime = 0;
       }
@@ -1995,7 +2026,7 @@
     this.rad = 1
     this.alpha = 1
     this.draw = function(){
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       DrawRect(0, 0, 320, 200, `hsla(0, 100%, 0%, ${this.alpha / 2})`)
       DrawCircle(Math.cos(this.rot) * this.rad + 160, Math.sin(this.rot) * this.rad + 100, 50, "orange")
       DrawCircle(Math.cos(this.rot - Math.PI * 1 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 1 / 3) * this.rad + 100, 50, "yellow")
@@ -2003,7 +2034,7 @@
       DrawCircle(Math.cos(this.rot - Math.PI * 3 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 3 / 3) * this.rad + 100, 50, "orange")
       DrawCircle(Math.cos(this.rot - Math.PI * 4 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 4 / 3) * this.rad + 100, 50, "yellow")
       DrawCircle(Math.cos(this.rot - Math.PI * 5 / 3) * this.rad + 160, Math.sin(this.rot - Math.PI * 5 / 3) * this.rad + 100, 50, "grey")
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       this.rot+=this.vrot
       this.vrot >= .01 ? this.vrot -= .01 : this.vrot = .01
       this.rad < 95 ? this.rad += (100 - this.rad) / 20 : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
@@ -2023,12 +2054,12 @@
       var elapsed = Date.now() - this.start
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
       this.xs.forEach((ele, i) => {
-        ctx.save()
-        ctx.translate(this.xs[i] + this.width / 2, 100)
-        ctx.rotate(this.rotate)
-        ctx.translate(-this.xs[i] - this.width / 2, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(this.xs[i] + this.width / 2, 100)
+        hiddenCtx.rotate(this.rotate)
+        hiddenCtx.translate(-this.xs[i] - this.width / 2, -100)
         DrawRect(this.xs[i] - this.width / 2, 0, this.width, 200, `hsla(${this.hue}, 100%, ${this.lit}%, ${this.alpha})`)
-        ctx.restore()
+        hiddenCtx.restore()
       })
       if (elapsed < 1000) this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
       if (elapsed > 1000 && elapsed < 2500) {
@@ -2052,10 +2083,10 @@
     this.ay = 1;
     this.lifetime = 10;
     this.draw = function () {
-      ctx.beginPath();
-      ctx.fillStyle = this.color;
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      hiddenCtx.fill();
       this.x += this.vx;
       this.y += this.vy;
       this.vy += this.ay;
@@ -2102,13 +2133,13 @@
 
     this.rot = Math.atan2(this.endY - this.y, this.endX - this.x);
     this.draw = function () {
-      ctx.beginPath();
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.rot);
-      ctx.fillStyle = this.color;
-      ctx.fillRect(0, 0, this.width, this.height);
-      ctx.restore();
+      hiddenCtx.beginPath();
+      hiddenCtx.save();
+      hiddenCtx.translate(this.x, this.y);
+      hiddenCtx.rotate(this.rot);
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.fillRect(0, 0, this.width, this.height);
+      hiddenCtx.restore();
       this.x += this.speed * Math.cos(this.rot);
       this.y += this.speed * Math.sin(this.rot);
 
@@ -2133,27 +2164,27 @@
 
       this.elapsed = new Date().getTime() - this.start;
       this.size = this.elapsed / 5;
-      ctx.beginPath();
+      hiddenCtx.beginPath();
 
       var brightness = this.lifetime + 10;
       var opacity = this.lifetime / 45;
       //main wave
-      ctx.beginPath();
-      ctx.lineWidth = this.width;
-      ctx.strokeStyle = this.color;
-      ctx.arc(this.x, this.y, this.size + 5, 0, 2 * Math.PI);
-      ctx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.lineWidth = this.width;
+      hiddenCtx.strokeStyle = this.color;
+      hiddenCtx.arc(this.x, this.y, this.size + 5, 0, 2 * Math.PI);
+      hiddenCtx.stroke();
 
       //front wave
-      ctx.lineWidth = 10;
-      ctx.strokeStyle = "white";
-      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-      ctx.arc(this.x, this.y, this.size + 35, 0, 2 * Math.PI);
-      ctx.stroke();
+      hiddenCtx.lineWidth = 10;
+      hiddenCtx.strokeStyle = "white";
+      hiddenCtx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      hiddenCtx.arc(this.x, this.y, this.size + 35, 0, 2 * Math.PI);
+      hiddenCtx.stroke();
 
-      ctx.fillStyle = "white";
+      hiddenCtx.fillStyle = "white";
       for (let index = 0; index < 4; index++) {
-        ctx.fillRect(Math.random() * 320, Math.random() * 200, 10, 10);
+        hiddenCtx.fillRect(Math.random() * 320, Math.random() * 200, 10, 10);
       }
       if (this.elapsed > 1000) {
         this.lifetime = 0;
@@ -2187,19 +2218,19 @@
       this.draw = function () {
         let colorAdj = Math.sin(this.elapsed / 300) * 15 + 40;
 
-        ctx.fillStyle = `hsla(0, 0%, 0%, ${(6000 - this.elapsed) / 6000})`;
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = `hsla(0, 0%, 0%, ${(6000 - this.elapsed) / 6000})`;
+        hiddenCtx.fillRect(0, 0, 320, 200);
 
-        ctx.strokeStyle = `hsl(220, 100%, ${colorAdj}%)`;
+        hiddenCtx.strokeStyle = `hsl(220, 100%, ${colorAdj}%)`;
 
         if (this.elapsed > 5000 && this.elapsed % 2 === 0) {
-          ctx.strokeStyle = `black`;
+          hiddenCtx.strokeStyle = `black`;
         }
-        ctx.lineWidth = this.count;
-        ctx.beginPath();
-        ctx.lineWidth = this.elapsed / 10;
-        ctx.arc(160, 100, this.count, 0, 2 * Math.PI);
-        ctx.stroke();
+        hiddenCtx.lineWidth = this.count;
+        hiddenCtx.beginPath();
+        hiddenCtx.lineWidth = this.elapsed / 10;
+        hiddenCtx.arc(160, 100, this.count, 0, 2 * Math.PI);
+        hiddenCtx.stroke();
         this.count += 2;
         this.elapsed = new Date().getTime() - this.start;
         if (this.elapsed > this.duration) {
@@ -2232,7 +2263,7 @@
       DrawRect(0, 0, 320, 200, `hsla(0, ${this.x-500}%, ${(this.x-500)/10}%, ${this.alpha})`);
       this.x += this.speed.x;
       this.y += this.speed.y;
-      ctx.fillStyle = "#fff";
+      hiddenCtx.fillStyle = "#fff";
       if (this.x > 160 && !this.halwayMark){
         this.speed.y = -this.speed.y;
         this.halwayMark = true;
@@ -2248,14 +2279,14 @@
         this.particles.push(new movingBall(Math.random() *320,200,Math.random() *20,{x:(Math.random()-0.5)*4,y:(Math.random())*-6},`hsla(${Math.random()*30 },${Math.random()*20 + 80}%,${50 + Math.random() *10}%,0.9)`,2000))
       }
    
-      ctx.beginPath();
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(rotation);
+      hiddenCtx.beginPath();
+      hiddenCtx.save();
+      hiddenCtx.translate(this.x, this.y);
+      hiddenCtx.rotate(rotation);
 
-      ctx.rect(0, 0, 50,30);
-      ctx.fill();
-      ctx.restore();
+      hiddenCtx.rect(0, 0, 50,30);
+      hiddenCtx.fill();
+      hiddenCtx.restore();
 
 
       this.particles.forEach((particle) => {
@@ -2294,14 +2325,14 @@
       }   
       DrawRect(0, 0, 320, 200, `hsla(0, ${this.x-500}%, ${(this.x-500)/10}%, ${this.alpha})`);
 
-      ctx.globalAlpha = this.alpha+0.1;
+      hiddenCtx.globalAlpha = this.alpha+0.1;
       this.particles.forEach((particle) => {
         particle.draw();
         if (particle.lifetime  <= 0) {
           this.particles.splice(this.particles.indexOf(particle), 1);
         }
       });
-      ctx.globalAlpha =1;
+      hiddenCtx.globalAlpha =1;
 
     }
   }
@@ -2321,7 +2352,7 @@
 
     this.draw = function () {
       if(!this.done) this.alpha <= .75 ? this.alpha += .025 : this.done = true
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, 1)`)
       this.circles.push(new fadingCircles());
       this.circles.forEach((e, i) => {
@@ -2330,7 +2361,7 @@
           this.circles.splice(i, 1);
         }
       })
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       this.elapsed = Date.now() - this.start;
       if (this.elapsed > this.duration) {
         this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
@@ -2352,16 +2383,16 @@
    
     this.draw = function () {
       if (this.elapsed < 1500) {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, 320, 200);
-        ctx.fillStyle = "#ff3beb";
-        ctx.fillRect(0 + split, 90, 60, 60);
+        hiddenCtx.fillStyle = "black";
+        hiddenCtx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = "#ff3beb";
+        hiddenCtx.fillRect(0 + split, 90, 60, 60);
 
         split += 8;
       }
       if (this.elapsed >= 1500) {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = "black";
+        hiddenCtx.fillRect(0, 0, 320, 200);
 
         if (this.squares.length < 5) {
           this.squares.push(new fallingSquare(Math.random() * 320, this.y, 0));
@@ -2405,7 +2436,7 @@
     this.draw = function () {
       if (Date.now() - this.start > 4000) {
         this.elapsed = Date.now() - (this.start + 4000);
-        let gradient = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+        let gradient = hiddenCtx.createRadialGradient(160, 100, 0, 160, 100, 200)
         this.calculateVal = -1660 * Math.floor((this.elapsed / 1660) / 1) + ((this.elapsed / 1660) * (1660 / 1));
         gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
         gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "blue");
@@ -2441,18 +2472,18 @@
     
     this.draw = function () {
       for (let i = 0; i < 3; i++) {
-        ctx.beginPath();
-        ctx.moveTo(0, 100);
+        hiddenCtx.beginPath();
+        hiddenCtx.moveTo(0, 100);
         for (let index = 0; index < 320; index++) {
           offset2[index] = Math.sin((offset[index]) + (this.elapsed / 300)) * 50;
-          ctx.lineTo(index, 250 + (i * 30) - offset2[index] - (this.elapsed < 3700 ? this.elapsed / 10 : (3500 - (this.elapsed - 3700)) / 10));
+          hiddenCtx.lineTo(index, 250 + (i * 30) - offset2[index] - (this.elapsed < 3700 ? this.elapsed / 10 : (3500 - (this.elapsed - 3700)) / 10));
         }
-        ctx.lineTo(320, 200);
-        ctx.lineTo(0, 200);
-        ctx.lineTo(0, 100)
-        ctx.fillStyle = i >= .95 ? "purple" : i == 2 ? `hsla(280, 100%, ${Math.sin(this.elapsed / 250) * 5 + 15}%, 1)` : "blue";
-        ctx.lineWidth = 0.1;
-        ctx.fill();
+        hiddenCtx.lineTo(320, 200);
+        hiddenCtx.lineTo(0, 200);
+        hiddenCtx.lineTo(0, 100)
+        hiddenCtx.fillStyle = i >= .95 ? "purple" : i == 2 ? `hsla(280, 100%, ${Math.sin(this.elapsed / 250) * 5 + 15}%, 1)` : "blue";
+        hiddenCtx.lineWidth = 0.1;
+        hiddenCtx.fill();
 
         this.holes.forEach(element => {
           element.draw();
@@ -2486,22 +2517,22 @@
 
 
     this.draw = function () {
-      ctx.beginPath();
+      hiddenCtx.beginPath();
       let value = (this.duration - (this.duration - (Date.now() - this.start))) / this.duration;
-      ctx.moveTo(this.points[0].x, this.points.y)
+      hiddenCtx.moveTo(this.points[0].x, this.points.y)
       for (let index = 0; index < this.quality; index++) {
         let pointVal = Math.floor((value * pointAmount) - (index * (this.length / this.quality)));
         if (pointVal >= 1) {
           if (pointVal < pointAmount) {
             let movePoint = getXAndYForPathPoint(this.points[pointVal - 1], this.points[pointVal], (((value) * pointAmount) - (index * (this.length / this.quality))) - pointVal);
-            ctx.lineTo(movePoint.x, movePoint.y)
+            hiddenCtx.lineTo(movePoint.x, movePoint.y)
           }
         }
       }
 
-      ctx.lineWidth = this.lineWidth;
-      ctx.strokeStyle = this.color;
-      ctx.stroke();
+      hiddenCtx.lineWidth = this.lineWidth;
+      hiddenCtx.strokeStyle = this.color;
+      hiddenCtx.stroke();
       if (value > 1) {
         this.lifetime = 0;
       }
@@ -2525,33 +2556,33 @@ this.alpha = 1
   
 
 this.draw = function () {
-  ctx.globalAlpha = this.alpha
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, 320, 200);
+  hiddenCtx.globalAlpha = this.alpha
+  hiddenCtx.fillStyle = "black";
+  hiddenCtx.fillRect(0, 0, 320, 200);
   if (this.elapsed <= 1500) {
-    ctx.fillStyle = "yellow";
-    ctx.beginPath();
-    ctx.arc(- 100 + split, 100, 45, 0, 2 * Math.PI);
-    ctx.fill();
+    hiddenCtx.fillStyle = "yellow";
+    hiddenCtx.beginPath();
+    hiddenCtx.arc(- 100 + split, 100, 45, 0, 2 * Math.PI);
+    hiddenCtx.fill();
     split += 8;
   }
   if (this.elapsed > 1500) {
-    ctx.fillStyle = "#ebae34";
-    ctx.beginPath();
-    ctx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.fillStyle = "yellow";
-    ctx.beginPath();
-    ctx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
-    ctx.fill();
+    hiddenCtx.fillStyle = "#ebae34";
+    hiddenCtx.beginPath();
+    hiddenCtx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
+    hiddenCtx.fill();
+    hiddenCtx.fillStyle = "yellow";
+    hiddenCtx.beginPath();
+    hiddenCtx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
+    hiddenCtx.fill();
 
-    ctx.fillStyle = "#ebae34";
-    ctx.beginPath();
-    ctx.arc(160, 100, this.size, 0, 2 * Math.PI);
-    ctx.fill();
+    hiddenCtx.fillStyle = "#ebae34";
+    hiddenCtx.beginPath();
+    hiddenCtx.arc(160, 100, this.size, 0, 2 * Math.PI);
+    hiddenCtx.fill();
     this.size += 3;
   }
-  ctx.globalAlpha = 1
+  hiddenCtx.globalAlpha = 1
   this.elapsed = new Date().getTime() - this.start;
   if (this.elapsed > this.duration) {
     this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0 ;
@@ -2568,12 +2599,12 @@ this.draw = function () {
     this.draw = function (){
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
       if(this.effects.length < 5) this.effects.push(new Beam())
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       this.effects.forEach((ele, i)=>{
         ele.draw()
         if(ele.lifetime  <= 0) this.effects.splice(i, 1)
       })
-    ctx.globalAlpha = 1
+    hiddenCtx.globalAlpha = 1
     if(this.count < 75) this.alpha < .75 ? this.alpha += .025 : this.count++
     else this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
     }
@@ -2599,12 +2630,12 @@ this.draw = function () {
       if(this.count <= 0) for(let i = 0; i < 5; i++){
         this.effects.push(new bouncyBall(i * 320 / 4))
       }
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       this.effects.forEach((ele, i)=>{
         ele.draw()
         if(ele.lifetime  <= 0) this.effects.splice(i, 1)
       })
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       if(this.count < 300 && this.alpha < 1) this.alpha += .05
       this.count < 300 ? this.count++ : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
       if(this.lifetime <= 0) gZGoing = false
@@ -2660,10 +2691,10 @@ this.draw = function () {
    
     this.draw = function () {
       if (this.elapsed < 2000) {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, 320, 200);
-        ctx.fillStyle = "#fc5a03";
-        ctx.fillRect(0 + split, 90, 60, 60);
+        hiddenCtx.fillStyle = "black";
+        hiddenCtx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = "#fc5a03";
+        hiddenCtx.fillRect(0 + split, 90, 60, 60);
         split += 5;
       }
 
@@ -2728,13 +2759,13 @@ this.draw = function () {
       
    
     this.draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
       if (this.elapsed < 4000) {
-        ctx.fillStyle = "red";
-        ctx.fillRect(160 + split, 0, 40, 200);
-        ctx.fillStyle = "red";
-        ctx.fillRect(160 - split - 40, 0, 40, 200);
+        hiddenCtx.fillStyle = "red";
+        hiddenCtx.fillRect(160 + split, 0, 40, 200);
+        hiddenCtx.fillStyle = "red";
+        hiddenCtx.fillRect(160 - split - 40, 0, 40, 200);
         split += 2;
       }
       if (this.elapsed >= 1000) {
@@ -2770,13 +2801,13 @@ this.draw = function () {
     this.rad = Math.random() * 50 + 150
     this.hue = Math.random() * 50 + 190
     this.draw = function(){
-      ctx.save()
-      ctx.translate(160, 100)
-      ctx.rotate(this.rot)
-      ctx.translate(-160, -100)
+      hiddenCtx.save()
+      hiddenCtx.translate(160, 100)
+      hiddenCtx.rotate(this.rot)
+      hiddenCtx.translate(-160, -100)
       DrawCircle(160, 100 + this.rad, this.rad / 5 + 1, `hsla(${this.hue}, 100%, 50%, 1)`)
       this.rot += .05
-      ctx.restore()
+      hiddenCtx.restore()
       this.rad > 2 ? this.rad -- : this.lifetime = 0
     }
   }
@@ -2792,10 +2823,10 @@ this.draw = function () {
     this.draw = function () {
       this.elapsed = new Date().getTime() - this.start;
       if (this.elapsed > this.duration) this.lifetime = 0
-      ctx.fillStyle = "hsla(215, 100%, 3%, 0.5)"
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = "blue";
-      ctx.fillRect(0, split, 320, 60);
+      hiddenCtx.fillStyle = "hsla(215, 100%, 3%, 0.5)"
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "blue";
+      hiddenCtx.fillRect(0, split, 320, 60);
       split -= 4;
       effects.push(new horizonQHelp(split + 50))
     };
@@ -2821,20 +2852,20 @@ this.draw = function () {
       
     
     this.draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
       if (this.elapsed <= 1500) {
-        ctx.fillStyle = `hsla(220, 100%, 50%, ${split / 320})`;
-        ctx.fillRect(160 - split / 2, 0, split, 200);
+        hiddenCtx.fillStyle = `hsla(220, 100%, 50%, ${split / 320})`;
+        hiddenCtx.fillRect(160 - split / 2, 0, split, 200);
         split += 7;
       }
 
       if (this.elapsed > 1500) {
         for (let index = 0; index < 3; index++) {
-          ctx.fillStyle = index != 1 ? "blue" : "#c2fffc";;
-          ctx.beginPath();
-          ctx.arc(160, 100, (this.size / index), 0, 2 * Math.PI);
-          ctx.fill();
+          hiddenCtx.fillStyle = index != 1 ? "blue" : "#c2fffc";;
+          hiddenCtx.beginPath();
+          hiddenCtx.arc(160, 100, (this.size / index), 0, 2 * Math.PI);
+          hiddenCtx.fill();
         }
         this.size += 5;
       }
@@ -2882,9 +2913,9 @@ this.draw = function () {
     this.start = Date.now()
     this.start2 = Date.now();
     this.draw = function () {
-      ctx.globalAlpha = .75;
+      hiddenCtx.globalAlpha = .75;
       DrawRect(0, this.y2, 320, 200, "black")
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if (this.y2 > 0 && !this.count) {
         this.y2 -= 10;
       } else if (this.y2 <= 0 && this.count < 300) {
@@ -2925,9 +2956,9 @@ this.draw = function () {
     this.check = true;
     this.effects = []
     this.draw = function () {
-      ctx.globalAlpha = .75;
+      hiddenCtx.globalAlpha = .75;
       DrawRect(0, this.y2, 320, 200, "black")
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if (this.y2 > 0 && !this.count) {
         this.y2 -= 10;
       } else if (this.y2 <= 0 && this.count < 300) {
@@ -2976,8 +3007,8 @@ this.draw = function () {
           this.circle = new Circle()
         }
         if (this.elapsed < 2000) {
-          ctx.fillStyle = "black";
-          ctx.fillRect(0, 0, 320, 200);
+          hiddenCtx.fillStyle = "black";
+          hiddenCtx.fillRect(0, 0, 320, 200);
         }
         this.circle.draw();
       if (this.elapsed > 4500) {
@@ -3004,19 +3035,19 @@ this.draw = function () {
     this.draw = function () {
       this.elapsed = new Date().getTime() - this.start;
       if (this.elapsed < 3500) {
-        ctx.beginPath();
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, 320, 200)
+        hiddenCtx.beginPath();
+        hiddenCtx.fillStyle = "black";
+        hiddenCtx.fillRect(0, 0, 320, 200)
       } else {
-        ctx.beginPath();
-        ctx.fillStyle = `hsla(0,0%,0%,${(1 - ((this.elapsed - 3500)) / 1000)})`;
-        ctx.fillRect(0, 0, 320, 200)
+        hiddenCtx.beginPath();
+        hiddenCtx.fillStyle = `hsla(0,0%,0%,${(1 - ((this.elapsed - 3500)) / 1000)})`;
+        hiddenCtx.fillRect(0, 0, 320, 200)
       }
       if (this.elapsed < 1000 && this.dot.y < 190) {
-        ctx.beginPath();
-        ctx.arc(this.dot.x, this.dot.y, 50, 0, Math.PI * 2)
-        ctx.fillStyle = "hsla(190, 100%, 58%, 1)"
-        ctx.fill();
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(this.dot.x, this.dot.y, 50, 0, Math.PI * 2)
+        hiddenCtx.fillStyle = "hsla(190, 100%, 58%, 1)"
+        hiddenCtx.fill();
         this.dot.y += 8;
       } else if (this.pushed == undefined) {
         for (let index = 0; index < 75; index++) {
@@ -3037,7 +3068,7 @@ this.draw = function () {
   function octaneQ(){
     this.x = -320
     this.draw = function(){
-      let grad = ctx.createLinearGradient(this.x, 0, this.x + 320, 0)
+      let grad = hiddenCtx.createLinearGradient(this.x, 0, this.x + 320, 0)
       grad.addColorStop(0, `hsla(110, 100%, 50%, 0)`)
       grad.addColorStop(.5, `hsla(110, 100%, 50%, 1)`)
       grad.addColorStop(1, `hsla(110, 100%, 50%, 0)`)
@@ -3081,14 +3112,14 @@ this.draw = function () {
      
   
     this.draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = "#0320fc";
-      ctx.fillRect(split, 80, 350, 60);
-      ctx.fillStyle = "#0320fc";
-      ctx.fillRect(250 + split, 60, 100, 60);
-      ctx.fillStyle = "#0320fc";
-      ctx.fillRect(250 + split, 100, 100, 60);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "#0320fc";
+      hiddenCtx.fillRect(split, 80, 350, 60);
+      hiddenCtx.fillStyle = "#0320fc";
+      hiddenCtx.fillRect(250 + split, 60, 100, 60);
+      hiddenCtx.fillStyle = "#0320fc";
+      hiddenCtx.fillRect(250 + split, 100, 100, 60);
       split += 11;
 
       this.elapsed = new Date().getTime() - this.start;
@@ -3105,7 +3136,7 @@ this.draw = function () {
       this.alpha = 1
       this.effects = []
       this.draw = function () {
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawRect(0, 60, this.width, 20, "yellow")
         this.width < 320 ? this.width += 10 : this.count++
         if(this.count % 40 <= 0) {
@@ -3116,7 +3147,7 @@ this.draw = function () {
           ele.draw()
           if(ele.lifetime  <= 0) this.effects.splice(i, 1)
         })
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
       };
     }
 
@@ -3177,14 +3208,14 @@ this.draw = function () {
       
     
     this.draw = function () {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = "black";
+        hiddenCtx.fillRect(0, 0, 320, 200);
         var pctUp = this.count / 2000;
-        ctx.strokeStyle = this.color;
-        ctx.lineWidth = 40;
-        ctx.beginPath();
-        ctx.arc(160, 100, 200 - 200 * pctUp, 0, 2 * Math.PI);
-        ctx.stroke();
+        hiddenCtx.strokeStyle = this.color;
+        hiddenCtx.lineWidth = 40;
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, 200 - 200 * pctUp, 0, 2 * Math.PI);
+        hiddenCtx.stroke();
         if (this.count < 100) {
           this.count = 2000;
         } else {
@@ -3264,13 +3295,13 @@ this.draw = function () {
       DrawRect(0, 0, 320, 200, `hsla(120, 100%, 50%, ${this.alpha / 2})`)
       if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.count < 100 ? this.count++ : this.done = true
       else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
-      ctx.beginPath()
-      ctx.moveTo(-20, this.y + 80)
-      ctx.lineTo(160, this.y)
-      ctx.lineTo(340, this.y + 80)
-      ctx.lineWidth = 50
-      ctx.strokeStyle = `hsla(100, 100%, 80%, ${this.alpha})`
-      ctx.stroke()
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(-20, this.y + 80)
+      hiddenCtx.lineTo(160, this.y)
+      hiddenCtx.lineTo(340, this.y + 80)
+      hiddenCtx.lineWidth = 50
+      hiddenCtx.strokeStyle = `hsla(100, 100%, 80%, ${this.alpha})`
+      hiddenCtx.stroke()
       this.y > -80 ? this.y -= 10 : this.y = 200
     };
   }
@@ -3287,9 +3318,9 @@ this.draw = function () {
     this.lifetime = 10;
     this.alpha = 0;
     this.draw = function () {
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(0, 0, 320, 200, "black")
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if (this.half) {
         this.vy *= 1.15
         this.count++
@@ -3303,18 +3334,18 @@ this.draw = function () {
         }
       }
       this.y -= this.vy;
-      ctx.save()
-      ctx.translate(this.x, this.y)
-      ctx.rotate(-this.rotate)
-      ctx.translate(-this.x, -this.y)
+      hiddenCtx.save()
+      hiddenCtx.translate(this.x, this.y)
+      hiddenCtx.rotate(-this.rotate)
+      hiddenCtx.translate(-this.x, -this.y)
       DrawPath(this.x, this.y, batPath, "hsl(0, 0%, 55%)", 1, 1)
-      ctx.restore()
-      ctx.save()
-      ctx.translate(this.x, this.y)
-      ctx.rotate(this.rotate)
-      ctx.translate(-this.x, -this.y)
+      hiddenCtx.restore()
+      hiddenCtx.save()
+      hiddenCtx.translate(this.x, this.y)
+      hiddenCtx.rotate(this.rotate)
+      hiddenCtx.translate(-this.x, -this.y)
       DrawPath(this.x, this.y, batPath, "hsl(0, 0%, 55%)", -1, 1)
-      ctx.restore()
+      hiddenCtx.restore()
       DrawTriangle(this.x, this.y + 125, this.x - 25, this.y + 60, this.x + 25, this.y + 60, "hsl(0, 0%, 55%)")
       DrawTriangle(this.x, this.y + 30, this.x - 25, this.y + 60, this.x + 25, this.y + 60, "hsl(0, 0%, 55%)")
       if (this.y < -200) {
@@ -3326,13 +3357,13 @@ this.draw = function () {
   }
 
   function DrawPath(x, y, path, color, scaleX, scaleY) {
-    ctx.fillStyle = color;
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.scale(scaleX, scaleY)
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.save();
+    hiddenCtx.translate(x, y);
+    hiddenCtx.scale(scaleX, scaleY)
     let ex = new Path2D(path);
-    ctx.fill(ex);
-    ctx.restore();
+    hiddenCtx.fill(ex);
+    hiddenCtx.restore();
   };
 
   function vantageNoAmmo() {
@@ -3342,12 +3373,12 @@ this.draw = function () {
     this.draw = function () {
       var elapsed = Date.now() - this.start;
       var eIndex = 5 - Math.floor(elapsed / 300)
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(0, 0, 320, 200, "black")
       for (let i = 0; i <= eIndex; i++) {
         DrawRect(i * 55, 0, 40, 200, `hsl(${5 * eIndex}, 100%, 50%)`)
       }
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if (eIndex < 1) {
         this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0;
       } else {
@@ -3360,12 +3391,12 @@ this.draw = function () {
   function vantageLine(x1, y1, x2, y2, length) {
     var distanceX = x2 - x1;
     var distanceY = y2 - y1;
-    ctx.beginPath()
-    ctx.moveTo(x1, y1)
-    ctx.lineTo(x1 + distanceX * length, y1 + distanceY * length)
-    ctx.strokeStyle = "red"
-    ctx.lineWidth = 20
-    ctx.stroke()
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(x1, y1)
+    hiddenCtx.lineTo(x1 + distanceX * length, y1 + distanceY * length)
+    hiddenCtx.strokeStyle = "red"
+    hiddenCtx.lineWidth = 20
+    hiddenCtx.stroke()
   }
 
   function expandingStroke(x, y, speed, stroke, color) {
@@ -3383,21 +3414,21 @@ this.draw = function () {
   }
 
   function DrawStroke(x, y, radius, color, stroke) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = stroke;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.stroke();
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.stroke();
   };
 
   function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.moveTo(cord1X, cord1Y);
-    ctx.lineTo(cord2X, cord2Y);
-    ctx.lineTo(cord3X, cord3Y);
-    ctx.lineTo(cord1X, cord1Y);
-    ctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.moveTo(cord1X, cord1Y);
+    hiddenCtx.lineTo(cord2X, cord2Y);
+    hiddenCtx.lineTo(cord3X, cord3Y);
+    hiddenCtx.lineTo(cord1X, cord1Y);
+    hiddenCtx.fill();
   };
 
 
@@ -3411,12 +3442,12 @@ this.draw = function () {
       
     
     this.draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
 
       for (let i = 0; i < 3; i++) {
-        ctx.fillStyle = "#03fce3";
-        ctx.fillRect(0, this.elapsed <= 1000 ? (0 + 30 * i) + speed : (350 + i * 30) - speed, 320, 17);
+        hiddenCtx.fillStyle = "#03fce3";
+        hiddenCtx.fillRect(0, this.elapsed <= 1000 ? (0 + 30 * i) + speed : (350 + i * 30) - speed, 320, 17);
       }
       speed += 5
       this.elapsed = new Date().getTime() - this.start;
@@ -3432,10 +3463,10 @@ this.draw = function () {
       this.count = 0
       this.one = new lightning(10, "hsl(190, 100%, 80%)", 20)
       this.draw = function () {
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawRect(0, 0, 320, 200, `hsla(240, 100%, ${40 + Math.random() * 10}%, 1)`)
         this.one.draw()
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.count < 100 ? this.count ++ : this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
       };
     }
@@ -3475,6 +3506,20 @@ this.draw = function () {
       }
     }
 
+    function DrawLightning(array, color, width){
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(...array[0])
+        array.forEach((ele, i)=>{
+          if(i){
+            hiddenCtx.lineTo(...array[i])
+          }
+        });
+        hiddenCtx.strokeStyle = color;
+        hiddenCtx.lineJoin = "round";
+        hiddenCtx.lineWidth = width + Math.random() * width;
+        hiddenCtx.stroke()
+    }
+
   function WraithZ(){
     this.lifetime = 150
     this.draw = function(){
@@ -3488,13 +3533,13 @@ this.draw = function () {
     this.hue = Math.random() * 30 + 270
     this.rot = Math.random() * Math.PI * 2
     this.draw = function(){
-      ctx.save()
-      ctx.translate(160, 100)
-      ctx.rotate(this.rot)
-      ctx.translate(-160, -100)
+      hiddenCtx.save()
+      hiddenCtx.translate(160, 100)
+      hiddenCtx.rotate(this.rot)
+      hiddenCtx.translate(-160, -100)
       DrawCircle(160, 100 + this.rad, this.rad / 5, `hsla(${this.hue}, 100%, 50%, 1)`)
       this.rad < 300 ? this.rad += 2 : this.lifetime = 0
-      ctx.restore()
+      hiddenCtx.restore()
       this.rot+= .04
     }
   }
@@ -3510,12 +3555,12 @@ this.draw = function () {
       
     
     this.draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = "#bb00ee";
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "#bb00ee";
       for (let i = 0; i < 2; i++) {
-        ctx.fillRect(split + 30 * i, 0, 30, 200);
-        ctx.fillRect((320 - 30 * i - 30) - split, 0, 30, 200);
+        hiddenCtx.fillRect(split + 30 * i, 0, 30, 200);
+        hiddenCtx.fillRect((320 - 30 * i - 30) - split, 0, 30, 200);
       }
       split += 8;
       this.elapsed = new Date().getTime() - this.start;
@@ -3549,32 +3594,32 @@ this.draw = function () {
 
 
   function drawArrow(x, y, width, height, color, lineWidth, rotation) {
-    ctx.beginPath();
-    ctx.save();
-    ctx.translate(x, y + height / 2);
-    ctx.rotate(rotation)
-    // ctx.moveTo(0,0+height/2);
-    // ctx.lineTo(0,0-height/2)
-    ctx.strokeStyle = color;
-    ctx.lineWidth = lineWidth;
-    ctx.moveTo(0, 0)
-    ctx.moveTo(0 - 3, -height / 2);
-    ctx.lineTo(width / 2, height / 4)
+    hiddenCtx.beginPath();
+    hiddenCtx.save();
+    hiddenCtx.translate(x, y + height / 2);
+    hiddenCtx.rotate(rotation)
+    // hiddenCtx.moveTo(0,0+height/2);
+    // hiddenCtx.lineTo(0,0-height/2)
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = lineWidth;
+    hiddenCtx.moveTo(0, 0)
+    hiddenCtx.moveTo(0 - 3, -height / 2);
+    hiddenCtx.lineTo(width / 2, height / 4)
 
-    ctx.moveTo(0 + 3, -height / 2);
-    ctx.lineTo(-width / 2, height / 4)
-    ctx.stroke();
-    ctx.restore();
+    hiddenCtx.moveTo(0 + 3, -height / 2);
+    hiddenCtx.lineTo(-width / 2, height / 4)
+    hiddenCtx.stroke();
+    hiddenCtx.restore();
   }
 
 
   function DrawHeart(x, y, xSize, Ysize, color) {
-    ctx.save();
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.moveTo(x, y);
+    hiddenCtx.save();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.moveTo(x, y);
     // top left curve
-    ctx.bezierCurveTo(
+    hiddenCtx.bezierCurveTo(
       x,
       y,
       x - xSize / 2,
@@ -3582,7 +3627,7 @@ this.draw = function () {
       x - xSize / 2,
       y + Ysize / 4
     );
-    ctx.bezierCurveTo(
+    hiddenCtx.bezierCurveTo(
       x - xSize / 2,
       y + Ysize / 4,
       x - xSize / 2,
@@ -3590,7 +3635,7 @@ this.draw = function () {
       x,
       y + Ysize
     );
-    ctx.bezierCurveTo(
+    hiddenCtx.bezierCurveTo(
       x + xSize / 2,
       y + Ysize / 4,
       x + xSize / 2,
@@ -3598,7 +3643,7 @@ this.draw = function () {
       x + xSize / 2,
       y + Ysize / 4
     );
-    ctx.bezierCurveTo(
+    hiddenCtx.bezierCurveTo(
       x + xSize / 2,
       y + Ysize / 4,
       x + xSize / 2,
@@ -3607,8 +3652,8 @@ this.draw = function () {
       y
     );
 
-    ctx.fill()
-    ctx.restore()
+    hiddenCtx.fill()
+    hiddenCtx.restore()
   };
 
   function getNow() {
@@ -3617,13 +3662,13 @@ this.draw = function () {
   }
 
   function drawSweep(nWidth, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, nWidth * 320, 200);
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(0, 0, nWidth * 320, 200);
   }
 
   function drawSweepUp(nWidth, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 200 - nWidth * 200, 320, 200);
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(0, 200 - nWidth * 200, 320, 200);
   }
 
 
@@ -3640,18 +3685,18 @@ this.draw = function () {
       
     
     this.draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
       var pctUp = this.count / 2000;
-      ctx.strokeStyle = this.color;
-      ctx.fillStyle = this.color;
-      ctx.lineWidth = 40;
-      ctx.beginPath();
-      ctx.arc(160, 100, !this.reverse ? 200 * pctUp : 200 - 200 * pctUp, 0, 2 * Math.PI);
+      hiddenCtx.strokeStyle = this.color;
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.lineWidth = 40;
+      hiddenCtx.beginPath();
+      hiddenCtx.arc(160, 100, !this.reverse ? 200 * pctUp : 200 - 200 * pctUp, 0, 2 * Math.PI);
       if (this.isHollow) {
-        ctx.stroke();
+        hiddenCtx.stroke();
       } else {
-        ctx.fill();
+        hiddenCtx.fill();
       }
       if (this.count < 100) {
         this.count = 2000;
@@ -3720,16 +3765,16 @@ this.draw = function () {
         currentColor = cl3;
       }
 
-      ctx.fillStyle = currentColor;
-      ctx.beginPath();
+      hiddenCtx.fillStyle = currentColor;
+      hiddenCtx.beginPath();
       try {
-        ctx.arc(spX, spY, radius, start + offset, end + offset);
+        hiddenCtx.arc(spX, spY, radius, start + offset, end + offset);
       } catch (err) {
-        ctx.arc(160, 100, 50, Math.PI, 2 * Math.PI);
+        hiddenCtx.arc(160, 100, 50, Math.PI, 2 * Math.PI);
       }
-      ctx.lineTo(spX, spY);
-      ctx.closePath();
-      ctx.fill();
+      hiddenCtx.lineTo(spX, spY);
+      hiddenCtx.closePath();
+      hiddenCtx.fill();
     }
   }
 
@@ -3750,7 +3795,7 @@ this.draw = function () {
 
     this.draw = function () {
       var pctUp = 1 - this.count / 2000;
-      ctx.fillStyle =
+      hiddenCtx.fillStyle =
         'hsla(' +
         (this.hue + random(-15, 15)) +
         ',' +
@@ -3760,11 +3805,11 @@ this.draw = function () {
         '%,' +
         this.alpha +
         ')';
-      ctx.fillRect(0, 200 - 200 * pctUp, 320, 300);
+      hiddenCtx.fillRect(0, 200 - 200 * pctUp, 320, 300);
 
       this.count -= 28;
 
-      ctx.fillStyle =
+      hiddenCtx.fillStyle =
         'hsla(' +
         (this.hue + random(-15, 15)) +
         ',' +
@@ -3775,7 +3820,7 @@ this.draw = function () {
         this.alpha +
         ')';
       for (let index = 0; index < 4; index++) {
-        ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+        hiddenCtx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
       }
       this.lifetime--;
     };
@@ -3834,8 +3879,8 @@ this.draw = function () {
     this.height = height;
 
     this.draw = function () {
-      ctx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
-      ctx.fillRect(this.x, this.y, this.height, this.width);
+      hiddenCtx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
+      hiddenCtx.fillRect(this.x, this.y, this.height, this.width);
       this.lifetime--;
       this.y -= this.ydirection;
       this.x += this.xdirection;
@@ -3877,9 +3922,9 @@ function spark(x, y, scale,sparks,speed,color){
     this.color = color
     this.draw = function(){
       if(this.scale < .1) this.lifetime = 0;
-      ctx.beginPath()
-      ctx.moveTo(this.startX, this.startY)
-      ctx.lineTo(this.startX + this.stepX * this.count, this.startY + this.stepY * this.count)
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(this.startX, this.startY)
+      hiddenCtx.lineTo(this.startX + this.stepX * this.count, this.startY + this.stepY * this.count)
       if(this.count < 5){
         this.count+=speed
         if(this.count >= 5) {
@@ -3893,9 +3938,9 @@ function spark(x, y, scale,sparks,speed,color){
           }
         }
       }
-      ctx.lineWidth = 15 * this.scale
-      ctx.strokeStyle = `hsla(${this.color.h},${this.color.s}%,${this.color.l}%)`;
-      ctx.stroke()
+      hiddenCtx.lineWidth = 15 * this.scale
+      hiddenCtx.strokeStyle = `hsla(${this.color.h},${this.color.s}%,${this.color.l}%)`;
+      hiddenCtx.stroke()
     }
   }
 
@@ -3909,7 +3954,7 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     this.draw = function(){
       this.elapsed = (Date.now() - this.start);
       this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       if (colorspeed != 0){
         this.color.h -= colorspeed;
         DrawCircle(this.x,this.y,this.size*this.alpha,`hsla(${this.color.h},${this.color.s}%,${this.color.l}%)`)
@@ -3917,7 +3962,7 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
         DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
       }
    
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if(this.elapsed > this.duration){
         this.lifetime = 0;
       }
@@ -3933,13 +3978,13 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
         this.lifetime = 10;
 
         this.draw = function () {
-          ctx.save()
-          ctx.setTransform(.5, 1, -1, .5, 160, 100);
-          ctx.beginPath();
-          ctx.ellipse(this.x, this.y, this.radiusX, this.radiusY, Math.PI, 0, 2 * Math.PI, false);
-          ctx.fillStyle = `hsl(215, 100%, ${1500 / this.radiusX}%)`;
-          ctx.fill();
-          ctx.restore()
+          hiddenCtx.save()
+          hiddenCtx.setTransform(.5, 1, -1, .5, 160, 100);
+          hiddenCtx.beginPath();
+          hiddenCtx.ellipse(this.x, this.y, this.radiusX, this.radiusY, Math.PI, 0, 2 * Math.PI, false);
+          hiddenCtx.fillStyle = `hsl(215, 100%, ${1500 / this.radiusX}%)`;
+          hiddenCtx.fill();
+          hiddenCtx.restore()
           this.radiusX --;
           if (this.radiusX <= 5) {
             this.lifetime = 0;
@@ -3951,7 +3996,7 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     this.start = new Date().getTime()
     this.draw = function () {
       this.elapsed = new Date().getTime() - this.start;
-      var gradient = ctx.createRadialGradient(160, 110, 0, 160, 110, 200);
+      var gradient = hiddenCtx.createRadialGradient(160, 110, 0, 160, 110, 200);
       this.animSpeed = 0.7;
       if (this.elapsed < 3000) {
         this.mathVal = -1400 * Math.floor(this.elapsed / 1000) + this.elapsed / this.animSpeed;
@@ -3965,10 +4010,10 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
       if (this.elapsed < 1000) {
         gradient.addColorStop(SetRange((100 + this.elapsed / this.animSpeed), 0, 1000) / 1000, 'hsl(0,0%,0%)')
       }
-      ctx.beginPath()
-      ctx.fillStyle = gradient;
-      ctx.arc(160, 120, 200, 0, Math.PI * 2)
-      ctx.fill()
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = gradient;
+      hiddenCtx.arc(160, 120, 200, 0, Math.PI * 2)
+      hiddenCtx.fill()
     }
   }
   function SetRange(num, min, max) {
@@ -3985,9 +4030,9 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     this.color = color;
     this.draw = function () {
       this.elapsed = (new Date().getTime() - this.start);
-      ctx.beginPath();
-      ctx.fillStyle = this.color
-      ctx.fillRect((160 - this.width / 2) + width * this.index, 200, this.width, -(SetRange(this.elapsed < 4000 ? this.elapsed / 5 : this.height - (this.elapsed - 4000) / 1000 * this.height, 0, this.height)));
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = this.color
+      hiddenCtx.fillRect((160 - this.width / 2) + width * this.index, 200, this.width, -(SetRange(this.elapsed < 4000 ? this.elapsed / 5 : this.height - (this.elapsed - 4000) / 1000 * this.height, 0, this.height)));
     }
   }
 
@@ -4002,10 +4047,10 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     this.ay = 0.5;
     this.lifetime = 10;
     this.draw = function () {
-      ctx.beginPath();
-      ctx.fillStyle = this.color;
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      hiddenCtx.fill();
       this.x += this.vx;
       this.y += this.vy;
       this.vy += this.ay;
@@ -4016,16 +4061,16 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
   };
 
   function DrawDrone(x, y, rotation, size) {
-    ctx.beginPath();
-    ctx.save();
-    ctx.fillStyle = "grey";
-    ctx.translate(x, y);
-    ctx.rotate(rotation)
-    ctx.ellipse(0, 0, size, size / 2, 0, 0, Math.PI * 2)
-    ctx.fillRect(0 - size, 0, size / 2, size / 1.5)
-    ctx.fillRect(0 + size / 2, 0, size / 2, size / 1.5)
-    ctx.fill();
-    ctx.restore();
+    hiddenCtx.beginPath();
+    hiddenCtx.save();
+    hiddenCtx.fillStyle = "grey";
+    hiddenCtx.translate(x, y);
+    hiddenCtx.rotate(rotation)
+    hiddenCtx.ellipse(0, 0, size, size / 2, 0, 0, Math.PI * 2)
+    hiddenCtx.fillRect(0 - size, 0, size / 2, size / 1.5)
+    hiddenCtx.fillRect(0 + size / 2, 0, size / 2, size / 1.5)
+    hiddenCtx.fill();
+    hiddenCtx.restore();
   }
 
   function getPointX(c1, c2, radius, angle) {
@@ -4061,15 +4106,15 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     }
   }
   function DrawCircle(x, y, radius, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill();
   };
   function DrawRect(x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height);
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, width, height);
   };
 
   function maggieDot(x, y, speed, amp, per, radius, mod, color) {
@@ -4107,7 +4152,7 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     this.y = 100;
     this.alpha = 1;
     this.length = 0;
-    this.vignette = ctx.createRadialGradient(160, 100, 100, 160, 100, 200)
+    this.vignette = hiddenCtx.createRadialGradient(160, 100, 100, 160, 100, 200)
     this.vignette.addColorStop(0, "hsla(0, 0%, 0%, 0)")
     this.vignette.addColorStop(.45, "hsla(0, 0%, 0%, 0)")
     this.vignette.addColorStop(.65, "hsla(0, 0%, 0%, 1)")
@@ -4125,7 +4170,7 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
 
     this.draw = function () {
       this.elapsed = new Date().getTime() - this.start;
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       if (character == "Vantage") {
         vantageLine(50, 100, 160, 100, this.length)
         vantageLine(160, 0, 160, 100, this.length)
@@ -4139,33 +4184,33 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
           this.start = Date.now() - 2000
         }
       } else {
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = "black";
+        hiddenCtx.fillRect(0, 0, 320, 200);
 
-        ctx.fillStyle = this.color1;
-        ctx.beginPath();
-        ctx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
-        ctx.fill();
+        hiddenCtx.fillStyle = this.color1;
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
+        hiddenCtx.fill();
 
-        ctx.fillStyle = this.color2;
-        ctx.beginPath();
-        ctx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
-        ctx.fill();
+        hiddenCtx.fillStyle = this.color2;
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
+        hiddenCtx.fill();
 
-        ctx.fillStyle = this.color1;
-        ctx.beginPath();
-        ctx.arc(160, 100, this.size, 0, 2 * Math.PI);
-        ctx.fill();
+        hiddenCtx.fillStyle = this.color1;
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, this.size, 0, 2 * Math.PI);
+        hiddenCtx.fill();
 
-        ctx.fillStyle = this.color2;
-        ctx.beginPath();
-        ctx.arc(160, 100, (this.size / 2), 0, 2 * Math.PI);
-        ctx.fill();
+        hiddenCtx.fillStyle = this.color2;
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, (this.size / 2), 0, 2 * Math.PI);
+        hiddenCtx.fill();
 
-        ctx.fillStyle = this.color1;
-        ctx.beginPath();
-        ctx.arc(160, 100, (this.size / 3) + 10, 0, 2 * Math.PI);
-        ctx.fill();
+        hiddenCtx.fillStyle = this.color1;
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, (this.size / 3) + 10, 0, 2 * Math.PI);
+        hiddenCtx.fill();
         if (this.reverse) {
           if (this.size - 5 > 0) {
             this.size -= 5;
@@ -4174,7 +4219,7 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
           this.size += 5;
         }
       }
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       if (this.elapsed > this.duration || (character == "Vantage" && color[0] > 180 && color[0] < 225 && color[1] > 25 && color[1] < 50 && color[2] > 75 && color[2] < 100)) {
         this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
         gZGoing = false;
@@ -4232,8 +4277,8 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     this.lifetime = 40;
     this.size = size;
     this.draw = function () {
-      ctx.fillStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + this.lightness + '%)';
-      ctx.fillRect(this.x, this.y, this.size, this.size);
+      hiddenCtx.fillStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + this.lightness + '%)';
+      hiddenCtx.fillRect(this.x, this.y, this.size, this.size);
       this.lifetime--;
     };
   }
@@ -4273,15 +4318,5 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
     };
   }
   
-
-  // ENGINE READY FUNCTION ---------------------------------------------------------------------------------------------
-  function onEngineReady() {
-    // Grab canvas and rendering context.
-    /** @type {HTMLCanvasElement} */
-    canvas = document.getElementById("exCanvas")
-    ctx = canvas.getContext("2d")
-    // Start updates *after* our engine is accessible and ready.
-    window.requestAnimationFrame(update)
-  }
-
+  window.requestAnimationFrame(update)
 </script>
