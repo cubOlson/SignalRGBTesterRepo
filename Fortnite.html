@@ -1,35 +1,35 @@
 <head>
   <title>Fortnite Dev</title>
-  <meta description="Ambience and metering for Fortnite. v3.01" />
+  <meta description="Ambience and metering for Fortnite. v3.02" />
   <meta publisher="SignalRGB" />
-  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
-  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  <meta property="ambienceAlpha" label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
   default="Ambience"/>
-  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
-  <meta property="enableHUD" label="HUD effects" type="boolean" default="1" />
-  <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" type="boolean" default="0" />
-  <meta property="HUDBack" label="Custom HUD Background" type="boolean" default="0" />
-  <meta property="healthColor" label="Health HUD Color" type="color" default="#12ff00" min="0" max="360" />
-  <meta property="HealthBarX" label="Health Bar X" type="number" min="0" max="100" default="0" />
-  <meta property="HealthBarY" label="Health Bar Y" type="number" min="0" max="100" default="25" />
-  <meta property="HealthBarWidth" label="Health Bar Width" type="number" min="0" max="100" default="100" />
-  <meta property="HealthBarHeight" label="Health Bar Height" type="number" min="0" max="100" default="15" />
-  <meta property="ShieldColor" label="Shield HUD Color" type="color" default="#00c3ff" min="0" max="360" />
-  <meta property="ShieldBarX" label="Shield Bar X" type="number" min="0" max="100" default="0" />
-  <meta property="ShieldBarY" label="Shield Bar Y" type="number" min="0" max="100" default="40" />
-  <meta property="ShieldBarWidth" label="Shield Bar Width" type="number" min="0" max="100" default="100" />
-  <meta property="ShieldBarHeight" label="Shield Bar Height" type="number" min="0" max="100" default="15" />
-  <meta property="enableHealing" label="Healing effect" type="boolean" default="1" />
-  <meta property="enableDamage" label="Damage effect" type="boolean" default="1" />
-  <meta property="enableVehicle" label="Vehicle effect" type="boolean" default="1" />
-  <meta property="enableCloud" label="Storm closing effect" type="boolean" default="1" />
-  <meta property="enableXP" label="XP effect" type="boolean" default="1" />
-  <meta property="enableKnock" label="Knocked-down effect" type="boolean" default="1" />
-  <meta property="enableKill" label="Kill effect" type="boolean" default="1" />
-  <meta property="enableBattlebus" label="Battlebus effect" type="boolean" default="1" />
-  <meta property="enableSprinting" label="Sprinting effect" type="boolean" default="1" />
-  <meta property="enableBuild" label="Build effect" type="boolean" default="1" />
-  <meta property="enableWin" label="Win effect" type="boolean" default="1" />
+  <meta property="backColor" label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+  <meta property="enableHP" label="Health Bar effect" tooltip="Switches the health bar on or off." type="boolean" default="1" />
+  <meta property="adjToggle" label="Bar Effect Adjust" tooltip="Turns on the health and shield bar effects so you can adjust them out of game." type="boolean" default="0" />
+  <meta property="healthColor" label="Health HUD Color" tooltip="Controls the color of the health bar." type="color" default="#12ff00" min="0" max="360" />
+  <meta property="HealthBarX" label="Health Bar X" tooltip="Moves the health bar left and right." type="number" min="0" max="100" default="0" />
+  <meta property="HealthBarY" label="Health Bar Y" tooltip="Moves the health bar up and down." type="number" min="0" max="100" default="25" />
+  <meta property="HealthBarWidth" label="Health Bar Width" tooltip="Change the maximum width of the health bar." type="number" min="0" max="100" default="100" />
+  <meta property="HealthBarHeight" label="Health Bar Height" tooltip="Change the maximum heght of the health bar." type="number" min="0" max="100" default="15" />
+  <meta property="enableShield" label="Shield Bar effect" tooltip="Switches the shield bar on or off." type="boolean" default="1" />
+  <meta property="ShieldColor" label="Shield HUD Color" tooltip="Controls the color of the shield bar." type="color" default="#00c3ff" min="0" max="360" />
+  <meta property="ShieldBarX" label="Shield Bar X" tooltip="Moves the shield bar left and right." type="number" min="0" max="100" default="0" />
+  <meta property="ShieldBarY" label="Shield Bar Y" tooltip="Moves the shield bar up and down." type="number" min="0" max="100" default="40" />
+  <meta property="ShieldBarWidth" label="Shield Bar Width" tooltip="Change the maximum width of the shield bar." type="number" min="0" max="100" default="100" />
+  <meta property="ShieldBarHeight" label="Shield Bar Height" tooltip="Change the maximum height of the shield bar." type="number" min="0" max="100" default="15" />
+  <meta property="enableHealing" label="Healing effect" tooltip="Turns on the effect that plays when you heal." type="boolean" default="1" />
+  <meta property="enableDamage" label="Damage effect" tooltip="Turns on the effect that plays when you are damaged." type="boolean" default="1" />
+  <meta property="enableVehicle" label="Vehicle effect" tooltip="Turns on the effect that plays when you are in a vehicle." type="boolean" default="1" />
+  <meta property="enableCloud" label="Storm closing effect" tooltip="Turns on the effect that plays when the storm is closing." type="boolean" default="1" />
+  <meta property="enableXP" label="XP effect" type="boolean" tooltip="Turns on the effect that plays when you gain experience." default="1" />
+  <meta property="enableKnock" label="Knocked-down effect" tooltip="Turns on the effect that plays when you are downed." type="boolean" default="1" />
+  <meta property="enableKill" label="Kill effect" tooltip="Turns on the effect that plays when you get a kill." type="boolean" default="1" />
+  <meta property="enableBattlebus" label="Battlebus effect" tooltip="Turns on the effect that plays when you are on the battlebus." type="boolean" default="1" />
+  <meta property="enableSprinting" label="Sprinting effect" tooltip="Turns on the effect that plays when you are sprinting." type="boolean" default="1" />
+  <meta property="enableBuild" label="Build effect" tooltip="Turns on the effect that plays when you are building." type="boolean" default="1" />
+  <meta property="enableWin" label="Win effect" tooltip="Turns on the effect that plays when you win." type="boolean" default="1" />
 
   <!-- 26 Meters -->
   <meta meter="inGame1" type="area" tags="vlc,fortnite" x="0.4934" y="0.0174" width="0.0137" height="0.0174" 
@@ -341,9 +341,6 @@
     <resolution size="3840x2160" x="0.502" y="0.4826" width="0" height="0.0047" />
     <resolution size="2560x1080" x="0.5018" y="0.4838" width="0" height="0.0018" />
   </meta>
-
-
-
 </head>
 
 <body style="margin: 0; padding: 0; background: #000;">
@@ -462,7 +459,7 @@
     effects = effects.filter(effect => !(effect.lifetime <= 0));
 
     
-    if(enableHUD) DrawHUD();
+    DrawHUD();
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(hiddenCanvas, 0, 0);
     
@@ -565,7 +562,7 @@
   }
 
   function onGameChanged() {
-    if (inGame1Meter.value >= 0.33 && inGame2Meter.value >= .6 && engine.vision.notInGame2 < .1 && engine.vision.Health >.3) {
+    if (inGame1Meter.value >= 0.33 && inGame2Meter.value >= .6 && engine.vision.notInGame2 < .1 && engine.vision.Health >.2) {
       //setTimeout(() => {
         gInGame = true;
       //}, 1000);
@@ -575,21 +572,29 @@
 
   function DrawHUD() {
     if (gInGame) {
-      hctx.beginPath()
-      hctx.fillStyle = healthColor;
-      hctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), healthM.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      if(enableHP){
+        hctx.beginPath()
+        hctx.fillStyle = healthColor;
+        hctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), healthM.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      }
       //shield
-      hctx.beginPath()
-      hctx.fillStyle = ShieldColor;
-      hctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), shieldsM.value * (ShieldBarWidth * 3.2), (ShieldBarHeight * 2))
-    } else if (adjToggle || !gInGame) {
-      hctx.beginPath()
-      hctx.fillStyle = healthColor;
-      hctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      if(enableShield){
+        hctx.beginPath()
+        hctx.fillStyle = ShieldColor;
+        hctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), shieldsM.value * (ShieldBarWidth * 3.2), (ShieldBarHeight * 2))
+      }
+    } else if (adjToggle && !gInGame) {
+      if(enableHP){
+        hctx.beginPath()
+        hctx.fillStyle = healthColor;
+        hctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      }
       //shield
-      hctx.beginPath()
-      hctx.fillStyle = ShieldColor;
-      hctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), (ShieldBarWidth * 3.2), (ShieldBarHeight*2))
+      if(enableShield){
+        hctx.beginPath()
+        hctx.fillStyle = ShieldColor;
+        hctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), (ShieldBarWidth * 3.2), (ShieldBarHeight*2))
+      }
     }
     //health
   }
