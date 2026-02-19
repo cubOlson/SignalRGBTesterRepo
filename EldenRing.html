@@ -1,31 +1,33 @@
 <head>
-  <title>Elden Ring Dev</title>
-  <meta description="HUD and effects for Elden Ring. Use default HUD settings - v1.03" />
-  <meta publisher="SignalRgb" />
+  <title>Elden Ring New</title>
+  <meta description="HUD and effects for Elden Ring. Use default HUD settings - v1.04" />
+  <meta publisher="SignalRGB" />
 
-  <meta property="keyScreenBrightness" label="Ambiance brightness" type="number" min="0" max="100" default="100" />
-  <meta property="backColor" label="Background Color" type="color" default="#020202" min="0" max="360" />
-  <meta property="adjToggle" label="Adjustment toggle (turn off in-game)" type="boolean" default="0" />
-  <meta property="vertMeters" label="Vertical HUD" type="boolean" default="0" />
-  <meta property="hpOn" label="Health effects" type="boolean" default="1" />
-  <meta property="healthX" label="Health bar X position" type="number" min="0" max="320" default="0" />
-  <meta property="healthY" label="Health bar Y position" type="number" min="0" max="320" default="60" />
+  <meta property="ambienceAlpha" label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Ambience"/>
+  <meta property="backColor" label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+  <meta property="adjToggle" label="Adjustment toggle (turn off in-game)" tooltip="Turn this on to adjust the Bar elements without having to be in game." type="boolean" default="0" />
+  <meta property="vertMeters" label="Vertical Bars" tooltip="Changes the bar elements to be vertical." type="boolean" default="0" />
+  <meta property="hpOn" label="Health Bar" type="boolean" default="1" />
+  <meta property="healthX" label="Health bar X" type="number" min="0" max="320" default="0" />
+  <meta property="healthY" label="Health bar Y" type="number" min="0" max="320" default="60" />
   <meta property="healthWidth" label="Health bar width" type="number" min="0" max="320" default="320" />
   <meta property="healthHeight" label="Health bar height" type="number" min="0" max="100" default="15" />
   <meta property="manaOn" label="Mana Effects" type="boolean" default="1" />
-  <meta property="manaX" label="Mana bar X position" type="number" min="0" max="320" default="0" />
-  <meta property="manaY" label="Mana bar Y position" type="number" min="0" max="320" default="80" />
+  <meta property="manaX" label="Mana bar X" type="number" min="0" max="320" default="0" />
+  <meta property="manaY" label="Mana bar Y" type="number" min="0" max="320" default="80" />
   <meta property="manaWidth" label="Mana bar width" type="number" min="0" max="320" default="320" />
   <meta property="manaHeight" label="Mana bar height" type="number" min="0" max="100" default="15" />
   <meta property="staminaOn" label="Stamina Effects" type="boolean" default="1" />
-  <meta property="staminaX" label="Stamina bar X position" type="number" min="0" max="320" default="0" />
-  <meta property="staminaY" label="Stamina bar Y position" type="number" min="0" max="320" default="100" />
+  <meta property="staminaX" label="Stamina bar X" type="number" min="0" max="320" default="0" />
+  <meta property="staminaY" label="Stamina bar Y" type="number" min="0" max="320" default="100" />
   <meta property="staminaWidth" label="Stamina bar width" type="number" min="0" max="320" default="320" />
   <meta property="staminaHeight" label="Stamina bar height" type="number" min="0" max="100" default="15" />
   <meta property="bossHealthOn" label="Boss Health Effect" type="boolean" default="1" />
   <meta property="bossColor" label="Boss Health Color" type="color" default="#ffd000" min="0" max="360" />
-  <meta property="bossX" label="Boss bar X position" type="number" min="0" max="320" default="0" />
-  <meta property="bossY" label="Boss bar Y position" type="number" min="0" max="320" default="110" />
+  <meta property="bossX" label="Boss bar X" type="number" min="0" max="320" default="0" />
+  <meta property="bossY" label="Boss bar Y" type="number" min="0" max="320" default="110" />
   <meta property="bossWidth" label="Boss bar width" type="number" min="0" max="320" default="320" />
   <meta property="bossHeight" label="Boss bar height" type="number" min="0" max="100" default="15" />
   <meta property="deathOn" label="Death Effect" type="boolean" default="1" />
@@ -73,26 +75,29 @@
     <resolution size="3840x2160" x="0.0825" y="0.0563" width="0.3974" height="0.0007" />
     <resolution size="2560x1080" x="0.1876" y="0.0584" width="0.2946" height="0" />
   </meta>
+  
+<!-- Last edited: 2026-02-19T23:05:23Z | 2026-02-19 16:05:23 MST -->
+<meta meter="manaBlue" tags="vlc,ELDEN RING" x="0.08250" y="0.06180" width="0.5000" height="0.0001000"
+  h="178-209" s="30-99" l="0-48" hdr-h="180-210" hdr-s="35-90" hdr-l="40-60" type="area">
+  <resolution aspect="3.55:1" x="0.2914" y="0.06210" width="0.5000" height="0.0001000" />
+  <resolution aspect="24:10" x="0.1890" y="0.06120" width="0.5000" height="0.0001000" />
+  <resolution aspect="16:11" x="0.08130" y="0.1076" width="0.5000" height="0.0001000" />
 
-  <meta meter="manaBlue" tags="vlc,ELDEN RING" x="0.0825" y="0.0618" width="0.5" height =".0001" 
-    h="180-210" s="35-90" l="25-40" hdr-h="180-210" hdr-s="35-90" hdr-l="40-60" type="area">
-    <resolution aspect="3.55:1" x="0.2914" y="0.0621" width="0.5" height="0.0001" />
-    <resolution aspect="24:10" x="0.189" y="0.0612" width=".5" height=".0001" />
-    <resolution aspect="16:11" x="0.0813" y="0.1076" width=".5" height=".0001" />
+  <resolution size="3840x2160" x="0.08250" y="0.06180" width="0.5000" height="0.0001000" />
+  <resolution size="2560x1080" x="0.1876" y="0.06390" width="0.3114" height="0.0009000" />
+  <!-- <resolution size="1920x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+</meta>
 
-    <resolution size="3840x2160" x="0.0825" y="0.0618" width="0.5" height =".0001" />
-    <resolution size="2560x1080" x="0.1876" y="0.0639" width="0.3114" height="0.0009" />
-  </meta>
+  <meta meter="manaYellow" tags="vlc,ELDEN RING" x="0.08250" y="0.07020" width="0.5000" height="0.0007000"
+  h="30-162" s="10-46" l="17-71" hdr-h="20-80" hdr-s="0-50" hdr-l="40-100" type="area">
+  <resolution aspect="3.55:1" x="0.2914" y="0.07040" width="0.5000" height="0.0007000" />
+  <resolution aspect="24:10" x="0.1890" y="0.07090" width="0.5000" height="0.0007000" />
+  <resolution aspect="16:11" x="0.08130" y="0.1134" width="0.5000" height="0.0007000" />
 
-  <meta meter="manaYellow" tags="vlc,ELDEN RING" x="0.0825" y="0.0702" width="0.5" height =".0007" 
-    h="20-80" s="15-50" l="20-100" hdr-h="20-80" hdr-s="0-50" hdr-l="40-100" type="area">
-    <resolution aspect="3.55:1" x="0.2914" y="0.0704" width="0.5" height="0.0007" />
-    <resolution aspect="24:10" x="0.189" y="0.0709" width="0.5" height="0.0007" />
-    <resolution aspect="16:11" x="0.0813" y="0.1134" width="0.5" height="0.0007" />
-
-    <resolution size="3840x2160" x="0.0825" y="0.0702" width="0.5" height =".0007" />
-    <resolution size="2560x1080" x="0.1876" y="0.0714" width="0.3114" height="0.0001" />
-  </meta>
+  <resolution size="3840x2160" x="0.08250" y="0.07020" width="0.5000" height="0.0007000" />
+  <resolution size="2560x1080" x="0.1876" y="0.07140" width="0.3114" height="0.0001000" />
+  <!-- <resolution size="1920x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+</meta>
 
   <meta meter="manaNotYellow" tags="vlc,ELDEN RING" x="0.0825" y="0.073" width="0.5" height="0.0001" 
     h="20-80" s="0-50" l="20-100" hdr-h="20-80" hdr-s="0-50" hdr-l="40-100" type="area">
@@ -301,6 +306,14 @@
 <script>
   canvas = document.getElementById('exCanvas');
   ctx = canvas.getContext('2d');
+
+    // Create a hidden canvas
+  const hiddenCanvas = document.createElement('canvas');
+  hiddenCanvas.width = 320;
+  hiddenCanvas.height = 200;
+  // Don't attach to DOM
+  const hiddenCtx = hiddenCanvas.getContext('2d');
+
   var effects = [];
   var inGame = false;
   var discAnim = false;
@@ -339,7 +352,7 @@
 
   function update() {
     drawRect(0, 0, 320, 200, `hsl(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%)`)
-    if (keyScreenBrightness) copyScreen(1);
+    backgroundHandler()
 
     if(engine.vision.HpNotYellow <= .1) healthLengthMeter.setValue(engine.vision.HpYellow);
     healthRedMeter.setValue(engine.vision.hpRed);
@@ -385,19 +398,96 @@
 
     effects.forEach((ele, i) => {
       ele.draw();
-      if (ele.lifetime <= 0) {
-        effects.splice(i, 1);
-      }
     });
+
+    effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+    ctx.drawImage(hiddenCanvas, 0, 0)
 
     firstFrame = false
     window.requestAnimationFrame(update);
   }
 
-  let proBack = []
-  function onbackColorChanged(){
-    proBack = hexToHSL(backColor)
-  }
+    let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            drawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            drawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100, hiddenCtx)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            drawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            drawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        hiddenCtx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        hiddenCtx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
 
   function inGameCheck() {
     if((compassMeter.value >= .95 && engine.vision.hpRed > .05) || (healthLengthMeter.value >= .1 && healthRedMeter.value && engine.vision.HpNotYellow <= .05)) {
@@ -472,23 +562,23 @@
     }
 
     function DrawStroke(x, y, radius, color, stroke) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = stroke;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.stroke();
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.stroke();
   };
 
   function pickup(){
       this.y = 200
       this.draw = function(){
-        ctx.beginPath()
-        ctx.moveTo(-10, this.y + 50)
-        ctx.lineTo(160, this.y)
-        ctx.lineTo(330, this.y + 50)
-        ctx.lineWidth = 60
-        ctx.strokeStyle = "hsla(50, 50%, 90%, .25)"
-        ctx.stroke()
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(-10, this.y + 50)
+        hiddenCtx.lineTo(160, this.y)
+        hiddenCtx.lineTo(330, this.y + 50)
+        hiddenCtx.lineWidth = 60
+        hiddenCtx.strokeStyle = "hsla(50, 50%, 90%, .25)"
+        hiddenCtx.stroke()
         this.y > -100 ? this.y -= 6 : this.lifetime = 0
       }
     }
@@ -546,35 +636,6 @@
     };
   }
 
-  function copyScreen(alpha) {
-    let lightness = new Int8Array(engine.zone.lightness);
-    let sat = new Int8Array(engine.zone.saturation);
-    let hue = new Int16Array(engine.zone.hue);
-
-    for (var iZone = 0; iZone < 560; iZone++) {
-      ctx.fillStyle =
-        "hsla(" +
-        hue[iZone] +
-        "," +
-        sat[iZone] +
-        "%," +
-        lightness[iZone] +
-        "%, " +
-        keyScreenBrightness / 100
-        +
-        ")";
-
-      var iRow = Math.floor(iZone / 28);
-      var iCol = iZone % 28;
-      var iWidth = 320 / 28;
-      var iHeight = 200 / 20;
-      var iZx = iCol * iWidth;
-      var iZy = iRow * iHeight;
-
-      ctx.fillRect(iZx, iZy, iWidth, iHeight);
-    }
-  }
-
   function foundGraceEffect() {
     this.lifetime = 200;
     effects.push(new DrawPulseStroke(160, 100, 5, 5, 40, "gold"));
@@ -584,11 +645,11 @@
     setTimeout(() => { effects.push(new DrawPulseStroke(160, 100, 5, 3, 10, "gold")) }, 400);
     setTimeout(() => { effects.push(new DrawPulseStroke(160, 100, 5, 2.5, 10, "gold")) }, 500);
     this.draw = function () {
-      ctx.beginPath();
-      ctx.fillStyle = "hsl(35, 100%, 40%)";
-      ctx.globalAlpha = this.lifetime / 200;
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.globalAlpha = 1;
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = "hsl(35, 100%, 40%)";
+      hiddenCtx.globalAlpha = this.lifetime / 200;
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.globalAlpha = 1;
       this.lifetime--;
     }
   }
@@ -602,11 +663,11 @@
     this.color = color;
     this.lifetime = 10;
     this.draw = function () {
-      ctx.beginPath();
-      ctx.strokeStyle = this.color;
-      ctx.lineWidth = this.lineWidth;
-      ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
-      ctx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.strokeStyle = this.color;
+      hiddenCtx.lineWidth = this.lineWidth;
+      hiddenCtx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
+      hiddenCtx.stroke();
       this.radius += speed;
       if (this.radius > 200) {
         this.lifetime = 0;
@@ -619,11 +680,11 @@
     this.lifetime = 2000;
     this.draw = function () {
       this.index = Math.floor(this.count / 5);
-      ctx.globalAlpha = .2;
+      hiddenCtx.globalAlpha = .2;
       for (i = 0; i <= this.index; i++) {
         DrawCircle(160, 100, 20 * i, "hsl(0, 100%, 20%)");
       }
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       for (let i = 0; i < 2; i++) {
         effects.push(new movingParticle(320 * Math.random(), 200, 1, "hsla(0, 0%, 100%, .2)", false))
       }
@@ -681,17 +742,17 @@
   };
 
   function drawRect(x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height)
-    ctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, width, height)
+    hiddenCtx.fill();
   }
 
   function DrawCircle(x, y, radius, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill();
   };
 
   function hexToHSL(hex) {
