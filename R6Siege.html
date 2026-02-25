@@ -1,27 +1,31 @@
 <head>
-  <title>Rainbow Six: Siege</title>
-  <meta description="Metering and ambience for Tom Clancy's Rainbow Six: Siege. v1.02" />
+  <title>Rainbow Six: Siege Dev</title>
+  <meta description="Metering and ambience for Tom Clancy's Rainbow Six: Siege. v1.03" />
   <meta publisher="SignalRGB" />
 
-  <meta property="keyScreenBrightness" label="Ambience brightness" type="number" min="0" max="100" default="100" />
-  <meta property="adjOn" label="HUD Adjustment (turn off in-game)" type="boolean" default="0" />
-  <meta property="RotateBar" label="RotateBars" type="boolean" default="0" />
-  <meta property="healthColor" label="Health Bar Color" type="color" default="#12ff00" min="0" max="360" />
-  <meta property="HealthBarX" label="HealthBarX" type="number" min="0" max="320" default="0" />
-  <meta property="HealthBarY" label="HealthBarY" type="number" min="0" max="200" default="50" />
-  <meta property="HealthBarWidth" label="HealthBarWidth" type="number" min="0" max="320" default="320" />
-  <meta property="HealthBarHeight" label="HealthBarHeight" type="number" min="0" max="200" default="30" />
-  <meta property="hudOn" label="enable HUD effect" type="boolean" default="1" />
-  <meta property="killOn" label="enable Kill effect" type="boolean" default="1" />
-  <meta property="ammoOn" label="enable Ammo effect" type="boolean" default="1" />
-  <meta property="droneOn" label="enable Drone effects" type="boolean" default="1" />
-  <meta property="defuserOn" label="enable defuser effect" type="boolean" default="1" />
-  <meta property="grenadeOn" label="enable utility effect" type="boolean" default="1" />
-  <meta property="searchOn" label="enable search effect" type="boolean" default="1" />
-  <meta property="setupOn" label="enable setup effect" type="boolean" default="1" />
+  <meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background ambience." type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes the background ambience." type="list" 
+        values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+        default="Ambience"/>
+  <meta property="backColor" label="Custom Color" tooltip="Changes the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+  <meta property="adjHUD" label="Adjust Health Bar" tooltip="Turn on to adjust the position of the health bar at full size. Turn off in-game." type="boolean" default="0" />
+  <meta property="RotateBar" label="Rotate Health" tooltip="Rotates the Health bar to vertical." type="boolean" default="0" />
+  <meta property="healthColor" label="Health Bar Color" tooltip="Changes the color of the health bar effect." type="color" default="#12ff00" min="0" max="360" />
+  <meta property="HealthBarX" label="HealthBarX" tooltip="Moves the health bar left and right." type="number" min="0" max="320" default="0" />
+  <meta property="HealthBarY" label="HealthBarY" tooltip="Moves the health bar up and down." type="number" min="0" max="200" default="50" />
+  <meta property="HealthBarWidth" label="HealthBarWidth" tooltip="Changes the maximum width of the health bar." type="number" min="0" max="320" default="320" />
+  <meta property="HealthBarHeight" label="HealthBarHeight" tooltip="Changes the maximum height of the health bar." type="number" min="0" max="200" default="30" />
+  <meta property="hudOn" label="enable Health Bar effect" tooltip="Turns the health bar effect on." type="boolean" default="1" />
+  <meta property="killOn" label="enable Kill effect" tooltip="Turns the got a kill effect on." type="boolean" default="1" />
+  <meta property="ammoOn" label="enable Ammo effect" tooltip="Turns the low ammo effect on." type="boolean" default="1" />
+  <meta property="droneOn" label="enable Drone effects" tooltip="Turns the using drone effect on." type="boolean" default="1" />
+  <meta property="defuserOn" label="enable defuser effect" tooltip="Turns the defusing bomb effect on." type="boolean" default="1" />
+  <meta property="grenadeOn" label="enable utility effect" tooltip="Turns the grenade use effect on." type="boolean" default="1" />
+  <meta property="searchOn" label="enable search effect" tooltip="Turns the search effect on." type="boolean" default="1" />
+  <meta property="setupOn" label="enable setup effect" tooltip="Turns the match setup effect on." type="boolean" default="1" />
 
   <meta meter="searchBlue" tags="VLC,Rainbow Six" x="0.3587" y="0.0007" width="0.0075" height="-0.0007"
-    h="180-220" s="50-75" l="50-75" hdr-h="180-220" hdr-s="40-70" hdr-l="50-100" type="area">
+    h="180-220" s="50-75" l="50-75" hdr-h="180-220" hdr-s="50-75" hdr-l="75-100" type="area">
     <resolution aspect="3.55:1" x="0.4349" y="0.0046" width="0.0047" height="0.0001" />
     <resolution aspect="24:10" x="0.4084" y="0.0000" width="0.0038" height="0.0020" />
     <resolution aspect="16:11" x="0.3599" y="0.0507" width="0.0016" height="0" />
@@ -41,17 +45,17 @@
   </meta>
 
   <meta meter="selectingStageRed" tags="VLC,Rainbow Six" x="0.0684" y="0.1772" width="0.2735" height="0"
-    h="-30-30" s="50-100" l="60-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    h="-30-30" s="50-100" l="60-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="90-100" type="area">
     <resolution aspect="3.55:1" x="0.2841" y="0.1759" width="0.1357" height="0.0001" />
     <resolution aspect="24:10" x="0.1782" y="0.1764" width="0.2038" height="0.0001" />
     <resolution aspect="16:11" x="0.0676" y="0.2095" width="0.2743" height="0.0006" />
 
     <resolution size="3840x2160" x="0.0677" y="0.1774" width="0.2743" height="0" />
-    <resolution size="2560x1080" x="0.1785" y="0.1806" width="0.1300" height="0" />
+    <resolution size="2560x1080" x="0.1762" y="0.177" width="0.206" height="0" />
   </meta>
 
   <meta meter="droneBlack" tags="VLC,Rainbow Six" x="0.1359" y="0.7701" width="0.0001" height="0.0015"
-    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="50-100" hdr-l="0-30" type="area">
+    h="0-360" s="0-100" l="0-30" hdr-h="0-360" hdr-s="30-100" hdr-l="0-30" type="area">
     <resolution aspect="3.55:1" x="0.3112" y="0.7694" width="0.0013" height="0.0000" />
     <resolution aspect="24:10" x="0.2288" y="0.7694" width="0.0010" height="0.0015" />
     <resolution aspect="16:11" x="0.1508" y="0.7694" width="0.0010" height="-0.0006" />
@@ -77,7 +81,7 @@
     <resolution aspect="16:11" x="0.8633" y="0.9056" width="0.0004" height="0" />
 
     <resolution size="3840x2160" x="0.8771" y="0.9069" width="0.0007" height="0.0019" />
-    <resolution size="2560x1080" x="0.7809" y="0.9028" width="0.0008" height="0" />
+    <resolution size="2560x1080" x="0.7819" y="0.9073" width="0.0008" height="0.0009" />
   </meta>
 
   <meta meter="health" tags="VLC,Rainbow Six" x="0.0273" y="0.9444" width="0.0852" height="0.0063" 
@@ -107,17 +111,17 @@
     <resolution aspect="16:11" x="0.8398" y="0.8956" width="0" height="0.0037" />
 
     <resolution size="3840x2160" x="0.8557" y="0.8981" width="0.0003" height="0.0010" />
-    <resolution size="2560x1080" x="0.7648" y="0.8741" width="0" height="0.0014" />
+    <resolution size="2560x1080" x="0.7671" y="0.886" width="0" height="0.0056" />
   </meta> 
 
   <meta meter="defendingBlue" tags="VLC,Rainbow Six" x="0.4326" y="0.0486" width="0.0012" height="0"
-    h="180-220" s="20-60" l="0-50" hdr-h="180-220" hdr-s="0-50" hdr-l="0-75" type="area">
+    h="180-220" s="20-60" l="0-50" hdr-h="160-220" hdr-s="0-75" hdr-l="0-75" type="area">
     <resolution aspect="3.55:1" x="0.4659" y="0.0481" width="0.0010" height="0.0001" />
-    <resolution aspect="24:10" x="0.4497" y="0.0514" width="0.0012" height="0.0001" />
+    <resolution aspect="24:10" x="0.4483" y="0.0486" width="0.0012" height="0.0001" />
     <resolution aspect="16:11" x="0.4263" y="0.0488" width="0.0012" height="0.0006" />
 
     <resolution size="3840x2160" x="0.4327" y="0.0482" width="0.0008" height="-0.0005"/>
-    <resolution size="2560x1080" x="0.449" y="0.0491" width="0.0008" height="0" />
+    <resolution size="2560x1080" x="0.447" y="0.0445" width="0.0012" height="0" />
   </meta>
 
   <meta meter="useGrenadeWhite" tags="VLC,Rainbow Six" x="0.7527" y="0.8938" width="0.0008" height="0.0056"
@@ -142,89 +146,89 @@
     <resolution size="1920x1080" x="0.7536" y="0.9259" width="0.0008" height="0.0025" />
   </meta>
 
-  <meta meter="InMatch" tags="VLC,Rainbow Six" x="0.4412" y="0.0639" width="0.0031" height="0"
-    h="150-250" s="0-75" l="0-50" hdr-h="150-250" hdr-s="0-75" hdr-l="50-100" type="area">
-    <resolution aspect="3.55:1" x="0.4763" y="0.0611" width="0.0029" height="0.0005" />
-    <resolution aspect="24:10" x="0.4619" y="0.0632" width="0.0026" height="0.0001" />
+  <meta meter="InMatch" tags="VLC,Rainbow Six" x="0.4314" y="0.0556" width="0.0016" height="0"
+    h="150-250" s="0-75" l="0-50" hdr-h="150-250" hdr-s="0-75" hdr-l="0-75" type="area">
+    <resolution aspect="3.55:1" x="0.4763" y="0.0600" width="0.0029" height="0.0005" />
+    <resolution aspect="24:10" x="0.4497" y="0.0576" width="0.0026" height="0.0001" />
     <resolution aspect="16:11" x="0.4447" y="0.0638" width="0.0027" height="0" />
 
-    <resolution size="3840x2160" x="0.4572" y="0.0635" width="0.0059" height="-0.0005" />
-    <resolution size="2560x1080" x="0.4662" y="0.0639" width="0.002" height="0" />
+    <resolution size="3840x2160" x="0.4324" y="0.057" width="0.0026" height="-0.0005" />
+    <resolution size="2560x1080" x="0.4506" y="0.0547" width="0.0011" height="0.0009" />
   </meta>
 
   <meta meter="blueKill1" tags="VLC,Rainbow Six" x="0.3052" y="0.0542" width="0" height="0"
-    h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
+    h="190-230" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
     <resolution aspect="3.55:1" x="0.4021" y="0.0564" width="0.001" height="0.0005" />
-    <resolution aspect="24:10" x="0.3544" y="0.0565" width="0" height="0" />
-    <resolution aspect="16:11" x="0.2833" y="0.0557" width="0" height="0" />
+    <resolution aspect="24:10" x="0.3549" y="0.0535" width="0" height="0" />
+    <resolution aspect="16:11" x="0.2825" y="0.0538" width="0" height="0" />
 
     <resolution size="3840x2160" x="0.3052" y="0.0537" width="0" height="0" />
-    <resolution size="2560x1080" x="0.3537" y="0.0593" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.3529" y="0.0538" width="0" height="0"  />
   </meta> 
 
   <meta meter="blueKill2" tags="VLC,Rainbow Six" x="0.3298" y="0.0549" width="0" height="0"
     h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
     <resolution aspect="3.55:1" x="0.4146" y="0.0564" width="0.001" height="0.0005" />
-    <resolution aspect="24:10" x="0.3727" y="0.0565" width="0.0006" height="0.0005" />
-    <resolution aspect="16:11" x="0.3111" y="0.0544" width="0" height="0" />
+    <resolution aspect="24:10" x="0.3735" y="0.0542" width="0" height="0" />
+    <resolution aspect="16:11" x="0.3099" y="0.0538" width="0" height="0"/>
 
     <resolution size="3840x2160" x="0.3299" y="0.0537" width="0" height="0" />
-    <resolution size="2560x1080" x="0.3734" y="0.0593" width="0" height="0" />
+    <resolution size="2560x1080" x="0.372" y="0.0538" width="0" height="0"/>
   </meta> 
 
   <meta meter="blueKill3" tags="VLC,Rainbow Six" x="0.3552" y="0.0542" width="0" height="0"
     h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
     <resolution aspect="3.55:1" x="0.4271" y="0.0564" width="0.001" height="0.0005" />
-    <resolution aspect="24:10" x="0.3915" y="0.0565" width="0.0006" height="0.0005" />
+    <resolution aspect="24:10" x="0.3927" y="0.0542" width="0" height="0" />
     <resolution aspect="16:11" x="0.3396" y="0.0538" width="0" height="0" />
 
     <resolution size="3840x2160" x="0.3550" y="0.0537" width="0" height="0" />
-    <resolution size="2560x1080" x="0.3912" y="0.0593" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.3916" y="0.0547" width="0" height="0" />
   </meta> 
 
   <meta meter="blueKill4" tags="VLC,Rainbow Six" x="0.3798" y="0.0549" width="0" height="0"
     h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
     <resolution aspect="3.55:1" x="0.4396" y="0.0564" width="0.001" height="0.0005" />
-    <resolution aspect="24:10" x="0.4099" y="0.0565" width="0.0006" height="0.0005" />
-    <resolution aspect="16:11" x="0.3111" y="0.0544" width="0" height="0" />
+    <resolution aspect="24:10" x="0.4105" y="0.0535" width="0" height="0" />
+    <resolution aspect="16:11" x="0.3662" y="0.0538" width="0" height="0" />
 
     <resolution size="3840x2160" x="0.3799" y="0.0537" width="0" height="0" />
-    <resolution size="2560x1080" x="0.4105" y="0.0593" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4107" y="0.0547" width="0" height="0" />
   </meta> 
 
   <meta meter="blueKill5" tags="VLC,Rainbow Six" x="0.4048" y="0.0556" width="0" height="0" 
-    h="190-200" s="50-75" l="50-75" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
+    h="180-230" s="50-75" l="30-80" hdr-h="185-200" hdr-s="50-100" hdr-l="80-100" type="area">
     <resolution aspect="3.55:1" x="0.4521" y="0.0564" width="0.001" height="0.0005" />
-    <resolution aspect="24:10" x="0.4285" y="0.0565" width="0.0006" height="0.0005" />
+    <resolution aspect="24:10" x="0.4297" y="0.0535" width="0" height="0" />
     <resolution aspect="16:11" x="0.3951" y="0.055" width="0" height="0" />
 
     <resolution size="3840x2160" x="0.4051" y="0.0537" width="0" height="0" />
-    <resolution size="2560x1080" x="0.4291" y="0.0593" width="0" height="0" />
+    <resolution size="2560x1080" x="0.4295" y="0.0547" width="0" height="0" />
   </meta> 
 
   <meta meter="redKill1" tags="VLC,Rainbow Six" x="0.5944" y="0.0549" width="0" height="0"
-    h="-30-30" s="90-100" l="80-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    h="-30-30" s="80-100" l="70-100" hdr-h="-30-30" hdr-s="80-95" hdr-l="95-100" type="area">
     <resolution aspect="3.55:1" x="0.5469" y="0.0564" width="0.001" height="0.0005" />
     <resolution aspect="24:10" x="0.5703" y="0.0555" width="0.0001" height="0.0001" />
     <resolution aspect="16:11" x="0.6051" y="0.0563" width="0" height="0" />
 
-    <resolution size="3840x2160" x="0.5948" y="0.0532" width="0" height="0" />
-    <resolution size="2560x1080" x="0.5699" y="0.0593" width="0.0001" height="0.0001"  />
+    <resolution size="3840x2160" x="0.5935" y="0.0574" width="0" height="0"  />
+    <resolution size="2560x1080" x="0.5705" y="0.0528" width="0" height="0"  />
   </meta> 
 
   <meta meter="redKill2" tags="VLC,Rainbow Six" x="0.6194" y="0.0535" width="0" height="0"
-    h="-30-30" s="90-100" l="80-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    h="-30-30" s="80-100" l="70-100" hdr-h="-30-30" hdr-s="80-88" hdr-l="95-100" type="area">
     <resolution aspect="3.55:1" x="0.5594" y="0.0564" width="0.001" height="0.0005" />
     <resolution aspect="24:10" x="0.5892" y="0.0555" width="0.0001" height="0.0001" />
     <resolution aspect="16:11" x="0.6327" y="0.0569" width="0" height="0" />
 
-    <resolution size="3840x2160" x="0.6193" y="0.0532" width="0" height="0" />
-    <resolution size="2560x1080" x="0.5897" y="0.0593" width="0.0001" height="0.0001" />
+    <resolution size="3840x2160" x="0.6211" y="0.0583" width="0" height="0" />
+    <resolution size="2560x1080" x="0.5885" y="0.0528" width="0" height="0" />
     <resolution size="1920x1080" x="0.6193" y="0.0551" width="0" height="0" />
   </meta> 
 
   <meta meter="redKill3" tags="VLC,Rainbow Six" x="0.646" y="0.0563" width="0" height="0"
-    h="-30-30" s="90-100" l="70-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    h="-30-30" s="80-100" l="70-100" hdr-h="-30-30" hdr-s="80-100" hdr-l="90-100" type="area">
     <resolution aspect="3.55:1" x="0.5719" y="0.0564" width="0.001" height="0.0005" />
     <resolution aspect="24:10" x="0.6076" y="0.0555" width="0.0001" height="0.0001" />
     <resolution aspect="16:11" x="0.66" y="0.0557" width="0" height="0" />
@@ -235,23 +239,23 @@
   </meta> 
 
   <meta meter="redKill4" tags="VLC,Rainbow Six" x="0.6694" y="0.0542" width="0" height="0"
-    h="-30-30" s="90-100" l="70-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    h="-30-30" s="80-100" l="70-100" hdr-h="-30-30" hdr-s="80-100" hdr-l="90-100" type="area">
     <resolution aspect="3.55:1" x="0.5844" y="0.0564" width="0.001" height="0.0005" />
     <resolution aspect="24:10" x="0.6262" y="0.0555" width="0.0006" height="0.0005" />
     <resolution aspect="16:11" x="0.6889" y="0.0538" width="0" height="0" />
 
     <resolution size="3840x2160" x="0.6695" y="0.0537" width="0" height="0" />
-    <resolution size="2560x1080" x="0.6276" y="0.0593" width="0.0001" height="0.0001"  />
+    <resolution size="2560x1080" x="0.6277" y="0.0546" width="0" height="0" />
   </meta> 
 
   <meta meter="redKill5" tags="VLC,Rainbow Six" x="0.6952" y="0.0542" width="0" height="0" 
-    h="-30-30" s="90-100" l="65-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+    h="-30-30" s="80-100" l="65-100" hdr-h="-30-30" hdr-s="80-100" hdr-l="90-100" type="area">
     <resolution aspect="3.55:1" x="0.5969" y="0.0564" width="0.001" height="0.0005" />
     <resolution aspect="24:10" x="0.6442" y="0.0555" width="0.0006" height="0.0005" />
     <resolution aspect="16:11" x="0.7159" y="0.0544" width="0" height="0" />
     
     <resolution size="3840x2160" x="0.6945" y="0.0537" width="0" height="0" />
-    <resolution size="2560x1080" x="0.6463" y="0.0593" width="0.0001" height="0.0001" />
+    <resolution size="2560x1080" x="0.6452" y="0.0528" width="0" height="0"/>
   </meta> 
 
   <meta meter="defuserRed" tags="VLC,Rainbow Six" x="0.4973" y="0.0063" width="0.0001" height="0.0001" 
@@ -279,8 +283,6 @@
 </body>
 
 <script>
-  var canvas, ctx;
-  var stateMgr = new StateHandler();
   var effects = [];
   var isInGame = false;
   var calculatedHealthValue = 0;
@@ -290,6 +292,15 @@
   var oldBlueKills = 0;
   var redKills = 0;
   var oldRedKills = 0;
+
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    // Create a hidden canvas
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width = 320;
+    hiddenCanvas.height = 200;
+    // Don't attach to DOM
+    const hiddenCtx = hiddenCanvas.getContext('2d');
 
   var healthMeter = new Meter(5, HealthChanged)
   var lobbyMeter = new Meter(5, () => "")
@@ -302,6 +313,7 @@
   var ammoRedMeter = new Meter(1, ReloadChanged)
   var defendBlueMeter = new Meter(5, () => "")
   var GrenadeMeter = new Meter(3, GrenadeChanged)
+  var Grenade2Meter = new Meter(3, GrenadeChanged)
   var inGameMeter = new Meter(5, inGameChanged)
   var blue1Meter = new Meter(5, blueKillChanged)
   var blue2Meter = new Meter(5, blueKillChanged)
@@ -340,12 +352,11 @@
     red5Meter.setValue(engine.vision.redKill5)
     dRedMeter.setValue(engine.vision.defuserRed)
     dYellowMeter.setValue(engine.vision.defuserYellow)
-    if (defendBlueMeter.value >=.95) {
-      GrenadeMeter.setValue(engine.vision.useGrenadeWhite)
-    } else {
-      GrenadeMeter.setValue(engine.vision.useGrenadeWhite2)
-    }
-    copyScreen(1);
+    GrenadeMeter.setValue(engine.vision.useGrenadeWhite)
+    Grenade2Meter.setValue(engine.vision.useGrenadeWhite2)
+    
+    DrawRect(0, 0, 320, 200, "black")
+    backgroundHandler()
 
     if(hudOn){
       DrawHUD();
@@ -357,10 +368,130 @@
         effects.splice(i, 1);
       }
     }
-    stateMgr.Process();
+
+    ctx.drawImage(hiddenCanvas, 0, 0)
 
     window.requestAnimationFrame(update);
   }
+
+     // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            hiddenCtx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hiddenCtx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            hiddenCtx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            hiddenCtx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
 
   function inGameChanged() {
     if (inGameMeter.value >=.95) {
@@ -433,17 +564,17 @@
   }
 
   function ReloadChanged() {
-    if (isInGame && ammoRedMeter.value >= .01 && weaponOnMeter.value >=.95 && ammoOn) {
-      for (let i = 0; i < 4; i++){
-        setTimeout(()=>{
+    if (isInGame && ammoRedMeter.value >= .03 && weaponOnMeter.value >=.95 && ammoOn) {
+      //for (let i = 0; i < 4; i++){
+        //setTimeout(()=>{
           effects.push(new lowAmmoEffect())
-        }, 75 * i)
-      }
+        //}, 75 * i)
+      //}
     }
   }
 
   function GrenadeChanged() {
-    if (GrenadeMeter.value >=.95 && GrenadeMeter.increased && isInGame && weaponOnMeter.value >=.95 && grenadeOn) {
+    if (GrenadeMeter.value >=.95 && Grenade2Meter.value <.1 &&  GrenadeMeter.increased && isInGame && weaponOnMeter.value >=.95 && grenadeOn) {
       effects.push(new GrenadeEffect())
     }
   }
@@ -461,16 +592,16 @@
     this.draw = function(){
       DrawStroke(160, 100, this.y1, "red", 20)
       DrawStroke(160, 100, this.y2, "red", 20)
-      ctx.beginPath()
-      ctx.moveTo(160, 50)
-      ctx.lineTo(210, 100)
-      ctx.lineTo(160, 155)
-      ctx.lineTo(110, 100)
-      ctx.lineTo(160, 50)
-      ctx.lineTo(210, 100)
-      ctx.lineWidth = 20;
-      ctx.strokeStyle = "yellow"
-      ctx.stroke()
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(160, 50)
+      hiddenCtx.lineTo(210, 100)
+      hiddenCtx.lineTo(160, 155)
+      hiddenCtx.lineTo(110, 100)
+      hiddenCtx.lineTo(160, 50)
+      hiddenCtx.lineTo(210, 100)
+      hiddenCtx.lineWidth = 20;
+      hiddenCtx.strokeStyle = "yellow"
+      hiddenCtx.stroke()
       DrawCircle(160, 100, 10, "yellow")
       this.y1 < 250 ? this.y1 += 5 : this.y1 = 1;
       this.y2 < 250 ? this.y2 += 5 : this.y2 = 1;
@@ -481,23 +612,23 @@
   }
 
   function DrawStroke(x, y, radius, color, stroke) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = stroke;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.stroke();
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.stroke();
   };
 
   function lowAmmoEffect(){
     this.alpha = .5;
-    this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 300);
+    this.grad = hiddenCtx.createRadialGradient(160, 100, 10, 160, 100, 300);
     this.grad.addColorStop(0, 'hsla(0, 100%, 50%, 0)');
     this.grad.addColorStop(.5, 'hsla(0, 100%, 50%, .3)');
     this.grad.addColorStop(1, 'hsla(0, 100%, 50%, 1)');
     this.draw = function(){
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawCircle(160, 100, 300, this.grad)
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       this.alpha >= .0025 ? this.alpha-=.0025 : this.lifetime = 0;
     }
   }
@@ -512,7 +643,7 @@
     this.lifetime = 10;
     this.i = 0;
     this.draw = function(){
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(0, this.y - 1, 320, 200, "black")
       for(let i = 0; i < this.num; i++){
         var color = team ? "blue" : `hsl(16, 100%, 50%)`;
@@ -522,7 +653,7 @@
           DrawRect((160 - this.num * 33) + i * 70, this.y * .75 + 50, 50, 100, color)
 
       }
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if(!this.up){
         this.y > 0 ? this.y-=(this.y / 6) : null;
         this.alpha < 1 ? this.alpha += .05 : this.alpha = 1;
@@ -540,27 +671,27 @@
 
   function DrawHUD() {
     if (isInGame) {
-      ctx.beginPath()
-      ctx.save()
-      ctx.translate(HealthBarX, RotateBar ? 200 : HealthBarY)
+      hiddenCtx.beginPath()
+      hiddenCtx.save()
+      hiddenCtx.translate(HealthBarX, RotateBar ? 200 : HealthBarY)
       if (RotateBar) {
-        ctx.rotate(-90 / 180 * Math.PI)
+        hiddenCtx.rotate(-90 / 180 * Math.PI)
       }
-      ctx.fillStyle = healthColor;
-      ctx.fillRect(0, 0, (healthMeter.value * calculatedHealthValue) * SetRange(HealthBarWidth, 0, RotateBar ? 200 : 320), HealthBarHeight)
-      ctx.restore();
-    } else if (adjOn) {
+      hiddenCtx.fillStyle = healthColor;
+      hiddenCtx.fillRect(0, 0, (healthMeter.value * calculatedHealthValue) * SetRange(HealthBarWidth, 0, RotateBar ? 200 : 320), HealthBarHeight)
+      hiddenCtx.restore();
+    } else if (adjHUD && !isInGame) {
 
-      ctx.beginPath()
-      ctx.save()
-      ctx.translate(HealthBarX, RotateBar ? 200 : HealthBarY)
+      hiddenCtx.beginPath()
+      hiddenCtx.save()
+      hiddenCtx.translate(HealthBarX, RotateBar ? 200 : HealthBarY)
 
       if (RotateBar) {
-        ctx.rotate(-90 / 180 * Math.PI)
+        hiddenCtx.rotate(-90 / 180 * Math.PI)
       }
-      ctx.fillStyle = healthColor;
-      ctx.fillRect(0, 0, SetRange(HealthBarWidth, 0, RotateBar ? 200 : 320), HealthBarHeight)
-      ctx.restore()
+      hiddenCtx.fillStyle = healthColor;
+      hiddenCtx.fillRect(0, 0, SetRange(HealthBarWidth, 0, RotateBar ? 200 : 320), HealthBarHeight)
+      hiddenCtx.restore()
     }
   }
 
@@ -574,15 +705,15 @@
     this.draw = function(){
       if(this.effects.length < 30) this.effects.push(new selectRect())
       DrawRect(0, 0, 320, 200, "hsl(235, 50%, 25%)")
-      ctx.save()
-      ctx.rotate(.52)
+      hiddenCtx.save()
+      hiddenCtx.rotate(.52)
       for (let i = 0; i < this.effects.length; i++) {
         this.effects[i].draw();
         if (this.effects[i].lifetime <= 0) {
           this.effects.splice(i, 1);
         }
       };
-      ctx.restore()
+      hiddenCtx.restore()
       if (selectingStageRedMeter.value == 0) {
         this.lifetime = 0;
       }
@@ -599,9 +730,9 @@
     this.direction = Date.now() % 2 == 0;
     this.alpha = 0;
     this.draw = function(){
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(this.x, this.y, this.width, this.height, this.color)
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       this.direction ? this.y+=Math.random() : this.y-=Math.random();
       this.alpha < this.lifetime / 1000 ? this.alpha+=.01 : this.alpha = this.lifetime / 1000;
       this.lifetime--;
@@ -612,13 +743,13 @@
     this.start = Date.now();
     this.draw = function () {
       this.elapsed = Date.now() - this.start;
-      ctx.beginPath();
-      let gradient = ctx.createLinearGradient(-200, -100, 620, 100)
+      hiddenCtx.beginPath();
+      let gradient = hiddenCtx.createLinearGradient(-200, -100, 620, 100)
       this.calculateVal = -2980 * Math.floor((this.elapsed / 2980) / 1) + ((this.elapsed / 2980) * (2980 / 1));
       gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(209, 100%, 50%,0.5)");
       gradient.addColorStop(SetRange((-600 + (this.calculateVal)), 0, 1000) / 1000, "hsla(287, 100%, 50%,0.5)");
       gradient.addColorStop(SetRange((-1200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(209, 100%, 50%,0.5)");
-      ctx.fillStyle = gradient;
+      hiddenCtx.fillStyle = gradient;
       drawRect(0, 0, 320, 200, gradient)
       if (!usingDrone) {
         this.lifetime = 0;
@@ -633,27 +764,27 @@
 
     this.draw = function () {
       if (this.direction == "up") {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.moveTo(160, this.lifetime - 100);
-        ctx.lineTo(320, this.lifetime);
-        ctx.lineTo(320, this.lifetime + 50);
-        ctx.lineTo(160, this.lifetime - 50);
-        ctx.lineTo(0, this.lifetime + 50);
-        ctx.lineTo(0, this.lifetime);
-        ctx.lineTo(160, this.lifetime - 100);
-        ctx.fill();
+        hiddenCtx.fillStyle = this.color;
+        hiddenCtx.beginPath();
+        hiddenCtx.moveTo(160, this.lifetime - 100);
+        hiddenCtx.lineTo(320, this.lifetime);
+        hiddenCtx.lineTo(320, this.lifetime + 50);
+        hiddenCtx.lineTo(160, this.lifetime - 50);
+        hiddenCtx.lineTo(0, this.lifetime + 50);
+        hiddenCtx.lineTo(0, this.lifetime);
+        hiddenCtx.lineTo(160, this.lifetime - 100);
+        hiddenCtx.fill();
       } else if (this.direction = "down") {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.moveTo(160, 300 - this.lifetime);
-        ctx.lineTo(320, 200 - this.lifetime);
-        ctx.lineTo(320, 100 - this.lifetime);
-        ctx.lineTo(160, 200 - this.lifetime);
-        ctx.lineTo(0, 100 - this.lifetime);
-        ctx.lineTo(0, 200 - this.lifetime);
-        ctx.lineTo(160, 300 - this.lifetime);
-        ctx.fill();
+        hiddenCtx.fillStyle = this.color;
+        hiddenCtx.beginPath();
+        hiddenCtx.moveTo(160, 300 - this.lifetime);
+        hiddenCtx.lineTo(320, 200 - this.lifetime);
+        hiddenCtx.lineTo(320, 100 - this.lifetime);
+        hiddenCtx.lineTo(160, 200 - this.lifetime);
+        hiddenCtx.lineTo(0, 100 - this.lifetime);
+        hiddenCtx.lineTo(0, 200 - this.lifetime);
+        hiddenCtx.lineTo(160, 300 - this.lifetime);
+        hiddenCtx.fill();
       }
       this.lifetime -= 5;
     };
@@ -720,8 +851,8 @@
 
     draw() {
       this.elapsed = Date.now() - this.start;
-      ctx.beginPath();
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.beginPath();
+      hiddenCtx.globalAlpha = this.alpha;
       DrawCircle(this.x, this.y, this.size, this.color)
       this.x += this.speed.x;
       this.y += this.speed.y;
@@ -729,50 +860,23 @@
         this.alpha = SetRange(1 - ((this.elapsed) - (this.duration / 3 * 2)) / 1000, 0, 1)
         this.lifetime = this.alpha;
       }
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
     }
   }
 
   function DrawCircle(x, y, radius, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill();
   };
 
   function drawRect(x, y, height, width, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, height, width);
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, height, width);
   }
 
-  function copyScreen(alpha) {
-    var shine = engine.vision.ShineMeter
-    let lightness = new Int8Array(engine.zone.lightness);
-    let sat = new Int8Array(engine.zone.saturation);
-    let hue = new Int16Array(engine.zone.hue);
-    for (var iZone = 0; iZone < 560; iZone++) {
-      var iRow = Math.floor(iZone / 28);
-      var iCol = iZone % 28;
-      var iWidth = 320 / 28;
-      var iHeight = 200 / 20;
-      var iZx = iCol * iWidth;
-      var iZy = iRow * iHeight;
-      ctx.fillStyle =
-        "hsla(" +
-        hue[iZone] +
-        "," +
-        sat[iZone] +
-        "%," +
-        lightness[iZone] * keyScreenBrightness / 100 +
-        "%, " +
-        `${alpha}` +
-        ")";
-
-      ctx.fillRect(iZx, iZy, iWidth, iHeight);
-    }
-
-  }
   function SearchingEffect() {
     this.start = Date.now();
     this.alpha = .01;
@@ -780,9 +884,9 @@
 
     this.draw = function () {
       var elapsed = Date.now() - this.start;
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(0, 0, 320, 200, this.color)
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if(elapsed > 300){
         effects.push(new searchSquare(Math.random() * 350 - 30))
         this.start = Date.now()
@@ -808,15 +912,15 @@
     this.a = 0;
     this.lifetime = 10;
     this.draw = function(){
-      ctx.beginPath();
-      ctx.moveTo(this.x, 0)
-      ctx.lineTo(this.x + this.scale, 0);
-      ctx.lineTo(this.x + this.scale - this.scale / 4, 200)
-      ctx.lineTo(this.x - this.scale / 4, 200)
-      ctx.globalAlpha = this.a;
-      ctx.fillStyle = "white"
-      ctx.fill()
-      ctx.globalAlpha = 1;
+      hiddenCtx.beginPath();
+      hiddenCtx.moveTo(this.x, 0)
+      hiddenCtx.lineTo(this.x + this.scale, 0);
+      hiddenCtx.lineTo(this.x + this.scale - this.scale / 4, 200)
+      hiddenCtx.lineTo(this.x - this.scale / 4, 200)
+      hiddenCtx.globalAlpha = this.a;
+      hiddenCtx.fillStyle = "white"
+      hiddenCtx.fill()
+      hiddenCtx.globalAlpha = 1;
       this.x+=this.speed;
       this.a < this.alpha ? this.a+=.01 : this.a = this.alpha;
       if(this.x < -30 || this.x > 350){
@@ -826,25 +930,50 @@
   }
 
   function DrawRect(x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height);
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, width, height);
   };
 
   function drawWave(y, color, frequency, direction, waveSize) {
 
-    ctx.beginPath();
+    hiddenCtx.beginPath();
 
-    ctx.moveTo(0, y);
+    hiddenCtx.moveTo(0, y);
     for (let i = 0; i < 320; i++) {
-      ctx.lineTo(i, y + Math.sin(i * 0.01 + frequency) * waveSize);
+      hiddenCtx.lineTo(i, y + Math.sin(i * 0.01 + frequency) * waveSize);
     }
-    ctx.lineTo(320, direction == "up" ? 200 : 0)
-    ctx.lineTo(0, direction == "up" ? 200 : 0)
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.fill();
+    hiddenCtx.lineTo(320, direction == "up" ? 200 : 0)
+    hiddenCtx.lineTo(0, direction == "up" ? 200 : 0)
+    hiddenCtx.closePath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fill();
   }
+
+    function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
 
 
   function StateHandler() {
@@ -908,11 +1037,6 @@
     }
   }
 
-  function onEngineReady() {
-    canvas = document.getElementById('exCanvas');
-    ctx = canvas.getContext('2d');
-    window.requestAnimationFrame(update);
-  }
-  onEngineReady()
+  window.requestAnimationFrame(update);
 
 </script>
