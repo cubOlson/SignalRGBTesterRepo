@@ -1,0 +1,942 @@
+<head>
+  <title>Path of Exile 2 Dev</title>
+  <meta description="Ambience and metering for Path of Exile 2. v1.02" />
+  <meta publisher="SignalRGB" />
+  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Ambience"/>
+  <meta property="ambienceAlpha" label="Ambience Brightness" type="number" min="0" max="100" default="100" />
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+  <meta property="HUDOn" label="HUD effects" type="boolean" default="1" />
+  <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" type="boolean" default="0" />
+  <meta property="HUDBack" label="Custom HUD Background" type="boolean" default="0" />
+  <meta property="HealthColor" label="Health HUD Color" type="color" default="#12ff00" min="0" max="360" />
+  <meta property="HealthX" label="Health X" type="number" min="0" max="100" default="0" />
+  <meta property="HealthY" label="Health Y" type="number" min="0" max="100" default="25" />
+  <meta property="HealthWidth" label="Health Width" type="number" min="0" max="100" default="100" />
+  <meta property="HealthHeight" label="Health Height" type="number" min="0" max="100" default="20" />
+  <meta property="ManaColor" label="Mana HUD Color" type="color" default="#00c3ff" min="0" max="360" />
+  <meta property="ManaX" label="Mana X" type="number" min="0" max="100" default="0" />
+  <meta property="ManaY" label="Mana Y" type="number" min="0" max="100" default="50" />
+  <meta property="ManaWidth" label="Mana Width" type="number" min="0" max="100" default="100" />
+  <meta property="ManaHeight" label="Mana Height" type="number" min="0" max="100" default="20" />
+  <meta property="hpOn" label="Health Effects" type="boolean" default="1" />
+  <meta property="manaOn" label="Mana Effects" type="boolean" default="1" />
+  <meta property="shieldOn" label="Shield Effects" type="boolean" default="1" />
+  <meta property="xpOn" label="XP Effects" type="boolean" default="1" />
+  <meta property="deathOn" label="Death Effects" type="boolean" default="1" />
+  <meta property="loadOn" label="Load Effects" type="boolean" default="1" />
+  <meta property="portalOn" label="Portal Effects" type="boolean" default="1" />
+
+
+  <!-- HUD, Low Health, Full Health, Low Mana, Full Mana, No Shield, Full Shield, Damaged Shield, XP Gain, Level Up, Electrified, Poisoned, Player Dead, Teleport, Loading -->
+  <meta meter="inGame1" type="area" tags="vlc,path of exile" x="0.1243" y="0.9166" width="0" height="0.0632" 
+    h="0-90" s="0-100" l="10-50" hdr-h="0-90" hdr-s="0-50" hdr-l="20-60">
+    <resolution aspect="3.55:1" x="0.2247" y="0.9173" width="0.0001" height="0.0619" />
+    <resolution aspect="24:10" x="0.0927" y="0.9181" width="0.0003" height="0.0300" />
+    <resolution aspect="16:11" x="0.1379" y="0.925" width="0" height="0.0187" /> 
+
+    <resolution size="3840x2160" x="0.1243" y="0.9166" width="0" height="0.0632"  />
+    <resolution size="2560x1080" x="0.1286" y="0.9166" width="0" height="0.0621"/> 
+  </meta>
+
+  <meta meter="inGame2" type="area" tags="vlc,path of exile" x="0.1258" y="0.9159" width="0" height="0.0619" 
+    h="0-360" s="0-100" l="0-20" hdr-h="0-360" hdr-s="0-100" hdr-l="0-20">
+    <resolution aspect="3.55:1" x="0.2256" y="0.9173" width="0.0002" height="0.0605" />
+    <resolution aspect="24:10" x="0.0939" y="0.9166" width="0.0003" height="0.0612" />
+    <resolution aspect="16:11" x="0.1895" y="0.9325" width="-0.0008" height="0.0387" />
+
+    <resolution size="3840x2160" x="0.1258" y="0.9159" width="0" height="0.0619"  />
+  </meta>
+
+  <meta meter="hpRed" type="area" tags="vlc,path of exile" x="0.0657" y="0.8346" width="0.0003" height="0.1404" 
+    h="-30-40" s="45-100" l="15-70" hdr-h="-40-20" hdr-s="50-100" hdr-l="20-100">
+    <resolution aspect="3.55:1" x="0.1959" y="0.8353" width="-0.0002" height="0.1376" />
+    <resolution aspect="24:10" x="0.0491" y="0.8346" width="0.0024" height="0.1397" />
+
+    <resolution size="3840x2160" x="0.0657" y="0.8346" width="0.0003" height="0.1404"  />
+  </meta>
+
+  <meta meter="hpElectric" type="area" tags="vlc,path of exile" x="0.0406" y="0.9333" width="0.0137" height="0.0215" 
+    h="190-240" s="0-100" l="0-100" hdr-h="190-240" hdr-s="0-100" hdr-l="0-100">
+    <resolution aspect="3.55:1" x="0.183" y="0.9368" width="0.0043" height="0.018" />
+    <resolution aspect="24:10" x="0.0317" y="0.9444" width="0.0099" height="0.0195" />
+
+    <resolution size="3840x2160" x="0.0406" y="0.9333" width="0.0137" height="0.0215"  />
+  </meta>
+
+  <meta meter="hpPoison" type="area" tags="vlc,path of exile" x="0.0657" y="0.8346" width="0.0003" height="0.1404" 
+    h="70-100" s="30-100" l="15-70" hdr-h="70-100" hdr-s="30-100" hdr-l="15-70">
+    <resolution aspect="3.55:1" x="0.1959" y="0.8353" width="-0.0002" height="0.1376" />
+    <resolution aspect="24:10" x="0.0491" y="0.8346" width="0.0024" height="0.1397" />
+
+    <resolution size="3840x2160" x="0.0657" y="0.8346" width="0.0003" height="0.1404" />
+  </meta>
+
+  <meta meter="manaBlue" type="area" tags="vlc,path of exile" x="0.9316" y="0.8409" width="0.0055" height="0.132" 
+    h="190-230" s="10-100" l="0-70" hdr-h="180-270" hdr-s="0-100" hdr-l="20-100">
+    <resolution aspect="3.55:1" x="0.8037" y="0.8388" width="0.0015" height="0.1313" />
+    <resolution aspect="24:10" x="0.9503" y="0.8367" width="0.0046" height="0.1404" />
+
+    <resolution size="3840x2160" x="0.9316" y="0.8409" width="0.0055" height="0.132" />
+  </meta>
+
+  <meta meter="firstShieldBlue" type="area" tags="vlc,path of exile" x="0.0723" y="0.811" width="0.0055" height="0.0014" 
+    h="165-205" s="0-60" l="50-100" hdr-h="165-205" hdr-s="0-100" hdr-l="0-100">
+    <resolution aspect="3.55:1" x="0.1987" y="0.8117" width="0.0031" height="0.0021" />
+    <resolution aspect="24:10" x="0.0521" y="0.811" width="0.0084" height="0.0028" />
+    <resolution aspect="16:11" x="0.0774" y="0.8086" width="0.0047" height="-0.0006" /> 
+
+    <resolution size="3840x2160" x="0.0723" y="0.811" width="0.0055" height="0.0014" />
+  </meta>
+
+  <meta meter="lastShieldBlue" type="area" tags="vlc,path of exile" x="0.0684" y="0.9924" width="0.0047" height="0.0027" 
+    h="205-245" s="40-80" l="30-80" hdr-h="200-240" hdr-s="50-100" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.1979" y="0.9917" width="0.0027" height="0.0014" />
+    <resolution aspect="24:10" x="0.0503" y="0.9931" width="0.007" height="0" />
+    <resolution aspect="16:11" x="0.0754" y="0.9925" width="0.0055" height="-0.0006" />  
+
+    <resolution size="3840x2160" x="0.0684" y="0.9924" width="0.0047" height="0.0027" />
+  </meta>
+
+  <meta meter="xp" type="area" tags="vlc,path of exile" x="0.3021" y="0.9931" width="0.397" height="0.0005" 
+    h="15-55" s="0-40" l="50-90" hdr-h="20-70" hdr-s="0-100" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.3138" y="0.9907" width="0.3700" height="0.0020" />
+    <resolution aspect="24:10" x="0.2254" y="0.9931" width="0.5498" height="0.0007" />
+
+    <resolution size="3840x2160" x="0.3021" y="0.9931" width="0.397" height="0.0005" />
+  </meta>
+
+  <meta meter="deathRed" type="area" tags="vlc,path of exile" x="0.4717" y="0.6776" width="0.0535" height="0.0069" 
+    h="-20-20" s="50-100" l="50-100" hdr-h="-20-20" hdr-s="50-100" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.4858" y="0.6803" width="0.0264" height="0.0042" />
+    <resolution aspect="24:10" x="0.4632" y="0.6769" width="0.0713" height="0.0048" />
+
+    <resolution size="3840x2160" x="0.4717" y="0.6776" width="0.0535" height="0.0069" />
+  </meta>
+
+  <meta meter="deathBlack" type="area" tags="vlc,path of exile" x="0.4846" y="0.6505" width="0.0293" height="0.0041" 
+    h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-20">
+    <resolution aspect="3.55:1" x="0.4935" y="0.6511" width="0.0111" height="0.0007" />
+    <resolution aspect="24:10" x="0.4542" y="0.6498" width="0.0747" height="0.0111" />
+
+    <resolution size="3840x2160" x="0.4846" y="0.6505" width="0.0293" height="0.0041" />
+  </meta>
+
+  <meta meter="teleportYellow" type="area" tags="vlc,path of exile" x="0.4943" y="0.0361" width="0.0082" height="0.0007" 
+    h="20-60" s="0-100" l="10-95" hdr-h="40-70" hdr-s="0-75" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.4966" y="0.0354" width="0.0037" height="0.0007" />
+    <resolution aspect="24:10" x="0.5295" y="0.0174" width="0.0111" height="0.0034" />
+
+    <resolution size="3840x2160" x="0.4943" y="0.0361" width="0.0082" height="0.0007" />
+  </meta>
+
+  <meta meter="teleportBlue" type="area" tags="vlc,path of exile" x="0.5834" y="0.0056" width="0.0067" height="0.0055" 
+    h="180-240" s="0-100" l="0-80" hdr-h="180-260" hdr-s="0-100" hdr-l="0-100">
+    <resolution aspect="3.55:1" x="0.5423" y="0.0076" width="0.0027" height="0.0056" />
+    <resolution aspect="24:10" x="0.5333" y="0.0014" width="0.023" height="0.0028" />
+
+    <resolution size="3840x2160" x="0.5834" y="0.0056" width="0.0067" height="0.0055" />
+  </meta>
+
+  <meta meter="loadingBlack" type="area" tags="vlc,path of exile" x="0.4494" y="0.7985" width="0.0942" height="0.0005" 
+    h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+    <resolution aspect="3.55:1" x="0.4886" y="0.7978" width="0.0265" height="0" />
+    <resolution aspect="24:10" x="0.449" y="0.7985" width="0.1" height="0" />
+
+    <resolution size="3840x2160" x="0.4494" y="0.7985" width="0.0942" height="0.0005" />
+  </meta>
+
+  <meta meter="loadingBrown" type="area" tags="vlc,path of exile" x="0.474" y="0.804" width="0.0504" height="0" 
+    h="0-40" s="10-50" l="0-40" hdr-h="0-40" hdr-s="10-50" hdr-l="0-40">
+    <resolution aspect="3.55:1" x="0.5005" y="0.8054" width="0.0078" height="0.0007" />
+    <resolution aspect="24:10" x="0.4432" y="0.7922" width="0.116" height="-0.0007" />
+
+    <resolution size="3840x2160" x="0.474" y="0.804" width="0.0504" height="0" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var canvas, ctx;
+  var effects = [];
+  let HUDValues = []
+  let HUDPOS = []
+
+  let InGame1Meter = new Meter(5, inGameHandler)
+  let InGame2Meter = new Meter(5, inGameHandler)
+
+  let HPMeter = new Meter(3, inGameHandler)
+  let PoisonMeter = new Meter(3, poisonHandler)
+  let ElectricMeter = new Meter(1, electricHandler)
+  let ManaMeter = new Meter(3, inGameHandler)
+
+  let TopShieldMeter = new Meter(5, shieldHandler)
+  let BottomShieldMeter = new Meter(5, shieldHandler)
+
+  let DeadBlackMeter = new Meter(5, deathHandler)
+  let DeadRedMeter = new Meter(5, deathHandler)
+
+  let XPMeter = new Meter(5, xpHandler)
+
+  let TeleBlueMeter = new Meter(5, teleportHandler)
+  let TeleYellowMeter = new Meter(5, teleportHandler)
+
+  let LoadBlackMeter = new Meter(5, loadingHandler)
+  let LoadBrownMeter = new Meter(5, loadingHandler)
+
+  function update() {
+    DrawRect(0, 0, 320, 200, "black")
+    backgroundHandler()
+
+    InGame1Meter.setValue(engine.vision.inGame1)
+    InGame2Meter.setValue(engine.vision.inGame2)
+
+    HPMeter.setValue(engine.vision.hpRed)
+    PoisonMeter.setValue(engine.vision.hpPoison)
+    ElectricMeter.setValue(engine.vision.hpElectric)
+    ManaMeter.setValue(engine.vision.manaBlue)
+    if(PoisonMeter.value >= .05 && HPMeter.value <= .05) HUDValues = [PoisonMeter.value, ManaMeter.value]
+    else HUDValues = [HPMeter.value, ManaMeter.value]
+    HUDPOS = [[HealthX, HealthY, HealthWidth, HealthHeight, HealthColor], [ManaX, ManaY, ManaWidth, ManaHeight, ManaColor]]
+
+    TopShieldMeter.setValue(engine.vision.firstShieldBlue)
+    BottomShieldMeter.setValue(engine.vision.lastShieldBlue)
+
+    XPMeter.setValue(engine.vision.xp)
+
+    DeadBlackMeter.setValue(engine.vision.deathBlack)
+    DeadRedMeter.setValue(engine.vision.deathRed)
+
+    TeleBlueMeter.setValue(engine.vision.teleportBlue)
+    TeleYellowMeter.setValue(engine.vision.teleportYellow)
+
+    LoadBlackMeter.setValue(engine.vision.loadingBlack)
+    LoadBrownMeter.setValue(engine.vision.loadingBrown)
+
+    effects.forEach((ele, i)=>{
+      ele.draw()
+      if(ele.lifetime <= 0) effects.splice(i, 1)
+    })
+
+    window.requestAnimationFrame(update);
+  }
+
+    let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let gInGame = false
+    function inGameHandler(){
+      if(InGame1Meter.value >= .95 && InGame2Meter.value >= .95 && (HPMeter.value > .05 || ManaMeter.value > .05)){
+        gInGame = true
+        effects.push(new hudEffect(0))
+        effects.push(new hudEffect(1))
+      }
+      else if((InGame1Meter.value <= .25 || InGame2Meter.value <= .25) && HPMeter.value <= .05 && ManaMeter.value <= .05) {
+        gInGame = false
+      }
+      if(gInGame){
+        checkHP()
+        checkMana()
+      }
+      
+    }
+
+    let loadGoing = false
+    function loadingHandler(){
+      if(LoadBlackMeter.value >= .95 && LoadBrownMeter.value >= .95 && !gInGame && !loadGoing){
+        if(loadOn) effects.push(new loading())
+        loadGoing = true
+      } else if((LoadBlackMeter.value <= .25 && LoadBrownMeter.value <= .25) || gInGame) loadGoing = false
+    }
+
+    let teleportGoing = false
+    function teleportHandler(){
+      if(TeleBlueMeter.value >= .95 && TeleYellowMeter.value >= .95 && gInGame && !teleportGoing){
+        if(portalOn) effects.push(new portal())
+        teleportGoing = true
+      } else if((TeleBlueMeter.value <= .05 && TeleYellowMeter.value <= .05) || !gInGame) teleportGoing = false
+    }
+
+    let deadGoing = true
+    function deathHandler(){
+      if(DeadBlackMeter.value >= .95 && DeadRedMeter.value >= .1 && gInGame && !deadGoing){
+        if(deathOn) effects.push(new death())
+        deadGoing = true
+      } else if(DeadBlackMeter.value <= .25 && DeadRedMeter.value <= .05) deadGoing = false
+    }
+
+    let oldXP = 0
+    function xpHandler(){
+      if(XPMeter.increased && XPMeter.diff >= .05 && gInGame && xpOn) effects.push(new xpGain())
+      if(XPMeter.decreased && gInGame && oldXP > XPMeter.value && xpOn) effects.push(new levelUp())
+    }
+
+    function DrawStroke(x, y, radius, color, stroke) {
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.stroke();
+    };
+
+    let oldShield = 0
+    let hasShield = false
+    let fullShieldGoing = false
+    let damagedShieldGoing = false
+    let noShieldGoing = false
+    function shieldHandler(){
+      if(TopShieldMeter.value >= .95 && gInGame && oldShield < TopShieldMeter.value && !fullShieldGoing){
+        if(shieldOn){
+          effects.push(new fullShield())
+          fullShieldGoing = true
+        } 
+      } else if (TopShieldMeter.value <= .05 && gInGame){
+        fullShieldGoing = false
+      } 
+      if(TopShieldMeter.value <= .05 && gInGame && BottomShieldMeter.value >= .95 && !damagedShieldGoing){
+        if(shieldOn){
+          effects.push(new damagedShield())
+          damagedShieldGoing = true 
+        }
+          
+      } else if (TopShieldMeter.value >= .95 || BottomShieldMeter.value <= .05){
+        damagedShieldGoing = false
+      } 
+      if(BottomShieldMeter.value <= .05 && hasShield && gInGame && !noShieldGoing){
+        if(shieldOn){
+          effects.push(new shieldBreak())
+          noShieldGoing = true
+        } 
+      } else if (BottomShieldMeter.value >= .95 && gInGame){
+        noShieldGoing = false
+        oldShield = TopShieldMeter.value
+      } 
+      if(TopShieldMeter.value >= .25 || BottomShieldMeter.value >= .25){
+        hasShield = true
+      } 
+      else{
+        hasShield = false
+      } 
+    }
+
+    let oldHealth = 0
+    let lowHealthGoing = false
+    let fullHealthGoing = false
+    function checkHP(){
+      if(gInGame && HPMeter.value <= .33 && PoisonMeter.value < .05  && !lowHealthGoing){
+        if(hpOn){
+          effects.push(new lowResource(0))
+          lowHealthGoing = true
+        } 
+      } else if (HPMeter.value > .33 && gInGame){
+          lowHealthGoing = false
+      } 
+      if(PoisonMeter.value <= .33 && HPMeter.value <= .05 && gInGame && !lowHealthGoing){
+        if(hpOn){
+          effects.push(new lowResource(0))
+          lowHealthGoing = true
+        } 
+      } else if (((PoisonMeter.value >= .33 && HPMeter.value <= .05) || (PoisonMeter.value <= .05 && HPMeter.value >= .33)) || !gInGame){
+          lowHealthGoing = false
+      } 
+      if(HPMeter.value >= .99 && gInGame && oldHealth < HPMeter.value && !fullHealthGoing){
+        if(hpOn){
+          effects.push(new fullResource(0))
+          fullHealthGoing = true
+        } 
+      }
+      if(HPMeter.value <= .75){
+        fullHealthGoing = false
+        oldHealth = HPMeter.value
+      } 
+    }
+
+    let oldMana = 0
+    let lowManaGoing = false
+    let fullManaGoing = false
+    function checkMana(){
+      if(ManaMeter.value < .33 && gInGame && !lowManaGoing){
+        if(manaOn){
+          effects.push(new lowResource(240))
+          lowManaGoing = true
+        } 
+      } else if (ManaMeter.value > .33 || !gInGame){
+        lowManaGoing = false
+      } 
+      if(ManaMeter.value >= .99 && gInGame && oldMana < ManaMeter.value && !fullManaGoing){
+        if(manaOn){
+          effects.push(new fullResource(240))
+          fullManaGoing = true
+        } 
+      } else if (ManaMeter.value <= .75){
+        fullManaGoing = false
+        oldMana = ManaMeter.value
+      } 
+    }
+
+    let electricGoing = false
+    function electricHandler(){
+      if(ElectricMeter.value >= .15 && gInGame && !electricGoing){
+        if(hpOn){
+          effects.push(new electrified())
+          electricGoing = true
+          setTimeout(()=>{
+            electricGoing = false
+          }, 3000)
+        } 
+      }
+    }
+
+    let poisonGoing = false
+    function poisonHandler(){
+      if(PoisonMeter.value >= .15 && gInGame && !poisonGoing){
+        if(hpOn){
+          effects.push(new poisoned())
+          poisonGoing = true
+        } 
+      } else if (PoisonMeter.value <= .05){
+        poisonGoing = false
+      } 
+    }
+
+    function hudEffect(index){
+      this.index = index
+      this.value = 0
+      this.draw = function(){
+        let temp;
+        if(HPMeter.value >= .01 || PoisonMeter.value >= .01) temp = HUDValues[this.index]
+        else temp = 0
+        let pos = HUDPOS[this.index]
+        this.value += (temp - this.value) / 20
+        if(HUDBack) DrawRect(pos[0] * 3.2, pos[1] * 2, pos[2] * 3.2, pos[3] * 2, backColor)
+        if(HUDOn && gInGame && !adjToggle) DrawRect(pos[0] * 3.2, pos[1] * 2, this.value * 320, pos[3] * 2, pos[4])
+        if(adjToggle) DrawRect(pos[0] * 3.2, pos[1] * 2, pos[2] * 3.2, pos[3] * 2, pos[4])
+        if(!gInGame || !HUDOn) this.lifetime = 0
+      }
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+              DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+              gCycle < 360 ? gCycle += .5 : gCycle = 0
+              break;
+            case "Color Cycle Ambience": 
+              copyScreen(ambienceAlpha / 100)
+              gCycle < 360 ? gCycle += .5 : gCycle = 0
+              break;
+            case "Custom": 
+              DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+              break;
+            case "Ambience": 
+              copyScreen(ambienceAlpha / 100)
+              break;
+            case "Custom Ambience": 
+              copyScreen(ambienceAlpha / 100)
+              break;
+            case "Ambience Audio Visualizer": 
+              copyScreenAudio(ambienceAlpha / 100)
+              break;
+            case "Custom Audio Visualizer": 
+              backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+              backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+              DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+              break;
+            case "Color Cycle Audio Visualizer": 
+              backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+              backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+              gCycle < 360 ? gCycle += .5 : gCycle = 0
+              DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+              break;
+        }
+    }
+
+    function DrawCircle(x, y, radius, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.fill();
+    };
+
+    function DrawRect(x, y, width, height, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, width, height);
+    };
+
+    function StrokeRect(x, y, width, height, color, stroke){
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke
+      ctx.rect(x, y, width, height);
+      ctx.stroke()
+    }
+
+    function frozen(){
+      this.alpha = 0
+      this.count = 0
+      this.draw = function(){
+        if(!this.count) effects.push(new frozenHelper())
+        this.count < 2 ? this.count++ : this.count = 0
+        DrawRect(0, 0, 320, 200, `hsla(200, 100%, 50%, ${this.alpha})`)
+        this.alpha < .75 ? this.alpha += .05 : this.alpha = .75
+      }
+    }
+
+    function frozenHelper(){
+      this.x = 30 - Math.random() * 60 
+      this.y = 30 - Math.random() * 60
+      this.count = 1
+      this.alpha = 1
+      this.draw = function(){
+        ctx.beginPath()
+        ctx.moveTo(160 + this.x, 100 + this.y)
+        ctx.lineTo(160 + this.x * this.count, 100 + this.y * this.count)
+        ctx.lineWidth = 15
+        ctx.strokeStyle = `hsla(190, 100%, 70%, ${this.alpha})`
+        ctx.stroke()
+        this.count <= 5.5 ? this.count += .5 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      }
+    }
+
+    function poisoned(){
+      this.count = 0
+      this.draw = function(){
+        this.count < 5 ? this.count++ : this.count = 0
+        if(!this.count) effects.unshift(new poisonedHelper())
+        if(!poisonGoing) this.lifetime = 0
+      }
+    }
+
+    function poisonedHelper(){
+      this.x = Math.random() * 320
+      this.y = Math.random() * 200
+      this.rad = 1
+      this.half = false
+      this.lit = 20
+      this.draw = function(){
+        DrawCircle(this.x, this.y, this.rad, `hsl(100, 100%, ${this.lit}%)`)
+        if(!this.half) this.rad < 75 ? this.rad += 3 : this.half = true
+        else {
+          this.rad >= 2 ? this.rad -= 2 : this.lifetime = 0
+          if(this.lit < 95) this.lit+=2
+        }
+      }
+    }
+
+    function electrified(){
+      this.alpha = 0
+      this.count = 0
+      this.effects = []
+      this.draw = function(){
+        let mod = 25 - Math.random() * 50
+        this.count < 2 ? this.count++ : this.count = 0
+        if(!this.count){
+          if(!this.switch) this.effects.unshift(new electricHelper(0, 100 + mod))
+          else this.effects.push(new electricHelper(320, 100 + mod))
+        this.switch = !this.switch
+        }
+        ctx.beginPath()
+        ctx.moveTo(-10, 100)
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          ctx.lineTo(ele.x, ele.y)
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        ctx.lineTo(330, 100)
+        ctx.lineWidth = 20
+        ctx.strokeStyle = `hsla(190, 100%, 50%, ${this.alpha})`
+        ctx.stroke()
+        if(electricGoing) this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
+        else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      }
+    }
+
+    function electricHelper(x, y){
+      this.x = x
+      this.y = y
+      this.mod = 2 - Math.random() * 4
+      this.dir = x > 160 ? -1 : 1
+      this.draw = function(){
+        this.x += 8 * this.dir
+        this.y += Math.sin(Date.now() / 500) * this.mod * 2 * this.dir
+        if(this.dir < 0 && this.x < 160) this.lifetime = 0
+        if(this.dir > 0 && this.x > 160) this.lifetime = 0
+      }
+    }
+
+    function xpGain(){
+      this.alpha = 0
+      this.half = false
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, `hsla(0, 0%, 100%, ${this.alpha})`)
+        if(!this.half) this.alpha <= .25 ? this.alpha += .05 : this.half = true
+        else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      }
+    }
+
+    function fullShield(){
+      this.draw = function(){
+        let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+        grad.addColorStop(.33, 'hsla(190, 100%, 50%, 0)')
+        grad.addColorStop(1, `hsla(190, 100%, 50%, ${Math.sin(Date.now() / 1000) * .25 + .75})`)
+        DrawRect(0, 0, 320, 200, grad)
+        if(!fullShieldGoing) this.lifetime = 0
+      }
+    }
+
+    function damagedShield(){
+      this.draw = function(){
+        let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+        grad.addColorStop(Math.sin(Date.now() / 500) * .25 + .33, 'hsla(300, 100%, 50%, 0)')
+        grad.addColorStop(1, `hsla(210, 100%, 50%, ${Math.sin(Date.now() / 500) * .25 + .75})`)
+        DrawRect(0, 0, 320, 200, grad)
+        if(!damagedShieldGoing) this.lifetime = 0
+      }
+    }
+
+    function shieldBreak(){
+      this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+      this.grad.addColorStop(.25, 'hsla(0, 100%, 50%, 0)')
+      this.grad.addColorStop(1, `hsla(0, 100%, 50%, 1)`)
+      this.show = true
+      this.count = 0
+      this.count2 = 0
+      this.draw = function(){
+        if(this.show) DrawRect(0, 0, 320, 200, this.grad)
+        this.count < 12 ? this.count++ : this.count = 0
+        if(!this.count) {
+          this.show = !this.show
+          this.count2 < 5 ? this.count2++ : this.lifetime = 0
+        }
+        if(!noShieldGoing) this.lifetime = 0
+      }
+    }
+
+    function fullResource(hue){
+      this.hue = hue
+      this.y = 200
+      this.alpha = .75
+      this.draw = function(){
+        DrawRect(0, this.y, 320, 210, `hsla(${this.hue}, 100%, 50%, ${this.alpha})`)
+        this.y > 0 ? this.y -= 6 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      }
+    }
+
+    let gAlpha = 1
+    function lowResource(hue){
+      gAlpha = .05
+      this.hue = hue
+      this.effects = []
+      this.count = 0
+      this.draw = function(){
+        if(!this.count) this.effects.push(new lowResourceHelp(this.hue))
+        this.count < 5 ? this.count++ : this.count = 0
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        if((!lowHealthGoing && this.hue == 0) || (!lowManaGoing && this.hue == 240) || !gInGame) {
+          this.lifetime = 0
+          gAlpha = 1
+        }
+      }
+    }
+
+    function lowResourceHelp(hue){
+      this.hue = hue
+      this.x = Math.random() * 200 + 60
+      this.y = -15
+      this.targetX = this.x
+      this.draw = function(){
+        DrawCircle(this.x, this.y, 30, `hsla(${this.hue}, 100%, ${Math.cos(this.y / 20) * 10 + 30}%, 1)`)
+        this.y < 215 ? this.y += 3 : this.lifetime = 0
+        if(Math.random() > .75) this.targetX += (20 - Math.random() * 40)
+        this.x += (this.targetX - this.x) / 20
+      }
+    }
+
+    function death(){
+      this.start = Date.now()
+      this.lifetime = 10;
+      this.radius = 1;
+      this.checked = false;
+      this.draw = function(){
+        var elapsed = Date.now() - this.start;
+        var grd = ctx.createRadialGradient(160, 200, 1, 160, 200, this.radius);
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "rgba(255, 0, 0, .1)");
+        DrawCircle(160, 200, 300, grd)
+        if(elapsed > 310 - this.radius){
+          effects.push(new ghost())
+          this.start = Date.now()
+        }
+        if(!this.checked){
+          this.radius < 300 ? this.radius+=5 : this.checked = true;
+        } else {
+          this.radius > 2 ? this.radius--: null;
+        }
+        if(!deadGoing) this.lifetime = 0
+      }
+    }
+
+  function ghost(){
+    this.tail = []
+    this.x = 160
+    this.y = 250;
+    this.speed = 5 + Math.random() * 2;
+    this.switch = false;
+    this.rotate = -2.5 + Math.random() * 2
+    this.lifetime = 10;
+    this.draw = function(){
+      ctx.save();
+      ctx.translate(160, 250);
+      ctx.rotate(this.rotate)
+      ctx.translate(-160, -250)
+      this.tail.forEach((ele, i) => {
+        ctx.globalAlpha = .85 - .15 * i;
+        DrawCircle(ele[0], ele[1], 18 - 2 * i, "black");
+        ctx.globalAlpha = 1;
+      })
+      DrawCircle(this.x, this.y, 20, "black");
+      ctx.restore();
+      this.switch ? this.tail.unshift([this.x, this.y]) : this.switch = !this.switch;
+      if(this.tail.length > 9){
+        this.tail.pop()
+      }
+      this.x += this.speed;
+      this.y += Math.sin(Date.now() / 100) * 5;
+      if(this.x > 550) this.lifetime = 0
+    }
+  }
+
+    function portal(){
+    this.start = Date.now();
+    this.lifetime = 10;
+    this.rotate = 0;
+    this.alpha = 0;
+    this.count = 0
+    var gradient = ctx.createRadialGradient(160, 100, 1, 160, 100, 200);
+    gradient.addColorStop(0, 'rgba(25, 110, 255, 1)');
+    gradient.addColorStop(.5, 'rgba(50, 110, 255, .7)');
+    gradient.addColorStop(1, 'rgba(150, 150, 255, .05)');
+    this.draw = function(){
+      this.count < 20 ? this.count++ : this.count = 0
+      ctx.globalAlpha = this.alpha;
+      var elapsed = Date.now() - this.start;
+      DrawCircle(160, 100, 200, gradient)
+      ctx.save()
+      ctx.translate(160, 100)
+      ctx.rotate(this.rotate)
+      ctx.translate(-160, -100)
+      DrawRect(130, 70, 60, 60, 'rgba(100, 200, 255, 1)')
+      ctx.translate(160, 100)
+      ctx.rotate(Math.PI / 4)
+      ctx.translate(-160, -100)
+      DrawRect(130, 70, 60, 60, 'rgba(100, 200, 255, 1)')
+      DrawRect(140, 80, 40, 40, "blue")
+      ctx.restore()
+      var radius = Math.sin(Date.now() / 1000) * 10 + 80;
+      DrawStroke(160, 100, radius, 'rgba(100, 200, 255, 1)', 20)
+      ctx.globalAlpha = 1;
+      if(teleportGoing) this.alpha < 1 ? this.alpha+=.1 : null;
+      else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+      if(elapsed > 300 && !this.count){
+        effects.push(new portalFlash(radius))
+      }
+      this.rotate+=.01
+    }
+  }
+
+  function portalFlash(radius){
+    this.radius = radius;
+    this.lifetime = 10;
+    this.draw = function(){
+      DrawStroke(160, 100, this.radius, `hsla(200, 100%, 50%, ${Math.sin(this.radius / 10) * .5 + .5})`, 20)
+      this.radius < 250 ? this.radius ++ : this.lifetime = 0
+    }
+  }
+
+    function loading(){
+      this.lifetime = 10;
+      this.rotate = 0;
+      this.draw = function(){
+        ctx.save()
+        ctx.translate(100, 100)
+        ctx.rotate(this.rotate)
+        ctx.translate(-100, -100)
+        DrawGear(115, 100, 30, 20, 8, "gold")
+        ctx.restore()
+        ctx.save()
+        ctx.translate(220, 100)
+        ctx.rotate(-this.rotate)
+        ctx.translate(-220, -100)
+        DrawGear(205, 100, 30, 20, 8, "gold")
+        ctx.restore()
+        this.rotate+=.03
+        if(!loadGoing) this.lifetime = 0
+      }
+    }
+
+  function DrawGear(x, y, radius, stroke, teeth, color){
+    DrawStroke(x, y, radius, color, stroke)
+    for(let i = 0; i < teeth; i++){
+      var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
+      var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
+      var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
+      ctx.save()
+      ctx.translate(ix, iy)
+      ctx.rotate(rotate)
+      ctx.translate(-ix, -iy)
+      DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, "orange")
+      ctx.restore()
+    }
+  }
+
+    function levelUp(){
+      this.lifetime = 10;
+      this.radius = 1;
+      this.alpha1 = 1
+      this.x = 120
+      this.width = 80
+      this.draw = function(){
+        DrawEllipse(160, 150, this.radius, this.radius / 3, 0, `hsla(60, 100%, 50%, ${this.alpha1})`)
+        DrawRect(this.x, 150, this.width, -this.radius * 2, `hsla(60, 100%, 60%, ${this.alpha1})`)
+        ctx.beginPath()
+        ctx.ellipse(160, 150, this.width / 2, this.width / 6, 0, 0, Math.PI)
+        ctx.fillStyle = `hsla(60, 100%, 60%, ${this.alpha1})`
+        ctx.fill()
+        this.radius += 10
+        this.x -= 1
+        this.width += 2
+        if(this.radius > 50) this.alpha1 >= .015 ? this.alpha1 -= .015 : this.lifetime = 0
+      }
+    }
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      // Exit early if we've got a long-term match.
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    };
+  }
+
+  function hexToHSL(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+  
+      (r /= 255), (g /= 255), (b /= 255);
+      var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+      var h,
+        s,
+        l = (max + min) / 2;
+  
+      if (max === min) {
+        h = s = 0; // achromatic
+      } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+  
+      s = s * 100;
+      s = Math.round(s);
+      l = l * 100;
+      l = Math.round(l);
+      h = Math.round(360 * h);
+  
+      return [h, s, l];
+    }
+
+  let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      alpha *= gAlpha
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      alpha *= gAlpha
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+  function onEngineReady() {
+    // Grab canvas and rendering context.
+    canvas = document.getElementById("exCanvas");
+    ctx = canvas.getContext("2d");
+    window.requestAnimationFrame(update);
+  }
+</script>

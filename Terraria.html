@@ -1,0 +1,1116 @@
+<head>
+  <title>Terraria</title>
+  <meta description="Metering and ambiance for Terraria. Set UI scaling to 100%" />
+  <meta publisher="Whirlwind FX" />
+  <meta property="keyScrenBrightness" label="Ambiance brightness" type="number" min="0" max="100" default="100" />
+
+  <meta label="2k resolution" property="res_2k" type="boolean" default="0">
+  <meta property="enableHealth" label="Health increase and decrease effect" type="boolean" default="1" /> 
+  <meta property="myHuePicker1" label="Health increase Hue Control" type="hue" default="50" min="0" max="360">
+  <meta property="myHuePicker2" label="Health decrease Hue Control" type="hue" default="340" min="0" max="360">
+  <meta property="enableMana" label="Mana decrease effect" type="boolean" default="1" /> 
+  <meta property="myHuePicker3" label="Mana decrease Hue Control" type="hue" default="220" min="0" max="360">
+  <meta meter="health" tags="terraria"	x= "0.8324"	y= "0.0271"	height= "0.0042"	width= "0.1375" h="-30-30" s="50-100" l="50-100" type="area" />
+
+  <!-- 2k res -->
+  <!-- blue area of the stars  -->
+  <meta meter="stars1_2k" tags="terraria"	type="area"	x="0.9891"	y="0.0243"	width="0.002" height="0.0049" h="220-240"	s="30-100"	l="60-100"/>
+  <meta meter="stars2_2k" tags="terraria"	x= "0.9883"	y= "0.0396"	height= "0.0062"	width= "0.0031" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars3_2k" tags="terraria"	x= "0.9887"	y= "0.0556" height= "0.0042"	width= "0.0023" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars4_2k" tags="terraria"	x= "0.9883"	y= "0.0701"	height= "0.0049" width= "0.0031" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars5_2k" tags="terraria"	x= "0.9891"	y= "0.0854"	height= "0.0049"	width= "0.002" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars6_2k"	tags="terraria"	x= "0.9883"	y= "0.1007"	height= "0.0056" width= "0.0035" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars7_2k" tags="terraria"	x= "0.9887"	y= "0.1167"	height= "0.0035"	width= "0.0023" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars8_2k" tags="terraria"	x= "0.9887"	y= "0.1313"	height= "0.0056"	width= "0.0023" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars9_2k" tags="terraria"	x= "0.9887"	y= "0.1472"	height= "0.0042"	width= "0.0023" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars10_2k" tags="terraria"	x= "0.9883"	y= "0.1618"	height= "0.0056"	width= "0.0035" h="220-240"	s="30-100"	l="60-100" type="area" />
+
+  <!-- gold border -->
+  <meta meter="stars1border_2k" tags="terraria"	type="area" x= "0.9832"	y= "0.0187"	height= "0.0167"	width= "0.0133"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars2border_2k" tags="terraria"	type="area" x= "0.9828"	y= "0.0361"	height= "0.0153"	width= "0.0141"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars3border_2k" tags="terraria"	type="area" x= "0.9828"	y= "0.0514"	height= "0.0146"	width= "0.0133"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars4border_2k" tags="terraria"	type="area" x= "0.982"	y= "0.0667"	height= "0.016"	width= "0.0148"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars5border_2k" tags="terraria"	type="area" x= "0.9816"	y= "0.0813"	height= "0.016"	width= "0.0152" h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars6border_2k" tags="terraria"	type="area" x= "0.9824"	y= "0.0965"	height= "0.016"	width= "0.0152"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars7border_2k" tags="terraria"	type="area" x= "0.9824"	y= "0.1125"	height= "0.0146"	width= "0.0148"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars8border_2k" tags="terraria"	type="area" x= "0.982"	y= "0.1271"	height= "0.0167"	width= "0.0152"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars9border_2k" tags="terraria"	type="area" x= "0.982"	y= "0.1431"	height= "0.0167"	width= "0.0152"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars10border_2k" tags="terraria"	type="area" x= "0.982"	y= "0.1583" height= "0.0181"	width= "0.0148" h="30-50"	s="0-100"	l="0-100"/>
+
+  <!-- 1080p res-->
+  <!-- blue area -->
+  <meta meter="stars1_1080" tags="terraria"	type="area"	x= "0.9849" y= "0.0333" height= "0.0056"	width= "0.0036" h="220-240"	s="30-100"	l="60-100"/>
+  <meta meter="stars2_1080" tags="terraria"	x= "0.9849"	y= "0.0537"	height= "0.0056"	width= "0.0042" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars3_1080" tags="terraria"	x= "0.9849"	y= "0.0741"	height= "0.0065"	width= "0.0031" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars4_1080" tags="terraria"	x= "0.9849"	y= "0.0944"	height= "0.0074"	width= "0.0047" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars5_1080" tags="terraria"	x= "0.9854"	y= "0.1139"	height= "0.0065"	width= "0.0031" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars6_1080"	tags="terraria"	x= "0.9849"	y= "0.1352"  height= "0.0074"	width= "0.0036" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars7_1080" tags="terraria"	x= "0.9854"	y= "0.1556"	height= "0.0065"	width= "0.0026" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars8_1080" tags="terraria"	x= "0.9854"	y= "0.175"	height= "0.0056"	width= "0.0031" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars9_1080" tags="terraria"	x= "0.9844"	y= "0.1963"	height= "0.0056"	width= "0.0042" h="220-240"	s="30-100"	l="60-100" type="area" />
+  <meta meter="stars10_1080" tags="terraria"	x= "0.9849"	y= "0.2148"	height= "0.0083"	width= "0.0042" h="220-240"	s="30-100"	l="60-100" type="area" />
+
+  <!-- gold border-->
+  <meta meter="stars1border_1080" tags="terraria"	type="area" x= "0.9776"	y= "0.0269"	height= "0.0222"	width= "0.0187" h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars2border_1080" tags="terraria"	type="area" x= "0.976"	y= "0.0481"	height= "0.0213"	width= "0.0203"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars3border_1080" tags="terraria"	type="area" x= "0.976"	y= "0.0685"	height= "0.0213"	width= "0.0214"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars4border_1080" tags="terraria"	type="area" x= "0.9771"	y= "0.0889"	height= "0.0204"	width= "0.0193"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars5border_1080" tags="terraria"	type="area" x= "0.9766"	y= "0.1093"	height= "0.0222"	width= "0.0214" h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars6border_1080" tags="terraria"	type="area" x= "0.976"	y= "0.1306"	height= "0.0204"	width= "0.0219"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars7border_1080" tags="terraria"	type="area" x= "0.9786"	y= "0.1481"	height= "0.0231"	width= "0.0172"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars8border_1080" tags="terraria"	type="area" x= "0.9786"	y= "0.1704"	height= "0.0213"	width= "0.0172"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars9border_1080" tags="terraria"	type="area" x= "0.9786"	y= "0.1907"	height= "0.0213" width= "0.0177"	h="30-50"	s="0-100"	l="0-100"/>
+  <meta meter="stars10border_1080" tags="terraria"	type="area" x= "0.9786"	y= "0.2111"	height= "0.0231"	width= "0.0182" h="30-50"	s="0-100"	l="0-100"/>
+
+  
+  <meta meter="nightSky" tags="terraria"	x=".60833333" y=".023148" width=".199479" height=".18703703" h="220-250" s="50-80" l="0-30" type="area" />
+  <meta meter="daySky" tags="terraria"	x=".60833333" y=".023148" width=".199479" height=".18703703" h="220-270" s="50-80" l="30-100" type="area" />
+  <meta meter="cave" tags="terraria"	x=".0052" y=".009" width=".9723" height=".975" h="0-1" s="0-1" l="0-1" type="area" />
+
+  <meta meter="desert" tags="terraria"	x=".018229" y=".291666" width=".9322916" height=".211111" h="1-80" s="10-95" l="35-85" type="area" />
+
+  <!-- <meta
+    meter="mountains"
+    x=".005729"
+    y=".164814"
+    width=".9829812"
+    height=".30185185"
+    h="200-260"
+    s="10-40"
+    l="10-70"
+    type="area"
+  /> -->
+  <meta meter="jungle" tags="terraria"	x=".005729" y=".164814" width=".9829812" height=".30185185" h="80-150" s="10-90" l="10-70" type="area" />
+  <meta meter="corruption" tags="terraria"	x=".005729" y=".164814" width=".9829812" height=".30185185" h="220-290" s="10-90" l="10-70" type="area" />
+  <meta
+    meter="bloodMoonOCR"
+    type="ocr_textmatch"
+    tags="terraria"	
+    x=".0458333"
+    y=".93518"
+    width=".13385"
+    height=".03333"
+    string="The Blood Moon is rising..."
+    confidence="10"
+  />
+
+  <!-- <meta
+  meter = "mainMenu"
+  type="ocr_textmatch" 
+  x=".4296875" 
+  y=".2472222" 
+  width=".141145" 
+  height=".062962" 
+  string = "Single Player" 
+  confidence="1"
+/> -->
+
+  <!-- <meta
+    meter="caveBottom"
+    tags="terraria"
+    x=".055208333"
+    y=".938888"
+    width=".8104166"
+    height=".04537"
+    h="0-360"
+    s="0-10"
+    l="0-10"
+    type="area"
+  /> 
+
+  <meta
+    meter="caveSideR"
+    tags="terraria"
+    x=".60833333"
+    y=".023148"
+    width=".199479"
+    height=".18703703"
+    h="0-360"
+    s="0-10"
+    l="0-10"
+    type="area"
+  /> -->
+</head>
+
+<body style="margin: 0; padding: 0; background: #000">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var canvas, ctx;
+  var stateMgr = new StateHandler();
+  var healthMeter = new Meter(3, onHealthMeterChanged);
+  var manaMeter = new Meter(3, onManaMeterChanged);
+
+  //var nightMeter = new Meter(3, onNightMeterChanged);
+  var effects = [];
+  var comets = [];
+  var stars = [];
+  var droplets = [];
+
+  var blood = new BloodMoonState();
+  blood.complete = true;
+
+  // ----- "State" functions -----
+  function DamageState() {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    // console.log(`Damage State`);
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      for (let i = 0; i < 20; i++) {
+        effects.push(
+          new moveableBar(
+            random(0, 360),
+            random(0, 200),
+            40,
+            40,
+            random(-5, 5),
+            random(-5, 5),
+            340 + random(-20, 20),
+            80 + random(-20, 20),
+            50,
+            0.9
+          )
+        );
+      }
+
+      //   var positions = [];
+      //   positions.push(Math.random() * 320);
+      //   positions.forEach((element) => {
+      //     var hue = Math.round(Math.random() * 25) + 345;
+      //     var colorString = "hsl(" + hue + ",100%,50%)";
+      //     ctx.fillStyle = colorString;
+      //     ctx.fillRect(element, 0, 10, 200);
+      //   });
+    };
+  }
+  function moveableBar(x, y, width, height, xDirection, yDirection, hue, sat, lit, alpha) {
+    this.x = x;
+    this.y = y;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 50;
+    this.size = 0;
+    this.ydirection = yDirection;
+    this.xdirection = xDirection;
+    this.width = width;
+    this.height = height;
+
+    this.draw = function () {
+      ctx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
+      ctx.fillRect(this.x, this.y, this.height, this.width);
+      this.lifetime--;
+      this.y -= this.ydirection;
+      this.x += this.xdirection;
+    };
+  }
+
+  function HealState() {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      var nAngle = this.elapsed / 1015;
+      ctx.fillStyle = "yellow";
+      ctx.beginPath();
+      ctx.arc(160, 100, 300, 0, nAngle * Math.PI);
+      ctx.fill();
+    };
+  }
+  function BloodMoonState() {
+    this.timer = 0;
+    var dur = 180;
+    this.duration = dur;
+    this.start = new Date().getTime();
+
+    this.xRect = 160;
+    this.yRect = 100;
+    this.width = 0;
+    this.height = 0;
+    this.complete = false;
+
+    this.radius = 0;
+
+    this.Process = function () {
+      // this.timer++;
+      // if (this.timer > 120)
+      //   stateMgr.Pop;
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      if (this.duration <= 0) {
+        this.complete = true;
+        this.duration = 0;
+      }
+      if (this.duration > 0) {
+        if (this.duration >= dur / 1.5) {
+          this.xRect -= 12;
+          this.yRect -= 6;
+          this.width += 24;
+          this.height += 12;
+          ctx.fillStyle = '#121212';
+          ctx.fillRect(this.xRect, this.yRect, this.width, this.height);
+
+          this.radius += 1.4;
+          ctx.fillStyle = '#ede5b9';
+          ctx.beginPath();
+          ctx.arc(160, 100, this.radius, 0, 6.3);
+          ctx.fill();
+        }
+
+        if (this.duration < dur / 1.5 && this.duration > 0 && droplets.length < 250) {
+          droplets.push(new BloodDroplet());
+        }
+        for (i = 0; i < droplets.length; i++) {
+          droplets[i].Draw();
+        }
+        for (j = 0; j < droplets.length; j++) {
+          if (droplets[j].lifetime <= 0) {
+            droplets.splice(j, 1);
+          }
+        }
+        if (this.duration == 1) {
+          this.duration = 0;
+          stateMgr.Push(new IdleState());
+        }
+      }
+      this.duration--;
+    };
+  }
+
+  function CaveState() {
+    this.Process = function () {
+      this.Draw();
+    };
+    this.Draw = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        if (lightness[iZone] < 1) lightness[iZone] = 1.5;
+
+        if (lightness[iZone] > 5) lightness[iZone] += 20;
+
+        ctx.fillStyle = 'hsla(' + hue[iZone] + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScrenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+
+  function NightState() {
+    this.Process = function () {
+      this.Draw();
+    };
+    this.Draw = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        if (lightness[iZone] < 1) lightness[iZone] = 2;
+        ctx.fillStyle = 'hsla(' + 240 + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScrenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+      var rand = Math.floor(Math.random() * 60);
+      if (rand == 0) comets.push(new Comet());
+
+      if (stars.length < 60) stars.push(new Star());
+    };
+  }
+
+  function ManaUpState() {
+    this.start = new Date().getTime();
+    this.duration = 2500;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+      // console.log('Mana Drawing');
+      var nDiameter = this.elapsed / 10;
+      ctx.fillStyle = 'blue';
+      ctx.beginPath();
+      ctx.arc(160, 100, nDiameter, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.lineWidth = 10;
+      ctx.strokeStyle = 'goldenrod';
+      ctx.beginPath();
+      ctx.arc(160, 100, nDiameter, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fillStyle = 'goldenrod';
+      ctx.fillRect(Math.random() * 320, Math.random() * 200, 10, 10);
+      ctx.fillRect(Math.random() * 320, Math.random() * 200, 10, 10);
+    };
+  }
+
+  function DayState() {
+    this.Process = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        if (lightness[iZone] < 1) lightness[iZone] = 2;
+
+        ctx.fillStyle = 'hsla(' + hue[iZone] + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScrenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+  function CorruptionState() {
+    this.Process = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        if (lightness[iZone] == 0) lightness[iZone]++;
+
+        ctx.fillStyle = 'hsla(' + 250 + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScrenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+  function JungleState() {
+    this.Process = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        if (lightness[iZone] == 0) lightness[iZone]++;
+
+        ctx.fillStyle = 'hsla(' + 100 + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScrenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+  // function MountainState(){
+  //   this.Process = function () {
+  //     let lightness = new Int8Array(engine.zone.lightness);
+  //     let sat = new Int8Array(engine.zone.saturation);
+  //     let hue = new Int16Array(engine.zone.hue);
+
+  //     for (var iZone = 0; iZone < 560; iZone++) {
+  //       if (lightness[iZone] == 0)
+  //         lightness[iZone]++;
+
+  //       ctx.fillStyle =
+  //         "hsla(" +
+  //         200 +
+  //         "," +
+  //         sat[iZone] +
+  //         "%," +
+  //         lightness[iZone] +
+  //         "%, " +
+  //         keyScrenBrightness * 0.01 +
+  //         ")";
+
+  //       var iRow = Math.floor(iZone / 28);
+  //       var iCol = iZone % 28;
+  //       var iWidth = 320 / 28;
+  //       var iHeight = 200 / 20;
+  //       var iZx = iCol * iWidth;
+  //       var iZy = iRow * iHeight;
+
+  //       ctx.fillRect(iZx, iZy, iWidth, iHeight);
+  //     }
+  //   };
+  // }
+  function DesertState() {
+    this.Process = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      //console.log(`DESERT STATE PLAYING`)
+      for (var iZone = 0; iZone < 560; iZone++) {
+        if (lightness[iZone] == 0) lightness[iZone]++;
+
+        ctx.fillStyle = 'hsla(' + 20 + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScrenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+  function IdleState() {
+    this.Process = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        if (lightness[iZone] == 0) lightness[iZone]++;
+
+        ctx.fillStyle = 'hsla(' + hue[iZone] + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScrenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+
+  // ----- callback functions -----
+  function random(min, max) {
+    // if min = 10 max = 15 random var = 0.1544465; it will return approximately 10 because of math.floor
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  function onHealthMeterChanged() {
+    // console.log(`Health At ${healthMeter.value}`);
+    if(enableHealth){
+    if (healthMeter.decreased) {
+      for (let i = 0; i < 20; i++) {
+        effects.push(
+          new moveableBar(
+            random(0, 360),
+            random(0, 200),
+            40,
+            40,
+            random(-5, 5),
+            random(-5, 5),
+            myHuePicker2 + random(-20, 20),
+            80 + random(-20, 20),
+            50,
+            0.9
+          )
+        );
+      }
+    }
+    if (healthMeter.increased) {
+      for (let i = 0; i < 20; i++) {
+        effects.push(
+          new moveableBar(
+            random(0, 360),
+            random(0, 200),
+            40,
+            40,
+            random(-5, 5),
+            random(-5, 5),
+            myHuePicker1 + random(-20, 20),
+            80 + random(-20, 20),
+            50,
+            0.9
+          )
+        );
+      }
+    }
+  }
+  }
+
+  function onManaMeterChanged() {
+    // console.log(`${manaMeter.value}`);
+    if (manaMeter.decreased) {
+      setTimeout(function () {
+          effects.push(new ExpandingCircle(true, random(0, 360), random(0, 200), myHuePicker3+ random(-10,10,), 90,50));
+        }, 0);
+        setTimeout(function () {
+          effects.push(new ExpandingCircle(true, random(0, 360), random(0, 200), myHuePicker3+ random(-10,10,), 90,50));
+        }, 1000);
+        for (let i = 0; i < 30; i++) {
+          setTimeout(function () {
+            effects.push(new FallingSquare(true, random(0, 360), random(-50, 0), myHuePicker3+ random(-10,10,), 90,50, 20));
+          }, random(0, 2500));
+          setTimeout(function () {
+            effects.push(new FallingSquare(true, random(0, 360), random(-100, 0), myHuePicker3+ random(-10,10,), 90,50, 20));
+          }, random(0, 2500));
+        }
+    }
+  }
+
+  // ----- support functions -----
+  function BloodDroplet() {
+    this.x = Math.random() * 320;
+    this.y = -17;
+    this.speed = Math.random() * 12;
+    this.color = '#660000';
+    this.complete = false;
+    this.lifetime = 30; // Frames.
+
+    this.Draw = function () {
+      if (this.y > 200) this.complete = true;
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, 6, 6);
+      this.liftime--;
+      this.y += this.speed;
+    };
+  }
+
+  function Comet() {
+    this.x = Math.random() * 320;
+    this.y = 0;
+    this.speed = 4 + Math.random() * 4;
+    this.complete = false;
+    this.size = 8 + Math.random() * 8;
+
+    this.Draw = function () {
+      this.y += this.speed;
+
+      ctx.fillStyle = 'orange';
+      ctx.fillRect(this.x, this.y, this.size, this.size * 5);
+
+      if (this.y > 230) this.complete = true;
+    };
+  }
+
+  function Star() {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.complete = false;
+    this.size = 7 + Math.random() * 6;
+    this.timer = 0;
+    this.expiration = 80 + Math.random() * 50;
+    this.color = 70 + Math.random() * 30;
+
+    this.Draw = function () {
+      this.timer++;
+
+      ctx.fillStyle = 'hsl(58, 100%,' + this.color + '%)';
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+
+      if (this.timer > this.expiration) this.complete = true;
+    };
+  }
+
+  // ----- StateHandler and Meter -----
+  function StateHandler() {
+    var stack = [];
+    var state = null;
+
+    var updateState = function () {
+      if (stack.length > 0) {
+        state = stack[stack.length - 1];
+      } else {
+        state = null;
+      }
+    };
+
+    this.Push = function (newState) {
+      stack = [];
+      stack.push(new IdleState())
+      stack.push(newState);
+      updateState();
+    };
+
+    this.Pop = function () {
+      stack.pop();
+      updateState();
+    };
+
+    this.Process = function () {
+      if (state != null) {
+        state.Process();
+      }
+    };
+  }
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      if (this.value !== values[0]) {
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    };
+  }
+
+  function onEngineReady() {
+    canvas = document.getElementById('exCanvas');
+    ctx = canvas.getContext('2d');
+
+    stateMgr.Push(new IdleState());
+    window.requestAnimationFrame(update);
+  }
+
+  var x = 0;
+  // ----- update -----
+  function CenterWave(hue, saturation, lightness, value) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.lifetime = 50;
+    this.size = 0;
+    this.value = value;
+    this.hue = hue;
+    this.saturation = saturation;
+    this.lightness = lightness;
+    this.flashing;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        ctx.fillStyle = 'hsla(' + hue[iZone] + ',' + sat[iZone] + '%,' + lightness[iZone] + '%, ' + keyScreenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+
+      ctx.fillStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + random(this.lightness - 10, this.lightness + 10) + '%)';
+
+      ctx.fillRect(160, 0, this.size * 160, 200);
+      ctx.fillRect(160, 0, -this.size * 160, 200);
+      if (this.size < this.value) {
+        this.size += 0.03;
+      }
+    };
+    this.lifetime--;
+  }
+  function WallUpState(hue, sat, lit, alpha = 1) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 80;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.draw();
+    };
+
+    this.draw = function () {
+      var pctUp = 1 - this.count / 2000;
+      ctx.fillStyle =
+        'hsla(' +
+        (this.hue + random(-15, 15)) +
+        ',' +
+        (this.sat + random(-15, 15)) +
+        '%,' +
+        (this.lit + random(-15, 15)) +
+        '%,' +
+        this.alpha +
+        ')';
+      ctx.fillRect(0, 200 - 200 * pctUp, 320, 300);
+      this.count -= 28;
+      ctx.fillStyle =
+        'hsla(' +
+        (this.hue + random(-15, 15)) +
+        ',' +
+        (this.sat + random(-15, 15)) +
+        '%,' +
+        (this.lit + random(-15, 15)) +
+        '%,' +
+        this.alpha +
+        ')';
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+      ctx.fillStyle =
+        'hsla(' +
+        (this.hue + random(-15, 15)) +
+        ',' +
+        (this.sat + random(-15, 15)) +
+        '%,' +
+        (this.lit + random(-15, 15)) +
+        '%,' +
+        this.alpha +
+        ')';
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+
+      this.lifetime--;
+    };
+  }
+  function colorFilter(hue, lightnessOffset = 0, milliseconds = 4000) {
+    this.start = new Date().getTime();
+    this.duration = milliseconds;
+    this.hue = hue;
+    this.lightnessOffset = lightnessOffset;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.draw();
+    };
+
+    this.draw = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var satBoost = sat[iZone] + 35;
+        ctx.fillStyle =
+          'hsla(' + this.hue + ',' + satBoost + '%,' + (lightness[iZone] + this.lightnessOffset) + '%, ' + keyScreenBrightness * 0.01 + ')';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+
+  function moveableBar(x, y, width, height, xDirection, yDirection, hue, sat, lit, alpha) {
+    this.x = x;
+    this.y = y;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 50;
+    this.size = 0;
+    this.ydirection = yDirection;
+    this.xdirection = xDirection;
+    this.width = width;
+    this.height = height;
+
+    this.draw = function () {
+      ctx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
+      ctx.fillRect(this.x, this.y, this.height, this.width);
+      this.lifetime--;
+      this.y -= this.ydirection;
+      this.x += this.xdirection;
+    };
+  }
+
+  // colored sparkle effect
+  function SparkleEffect(hue, saturation, lightness, size) {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.hue = hue;
+    this.saturation = saturation;
+    this.lightness = lightness;
+    this.lifetime = 40;
+    this.size = size;
+    this.draw = function () {
+      ctx.fillStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + this.lightness + '%)';
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+      this.lifetime--;
+    };
+  }
+
+  function FallingSquare(down, x, y, hue, sat, lit, size) {
+    this.x = x;
+    this.y = y;
+    this.directionDown = down;
+    this.lifetime = 50;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.size = size;
+
+    this.draw = function () {
+      if (this.directionDown) {
+        this.y += 5;
+      } else {
+        this.y -= 5;
+      }
+      ctx.fillStyle = ctx.fillStyle = 'hsl(' + this.hue + ',' + this.sat + '%,' + this.lit + '%)';
+
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+      this.lifetime--;
+    };
+  }
+
+  function ExpandingCircle(outward, x, y, hue, saturation, lightness) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.lifetime = 50;
+    this.size = 0;
+    this.hue = hue;
+    this.saturation = saturation;
+    this.lightness = lightness;
+    this.x = x;
+    this.y = y;
+    this.outward = outward;
+    if (!this.outward) {
+      this.size = 200;
+    }
+
+    this.draw = function () {
+      ctx.beginPath();
+      ctx.lineWidth = 15;
+      ctx.strokeStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + this.lightness + '%)';
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      if (this.outward) {
+        this.size += 3;
+      } else {
+        this.size -= 3;
+      }
+
+      this.lifetime--;
+    };
+  }
+
+
+  function update() {
+    healthMeter.setValue(engine.vision.health);
+
+    if(!res_2k){
+      console.log('star 10 : ' + engine.vision.stars10_1080);
+      console.log('star 9 : ' + engine.vision.stars9_1080);
+      console.log('star 8 : ' + engine.vision.stars8_1080);
+      console.log('star 7 : ' + engine.vision.stars7_1080);
+      console.log('star 6 : ' + engine.vision.stars6_1080);
+      console.log('star 5 : ' + engine.vision.stars5_1080);
+      console.log('star 4 : ' + engine.vision.stars4_1080);
+      console.log('star 3 : ' + engine.vision.stars3_1080);
+      console.log('star 2 : ' + engine.vision.stars2_1080);
+      console.log('star 1 : ' + engine.vision.stars1_1080);
+    }
+    else{
+      console.log('star 10 : ' + engine.vision.stars10_2k);
+      console.log('star 9 : ' + engine.vision.stars9_2k);
+      console.log('star 8 : ' + engine.vision.stars8_2k);
+      console.log('star 7 : ' + engine.vision.stars7_2k);
+      console.log('star 6 : ' + engine.vision.stars6_2k);
+      console.log('star 5 : ' + engine.vision.stars5_2k);
+      console.log('star 4 : ' + engine.vision.stars4_2k);
+      console.log('star 3 : ' + engine.vision.stars3_2k);
+      console.log('star 2 : ' + engine.vision.stars2_2k);
+      console.log('star 1 : ' + engine.vision.stars1_2k);
+    }
+
+
+    if(!res_2k){
+      if(engine.vision.stars10border_1080 > 0.2 && engine.vision.stars10_1080 > 0.7){
+        manaMeter.setValue(10);
+      }
+      else if(engine.vision.stars9border_1080 > 0.2 && engine.vision.stars9_1080 > 0.7){
+        manaMeter.setValue(9);
+      }
+      else if(engine.vision.stars8border_1080 > 0.2 && engine.vision.stars8_1080 > 0.7){
+        manaMeter.setValue(8);
+      }
+      else if(engine.vision.stars7border_1080 > 0.2 && engine.vision.stars7_1080 > 0.7){
+        manaMeter.setValue(7);
+      }
+      else if(engine.vision.stars6border_1080 > 0.2 && engine.vision.stars6_1080 > 0.7){
+        manaMeter.setValue(6);
+      }
+      else if(engine.vision.stars5border_1080 > 0.2 && engine.vision.stars5_1080 > 0.7){
+        manaMeter.setValue(5);
+      }
+      else if(engine.vision.stars4border_1080 > 0.2 && engine.vision.stars4_1080 > 0.7){
+        manaMeter.setValue(4);
+      }
+      else if(engine.vision.stars3border_1080 > 0.2 && engine.vision.stars3_1080 > 0.7){
+        manaMeter.setValue(3);
+      }
+      else if(engine.vision.stars2border_1080 > 0.2 && engine.vision.stars2_1080 > 0.7){
+        manaMeter.setValue(2);
+      }
+      else if(engine.vision.stars1border_1080 > 0.2 && engine.vision.stars1_1080 > 0.7){      
+        manaMeter.setValue(1);
+      }
+      else{
+        manaMeter.setValue(0);
+      }
+    }
+    else{
+      if(engine.vision.stars10border_2k > 0.2 && engine.vision.stars10_2k > 0.7){
+        manaMeter.setValue(10);
+      }
+      else if(engine.vision.stars9border_2k > 0.2 && engine.vision.stars9_2k > 0.7){
+        manaMeter.setValue(9);
+      }
+      else if(engine.vision.stars8border_2k > 0.2 && engine.vision.stars8_2k > 0.7){
+        manaMeter.setValue(8);
+      }
+      else if(engine.vision.stars7border_2k > 0.2 && engine.vision.stars7_2k > 0.7){
+        manaMeter.setValue(7);
+      }
+      else if(engine.vision.stars6border_2k > 0.2 && engine.vision.stars6_2k > 0.7){
+        manaMeter.setValue(6);
+      }
+      else if(engine.vision.stars5border_2k > 0.2 && engine.vision.stars5_2k > 0.7){
+        manaMeter.setValue(5);
+      }
+      else if(engine.vision.stars4border_2k > 0.2 && engine.vision.stars4_2k > 0.7){
+        manaMeter.setValue(4);
+      }
+      else if(engine.vision.stars3border_2k > 0.2 && engine.vision.stars3_2k > 0.7){
+        manaMeter.setValue(3);
+      }
+      else if(engine.vision.stars2border_2k > 0.2 && engine.vision.stars2_2k > 0.7){
+        manaMeter.setValue(2);
+      }
+      else if(engine.vision.stars1border_2k > 0.2 && engine.vision.stars1_2k > 0.7){      
+        manaMeter.setValue(1);
+      }
+      else{
+        manaMeter.setValue(0);
+      }
+    }
+    console.log(manaMeter.value);
+
+    if (engine.vision.nightSky > engine.vision.daySky) {
+      stateMgr.Push(new NightState());
+    } else {
+      stateMgr.Push(new DayState());
+    }
+
+    if (engine.vision.cave > 0.55) {
+      stateMgr.Push(new CaveState());
+    }
+
+    if (engine.vision.bloodMoonOCR > 0.7) {
+      stateMgr.Push(new BloodMoonState());
+    }
+
+    if (engine.vision.desert > 0.2) {
+      {
+        stateMgr.Push(new DesertState());
+      }
+    }
+    //console.log(`Desert ${engine.vision.desert}`)
+    // if (engine.vision.mountains > 0.2){
+    //   stateMgr.Push(new MountainState());
+    // }
+    if (engine.vision.jungle > 0.2) {
+      stateMgr.Push(new JungleState());
+    }
+    if (engine.vision.corruption > 0.3) {
+      
+      stateMgr.Push(new CorruptionState());
+    }
+    //console.log("-----------");
+    //console.log("blood moon: " + engine.vision.bloodMoonOCR );
+    //console.log(x++);
+
+    if (blood.complete) {
+    stateMgr.Process();
+    } else blood.Draw();
+
+    for (i = 0; i < comets.length; i++) {
+      comets[i].Draw();
+      if (comets[i].complete) comets.splice(0, 1);
+    }
+
+    for (i = 0; i < stars.length; i++) {
+      this.stars[i].Draw();
+      if (stars[i].complete) stars.splice(0, 1);
+    }
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw();
+    }
+
+    for (let i = 0; i < effects.length; i++) {
+      if (effects[i].lifetime <= 0) {
+        effects.splice(i, 1);
+      }
+    }
+    window.requestAnimationFrame(update);
+  }
+</script>

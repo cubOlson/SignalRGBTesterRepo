@@ -1,0 +1,1356 @@
+<head>
+    <title>World of Tanks Dev</title>
+    <meta description="Effects and ambience for World of Tanks. v1.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+    <meta property="enableHUD" label="HUD effects" type="boolean" default="1" />
+    <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" tooltip="This toggle allows you to adjust the Health Bar. Turn off while playing the game." type="boolean" default="0" />
+    <meta property="healthColor" label="Health HUD Color" type="color" default="#12ff00" min="0" max="360" />
+    <meta property="HealthBarX" label="Health Bar X" type="number" min="0" max="100" default="0" />
+    <meta property="HealthBarY" label="Health Bar Y" type="number" min="0" max="100" default="25" />
+    <meta property="HealthBarWidth" label="Health Bar Width" type="number" min="0" max="100" default="100" />
+    <meta property="HealthBarHeight" label="Health Bar Height" type="number" min="0" max="100" default="15" />
+    <meta property="shootOn" label="Shooting Effects" tooltip="Shot enemy, shot by enemy, critical hit on enemy" type="boolean" default="1" />
+    <meta property="lowHPOn" label="Low Health Effect" tooltip="Low health" type="boolean" default="1" />
+    <meta property="discoOn" label="Discovered Effect" tooltip="Discovered by enemy" type="boolean" default="1" />
+    <meta property="deathOn" label="Death Effect" tooltip="Player death" type="boolean" default="1" />
+    <meta property="vdOn" label="Victory / Defeat Effects" tooltip="End of game, victory and defeat" type="boolean" default="1" />
+    <meta property="scoreOn" label="Score Effects" tooltip="Your team in the lead / losing" type="boolean" default="1" />
+    <meta property="advanceOn" label="Enemy Advancing Effect" tooltip="Enemy passes map halfway point" type="boolean" default="1" />
+
+    <meta meter="inGameBrown1" tags="vlc,WORLD OF TANKS,WOT" x="0.8441" y="0.7248" width="0.0008" height="0.0035" 
+      h="0-360" s="20-80" l="0-20" hdr-h="0-360" hdr-s="0-90" hdr-l="0-40" type="area">
+      <resolution aspect="3.55:1" x="0.8961" y="0.6352" width="0.000" height="0.0040" />
+      <resolution aspect="24:10" x="0.8834" y="0.7250" width=".0003" height=".0040" />
+      <resolution aspect="16:11" x="0.6897" y="0.5078" width="0" height="0.0081"  />
+
+      <resolution size="3840x2160" x="0.8322" y="0.6281" width="0.0094" height="0.0051"   />
+      <resolution size="2560x1080" x="0.8441" y="0.6293" width="0" height="0.0046" />
+      <resolution size="1920x1080" x="0.7921" y="0.6367" width="0.001" height="0.0065" />
+    </meta>
+
+    <meta meter="inGameBrown2" tags="vlc,WORLD OF TANKS,WOT" x="0.0871" y="0.9778" width="0.0012" height="0.0111" 
+      h="0-360" s="0-100" l="0-30" hdr-h="0-360" hdr-s="0-100" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.0583" y="0.9759" width="0.0000" height="0.0050" />
+      <resolution aspect="24:10" x="0.0657" y="0.9778" width="-0.0009" height=".0050" />
+      <resolution aspect="16:11" x="0.1751" y="0.9619" width="0.0007" height="0.0181"  />
+
+      <resolution size="3840x2160" x="0.1183" y="0.9829" width="0.0005" height="0.0032"/>
+      <resolution size="2560x1080" x="0.0875" y="0.9741" width="0" height="0.012"/>
+      <resolution size="1920x1080" x="0.1167" y="0.9759" width="0.0005" height="0.0102" />
+    </meta>
+
+    <meta meter="inGameNotBrown" tags="vlc,WORLD OF TANKS,WOT" x="0.8374" y="0.7255" width="0" height="0.0104" 
+      h="0-360" s="20-80" l="0-20" hdr-h="0-360" hdr-s="20-90" hdr-l="0-20" type="area">
+      <resolution aspect="3.55:1" x="0.8930" y="0.6306" width="0.0000" height="0.0050" />
+      <resolution aspect="24:10" x="0.8788" y="0.7215" width=".0006" height=".0060" />
+      <resolution aspect="16:11" x="0.6784" y="0.5016" width="-0.0004" height="0.0181"  />
+
+      <resolution size="3840x2160" x="0.8302" y="0.6197" width="0.0083" height="0.0005"    />
+      <resolution size="2560x1080" x="0.839" y="0.6293" width="0" height="0.013" />
+      <resolution size="1920x1080" x="0.7848" y="0.6302" width="0" height="0.0139" />
+    </meta>
+
+    <meta meter="discoveredYellow" tags="vlc,WORLD OF TANKS,WOT" x="0.4998" y="0.2432" width="0.0004" height="0.0014" 
+      h="45-90" s="75-100" l="75-100" hdr-h="45-90" hdr-s="60-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.4997" y="0.2398" width="0.0008" height="0.0001" />
+      <resolution aspect="24:10" x="0.4991" y="0.2437" width=".0006" height=".0005" />
+      <resolution aspect="16:11" x="0.5002" y="0.2376" width="0.0008" height="0.0044" />
+
+      <resolution size="3840x2160" x="0.4996" y="0.2455" width="0.0011" height="0.0004" />
+      <resolution size="2560x1080" x="0.4998" y="0.241" width="0.0012" height="0" />
+      <resolution size="1920x1080" x="0.4992" y="0.2419" width="0.0011" height="0.0018" />
+    </meta>
+
+    <meta meter="healthBar" tags="vlc,WORLD OF TANKS,WOT" x="0.0027" y="0.8603" width="0.0829" height="0.0028" 
+      h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-30" type="area">
+      <resolution aspect="3.55:1" x="0.0018" y="0.8130" width="0.0544" height="0.0020" />
+      <resolution aspect="24:10" x="0.0035" y="0.8597" width=".0596" height=".0020" />
+      <resolution aspect="16:11" x="0.0066" y="0.7467" width="0.1642" height="0.0088"  />
+
+      <resolution size="3840x2160" x="0.0029" y="0.8119" width="0.1112" height="0.0042" />
+      <resolution size="2560x1080" x="0.0031" y="0.8128" width="0.0821" height="0.0056" />
+      <resolution size="1920x1080" x="0.0036" y="0.8128" width="0.11" height="0.0056" />
+    </meta>
+
+    <meta meter="deadOrange" tags="vlc,WORLD OF TANKS,WOT" x="0.4396" y="0.984" width="0" height="0.0007" 
+      h="20-45" s="70-100" l="80-100" hdr-h="40-60" hdr-s="50-80" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4602" y="0.9796" width="0.0000" height="0.0001" />
+      <resolution aspect="24:10" x="0.4552" y="0.9843" width=".0001" height=".0010" />
+      <resolution aspect="16:11" x="0.3834" y="0.9712" width="0" height="0.0025"  />
+
+      <resolution size="3840x2160" x="0.4196" y="0.9778" width="0" height="0.0020" />
+      <resolution size="2560x1080" x="0.44" y="0.9787" width="-0.0004" height="0.0046" />
+      <resolution size="1920x1080" x="0.4195" y="0.9796" width="0" height="0.0009" />
+    </meta>
+
+    <meta meter="deadNotOrange" tags="vlc,WORLD OF TANKS,WOT" x="0.4373" y="0.9805" width="-0.0004" height="0.0028" 
+      h="20-45" s="70-100" l="80-100" hdr-h="40-60" hdr-s="50-80" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4578" y="0.9741" width="0.0005" height="0.0020" />
+      <resolution aspect="24:10" x="0.4529" y="0.9806" width=".0001" height=".0020" />
+      <resolution aspect="16:11" x="0.3787" y="0.9681" width="-0.0008" height="0.005"  />
+
+      <resolution size="3840x2160" x="0.416" y="0.9764" width="0" height="0.0028" />
+      <resolution size="2560x1080" x="0.4373" y="0.9759" width="-0.0004" height="0.0046" />
+      <resolution size="1920x1080" x="0.4164" y="0.975" width="0" height="0.0046" />
+    </meta>
+
+    <meta meter="replayOrange" tags="vlc,WORLD OF TANKS,WOT" x="0.4537" y="0.9580" width="0" height="0.0035"
+      h="30-45" s="80-100" l="90-100" hdr-h="45-60" hdr-s="60-80" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4692" y="0.9454" width="0.0000" height="0.0010" />
+      <resolution aspect="24:10" x="0.4657" y="0.9597" width="0.0003" height=".0010" />
+      <resolution aspect="16:11" x="0.408" y="0.9281" width="0.0004" height="0.0044"   />
+
+      <resolution size="3840x2160" x="0.4389" y="0.9435" width="0.0005" height="0.0051" />
+      <resolution size="2560x1080" x="0.4541" y="0.9444" width="-0.0004" height="0.0037" />
+      <resolution size="1920x1080" x="0.4388" y="0.9481" width="0.0005" height="0.0009" />
+    </meta>
+
+    <meta meter="replayNotOrange" tags="vlc,WORLD OF TANKS,WOT" x="0.4513" y="0.9555" width="-0.0003" height="0.0049"
+      h="30-45" s="80-100" l="90-100" hdr-h="45-60" hdr-s="60-80" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4661" y="0.9407" width="0.0008" height="0.0090" />
+      <resolution aspect="24:10" x="0.4628" y="0.9549" width="0.0003" height=".0040" />
+      <resolution aspect="16:11" x="0.4021" y="0.9206" width="-0.0004" height="0.0062"   />
+
+      <resolution size="3840x2160" x="0.4342" y="0.943" width="0.0003" height="0.0056" />
+      <resolution size="2560x1080" x="0.4506" y="0.9416" width="0" height="0.0074" />
+      <resolution size="1920x1080" x="0.4341" y="0.9435" width="0" height="0.0055" />
+    </meta>
+
+    <meta meter="victoryBlue" tags="vlc,WORLD OF TANKS,WOT" x="0.4881" y="0.0625" width="0.0082" height="0.0007" 
+      h="180-240" s="30-100" l="40-90" hdr-h="180-220" hdr-s="10-60" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4948" y="0.0803" width="0.0020" height="0.0020" />
+      <resolution aspect="24:10" x="0.5326" y="0.0903" width=".0006" height=".0040" />
+      <resolution aspect="16:11" x="0.4717" y="0.1044" width="0.0801" height="0.0025"    />
+
+      <resolution size="3840x2160" x="0.4241" y="0.0709" width="0.1398" height="0.0106"/>
+      <resolution size="2560x1080" x="0.4982" y="0.0778" width="0.0102" height="-0.0009" />
+      <resolution size="1920x1080" x="0.4909" y="0.0853" width="0.0302" height="0.0018" />
+    </meta>
+
+    <meta meter="victoryDefeatWhite" tags="vlc,WORLD OF TANKS,WOT" x="0.5393" y="0.0876" width="0.0004" height="0.0034"   
+      h="0-360" s="0-30" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5263" y="0.1231" width="0.0005" height="0.0020" />
+      <resolution aspect="24:10" x="0.5294" y="0.0896" width=".0003" height=".0030" />
+      <resolution aspect="16:11" x="0.5795" y="0.1714" width="0" height="0.0068"   />
+
+      <resolution size="3840x2160" x="0.5527" y="0.1223" width="-0.0005" height="0.0111" />
+      <resolution size="2560x1080" x="0.5401" y="0.1103" width="0" height="0.0259" />
+      <resolution size="1920x1080" x="0.5529" y="0.1251" width="0.0005" height="0.0074"/>
+    </meta>
+
+    <meta meter="victoryDefeatWhite2" tags="vlc,WORLD OF TANKS,WOT" x="0.4916" y="0.0862" width="0" height="0.009"   
+      h="0-360" s="0-30" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4945" y="0.1148" width="0.0003" height="0.0100" />
+      <resolution aspect="24:10" x="0.4936" y="0.0826" width=".0000" height=".0100" />
+      <resolution aspect="16:11" x="0.4803" y="0.157" width="-0.0008" height="0.0194"  />
+
+      <resolution size="3840x2160" x="0.4887" y="0.1176" width="0" height="0.0135" />
+      <resolution size="2560x1080" x="0.49" y="0.1177" width="-0.0004" height="0.0102" />
+      <resolution size="1920x1080" x="0.4883" y="0.1149" width="0" height="0.0158"/>
+    </meta>
+
+    <meta meter="defeatRed" tags="vlc,WORLD OF TANKS,WOT" x="0.4908" y="0.0625" width="0.011" height="-0.0013" 
+      h="-30-30" s="20-50" l="60-100" hdr-h="-30-30" hdr-s="0-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4922" y="0.0741" width="0.0010" height="0.0020" />
+      <resolution aspect="24:10" x="0.5244" y="0.0597" width=".0038" height=".0001" />
+      <resolution aspect="16:11" x="0.5627" y="0.1132" width="0.0100" height="-0.0006"   />
+
+      <resolution size="3840x2160" x="0.4684" y="0.0778" width="0.0085" height="0.0005" />
+      <resolution size="2560x1080" x="0.4982" y="0.0778" width="0.0102" height="-0.0009" />
+      <resolution size="1920x1080" x="0.4909" y="0.0853" width="0.0302" height="0.0018" />
+    </meta>
+
+    <meta meter="scoreRedWin" tags="vlc,WORLD OF TANKS,WOT" x="0.4994" y="0.0153" width="0.0004" height="0.0007"  
+      h="-30-30" s="50-100" l="0-100" hdr-h="-30-30" hdr-s="40-100" hdr-l="0-100" type="area">
+      <resolution aspect="3.55:1" x="0.4997" y="0.0194" width="0.0005" height="0.0001" />
+      <resolution aspect="24:10" x="0.4994" y="0.0153" width=".0010" height=".0005" />
+      <resolution aspect="16:11" x="0.4986" y="0.025" width="0.0004" height="0.0031"  />
+
+      <resolution size="3840x2160" x="0.4996" y="0.0181" width="0" height="0.0041" />
+      <resolution size="2560x1080" x="0.4998" y="0.0167" width="0.0004" height="0.0028"/>
+      <resolution size="1920x1080" x="0.4997" y="0.0176" width="0" height="0.0028" />
+    </meta>
+
+    <meta meter="scoreGreenWin" tags="vlc,WORLD OF TANKS,WOT" x="0.4994" y="0.0153" width="0.0004" height="0.0007"  
+      h="90-180" s="40-100" l="30-80" hdr-h="90-180" hdr-s="40-80" hdr-l="40-100" type="area">
+      <resolution aspect="3.55:1" x="0.4997" y="0.0194" width="0.0005" height="0.0001" />
+      <resolution aspect="24:10" x="0.4994" y="0.0153" width=".0010" height=".0005" />
+      <resolution aspect="16:11" x="0.4986" y="0.025" width="0.0004" height="0.0031" />
+
+      <resolution size="3840x2160" x="0.4996" y="0.0181" width="0" height="0.0041" />
+      <resolution size="2560x1080" x="0.4998" y="0.0167" width="0.0004" height="0.0028" />
+      <resolution size="1920x1080" x="0.4997" y="0.0176" width="0" height="0.0028" />
+    </meta>
+
+    <meta meter="damageRed" tags="vlc,WORLD OF TANKS,WOT" x="0.4873" y="0.7387" width="0.0012" height="0.0063"  
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-70" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4919" y="0.7333" width="0.0013" height="0.0120" />
+      <resolution aspect="24:10" x="0.4916" y="0.7375" width=".0009" height=".0090" />
+      <resolution aspect="16:11" x="0.4767" y="0.7261" width="0.0028" height="0.0219"  />
+
+      <resolution size="3840x2160" x="0.4845" y="0.7323" width="0.0023" height="0.018" />
+      <resolution size="2560x1080" x="0.4873" y="0.734" width="0.0031" height="0.0139" />
+      <resolution size="1920x1080" x="0.4846" y="0.7349" width="0.0016" height="0.0075" />
+    </meta>
+
+    <meta meter="damageWhite" tags="vlc,WORLD OF TANKS,WOT" x="0.481" y="0.7408" width="0" height="0" 
+      h="0-360" s="0-30" l="90-100" hdr-h="0-360" hdr-s="0-30" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4901" y="0.7352" width="0.0000" height="0.0001" />
+      <resolution aspect="24:10" x="0.4855" y="0.7396" width=".0001" height=".0001" />
+      <resolution aspect="16:11" x="0.4588" y="0.7298" width="0.0004" height="0"  />
+
+      <resolution size="3840x2160" x="0.4736" y="0.7355" width="0.0002" height="-0.0004" />
+      <resolution size="2560x1080" x="0.4803" y="0.7359" width="0.0004" height="0"/>
+      <resolution size="1920x1080" x="0.4799" y="0.7368" width="0" height="0" />
+    </meta>
+
+    <meta meter="criticalDamageYellow" tags="vlc,WORLD OF TANKS,WOT" x="0.4873" y="0.7387" width="0.0012" height="0.0063"  
+      h="0-45" s="40-80" l="30-100" hdr-h="20-30" hdr-s="30-60" hdr-l="70-90" type="area">
+      <resolution aspect="3.55:1" x="0.4919" y="0.7333" width="0.0013" height="0.0120" />
+      <resolution aspect="24:10" x="0.4913" y="0.7389" width=".0006" height=".0060" />
+      <resolution aspect="16:11" x="0.4767" y="0.7261" width="0.0028" height="0.0219"  />
+
+      <resolution size="3840x2160" x="0.4845" y="0.7323" width="0.0023" height="0.018" />
+      <resolution size="2560x1080" x="0.4873" y="0.734" width="0.0031" height="0.0139" />
+      <resolution size="1920x1080" x="0.4846" y="0.7349" width="0.0016" height="0.0075" />
+    </meta>
+
+    <meta meter="criticalDamageWhite" tags="vlc,WORLD OF TANKS,WOT" x="0.4795" y="0.7415" width="0" height="0"  
+      h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4872" y="0.7343" width="0.0000" height="0.0001" />
+      <resolution aspect="24:10" x="0.4858" y="0.7382" width=".0001" height=".0001" />
+      <resolution aspect="16:11" x="0.4592" y="0.7348" width="0" height="0"  />
+
+      <resolution size="3840x2160" x="0.4728" y="0.7392" width="0" height="0.0015" />
+      <resolution size="2560x1080" x="0.4795" y="0.7377" width="0" height="0" />
+      <resolution size="1920x1080" x="0.4721" y="0.7377" width="0" height="0" />
+    </meta>
+
+    <meta meter="hitSuccessfulGreen" tags="vlc,WORLD OF TANKS,WOT" x="0.4873" y="0.7387" width="0.0012" height="0.0063" 
+      h="45-90" s="20-70" l="30-60" hdr-h="45-90" hdr-s="20-70" hdr-l="30-60" type="area">
+      <resolution aspect="3.55:1" x="0.4919" y="0.7333" width="0.0013" height="0.0120" />
+      <resolution aspect="24:10" x="0.4916" y="0.7375" width=".0009" height=".0090" />
+      <resolution aspect="16:11" x="0.4767" y="0.7261" width="0.0028" height="0.0219"  />
+
+      <resolution size="3840x2160" x="0.4845" y="0.7323" width="0.0023" height="0.018" />
+      <resolution size="2560x1080" x="0.4873" y="0.734" width="0.0031" height="0.0139" />
+      <resolution size="1920x1080" x="0.4846" y="0.7349" width="0.0016" height="0.0075" />
+    </meta>
+
+    <meta meter="enemyMapRed" tags="vlc,WORLD OF TANKS,WOT" x="0.8476" y="0.852" width="0.1508" height="0.0250"
+      h="-30-30" s="60-100" l="60-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.8984" y="0.8056" width="0.1008" height="0.0310" />
+      <resolution aspect="24:10" x="0.8866" y="0.8479" width=".1116" height=".0310" />
+      <resolution aspect="16:11" x="0.6944" y="0.738" width="0.3013" height="0.0319" />
+
+      <resolution size="3840x2160" x="0.7971" y="0.8073" width="0.1987" height="0.0227" />
+      <resolution size="2560x1080" x="0.8484" y="0.8035" width="0.1493" height="0.0288" />
+      <resolution size="1920x1080" x="0.7973" y="0.8026" width="0.2001" height="0.0352" />
+    </meta>
+
+
+
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = 320;
+    const height = 200;
+    let effects = [];
+    let gSensor = 0;
+    let gAlpha = 1
+
+    //function onreplayChanged(){
+       // effects = []
+   // }
+    var inGame = false;
+    var deadGoing = false;
+    var lowHealthGoing = false;
+    var replayGoing = false;
+    var scoreGoing = false;
+    var enemyGoing = false;
+    var healthBarMeter = new Meter(25, healthCallback)
+    var inGameBrown1Meter = new Meter(5,inGameCallback)
+    var inGameBrown2Meter = new Meter(5,inGameCallback)
+    var discoveredYellowMeter = new Meter(5,discoveredCallback)
+    var deadOrangeMeter = new Meter(5,deadCallback)
+    var victoryBlueMeter = new Meter(5,victoryDefeatCallback)
+    var victoryDefeatWhiteMeter = new Meter(5,victoryDefeatCallback)
+    var victoryDefeatWhite2Meter = new Meter(5,victoryDefeatCallback)
+    var defeatRedMeter = new Meter(5,victoryDefeatCallback)
+    var scoreRedWinMeter = new Meter(5,scoreCallback)
+    var scoreGreenWinMeter = new Meter(5,scoreCallback)
+    var damageRedMeter = new Meter(10,damageCallback)
+    var damageWhiteMeter = new Meter(5,() => "")
+    var criticalDamageYellow = new Meter(10,criticalCallback)
+    var criticalDamageWhite = new Meter(5,() => "")
+    var hitSuccessfulGreen = new Meter(10,hitCallback)
+    var enemyMapRedMeter = new Meter(10,mapCallback)
+    var replayOrangeMeter = new Meter(5,replayCallback)
+
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+  
+      healthBarMeter.setValue(engine.vision.healthBar)
+      inGameBrown1Meter.setValue(engine.vision.inGameBrown1)
+      inGameBrown2Meter.setValue(engine.vision.inGameBrown2)
+      discoveredYellowMeter.setValue(engine.vision.discoveredYellow)
+      deadOrangeMeter.setValue(engine.vision.deadOrange)
+      victoryBlueMeter.setValue(engine.vision.victoryBlue)
+      victoryDefeatWhiteMeter.setValue(engine.vision.victoryDefeatWhite)
+      victoryDefeatWhite2Meter.setValue(engine.vision.victoryDefeatWhite2)
+      defeatRedMeter.setValue(engine.vision.defeatRed)
+      scoreRedWinMeter.setValue(engine.vision.scoreRedWin)
+      scoreGreenWinMeter.setValue(engine.vision.scoreGreenWin)
+      damageRedMeter.setValue(engine.vision.damageRed)
+      damageWhiteMeter.setValue(engine.vision.damageWhite)
+      criticalDamageYellow.setValue(engine.vision.criticalDamageYellow)
+      criticalDamageWhite.setValue(engine.vision.criticalDamageWhite)
+      hitSuccessfulGreen.setValue(engine.vision.hitSuccessfulGreen)
+      enemyMapRedMeter.setValue(engine.vision.enemyMapRed)
+      replayOrangeMeter.setValue(engine.vision.replayOrange)
+
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.alive == "false"){
+          effects.splice(i, 1)
+        }
+      })
+
+      if(enableHUD) DrawHUD();
+      if(adjToggle) DrawRect(HealthBarX * 3.2, HealthBarY * 2, HealthBarWidth * 3.2, HealthBarHeight * 2, healthColor)
+
+      window.requestAnimationFrame(update);
+    };
+    //#endregion
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            ctx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            ctx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
+    //#region callbacks
+    function replayCallback(){
+      if(!replayGoing && replayOrangeMeter.value >=.95 && engine.vision.replayNotOrange <.1 && deadGoing){
+        replayGoing = true
+        deadGoing = false
+      }else{
+        replayGoing = false
+        deadGoing = true
+      }
+    }
+
+
+    function healthCallback(){
+      if(inGame && healthBarMeter.value >=.7 && !lowHealthGoing && !deadGoing ){
+        lowHealthGoing = true
+        if(lowHPOn) effects.push(new LowHealthEffect())
+      }else{
+        lowHealthGoing = false
+      }
+    }
+
+    function inGameCallback(){
+      if(inGameBrown1Meter.value >=.2 && inGameBrown2Meter.value >= .2 && engine.vision.inGameNotBrown <.5 ){
+        inGame = true
+      }else{
+        inGame = false
+      }
+    }
+
+    function discoveredCallback(){
+      if(inGame && discoveredYellowMeter.value >=.95 && !deadGoing ){
+        if(discoOn) effects.push(new TankWithRipple(50, 50, "green", "red"))
+      }
+    }
+
+    function deadCallback(){
+      if(inGame && !deadGoing && deadOrangeMeter.value >=.95 && engine.vision.deadNotOrange <.1 ){
+        deadGoing = true
+        if(deathOn) effects.push(new TankExplosion(50, 50, "green", "green", basetank, uptank))
+      }else{
+        deadGoing = false
+      }
+    }
+    
+    function DrawHUD() {
+    if (inGame && !deadGoing) {
+      ctx.beginPath()
+      ctx.fillStyle = healthColor;
+      ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (1 - healthBarMeter.value) * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+    } 
+  }
+
+  function victoryDefeatCallback(){
+    if(inGame && victoryBlueMeter.value >=.8 && victoryDefeatWhiteMeter.value >=.95 && victoryDefeatWhite2Meter.value >=.95){
+      if(vdOn) effects.push(new TankWithFireworks(380, 50, "green","green",`rgba(0, 255, 0, 0.8)`))
+    }else if(inGame && defeatRedMeter.value >=.95 && victoryDefeatWhiteMeter.value >=.95 && victoryDefeatWhite2Meter.value >=.95 ){
+      if(vdOn) effects.push(new TankWithFireworks(380, 50, "red","red",'rgba(255, 0, 0 ,0.8)'))
+    }
+  }
+
+  function scoreCallback(){
+    if(inGame && scoreGreenWinMeter.value >=.95 && !scoreGoing){
+      scoreGoing = true
+      if(scoreOn) effects.push(new TankWithArrow(-200, 50, { fill: "#0a3d0a", line: "#1f7a1f", tank: "#3cff3c" }, 0,"right"))
+    }else{
+      scoreGoing = false
+    } 
+    
+    if(inGame && scoreRedWinMeter.value >=.95 && !scoreGoing ){
+      scoreGoing = true
+      if(scoreOn) effects.push(new TankWithArrow(600, 50, { fill: "#3d0a0a", line: "#7a1f1f", tank: "#ff3c3c" }, 0,"left"))
+    }else{
+      scoreGoing = false
+    }
+  }
+
+  function damageCallback(){
+    if(inGame && !deadGoing && damageRedMeter.value >=.5 && damageWhiteMeter.value>=.95 ){
+      if(shootOn) effects.push(new XEffect(150,100,100,"red",6))
+    }
+  }
+
+  function criticalCallback(){
+    if(inGame && !deadGoing && criticalDamageWhite.value >=.95 && criticalDamageYellow.value >=.5 ){
+      if(shootOn) effects.push(new GearEffect(160,100,80,"rgba(255,180,50,1)", 6,gear))
+    }
+
+  }
+
+  function hitCallback(){
+    if(inGame && !deadGoing && (damageWhiteMeter.value >=.95 || criticalDamageWhite.value >=.95) && hitSuccessfulGreen.value >=.5 ){
+      if(shootOn) effects.push(new XEffect2(150,100,100,"lime",6))
+    }
+  }
+
+    function mapCallback() {
+      if (inGame) {
+        if (!enemyGoing && enemyMapRedMeter.value >= 0.005) {
+          enemyGoing = true;
+          if(advanceOn) effects.push(new RadarEffect(flag));
+        } else if (enemyGoing && enemyMapRedMeter.value < 0.003) {
+          enemyGoing = false;
+        }
+      }
+    }
+
+
+    var uptank = "M 144.00,134.00 C 145.71,129.13 148.36,130.01 153.00,130.00 156.87,129.99 171.12,130.68 173.69,128.98 175.39,127.85 175.45,126.73 176.00,125.00 176.00,125.00 205.00,125.00 205.00,125.00 205.00,125.00 203.00,121.00 203.00,121.00 203.00,121.00 208.00,121.00 208.00,121.00 205.48,113.94 199.59,114.87 193.00,115.01 193.00,115.01 184.00,115.89 184.00,115.89 184.00,115.89 163.00,115.89 163.00,115.89 161.01,116.00 157.19,116.23 155.60,114.98 153.58,113.38 154.08,109.35 153.91,107.00 153.91,107.00 153.00,87.00 153.00,87.00 156.24,86.93 160.00,86.89 162.82,85.07 166.86,82.46 172.10,72.05 175.32,69.60 179.13,66.72 185.49,68.79 190.00,67.57 197.49,65.53 197.98,56.46 198.00,50.00 198.00,50.00 202.00,50.00 202.00,50.00 202.00,56.58 201.51,67.75 210.98,67.46 218.17,67.23 214.87,59.77 216.74,55.02 218.81,49.76 223.02,49.07 228.00,49.05 228.00,49.05 241.00,49.05 241.00,49.05 241.00,49.05 252.00,50.00 252.00,50.00 252.00,50.00 272.00,50.00 272.00,50.00 272.00,50.00 274.00,56.00 274.00,56.00 274.00,56.00 274.00,48.00 274.00,48.00 277.42,49.20 277.38,49.46 278.00,53.00 278.00,53.00 280.00,53.00 280.00,53.00 280.14,40.82 283.99,49.26 284.00,34.00 284.00,34.00 313.00,32.83 313.00,32.83 315.16,32.92 318.57,32.99 320.15,34.61 322.92,37.46 322.12,45.28 327.13,47.40 328.83,48.12 332.11,48.00 334.00,48.00 334.00,48.00 358.00,48.00 358.00,48.00 358.00,48.00 359.00,45.00 359.00,45.00 361.84,50.05 364.92,51.97 369.00,56.00 372.65,59.61 382.61,69.81 387.00,71.40 388.96,72.12 391.89,72.00 394.00,72.00 394.00,72.00 460.00,72.00 460.00,72.00 460.00,72.00 459.00,83.00 459.00,83.00 465.74,84.64 474.90,84.00 482.00,84.00 482.00,84.00 521.00,84.00 521.00,84.00 521.00,84.00 648.00,84.00 648.00,84.00 648.00,84.00 694.00,84.00 694.00,84.00 701.39,83.99 703.71,84.16 704.00,76.00 704.00,76.00 736.00,76.00 736.00,76.00 736.00,76.00 736.00,112.00 736.00,112.00 736.00,112.00 704.00,112.00 704.00,112.00 703.50,105.85 702.02,105.12 696.00,105.00 696.00,105.00 647.00,105.00 647.00,105.00 647.00,105.00 522.00,105.00 522.00,105.00 522.00,105.00 461.00,105.00 461.00,105.00 461.00,105.00 460.00,106.00 460.00,106.00 459.66,111.01 456.21,109.99 452.00,110.00 452.00,110.00 436.00,110.00 436.00,110.00 436.00,110.00 421.00,111.00 421.00,111.00 411.03,111.02 409.69,110.02 400.00,113.34 398.60,113.82 396.61,114.18 395.42,114.99 392.67,116.87 393.01,120.45 391.35,123.04 389.28,126.28 384.04,130.36 381.00,133.00 385.68,134.32 136.17,132.75 144.00,134.00 Z"
+    var basetank = "M 390.00,132.06 C 390.00,132.06 402.00,132.06 402.00,132.06 414.79,132.02 427.92,138.34 435.00,137.59 443.68,136.66 440.61,132.02 453.00,132.00 453.00,132.00 497.00,132.00 497.00,132.00 505.77,132.13 503.35,135.15 511.00,134.00 515.88,141.35 529.22,147.53 537.00,152.00 539.94,153.69 545.90,157.53 549.00,157.93 549.00,157.93 554.00,157.93 554.00,157.93 560.64,158.56 564.48,162.50 565.00,169.00 569.92,163.62 566.23,155.25 573.11,151.57 575.17,150.46 577.70,150.15 580.00,150.04 590.70,149.54 591.45,152.64 600.00,157.02 606.15,160.17 611.85,160.92 613.83,161.97 613.83,161.97 619.09,165.99 619.09,165.99 627.81,172.73 633.35,176.70 640.00,186.00 640.00,186.00 634.00,181.00 634.00,181.00 634.00,181.00 632.00,188.09 632.00,188.09 632.00,188.09 637.00,188.09 637.00,188.09 637.00,188.09 682.00,188.09 682.00,188.09 682.00,188.09 682.00,278.00 682.00,278.00 682.00,278.00 646.00,278.00 646.00,278.00 647.00,286.15 641.28,287.06 635.00,287.00 635.00,287.00 637.00,291.00 637.00,291.00 637.00,291.00 628.00,297.00 628.00,297.00 628.00,297.00 624.00,294.00 624.00,294.00 624.00,294.00 625.00,298.00 625.00,298.00 625.00,298.00 614.00,302.00 614.00,302.00 614.00,302.00 614.00,301.00 614.00,301.00 614.00,301.00 612.00,299.00 612.00,299.00 612.00,299.00 613.00,304.00 613.00,304.00 606.09,306.97 606.03,308.55 599.00,306.00 599.00,306.00 600.00,310.00 600.00,310.00 600.00,310.00 590.00,315.00 590.00,315.00 590.00,315.00 586.00,312.00 586.00,312.00 586.00,312.00 588.00,317.00 588.00,317.00 588.00,317.00 578.00,321.00 578.00,321.00 578.00,321.00 574.00,317.00 574.00,317.00 574.00,317.00 575.00,323.00 575.00,323.00 568.93,326.43 568.50,327.35 562.00,325.00 562.00,325.00 563.00,329.00 563.00,329.00 563.00,329.00 553.00,333.00 553.00,333.00 553.00,333.00 552.00,331.00 552.00,331.00 552.00,331.00 551.00,331.00 551.00,331.00 551.00,331.00 551.00,335.00 551.00,335.00 551.00,335.00 540.00,335.00 540.00,335.00 540.00,335.00 540.00,331.00 540.00,331.00 540.00,331.00 537.00,331.00 537.00,331.00 537.00,331.00 537.00,335.00 537.00,335.00 537.00,335.00 526.00,335.00 526.00,335.00 526.00,335.00 526.00,331.00 526.00,331.00 526.00,331.00 523.00,335.00 523.00,335.00 515.18,335.00 515.72,335.95 510.00,331.00 510.00,331.00 510.00,335.00 510.00,335.00 510.00,335.00 499.00,335.00 499.00,335.00 499.00,335.00 499.00,331.00 499.00,331.00 499.00,331.00 496.00,331.00 496.00,331.00 496.00,331.00 496.00,335.00 496.00,335.00 496.00,335.00 485.00,335.00 485.00,335.00 485.00,335.00 485.00,331.00 485.00,331.00 485.00,331.00 483.00,331.00 483.00,331.00 483.00,331.00 483.00,335.00 483.00,335.00 474.92,335.00 475.00,336.20 469.00,331.00 469.00,331.00 469.00,335.00 469.00,335.00 469.00,335.00 458.00,335.00 458.00,335.00 458.00,335.00 455.00,331.00 455.00,331.00 455.00,331.00 455.00,335.00 455.00,335.00 455.00,335.00 444.00,335.00 444.00,335.00 444.00,335.00 443.00,331.00 443.00,331.00 443.00,331.00 442.00,335.00 442.00,335.00 442.00,335.00 431.00,335.00 431.00,335.00 431.00,335.00 429.00,331.00 429.00,331.00 429.00,331.00 429.00,335.00 429.00,335.00 429.00,335.00 418.00,335.00 418.00,335.00 418.00,335.00 415.00,331.00 415.00,331.00 415.00,331.00 415.00,335.00 415.00,335.00 415.00,335.00 404.00,335.00 404.00,335.00 404.00,335.00 401.00,331.00 401.00,331.00 401.00,331.00 401.00,335.00 401.00,335.00 401.00,335.00 390.00,335.00 390.00,335.00 390.00,335.00 388.00,330.00 388.00,330.00 388.00,330.00 387.00,335.00 387.00,335.00 387.00,335.00 376.00,335.00 376.00,335.00 376.00,335.00 374.00,331.00 374.00,331.00 374.00,331.00 373.00,335.00 373.00,335.00 373.00,335.00 362.00,335.00 362.00,335.00 362.00,335.00 361.00,332.00 361.00,332.00 357.49,336.29 353.19,335.00 348.00,335.00 348.00,335.00 347.00,331.00 347.00,331.00 347.00,331.00 346.00,336.00 346.00,336.00 346.00,336.00 335.00,336.00 335.00,336.00 335.00,336.00 335.00,332.00 335.00,332.00 335.00,332.00 333.00,332.00 333.00,332.00 333.00,332.00 333.00,336.00 333.00,336.00 333.00,336.00 322.00,336.00 322.00,336.00 322.00,336.00 322.00,332.00 322.00,332.00 322.00,332.00 320.00,332.00 320.00,332.00 320.00,332.00 320.00,336.00 320.00,336.00 320.00,336.00 309.00,336.00 309.00,336.00 309.00,336.00 306.00,332.00 306.00,332.00 306.00,332.00 306.00,336.00 306.00,336.00 306.00,336.00 295.00,336.00 295.00,336.00 295.00,336.00 295.00,332.00 295.00,332.00 295.00,332.00 281.00,336.00 281.00,336.00 281.00,336.00 279.00,331.00 279.00,331.00 279.00,331.00 278.00,336.00 278.00,336.00 278.00,336.00 267.00,336.00 267.00,336.00 267.00,336.00 267.00,332.00 267.00,332.00 267.00,332.00 265.00,332.00 265.00,332.00 265.00,332.00 265.00,336.00 265.00,336.00 265.00,336.00 254.00,336.00 254.00,336.00 254.00,336.00 254.00,332.00 254.00,332.00 254.00,332.00 252.00,336.00 252.00,336.00 252.00,336.00 240.00,336.00 240.00,336.00 240.00,336.00 240.00,332.00 240.00,332.00 240.00,332.00 238.00,336.00 238.00,336.00 238.00,336.00 227.00,336.00 227.00,336.00 227.00,336.00 225.00,332.00 225.00,332.00 225.00,332.00 225.00,336.00 225.00,336.00 225.00,336.00 214.00,336.00 214.00,336.00 214.00,336.00 212.00,332.00 212.00,332.00 212.00,332.00 211.00,336.00 211.00,336.00 203.18,336.00 203.72,336.95 198.00,332.00 198.00,332.00 198.00,336.00 198.00,336.00 198.00,336.00 187.00,336.00 187.00,336.00 187.00,336.00 184.00,332.00 184.00,332.00 184.00,332.00 184.00,336.00 184.00,336.00 184.00,336.00 173.00,336.00 173.00,336.00 173.00,336.00 171.00,332.00 171.00,332.00 171.00,332.00 170.00,337.00 170.00,337.00 170.00,337.00 159.00,336.00 159.00,336.00 159.00,336.00 157.00,332.00 157.00,332.00 157.00,332.00 156.00,336.00 156.00,336.00 156.00,336.00 145.00,336.00 145.00,336.00 145.00,336.00 142.00,331.00 142.00,331.00 142.00,331.00 141.00,336.00 141.00,336.00 141.00,336.00 130.00,332.00 130.00,332.00 130.00,332.00 131.00,328.00 131.00,328.00 131.00,328.00 127.00,331.00 127.00,331.00 127.00,331.00 117.00,327.00 117.00,327.00 117.00,327.00 118.00,323.00 118.00,323.00 118.00,323.00 115.00,326.00 115.00,326.00 109.82,324.53 106.00,323.76 105.00,318.00 99.09,320.70 93.52,317.52 93.00,311.00 93.00,311.00 90.00,314.00 90.00,314.00 90.00,314.00 80.00,310.00 80.00,310.00 80.00,310.00 81.00,305.00 81.00,305.00 75.26,308.73 73.88,306.53 68.00,304.00 68.00,304.00 69.00,299.00 69.00,299.00 61.66,302.64 56.58,299.06 57.00,291.00 57.00,291.00 53.00,293.00 53.00,293.00 51.66,291.60 49.42,288.98 47.72,288.19 43.90,286.43 36.33,290.43 34.00,280.00 40.67,282.78 39.63,284.67 47.00,282.00 47.00,282.00 44.00,276.00 44.00,276.00 44.00,276.00 34.00,277.00 34.00,277.00 36.45,271.98 38.31,271.55 43.00,269.00 43.00,269.00 38.00,269.00 38.00,269.00 38.00,269.00 38.00,249.00 38.00,249.00 33.98,246.34 34.19,241.48 33.00,237.00 27.71,242.81 23.33,252.64 15.00,254.00 15.00,254.00 31.07,232.00 31.07,232.00 31.07,232.00 32.00,226.00 32.00,226.00 26.55,226.25 17.72,228.50 13.02,225.40 6.75,221.26 6.74,210.84 5.73,204.00 5.73,204.00 1.83,177.00 1.83,177.00 1.61,172.46 2.76,171.50 2.73,168.00 2.70,164.48 0.89,151.61 0.00,148.00 0.00,148.00 24.00,143.49 24.00,143.49 24.00,143.49 33.00,137.90 33.00,137.90 33.00,137.90 64.00,125.38 64.00,125.38 64.00,125.38 79.00,124.00 79.00,124.00 80.18,118.05 84.57,117.10 90.00,117.00 90.00,117.00 116.00,117.58 116.00,117.58 119.88,118.10 122.28,117.66 125.58,120.15 131.59,124.68 136.17,132.75 144.00,134.00 145.71,129.13 148.36,130.01 153.00,130.00 156.87,129.99 171.12,130.68 173.69,128.98 175.39,127.85 385.53,132.66 390.00,132.06 Z"
+    var tankNoCannon = "M 1274.00,62.00 C 1279.15,62.09 1285.71,61.72 1288.35,67.06 1290.91,72.23 1296.23,100.66 1297.61,108.00 1300.69,124.32 1306.19,139.02 1306.00,156.00 1305.93,161.68 1302.68,176.27 1296.79,178.31 1290.81,180.39 1282.00,171.67 1277.00,169.00 1277.00,169.00 1275.08,202.00 1275.08,202.00 1275.08,202.00 1270.57,293.58 1270.57,293.58 1270.57,293.58 1270.04,304.00 1270.04,304.00 1270.40,310.26 1273.27,311.57 1275.52,317.00 1275.52,317.00 1278.76,328.00 1278.76,328.00 1278.76,328.00 1286.17,343.00 1286.17,343.00 1290.74,351.68 1299.14,369.09 1297.84,379.00 1296.64,388.15 1282.30,389.76 1275.00,389.00 1274.80,391.59 1274.06,395.65 1275.88,397.77 1278.23,400.50 1284.56,401.64 1288.00,402.42 1294.96,404.02 1306.99,409.25 1313.42,409.03 1320.12,408.80 1320.77,409.43 1327.00,409.98 1329.05,410.16 1331.39,410.07 1332.36,412.31 1333.15,414.14 1331.91,420.74 1331.58,423.00 1331.01,426.95 1330.95,434.44 1327.57,436.96 1324.90,438.95 1322.00,437.82 1319.00,438.05 1319.00,438.05 1308.00,440.54 1308.00,440.54 1300.05,441.95 1292.31,439.55 1289.00,449.00 1289.00,449.00 1306.42,452.14 1306.42,452.14 1306.42,452.14 1328.00,449.00 1328.00,449.00 1329.36,451.01 1330.69,452.96 1332.44,454.67 1344.42,466.41 1350.05,448.60 1361.00,451.03 1365.97,452.14 1368.51,456.39 1364.57,460.45 1361.67,463.43 1356.98,464.59 1353.00,465.00 1357.69,469.38 1360.75,467.94 1363.40,470.70 1365.05,472.42 1365.14,475.66 1365.96,478.00 1369.44,487.88 1369.99,484.26 1370.00,496.00 1380.61,492.50 1399.06,490.33 1410.00,492.67 1425.24,495.93 1423.81,502.71 1439.00,500.00 1441.02,502.70 1445.00,507.17 1446.15,510.00 1447.46,513.24 1446.47,516.11 1448.60,518.28 1450.03,519.73 1462.20,523.37 1465.00,524.26 1465.00,524.26 1481.00,528.36 1481.00,528.36 1496.21,533.32 1491.42,534.26 1510.00,537.00 1511.35,542.08 1513.08,542.42 1514.06,546.84 1515.30,551.11 1514.08,554.74 1514.06,559.00 1513.40,570.70 1520.10,574.76 1510.00,579.00 1510.00,579.00 1516.00,582.00 1516.00,582.00 1516.00,582.00 1515.18,604.00 1515.18,604.00 1515.18,604.00 1517.00,613.00 1517.00,613.00 1517.00,613.00 1505.00,616.74 1505.00,616.74 1505.00,616.74 1490.00,618.41 1490.00,618.41 1484.46,619.76 1484.67,622.69 1471.62,622.72 1471.62,622.72 1443.00,622.00 1443.00,622.00 1443.00,622.00 1400.00,622.00 1400.00,622.00 1389.83,622.02 1379.51,622.20 1373.00,631.00 1386.63,633.45 1404.14,635.02 1418.00,635.00 1434.20,634.97 1438.22,628.62 1452.00,628.04 1452.00,628.04 1473.00,629.00 1473.00,629.00 1485.41,629.05 1482.12,627.58 1491.00,626.30 1491.00,626.30 1510.12,625.29 1510.12,625.29 1510.12,625.29 1542.00,628.00 1542.00,628.00 1542.00,628.00 1588.00,628.00 1588.00,628.00 1599.51,628.02 1597.53,630.49 1603.00,630.78 1606.64,630.98 1611.33,628.96 1615.17,629.52 1618.15,629.96 1620.81,631.65 1624.00,631.63 1629.79,631.59 1635.47,625.73 1641.58,625.55 1645.42,625.43 1647.63,628.01 1651.00,629.37 1651.00,629.37 1657.00,631.00 1657.00,631.00 1659.99,622.54 1664.67,625.91 1672.00,626.00 1682.96,626.12 1680.54,624.97 1688.00,624.17 1688.00,624.17 1702.00,623.22 1702.00,623.22 1706.07,622.84 1714.33,621.02 1717.87,623.22 1720.78,624.67 1722.62,629.06 1724.00,631.99 1726.17,631.48 1729.36,630.52 1731.37,631.99 1733.01,633.18 1732.72,635.79 1732.70,637.58 1732.70,637.58 1732.70,652.54 1732.70,652.54 1732.70,652.54 1732.70,684.35 1732.70,684.35 1732.68,691.79 1730.66,699.48 1740.00,701.00 1740.00,701.00 1740.00,741.00 1740.00,741.00 1740.00,741.00 1727.00,741.96 1727.00,741.96 1727.00,741.96 1714.00,741.96 1714.00,741.96 1714.00,741.96 1715.84,751.00 1715.84,751.00 1715.84,751.00 1715.84,765.28 1715.84,765.28 1716.23,772.73 1719.50,775.94 1718.89,783.00 1718.44,788.31 1715.81,790.40 1715.22,795.00 1714.60,799.90 1717.24,805.60 1716.75,810.00 1716.18,815.14 1712.29,818.68 1710.05,823.00 1707.69,827.54 1708.42,830.10 1707.27,833.00 1705.95,836.30 1700.33,841.81 1696.83,842.94 1695.47,843.06 1692.50,843.00 1691.00,842.94 1691.00,842.94 1668.54,942.90 1668.54,942.90 1668.54,942.90 518.74,939.94 518.74,939.94 518.74,939.94 416.00,842.94 416.00,842.94 413.92,843.00 410.26,843.23 408.56,841.98 406.42,840.40 405.55,834.58 405.00,832.00 403.10,823.09 401.90,814.13 402.25,805.00 402.05,800.83 403.51,794.53 402.25,791.01 400.84,785.31 389.80,777.23 385.00,773.63 385.00,773.63 371.01,763.00 371.01,763.00 369.25,761.56 366.31,759.48 366.34,756.96 366.36,753.89 373.66,746.48 375.85,744.00 381.19,737.94 386.14,731.50 394.00,728.56 394.00,728.56 417.00,723.79 417.00,723.79 419.77,723.20 425.47,722.13 427.49,720.28 429.65,718.29 430.12,713.86 431.00,711.00 431.00,711.00 425.00,710.00 425.00,710.00 425.00,710.00 425.00,707.00 425.00,707.00 425.00,707.00 431.00,707.00 431.00,707.00 431.83,698.20 435.02,698.07 443.00,698.00 443.00,698.00 444.68,706.00 444.68,706.00 444.68,706.00 446.00,716.00 446.00,716.00 446.00,716.00 462.00,713.73 462.00,713.73 462.00,713.73 482.83,709.69 482.83,709.69 482.83,709.69 496.89,707.42 496.89,707.42 504.61,704.02 499.20,691.42 506.39,685.74 509.91,682.96 518.55,684.17 522.99,684.29 529.66,684.46 536.47,683.21 543.00,682.00 543.00,682.00 544.00,692.00 544.00,692.00 544.00,692.00 563.00,692.00 563.00,692.00 563.00,692.00 563.00,696.00 563.00,696.00 571.41,695.92 576.98,694.05 585.00,692.45 594.14,690.62 611.70,686.78 620.00,683.54 620.00,683.54 639.00,674.72 639.00,674.72 645.06,672.90 652.12,672.05 658.42,671.32 661.28,670.99 665.37,670.98 667.69,669.15 671.45,666.16 669.34,658.33 669.00,654.00 669.00,654.00 710.17,650.08 710.17,650.08 710.17,650.08 723.00,650.08 723.00,650.08 723.00,650.08 731.95,648.83 731.95,648.83 731.95,648.83 742.00,642.00 742.00,642.00 742.00,642.00 733.00,637.56 733.00,637.56 719.11,629.83 701.31,615.74 689.00,605.41 682.58,600.02 667.43,585.22 661.09,582.63 661.09,582.63 646.00,579.64 646.00,579.64 646.00,579.64 653.96,517.42 653.96,517.42 658.38,515.61 658.83,511.63 667.00,507.08 681.42,499.73 703.37,505.31 719.00,507.08 728.99,507.80 741.68,508.16 751.00,511.93 755.93,513.92 760.21,517.42 763.79,521.30 765.62,523.28 768.28,527.60 771.09,527.70 773.44,527.79 777.89,524.35 780.00,523.07 782.40,521.60 787.40,519.61 788.75,517.45 790.40,514.81 790.00,506.35 790.00,503.00 790.00,503.00 791.00,481.00 791.00,481.00 791.00,481.00 811.99,483.24 811.99,483.24 811.99,483.24 820.09,481.06 820.09,481.06 820.09,481.06 849.00,481.06 849.00,481.06 849.00,481.06 851.74,471.01 851.74,471.01 851.74,471.01 864.57,472.12 864.57,472.12 864.57,472.12 874.00,470.39 874.00,470.39 874.00,470.39 893.00,473.92 893.00,473.92 893.00,473.92 914.00,475.09 914.00,475.09 914.00,475.09 925.00,476.41 925.00,476.41 925.00,476.41 955.00,475.00 955.00,475.00 955.00,475.00 956.00,460.00 956.00,460.00 950.31,461.65 942.81,463.38 937.00,462.00 937.69,459.72 938.33,457.06 939.72,455.10 944.94,447.81 958.03,449.02 966.00,449.00 968.47,449.00 971.70,449.20 973.90,447.98 979.80,444.71 980.60,433.61 986.36,425.00 988.66,421.56 994.15,415.33 995.26,412.00 996.53,408.22 994.69,405.97 996.34,402.00 996.34,402.00 1006.10,385.17 1006.10,385.17 1006.10,385.17 1010.34,379.91 1010.34,379.91 1010.34,379.91 1014.70,371.21 1014.70,371.21 1014.70,371.21 1032.00,357.00 1032.00,357.00 1028.05,356.07 1021.92,354.22 1020.40,349.96 1019.31,346.92 1021.57,344.67 1022.06,341.74 1022.06,341.74 1022.06,333.00 1022.06,333.00 1021.98,329.45 1021.80,325.41 1022.79,322.00 1025.60,312.28 1035.92,307.78 1045.42,308.28 1059.42,309.02 1064.36,319.07 1066.40,331.68 1066.99,335.38 1066.97,342.74 1064.42,345.57 1062.20,348.03 1057.22,348.21 1054.00,349.00 1054.00,349.00 1054.00,351.00 1054.00,351.00 1063.50,352.92 1061.52,353.39 1069.00,356.40 1077.49,359.81 1081.77,359.10 1087.44,368.00 1090.73,373.15 1091.31,379.30 1093.20,385.00 1096.46,394.81 1099.34,395.35 1096.00,406.00 1096.00,406.00 1097.00,407.00 1097.00,407.00 1097.00,407.00 1115.42,405.31 1115.42,405.31 1115.42,405.31 1140.00,402.10 1140.00,402.10 1140.00,402.10 1166.00,406.00 1166.00,406.00 1166.00,406.00 1166.00,413.00 1166.00,413.00 1160.64,414.27 1156.81,415.40 1155.00,421.00 1155.00,421.00 1168.00,423.00 1168.00,423.00 1167.63,428.28 1168.48,428.51 1168.67,433.00 1168.67,433.00 1168.67,441.94 1168.67,441.94 1169.03,444.22 1170.57,445.79 1173.00,444.83 1177.36,443.12 1178.40,436.83 1179.92,433.00 1179.92,433.00 1185.02,423.00 1185.02,423.00 1188.98,414.70 1186.46,411.58 1187.19,405.00 1187.76,399.99 1190.76,395.79 1192.07,391.00 1193.27,386.66 1193.43,380.94 1195.45,377.00 1198.22,371.60 1202.77,368.84 1208.00,366.26 1209.96,365.29 1214.74,363.54 1215.48,361.45 1217.27,356.37 1206.93,350.43 1205.05,346.95 1204.01,345.01 1204.05,340.29 1204.04,338.00 1204.01,331.14 1204.15,318.86 1207.28,313.00 1213.45,301.42 1233.26,301.40 1241.79,310.18 1246.00,314.53 1251.09,327.96 1251.91,334.00 1251.91,334.00 1251.91,346.00 1251.91,346.00 1251.91,346.00 1245.00,347.00 1245.00,347.00 1248.07,352.49 1257.22,353.31 1263.00,355.00 1263.00,355.00 1264.00,354.00 1264.00,354.00 1264.00,354.00 1262.83,338.00 1262.83,338.00 1262.83,338.00 1260.20,325.00 1260.20,325.00 1259.38,316.33 1265.83,311.66 1266.94,302.04 1266.94,302.04 1269.07,253.08 1269.07,253.08 1269.07,253.08 1270.00,236.00 1270.00,236.00 1270.00,236.00 1273.00,171.00 1273.00,171.00 1272.90,163.28 1271.23,162.68 1271.05,157.01 1271.05,157.01 1272.02,146.99 1272.02,146.99 1272.02,146.99 1272.02,131.57 1272.02,131.57 1272.02,131.57 1271.39,116.72 1271.39,116.72 1271.39,116.72 1272.00,104.00 1272.00,104.00 1272.00,104.00 1271.01,86.01 1271.01,86.01 1271.01,86.01 1274.00,62.00 1274.00,62.00 Z"
+    var cannon = "M 646.00,579.64 C 646.00,579.64 629.00,571.78 629.00,571.78 621.36,569.50 590.01,567.10 581.00,567.00 581.00,567.00 542.00,564.17 542.00,564.17 542.00,564.17 522.00,562.83 522.00,562.83 522.00,562.83 473.00,558.91 473.00,558.91 473.00,558.91 429.00,555.09 429.00,555.09 429.00,555.09 355.00,549.17 355.00,549.17 355.00,549.17 334.28,547.82 334.28,547.82 334.28,547.82 291.00,544.09 291.00,544.09 291.00,544.09 271.00,542.83 271.00,542.83 271.00,542.83 227.00,539.00 227.00,539.00 227.00,539.00 177.00,535.00 177.00,535.00 177.00,535.00 154.00,533.83 154.00,533.83 154.00,533.83 133.00,532.00 133.00,532.00 133.00,532.00 106.00,530.00 106.00,530.00 101.35,529.98 95.09,529.59 91.09,526.99 87.10,524.40 86.93,521.05 81.98,520.13 81.98,520.13 64.00,518.91 64.00,518.91 64.00,518.91 32.00,515.42 32.00,515.42 27.35,514.73 19.06,513.86 15.00,512.03 0.12,505.35 -0.27,476.89 12.09,467.65 15.33,465.23 18.14,465.05 22.00,465.00 22.00,465.00 26.00,465.00 26.00,465.00 26.00,465.00 36.00,465.91 36.00,465.91 36.00,465.91 58.00,467.17 58.00,467.17 58.00,467.17 80.08,469.22 80.08,469.22 89.44,468.99 91.80,466.14 99.95,466.12 99.95,466.12 162.00,472.72 162.00,472.72 162.00,472.72 206.00,477.17 206.00,477.17 206.00,477.17 257.04,482.77 257.04,482.77 257.04,482.77 313.00,488.83 313.00,488.83 313.00,488.83 401.00,497.17 401.00,497.17 401.00,497.17 489.00,507.05 489.00,507.05 489.00,507.05 519.00,510.83 519.00,510.83 519.00,510.83 597.00,519.16 597.00,519.16 597.00,519.16 635.09,522.20 635.09,522.20 639.34,521.79 641.97,520.04 646.00,519.04 646.00,519.04 653.96,517.42 653.96,517.42 658.38,515.61 646.00,579.64 646.00,579.64 Z"
+    var gear = "M202.04,0.74 C207.93,-0.71 228.60,0.00 236.00,0.00 236.00,0.00 302.00,0.00 302.00,0.00 315.52,0.02 315.43,5.22 318.37,17.00 318.37,17.00 324.37,41.00 324.37,41.00 325.06,43.75 326.53,50.74 327.93,52.78 329.95,55.70 340.23,59.57 343.91,60.97 349.61,63.13 354.18,58.69 359.00,55.80 359.00,55.80 384.00,40.81 384.00,40.81 388.50,38.20 393.73,35.73 399.00,37.74 403.39,39.40 414.10,51.10 418.00,55.00 418.00,55.00 459.00,96.00 459.00,96.00 464.60,101.60 475.35,109.56 474.89,118.00 474.61,123.21 471.40,127.66 468.80,132.00 468.80,132.00 456.20,153.00 456.20,153.00 453.19,158.02 448.90,162.13 451.05,168.04 452.39,171.71 456.30,182.05 459.22,184.07 461.26,185.47 468.25,186.94 471.00,187.63 471.00,187.63 495.00,193.63 495.00,193.63 506.78,196.57 511.98,196.48 512.00,210.00 512.00,210.00 512.00,302.00 512.00,302.00 511.98,315.52 506.78,315.43 495.00,318.37 495.00,318.37 471.00,324.37 471.00,324.37 468.25,325.06 461.26,326.53 459.22,327.93 456.44,329.85 451.82,341.26 450.68,344.83 449.14,349.67 453.80,355.00 456.20,359.00 456.20,359.00 468.80,380.00 468.80,380.00 471.40,384.34 474.61,388.79 474.89,394.00 475.35,402.44 464.60,410.40 459.00,416.00 459.00,416.00 419.00,456.00 419.00,456.00 415.30,459.70 403.74,471.96 400.00,473.83 394.50,476.57 388.81,473.98 384.00,471.19 384.00,471.19 358.00,455.60 358.00,455.60 351.96,451.98 349.79,448.73 342.99,451.44 339.30,452.91 330.00,456.23 327.93,459.22 326.53,461.26 325.06,468.25 324.37,471.00 324.37,471.00 318.37,495.00 318.37,495.00 315.43,506.78 315.52,511.98 302.00,512.00 302.00,512.00 210.00,512.00 210.00,512.00 206.73,511.99 202.98,512.29 200.21,510.26 196.66,507.66 195.40,502.06 194.37,498.00 194.37,498.00 187.63,471.00 187.63,471.00 186.12,464.97 186.05,459.05 179.98,456.05 177.74,454.95 166.45,450.10 164.58,450.20 162.26,450.33 158.08,453.15 156.00,454.40 156.00,454.40 137.00,465.80 137.00,465.80 130.28,469.83 120.11,477.88 112.00,473.83 108.26,471.96 96.70,459.70 93.00,456.00 93.00,456.00 53.00,416.00 53.00,416.00 47.40,410.40 36.65,402.44 37.11,394.00 37.39,388.79 40.60,384.34 43.20,380.00 43.20,380.00 55.80,359.00 55.80,359.00 58.81,353.98 63.10,349.87 60.95,343.96 59.61,340.29 55.70,329.95 52.78,327.93 50.74,326.53 43.75,325.06 41.00,324.37 41.00,324.37 17.00,318.37 17.00,318.37 5.22,315.43 0.02,315.52 0.00,302.00 0.00,302.00 0.00,210.00 0.00,210.00 0.01,206.73 -0.29,202.98 1.74,200.21 4.34,196.66 9.94,195.40 14.00,194.37 14.00,194.37 41.00,187.63 41.00,187.63 47.03,186.12 52.95,186.05 55.95,179.98 57.05,177.74 61.90,166.45 61.80,164.58 61.67,162.26 58.85,158.08 57.60,156.00 57.60,156.00 46.20,137.00 46.20,137.00 42.32,130.54 34.75,120.85 37.74,113.00 39.40,108.61 51.10,97.90 55.00,94.00 55.00,94.00 96.00,53.00 96.00,53.00 101.60,47.40 109.56,36.65 118.00,37.11 123.21,37.39 127.66,40.60 132.00,43.20 132.00,43.20 153.00,55.80 153.00,55.80 155.39,57.24 161.98,61.69 164.42,61.80 166.38,61.88 177.69,57.07 179.98,55.95 186.05,52.95 186.12,47.03 187.63,41.00 187.63,41.00 194.13,15.00 194.13,15.00 195.65,8.95 196.25,4.08 202.04,0.74 Z"
+
+    var flag = "M324.00,497.00 C324.00,497.00 324.00,147.00 324.00,147.00 324.00,147.00 324.00,87.00 324.00,87.00 323.98,75.13 321.06,79.65 318.65,72.00 317.69,68.95 317.99,60.60 318.00,57.00 318.00,54.60 317.92,51.27 318.57,49.00 321.05,40.39 329.79,40.92 337.00,41.00 349.47,41.15 351.98,45.20 352.00,57.00 352.00,57.00 352.00,66.00 352.00,66.00 351.82,80.44 346.03,72.61 346.00,87.00 346.00,87.00 346.00,497.00 346.00,497.00 359.69,498.81 376.16,500.62 388.00,508.25 395.26,512.92 400.84,519.91 398.58,529.00 396.89,535.84 389.89,540.28 384.00,543.24 369.67,550.45 350.89,552.43 335.00,552.43 319.56,552.43 299.89,550.23 286.00,543.24 279.52,539.98 272.80,535.67 271.34,528.00 269.62,519.01 274.82,512.87 282.00,508.25 293.84,500.62 310.31,498.81 324.00,497.00 Z M409.00,46.43 C429.30,43.92 452.53,50.11 470.00,60.45 486.55,70.24 510.84,88.86 531.00,87.49 538.85,86.95 545.26,84.74 550.82,78.91 555.32,74.19 556.31,69.35 560.18,67.74 567.98,64.50 568.99,72.75 569.00,78.00 569.00,78.00 569.00,194.00 569.00,194.00 569.00,196.61 569.11,199.48 568.35,202.00 563.69,217.55 546.13,226.00 531.00,226.79 531.00,226.79 520.00,225.71 520.00,225.71 484.11,220.15 459.88,185.45 422.00,185.00 407.50,184.83 397.81,186.54 385.00,193.87 385.00,193.87 370.00,204.50 370.00,204.50 360.98,208.49 360.01,197.86 360.00,192.00 360.00,192.00 360.00,81.00 360.00,81.00 360.01,77.67 359.82,74.07 361.31,71.00 363.57,66.36 369.68,61.94 374.00,59.23 386.00,51.69 395.16,48.69 409.00,46.43 Z M324.00,511.00 C313.28,511.00 301.82,513.00 292.00,517.52 288.80,518.99 283.06,522.37 285.23,526.67 287.15,530.47 296.05,533.54 300.00,534.71 316.09,539.46 327.55,539.19 344.00,539.00 352.73,538.89 367.98,536.14 376.00,532.77 379.00,531.50 385.37,528.82 385.37,524.96 385.37,520.96 380.13,518.34 377.00,517.02 367.24,512.91 356.54,511.00 346.00,511.00 346.00,511.00 346.00,524.00 346.00,524.00 346.00,524.00 324.00,524.00 324.00,524.00 324.00,524.00 324.00,511.00 324.00,511.00 Z"
+    var tank1 = "M 196.00,32.00 C 196.00,32.00 198.06,32.00 198.06,32.00 198.06,32.00 198.06,44.00 198.06,44.00 198.06,44.00 199.49,52.00 199.49,52.00 199.89,58.93 198.44,68.34 205.46,73.09 207.70,74.61 213.17,73.95 216.00,74.05 216.00,74.05 231.00,74.05 231.00,74.05 231.00,74.05 236.83,74.05 236.83,74.05 236.83,74.05 257.00,74.05 257.00,74.05 260.77,73.56 261.99,71.60 267.00,71.20 268.53,70.95 272.39,70.93 273.83,71.20 276.20,71.88 283.52,77.94 282.84,68.92 282.47,64.07 282.63,57.59 289.00,56.94 291.50,56.69 293.97,58.22 298.00,57.78 303.19,57.21 300.73,56.02 311.00,56.00 311.00,56.00 339.00,56.00 339.00,56.00 345.44,55.96 345.21,55.23 351.00,54.00 345.14,44.78 335.06,54.46 327.00,45.00 330.94,42.25 331.29,42.02 336.00,43.00 338.79,39.89 344.11,41.04 348.00,40.80 353.47,40.93 369.59,38.78 373.86,40.80 375.90,41.47 376.03,42.28 377.00,44.00 378.65,42.14 380.32,39.91 383.05,39.82 385.75,39.72 387.30,41.85 392.17,42.15 402.22,42.76 413.77,38.99 422.00,46.00 424.82,42.44 426.94,43.44 429.00,47.00 419.90,51.94 420.60,47.98 412.00,48.51 393.48,49.66 388.84,47.58 370.00,53.00 373.64,53.00 381.61,51.98 383.83,55.31 386.83,59.82 382.04,63.33 388.00,67.00 388.00,67.00 387.00,71.00 387.00,71.00 387.00,71.00 390.00,71.00 390.00,71.00 390.00,71.00 389.00,78.00 389.00,78.00 389.00,78.00 404.00,80.00 404.00,80.00 404.00,80.00 402.00,76.00 402.00,76.00 402.00,76.00 406.00,73.68 406.00,73.68 416.33,68.95 408.77,80.12 419.91,82.16 424.01,82.64 431.11,83.44 435.00,82.16 440.92,80.74 446.50,77.12 452.99,77.47 462.07,77.96 457.21,84.04 468.00,86.14 473.54,87.22 490.57,95.31 493.00,87.00 493.00,87.00 501.10,92.91 501.10,92.91 501.10,92.91 509.00,95.00 509.00,95.00 508.68,104.00 517.06,103.93 524.00,103.68 536.39,103.23 533.12,105.51 541.00,106.16 541.00,106.16 552.99,106.16 552.99,106.16 557.60,105.85 556.68,104.11 564.00,104.00 576.40,103.82 573.49,105.60 580.00,106.87 580.00,106.87 596.00,106.87 596.00,106.87 596.00,106.87 610.00,105.79 610.00,105.79 618.02,103.75 614.50,101.11 629.00,101.00 634.62,100.96 645.54,101.40 650.83,102.56 650.83,102.56 673.00,109.76 673.00,109.76 673.00,109.76 691.00,109.76 691.00,109.76 691.00,109.76 757.00,111.00 757.00,111.00 757.00,111.00 786.00,112.00 786.00,112.00 786.00,112.00 800.39,113.03 800.39,113.03 800.39,113.03 809.00,111.00 809.00,111.00 809.00,111.00 810.00,115.00 810.00,115.00 817.52,115.98 818.25,127.11 810.96,128.67 810.96,128.67 803.00,129.21 803.00,129.21 796.54,130.11 799.65,130.98 790.00,131.00 790.00,131.00 743.00,131.00 743.00,131.00 743.00,131.00 684.00,131.00 684.00,131.00 684.00,131.00 664.00,133.00 664.00,133.00 664.00,133.00 628.00,133.00 628.00,133.00 628.00,133.00 599.00,132.43 599.00,132.43 599.00,132.43 588.00,132.43 588.00,132.43 588.00,132.43 577.42,132.43 577.42,132.43 573.35,133.67 570.94,136.23 563.99,135.89 557.30,135.55 553.06,132.35 547.00,132.04 539.76,131.67 536.73,133.83 530.00,134.71 518.72,136.18 519.52,132.73 507.00,138.00 507.00,138.00 506.00,150.00 506.00,150.00 508.01,150.16 510.18,150.93 512.17,150.68 512.17,150.68 518.00,148.94 518.00,148.94 518.00,148.94 523.00,148.94 523.00,148.94 529.60,148.63 534.19,146.79 536.00,155.00 536.00,155.00 541.00,155.00 541.00,155.00 542.96,165.45 560.83,154.87 563.00,163.00 568.82,164.53 586.10,168.07 591.58,168.17 594.29,168.22 601.91,167.92 599.83,163.21 598.62,160.46 594.69,160.26 592.72,158.28 589.77,155.30 588.88,145.87 592.00,143.00 592.46,135.56 600.70,138.22 603.16,141.30 605.78,144.57 606.35,150.12 605.04,154.00 603.87,157.44 600.56,162.01 603.59,165.42 606.72,168.94 629.72,177.17 626.00,161.00 633.61,159.73 634.54,166.96 634.00,173.00 639.47,173.31 641.16,175.83 642.00,181.00 642.84,181.20 643.01,180.76 644.33,181.77 646.46,183.40 650.89,191.13 650.13,193.82 649.63,195.62 646.40,198.43 645.00,200.00 645.00,200.00 635.00,201.00 635.00,201.00 636.76,207.56 639.72,220.56 633.00,225.00 632.94,232.46 627.51,234.86 623.00,240.00 619.21,240.85 606.34,250.29 602.09,252.97 602.09,252.97 594.96,256.91 594.96,256.91 594.96,256.91 585.83,263.75 585.83,263.75 585.83,263.75 563.00,277.05 563.00,277.05 550.66,284.02 546.55,287.98 532.00,288.00 532.00,288.00 222.00,288.00 222.00,288.00 222.00,288.00 137.00,288.00 137.00,288.00 137.00,288.00 109.04,287.38 109.04,287.38 104.24,286.40 101.97,284.32 98.00,281.66 93.17,278.42 82.02,270.69 79.00,266.00 79.00,266.00 77.00,267.00 77.00,267.00 77.00,267.00 71.00,258.00 71.00,258.00 71.00,258.00 69.00,259.00 69.00,259.00 60.94,249.46 39.73,238.97 35.00,229.00 31.52,228.55 23.08,225.83 21.14,222.70 19.42,219.43 20.47,211.73 21.14,208.00 11.17,207.84 14.56,213.96 14.53,220.00 14.52,224.80 14.02,243.41 13.00,247.00 13.00,247.00 11.00,247.00 11.00,247.00 9.57,241.97 10.01,237.18 10.00,232.00 10.00,232.00 9.24,221.00 9.24,221.00 9.24,221.00 8.41,194.00 8.41,194.00 8.41,194.00 7.54,177.00 7.54,177.00 7.54,177.00 4.43,161.00 4.43,161.00 4.43,161.00 3.54,152.00 3.54,152.00 2.50,146.23 -0.33,141.88 2.00,136.00 2.00,136.00 3.00,138.00 3.00,138.00 3.89,132.59 7.61,128.91 13.00,128.00 14.17,131.22 16.85,131.06 19.96,130.85 26.15,130.43 27.15,128.24 32.00,126.80 35.19,125.85 38.70,125.98 42.00,126.02 42.00,126.02 56.00,126.02 56.00,126.02 56.00,126.02 69.00,127.08 69.00,127.08 69.00,127.08 99.86,127.08 99.86,127.08 99.86,127.08 111.00,128.00 111.00,128.00 113.02,131.76 113.33,131.90 112.00,136.00 112.00,136.00 124.00,136.71 124.00,136.71 129.27,136.69 136.18,134.37 140.00,139.00 149.01,134.53 152.06,133.80 162.00,135.09 167.26,135.78 169.17,138.35 171.78,137.56 173.33,137.09 176.38,132.60 178.00,131.00 178.00,131.00 175.00,129.00 175.00,129.00 169.20,130.41 160.27,129.98 154.00,130.00 154.00,130.00 127.91,129.43 127.91,129.43 124.08,128.71 122.50,127.19 119.00,126.13 113.81,124.55 106.15,126.71 103.00,122.00 100.48,123.10 99.18,123.04 98.50,119.89 98.50,119.89 98.50,108.00 98.50,108.00 98.50,108.00 97.76,99.00 97.76,99.00 97.07,94.28 94.60,89.33 100.62,85.25 102.35,84.08 103.95,83.72 106.01,84.10 107.91,84.45 111.18,86.12 113.00,87.00 113.00,87.00 113.99,80.73 113.99,80.73 113.99,80.73 122.00,78.13 122.00,78.13 122.00,78.13 142.00,75.61 142.00,75.61 142.00,75.61 152.00,71.00 152.00,71.00 152.00,71.00 160.00,74.00 160.00,74.00 160.00,68.12 160.00,54.05 162.00,49.00 162.20,53.32 163.57,68.80 165.85,71.77 167.32,73.67 168.75,73.89 171.00,74.03 171.00,74.03 185.54,74.03 185.54,74.03 185.54,74.03 191.00,73.00 191.00,73.00 191.00,73.00 194.02,62.00 194.02,62.00 194.02,62.00 194.02,51.00 194.02,51.00 196.05,40.07 196.93,44.83 196.00,32.00 Z"
+    var tank2 = "M 266.80,137.00 C 266.64,134.78 266.58,134.27 266.80,132.00 266.75,128.93 265.88,123.34 266.80,121.04 267.60,118.81 269.14,117.59 270.95,116.18 276.34,112.02 278.62,112.77 285.00,114.00 285.00,114.00 304.00,117.13 304.00,117.13 306.35,117.46 311.42,118.41 313.58,117.88 315.58,117.39 318.23,115.21 320.00,114.00 320.00,114.00 324.00,115.85 324.00,115.85 324.00,115.85 340.00,115.85 340.00,115.85 340.00,115.85 348.00,115.85 348.00,115.85 348.00,119.07 348.80,128.81 346.60,130.75 344.74,132.37 337.54,131.97 335.00,132.00 321.93,132.19 326.12,138.52 325.79,145.00 325.63,148.25 324.17,151.67 327.31,154.07 330.56,156.54 343.59,156.22 348.00,155.97 348.00,155.97 353.00,155.97 353.00,155.97 353.00,155.97 368.00,160.45 368.00,160.45 375.86,164.39 371.50,166.25 382.00,166.00 382.51,161.64 382.73,160.97 386.00,158.00 386.00,158.00 389.00,173.00 389.00,173.00 389.00,173.00 376.00,173.00 376.00,173.00 378.22,175.48 382.56,178.09 381.34,181.88 380.40,184.82 377.04,185.43 375.60,189.05 374.55,191.68 375.47,194.96 373.63,200.04 373.63,200.04 365.00,219.00 365.00,219.00 365.00,219.00 386.73,220.73 386.73,220.73 389.49,222.01 389.00,224.24 393.06,225.61 396.02,226.61 401.22,226.56 403.72,228.17 406.94,230.24 406.51,234.00 408.72,236.72 411.20,239.78 416.32,240.31 420.00,241.00 420.00,241.00 415.00,234.00 415.00,234.00 415.00,234.00 419.00,234.00 419.00,234.00 419.44,221.45 427.15,223.93 436.00,223.99 438.49,223.92 442.54,222.79 444.57,223.99 449.17,226.93 448.03,245.53 450.02,248.77 455.65,257.91 461.13,240.80 467.86,244.11 474.23,247.26 466.29,257.27 475.00,259.00 475.93,267.73 482.19,273.22 489.00,278.00 489.00,278.00 485.00,277.00 485.00,277.00 483.23,279.60 479.96,278.97 477.00,279.00 477.00,279.00 460.00,280.00 460.00,280.00 457.96,280.01 452.31,279.53 451.77,282.26 451.22,285.06 455.12,285.73 457.00,285.98 464.35,286.95 470.38,286.65 474.59,294.04 476.48,297.36 476.74,300.35 477.27,304.00 480.01,323.03 470.26,342.17 457.83,356.00 453.90,360.37 449.51,363.86 444.00,366.03 444.00,366.03 405.00,373.61 405.00,373.61 405.00,373.61 311.00,391.42 311.00,391.42 311.00,391.42 275.00,398.92 275.00,398.92 275.00,398.92 264.00,398.92 264.00,398.92 254.09,398.98 227.22,394.76 219.00,389.87 215.17,387.59 208.29,382.21 205.28,378.91 201.74,375.02 198.91,369.83 193.00,369.39 193.00,369.39 176.00,371.58 176.00,371.58 176.00,371.58 130.00,376.99 130.00,376.99 125.61,376.89 120.35,375.86 116.00,375.00 96.02,371.07 85.11,364.90 70.73,350.42 61.03,340.65 53.68,331.37 54.01,317.00 54.21,308.33 58.07,298.15 65.04,292.71 69.20,289.46 73.40,288.60 75.40,286.36 78.08,283.37 76.09,278.89 81.11,276.87 84.45,275.30 94.46,276.99 99.00,276.87 96.77,271.82 99.33,270.74 102.50,266.72 102.50,266.72 113.74,252.00 113.74,252.00 117.61,245.83 114.58,237.75 120.53,232.36 124.17,229.05 126.36,232.87 129.70,231.13 132.31,229.78 134.08,225.04 138.93,222.50 143.24,220.24 156.61,221.01 162.00,221.00 177.24,220.98 169.84,216.44 186.00,212.00 188.97,215.44 189.51,215.73 194.00,215.00 194.00,215.00 186.00,210.00 186.00,210.00 186.00,210.00 198.00,209.03 198.00,209.03 198.00,209.03 208.00,210.00 208.00,210.00 208.00,210.00 207.00,205.00 207.00,205.00 200.61,200.85 205.24,194.37 199.77,191.02 197.92,189.89 188.66,189.17 186.00,188.93 186.00,188.93 157.00,185.84 157.00,185.84 157.00,185.84 86.00,178.83 86.00,178.83 86.00,178.83 54.00,176.08 54.00,176.08 48.92,176.10 47.57,177.90 40.00,178.00 36.03,178.04 28.36,178.63 25.23,176.26 20.49,172.68 20.70,162.10 26.06,159.17 33.07,155.34 46.08,161.25 53.00,163.21 53.00,163.21 71.00,165.84 71.00,165.84 71.00,165.84 153.00,173.83 153.00,173.83 153.00,173.83 202.00,179.00 202.00,179.00 203.01,175.21 203.44,170.19 207.13,168.02 210.56,166.00 216.42,167.13 220.09,165.07 220.09,165.07 231.42,157.45 231.42,157.45 233.11,155.76 232.99,153.82 235.31,152.51 239.13,150.35 244.87,151.67 249.00,152.00 248.29,143.25 241.85,141.42 237.21,133.00 235.65,130.41 233.94,126.14 237.21,124.18 237.21,124.18 247.00,122.00 247.00,122.00 247.82,118.51 250.13,118.09 252.36,121.16 254.26,123.78 252.87,126.24 254.11,128.91 256.47,134.02 260.26,132.28 259.00,140.00 259.00,140.00 266.80,137.00 266.80,137.00 Z"
+    var tank3 = "M 284.00,34.00 C 284.00,34.00 313.00,32.83 313.00,32.83 315.16,32.92 318.57,32.99 320.15,34.61 322.92,37.46 322.12,45.28 327.13,47.40 328.83,48.12 332.11,48.00 334.00,48.00 334.00,48.00 358.00,48.00 358.00,48.00 358.00,48.00 359.00,45.00 359.00,45.00 361.84,50.05 364.92,51.97 369.00,56.00 372.65,59.61 382.61,69.81 387.00,71.40 388.96,72.12 391.89,72.00 394.00,72.00 394.00,72.00 460.00,72.00 460.00,72.00 460.00,72.00 459.00,83.00 459.00,83.00 465.74,84.64 474.90,84.00 482.00,84.00 482.00,84.00 521.00,84.00 521.00,84.00 521.00,84.00 648.00,84.00 648.00,84.00 648.00,84.00 694.00,84.00 694.00,84.00 701.39,83.99 703.71,84.16 704.00,76.00 704.00,76.00 736.00,76.00 736.00,76.00 736.00,76.00 736.00,112.00 736.00,112.00 736.00,112.00 704.00,112.00 704.00,112.00 703.50,105.85 702.02,105.12 696.00,105.00 696.00,105.00 647.00,105.00 647.00,105.00 647.00,105.00 522.00,105.00 522.00,105.00 522.00,105.00 461.00,105.00 461.00,105.00 461.00,105.00 460.00,106.00 460.00,106.00 459.66,111.01 456.21,109.99 452.00,110.00 452.00,110.00 436.00,110.00 436.00,110.00 436.00,110.00 421.00,111.00 421.00,111.00 411.03,111.02 409.69,110.02 400.00,113.34 398.60,113.82 396.61,114.18 395.42,114.99 392.67,116.87 393.01,120.45 391.35,123.04 389.28,126.28 384.04,130.36 381.00,133.00 385.68,134.32 385.53,132.66 390.00,132.06 390.00,132.06 402.00,132.06 402.00,132.06 414.79,132.02 427.92,138.34 435.00,137.59 443.68,136.66 440.61,132.02 453.00,132.00 453.00,132.00 497.00,132.00 497.00,132.00 505.77,132.13 503.35,135.15 511.00,134.00 515.88,141.35 529.22,147.53 537.00,152.00 539.94,153.69 545.90,157.53 549.00,157.93 549.00,157.93 554.00,157.93 554.00,157.93 560.64,158.56 564.48,162.50 565.00,169.00 569.92,163.62 566.23,155.25 573.11,151.57 575.17,150.46 577.70,150.15 580.00,150.04 590.70,149.54 591.45,152.64 600.00,157.02 606.15,160.17 611.85,160.92 613.83,161.97 613.83,161.97 619.09,165.99 619.09,165.99 627.81,172.73 633.35,176.70 640.00,186.00 640.00,186.00 634.00,181.00 634.00,181.00 634.00,181.00 632.00,188.09 632.00,188.09 632.00,188.09 637.00,188.09 637.00,188.09 637.00,188.09 682.00,188.09 682.00,188.09 682.00,188.09 682.00,278.00 682.00,278.00 682.00,278.00 646.00,278.00 646.00,278.00 647.00,286.15 641.28,287.06 635.00,287.00 635.00,287.00 637.00,291.00 637.00,291.00 637.00,291.00 628.00,297.00 628.00,297.00 628.00,297.00 624.00,294.00 624.00,294.00 624.00,294.00 625.00,298.00 625.00,298.00 625.00,298.00 614.00,302.00 614.00,302.00 614.00,302.00 614.00,301.00 614.00,301.00 614.00,301.00 612.00,299.00 612.00,299.00 612.00,299.00 613.00,304.00 613.00,304.00 606.09,306.97 606.03,308.55 599.00,306.00 599.00,306.00 600.00,310.00 600.00,310.00 600.00,310.00 590.00,315.00 590.00,315.00 590.00,315.00 586.00,312.00 586.00,312.00 586.00,312.00 588.00,317.00 588.00,317.00 588.00,317.00 578.00,321.00 578.00,321.00 578.00,321.00 574.00,317.00 574.00,317.00 574.00,317.00 575.00,323.00 575.00,323.00 568.93,326.43 568.50,327.35 562.00,325.00 562.00,325.00 563.00,329.00 563.00,329.00 563.00,329.00 553.00,333.00 553.00,333.00 553.00,333.00 552.00,331.00 552.00,331.00 552.00,331.00 551.00,331.00 551.00,331.00 551.00,331.00 551.00,335.00 551.00,335.00 551.00,335.00 540.00,335.00 540.00,335.00 540.00,335.00 540.00,331.00 540.00,331.00 540.00,331.00 537.00,331.00 537.00,331.00 537.00,331.00 537.00,335.00 537.00,335.00 537.00,335.00 526.00,335.00 526.00,335.00 526.00,335.00 526.00,331.00 526.00,331.00 526.00,331.00 523.00,335.00 523.00,335.00 515.18,335.00 515.72,335.95 510.00,331.00 510.00,331.00 510.00,335.00 510.00,335.00 510.00,335.00 499.00,335.00 499.00,335.00 499.00,335.00 499.00,331.00 499.00,331.00 499.00,331.00 496.00,331.00 496.00,331.00 496.00,331.00 496.00,335.00 496.00,335.00 496.00,335.00 485.00,335.00 485.00,335.00 485.00,335.00 485.00,331.00 485.00,331.00 485.00,331.00 483.00,331.00 483.00,331.00 483.00,331.00 483.00,335.00 483.00,335.00 474.92,335.00 475.00,336.20 469.00,331.00 469.00,331.00 469.00,335.00 469.00,335.00 469.00,335.00 458.00,335.00 458.00,335.00 458.00,335.00 455.00,331.00 455.00,331.00 455.00,331.00 455.00,335.00 455.00,335.00 455.00,335.00 444.00,335.00 444.00,335.00 444.00,335.00 443.00,331.00 443.00,331.00 443.00,331.00 442.00,335.00 442.00,335.00 442.00,335.00 431.00,335.00 431.00,335.00 431.00,335.00 429.00,331.00 429.00,331.00 429.00,331.00 429.00,335.00 429.00,335.00 429.00,335.00 418.00,335.00 418.00,335.00 418.00,335.00 415.00,331.00 415.00,331.00 415.00,331.00 415.00,335.00 415.00,335.00 415.00,335.00 404.00,335.00 404.00,335.00 404.00,335.00 401.00,331.00 401.00,331.00 401.00,331.00 401.00,335.00 401.00,335.00 401.00,335.00 390.00,335.00 390.00,335.00 390.00,335.00 388.00,330.00 388.00,330.00 388.00,330.00 387.00,335.00 387.00,335.00 387.00,335.00 376.00,335.00 376.00,335.00 376.00,335.00 374.00,331.00 374.00,331.00 374.00,331.00 373.00,335.00 373.00,335.00 373.00,335.00 362.00,335.00 362.00,335.00 362.00,335.00 361.00,332.00 361.00,332.00 357.49,336.29 353.19,335.00 348.00,335.00 348.00,335.00 347.00,331.00 347.00,331.00 347.00,331.00 346.00,336.00 346.00,336.00 346.00,336.00 335.00,336.00 335.00,336.00 335.00,336.00 335.00,332.00 335.00,332.00 335.00,332.00 333.00,332.00 333.00,332.00 333.00,332.00 333.00,336.00 333.00,336.00 333.00,336.00 322.00,336.00 322.00,336.00 322.00,336.00 322.00,332.00 322.00,332.00 322.00,332.00 320.00,332.00 320.00,332.00 320.00,332.00 320.00,336.00 320.00,336.00 320.00,336.00 309.00,336.00 309.00,336.00 309.00,336.00 306.00,332.00 306.00,332.00 306.00,332.00 306.00,336.00 306.00,336.00 306.00,336.00 295.00,336.00 295.00,336.00 295.00,336.00 295.00,332.00 295.00,332.00 295.00,332.00 281.00,336.00 281.00,336.00 281.00,336.00 279.00,331.00 279.00,331.00 279.00,331.00 278.00,336.00 278.00,336.00 278.00,336.00 267.00,336.00 267.00,336.00 267.00,336.00 267.00,332.00 267.00,332.00 267.00,332.00 265.00,332.00 265.00,332.00 265.00,332.00 265.00,336.00 265.00,336.00 265.00,336.00 254.00,336.00 254.00,336.00 254.00,336.00 254.00,332.00 254.00,332.00 254.00,332.00 252.00,336.00 252.00,336.00 252.00,336.00 240.00,336.00 240.00,336.00 240.00,336.00 240.00,332.00 240.00,332.00 240.00,332.00 238.00,336.00 238.00,336.00 238.00,336.00 227.00,336.00 227.00,336.00 227.00,336.00 225.00,332.00 225.00,332.00 225.00,332.00 225.00,336.00 225.00,336.00 225.00,336.00 214.00,336.00 214.00,336.00 214.00,336.00 212.00,332.00 212.00,332.00 212.00,332.00 211.00,336.00 211.00,336.00 203.18,336.00 203.72,336.95 198.00,332.00 198.00,332.00 198.00,336.00 198.00,336.00 198.00,336.00 187.00,336.00 187.00,336.00 187.00,336.00 184.00,332.00 184.00,332.00 184.00,332.00 184.00,336.00 184.00,336.00 184.00,336.00 173.00,336.00 173.00,336.00 173.00,336.00 171.00,332.00 171.00,332.00 171.00,332.00 170.00,337.00 170.00,337.00 170.00,337.00 159.00,336.00 159.00,336.00 159.00,336.00 157.00,332.00 157.00,332.00 157.00,332.00 156.00,336.00 156.00,336.00 156.00,336.00 145.00,336.00 145.00,336.00 145.00,336.00 142.00,331.00 142.00,331.00 142.00,331.00 141.00,336.00 141.00,336.00 141.00,336.00 130.00,332.00 130.00,332.00 130.00,332.00 131.00,328.00 131.00,328.00 131.00,328.00 127.00,331.00 127.00,331.00 127.00,331.00 117.00,327.00 117.00,327.00 117.00,327.00 118.00,323.00 118.00,323.00 118.00,323.00 115.00,326.00 115.00,326.00 109.82,324.53 106.00,323.76 105.00,318.00 99.09,320.70 93.52,317.52 93.00,311.00 93.00,311.00 90.00,314.00 90.00,314.00 90.00,314.00 80.00,310.00 80.00,310.00 80.00,310.00 81.00,305.00 81.00,305.00 75.26,308.73 73.88,306.53 68.00,304.00 68.00,304.00 69.00,299.00 69.00,299.00 61.66,302.64 56.58,299.06 57.00,291.00 57.00,291.00 53.00,293.00 53.00,293.00 51.66,291.60 49.42,288.98 47.72,288.19 43.90,286.43 36.33,290.43 34.00,280.00 40.67,282.78 39.63,284.67 47.00,282.00 47.00,282.00 44.00,276.00 44.00,276.00 44.00,276.00 34.00,277.00 34.00,277.00 36.45,271.98 38.31,271.55 43.00,269.00 43.00,269.00 38.00,269.00 38.00,269.00 38.00,269.00 38.00,249.00 38.00,249.00 33.98,246.34 34.19,241.48 33.00,237.00 27.71,242.81 23.33,252.64 15.00,254.00 15.00,254.00 31.07,232.00 31.07,232.00 31.07,232.00 32.00,226.00 32.00,226.00 26.55,226.25 17.72,228.50 13.02,225.40 6.75,221.26 6.74,210.84 5.73,204.00 5.73,204.00 1.83,177.00 1.83,177.00 1.61,172.46 2.76,171.50 2.73,168.00 2.70,164.48 0.89,151.61 0.00,148.00 0.00,148.00 24.00,143.49 24.00,143.49 24.00,143.49 33.00,137.90 33.00,137.90 33.00,137.90 64.00,125.38 64.00,125.38 64.00,125.38 79.00,124.00 79.00,124.00 80.18,118.05 84.57,117.10 90.00,117.00 90.00,117.00 116.00,117.58 116.00,117.58 119.88,118.10 122.28,117.66 125.58,120.15 131.59,124.68 136.17,132.75 144.00,134.00 145.71,129.13 148.36,130.01 153.00,130.00 156.87,129.99 171.12,130.68 173.69,128.98 175.39,127.85 175.45,126.73 176.00,125.00 176.00,125.00 205.00,125.00 205.00,125.00 205.00,125.00 203.00,121.00 203.00,121.00 203.00,121.00 208.00,121.00 208.00,121.00 205.48,113.94 199.59,114.87 193.00,115.01 193.00,115.01 184.00,115.89 184.00,115.89 184.00,115.89 163.00,115.89 163.00,115.89 161.01,116.00 157.19,116.23 155.60,114.98 153.58,113.38 154.08,109.35 153.91,107.00 153.91,107.00 153.00,87.00 153.00,87.00 156.24,86.93 160.00,86.89 162.82,85.07 166.86,82.46 172.10,72.05 175.32,69.60 179.13,66.72 185.49,68.79 190.00,67.57 197.49,65.53 197.98,56.46 198.00,50.00 198.00,50.00 202.00,50.00 202.00,50.00 202.00,56.58 201.51,67.75 210.98,67.46 218.17,67.23 214.87,59.77 216.74,55.02 218.81,49.76 223.02,49.07 228.00,49.05 228.00,49.05 241.00,49.05 241.00,49.05 241.00,49.05 252.00,50.00 252.00,50.00 252.00,50.00 272.00,50.00 272.00,50.00 272.00,50.00 274.00,56.00 274.00,56.00 274.00,56.00 274.00,48.00 274.00,48.00 277.42,49.20 277.38,49.46 278.00,53.00 278.00,53.00 280.00,53.00 280.00,53.00 280.14,40.82 283.99,49.26 284.00,34.00 Z"
+    var tank4 ="M 170.00,16.00 C 179.77,13.23 175.17,10.02 189.00,10.00 189.00,10.00 203.00,10.00 203.00,10.00 221.03,9.97 239.16,5.35 257.00,3.00 255.09,7.90 248.59,7.80 244.00,8.88 244.00,8.88 218.00,15.13 218.00,15.13 215.45,15.76 209.28,16.83 207.60,18.58 205.79,20.47 206.03,23.58 206.00,26.00 206.00,26.00 199.00,26.00 199.00,26.00 199.73,34.90 203.71,31.63 210.96,37.53 210.96,37.53 222.41,50.98 222.41,50.98 224.69,52.43 232.43,52.42 234.71,50.98 236.20,50.04 236.24,49.34 237.00,48.00 237.00,48.00 245.00,48.00 245.00,48.00 245.00,48.00 245.00,55.00 245.00,55.00 245.00,55.00 263.00,55.60 263.00,55.60 263.00,55.60 268.00,59.00 268.00,59.00 273.05,54.20 273.10,58.59 277.20,60.99 274.52,59.42 292.23,67.48 289.00,66.44 291.87,67.36 307.92,67.04 312.00,67.00 312.00,67.00 350.00,62.28 350.00,62.28 350.00,62.28 436.00,50.95 436.00,50.95 436.00,50.95 465.00,47.61 465.00,47.61 470.04,48.01 474.49,51.36 472.26,56.90 470.67,60.84 466.74,61.62 463.00,62.00 463.00,62.00 442.00,64.08 442.00,64.08 442.00,64.08 407.00,67.83 407.00,67.83 407.00,67.83 350.00,73.72 350.00,73.72 350.00,73.72 325.00,76.16 325.00,76.16 322.30,76.45 318.09,76.26 317.00,79.00 313.34,79.81 302.14,86.57 301.00,90.00 301.00,90.00 296.00,91.00 296.00,91.00 303.97,91.00 306.42,90.02 307.00,97.00 314.69,97.00 317.50,95.42 321.00,103.00 321.06,100.60 320.92,97.45 322.74,95.60 325.32,92.96 332.72,93.50 335.00,96.31 337.99,100.01 337.24,107.27 340.43,108.59 343.29,110.02 348.10,105.65 352.72,108.59 356.84,110.98 354.23,115.26 359.22,120.58 372.19,134.37 371.93,127.27 384.56,139.12 390.76,144.94 389.18,149.25 381.00,151.00 383.10,154.71 384.77,157.72 385.53,162.00 388.81,180.54 363.07,192.71 350.00,200.81 339.03,207.61 328.27,214.98 315.00,215.00 315.00,215.00 101.00,215.00 101.00,215.00 88.61,214.98 83.33,212.11 72.00,208.33 56.30,203.10 32.55,197.42 23.11,183.00 16.67,173.18 18.37,163.51 24.05,154.00 25.63,151.45 27.73,148.35 24.05,147.00 24.05,147.00 25.00,145.00 25.00,145.00 25.00,145.00 6.00,166.00 6.00,166.00 6.00,166.00 4.00,166.00 4.00,166.00 3.50,164.15 3.02,163.01 3.34,161.00 4.18,155.83 17.28,140.82 18.16,136.00 19.11,130.74 13.14,130.53 11.19,126.86 10.70,125.93 10.49,125.05 10.52,124.00 10.52,124.00 13.89,111.15 13.89,111.15 16.53,105.32 24.49,110.14 29.69,106.15 32.13,104.28 31.87,101.76 34.31,100.17 37.09,98.37 40.86,99.79 42.98,96.69 44.63,94.28 43.63,86.03 53.00,83.56 58.76,82.04 64.73,83.94 67.99,89.04 70.06,92.28 69.76,95.31 72.31,96.98 74.05,98.12 76.98,97.99 79.00,98.00 79.00,98.00 96.00,97.00 96.00,97.00 96.00,97.00 125.00,97.00 125.00,97.00 125.00,97.00 125.00,93.00 125.00,93.00 125.00,93.00 98.00,91.17 98.00,91.17 94.80,90.86 90.18,91.61 87.72,89.43 83.63,85.79 84.90,71.49 85.00,66.00 85.04,64.05 84.90,61.37 86.60,60.02 88.58,58.46 98.10,59.00 101.00,59.00 101.00,59.00 101.00,44.00 101.00,44.00 101.00,44.00 120.00,43.00 120.00,43.00 120.00,43.00 137.00,42.00 137.00,42.00 137.00,42.00 137.00,52.00 137.00,52.00 137.00,52.00 163.00,52.00 163.00,52.00 161.13,43.15 153.70,39.37 150.16,32.00 148.46,28.45 148.62,23.82 149.00,20.00 149.00,20.00 168.00,21.00 168.00,21.00 166.35,27.79 166.10,36.10 167.00,43.00 167.00,43.00 176.00,37.65 176.00,37.65 182.21,34.91 190.75,36.28 192.20,27.00 192.66,25.53 192.14,21.74 192.20,20.00 185.66,20.00 173.81,21.87 170.00,16.00 Z"
+    var tank5 = "M 1274.00,62.00 C 1279.15,62.09 1285.71,61.72 1288.35,67.06 1290.91,72.23 1296.23,100.66 1297.61,108.00 1300.69,124.32 1306.19,139.02 1306.00,156.00 1305.93,161.68 1302.68,176.27 1296.79,178.31 1290.81,180.39 1282.00,171.67 1277.00,169.00 1277.00,169.00 1275.08,202.00 1275.08,202.00 1275.08,202.00 1270.57,293.58 1270.57,293.58 1270.57,293.58 1270.04,304.00 1270.04,304.00 1270.40,310.26 1273.27,311.57 1275.52,317.00 1275.52,317.00 1278.76,328.00 1278.76,328.00 1278.76,328.00 1286.17,343.00 1286.17,343.00 1290.74,351.68 1299.14,369.09 1297.84,379.00 1296.64,388.15 1282.30,389.76 1275.00,389.00 1274.80,391.59 1274.06,395.65 1275.88,397.77 1278.23,400.50 1284.56,401.64 1288.00,402.42 1294.96,404.02 1306.99,409.25 1313.42,409.03 1320.12,408.80 1320.77,409.43 1327.00,409.98 1329.05,410.16 1331.39,410.07 1332.36,412.31 1333.15,414.14 1331.91,420.74 1331.58,423.00 1331.01,426.95 1330.95,434.44 1327.57,436.96 1324.90,438.95 1322.00,437.82 1319.00,438.05 1319.00,438.05 1308.00,440.54 1308.00,440.54 1300.05,441.95 1292.31,439.55 1289.00,449.00 1289.00,449.00 1306.42,452.14 1306.42,452.14 1306.42,452.14 1328.00,449.00 1328.00,449.00 1329.36,451.01 1330.69,452.96 1332.44,454.67 1344.42,466.41 1350.05,448.60 1361.00,451.03 1365.97,452.14 1368.51,456.39 1364.57,460.45 1361.67,463.43 1356.98,464.59 1353.00,465.00 1357.69,469.38 1360.75,467.94 1363.40,470.70 1365.05,472.42 1365.14,475.66 1365.96,478.00 1369.44,487.88 1369.99,484.26 1370.00,496.00 1380.61,492.50 1399.06,490.33 1410.00,492.67 1425.24,495.93 1423.81,502.71 1439.00,500.00 1441.02,502.70 1445.00,507.17 1446.15,510.00 1447.46,513.24 1446.47,516.11 1448.60,518.28 1450.03,519.73 1462.20,523.37 1465.00,524.26 1465.00,524.26 1481.00,528.36 1481.00,528.36 1496.21,533.32 1491.42,534.26 1510.00,537.00 1511.35,542.08 1513.08,542.42 1514.06,546.84 1515.30,551.11 1514.08,554.74 1514.06,559.00 1513.40,570.70 1520.10,574.76 1510.00,579.00 1510.00,579.00 1516.00,582.00 1516.00,582.00 1516.00,582.00 1515.18,604.00 1515.18,604.00 1515.18,604.00 1517.00,613.00 1517.00,613.00 1517.00,613.00 1505.00,616.74 1505.00,616.74 1505.00,616.74 1490.00,618.41 1490.00,618.41 1484.46,619.76 1484.67,622.69 1471.62,622.72 1471.62,622.72 1443.00,622.00 1443.00,622.00 1443.00,622.00 1400.00,622.00 1400.00,622.00 1389.83,622.02 1379.51,622.20 1373.00,631.00 1386.63,633.45 1404.14,635.02 1418.00,635.00 1434.20,634.97 1438.22,628.62 1452.00,628.04 1452.00,628.04 1473.00,629.00 1473.00,629.00 1485.41,629.05 1482.12,627.58 1491.00,626.30 1491.00,626.30 1510.12,625.29 1510.12,625.29 1510.12,625.29 1542.00,628.00 1542.00,628.00 1542.00,628.00 1588.00,628.00 1588.00,628.00 1599.51,628.02 1597.53,630.49 1603.00,630.78 1606.64,630.98 1611.33,628.96 1615.17,629.52 1618.15,629.96 1620.81,631.65 1624.00,631.63 1629.79,631.59 1635.47,625.73 1641.58,625.55 1645.42,625.43 1647.63,628.01 1651.00,629.37 1651.00,629.37 1657.00,631.00 1657.00,631.00 1659.99,622.54 1664.67,625.91 1672.00,626.00 1682.96,626.12 1680.54,624.97 1688.00,624.17 1688.00,624.17 1702.00,623.22 1702.00,623.22 1706.07,622.84 1714.33,621.02 1717.87,623.22 1720.78,624.67 1722.62,629.06 1724.00,631.99 1726.17,631.48 1729.36,630.52 1731.37,631.99 1733.01,633.18 1732.72,635.79 1732.70,637.58 1732.70,637.58 1732.70,652.54 1732.70,652.54 1732.70,652.54 1732.70,684.35 1732.70,684.35 1732.68,691.79 1730.66,699.48 1740.00,701.00 1740.00,701.00 1740.00,741.00 1740.00,741.00 1740.00,741.00 1727.00,741.96 1727.00,741.96 1727.00,741.96 1714.00,741.96 1714.00,741.96 1714.00,741.96 1715.84,751.00 1715.84,751.00 1715.84,751.00 1715.84,765.28 1715.84,765.28 1716.23,772.73 1719.50,775.94 1718.89,783.00 1718.44,788.31 1715.81,790.40 1715.22,795.00 1714.60,799.90 1717.24,805.60 1716.75,810.00 1716.18,815.14 1712.29,818.68 1710.05,823.00 1707.69,827.54 1708.42,830.10 1707.27,833.00 1705.95,836.30 1700.33,841.81 1696.83,842.94 1695.47,843.06 1692.50,843.00 1691.00,842.94 1691.00,842.94 1665.62,952.90 1665.62,952.90 1665.62,952.90 822.07,961.36 822.07,961.36 822.07,961.36 636.57,962.01 636.57,962.01 634.49,962.07 445.61,907.94 443.91,906.69 441.77,905.11 405.55,834.58 405.00,832.00 403.10,823.09 401.90,814.13 402.25,805.00 402.05,800.83 403.51,794.53 402.25,791.01 400.84,785.31 389.80,777.23 385.00,773.63 385.00,773.63 371.01,763.00 371.01,763.00 369.25,761.56 366.31,759.48 366.34,756.96 366.36,753.89 373.66,746.48 375.85,744.00 381.19,737.94 386.14,731.50 394.00,728.56 394.00,728.56 417.00,723.79 417.00,723.79 419.77,723.20 425.47,722.13 427.49,720.28 429.65,718.29 430.12,713.86 431.00,711.00 431.00,711.00 425.00,710.00 425.00,710.00 425.00,710.00 425.00,707.00 425.00,707.00 425.00,707.00 431.00,707.00 431.00,707.00 431.83,698.20 435.02,698.07 443.00,698.00 443.00,698.00 444.68,706.00 444.68,706.00 444.68,706.00 446.00,716.00 446.00,716.00 446.00,716.00 462.00,713.73 462.00,713.73 462.00,713.73 482.83,709.69 482.83,709.69 482.83,709.69 496.89,707.42 496.89,707.42 504.61,704.02 499.20,691.42 506.39,685.74 509.91,682.96 518.55,684.17 522.99,684.29 529.66,684.46 536.47,683.21 543.00,682.00 543.00,682.00 544.00,692.00 544.00,692.00 544.00,692.00 563.00,692.00 563.00,692.00 563.00,692.00 563.00,696.00 563.00,696.00 571.41,695.92 576.98,694.05 585.00,692.45 594.14,690.62 611.70,686.78 620.00,683.54 620.00,683.54 639.00,674.72 639.00,674.72 645.06,672.90 652.12,672.05 658.42,671.32 661.28,670.99 665.37,670.98 667.69,669.15 671.45,666.16 669.34,658.33 669.00,654.00 669.00,654.00 710.17,650.08 710.17,650.08 710.17,650.08 723.00,650.08 723.00,650.08 723.00,650.08 731.95,648.83 731.95,648.83 731.95,648.83 742.00,642.00 742.00,642.00 742.00,642.00 733.00,637.56 733.00,637.56 719.11,629.83 701.31,615.74 689.00,605.41 682.58,600.02 667.43,585.22 661.09,582.63 661.09,582.63 646.00,579.64 646.00,579.64 646.00,579.64 629.00,571.78 629.00,571.78 621.36,569.50 590.01,567.10 581.00,567.00 581.00,567.00 542.00,564.17 542.00,564.17 542.00,564.17 522.00,562.83 522.00,562.83 522.00,562.83 473.00,558.91 473.00,558.91 473.00,558.91 429.00,555.09 429.00,555.09 429.00,555.09 355.00,549.17 355.00,549.17 355.00,549.17 334.28,547.82 334.28,547.82 334.28,547.82 291.00,544.09 291.00,544.09 291.00,544.09 271.00,542.83 271.00,542.83 271.00,542.83 227.00,539.00 227.00,539.00 227.00,539.00 177.00,535.00 177.00,535.00 177.00,535.00 154.00,533.83 154.00,533.83 154.00,533.83 133.00,532.00 133.00,532.00 133.00,532.00 106.00,530.00 106.00,530.00 101.35,529.98 95.09,529.59 91.09,526.99 87.10,524.40 86.93,521.05 81.98,520.13 81.98,520.13 64.00,518.91 64.00,518.91 64.00,518.91 32.00,515.42 32.00,515.42 27.35,514.73 19.06,513.86 15.00,512.03 0.12,505.35 -0.27,476.89 12.09,467.65 15.33,465.23 18.14,465.05 22.00,465.00 22.00,465.00 26.00,465.00 26.00,465.00 26.00,465.00 36.00,465.91 36.00,465.91 36.00,465.91 58.00,467.17 58.00,467.17 58.00,467.17 80.08,469.22 80.08,469.22 89.44,468.99 91.80,466.14 99.95,466.12 99.95,466.12 162.00,472.72 162.00,472.72 162.00,472.72 206.00,477.17 206.00,477.17 206.00,477.17 257.04,482.77 257.04,482.77 257.04,482.77 313.00,488.83 313.00,488.83 313.00,488.83 401.00,497.17 401.00,497.17 401.00,497.17 489.00,507.05 489.00,507.05 489.00,507.05 519.00,510.83 519.00,510.83 519.00,510.83 597.00,519.16 597.00,519.16 597.00,519.16 635.09,522.20 635.09,522.20 639.34,521.79 641.97,520.04 646.00,519.04 646.00,519.04 653.96,517.42 653.96,517.42 658.38,515.61 658.83,511.63 667.00,507.08 681.42,499.73 703.37,505.31 719.00,507.08 728.99,507.80 741.68,508.16 751.00,511.93 755.93,513.92 760.21,517.42 763.79,521.30 765.62,523.28 768.28,527.60 771.09,527.70 773.44,527.79 777.89,524.35 780.00,523.07 782.40,521.60 787.40,519.61 788.75,517.45 790.40,514.81 790.00,506.35 790.00,503.00 790.00,503.00 791.00,481.00 791.00,481.00 791.00,481.00 811.99,483.24 811.99,483.24 811.99,483.24 820.09,481.06 820.09,481.06 820.09,481.06 849.00,481.06 849.00,481.06 849.00,481.06 851.74,471.01 851.74,471.01 851.74,471.01 864.57,472.12 864.57,472.12 864.57,472.12 874.00,470.39 874.00,470.39 874.00,470.39 893.00,473.92 893.00,473.92 893.00,473.92 914.00,475.09 914.00,475.09 914.00,475.09 925.00,476.41 925.00,476.41 925.00,476.41 955.00,475.00 955.00,475.00 955.00,475.00 956.00,460.00 956.00,460.00 950.31,461.65 942.81,463.38 937.00,462.00 937.69,459.72 938.33,457.06 939.72,455.10 944.94,447.81 958.03,449.02 966.00,449.00 968.47,449.00 971.70,449.20 973.90,447.98 979.80,444.71 980.60,433.61 986.36,425.00 988.66,421.56 994.15,415.33 995.26,412.00 996.53,408.22 994.69,405.97 996.34,402.00 996.34,402.00 1006.10,385.17 1006.10,385.17 1006.10,385.17 1010.34,379.91 1010.34,379.91 1010.34,379.91 1014.70,371.21 1014.70,371.21 1014.70,371.21 1032.00,357.00 1032.00,357.00 1028.05,356.07 1021.92,354.22 1020.40,349.96 1019.31,346.92 1021.57,344.67 1022.06,341.74 1022.06,341.74 1022.06,333.00 1022.06,333.00 1021.98,329.45 1021.80,325.41 1022.79,322.00 1025.60,312.28 1035.92,307.78 1045.42,308.28 1059.42,309.02 1064.36,319.07 1066.40,331.68 1066.99,335.38 1066.97,342.74 1064.42,345.57 1062.20,348.03 1057.22,348.21 1054.00,349.00 1054.00,349.00 1054.00,351.00 1054.00,351.00 1063.50,352.92 1061.52,353.39 1069.00,356.40 1077.49,359.81 1081.77,359.10 1087.44,368.00 1090.73,373.15 1091.31,379.30 1093.20,385.00 1096.46,394.81 1099.34,395.35 1096.00,406.00 1096.00,406.00 1097.00,407.00 1097.00,407.00 1097.00,407.00 1115.42,405.31 1115.42,405.31 1115.42,405.31 1140.00,402.10 1140.00,402.10 1140.00,402.10 1166.00,406.00 1166.00,406.00 1166.00,406.00 1166.00,413.00 1166.00,413.00 1160.64,414.27 1156.81,415.40 1155.00,421.00 1155.00,421.00 1168.00,423.00 1168.00,423.00 1167.63,428.28 1168.48,428.51 1168.67,433.00 1168.67,433.00 1168.67,441.94 1168.67,441.94 1169.03,444.22 1170.57,445.79 1173.00,444.83 1177.36,443.12 1178.40,436.83 1179.92,433.00 1179.92,433.00 1185.02,423.00 1185.02,423.00 1188.98,414.70 1186.46,411.58 1187.19,405.00 1187.76,399.99 1190.76,395.79 1192.07,391.00 1193.27,386.66 1193.43,380.94 1195.45,377.00 1198.22,371.60 1202.77,368.84 1208.00,366.26 1209.96,365.29 1214.74,363.54 1215.48,361.45 1217.27,356.37 1206.93,350.43 1205.05,346.95 1204.01,345.01 1204.05,340.29 1204.04,338.00 1204.01,331.14 1204.15,318.86 1207.28,313.00 1213.45,301.42 1233.26,301.40 1241.79,310.18 1246.00,314.53 1251.09,327.96 1251.91,334.00 1251.91,334.00 1251.91,346.00 1251.91,346.00 1251.91,346.00 1245.00,347.00 1245.00,347.00 1248.07,352.49 1257.22,353.31 1263.00,355.00 1263.00,355.00 1264.00,354.00 1264.00,354.00 1264.00,354.00 1262.83,338.00 1262.83,338.00 1262.83,338.00 1260.20,325.00 1260.20,325.00 1259.38,316.33 1265.83,311.66 1266.94,302.04 1266.94,302.04 1269.07,253.08 1269.07,253.08 1269.07,253.08 1270.00,236.00 1270.00,236.00 1270.00,236.00 1273.00,171.00 1273.00,171.00 1272.90,163.28 1271.23,162.68 1271.05,157.01 1271.05,157.01 1272.02,146.99 1272.02,146.99 1272.02,146.99 1272.02,131.57 1272.02,131.57 1272.02,131.57 1271.39,116.72 1271.39,116.72 1271.39,116.72 1272.00,104.00 1272.00,104.00 1272.00,104.00 1271.01,86.01 1271.01,86.01 1271.01,86.01 1274.00,62.00 1274.00,62.00 Z"
+    const tankConfigs = [
+      { path: tank1, scaleX: 0.3, scaleY: 0.3 },
+      { path: tank2, scaleX: 0.3, scaleY: 0.3 },
+      { path: tank3, scaleX: 0.3, scaleY: 0.3 },
+      { path: tank4, scaleX: 0.5, scaleY: 0.5},
+      { path:tank5, scaleX:0.1, scaleY: 0.1}
+    ];
+
+    const tankConfigs2 = [
+      { path: tank1, scaleX: 0.3, scaleY: 0.3 },
+      { path: tank3, scaleX: 0.3, scaleY: 0.3 },
+      { path: tank4, scaleX: 0.5, scaleY: 0.5},
+    ];
+
+    // Function to pick a random tank from the array
+    function getRandomTankConfig() {
+      return tankConfigs2[Math.floor(Math.random() * tankConfigs2.length)];
+    }
+    
+
+    function TankWithRipple(x, y, tankColor, rippleColor) {
+      this.tankX = x;
+      this.tankY = y;
+      this.tankColor = tankColor;
+      this.rippleColor = rippleColor;
+      this.rippleWidth = 8;
+      this.rippleAmount = 3;
+      this.rippleGap = 20; 
+      this.rippleSpeed = 2;
+      this.minRadius = 5;
+      this.maxRadius = 280;
+      this.rippleRadius = this.maxRadius;
+      this.alpha = 1;
+      this.fading = false;
+      this.alive = true;
+
+      const cfg = getRandomTankConfig();
+
+      this.draw = () => {
+        ctx.lineWidth = this.rippleWidth;
+        ctx.globalAlpha = this.alpha;
+
+        if (this.alpha > 0 && cfg && cfg.path) {
+          DrawPath(this.tankX, this.tankY, cfg.path, this.tankColor, cfg.scaleX, cfg.scaleY);
+        }
+
+        const centerX = this.tankX + 100;
+        const centerY = this.tankY + 50;
+
+        for (let i = 0; i < this.rippleAmount; i++) {
+          let r = this.rippleRadius - i * this.rippleGap;
+          if (r > this.minRadius) { 
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, r, 0, 2 * Math.PI);
+            ctx.strokeStyle = this.rippleColor;
+            ctx.stroke();
+          }
+        }
+
+        if (!this.fading) {
+          this.rippleRadius -= this.rippleSpeed;
+          if (this.rippleRadius <= this.minRadius + (this.rippleAmount - 1) * this.rippleGap) {
+            this.rippleRadius = this.minRadius + (this.rippleAmount - 1) * this.rippleGap;
+            this.fading = true;
+          }
+        } else {
+          this.alpha -= 0.02;
+          if (this.alpha <= 0) {
+            this.alpha = 0;
+            this.alive = false;
+          }
+        }
+
+        ctx.globalAlpha = 1;
+      };
+    }
+
+    function XEffect(centerX, centerY, size, color, speed) {
+      this.centerX = centerX;
+      this.centerY = centerY;
+      this.size = size;
+      this.color = color;
+      this.speed = speed;
+      this.alive = true;
+
+      const startDist = Math.max(canvas.width, canvas.height);
+      const offset = 50;
+
+      this.rects = [
+        { x: centerX - startDist, y: centerY - startDist, angle: Math.PI / 4, offsetX: -offset, offsetY: -offset },
+        { x: centerX + startDist, y: centerY - startDist, angle: -Math.PI / 4, offsetX: offset, offsetY: -offset },
+        { x: centerX - startDist, y: centerY + startDist, angle: -Math.PI / 4, offsetX: -offset, offsetY: offset },
+        { x: centerX + startDist, y: centerY + startDist, angle: Math.PI / 4, offsetX: offset, offsetY: offset }
+      ];
+
+      this.fade = 1;
+      
+      this.draw = () => {
+        if (this.fade <= 0) {
+          this.alive = false;
+          return;
+        }
+
+        let allIn = true;
+        let totalDistance = 0;
+
+        for (let rect of this.rects) {
+          rect.x += ((this.centerX + rect.offsetX) - rect.x) * this.speed / 100;
+          rect.y += ((this.centerY + rect.offsetY) - rect.y) * this.speed / 100;
+
+          const dist = Math.sqrt((rect.x - (this.centerX + rect.offsetX)) ** 2 + (rect.y - (this.centerY + rect.offsetY)) ** 2);
+          totalDistance += dist;
+
+          if (dist > 1) allIn = false;
+
+          ctx.save();
+          ctx.translate(rect.x, rect.y);
+          ctx.rotate(rect.angle);
+          ctx.globalAlpha = this.fade * 1.0; 
+          ctx.fillStyle = this.color;
+          ctx.fillRect(-this.size / 2, -(this.size / 4) / 2, this.size , this.size / 4);
+          ctx.restore();
+        }
+
+        let avgDistance = totalDistance / this.rects.length;
+        let circleRadius = Math.max(this.size / 2, avgDistance / 2);
+
+        ctx.save();
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.fade * 0.5; 
+        ctx.beginPath();
+        ctx.arc(this.centerX, this.centerY, circleRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        if (allIn) {
+          this.fade -= 0.03; 
+        }
+      };
+    }
+
+    function XEffect2(centerX, centerY, size, color, speed) {
+      this.centerX = centerX;
+      this.centerY = centerY;
+      this.size = size;
+      this.color = color;
+      this.speed = speed;
+      this.alive = true;
+
+      const targetDist = Math.max(150, 150);
+      const offset = 50;
+
+      this.rects = [
+        { x: centerX, y: centerY, angle: Math.PI / 4, targetX: centerX - targetDist - offset, targetY: centerY - targetDist - offset },
+        { x: centerX, y: centerY, angle: -Math.PI / 4, targetX: centerX + targetDist + offset, targetY: centerY - targetDist - offset },
+        { x: centerX, y: centerY, angle: -Math.PI / 4, targetX: centerX - targetDist - offset, targetY: centerY + targetDist + offset },
+        { x: centerX, y: centerY, angle: Math.PI / 4, targetX: centerX + targetDist + offset, targetY: centerY + targetDist + offset }
+      ];
+
+      this.fade = 1;
+      this.circleRadius = 5;
+      this.maxCircle = Math.sqrt(canvas.width ** 2 + canvas.height ** 2); 
+      this.circleGrowing = true;
+      this.startFade = false;
+
+      this.draw = () => {
+        if (this.fade <= 0) {
+          this.alive = false;
+          return;
+        }
+
+        let allOut = true;
+
+        for (let rect of this.rects) {
+          rect.x += (rect.targetX - rect.x) * this.speed / 150;
+          rect.y += (rect.targetY - rect.y) * this.speed / 150;
+
+          const dist = Math.sqrt((rect.targetX - rect.x) ** 2 + (rect.targetY - rect.y) ** 2);
+          if (dist > 10) allOut = false;
+
+          ctx.save();
+          ctx.translate(rect.x, rect.y);
+          ctx.rotate(rect.angle);
+          ctx.globalAlpha = this.fade;
+          ctx.fillStyle = this.color;
+          ctx.fillRect(-this.size / 2, -(this.size / 4) / 2, this.size , this.size / 4);
+          ctx.restore();
+        }
+
+        if (this.circleGrowing) {
+          this.circleRadius += 1; 
+          if (this.circleRadius >= this.maxCircle) {
+            this.circleRadius = this.maxCircle;
+            this.circleGrowing = false;
+          }
+        }
+
+        ctx.save();
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.fade * 0.3;
+        ctx.beginPath();
+        ctx.arc(this.centerX, this.centerY, this.circleRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        if (allOut && !this.startFade) {
+          this.startFade = true;
+        }
+
+        if (this.startFade) {
+          this.fade -= 0.09; 
+        }
+      };
+    }
+
+
+    function GearEffect(centerX, centerY, finalSize, color, speed, path) {
+      this.centerX = centerX;
+      this.centerY = centerY;
+      this.finalSize = finalSize;
+      this.color = color;
+      this.speed = speed;
+      this.alive = true;
+      this.path = path;
+
+      const startDist = Math.max(canvas.width, canvas.height);
+
+      this.gear = {
+        x: canvas.width + startDist,
+        y: -startDist,
+        angle: 0,
+        size: finalSize * 3
+      };
+
+      this.fade = 1;
+      this.circleRadius = startDist;
+
+      this.draw = () => {
+        if (!this.alive) return;
+
+        this.gear.x += (this.centerX - this.gear.x - 45) * this.speed / 50;
+        this.gear.y += (this.centerY - this.gear.y - 40) * this.speed / 50;
+
+        this.gear.size += (this.finalSize - this.gear.size) * 0.05;
+
+        this.gear.angle += 0.03;
+
+        this.circleRadius -= 4;
+        if (this.circleRadius < 0) this.circleRadius = 0;
+
+        if (this.circleRadius === 0) {
+          this.fade -= 0.02;
+          if (this.fade < 0) this.fade = 0; 
+        }
+
+        ctx.save();
+        ctx.globalAlpha = this.fade;
+        DrawPath(
+          this.gear.x,
+          this.gear.y,
+          this.path,
+          color,
+          this.gear.size / 512,
+          this.gear.size / 512,
+          this.gear.angle
+        );
+        ctx.restore();
+
+        ctx.save();
+        ctx.globalAlpha = this.fade * 0.6;
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(this.centerX, this.centerY, this.circleRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        if (this.fade === 0) {
+          this.alive = false;
+        }
+      };
+    }
+
+    function TankWithFireworks(startX, startY, tankColor, cannonColor, fireworkColor) {
+      this.tankX = startX;
+      this.tankY = startY;
+      this.tankColor = tankColor;
+      this.cannonColor = cannonColor;
+      this.stopped = false;
+      this.fireworks = [];
+      this.cannonAngle = -1.5;
+      this.hue = fireworkColor
+      this.count = 0
+
+      const cannonWidth = 10;
+      const cannonHeight = 60; 
+
+      this.draw = () => {
+
+        if (this.tankX > 120) this.tankX += (119 - this.tankX) / 30
+        else this.stopped = true;
+
+        if (!inGame || (victoryDefeatWhiteMeter.value <.1 && victoryDefeatWhite2Meter.value <.1)) {
+          this.alive = false;
+          return; 
+        }
+
+        if (!this.alive) return;
+
+        DrawPath(this.tankX, this.tankY, tankNoCannon, this.tankColor, 0.15, 0.15);
+
+
+        ctx.fillStyle = this.tankColor;
+        ctx.beginPath();
+        ctx.arc(this.tankX + 95, this.tankY + 80, 5, 0, Math.PI*2);
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(this.tankX + 95, this.tankY + 80); 
+        if (this.stopped) {
+          const minAngle = -1; 
+          const maxAngle = -1.5; 
+          const amplitude = (maxAngle - minAngle) / 2;
+          const offset = minAngle + amplitude;
+          this.cannonAngle = offset + amplitude * Math.sin(performance.now() / 700);
+        }
+    
+        ctx.rotate(this.cannonAngle);
+        ctx.fillStyle = this.cannonColor;
+        ctx.fillRect(-cannonWidth/2, 0, cannonWidth, -cannonHeight); 
+        ctx.restore();
+
+
+        const pivotX = this.tankX - 30;
+        const pivotY = this.tankY + 70;
+
+        this.count < 75 ? this.count++ : this.count = 0
+
+
+        if (this.stopped && !this.count) {
+          const tipX = pivotX - cannonHeight * Math.sin(this.cannonAngle);
+          const tipY = pivotY - cannonHeight * Math.cos(this.cannonAngle);
+          this.fireworks.push(new Firework(tipX, tipY, this.hue + (Math.random() * 60 - 30)));
+        }
+        this.fireworks.forEach(f => f.draw());
+        this.fireworks = this.fireworks.filter(f => f.alive);
+      };
+    }
+
+    function Firework(x, y, hue) {
+      this.x = x
+      this.y = y
+      this.hue = hue
+      this.particles = []
+      this.alive = true
+      this.rad = 1
+
+      for (let i = 0; i < 25; i++) {
+        let angle = Math.random() * Math.PI + Math.PI / 2
+        let speed = Math.random() * 10 + 1
+        this.particles.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: Math.random() * 50 + 50
+        })
+      }
+
+      this.draw = () => {
+        let stillAlive = false
+        DrawStroke(this.x, this.y, this.rad, `hsla(${this.hue}, 100%, 50%, 1)`, 10)
+        if(this.rad < 300) this.rad += 10
+        this.particles.forEach(p => {
+          if (p.life > 0) {
+            stillAlive = true
+            p.x += p.vx
+            p.y += p.vy
+            p.vy += 0.05
+            p.life--
+
+            ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${p.life / 100})`
+            ctx.beginPath()
+            ctx.arc(p.x, p.y, 15, 0, 2 * Math.PI)
+            ctx.fill()
+          }
+        })
+        this.alive = stillAlive
+      }
+    }
+
+    function TankExplosion(x, y, baseColor, topColor, basePath, topPath) {
+      this.x = x;
+      this.y = y;
+      this.baseColor = baseColor;
+      this.topColor = topColor;
+      this.basePath = basePath;
+      this.topPath = topPath;
+
+      this.top = { 
+        x: x, 
+        y: y, 
+        angle: 0, 
+        vx: 3, 
+        vy: -7, 
+        rotationSpeed: 0.15 
+      };
+
+      this.particles = [];
+      this.baseAlpha = 1;
+      this.finished = false;
+      this.explosionStarted = false;
+
+      setTimeout(() => { 
+        this.explosionStarted = true;
+      }, 300);
+
+      this.draw = () => {
+        if (!this.explosionStarted) {
+          DrawPath(this.x, this.y, this.basePath, this.baseColor, 0.3, 0.3);
+          DrawPath(this.top.x, this.top.y, this.topPath, this.topColor, 0.3, 0.3);
+          return;
+        }
+
+
+        this.top.x += this.top.vx;
+        this.top.y += this.top.vy;
+        this.top.vy += 0.25; 
+        this.top.angle += this.top.rotationSpeed;
+        DrawRotatedPath(this.top.x, this.top.y, this.topPath, this.topColor, 0.3, 0.3, this.top.angle);
+
+
+        if (this.baseAlpha > 0) {
+          this.baseAlpha -= 0.02;
+          if (this.baseAlpha < 0) this.baseAlpha = 0;
+          ctx.globalAlpha = this.baseAlpha;
+          DrawPath(this.x, this.y, this.basePath, this.baseColor, 0.3, 0.3);
+          ctx.globalAlpha = 1;
+
+          if (this.particles.length === 0) {
+            for (let i = 0; i < 100; i++) {
+              let angle = Math.random() * 2 * Math.PI;
+              let speed = Math.random() * 6 + 2;
+              this.particles.push({
+                x: this.x + 90,
+                y: this.y + 40,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                life: 60,
+                width: 6 + Math.random() * 10,
+                height: 4 + Math.random() * 8
+              });
+            }
+          }
+        }
+
+        let alive = false;
+        this.particles.forEach(p => {
+          if (p.life > 0) {
+            alive = true;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.2;
+            p.life--;
+            ctx.fillStyle = `rgba(255, ${Math.floor(Math.random()*255)}, 0, ${p.life / 60})`;
+            ctx.fillRect(p.x, p.y, p.width, p.height);
+          }
+        });
+
+        if (!alive && this.top.y > canvas.height) {
+          this.finished = true;
+        }
+      };
+    }
+
+    function DrawRotatedPath(x, y, path, color, scaleX, scaleY, angle) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.scale(scaleX, scaleY);
+      ctx.fillStyle = color;
+      ctx.fill(new Path2D(path));
+      ctx.restore();
+    }
+
+
+    function LowHealthEffect() {
+      this.alive = true;
+
+      this.draw = () => {
+        if ((!lowHealthGoing && (deadGoing || !replayGoing)) || !inGame) {
+          this.alive = false;
+          return;
+        }
+
+        const t = performance.now() / 1000;
+
+        const opacity = 0.4 + 0.2 * Math.sin(t * 4);
+
+        ctx.save();
+
+        ctx.fillStyle = `rgba(255, 0, 0, ${opacity})`;
+        ctx.beginPath();
+        ctx.arc(
+          canvas.width / 2,
+          canvas.height,
+          canvas.width * 0.3,
+          Math.PI,
+          2 * Math.PI
+        );
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(100 * 0.3, 0);
+        ctx.lineTo(120 * 0.5, canvas.height);
+
+        ctx.arc(
+          canvas.width / 2,
+          canvas.height,
+          canvas.width * 0.3,
+          Math.PI,
+          2 * Math.PI,
+          false
+        );
+
+        ctx.lineTo(520 * 0.5, canvas.height);
+        ctx.lineTo(420 * 0.7, 0);
+        ctx.lineTo(canvas.width, 0);
+        ctx.closePath();
+
+        const grad = ctx.createLinearGradient(
+          0,
+          canvas.height - canvas.width * 0.3,
+          0,
+          0
+        );
+        grad.addColorStop(0, `rgba(255, 0, 0, ${opacity * 0.4})`);
+        grad.addColorStop(0.4, `rgba(255, 0, 0, ${opacity * 0.15})`);
+        grad.addColorStop(1, `rgba(255, 0, 0, 0)`);
+
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        ctx.restore();
+      };
+    }
+
+
+    function TankWithArrow(startX, startY, colors, index, direction) {
+        this.tankX = startX;
+        this.tankY = startY;
+        this.direction = direction; 
+        this.speed = 6;
+
+        const arrowFillColor = colors.fill;
+        const arrowLineColor = colors.line;
+        const tankBrightColor = colors.tank;
+
+        const cfg = tankConfigs2[index];
+
+        this.draw = () => {
+            const dir = this.direction === "right" ? 1 : -1;
+            this.tankX += this.speed * dir;
+
+            ctx.save();
+
+            const gradient = ctx.createLinearGradient(
+                this.tankX + (dir === 1 ? -150 : 150), this.tankY,  
+                this.tankX + (dir === 1 ? 250 : -250), this.tankY   
+            );
+            gradient.addColorStop(0, "rgba(10, 61, 10, 0)");   
+            gradient.addColorStop(0.9, arrowFillColor);        
+            gradient.addColorStop(1, arrowFillColor);          
+
+
+            ctx.beginPath();
+            if (dir === 1) { 
+                ctx.moveTo(this.tankX - 80, this.tankY - 200);
+                ctx.lineTo(this.tankX + 300, this.tankY + 50);
+                ctx.lineTo(this.tankX - 80, this.tankY + 300);
+            } else { 
+                ctx.moveTo(this.tankX + 80, this.tankY - 200);
+                ctx.lineTo(this.tankX - 300, this.tankY + 50);
+                ctx.lineTo(this.tankX + 80, this.tankY + 300);
+            }
+          
+
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            ctx.strokeStyle = arrowLineColor; 
+            ctx.lineWidth = 8;
+            ctx.stroke();
+
+            ctx.restore();
+
+          
+            DrawPath(
+                this.tankX,
+                this.tankY,
+                cfg.path,
+                tankBrightColor,
+                dir === 1 ? cfg.scaleX : -cfg.scaleX, 
+                cfg.scaleY
+            );
+        }
+    }
+
+    function RadarEffect(flagPath) { 
+      this.alive = true;
+      this.ripples = [];
+      this.enemies = [];
+      this.lastRipple = 0;
+      const startTime = performance.now(); 
+
+      for (let i = 0; i < 20; i++) {
+        const angle = Math.random() * 2 * Math.PI;
+        const dist = 50 + Math.random() * 120;
+        this.enemies.push({
+          x: canvas.width / 2 + Math.cos(angle) * dist,
+          y: canvas.height / 2 + Math.sin(angle) * dist,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: (Math.random() - 0.5) * 1.5,
+          alpha: 0.2 
+        });
+      }
+
+      this.update = () => {
+        const now = performance.now();
+
+     
+        if (now - startTime > 6000) {
+          this.alive = false;
+          return;
+        }
+
+ 
+        if (now - this.lastRipple > 1000) { 
+          this.ripples.push({ radius: 0 });
+          this.lastRipple = now;
+        }
+
+
+        this.ripples.forEach(r => r.radius += 2);
+        this.ripples = this.ripples.filter(r => r.radius < canvas.width);
+
+
+        this.enemies.forEach(e => {
+          e.x += e.vx;
+          e.y += e.vy;
+
+          if (e.x < 0 || e.x > canvas.width) e.vx *= -1;
+          if (e.y < 0 || e.y > canvas.height) e.vy *= -1;
+
+          const dx = e.x - canvas.width / 2;
+          const dy = e.y - canvas.height / 2;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          e.alpha = 0.2;
+          this.ripples.forEach(r => {
+            if (Math.abs(dist - r.radius) < 10) { 
+              e.alpha = 1;
+            }
+          });
+        });
+      };
+
+      this.draw = () => {
+        if (!this.alive) return; 
+        this.update();
+
+        ctx.save();
+        ctx.strokeStyle = "yellow";
+        ctx.lineWidth = 15;
+        this.ripples.forEach(r => {
+          ctx.beginPath();
+          ctx.arc(canvas.width / 2, canvas.height / 2, r.radius, 0, 2 * Math.PI);
+          ctx.stroke();
+        });
+        ctx.restore();
+
+
+        DrawPath(-50, 40 , flagPath, "green", 0.5, 0.5);
+
+
+        this.enemies.forEach(e => {
+          ctx.fillStyle = `rgba(255,0,0,${e.alpha})`;
+          ctx.beginPath();
+          ctx.arc(e.x, e.y, 18, 0, 2 * Math.PI);
+          ctx.fill();
+        });
+      };
+    }   
+    //#endregion
+    
+  //#region Helper Functions
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+    //#endregion
+
+
+  window.requestAnimationFrame(update);
+</script>

@@ -1,0 +1,1219 @@
+<head>
+    <title>Black Ops 7 Dev</title>
+    <meta description="Effects and ambience for Call of Duty Black Ops 7 Multiplayer, Endgame, Zombies, and Campaign. v1.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background ambience." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes the background ambience." type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" tooltip="Changes the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+    <meta property="adjHUD" label="Adjust Health Bar" tooltip="Turn on to adjust the position of the health bar at full size. Turn off in-ggame." type="boolean" default="0" />
+    <meta property="hpBarOn" label="Health Bar Effect" tooltip="Turns on the health bar effect." type="boolean" default="1" />
+    <meta property="healthX" label="Health X" tooltip="Moves the health bar sideways." type="number" default="0" min="0" max="100">
+    <meta property="healthY" label="Health Y" tooltip="Moves the health bar up and down." type="number" default="30" min="0" max="100">
+    <meta property="healthWidth" label="Health Width" tooltip="Widens or narrows the health bar." type="number" default="100" min="0" max="100">
+    <meta property="healthHeight" label="Health Height" tooltip="Makes the health bar taller or shorter." type="number" default="15" min="0" max="100">
+    <meta property="lowHPOn" label="Low Health Effect" tooltip="Turns on the low health effect." type="boolean" default="1" />
+    <meta property="damageOn" label="Took Damage Effect" tooltip="Turns on the took damage effect." type="boolean" default="1" />
+    <meta property="killOn" label="Kill Effect" tooltip="Turns on the kill effect." type="boolean" default="1" />
+    <meta property="deathOn" label="Kill Effect" tooltip="Turns on the death effect." type="boolean" default="1" />
+    <meta property="endOn" label="Victory / Defeat Effect" tooltip="Turns on the Victory / Defeat effects." type="boolean" default="1" />
+    <meta property="ammoOn" label="Low Ammo Effect" tooltip="Turns on the low ammo effect." type="boolean" default="1" />
+    <meta property="utilityOn" label="Utility Effect" tooltip="Turns on the lethal, tactical, and special ability recharge effects." type="boolean" default="1" />
+
+
+    <meta meter="inGameYellow" tags="vlc,Call of Duty,duty" x="0.4918" y="0.064" width="0.0168" height="0.0132" 
+      h="30-90" s="30-100" l="50-100" hdr-h="30-90" hdr-s="10-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4969" y="0.0655" width="0.0059" height="0.0111" />
+      <resolution aspect="24:10" x="0.496" y="0.0625" width="0.008" height="0.0153" />
+      <resolution aspect="16:11" x="0.4943" y="0.0625" width="0.0125" height="0.0092" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="inGameNotYellow" tags="vlc,Call of Duty,duty" x="0.4949" y="0.0785" width="0.0102" height="0.0021" 
+      h="30-90" s="30-100" l="50-100" hdr-h="30-90" hdr-s="10-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4975" y="0.0806" width="0.0058" height="0.0000" />
+      <resolution aspect="24:10" x="0.4977" y="0.0569" width="0.0038" height="0.0028" />
+      <resolution aspect="16:11" x="0.4953" y="0.0750" width="0.0083" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="inGameCheck" tags="vlc,Call of Duty,duty" x="0.4918" y="0.064" width="0.0168" height="0.0132" 
+      h="30-90" s="20-100" l="50-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.4969" y="0.0655" width="0.0059" height="0.0111" />
+      <resolution aspect="24:10" x="0.496" y="0.0625" width="0.008" height="0.0153" />
+      <resolution aspect="16:11" x="0.4943" y="0.0625" width="0.0125" height="0.0092" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGameBlue" tags="vlc,Call of Duty,duty" x="0.4984" y="0.9375" width="0.0004" height="0.0014" 
+      h="160-200" s="40-100" l="10-100" hdr-h="160-200" hdr-s="50-100" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4986" y="0.9383" width="0.0006" height="0.0006" />
+      <resolution aspect="24:10" x="0.4980" y="0.9382" width="0.0015" height="0.0007" />
+      <resolution aspect="16:11" x="0.4979" y="0.9408" width="0.0016" height="0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGameYellow" tags="vlc,Call of Duty,duty" x="0.9672" y="0.9465" width="0.0008" height="0.0014" 
+      h="30-80" s="70-100" l="70-100" hdr-h="30-90" hdr-s="10-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.9930" y="0.9500" width="0.0002" height="0.0022" />
+      <resolution aspect="24:10" x="0.9805" y="0.9500" width="0.0003" height="0.0007" />
+      <resolution aspect="16:11" x="0.9672" y="0.952" width="0.0005" height="0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zombieWhite" tags="vlc,Call of Duty,duty" x="0.0797" y="0.9556" width="0.0055" height="0.0090" 
+      h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-10" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0314" y="0.9628" width="0.0039" height="0.0117" />
+      <resolution aspect="24:10" x="0.0538" y="0.96" width="0.0076" height="0.0097" />
+      <resolution aspect="16:11" x="0.0792" y="0.9617" width="0.0057" height="0.0058" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zombieYellow" tags="vlc,Call of Duty,duty" x="0.1402" y="0.9451" width="0.0043" height="0.0139" 
+      h="40-80" s="40-100" l="40-100" hdr-h="30-90" hdr-s="10-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0642" y="0.9572" width="0.0022" height="0.0117" />
+      <resolution aspect="24:10" x="0.1020" y="0.9507" width="0.0035" height="0.0139" />
+      <resolution aspect="16:11" x="0.1401" y="0.9508" width="0.0036" height="0.0108" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="health1" tags="vlc,Call of Duty,duty" x="0.0332" y="0.9257" width="0.0515" height="-0.0014" 
+      h="0-360" s="0-20" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0080" y="0.9306" width="0.0241" height="0.0017" />
+      <resolution aspect="24:10" x="0.0203" y="0.9278" width="0.0430" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0333" y="0.9342" width="0.045" height="-0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="health2" tags="vlc,Call of Duty,duty" x="0.0906" y="0.9181" width="0.0461" height="0.0014" 
+      h="0-360" s="0-20" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0383" y="0.9256" width="0.0236" height="0.0022" />
+      <resolution aspect="24:10" x="0.0619" y="0.9222" width="0.0375" height="0.0000" />
+      <resolution aspect="16:11" x="0.094" y="0.9267" width="0.0391" height="-0.0025" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="healthRed1" tags="vlc,Call of Duty,duty" x="0.0332" y="0.9257" width="0.0515" height="-0.0014" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0080" y="0.9306" width="0.0241" height="0.0017" />
+      <resolution aspect="24:10" x="0.0203" y="0.9278" width="0.0430" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0333" y="0.9342" width="0.045" height="-0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="healthRed2" tags="vlc,Call of Duty,duty" x="0.0906" y="0.9181" width="0.0461" height="0.0014" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0383" y="0.9256" width="0.0236" height="0.0022" />
+      <resolution aspect="24:10" x="0.0619" y="0.9222" width="0.0375" height="0.0000" />
+      <resolution aspect="16:11" x="0.094" y="0.9267" width="0.0391" height="-0.0025" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zHealth1" tags="vlc,Call of Duty,duty" x="0.0777" y="0.9313" width="0.048" height="0.0001" 
+      h="0-360" s="0-20" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0309" y="0.9383" width="0.0255" height="0.0022" />
+      <resolution aspect="24:10" x="0.0541" y="0.9347" width="0.0430" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0786" y="0.9383" width="0.0427" height="-0.0025" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zHealth2" tags="vlc,Call of Duty,duty" x="0.1383" y="0.9236" width="0.0473" height="-0.0014" 
+      h="0-360" s="0-20" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0611" y="0.9328" width="0.0272" height="0.0022" />
+      <resolution aspect="24:10" x="0.1000" y="0.9285" width="0.0369" height="-0.0007" />
+      <resolution aspect="16:11" x="0.1448" y="0.9300" width="0.0406" height="0.0000" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zHealthRed1" tags="vlc,Call of Duty,duty" x="0.0777" y="0.9313" width="0.048" height="0.0001" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0309" y="0.9383" width="0.0255" height="0.0022" />
+      <resolution aspect="24:10" x="0.0541" y="0.9347" width="0.0430" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0786" y="0.9383" width="0.0427" height="-0.0025" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zHealthRed2" tags="vlc,Call of Duty,duty" x="0.1383" y="0.9236" width="0.0473" height="-0.0014" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0611" y="0.9328" width="0.0272" height="0.0022" />
+      <resolution aspect="24:10" x="0.0951" y="0.9250" width="0.0375" height="0.0000" />
+      <resolution aspect="16:11" x="0.1448" y="0.9300" width="0.0406" height="0.0000" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGHealth1" tags="vlc,Call of Duty,duty" x="0.0781" y="0.9278" width="0.046" height="-0.0021" 
+      h="0-360" s="0-20" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0311" y="0.9339" width="0.0311" height="0.0000" />
+      <resolution aspect="24:10" x="0.0547" y="0.9306" width="0.0439" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0786" y="0.9342" width="0.0432" height="0.0000" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGHealth2" tags="vlc,Call of Duty,duty" x="0.1352" y="0.9201" width="0.0434" height="0.0000" 
+      h="0-360" s="0-20" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0608" y="0.9294" width="0.0245" height="0.0028" />
+      <resolution aspect="24:10" x="0.0951" y="0.9250" width="0.0375" height="0.0000" />
+      <resolution aspect="16:11" x="0.1385" y="0.9275" width="0.0401" height="-0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGHealthRed1" tags="vlc,Call of Duty,duty" x="0.0781" y="0.9278" width="0.046" height="-0.0021" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0311" y="0.9339" width="0.0311" height="0.0000" />
+      <resolution aspect="24:10" x="0.0547" y="0.9306" width="0.0439" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0786" y="0.9342" width="0.0432" height="0.0000" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGHealthRed2" tags="vlc,Call of Duty,duty" x="0.1352" y="0.9201" width="0.0434" height="0.0000" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0608" y="0.9294" width="0.0245" height="0.0028" />
+      <resolution aspect="24:10" x="0.1000" y="0.9285" width="0.0369" height="-0.0007" />
+      <resolution aspect="16:11" x="0.1385" y="0.9275" width="0.0401" height="-0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="killWhite" tags="vlc,Call of Duty,duty" x="0.5687" y="0.4625" width="0.0113" height="0.0104" 
+      h="0-360" s="0-10" l="70-95" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5336" y="0.4633" width="0.0062" height="0.0106" />
+      <resolution aspect="24:10" x="0.5465" y="0.4625" width="0.0110" height="0.0118" />
+      <resolution aspect="16:11" x="0.5693" y="0.4685" width="0.0104" height="0.0092" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="killNotWhite1" tags="vlc,Call of Duty,duty" x="0.5664" y="0.4576" width="0.0133" height="0.0007" 
+      h="0-360" s="0-10" l="70-95" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5353" y="0.4561" width="0.0038" height="0.0011" />
+      <resolution aspect="24:10" x="0.5497" y="0.4535" width="0.0122" height="0.0028" />
+      <resolution aspect="16:11" x="0.5687" y="0.4625" width="0.0089" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="killNotWhite2" tags="vlc,Call of Duty,duty" x="0.5652" y="0.4750" width="0.0160" height="0.0028" 
+      h="0-360" s="0-10" l="70-95" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5352" y="0.4778" width="0.0041" height="0.0006" />
+      <resolution aspect="24:10" x="0.5494" y="0.4757" width="0.0131" height="0.0021" />
+      <resolution aspect="16:11" x="0.5687" y="0.4792" width="0.0083" height="0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="deathRed" tags="vlc,Call of Duty,duty" x="0.4754" y="0.858" width="0.0172" height="0.0083" 
+      h="-30-30" s="50-100" l="40-90" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4991" y="0.8561" width="0.0086" height="0.0078" />
+      <resolution aspect="24:10" x="0.4904" y="0.8569" width="0.0151" height="0.0083" />
+      <resolution aspect="16:11" x="0.4953" y="0.8692" width="0.0208" height="0.0058" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="deathNotRed" tags="vlc,Call of Duty,duty" x="0.4813" y="0.8451" width="0.0195" height="0.0007" 
+      h="-30-30" s="50-100" l="40-90" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5000" y="0.8739" width="0.0067" height="0.0017" />
+      <resolution aspect="24:10" x="0.4823" y="0.8438" width="0.0398" height="0.0021" />
+      <resolution aspect="16:11" x="0.4891" y="0.8800" width="0.0172" height="0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="deathRoundRed" tags="vlc,Call of Duty,duty" x="0.4973" y="0.6292" width="0.0027" height="0.0028" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4986" y="0.6294" width="0.0008" height="0.0006" />
+      <resolution aspect="24:10" x="0.4974" y="0.6299" width="0.0017" height="0.0007" />
+      <resolution aspect="16:11" x="0.4969" y="0.6167" width="0.0010" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="deathRoundBlack" tags="vlc,Call of Duty,duty" x="0.4992" y="0.6382" width="0.0016" height="0.0014" 
+      h="0-360" s="0-100" l="0-25" hdr-h="0-360" hdr-s="0-100" hdr-l="0-45" type="area">
+      <resolution aspect="3.55:1" x="0.4992" y="0.6361" width="0.0016" height="0.0017" />
+      <resolution aspect="24:10" x="0.4983" y="0.6368" width="0.0032" height="0.0028" />
+      <resolution aspect="16:11" x="0.4974" y="0.6225" width="0.0036" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGameWhite" tags="vlc,Call of Duty,duty" x="0.4852" y="0.5174" width="0.0297" height="0.0292" 
+      h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-10" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4930" y="0.5167" width="0.0142" height="0.0300" />
+      <resolution aspect="24:10" x="0.4890" y="0.5167" width="0.0221" height="0.0312" />
+      <resolution aspect="16:11" x="0.4855" y="0.5617" width="0.0286" height="0.0267" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="endGameNotWhite" tags="vlc,Call of Duty,duty" x="0.4945" y="0.5083" width="0.0109" height="0.0014" 
+      h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-10" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4973" y="0.5061" width="0.0047" height="-0.0006" />
+      <resolution aspect="24:10" x="0.4939" y="0.5528" width="0.0148" height="-0.0007" />
+      <resolution aspect="16:11" x="0.4948" y="0.5558" width="0.0094" height="0.0000" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="victoryBlue" tags="vlc,Call of Duty,duty" x="0.4656" y="0.1472" width="0.0664" height="0.0424" 
+      h="180-270" s="50-100" l="50-100" hdr-h="160-200" hdr-s="50-100" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4819" y="0.1489" width="0.0314" height="0.0417" />
+      <resolution aspect="24:10" x="0.4805" y="0.1472" width="0.0468" height="0.0431" />
+      <resolution aspect="16:11" x="0.4635" y="0.1833" width="0.0635" height="0.0375" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="defeatRed" tags="vlc,Call of Duty,duty" x="0.4656" y="0.1472" width="0.0664" height="0.0424" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4819" y="0.1489" width="0.0314" height="0.0417" />
+      <resolution aspect="24:10" x="0.4805" y="0.1472" width="0.0468" height="0.0431" />
+      <resolution aspect="16:11" x="0.4635" y="0.1833" width="0.0635" height="0.0375" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="lowAmmoRed" tags="vlc,Call of Duty,duty" x="0.7555" y="0.8688" width="0.0305" height="0.0104" 
+      h="-30-15" s="50-100" l="50-100" hdr-h="-30-20" hdr-s="40-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8783" y="0.8839" width="0.0164" height="0.0072" />
+      <resolution aspect="24:10" x="0.8134" y="0.8743" width="0.0282" height="0.0111" />
+      <resolution aspect="16:11" x="0.7521" y="0.8825" width="0.0318" height="0.0067" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="lowAmmoNotRed" tags="vlc,Call of Duty,duty" x="0.7281" y="0.8743" width="0.0031" height="0.0076" 
+      h="-30-15" s="50-100" l="50-100" hdr-h="-30-20" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8680" y="0.8978" width="0.0039" height="0.0022" />
+      <resolution aspect="24:10" x="0.8189" y="0.8403" width="0.0160" height="0.0049" />
+      <resolution aspect="16:11" x="0.7359" y="0.9025" width="0.0089" height="0.0033" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="tacticalOrange" tags="vlc,Call of Duty,duty" x="0.8633" y="0.8340" width="0.0020" height="0.0007" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9391" y="0.8417" width="0.0012" height="0.0000" />
+      <resolution aspect="24:10" x="0.9017" y="0.8375" width="0.0023" height="0.0007" />
+      <resolution aspect="16:11" x="0.8641" y="0.8500" width="0.0036" height="0.0000" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="lethalOrange" tags="vlc,Call of Duty,duty" x="0.8719" y="0.8340" width="0.0020" height="0.0007" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9427" y="0.8417" width="0.0009" height="0.0006" />
+      <resolution aspect="24:10" x="0.9073" y="0.8375" width="0.0017" height="0.0014" />
+      <resolution aspect="16:11" x="0.8734" y="0.8500" width="0.0010" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="ultimateOrange" tags="vlc,Call of Duty,duty" x="0.9578" y="0.9313" width="0.0012" height="0.0000" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9880" y="0.9350" width="0.0003" height="0.0011" />
+      <resolution aspect="24:10" x="0.9439" y="0.8708" width="0.0009" height="0.0014" />
+      <resolution aspect="16:11" x="0.9573" y="0.939" width="0.0010" height="0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zTacticalOrange" tags="vlc,Call of Duty,duty" x="0.8711" y="0.8354" width="0.0020" height="0.0007" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9413" y="0.8444" width="0.0019" height="-0.0006" />
+      <resolution aspect="24:10" x="0.9067" y="0.8403" width="0.0015" height="0.0000" />
+      <resolution aspect="16:11" x="0.8703" y="0.8508" width="0.0021" height="0.0017" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zLethalOrange" tags="vlc,Call of Duty,duty" x="0.8777" y="0.8368" width="0.0020" height="0.0007" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9455" y="0.8444" width="0.0011" height="-0.0006" />
+      <resolution aspect="24:10" x="0.9116" y="0.8403" width="0.0012" height="0.0000" />
+      <resolution aspect="16:11" x="0.8776" y="0.8525" width="0.0031" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="zUltimateOrange" tags="vlc,Call of Duty,duty" x="0.9609" y="0.9292" width="0.0012" height="0.0014" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9895" y="0.9333" width="0.0008" height="0.0028" />
+      <resolution aspect="24:10" x="0.9453" y="0.8701" width="0.0006" height="0.0021" />
+      <resolution aspect="16:11" x="0.9609" y="0.9367" width="0.0026" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="eGLethalOrange" tags="vlc,Call of Duty,duty" x="0.9250" y="0.8514" width="0.0020" height="0.0000" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9716" y="0.8572" width="0.0012" height="0.0000" />
+      <resolution aspect="24:10" x="0.9483" y="0.8535" width="0.0012" height="0.0014" />
+      <resolution aspect="16:11" x="0.9250" y="0.8658" width="0.0016" height="0.0008" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="eGUltimateOrange" tags="vlc,Call of Duty,duty" x="0.8840" y="0.9347" width="0.0020" height="0.0007" 
+      h="15-40" s="60-100" l="60-100" hdr-h="20-60" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9491" y="0.9433" width="0.0008" height="0.0028" />
+      <resolution aspect="24:10" x="0.9180" y="0.9340" width="0.0009" height="0.0014" />
+      <resolution aspect="16:11" x="0.8839" y="0.9392" width="0.0016" height="0.0025" />
+
+      <!-- <resolution size="2560x1080" x="0.4992" y="0.0000" width="0.0012" height="0.0014" /> -->
+    </meta>
+    <!-- 40 -->
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    //Health Bar, Taking Damage, Low Health
+    //Got a kill
+    //Player died
+    //Victory, Defeat
+    //Low Ammo
+    //Tactical / Lethal / Special Ready
+
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = 320;
+    const height = 200;
+    let effects = [];
+    let gState = "Out of Game"
+
+            // Create a hidden canvas
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width = 320;
+    hiddenCanvas.height = 200;
+    // Don't attach to DOM
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    let IGYellowMeter = new Meter(5, inGameCallback)
+    let IGNotYellowMeter = new Meter(5, inGameCallback)
+    let CheckMeter = new Meter(8, inGameCallback)
+
+    let EndGameBMeter = new Meter(4, inGameCallback)
+    let EndGameYMeter = new Meter(4, inGameCallback)
+    let ZombieWMeter = new Meter(4, inGameCallback)
+    let ZombieYMeter = new Meter(4, inGameCallback)
+
+    let HealthMeter = new Meter(3, healthCallback)
+    let HealthRedMeter = new Meter(3, healthCallback)
+
+    let KillWhiteMeter = new Meter(6, killCallback)
+    let KillNW1Meter = new Meter(5, killCallback)
+    let KillNW2Meter = new Meter(5, killCallback)
+
+    let DeathRedMeter = new Meter(5, deathCallback)
+    let DeathNotRedMeter = new Meter(5, deathCallback)
+    let DeathRoundRMeter = new Meter(5, deathCallback)
+    let DeathRoundBMeter = new Meter(5, deathCallback)
+
+    let EndGameMeter = new Meter(5, endGameCallback)
+    let EndGameNotMeter = new Meter(5, endGameCallback)
+    let VictoryMeter = new Meter(3, endGameCallback)
+    let DefeatMeter = new Meter(3, endGameCallback)
+
+    let LowAmmoMeter = new Meter(5, lowAmmoCallback)
+    let LowAmmoNotMeter = new Meter(5, lowAmmoCallback)
+
+    let TacOrangeMeter = new Meter(5, utilityCallback)
+    let LetOrangeMeter = new Meter(5, utilityCallback)
+    let UltOrangeMeter = new Meter(5, utilityCallback)
+   
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+
+      IGYellowMeter.setValue(engine.vision.inGameYellow)
+      IGNotYellowMeter.setValue(engine.vision.inGameNotYellow)
+      CheckMeter.setValue(engine.vision.inGameCheck[0])
+      EndGameBMeter.setValue(engine.vision.endGameBlue)
+      EndGameYMeter.setValue(engine.vision.endGameYellow)
+      ZombieYMeter.setValue(engine.vision.zombieYellow)
+      ZombieWMeter.setValue(engine.vision.zombieWhite)
+
+      let healthData = 0
+      let redHealthData = 0
+      let tacData = 0
+      let letData = 0
+      let ultData = 0
+      if(gState == "Multiplayer") {
+        healthData = (engine.vision.health1 + engine.vision.health2) / 2
+        redHealthData = (engine.vision.healthRed1 + engine.vision.healthRed2) / 2
+        tacData = engine.vision.tacticalOrange
+        letData = engine.vision.lethalOrange
+        ultData = engine.vision.ultimateOrange
+      } else if (gState == "Zombies"){
+        healthData = (engine.vision.zHealth1 + engine.vision.zHealth2) / 2
+        redHealthData = (engine.vision.zHealthRed1 + engine.vision.zHealthRed2) / 2
+      } else if (gState == "Endgame"){
+        healthData = (engine.vision.endGHealth1 + engine.vision.endGHealth2) / 2
+        redHealthData = (engine.vision.endGHealthRed1 + engine.vision.endGHealthRed2) / 2
+      }
+
+      HealthMeter.setValue(healthData)
+      HealthRedMeter.setValue(redHealthData)
+
+      KillWhiteMeter.setValue(engine.vision.killWhite)
+      KillNW1Meter.setValue(engine.vision.killNotWhite1)
+      KillNW2Meter.setValue(engine.vision.killNotWhite2)
+
+      DeathRedMeter.setValue(engine.vision.deathRed)
+      DeathNotRedMeter.setValue(engine.vision.deathNotRed)
+      DeathRoundRMeter.setValue(engine.vision.deathRoundRed)
+      DeathRoundBMeter.setValue(engine.vision.deathRoundBlack)
+
+      EndGameMeter.setValue(engine.vision.endGameWhite)
+      EndGameNotMeter.setValue(engine.vision.endGameNotWhite)
+      VictoryMeter.setValue(engine.vision.victoryBlue)
+      DefeatMeter.setValue(engine.vision.defeatRed)
+
+      LowAmmoMeter.setValue(engine.vision.lowAmmoRed)
+      LowAmmoNotMeter.setValue(engine.vision.lowAmmoNotRed)
+
+      TacOrangeMeter.setValue(tacData)
+      LetOrangeMeter.setValue(letData)
+      UltOrangeMeter.setValue(ultData)
+  
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.lifetime <= 0){
+          effects.splice(i, 1)
+        }
+      })
+
+      if(adjHUD && !gInGame) DrawRect(healthX * 3.2, healthY * 2, healthWidth * 3.2, healthHeight * 2, "red")
+
+      ctx.drawImage(hiddenCanvas, 0, 0)
+  
+      window.requestAnimationFrame(update);
+    };
+    //#endregion
+
+    let gInGame = false
+    function inGameCallback(){
+      if(IGYellowMeter.value >= .2 && engine.vision.inGameNotYellow < .1){
+        gInGame = true
+        if(EndGameBMeter.value >= .75 && EndGameYMeter.value >= .75) gState = "Endgame"
+        else if(ZombieWMeter.value >= .5 && ZombieYMeter.value >= .5) gState = "Zombies"
+        else if(EndGameBMeter.value <= .25 && EndGameYMeter.value <= .25 && ZombieYMeter.value <= .25) gState = "Multiplayer"
+        if(hpBarOn && !deathGoing) effects.push(new healthBar())
+      } else if(IGYellowMeter.value <= .05 && HealthMeter.value <= .1 && HealthRedMeter.value <= .1) gInGame = false
+    }
+
+    function healthBar(){
+        this.val = 0
+        this.done = false
+        this.draw = function(){
+            DrawRect(healthX * 3.2, healthY * 2, healthWidth * 3.2 * this.val, healthHeight * 2, "red")
+            if(!gInGame || !hpBarOn || deathGoing) this.done = true
+            if(this.done) this.val > .01 ? this.val *= .95 : this.lifetime = 0
+            else this.val += ((HealthMeter.value * 1.05) - this.val) / 20
+        }
+    }
+
+    let lowHPGoing = false
+    let damageGoing = false
+    function healthCallback(){
+      if(gInGame && HealthMeter.value <= .33 && engine.vision.inGameYellow >= .2 && !lowHPGoing){
+        lowHPGoing = true
+        if(lowHPOn) effects.push(new lowHealth())
+      } else if(!gInGame || (gInGame && HealthMeter.value > .33)) lowHPGoing = false
+
+      if(gInGame && HealthRedMeter.value >= .15 && !damageGoing){
+        damageGoing = true
+        if(damageOn) effects.push(new tookDamage())
+      } else if(!gInGame || (gInGame && HealthRedMeter.value < .05)) damageGoing = false
+    }
+
+    function tookDamage(){
+        this.alpha = 0
+        this.rot = Math.PI / 4 * Math.random() - Math.PI / 8
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, getColorString(20, 100, 60, this.alpha / 2))
+            if(!this.half) this.alpha <= .75 ? this.alpha += .25 : this.half = true
+            else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+            hiddenCtx.save()
+            hiddenCtx.translate(160, 350)
+            hiddenCtx.rotate(this.rot)
+            hiddenCtx.translate(-160, -350)
+            DrawStroke(160, 350, 250, getColorString(0, 100, 50, this.alpha * 2), 30)
+            DrawTriangle(100, 100, 220, 100, 160, 40, getColorString(0, 100, 50, this.alpha * 2))
+            DrawTriangle(105, 105, 215, 105, 160, 50, getColorString(0, 100, 75, this.alpha))
+            hiddenCtx.restore()
+        }
+    }
+
+    function lowHealth(){
+        this.count = 0
+        this.draw = function(){
+            this.count < 5 ? this.count++ : this.count = 0
+            if(!this.count) effects.push(new lhRect(Math.cos(Date.now() / 110) * 20 + 20))
+            if(!lowHPGoing || !gInGame || !lowHPOn) this.lifetime = 0
+        }
+    }
+
+    function lhRect(mod){
+        this.x = -20
+        this.y = 200
+        this.height = Math.sin(Date.now() / 200) * 50 + 100
+        this.mod = mod
+        this.draw = function(){
+            DrawRect(this.x, this.y, 30, -this.height - this.mod, getColorString(0, 100, 50, .66))
+            this.x < 350 ? this.x += 5 : this.lifetime = 0
+        }
+    }
+
+
+    let killGoing = false
+    function killCallback(){
+      if(gInGame && KillWhiteMeter.value >= .2 && engine.vision.killNotWhite1 < .05 && engine.vision.killNotWhite2 < .05 && !killGoing){
+        killGoing = true
+        if(killOn) effects.push(new gotAKill())
+      } else if(!gInGame || (gInGame && KillWhiteMeter.value <= .1)) killGoing = false
+    }
+
+    function gotAKill(){
+        this.alpha = 0
+        this.alpha2 = 0
+        this.width = 0
+        this.rad = 1
+        this.stroke = 1
+        this.x = 160
+        this.y = 100
+        this.y2 = 0
+        this.count = 0
+        this.now = false
+        this.draw = function(){
+            if(!this.half) {
+                this.alpha <= .95 ? this.alpha += .05 : this.half = true
+                this.rad = this.alpha * 100
+                this.stroke = this.alpha * 45
+                this.width = this.alpha * 75
+            }
+            else {
+                if(this.count == 10){
+                    this.alpha2 = .75
+                    this.y = 50
+                }
+                if(this.count <= 10) this.count++ 
+                else this.y2 < 150 ? this.y2 += 5 : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+            }
+            if(this.alpha2) this.alpha2 *= .95
+            DrawCircle(160, this.y2 + 100, 40, getColorString(0, 100, 0, this.alpha * 2))
+            DrawCircle(160, this.y2 + 165, 50, getColorString(0, 100, 0, this.alpha * 2))
+            DrawRect(110, this.y2 + 165, 100, 100, getColorString(0, 100, 0, this.alpha * 2))
+            DrawRect(0, 0, 320, 200, getColorString(45, 100, 60, this.alpha2 * this.alpha))
+            DrawStroke(this.x, this.y, this.rad, getColorString(0, 100, 20, this.alpha), this.stroke)
+            DrawRect(this.x - 10, this.y - this.width, 20, this.width * 2, getColorString(0, 100, 20, this.alpha)) 
+            DrawRect(this.x - this.width, this.y - 10, this.width * 2, 20, getColorString(0, 100, 20, this.alpha)) 
+            this.y += (100 - this.y) / 20
+        }
+    }
+
+    let deathGoing = false
+    function deathCallback(){
+      if(!gInGame && DeathRedMeter.value >= .3 && engine.vision.deathNotRed < .1 && !deathGoing){
+        deathGoing = true
+        if(deathOn) effects.push(new playerDied())
+      } else if (gInGame) deathGoing = false
+
+      if(gInGame && DeathRoundRMeter.value >= .95 && DeathRoundBMeter.value >= .95 && !deathGoing){
+        deathGoing = true
+        if(deathOn) effects.push(new playerDied())
+      } else if (gInGame && DeathRoundRMeter.value <= .1 && DeathRoundBMeter.value <= .1) deathGoing = false
+    }
+
+    function playerDied(){
+        this.x = -20
+        this.y = 150
+        this.vx = 4.5
+        this.vy = -3.5
+        this.ay = .1
+        this.rot = Math.random() * Math.PI * 2
+        this.effects = []
+        this.alpha = 0
+        this.draw = function(){
+            if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
+            else this.alpha *= .95
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.alpha))
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+            hiddenCtx.save()
+            hiddenCtx.translate(this.x, this.y)
+            hiddenCtx.rotate(this.rot)
+            hiddenCtx.translate(-this.x, -this.y)
+                DrawRect(this.x - 20, this.y - 20, 40, 50, getColorString(0, 0, 100, 1))
+                DrawCircle(this.x, this.y - 20, 20, getColorString(0, 100, 100, 1))
+                DrawCircle(this.x, this.y - 50, 18, getColorString(0, 100, 100, 1))
+            hiddenCtx.save()
+            hiddenCtx.translate(this.x - 10, this.y - 35)
+            hiddenCtx.rotate(this.rot * -1.25)
+            hiddenCtx.translate(-(this.x - 10), -(this.y - 35))
+                DrawRect(this.x - 10, this.y - 35, -60, 10, getColorString(0, 100, 100, 1))
+            hiddenCtx.restore()
+            hiddenCtx.save()
+            hiddenCtx.translate(this.x + 10, this.y - 35)
+            hiddenCtx.rotate(this.rot * 1.5)
+            hiddenCtx.translate(-(this.x + 10), -(this.y - 35))
+                DrawRect(this.x + 10, this.y - 35, 60, 10, getColorString(0, 100, 100, 1))
+            hiddenCtx.restore()
+            hiddenCtx.save()
+            hiddenCtx.translate(this.x - 20, this.y + 20)
+            hiddenCtx.rotate(this.rot * 1.15)
+            hiddenCtx.translate(-(this.x - 20), -(this.y + 20))
+                DrawRect(this.x - 20, this.y + 20, 10, 60, getColorString(0, 100, 100, 1))
+            hiddenCtx.restore()
+            hiddenCtx.save()
+            hiddenCtx.translate(this.x + 10, this.y + 20)
+            hiddenCtx.rotate(this.rot * -1.33)
+            hiddenCtx.translate(-(this.x + 10), -(this.y + 20))
+                DrawRect(this.x + 10, this.y + 20, 10, 60, getColorString(0, 100, 100, 1))
+            hiddenCtx.restore()
+            hiddenCtx.restore()
+            this.x < 350 ? this.x += this.vx : this.done = true
+            this.y += this.vy
+            this.vy += this.ay
+            this.rot += .05
+            if(!this.done) this.effects.push(new diedHelp(this.x - 20 + Math.random() * 40, this.y + Math.random() * 40))
+            if(this.done && this.effects.length == 0) this.lifetime = 0
+        }
+    }
+
+    function diedHelp(x, y){
+        this.x = x
+        this.y = y
+        this.rad = Math.random() * 10 + 5
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(0, 100, 50, 1))
+            this.rad > 1 ? this.rad-=.2 : this.lifetime = 0
+        }
+    }
+
+    let endGoing = false
+    function endGameCallback(){
+      if(!gInGame && EndGameMeter.value >= .2 && engine.vision.endGameNotWhite < .1 && !endGoing){
+        if(VictoryMeter.value >= .35) {
+          if(endOn) effects.push(new victory())
+          endGoing = true
+        }
+        else if(DefeatMeter.value >= .3) {
+          if(endOn) effects.push(new defeat())
+          endGoing = true
+        }
+      } else if (gInGame) endGoing = false
+    }
+
+    function defeat(){
+        this.alpha = 0
+        this.count = 0
+        this.count2 = 0
+        this.draw = function(){
+            if(this.count2 < 4) this.alpha <= .99 ? this.alpha += .01 : this.alpha = 1
+            else this.alpha >= .0021 ? this.alpha -=.002 : this.lifetime = 0
+            this.count < 100 ? this.count ++ : this.count = 0
+            let temp = Math.random() * 200 + 60
+            if(!this.count){
+                for(let i = 0; i < 100; i++) effects.push(new defeatPart(temp, 130))
+                this.count2++
+            }
+            DrawRect(0, 0, 320, 200, getColorString(0, 100, 10, this.alpha))
+            DrawRect(0, 130, 320, 200, getColorString(0, 100, 1, this.alpha))
+        }
+    }
+
+    function defeatPart(x, y){
+        this.x = x
+        this.y = y
+        let max = 28
+        this.rad = Math.random() * 25 + 2
+        this.vx = Math.random() * max / 4 - max / 8
+        this.vy = Math.random() * -1 * max / 2
+        this.ay = .2
+        this.hue = (max - this.rad) / max * 60
+        this.lit = (max - this.rad) / max * 50
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(this.hue, 100, this.lit, 1))
+            this.x += this.vx
+            this.y += this.vy
+            this.vy += this.ay
+            this.rad > 1 ? this.rad-=.25 : this.lifetime = 0
+        }
+    }
+
+    let vHand = "m58.49,86.49l22.02,25.98,34.79-24.67-28.4-27.29s-7.27-7.93-7.49-10.57-.44-15.41-.44-18.28-1.32-13.65-6.17-17.83-12.33-10.35-14.31-11.23-9.25-3.52-11.45-1.1-3.3,4.4-4.84,5.28-11.45,4.18-11.45,4.18c0,0-2.42,1.76-1.54,3.74s-8.37-4.18-8.37-4.18c0,0-2.86-3.3-4.18-3.52s-6.39-.88-8.37.44l-1.98,1.32s-1.76,2.42-1.76,3.96,1.76,3.3,2.64,5.5,1.98,4.62,1.98,4.62c0,0-4.84.44-6.17,1.54s-2.42,6.17-1.76,7.05,4.62,5.94,4.62,5.94c0,0-3.04.44-4.82,2.64s1.3,7.27,2.18,9.03,4.18,3.52,5.94,3.96l1.76.44s1.76,1.54,6.83.22l5.06-1.32s2.86-1.54,2.86-2.64v-1.1s.44,0-.44-2.2l-.88-2.2h0s5.06,1.32,8.59-.44l3.52-1.76s.22.66-.44-3.3.88-4.18-1.1-5.28-5.06-3.3-5.06-3.3c0,0,2.86.66,4.84,0l1.98-.66s.22-2.64.44-3.52.44-4.62.44-4.62c0,0,6.61,1.54,8.15,1.1l1.54-.44,3.52-1.1s2.64,3.3,3.96,4.4-1.54,4.4-1.54,7.27-.88,7.05-1.32,9.47-1.98,6.61-.88,9.69l1.1,3.08.44,3.08-6.61,15.41c-5.72,1.54-6.61,1.98-9.25.88s-3.74-2.42-3.74-2.42l.44,3.52,7.05,3.3s3.96.22,5.5,1.32,5.5,2.86,6.83,3.3,5.72,3.3,5.72,3.3Z"
+    let vGun1 = "m112.87,67.22c3.74-6.61-4.4-2.64-4.4-2.64L20.17,4.02V1.16l-4.62.66-1.76-1.32h-1.98l-6.17,8.37s.88,2.2-.88,3.52S.57,22.96.57,22.96c0,0,32.81,22.68,34.57,24.22,1.76,1.54,0,4.62-.22,6.17-.22,1.54-5.72,7.27-7.49,8.1-1.76.83-.66,3.35-.66,3.35l23.95,17.42s4.45,4.59,6.21,7.9c1.76,3.3-11.01,36.55-11.01,36.55l3.08,3.46-3.96,2.92,23.56,15.85s1.1-3.52,2.57-2.31c1.47,1.22,5.82,1.75,8.43,1.16s4.06-3.1,4.06-3.1l1.56-3.64c1.56-3.64,2.18-18.99,4.74-34.83s18.44-19.71,18.44-19.71l9.53-14.86-5.06-4.4Zm-58.47,1.76c-.23,5.28-7.25,4.29-7.25,4.29l1.21,1.87.88.11c.88.11,6.28,1.87,4.95,2.42-1.32.55-3.46,0-3.46,0l-4.58-2.97s-6.72-4.73-9.95-7.05-1.83-6.21-1.83-6.21l3.52-5.9s1.1-1.32,2.42-1.98c1.32-.66,4.73.99,5.39,1.32.66.33,3.74,2.64,6.39,4.51,2.64,1.87,2.53,4.29,2.3,9.58Z"
+    let vGun2 = "m127.18,74.58s3.3-8.43-3.3-1.99l-10.54-6.52-.47-.41c.06-.1.11-.2.16-.3l-3.61-2.76c-.57.23-.96.42-.96.42L32.25,10.75c1.26-1.17,2.99-3.04,2.78-4.32-.24-1.45-4.41.51-6.65,1.67l-2.67-1.83-1.5,2.66L10.53.66l-4.9,6.65s.12.29.18.73l11.46,9.98-12.6-7.11c-1.75,1.51-4.11,10.5-4.11,10.5,0,0,32.81,22.68,34.57,24.22,1.76,1.54,0,4.62-.22,6.17-.22,1.54-5.72,7.27-7.49,8.1-1.76.83-.66,3.35-.66,3.35l23.95,17.42s4.45,4.59,6.21,7.9c1.76,3.3-11.01,36.55-11.01,36.55l3.08,3.46-3.96,2.92,23.56,15.85s1.1-3.52,2.57-2.31c1.47,1.22,5.82,1.75,8.43,1.16s4.06-3.1,4.06-3.1l1.56-3.64c1.56-3.64,2.18-18.99,4.74-34.83s18.44-19.71,18.44-19.71l.61-.96,10.9,9.11,10.07-15.52-2.81-2.97Zm-72.78-7.16c-.23,5.28-7.25,4.29-7.25,4.29l1.21,1.87.88.11c.88.11,6.28,1.87,4.95,2.42-1.32.55-3.46,0-3.46,0l-4.58-2.97s-6.72-4.73-9.95-7.05-1.83-6.21-1.83-6.21l3.52-5.9s1.1-1.32,2.42-1.98c1.32-.66,4.73.99,5.39,1.32.66.33,3.74,2.64,6.39,4.51,2.64,1.87,2.53,4.29,2.3,9.58Z"
+    function victory(){
+        this.rot = -1
+        this.arot = 0
+        this.switch = false
+        this.count = 0
+        this.count2 = 0
+        this.lit = 0
+        this.alpha = 0
+        this.effects = []
+        this.draw = function(){
+            if(this.count2 < 3 && this.alpha < 1) this.alpha += .05
+            else if(this.count >= 3) this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
+            DrawRect(0, 0, 320, 200, getColorString(210, 100, this.lit, this.alpha))
+            this.rot += (-.1 - this.rot) / 10
+            this.rot += this.arot
+            this.arot *= .9
+            this.lit*=.95
+            hiddenCtx.save()
+            hiddenCtx.translate(350, 250)
+            hiddenCtx.rotate(this.rot)
+            hiddenCtx.translate(-350, -250)
+            DrawCircle(177, 110, 8, getColorString(0, 0, 40, this.alpha))
+            if(this.switch) DrawPath(126, 45, vGun2, getColorString(0, 0, 10, this.alpha))
+            else DrawPath(126, 43, vGun1, getColorString(0, 0, 10, this.alpha))
+            DrawPath(160, 115, vHand, getColorString(0, 0, 40, this.alpha))
+            hiddenCtx.save()
+            hiddenCtx.translate(244, 165)
+            hiddenCtx.rotate(.8)
+            hiddenCtx.translate(-244, -165)
+            DrawRect(244, 165, 100, 50, getColorString(90, 70, 20, this.alpha))
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+            hiddenCtx.restore()
+            hiddenCtx.restore()
+
+            if(this.rot > -.15 && !this.count){
+                this.arot = .06
+                this.switch = true
+                this.count2++
+            } else if (this.count > 8) this.switch = false
+            if(this.switch){
+                effects.push(new bullet(220, 80))
+                for(let i = 0; i < 2; i++) this.effects.push(new shotPart(45, 165))
+                this.lit+=5
+            }
+
+            this.count < 50 ? this.count++ : this.count = 0
+        }
+    }
+
+    function shotPart(x, y){
+        this.x = x
+        this.y = y
+        this.rad = 25
+        this.vx = Math.random() * 10 - 5
+        this.vy = Math.random() * 10 - 5
+        this.hue = Math.random() * 60
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(this.hue, 100, 50, 1))
+            this.x += this.vx
+            this.y += this.vy
+            this.rad > 1 ? this.rad -=.5 : this.lifetime = 0
+        }
+    }
+
+    function bullet(x, y){
+        this.x = x
+        this.y = y
+        this.vx = Math.random() * 4 - 2
+        this.vy = Math.random() * -2 - 2
+        this.ay = .1
+        this.rot = Math.random()
+        this.draw = function(){
+            this.x += this.vx
+            this.y < 250 ? this.y += this.vy : this.lifetime = 0
+            this.vy += this.ay
+            this.rot+=.05
+            hiddenCtx.save()
+            hiddenCtx.translate(this.x, this.y)
+            hiddenCtx.rotate(this.rot)
+            hiddenCtx.translate(-this.x, -this.y)
+            DrawRect(this.x - 10, this.y - 5, 20, 10, getColorString(50, 90, 40, 1))
+            hiddenCtx.restore()
+        }
+    }
+
+    let lowAmmoGoing = false
+    function lowAmmoCallback(){
+      if(gInGame && LowAmmoMeter.value > .15 && engine.vision.lowAmmoNotRed <= .05 && !lowAmmoGoing){
+        lowAmmoGoing = true
+        if(ammoOn) effects.push(new lowAmmo())
+      } else if (!gInGame || (gInGame && LowAmmoMeter.value <= .1)) lowAmmoGoing = false
+    }
+
+    function lowAmmo(){
+        this.effects = []
+        this.alpha = 0
+        for(let i = 0; i < 9; i++) this.effects.push(new bulletHelp(i * 30 + 75, 30))
+        this.draw = function(){
+            hiddenCtx.save()
+            hiddenCtx.translate(160, 0)
+            hiddenCtx.scale(-1, 1)
+            hiddenCtx.translate(-160, 0)
+            DrawRect(0, 0, 320, 200, getColorString(0, 100, 30, (1 - this.effects.length * .1) * this.alpha))
+            if(this.effects.length) this.alpha <= .7 ? this.alpha += .05 : this.alpha = .75
+            else this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.alpha))
+            this.effects.forEach((ele, i)=>{
+                ele.draw(this.alpha, i)
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+            hiddenCtx.restore()
+        }
+    }
+
+    function bulletHelp(y, height){
+        this.x = 0
+        this.y = y
+        this.height = height
+        this.hue = 60
+        this.draw = function(val, i){
+            if(val == .75) this.y += ((i * 30 + 75) - this.y) / 5
+            DrawTriangle(this.x + 90, this.y + this.height * .5, this.x + 135, this.y + this.height * .2, this.x + 135, this.y + this.height * .8, getColorString(60, 100, 50, 1))
+            DrawRect(160, this.y + this.height * .1, 140, this.height * .8, getColorString(this.hue, 100, 50, 1))
+            DrawRect(130, this.y + this.height * .2, 100, this.height * .6, getColorString(this.hue, 100, 50, 1))
+            if(this.y < 76){
+                this.hue += (0 - this.hue) / 2
+                if(this.x > -200) this.x -= 20
+                if(this.hue < 1) this.lifetime = 0
+            }
+        }
+    }
+
+    let lethalGoing = true
+    let tacticalGoing = true
+    let ultimateGoing = true
+    function utilityCallback(){
+      if(gInGame && LetOrangeMeter.value >= .95 && engine.vision.tlNotOrange <= .1) {
+        lethalGoing = false
+        if(utilityOn) effects.push(new abilityUp(0))
+      }
+      else if (gInGame && LetOrangeMeter.value <= .05 && !lethalGoing) lethalGoing = true
+
+      if(gInGame && TacOrangeMeter.value >= .95 && engine.vision.tlNotOrange <= .1) {
+        tacticalGoing = false
+        if(utilityOn) effects.push(new abilityUp(190))
+      }
+      else if (gInGame && TacOrangeMeter.value <= .05 && !tacticalGoing) tacticalGoing = true
+
+      if(gInGame && UltOrangeMeter.value >= .95 && engine.vision.ultimateNotOrange <= .1) {
+        ultimateGoing = false
+        if(utilityOn) effects.push(new abilityUp(60))
+      }
+      else if (gInGame && UltOrangeMeter.value <= .05 && !ultimateGoing) ultimateGoing = true
+    }
+
+    function abilityUp(hue){
+        this.y = 200
+        this.hue = hue
+        this.draw = function(){
+            for(let i = 0; i < 5; i++) abilityHelp(this.y + i * 40, 40, getColorString(this.hue, 100, 50, 1 - i * .15))
+            this.y > -200 ? this.y -= 8 : this.lifetime = 0
+        }
+    }
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            hiddenCtx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hiddenCtx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            hiddenCtx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            hiddenCtx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
+    //#region Helper Functions
+  function innerEffects(){
+        this.effects = []
+        this.Add = (cb, arr) => {
+            this.effects.push(new cb(...arr))
+        }
+        this.draw = () => {
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+        }
+    }
+
+  function testTranslate(start, end, rot, scaleX, scaleY){
+      hiddenCtx.save()
+      hiddenCtx.translate(start[0], start[1])
+      hiddenCtx.scale(scaleX, scaleY)
+      hiddenCtx.rotate(rot)
+      hiddenCtx.translate(end[0], end[1])
+  }
+
+  function DrawArc(x, y, start, end, radius, direction, color){
+    hiddenCtx.beginPath()
+    hiddenCtx.arc(x, y, radius, start, end, direction)
+    hiddenCtx.fillStyle = color
+    hiddenCtx.fill()
+  }
+
+  function DrawLine(start, end, color, stroke){
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(start[0], start[1])
+    hiddenCtx.lineTo(end[0], end[1])
+    hiddenCtx.strokeStyle = color
+    hiddenCtx.lineWidth = stroke
+    hiddenCtx.stroke()
+  }
+
+  function DrawEllipse(x, y, width, height, rotation, color){
+    hiddenCtx.beginPath()
+    hiddenCtx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    hiddenCtx.fillStyle = color
+    hiddenCtx.fill()
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.save();
+    hiddenCtx.translate(x, y);
+    hiddenCtx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    hiddenCtx.fill(ex);
+    hiddenCtx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.moveTo(cord1X, cord1Y);
+    hiddenCtx.lineTo(cord2X, cord2Y);
+    hiddenCtx.lineTo(cord3X, cord3Y);
+    hiddenCtx.lineTo(cord1X, cord1Y);
+    hiddenCtx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, width, height);
+  };
+
+  function strokeRect(x, y, width, height, color, stroke){
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke
+    hiddenCtx.rect(x, y, width, height);
+    hiddenCtx.stroke()
+  }
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+    //#endregion
+
+
+  window.requestAnimationFrame(update);
+</script>

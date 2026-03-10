@@ -1,0 +1,1084 @@
+<head>
+    <title>Dune Awakening</title>
+    <meta description="Effects and ambience for Dune Awakening. v1.01" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+    <meta property="adjOn" label="Adjust HUD" tooltip="Turn on to adjust the HUD, turn off to see the effect" type="boolean" default="0" />
+    <meta property="hpOn" label="Health HUD Effect" type="boolean" default="1" />
+    <meta property="hpX" label="Health HUD X" type="number" default="0" min="0" max="100">
+    <meta property="hpY" label="Health HUD Y" type="number" default="25" min="0" max="100">
+    <meta property="hpWidth" label="Health HUD Width" type="number" default="100" min="0" max="100">
+    <meta property="hpHeight" label="Health HUD Height" type="number" default="20" min="0" max="100">
+    <meta property="energyOn" label="Energy HUD Effect" type="boolean" default="1" />
+    <meta property="energyX" label="Energy HUD X" type="number" default="0" min="0" max="100">
+    <meta property="energyY" label="Energy HUD Y" type="number" default="45" min="0" max="100">
+    <meta property="energyWidth" label="Energy HUD Width" type="number" default="100" min="0" max="100">
+    <meta property="energyHeight" label="Energy HUD Height" type="number" default="20" min="0" max="100">
+    <meta property="healthOn" label="Health Effects" type="boolean" default="1" />
+    <meta property="shieldOn" label="Shield Effects" type="boolean" default="1" />
+    <meta property="vitalOn" label="Vitality Effects" type="boolean" default="1" />
+    <meta property="waterOn" label="Water Effects" type="boolean" default="1" />
+    <meta property="rideOn" label="Vehicle Effect" type="boolean" default="1" />
+    <meta property="questOn" label="Level Effect" type="boolean" default="1" />
+    <meta property="heatOn" label="Heat Effects" type="boolean" default="1" />
+    <meta property="wormOn" label="Worm Effects" type="boolean" default="1" />
+    <meta property="zoneOn" label="Zone Effects" type="boolean" default="1" />
+
+     <!--InGame--> 
+    <meta meter="inGameYellow1" tags="vlc,dune,DuneAwakening" x="0.4979" y="0.0472" width="0.0029" height="0.0032" 
+      h="30-70" s="50-100" l="25-90" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4980" y="0.0479" width="0.0027" height="0.0014" />
+      <resolution aspect="24:10" x="0.4977" y="0.0472" width="0.0035" height="0.0014" />
+      <resolution aspect="16:11" x="0.4984" y="0.0925" width="0.0023" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.4979" y="0.0472" width="0.0029" height="0.0032" />
+      <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" />
+    </meta>
+
+    <meta meter="inGameYellow2" tags="vlc,dune,DuneAwakening" x="0.4984" y="0.0560" width="0.0013" height="0.0009" 
+      h="30-90" s="20-80" l="25-90" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4992" y="0.0563" width="0.0006" height="0.0007" />
+      <resolution aspect="24:10" x="0.4988" y="0.0556" width="0.0009" height="0.0021" />
+      <resolution aspect="16:11" x="0.4988" y="0.1013" width="0.0008" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.4984" y="0.0560" width="0.0013" height="0.0009" />
+      <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" />
+    </meta>
+
+    <meta meter="inGameRed" tags="vlc,dune,DuneAwakening" x="0.4979" y="0.0472" width="0.0029" height="0.0032" 
+      h="-30-30" s="50-100" l="25-75" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4980" y="0.0479" width="0.0027" height="0.0014" />
+      <resolution aspect="24:10" x="0.4977" y="0.0472" width="0.0035" height="0.0014" />
+      <resolution aspect="16:11" x="0.4984" y="0.0925" width="0.0023" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.4967" y="0.0468" width="0.0021" height="0.0018" />
+      <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" />
+    </meta>
+
+    <meta meter="inGameGreen" tags="vlc,dune,DuneAwakening" x="0.4979" y="0.0472" width="0.0029" height="0.0032" 
+      h="90-160" s="20-50" l="30-90" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4980" y="0.0479" width="0.0027" height="0.0014" />
+      <resolution aspect="24:10" x="0.4977" y="0.0472" width="0.0035" height="0.0014" />
+      <resolution aspect="16:11" x="0.4984" y="0.0925" width="0.0023" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.4967" y="0.0468" width="0.0021" height="0.0018" />
+      <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" />
+    </meta>
+
+    <meta meter="inGameNotYellow" tags="vlc,dune,DuneAwakening" x="0.5018" y="0.0597" width="0.0010" height="0.0014" 
+      h="30-90" s="20-80" l="25-90" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.5023" y="0.0569" width="0.0020" height="0.0014" />
+      <resolution aspect="24:10" x="0.5029" y="0.0583" width="0.0009" height="0.0014" />
+      <resolution aspect="16:11" x="0.5027" y="0.1025" width="0.0027" height="0.0019" />
+
+      <resolution size="3840x2160" x="0.5018" y="0.0597" width="0.0010" height="0.0014" />
+      <resolution size="2560x1080" x="0.5029" y="0.0583" width="0.0009" height="0.0014" />
+    </meta>
+
+    <meta meter="healthCheckRed" tags="vlc,dune,DuneAwakening" x="0.1031" y="0.9088" width="0.0016" height="0.0023" 
+      h="-30-30" s="10-100" l="25-100" hdr-h="180-240" hdr-s="20-50" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0518" y="0.9097" width="0.0006" height="0.0014" />
+      <resolution aspect="24:10" x="0.0765" y="0.9090" width="0.0009" height="0.0000" />
+      <resolution aspect="16:11" x="0.1027" y="0.8681" width="0.0004" height="0.0019" />
+
+      <resolution size="3840x2160" x="0.1031" y="0.9088" width="0.0016" height="0.0023" />
+      <resolution size="2560x1080" x="0.0765" y="0.9090" width="0.0009" height="0.0000" />
+    </meta>
+
+    <meta meter="healthCheckNotRed" tags="vlc,dune,DuneAwakening" x="0.0719" y="0.9146" width="0.0012" height="0.0014" 
+      h="-30-30" s="10-100" l="25-100" hdr-h="180-240" hdr-s="20-50" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0357" y="0.9157" width="0.0005" height="0.0028" />
+      <resolution aspect="24:10" x="0.0538" y="0.9146" width="0.0006" height="0.0021" />
+      <resolution aspect="16:11" x="0.0727" y="0.8725" width="0.0004" height="0.0031" />
+
+      <resolution size="3840x2160" x="0.0724" y="0.9157" width="0.0005" height="0.0023"/>
+      <resolution size="2560x1080" x="0.0547" y="0.9148" width="0.0004" height="0.0028" />
+    </meta>
+
+    <meta meter="healthBarRed" tags="vlc,dune,DuneAwakening" x="0.1037" y="0.9074" width="0.0919" height="0.0180" 
+      h="-30-30" s="10-100" l="25-100" hdr-h="0-100" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.0518" y="0.9097" width="0.0461" height="0.0000" />
+      <resolution aspect="24:10" x="0.0767" y="0.9090" width="0.0689" height="0.0007" />
+      <resolution aspect="16:11" x="0.1027" y="0.8688" width="0.0934" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.1037" y="0.9074" width="0.0919" height="0.0180"/>
+      <resolution size="2560x1080" x="0.0767" y="0.9090" width="0.0689" height="0.0007" />
+    </meta>
+
+    <meta meter="shieldCyan" tags="vlc,dune,DuneAwakening" x="0.0795" y="0.9405" width="0.0004" height="0.0005" 
+      h="120-190" s="10-50" l="45-100" hdr-h="0-100" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.0388" y="0.9370" width="0.0002" height="0.0002" />
+      <resolution aspect="24:10" x="0.0590" y="0.9396" width="0.0003" height="0.0007" />
+      <resolution aspect="16:11" x="0.079" y="0.8956" width="0.0002" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.0792" y="0.9394" width="0.0002" height="0.0005" />
+      <resolution size="3840x1080" x="0.0388" y="0.9370" width="0.0002" height="0.0002" />
+      <resolution size="2560x1080" x="0.0590" y="0.9389" width="0.0002" height="0.0009" />
+    </meta>
+
+    <meta meter="energyCheckYellow" tags="vlc,dune,DuneAwakening" x="0.0917" y="0.9412" width="0.0026" height="0.0009" 
+      h="20-100" s="30-70" l="30-60" hdr-h="0-100" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.0463" y="0.9417" width="0.0004" height="0.0000" />
+      <resolution aspect="24:10" x="0.0692" y="0.9403" width="0.0012" height="0.0021" />
+      <resolution aspect="16:11" x="0.0855" y="0.8981" width="0.0016" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0917" y="0.9412" width="0.0026" height="0.0009" />
+      <resolution size="2560x1080" x="0.0692" y="0.9403" width="0.0012" height="0.0021" />
+    </meta>
+
+    <meta meter="energyCheckNotYellow" tags="vlc,dune,DuneAwakening" x="0.0566" y="0.9410" width="0.0020" height="0.0021" 
+      h="30-80" s="50-70" l="30-60" hdr-h="0-100" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.0320" y="0.9556" width="0.0010" height="0.0019" />
+      <resolution aspect="24:10" x="0.0474" y="0.9549" width="0.0006" height="0.0000" />
+      <resolution aspect="16:11" x="0.0633" y="0.9100" width="0.0020" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0635" y="0.9556" width="0.0021" height="0.0009" />
+      <resolution size="2560x1080" x="0.0477" y="0.9546" width="0.0012" height="0.0037" />
+    </meta>
+
+    <meta meter="energyBarYellow" tags="vlc,dune,DuneAwakening" x="0.0919" y="0.9403" width="0.0951" height="0.0028" 
+      h="25-45" s="55-65" l="30-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0467" y="0.9410" width="0.0461" height="0.0007" />
+      <resolution aspect="24:10" x="0.0692" y="0.9403" width="0.0698" height="0.0014" />
+      <resolution aspect="16:11" x="0.0852" y="0.8975" width="0.0949" height="0.0013" />
+
+      <resolution size="3840x2160" x="0.0919" y="0.9403" width="0.0951" height="0.0028" />
+      <resolution size="2560x1080" x="0.0692" y="0.9403" width="0.0698" height="0.0014" />
+    </meta>
+
+    <meta meter="vitalBarGreen" tags="vlc,dune,DuneAwakening" x="0.0924" y="0.8898" width="0.0958" height="0.0005" 
+      h="50-120" s="0-50" l="40-100" hdr-h="60-120" hdr-s="0-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0465" y="0.8882" width="0.0473" height="0.0007" />
+      <resolution aspect="24:10" x="0.0692" y="0.8889" width="0.0709" height="0.0007" />
+      <resolution aspect="16:11" x="0.0859" y="0.8512" width="0.0953" height="-0.0012" />
+
+      <resolution size="3840x2160" x="0.0924" y="0.8898" width="0.0958" height="0.0005"  />
+      <resolution size="2560x1080" x="0.0692" y="0.8889" width="0.0709" height="0.0007" />
+    </meta>
+
+    <meta meter="vitalCheckGreen" tags="vlc,dune,DuneAwakening" x="0.0922" y="0.8889" width="0.0013" height="0.0009" 
+      h="50-120" s="0-50" l="40-100" hdr-h="60-120" hdr-s="0-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0463" y="0.8889" width="0.0006" height="0.0014" />
+      <resolution aspect="24:10" x="0.0689" y="0.8882" width="0.0006" height="0.0007" />
+      <resolution aspect="16:11" x="0.0852" y="0.8506" width="0.0020" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.0922" y="0.8889" width="0.0013" height="0.0009" />
+      <resolution size="2560x1080" x="0.0689" y="0.8882" width="0.0006" height="0.0007" />
+    </meta>
+
+    <meta meter="vitalCheckNotGreen" tags="vlc,dune,DuneAwakening" x="0.0637" y="0.9021" width="0.0020" height="0.0028" 
+      h="50-120" s="0-50" l="40-100" hdr-h="60-120" hdr-s="0-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0315" y="0.9028" width="0.0010" height="0.0000" />
+      <resolution aspect="24:10" x="0.0471" y="0.9028" width="0.0017" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0637" y="0.8625" width="0.0020" height="0.0019" />
+
+      <resolution size="3840x2160" x="0.0633" y="0.9019" width="0.0016" height="0.0005" />
+      <resolution size="2560x1080" x="0.0477" y="0.9028" width="0.0016" height="0.0009" />
+    </meta>
+
+    <meta meter="waterBlue" tags="vlc,dune,DuneAwakening" x="0.0349" y="0.9167" width="0.0013" height="0.0046" 
+      h="180-240" s="10-70" l="0-40" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0174" y="0.9125" width="0.0014" height="0.0035" />
+      <resolution aspect="24:10" x="0.0259" y="0.9139" width="0.0012" height="0.0035" />
+      <resolution aspect="16:11" x="0.0348" y="0.8719" width="0.0027" height="0.0050" />
+
+      <resolution size="3840x2160" x="0.0349" y="0.9134" width="0.0013" height="0.0046" />
+      <resolution size="2560x1080" x="0.0259" y="0.9139" width="0.0012" height="0.0035" />
+    </meta>
+
+    <meta meter="waterRed" tags="vlc,dune,DuneAwakening" x="0.0349" y="0.9167" width="0.0013" height="0.0046" 
+      h="-30-30" s="50-100" l="0-55" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0174" y="0.9125" width="0.0014" height="0.0035" />
+      <resolution aspect="24:10" x="0.0259" y="0.9139" width="0.0012" height="0.0035" />
+      <resolution aspect="16:11" x="0.0348" y="0.8719" width="0.0027" height="0.0050" />
+
+      <resolution size="3840x2160" x="0.0349" y="0.9134" width="0.0013" height="0.0046" />
+      <resolution size="2560x1080" x="0.0259" y="0.9139" width="0.0012" height="0.0035" />
+    </meta>
+
+    <meta meter="rideYellow" tags="vlc,dune,DuneAwakening" x="0.9414" y="0.9424" width="0.0029" height="0.0032" 
+      h="20-60" s="20-70" l="50-90" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.9695" y="0.9361" width="0.0020" height="0.0069" />
+      <resolution aspect="24:10" x="0.9549" y="0.9361" width="0.0017" height="0.0062" />
+      <resolution aspect="16:11" x="0.9402" y="0.8906" width="0.0035" height="0.0069" />
+
+      <resolution size="3840x2160" x="0.4979" y="0.0472" width="0.0029" height="0.0032" />
+      <resolution size="2560x1080" x="0.9549" y="0.9347" width="0.0026" height="0.0042" />
+    </meta>
+    
+    <meta meter="rideNotYellow" tags="vlc,dune,DuneAwakening" x="0.9414" y="0.9535" width="0.0013" height="0.0023" 
+      h="20-60" s="20-70" l="50-90" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.9695" y="0.9361" width="0.0020" height="0.0069" />
+      <resolution aspect="24:10" x="0.9549" y="0.9361" width="0.0017" height="0.0062" />
+      <resolution aspect="16:11" x="0.9402" y="0.8906" width="0.0035" height="0.0069" />
+
+      <resolution size="3840x2160" x="0.4979" y="0.0472" width="0.0029" height="0.0032" />
+      <resolution size="2560x1080" x="0.9549" y="0.9347" width="0.0026" height="0.0042" />
+    </meta>
+
+    <meta meter="rideBlack" tags="vlc,dune,DuneAwakening" x="0.9625" y="0.8097" width="0.0008" height="0.0014" 
+      h="0-360" s="0-100" l="0-10" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.9812" y="0.8056" width="0.0004" height="0.0021" />
+      <resolution aspect="24:10" x="0.9709" y="0.8069" width="0.0017" height="0.0007" />
+      <resolution aspect="16:11" x="0.9625" y="0.7769" width="0.0008" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.9625" y="0.8076" width="0.0008" height="0.0014" />
+      <resolution size="2560x1080" x="0.9712" y="0.8063" width="0.0015" height="0.0014" />
+    </meta>
+
+    <meta meter="rideNotBlack" tags="vlc,dune,DuneAwakening" x="0.9660" y="0.8146" width="0.0016" height="0.0028" 
+      h="0-360" s="20-100" l="0-10" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9834" y="0.8118" width="0.0008" height="0.0021" />
+      <resolution aspect="24:10" x="0.9765" y="0.8118" width="0.0006" height="0.0007" />
+      <resolution aspect="16:11" x="0.9664" y="0.7806" width="0.0016" height="0.0038" />
+
+      <resolution size="3840x2160" x="0.9668" y="0.8125" width="0.0016" height="0.0028" />
+      <resolution size="2560x1080" x="0.9762" y="0.8097" width="0.0009" height="0.0021" />
+    </meta>
+
+    <meta meter="levelUpOrange" tags="vlc,dune,DuneAwakening" x="0.4164" y="0.1764" width="0.0020" height="0.0021" 
+      h="20-60" s="10-60" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4547" y="0.1590" width="0.0010" height="0.0014" />
+      <resolution aspect="24:10" x="0.5" y="0.1222" width=".0001" height=".0001" />
+      <resolution aspect="16:11" x="0.5002" y="0.0963" width="0.0004" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.4098" y="0.1590" width="0.0020" height="0.0021"  />
+      <resolution size="2560x1080" x="0.5" y="0.1222" width=".0001" height=".0001" />
+    </meta> 
+
+    <meta meter="levelUpNotOrange" tags="vlc,dune,DuneAwakening" x="0.4168" y="0.1479" width="0.0062" height="0" 
+      h="20-60" s="10-60" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4549" y="0.1431" width="0.0006" height="0.0014" />
+      <resolution aspect="24:10" x="0.5" y="0.1222" width=".0001" height=".0001" />
+      <resolution aspect="16:11" x="0.5002" y="0.0963" width="0.0004" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.9677" y="0.8101" width="0.0013" height="-0.0014"  />
+      <resolution size="2560x1080" x="0.5" y="0.1222" width=".0001" height=".0001" />
+    </meta> 
+
+    <meta meter="levelUpNotOrange2" tags="vlc,dune,DuneAwakening" x="0.4168" y="0.2389" width="0.0062" height="0" 
+      h="20-60" s="10-60" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4549" y="0.1431" width="0.0006" height="0.0014" />
+      <resolution aspect="24:10" x="0.5" y="0.1222" width=".0001" height=".0001" />
+      <resolution aspect="16:11" x="0.5002" y="0.0963" width="0.0004" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.9677" y="0.8101" width="0.0013" height="-0.0014"  />
+      <resolution size="2560x1080" x="0.5" y="0.1222" width=".0001" height=".0001" />
+    </meta> 
+
+    <meta meter="sunYellow" tags="vlc,dune,DuneAwakening" x="0.4526" y="0.2382" width="0.0016" height="0.0037" 
+      h="40-90" s="10-80" l="25-100" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4762" y="0.2368" width="0.0006" height="0.0042" />
+      <resolution aspect="24:10" x="0.4648" y="0.2375" width="0.0012" height="0.0021" />
+      <resolution aspect="16:11" x="0.4527" y="0.2637" width="0.0016" height="0.0031" />
+
+      <resolution size="3840x2160" x="0.4526" y="0.2375" width="0.0016" height="0.0037"  />
+      <resolution size="2560x1080" x="0.4648" y="0.2375" width="0.0012" height="0.0021" />
+    </meta> 
+
+    <meta meter="sunNotYellow" tags="vlc,dune,DuneAwakening" x="0.4526" y="0.2486" width="0.0013" height="0.0023" 
+      h="40-90" s="10-80" l="25-100" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4758" y="0.2500" width="0.0016" height="0.0021" />
+      <resolution aspect="24:10" x="0.4648" y="0.2500" width="0.0026" height="0.0014" />
+      <resolution aspect="16:11" x="0.4527" y="0.2750" width="0.0016" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.4526" y="0.2486" width="0.0013" height="0.0023"  />
+      <resolution size="2560x1080" x="0.4648" y="0.2500" width="0.0026" height="0.0014" />
+    </meta> 
+
+    <meta meter="sunRed" tags="vlc,dune,DuneAwakening" x="0.4526" y="0.2382" width="0.0010" height="0.0032" 
+      h="-30-19" s="52-80" l="65-100" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4762" y="0.2368" width="0.0006" height="0.0042" />
+      <resolution aspect="24:10" x="0.5" y="0.1222" width=".0001" height=".0001" />
+      <resolution aspect="16:11" x="0.4527" y="0.2637" width="0.0016" height="0.0031" />
+
+      <resolution size="3840x2160" x="0.4526" y="0.2375" width="0.0010" height="0.0032" />
+      <resolution size="2560x1080" x="0.5" y="0.1222" width=".0001" height=".0001" />
+    </meta> 
+
+    <meta meter="sunNotRed" tags="vlc,dune,DuneAwakening" x="0.4518" y="0.2500" width="0.0016" height="0.0023" 
+      h="-30-19" s="52-80" l="65-100" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4758" y="0.2500" width="0.0016" height="0.0021" />
+      <resolution aspect="24:10" x="0.5" y="0.1222" width=".0001" height=".0001" />
+      <resolution aspect="16:11" x="0.4527" y="0.2750" width="0.0016" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.4518" y="0.2500" width="0.0016" height="0.0023" />
+      <resolution size="2560x1080" x="0.5" y="0.1222" width=".0001" height=".0001" />
+    </meta> 
+
+    <meta meter="wormRed" tags="vlc,dune,DuneAwakening" x="0.4513" y="0.7213" width="0.0016" height="0.0005" 
+      h="-30-30" s="70-100" l="25-100" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4754" y="0.7215" width="0.0010" height="0.0014" />
+      <resolution aspect="24:10" x="0.4634" y="0.7215" width="0.0017" height="0.0007" />
+      <resolution aspect="16:11" x="0.4512" y="0.7000" width="0.0023" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.4513" y="0.7213" width="0.0016" height="0.0005" />
+      <resolution size="2560x1080" x="0.4634" y="0.7215" width="0.0017" height="0.0007" />
+    </meta> 
+
+    <meta meter="wormNotRed" tags="vlc,dune,DuneAwakening" x="0.4505" y="0.7144" width="0.0029" height="0.0005" 
+      h="-30-30" s="70-100" l="25-100" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4742" y="0.7118" width="0.0027" height="0.0035" />
+      <resolution aspect="24:10" x="0.4628" y="0.7146" width="0.0209" height="0.0021" />
+      <resolution aspect="16:11" x="0.4504" y="0.6937" width="0.0035" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.4505" y="0.7144" width="0.0029" height="0.0005"  />
+      <resolution size="2560x1080" x="0.4628" y="0.7146" width="0.0209" height="0.0021" />
+    </meta> 
+</head> 
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = 320;
+    const height = 200;
+    let effects = [];
+
+    let InGameYellowMeter = new Meter(5, inGameCallback)
+    let InGameGreenMeter = new Meter(5, inGameCallback)
+    let InGameRedMeter = new Meter(5, inGameCallback)
+    let InGame2Meter = new Meter(5, inGameCallback)
+    let NotYellowMeter = new Meter(2, inGameCallback)
+
+    let HealthCheckMeter = new Meter(10, healthCallback)
+    let HealthBarMeter = new Meter(5, healthCallback)
+
+    let ShieldCyanMeter = new Meter(5, energyCallback)
+
+    let EnergyCheckMeter = new Meter(10, energyCallback)
+    let EnergyBarMeter = new Meter(5, energyCallback)
+    // let EnergyNotMeter = new Meter(2, energyCallback)
+
+    let VitalCheckMeter = new Meter(10, vitalCallback)
+    let VitalBarMeter = new Meter(5, vitalCallback)
+
+    let WaterBlueMeter = new Meter(5, waterCallback)
+    let WaterRedMeter = new Meter(5, waterCallback)
+
+    let RideFuelMeter = new Meter(5, rideCallback)
+    let RideBlackMeter = new Meter(5, rideCallback)
+    let RideNotBlackMeter = new Meter(2, rideCallback)
+    let RideNotYellowMeter = new Meter(2, rideCallback)
+    
+
+    let LevelUpMeter = new Meter(20, levelCallback)
+    let LevelUpNotOrangeMeter = new Meter(20, levelCallback)
+    let LevelUpNotOrange2Meter = new Meter(20, levelCallback)
+
+    let SunYellowMeter = new Meter(5, sunCallback)
+    let SunRedMeter = new Meter(5, sunCallback)
+
+    let WormMeter = new Meter(5, wormCallback)
+
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+
+      InGameYellowMeter.setValue(engine.vision.inGameYellow1)
+      InGameGreenMeter.setValue(engine.vision.inGameGreen)
+      InGameRedMeter.setValue(engine.vision.inGameRed)
+      InGame2Meter.setValue(engine.vision.inGameYellow2)
+      NotYellowMeter.setValue(engine.vision.inGameNotYellow)
+
+      HealthCheckMeter.setValue(engine.vision.healthCheckRed)
+      HealthBarMeter.setValue(engine.vision.healthBarRed)
+      ShieldCyanMeter.setValue(engine.vision.shieldCyan)
+
+      EnergyCheckMeter.setValue(engine.vision.energyCheckYellow)
+      EnergyBarMeter.setValue(engine.vision.energyBarYellow)
+      // EnergyNotMeter.setValue(engine.vision.energyCheckNotYellow)
+
+      VitalCheckMeter.setValue(engine.vision.vitalCheckGreen)
+      VitalBarMeter.setValue(engine.vision.vitalBarGreen)
+
+      WaterBlueMeter.setValue(engine.vision.waterBlue)
+      WaterRedMeter.setValue(engine.vision.vitalRed)
+
+      RideFuelMeter.setValue(engine.vision.rideYellow)
+      RideBlackMeter.setValue(engine.vision.rideBlack)
+      RideNotBlackMeter.setValue(engine.vision.rideNotBlack)
+      RideNotYellowMeter.setValue(engine.vision.rideNotYellow)
+
+      LevelUpMeter.setValue(engine.vision.levelUpOrange)
+      LevelUpNotOrangeMeter.setValue(engine.vision.levelUpNotOrange)
+      LevelUpNotOrange2Meter.setValue(engine.vision.levelUpNotOrange2)
+
+      SunYellowMeter.setValue(engine.vision.sunYellow)
+      SunRedMeter.setValue(engine.vision.sunRed)
+
+      WormMeter.setValue(engine.vision.wormRed)
+
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.lifetime <= 0){
+          effects.splice(i, 1)
+        }
+      })
+
+      if(adjOn){
+        DrawRect(hpX * 3.2, hpY * 2, hpWidth * 3.2, hpHeight * 2, "red")
+        DrawRect(energyX * 3.2, energyY * 2, energyWidth * 3.2, energyHeight * 2, "yellow")
+      }
+
+      window.requestAnimationFrame(update);
+    };
+
+    let gInGame = false
+    function inGameCallback(){
+      if((InGameYellowMeter.value >= .95 || InGameGreenMeter.value >= .95 || InGameRedMeter.value >= .95) && InGame2Meter.value >= .95 && engine.vision.inGameNotYellow <= .05) gInGame = true
+      else if (InGameYellowMeter.value <= .25 && InGameGreenMeter.value <= .25 && InGameRedMeter.value <= .25) gInGame = false
+
+      checkZone()
+    }
+
+    let zoneState = "no combat"
+    function checkZone(){
+      if(gInGame && zoneOn){
+        if(InGameYellowMeter.value >= .95 && zoneState != "PVE"){
+          zoneState = "PVE"
+          effects.push(new zone(30))
+        }
+        else if (InGameGreenMeter.value >= .95 && zoneState != "safe"){
+          zoneState = "safe"
+          effects.push(new zone(100))
+        }
+        else if (InGameRedMeter.value >= .95 && zoneState != "PVP"){
+          zoneState = "PVP"
+          effects.push(new zone(350))
+        }
+      }
+    }
+
+    let lowHealthGoing = false
+    let healthHUDGoing = false
+    function healthCallback(){
+      if(gInGame && HealthCheckMeter.value >= .95 && HealthBarMeter.value <= .25 && engine.vision.healthCheckNotRed <= .05 && !lowHealthGoing){
+        lowHealthGoing = true
+        if(healthOn) effects.push(new lowHealth())
+      } else if (!gInGame || (gInGame && HealthCheckMeter.value >= .95 && HealthBarMeter.value > .25 && lowHealthGoing) || (gInGame && HealthCheckMeter.value <= .05)){
+        lowHealthGoing = false
+        if(gInGame && healthOn && HealthBarMeter.value >= .25 && engine.vision.healthCheckNotRed <= .05) effects.push(new healthUp())
+      }
+
+      if(gInGame && HealthCheckMeter.value >= .95 && HealthBarMeter.value >= .05 && engine.vision.healthCheckNotRed <= .05 && !healthHUDGoing){
+        healthHUDGoing = true
+        if(hpOn) effects.push(new healthHUD())
+      } else if (!gInGame || (gInGame && HealthCheckMeter.value <= .05)){
+        healthHUDGoing = false
+      }
+    }
+
+    let lowEnergyGoing = false
+    let energyHUDGoing = false
+    let shieldGoing = false
+    function energyCallback(){
+      //low energy, shield up, shield down
+      if(gInGame && EnergyCheckMeter.value >= .95 && EnergyBarMeter.value <= .25 && engine.vision.energyCheckNotYellow <= .05 && !lowEnergyGoing){
+        lowEnergyGoing = true
+        if(energyOn) effects.push(new lowEnergy())
+      } else if (!gInGame || (gInGame && EnergyCheckMeter.value >= .95 && EnergyBarMeter.value > .25 && engine.vision.energyCheckNotYellow <= .05) || engine.vision.energyCheckNotYellow >= .95){
+        lowEnergyGoing = false
+      }
+
+      if(gInGame && EnergyCheckMeter.value >= .95 && EnergyBarMeter.value >= .05 && engine.vision.energyCheckNotYellow <= .05 && !energyHUDGoing){
+        energyHUDGoing = true
+        if(energyOn) effects.push(new energyHUD())
+      } else if (!gInGame || (gInGame && EnergyCheckMeter.value <= .05)){
+        energyHUDGoing = false
+      }
+
+      if(gInGame && ShieldCyanMeter.value >= .9 && EnergyCheckMeter.value >= .95 && engine.vision.energyCheckNotYellow <= .05 && !shieldGoing){
+        shieldGoing = true
+        if(shieldOn) effects.push(new shieldsUp())
+      } else if (!gInGame || (gInGame && ShieldCyanMeter.value <= .05 && shieldGoing)){
+        shieldGoing = false
+        if(shieldOn && gInGame) effects.push(new shieldsDown())
+      }
+    }
+
+    let lowVitalGoing = false
+    function vitalCallback(){
+      //Vital HUD, low vital
+      if(gInGame && VitalCheckMeter.value >= .95 && VitalBarMeter.value <= .25 && engine.vision.vitalCheckNotGreen <= .05 && !lowVitalGoing){
+        lowVitalGoing = true
+        if(vitalOn) effects.push(new lowVital())
+      } else if (!gInGame || (gInGame && VitalCheckMeter.value >= .95 && VitalBarMeter.value > .25 && engine.vision.vitalCheckNotGreen <= .05 && lowVitalGoing)) lowVitalGoing = false
+    }
+
+    let waterBlueGoing = false
+    let waterRedGoing = false
+    function waterCallback(){
+      //sheltered, not sheltered
+      if(gInGame && HealthCheckMeter.value >= .95 && WaterBlueMeter.value >= .95 && !waterBlueGoing){
+        waterBlueGoing = true
+        waterRedGoing = false
+        if(waterOn) effects.push(new sheltered())
+      }
+      if(gInGame && HealthCheckMeter.value >= .95 && WaterRedMeter.value >= .95 && !waterRedGoing){
+        waterBlueGoing = false
+        waterRedGoing = true
+        if(waterOn) effects.push(new exposed())
+      }
+    }
+ 
+    let rideGoing = false
+    function rideCallback(){
+      //in vehicle
+      if(gInGame && RideBlackMeter.value >= .95 && RideFuelMeter.value >= .95 && engine.vision.rideNotBlack <= .05 && engine.vision.rideNotYellow <= 0.05 && !rideGoing){
+        rideGoing = true
+        if(rideOn) effects.push(new inVehicle())
+      } else if (!gInGame || (gInGame && RideBlackMeter.value <= .05 && RideFuelMeter.value <= .05)){
+        rideGoing = false
+      }
+    }
+
+    let levelUpGoing = false
+    function levelCallback(){
+      //level up
+      if(gInGame && LevelUpMeter.value >= .95 && engine.vision.levelUpNotOrange <= .05 && engine.vision.levelUpNotOrange2 <= 0.05 && !levelUpGoing){
+        levelUpGoing = true
+        if(questOn) effects.push(new levelUp())
+      } else if (!gInGame || (gInGame && LevelUpMeter.value <= .05)){
+        levelUpGoing = false
+      }
+    }
+
+    let sunYellowGoing = false
+    let sunRedGoing = false
+    function sunCallback(){
+      //sun warning, heatstroke
+      if(gInGame && HealthCheckMeter.value >= .95 && SunYellowMeter.value >= .95 && engine.vision.sunNotYellow <= .05 && !sunYellowGoing){
+        sunYellowGoing = true
+        if(heatOn) effects.push(new heatWarning(60))
+      } else if (!gInGame || (HealthCheckMeter.value >= .95 && SunYellowMeter.value <= .05)) sunYellowGoing = false
+      if(gInGame && HealthCheckMeter.value >= .95 && SunRedMeter.value >= .95 && engine.vision.sunNotRed <= .05 && !sunRedGoing){
+        sunRedGoing = true
+        if(heatOn) effects.push(new heatWarning(0))
+      } else if (!gInGame || (HealthCheckMeter.value >= .95 && SunRedMeter.value <= .05)) sunRedGoing = false
+    }
+
+    let wormGoing = false
+    function wormCallback(){
+      //worm warning
+      if(gInGame && WormMeter.value >= .95 && engine.vision.wormNotRed <= .05 && !wormGoing){
+        wormGoing = true
+        if(wormOn) effects.push(new worm())
+      } else if (!gInGame || (gInGame && WormMeter.value <= .05)){
+        wormGoing = false
+      }
+    }
+
+    function zone(hue){
+      this.hue = hue
+      this.alpha = 0
+      this.rad = 1
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, getColorString(this.hue, 100, 20, this.alpha))
+        DrawCircle(160, 100, this.rad, getColorString(this.hue, 100, 60, this.alpha))
+        if(this.half) this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        else this.alpha <= .95 ? this.alpha += .05 : this.rad < 250 ? this.rad += 5 : this.half = true
+        this.hue += .25
+      }
+    }
+
+    function worm(){
+        this.rot = 0
+        this.alpha = 0
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.alpha))
+            ctx.save()
+            ctx.translate(160, 100)
+            ctx.rotate(-Math.PI / 2)
+            ctx.translate(-160, -100)
+            for(let i = 0; i < 10; i++){
+                let x = Math.cos(this.rot * i) * i * 20 + 60
+                let y = Math.sin(this.rot * i) * i * 15 + (Math.sin(-Date.now() / 1000 - 400) * (110 - i * 10) + 100)
+                DrawCircle(x, y, 50 - i * 2, getColorString(i * 3, 100, 50, 1))
+                if(i == 9){
+                    for(let j = 0; j < 3; j++){
+                        ctx.translate(x, y)
+                        ctx.rotate(Math.PI * 2 / 3)
+                        ctx.translate(-x, -y)
+                        DrawTriangle(x - 25, y + 20, x + 25, y + 20, x, y + 80, getColorString(i * 3, 100, 50, 1))
+                    }
+                }
+            }
+            ctx.restore()
+            if(Math.random() > .5) effects.push(new wormHelp(Math.random() * 320, 200))
+            this.rot = Math.sin(Date.now() / 1000) / 7
+            if(!wormGoing) this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+            else if(this.alpha <= .49) this.alpha += .01
+        }
+    }
+
+    function wormHelp(x, y){
+        this.x = x
+        this.y = y
+        this.vx = 3 - Math.random() * 6
+        this.vy = -Math.random() * 3
+        this.rad = 50
+        this.alpha = 0
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(20, 60, 30, this.alpha))
+            if(this.alpha <= .95) this.alpha += .05
+            this.rad > 1 ? this.rad -= 1 : this.lifetime = 0
+            this.x += this.vx
+            this.y += this.vy
+        }
+    }
+
+    function heatWarning(hue){
+      this.yellow = sunYellowGoing
+      this.red = sunRedGoing
+      this.hue = hue
+        this.draw = function(){
+          if(Math.random() < .5) effects.push(new heatHelp(this.hue))
+          if(this.yellow != sunYellowGoing || this.red != sunRedGoing) this.lifetime = 0
+        }
+    }
+
+    function heatHelp(hue){
+      this.y = 220
+      this.x = Math.random() * 320
+      this.hue = hue
+      this.radius = 20
+      this.mod = Math.random() * 1000
+      this.draw = function(){
+        DrawCircle(this.x, this.y, this.radius, getColorString(this.hue, 100, 50, 1))
+        this.radius >= 1 ? this.radius -= .5 : this.lifetime = 0
+        this.y -= 5
+        this.x += Math.sin((Date.now() - this.mod) / 300) * 2
+      }
+    }
+
+    function levelUp(){
+        this.alpha = 0
+        this.lifetime = 100
+        this.draw = function(){
+            let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+            grad.addColorStop(0, getColorString(40, 100, 50 - Math.abs(50 - this.lifetime), this.lifetime / 100))
+            grad.addColorStop(1, getColorString(10, 100, 50 - Math.abs(50 - this.lifetime), 1))
+            DrawRect(0, 0, 320, 200, grad)
+            ctx.save()
+            ctx.translate(160, 100)
+            ctx.rotate(Math.PI / 4)
+            ctx.translate(-160, -100)
+            DrawRect(60 + this.lifetime, this.lifetime, 500 - this.lifetime * 4, 500 - this.lifetime * 4, getColorString(30, 100, 50, this.alpha * this.lifetime / 50))
+            DrawRect(60 + this.lifetime, this.lifetime, 350 - this.lifetime * 3, 350 - this.lifetime * 3, getColorString(45, 100, 50, this.alpha * this.lifetime / 50))
+            DrawRect(60 + this.lifetime, this.lifetime, 200 - this.lifetime * 2, 200 - this.lifetime * 2, getColorString(60, 100, 50, this.alpha * this.lifetime / 50))
+            this.lifetime-=.5
+            if(this.alpha <= .99) this.alpha += .01
+            ctx.restore()
+        }
+    }
+
+    function inVehicle(){
+        this.alpha = 0
+        this.count = 0
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, getColorString(210, 100, 60, this.alpha))
+            DrawRect(0, 100, 320, 100, getColorString(30, 60, 40, this.alpha))
+            if(this.count == 0) effects.push(new vehicleHelp())
+            this.count < 3 ? this.count++ : this.count = 0
+            if(!rideGoing) this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
+            else this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
+        }
+    }
+
+    function vehicleHelp(){
+        this.x = 350
+        this.y = Math.random() * 200
+        this.rad = Math.random() * 40 + 20
+        this.hue = Math.random() * 20 + 10
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(this.hue, 100, 100 - this.y / 1.5, .5))
+            this.x > -50 ? this.x -= 5 : this.lifetime = 0
+        }
+    }
+
+    function exposed(){
+        this.count = 0
+        this.lifetime = 300
+        this.draw = function(){
+            if(this.count == 0) effects.push(new exposedHelp())
+            this.count < 5 ? this.count++ : this.count = 0
+            this.lifetime--
+        }
+    }
+
+    function exposedHelp(){
+        this.y = 200
+        this.x = Math.random() * 320
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.y / 4 + 1, getColorString(-this.y, 100, 50, 1 - Math.abs(100 - this.y)/100))
+            this.y > 0 ? this.y -= 3 : this.lifetime = 0
+        }
+    }
+
+    function sheltered(){
+        this.count = 0
+        this.lifetime = 300
+        this.draw = function(){
+            if(this.count == 0) effects.push(new shelterHelp())
+            this.count < 8 ? this.count++ : this.count = 0
+            this.lifetime--
+        }
+    }
+
+    function shelterHelp(){
+        this.y = 0
+        this.x = Math.random() * 320
+        this.draw = function(){
+            DrawEllipse(this.x, this.y, 30, 70, 0, getColorString(190 + this.y / 3, 100, 50, 1 - (Math.abs(100 - this.y))/100))
+            this.y < 250 ? this.y += 3 : this.lifetime = 0
+        }
+    }
+
+    function lowVital(){
+        this.alpha = 0
+        this.width = 320
+        this.draw = function(){
+            DrawRect(0, 0, this.width, 200, getColorString(this.width / 3, 100, this.width / 6.4, this.alpha))
+            if(this.alpha <= .7) this.alpha += .05
+            else this.width += (0 - this.width) / 50
+            if(this.width < 1) this.lifetime = 0
+        }
+    }
+
+    function shieldsDown(){
+        this.alpha = 0
+        this.y = 0
+        this.draw = function(){
+            DrawRect(0, this.y, 320, 200, getColorString(190 + this.y / 3, 100, 50, this.alpha))
+            this.alpha <= .35 ? this.alpha += .05 : this.y < 200 ? this.y += 6 : this.lifetime = 0
+        }
+    }
+
+    function shieldsUp(){
+        this.count = 0
+        this.lifetime = 100
+        this.draw = function(){
+            if(this.count == 0) effects.push(new shieldUpHelp())
+            this.count < 5 ? this.count++ : this.count = 0
+            this.lifetime--
+        }
+    }
+
+    function shieldUpHelp(){
+        this.x = Math.random() * 320
+        this.y = Math.random() * 200
+        this.rad = 1
+        this.draw = function(){
+            DrawStroke(this.x, this.y, this.rad, getColorString(190 + this.rad / 2, 100, 50, 1 - this.rad / 100), 40)
+            DrawStroke(this.x, this.y - this.rad / 2, this.rad / 2, getColorString(190, 100, 80, .5 - this.rad / 200), 10)
+            this.rad < 100 ? this.rad += 2 : this.lifetime = 0
+        }
+    }
+
+    function energyHUD(){
+        this.val = 0
+        this.draw = function(){
+            this.val += (EnergyBarMeter.value - this.val) / 20
+            DrawRect(energyX * 3.2, energyY * 2, this.val * energyWidth * 3.2, energyHeight * 2, "yellow")
+        }
+    }
+
+    function lowEnergy(){
+        this.alpha = 0
+        this.draw = function(){
+            let mod = Math.sin(Date.now() / 200)
+            let grad = ctx.createLinearGradient(160, 0, 160, 200)
+            grad.addColorStop(0, getColorString(60, 100, 50, 0))
+            grad.addColorStop(1, getColorString(20, 100, 50, mod * this.alpha))
+            DrawRect(0, 0, 320, 200, grad)
+            this.alpha < 1 ? this.alpha += .05 : this.alpha = 1
+            if(!lowEnergyGoing) this.lifetime = 0
+        }
+    }
+
+    function healthHUD(){
+        this.val = 0
+        this.val2 = 0
+        this.draw = function(){
+            if(this.val > this.val2) this.val2 = this.val
+            DrawRect(hpX * 3.2, hpY * 2, this.val2 * hpWidth * 3.2, hpHeight * 2, getColorString(0, 100, 75, 1))
+            DrawRect(hpX * 3.2, hpY * 2, this.val * hpWidth * 3.2, hpHeight * 2, "red")
+            if(!healthHUDGoing){
+              this.val >= .05 ? this.val -= .05 : this.lifetime = 0
+              this.val2 = this.val
+            } else {
+              this.val += (HealthBarMeter.value - this.val) / 20
+              this.val2 += (HealthBarMeter.value - this.val2) / 50
+            }
+        }
+    }
+
+    function healthUp(){
+        this.y = 240
+        this.draw = function(){
+            let grad = ctx.createLinearGradient(160, this.y - 40, 160, this.y + 40)
+            grad.addColorStop(0, getColorString(120, 100, 50, 0))
+            grad.addColorStop(.5, getColorString(100, 100, 50, 1))
+            grad.addColorStop(1, getColorString(80, 100, 50, 0))
+            this.y > -20 ? this.y -= 8 : this.lifetime = 0
+            DrawRect(0, 0, 320, 200, grad)
+        }
+    }
+
+    function lowHealth(){
+        this.alpha = 0
+        this.draw = function(){
+            let mod = Math.sin(Date.now() / 200)
+            let grad = ctx.createLinearGradient(160, 0, 160, 200)
+            grad.addColorStop(0, getColorString(0, 100, 50, mod * this.alpha))
+            grad.addColorStop(1, getColorString(0, 100, 50, 0))
+            DrawRect(0, 0, 320, 200, grad)
+            this.alpha < 1 ? this.alpha += .05 : this.alpha = 1
+            if(!lowHealthGoing) this.lifetime = 0
+        }
+    }
+
+    //#endregion
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            ctx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            ctx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+
+  function DrawLine(start, end, color, stroke){
+    ctx.beginPath()
+    ctx.moveTo(start[0], start[1])
+    ctx.lineTo(end[0], end[1])
+    ctx.strokeStyle = color
+    ctx.lineWidth = stroke
+    ctx.stroke()
+  }
+
+  function DrawEllipse(x, y, width, height, rotation, color){
+    ctx.beginPath()
+    ctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(cord1X, cord1Y);
+    ctx.lineTo(cord2X, cord2Y);
+    ctx.lineTo(cord3X, cord3Y);
+    ctx.lineTo(cord1X, cord1Y);
+    ctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+    //#endregion
+
+
+  window.requestAnimationFrame(update);
+</script>

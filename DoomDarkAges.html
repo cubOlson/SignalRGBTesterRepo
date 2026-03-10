@@ -1,0 +1,986 @@
+<head>
+    <title>Doom: The Dark Ages Dev</title>
+    <meta description="Effects and ambience for Doom: The Dark Ages. v1.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+    <meta property="hpOn" label="Health Effects" type="boolean" default="1" />
+    <meta property="armorOn" label="Armor Effects" type="boolean" default="1" />
+    <meta property="ammoOn" label="Low Ammo Effect" type="boolean" default="1" />
+    <meta property="shieldOn" label="Shield Block Effect" type="boolean" default="1" />
+    <meta property="deathOn" label="Death Effects" type="boolean" default="1" />
+    <meta property="bossOn" label="Boss Effect" type="boolean" default="1" />
+    <meta property="goldOn" label="Gold Effect" type="boolean" default="1" />
+
+    <meta meter="inGameWhite1" tags="vlc,Doom,Dark Ages" x="0.0766" y="0.9340" width="0.0066" height="0.0000" 
+      h="0-360" s="0-30" l="60-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0402" y="0.9278" width="0.0000" height="0.0090" />
+      <resolution aspect="24:10" x="0.0602" y="0.9285" width="0.0000" height="0.0104" />
+      <resolution aspect="16:11" x="0.0852" y="0.9337" width="0.0078" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0805" y="0.9287" width="0.0003" height="0.0106" />
+      <resolution size="2560x1080" x="0.058" y="0.9335" width="0.0059" height="-0.0009" />
+    </meta>
+
+    <meta meter="inGameWhite2" tags="vlc,Doom,Dark Ages" x="0.0801" y="0.9285" width="0.0004" height="0.0090" 
+      h="0-360" s="0-30" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0385" y="0.9333" width="0.0035" height="0.0007" />
+      <resolution aspect="24:10" x="0.0573" y="0.9333" width="0.0052" height="0.0007" />
+      <resolution aspect="16:11" x="0.0891" y="0.9281" width="0.0004" height="0.0106" />
+
+      <resolution size="3840x2160" x="0.0768" y="0.9338" width="0.0070" height="0.0000" />
+      <resolution size="2560x1080" x="0.0602" y="0.9278" width="0.0000" height="0.0111" />
+    </meta>
+
+    <meta meter="inGameNotWhite" tags="vlc,Doom,Dark Ages" x="0.0824" y="0.9368" width="0.0004" height="0.0014" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0408" y="0.9354" width="0.0008" height="0.0028" />
+      <resolution aspect="24:10" x="0.0613" y="0.9354" width="0.0003" height="0.0007" />
+      <resolution aspect="16:11" x="0.0914" y="0.9369" width="0.0004" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.0823" y="0.9366" width="0.0010" height="0.0019" />
+      <resolution size="2560x1080" x="0.062" y="0.9361" width="0.0008" height="0.0009" />
+    </meta>
+
+    <!--shield-->
+
+    <meta meter="shieldGreen" tags="vlc,Doom,Dark Ages" x="0.0875" y="0.9062" width="0.0000" height="0.0049" 
+      h="160-190" s="0-60" l="50-100" hdr-h="160-240" hdr-s="30-70" hdr-l="30-70" type="area">
+      <resolution aspect="3.55:1" x="0.0441" y="0.9118" width="0.0000" height="0.0000" />
+      <resolution aspect="24:10" x="0.0648" y="0.9125" width="0.0006" height="0.0042" />
+      <resolution aspect="16:11" x="0.0965" y="0.9137" width="0.0000" height="0.0013" />
+
+      <resolution size="3840x2160" x="0.0859" y="0.9171" width="0.0008" height="0.0014" />
+      <resolution size="2560x1080" x="0.0656" y="0.9056" width="0.0004" height="0.0046" />
+    </meta>
+
+    <meta meter="shieldRed" tags="vlc,Doom,Dark Ages" x="0.0875" y="0.9062" width="0.0000" height="0.0049" 
+      h="-30-30" s="0-60" l="50-100" hdr-h="-30-30" hdr-s="50-90" hdr-l="60-90" type="area">
+      <resolution aspect="3.55:1" x="0.0441" y="0.9118" width="0.0000" height="0.0000" />
+      <resolution aspect="24:10" x="0.0648" y="0.9125" width="0.0006" height="0.0042" />
+      <resolution aspect="16:11" x="0.0965" y="0.9137" width="0.0000" height="0.0013" />
+
+      <resolution size="3840x2160" x="0.0859" y="0.9171" width="0.0008" height="0.0014" />
+      <resolution size="2560x1080" x="0.0656" y="0.9056" width="0.0004" height="0.0046" />
+    </meta>
+
+    <!--health-->
+
+    <meta meter="healthBlue" tags="vlc,Doom,Dark Ages" x="0.5273" y="0.9090" width="0.0004" height="0.0104" 
+      h="170-240" s="20-100" l="90-100" hdr-h="180-240" hdr-s="20-50" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5121" y="0.9125" width="0.0029" height="0.0007" />
+      <resolution aspect="24:10" x="0.5201" y="0.9076" width="0.0003" height="0.0111" />
+      <resolution aspect="16:11" x="0.5301" y="0.9075" width="0.0004" height="0.0100" />
+
+      <resolution size="3840x2160" x="0.5271" y="0.9083" width="0.0008" height="0.0102" />
+      <resolution size="2560x1080" x="0.5203" y="0.9093" width="0.0004" height="0.0111" />
+    </meta>
+
+    <meta meter="healthRed" tags="vlc,Doom,Dark Ages" x="0.5273" y="0.9090" width="0.0004" height="0.0104" 
+      h="-30-30" s="0-60" l="60-100" hdr-h="0-100" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.5121" y="0.9125" width="0.0029" height="0.0007" />
+      <resolution aspect="24:10" x="0.5201" y="0.9076" width="0.0003" height="0.0111" />
+      <resolution aspect="16:11" x="0.5301" y="0.9075" width="0.0004" height="0.0100" />
+
+      <resolution size="3840x2160" x="0.5271" y="0.9083" width="0.0008" height="0.0102"/>
+      <resolution size="2560x1080" x="0.5203" y="0.9093" width="0.0004" height="0.0111" />
+    </meta>
+
+    <meta meter="healthCriticalRed" tags="vlc,Doom,Dark Ages" x="0.5477" y="0.8931" width="0.0312" height="-0.0007" 
+      h="-30-30" s="50-100" l="60-100" hdr-h="0-100" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.5232" y="0.8910" width="0.0148" height="-0.0007" />
+      <resolution aspect="24:10" x="0.5352" y="0.8917" width="0.0163" height="0.0000" />
+      <resolution aspect="16:11" x="0.5516" y="0.8912" width="0.0258" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.5471" y="0.8921" width="0.0229" height="0.0000"  />
+      <resolution size="2560x1080" x="0.5352" y="0.8917" width="0.0250" height="0.0009" />
+    </meta>
+
+    <meta meter="healthNotCriticalRed" tags="vlc,Doom,Dark Ages" x="0.5516" y="0.8840" width="0.0063" height="0.0007" 
+      h="-30-30" s="50-100" l="60-100" hdr-h="0-100" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.5230" y="0.8847" width="0.0111" height="0.0000" />
+      <resolution aspect="24:10" x="0.5355" y="0.8854" width="0.0044" height="0.0007" />
+      <resolution aspect="16:11" x="0.5551" y="0.8850" width="0.0039" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.5518" y="0.8843" width="0.0047" height="0.0000"  />
+      <resolution size="2560x1080" x="0.5465" y="0.8815" width="0.0059" height="0.0028" />
+    </meta>
+
+    <meta meter="healthIncreaseWhite" tags="vlc,Doom,Dark Ages" x="0.5230" y="0.9458" width="0.0008" height="0.0000" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.5123" y="0.9437" width="0.0008" height="0.0042" />
+      <resolution aspect="24:10" x="0.5177" y="0.9458" width="0.0015" height="0.0014" />
+      <resolution aspect="16:11" x="0.5258" y="0.9456" width="0.0023" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.5234" y="0.9463" width="0.0023" height="0.0005" />
+      <resolution size="2560x1080" x="0.5164" y="0.9454" width="0.0016" height="0.0009" />
+    </meta>
+
+    <meta meter="healthIncreaseNotWhite" tags="vlc,Doom,Dark Ages" x="0.5332" y="0.9465" width="0.0023" height="0.0014" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.5160" y="0.9451" width="0.0006" height="0.0021" />
+      <resolution aspect="24:10" x="0.5227" y="0.9479" width="0.0015" height="0.0021" />
+      <resolution aspect="16:11" x="0.5336" y="0.9487" width="0.0016" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.5305" y="0.9477" width="0.0013" height="0.0028"  />
+      <resolution size="2560x1080" x="0.5227" y="0.9491" width="0.0012" height="0.0000" />
+    </meta>
+
+    <!--armor-->
+
+    <meta meter="armorGreen" tags="vlc,Doom,Dark Ages" x="0.4715" y="0.9104" width="0.0012" height="0.0056" 
+      h="120-180" s="50-80" l="50-90" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4860" y="0.9118" width="0.0025" height="0.0021" />
+      <resolution aspect="24:10" x="0.4791" y="0.9125" width="0.0003" height="0.0021" />
+      <resolution aspect="16:11" x="0.4684" y="0.9119" width="0.0020" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.4711" y="0.9130" width="0.0023" height="0.0019" />
+      <resolution size="2560x1080" x="0.4785" y="0.9130" width="0.0008" height="0.0019" />
+    </meta>
+
+    <meta meter="armorNotGreen" tags="vlc,Doom,Dark Ages" x="0.4816" y="0.9097" width="0.0012" height="0.0042" 
+      h="120-180" s="50-80" l="50-90" hdr-h="120-180" hdr-s="50-80" hdr-l="50-90" type="area">
+      <resolution aspect="3.55:1" x="0.4896" y="0.9104" width="0.0008" height="0.0014" />
+      <resolution aspect="24:10" x="0.4855" y="0.9035" width="0.0015" height="0.0021" />
+      <resolution aspect="16:11" x="0.4797" y="0.9081" width="0.0012" height="0.0069" />
+
+      <resolution size="3840x2160" x="0.4797" y="0.9042" width="0.0010" height="0.0028" />
+      <resolution size="2560x1080" x="0.4859" y="0.9102" width="0.0016" height="0.0028" />
+    </meta>
+
+    <meta meter="armorIncreaseWhite" tags="vlc,Doom,Dark Ages" x="0.4742" y="0.9444" width="0.0016" height="0.0000" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4871" y="0.9458" width="0.0016" height="0.0007" />
+      <resolution aspect="24:10" x="0.4805" y="0.9458" width="0.0012" height="0.0007" />
+      <resolution aspect="16:11" x="0.4715" y="0.9456" width="0.0016" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.4737" y="0.9449" width="0.0021" height="0.0014"  />
+      <resolution size="2560x1080" x="0.4813" y="0.9463" width="0.0008" height="0.0000" />
+    </meta>
+
+    <meta meter="armorIncreaseNotWhite" tags="vlc,Doom,Dark Ages" x="0.4664" y="0.9486" width="0.0016" height="0.0000" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4830" y="0.9479" width="0.0006" height="0.0007" />
+      <resolution aspect="24:10" x="0.4744" y="0.9465" width="0.0009" height="0.0021" />
+      <resolution aspect="16:11" x="0.4629" y="0.9475" width="0.0020" height="0.0038" />
+
+      <resolution size="3840x2160" x="0.4669" y="0.9481" width="0.0013" height="0.0019"  />
+      <resolution size="2560x1080" x="0.4738" y="0.9472" width="0.0012" height="0.0037" />
+    </meta>
+
+    <!--ammo-->
+
+    <meta meter="lowAmmoRed" tags="vlc,Doom,Dark Ages" x="0.9129" y="0.9243" width="0.0031" height="0.0028" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="250-360" hdr-s="20-60" hdr-l="0-60" type="area">
+      <resolution aspect="3.55:1" x="0.9500" y="0.9215" width="0.0055" height="0.0076" />
+      <resolution aspect="24:10" x="0.9320" y="0.9243" width="0.0032" height="0.0035" />
+      <resolution aspect="16:11" x="0.9008" y="0.9206" width="0.0090" height="0.0012" />
+
+      <resolution size="3840x2160" x="0.9133" y="0.9292" width="0.0062" height="0.0023" />
+      <resolution size="2560x1080" x="0.9344" y="0.9250" width="0.0047" height="-0.0009" />
+    </meta>
+
+    <meta meter="lowAmmoNotRed" tags="vlc,Doom,Dark Ages" x="0.9891" y="0.9083" width="0.0020" height="0.0028" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="250-360" hdr-s="20-60" hdr-l="0-60" type="area">
+      <resolution aspect="3.55:1" x="0.9877" y="0.9340" width="0.0016" height="0.0035" />
+      <resolution aspect="24:10" x="0.9858" y="0.9111" width="0.0017" height="0.0083" />
+      <resolution aspect="16:11" x="0.9859" y="0.8981" width="0.0027" height="0.0094" />
+
+      <resolution size="3840x2160" x="0.9828" y="0.9009" width="0.0031" height="0.0079" />
+      <resolution size="2560x1080" x="0.9898" y="0.9046" width="0.0016" height="0.0037" />
+    </meta>
+
+    <!--leader-->
+
+    <meta meter="leaderRed" tags="vlc,Doom,Dark Ages" x="0.3289" y="0.0958" width="0.3422" height="0.0007" 
+      h="-30-30" s="40-80" l="70-100" hdr-h="-30-30" hdr-s="40-80" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4143" y="0.0931" width="0.0004" height="0.0021" />
+      <resolution aspect="24:10" x="0.3733" y="0.0951" width="0.2541" height="0.0021" />
+      <resolution aspect="16:11" x="0.3102" y="0.0963" width="0.3793" height="-0.0006" />
+
+      <resolution size="3840x2160" x="0.3276" y="0.0949" width="0.3445" height="0.0032" />
+      <resolution size="2560x1080" x="0.3719" y="0.0944" width="0.2563" height="0.0019" />
+    </meta>
+
+    <meta meter="leaderPurple" tags="vlc,Doom,Dark Ages" x="0.4988" y="0.1201" width="0.0016" height="0.0000" 
+      h="240-300" s="40-70" l="60-100" hdr-h="240-300" hdr-s="40-70" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.5000" y="0.1167" width="0.0000" height="0.0042" />
+      <resolution aspect="24:10" x="0.4994" y="0.1194" width="0.0009" height="0.0014" />
+      <resolution aspect="16:11" x="0.4996" y="0.1187" width="0.0012" height="0.0031" />
+
+      <resolution size="3840x2160" x="0.4995" y="0.1185" width="0.0008" height="0.0019" />
+      <resolution size="2560x1080" x="0.4996" y="0.1194" width="0.0004" height="0.0009" />
+    </meta>
+
+    <!--gold-->
+
+    <meta meter="goldYellow" tags="vlc,Doom,Dark Ages" x="0.8953" y="0.0729" width="0.0020" height="0.0021" 
+      h="50-80" s="20-50" l="80-100" hdr-h="50-80" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.9473" y="0.0715" width="0.0020" height="0.0007" />
+      <resolution aspect="24:10" x="0.9209" y="0.0722" width="0.0035" height="0.0000" />
+      <resolution aspect="16:11" x="0.8832" y="0.0719" width="0.0047" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.8930" y="0.0727" width="0.0060" height="0.0005" />
+      <resolution size="2560x1080" x="0.9211" y="0.0722" width="0.0023" height="0.0000" />
+    </meta>
+
+    <meta meter="goldNotYellow" tags="vlc,Doom,Dark Ages" x="0.8656" y="0.0528" width="0.0023" height="0.0056" 
+      h="50-80" s="20-50" l="80-100" hdr-h="50-80" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.9342" y="0.0715" width="0.0008" height="0.0021" />
+      <resolution aspect="24:10" x="0.8974" y="0.0514" width="0.0020" height="0.0042" />
+      <resolution aspect="16:11" x="0.8520" y="0.0525" width="0.0023" height="0.0050" />
+
+      <resolution size="3840x2160" x="0.8648" y="0.0542" width="0.0031" height="0.0069" />
+      <resolution size="2560x1080" x="0.8992" y="0.0463" width="0.0023" height="0.0083" />
+    </meta>
+
+    <!-- Sigil -->
+
+    <meta meter="sigilGreen" tags="vlc,Doom,Dark Ages" x="0.4969" y="0.4979" width="0.0047" height="0.0042" 
+      h="90-135" s="25-75" l="75-100" hdr-h="50-80" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4982" y="0.4979" width="0.0033" height="0.0056" />
+      <resolution aspect="24:10" x="0.4971" y="0.4993" width="0.0055" height="0.0049" />
+      <resolution aspect="16:11" x="0.4969" y="0.4981" width="0.0055" height="0.0063" />
+
+      <resolution size="3840x2160" x="0.4961" y="0.4995" width="0.0073" height="0.0060" />
+      <resolution size="2560x1080" x="0.4977" y="0.4991" width="0.0031" height="0.0056" />
+    </meta>
+
+    <meta meter="sigilNotGreen" tags="vlc,Doom,Dark Ages" x="0.4973" y="0.5167" width="0.0043" height="0.0090" 
+      h="90-135" s="25-75" l="75-100" hdr-h="50-80" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4945" y="0.5146" width="0.0104" height="0.0042" />
+      <resolution aspect="24:10" x="0.4953" y="0.5167" width="0.0070" height="0.0062" />
+      <resolution aspect="16:11" x="0.4957" y="0.5162" width="0.0070" height="0.0075" />
+
+      <resolution size="3840x2160" x="0.4961" y="0.5162" width="0.0076" height="0.0074" />
+      <resolution size="2560x1080" x="0.4973" y="0.5167" width="0.0035" height="0.0037" />
+    </meta>
+
+    <meta meter="sigilConfirm" tags="vlc,Doom,Dark Ages" x="0.9965" y="0.3931" width="0.0012" height="0.0201" 
+      h="0-360" s="0-100" l="0-10" hdr-h="50-80" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.7785" y="0.3785" width="0.0010" height="0.1042" />
+      <resolution aspect="24:10" x="0.9881" y="0.1667" width="0.0003" height="0.0715" />
+      <resolution aspect="16:11" x="0.9914" y="0.4163" width="0.0031" height="0.0150" />
+
+      <resolution size="3840x2160" x="0.9971" y="0.2315" width="0.0005" height="0.0718" />
+      <resolution size="2560x1080" x="0.9664" y="0.3602" width="0.0051" height="0.0546" />
+    </meta>
+
+    <!-- Death -->
+    <meta meter="deathRed" tags="vlc,Doom,Dark Ages" x="0.4859" y="0.3243" width="0.0312" height="-0.0007" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="50-80" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4920" y="0.3250" width="0.0178" height="0.0000" />
+      <resolution aspect="24:10" x="0.4872" y="0.3250" width="0.0276" height="-0.0007" />
+      <resolution aspect="16:11" x="0.4863" y="0.3412" width="0.0316" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.4836" y="0.3245" width="0.0346" height="-0.0005" />
+      <resolution size="2560x1080" x="0.4898" y="0.3231" width="0.0227" height="0.0000" />
+    </meta>
+
+    <meta meter="deathNotRed" tags="vlc,Doom,Dark Ages" x="0.5004" y="0.4208" width="0.0016" height="0.0069" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="50-80" hdr-s="20-50" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.5000" y="0.4236" width="0.0014" height="0.0028" />
+      <resolution aspect="24:10" x="0.5000" y="0.4181" width="0.0017" height="0.0056" />
+      <resolution aspect="16:11" x="0.5008" y="0.4256" width="0.0008" height="0.0063" />
+
+      <resolution size="3840x2160" x="0.5010" y="0.4227" width="0.0013" height="0.0037" />
+      <resolution size="2560x1080" x="0.5004" y="0.4194" width="0.0004" height="0.0130" />
+    </meta>
+
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = 320;
+    const height = 200;
+    let effects = [];
+    let gSensor = 0;
+    let gAlpha = 1
+
+    var inGame = false
+    var armorNotGoing = true
+
+    var inGameWhite1Meter = new Meter(10, inGameCallback);
+    var inGameWhite2Meter = new Meter(10, inGameCallback);
+    var inGameNotWhiteMeter = new Meter(10, inGameCallback);
+
+    var shieldGreenMeter = new Meter(10, shieldCallback);
+    var shieldRedMeter = new Meter(10, shieldCallback);
+
+    var healthBlueMeter = new Meter(10, healthCallback);
+    var healthRedMeter = new Meter(10, healthCallback);
+    var healthCriticalRedMeter = new Meter(10,healthCallback);
+    var healthIncreaseWhiteMeter = new Meter(10,healthCallback);
+    var healthIncreaseNotWhiteMeter = new Meter(10,healthCallback);
+
+    var armorGreenMeter = new Meter(10,armorCallback);
+    var armorNotGreenMeter = new Meter(10,armorCallback);
+    var armorIncreaseWhiteMeter = new Meter(10, armorCallback);
+    var armorIncreaseNotWhiteMeter = new Meter(10,armorCallback);
+
+    var SigilGreenMeter = new Meter(10, sigilCallback);
+    var SigilBlackMeter = new Meter(8, sigilCallback);
+
+    var DeathRedMeter = new Meter(10, deathCallback)
+
+    var lowAmmoRedMeter = new Meter(10, ammoCallback);
+
+    var leaderPurpleMeter = new Meter(10, leaderCallback);
+    var leaderRedMeter = new Meter(10,leaderCallback);
+
+    var goldYellowMeter = new Meter(10, goldCallback);
+    var goldNotYellowMeter = new Meter(10, goldCallback);
+
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+  
+      inGameWhite1Meter.setValue(engine.vision.inGameWhite1)
+      inGameWhite2Meter.setValue(engine.vision.inGameWhite2)
+      inGameNotWhiteMeter.setValue(engine.vision.inGameNotWhite)
+      SigilGreenMeter.setValue(engine.vision.sigilGreen)
+      SigilBlackMeter.setValue(engine.vision.sigilConfirm)
+      DeathRedMeter.setValue(engine.vision.deathRed)
+
+      if(inGame){
+
+        shieldGreenMeter.setValue(engine.vision.shieldGreen)
+        shieldRedMeter.setValue(engine.vision.shieldRed)
+        
+        healthBlueMeter.setValue(engine.vision.healthBlue)
+        healthRedMeter.setValue(engine.vision.healthRed)
+        healthCriticalRedMeter.setValue(engine.vision.healthCriticalRed)
+        healthIncreaseWhiteMeter.setValue(engine.vision.healthIncreaseWhite)
+        healthIncreaseNotWhiteMeter.setValue(engine.vision.healthIncreaseNotWhite)
+
+        armorGreenMeter.setValue(engine.vision.armorGreen)
+        armorNotGreenMeter.setValue(engine.vision.armorNotGreen)
+        armorIncreaseWhiteMeter.setValue(engine.vision.armorIncreaseWhite)
+        armorIncreaseNotWhiteMeter.setValue(engine.vision.armorIncreaseNotWhite)
+        leaderPurpleMeter.setValue(engine.vision.leaderPurple)
+        leaderRedMeter.setValue(engine.vision.leaderRed)
+        goldYellowMeter.setValue(engine.vision.goldYellow)
+        goldNotYellowMeter.setValue(engine.vision.goldNotYellow)
+
+        lowAmmoRedMeter.setValue(engine.vision.lowAmmoRed)
+      }
+
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.lifetime <= 0){
+          effects.splice(i, 1)
+        }
+      })
+
+      window.requestAnimationFrame(update);
+    };
+    //#endregion
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            ctx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            ctx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
+    //#region callbacks
+
+    function inGameCallback(){
+      if(inGameWhite1Meter.value >= 0.95 && inGameWhite2Meter.value >= 0.95 && inGameNotWhiteMeter.value <= .05){
+        inGame = true
+      } else if(inGameWhite1Meter.value <= .25 || inGameWhite2Meter.value <= .25){
+        inGame = false
+      }
+    }
+
+    let deathGoing = false
+    function deathCallback(){
+      if(!inGame && DeathRedMeter.value >= .95 && SigilBlackMeter.value >= .95 && engine.vision.deathNotRed <= .05 && !deathGoing){
+        if(deathOn) effects.push(new death())
+        deathGoing = true
+      }
+    }
+
+    let sigilGoing = false
+    function sigilCallback(){
+      if(!inGame && SigilGreenMeter.value >= .95 && SigilBlackMeter.value >= .95 && engine.vision.sigilNotGreen <= .05 && !sigilGoing){
+        if(deathOn) effects.push(new sigil())
+        sigilGoing = true
+      }
+    }
+
+    let shieldRedGoing = false
+    function shieldCallback(){
+      if (inGame && shieldRedMeter.value >= 0.5 && !shieldRedGoing) {
+        shieldRedGoing = true;
+        if(shieldOn) effects.push(new shieldBlock())
+      }
+      if (inGame && shieldGreenMeter.value >= 0.5 && shieldRedGoing) {
+        shieldRedGoing = false;
+      }
+    }
+
+    let criticalGoing = false
+    let lowHealthGoing = false
+    function healthCallback(){
+      if(inGame && healthBlueMeter.value >= 0.95 && healthIncreaseWhiteMeter.value >= 0.95 && healthIncreaseNotWhiteMeter.value <= .05){
+        if(hpOn) effects.push(new hudUp(220))
+      }
+      if(inGame && healthBlueMeter.value >= 0.95 && lowHealthGoing){
+        lowHealthGoing = false
+      }
+      if(inGame && healthRedMeter.value >= 0.95 && !lowHealthGoing){
+        lowHealthGoing = true
+      }
+      if(inGame && healthCriticalRedMeter.value > 0 && engine.vision.healthNotCriticalRed <= .05 && lowHealthGoing){
+        if(hpOn) effects.push(new criticalHealth())
+      }
+    }
+
+    function armorCallback(){
+      if(inGame && armorGreenMeter.value >= 0.95 && armorNotGreenMeter.value <= .05 && armorNotGoing ){
+        armorNotGoing = false
+        if(armorOn) effects.push(new hudUp(120))
+      }
+      if(inGame && armorGreenMeter.value <= 0 && !armorNotGoing ){
+        armorNotGoing = true
+        if(armorOn) effects.push(new tookDamage())
+      }
+      if(inGame && armorGreenMeter.value >= 0.95 && armorIncreaseWhiteMeter.value >= 0.95 && armorIncreaseNotWhiteMeter.value <= .05){
+        if(armorOn) effects.push(new hudUp(120))
+      }
+    }
+
+    let lowAmmoGoing = false
+    function ammoCallback(){
+      if(inGame && lowAmmoRedMeter.value >= 0.1 && engine.vision.lowAmmoNotRed <= .1 && !lowAmmoGoing){
+        if(ammoOn) effects.push(new lowAmmo())
+        lowAmmoGoing = true
+      }
+    }
+
+    let leaderHUDGoing = false
+    function leaderCallback(){
+      if(inGame && leaderPurpleMeter.value >= 0.5 && leaderRedMeter.value >= 0.5 && !leaderHUDGoing){
+        leaderHUDGoing = true
+        if(bossOn) effects.push(new boss())
+      }
+    }
+
+    let goldGoing = false
+    function goldCallback(){
+      if(inGame && goldYellowMeter.value >= 0.95 && goldNotYellowMeter.value <= .05 && !goldGoing){
+        goldGoing = true
+        if(goldOn) effects.push(new goldGain())
+      }
+    }
+
+    function boss(){
+      this.a = 0
+      this.w = 0
+      this.count = 0
+      this.draw = function(){
+          if(this.a <= 1) this.a += .05
+          this.w += (leaderRedMeter.value * 320 - this.w) / 20
+          DrawRect(0, 0, this.w, 200, getColorString(0, 100, 50, this.a * (Math.sin(Date.now() / 200) * .25 + .5)))
+          if(!this.count) effects.push(new bossHealth(this.w))
+          this.count < 3 ? this.count++ : this.count = 0
+        if(leaderRedMeter.value <= .01 && leaderPurpleMeter.value <= .01){
+          this.lifetime = 0
+          leaderHUDGoing = false
+        }
+      }
+    }
+
+    function bossHealth(x){
+      this.x = x
+      this.vx = 0
+      this.y = Math.random() * 200
+      this.rad = 20
+      this.lit = Math.random() * 75
+      this.draw = function(){
+          DrawCircle(this.x, this.y, this.rad, getColorString(0, 100, this.lit, .33))
+          this.x > -50 ? this.x += this.vx : this.lifetime = 0
+          this.vx -= .02
+          this.rad > 1 ? this.rad -= .01 : this.rad = 1
+      }
+    }
+
+    function sigil(){
+      this.rad = 1
+      this.draw = function(){
+          DrawCircle(160, 100, this.rad, getColorString(135, 100, 50, Math.sin(Date.now() / 500) * .25 + .5))
+          this.rad < 298 ? this.rad += (300 - this.rad) / 20 : this.rad = 300
+          if(SigilGreenMeter.value <= .25 || SigilBlackMeter.value <= .25) this.lifetime = 0
+      }
+    }
+
+    function death(){
+      this.y = 0
+      this.alpha = 0
+      this.draw = function(){
+          DrawRect(0, 0, 320, 200, getColorString(0, 100, 30, this.alpha))
+          drawTeeth(0, 100 + this.y, 0)
+          drawTeeth(-30, 100 - this.y, 1)
+          this.y = Math.abs(Math.sin(Date.now() / 200)) * 75 + 30
+          if(this.alpha <= .95) this.alpha += .05
+          if(DeathRedMeter.value <= .25 || SigilBlackMeter.value <= .25){
+            this.lifetime = 0
+            deathGoing = false
+          }
+      }
+    }
+
+    function drawTeeth(x, y, flip){
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.scale(1, flip ? -1 : 1)
+        ctx.translate(-x, -y)
+        DrawRect(x, y, 360, 100, getColorString(0, 100, 2, 1))
+        for(let i = 0; i < 9; i++){
+            DrawTriangle(i * 60 + x, y, i * 60 + x + 60, y, i * 60 + x + 30, y - 75, getColorString(0, 100, 2, 1))
+        }
+        ctx.restore()
+    }
+
+    function goldGain(){
+      this.half = false
+      this.w = 0
+      this.draw = function(){
+          DrawRect(160 - this.w, 0, this.w * 2, 200, getColorString(60, 100, 60, this.w / 200))
+          if(!this.half) this.w < 198 ? this.w += (200 - this.w) / 20 : this.half = true
+          else this.w > 2 ? this.w += (0 - this.w) / 20 : this.lifetime = 0
+          if(!this.lifetime) goldGoing = false
+      }
+    }
+
+    function shieldBlock(){
+      this.x = 160
+      this.y = 320
+      this.rot = -.5
+      this.alpha = 0
+      this.half = false
+      this.draw = function(){
+          ctx.save()
+          ctx.translate(this.x, this.y)
+          ctx.rotate(this.rot)
+          ctx.scale(4, 4)
+          ctx.translate(-this.x, -this.y)
+          DrawCircle(this.x, this.y, 50, getColorString(0, 100, 50, this.alpha))
+          for(let i = 0; i < 8; i++){
+              ctx.translate(this.x, this.y)
+              ctx.rotate(.6)
+              ctx.translate(-this.x, -this.y)
+              DrawTriangle(this.x - 30, this.y + 60, this.x + 5, this.y + 40, this.x, this.y + 60, getColorString(0, 100, 50, this.alpha))
+          }
+          ctx.restore()
+          if(!this.half) {
+              this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
+              this.rot < 1.5 ? this.rot += .04 : this.half = true
+          }
+          else {
+              this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+              this.rot += .01
+          }
+      }
+    }
+
+    function criticalHealth(){
+      this.count = 0
+      this.draw = function(){
+          this.count < 3 ? this.count++ : this.count = 0
+          if(!this.count){
+              effects.push(new criticalHealthHelp(120, 75, Math.random() - 2, Math.random() - 2, 20))
+              effects.push(new criticalHealthHelp(200, 75, Math.random() - 2, -Math.random() + 2, 20))
+              effects.push(new criticalHealthHelp(160, 140, 0, Math.random() * 4 - 2, 30))
+          }
+          if(healthBlueMeter.value >= .5 || !inGame) this.lifetime = 0
+      }
+    }
+
+    function criticalHealthHelp(x, y, vy, vx, rad){
+        this.x = x
+        this.y = y
+        this.vx = vx
+        this.vy = vy
+        this.rad = rad
+        this.alpha = 1
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(0, 100, 50, this.alpha))
+            this.alpha > 0 ? this.alpha -= .01 : this.lifetime = 0
+            this.x += this.vx
+            this.vx *= .99
+            this.y += this.vy
+            this.vy += .05
+        }
+    }
+
+    function hudUp(hue){
+      this.hue = hue
+      this.alpha = 0
+      this.y = 200
+      this.draw = function(){
+          DrawRect(0, 0, 320, 200, getColorString(this.hue, 100, 40, this.alpha))
+          DrawRect(0, this.y, 320, 20, "white")
+          this.y > -20 ? this.y -= 5 : this.lifetime = 0
+          this.alpha = 1 - Math.abs(100 - this.y) / 100
+      }
+    }
+
+    function tookDamage(){
+      this.draw = function(){
+          for(let i = 0; i < 5; i++){
+              setTimeout(()=>{
+                  effects.push(new tookDamageHelp())
+              }, 100 * i)
+          }
+          this.lifetime = 0
+      }
+    }
+
+    function tookDamageHelp(){
+      this.x = Math.random() * 200 + 60
+      this.y = Math.random() * 200
+      this.rad = 1
+      this.draw = function(){
+          DrawStroke(this.x, this.y, this.rad, getColorString(0, 100, 50, 1 - this.rad / 100), 30)
+          this.rad < 100 ? this.rad += 5 : this.lifetime = 0
+      }
+    }
+
+    function lowAmmo(){
+      this.count = 0
+      this.draw = function(){
+          if(this.count % 40 == 0) effects.push(new lowAmmoHelp())
+          this.count < 80 ? this.count++ : this.lifetime = 0
+      }
+    }
+
+    function lowAmmoHelp(){
+      this.alpha = 0
+      this.i = 6
+      this.count = 0
+      this.half = false
+      this.draw = function(){
+          DrawRect(0, 0, 320, 200, getColorString(0, 100, 30, this.alpha))
+          for(let i = 0; i < this.i; i++){
+              let temp = i % 2 == 0 ? i - 1 : -i
+              DrawRect(170 + temp * 25, 50, 30, 100, getColorString(10, 100, 60, this.alpha))
+          }
+          if(this.half){
+              this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
+              if(!this.lifetime) lowAmmoGoing = false
+          } else {
+              this.alpha <= .6 ? this.alpha += .1 : this.count++
+              if(this.count == 3){
+                  this.count = 0
+                  this.i > 0 ? this.i-- : this.half = true
+              }
+          }
+      }
+    }
+    //#endregion
+    
+    //#region Helper Functions
+  function DrawArc(x, y, start, end, radius, direction, color){
+    ctx.beginPath()
+    ctx.arc(x, y, radius, start, end, direction)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  function DrawLine(start, end, color, stroke){
+    ctx.beginPath()
+    ctx.moveTo(start[0], start[1])
+    ctx.lineTo(end[0], end[1])
+    ctx.strokeStyle = color
+    ctx.lineWidth = stroke
+    ctx.stroke()
+  }
+
+  function DrawEllipse(x, y, width, height, rotation, color){
+    ctx.beginPath()
+    ctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  function DrawGear(x, y, radius, stroke, teeth, color){
+    DrawStroke(x, y, radius, color, stroke)
+    for(let i = 0; i < teeth; i++){
+      var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
+      var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
+      var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
+      ctx.save()
+      ctx.translate(ix, iy)
+      ctx.rotate(rotate)
+      ctx.translate(-ix, -iy)
+      DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, "orange")
+      ctx.restore()
+    }
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(cord1X, cord1Y);
+    ctx.lineTo(cord2X, cord2Y);
+    ctx.lineTo(cord3X, cord3Y);
+    ctx.lineTo(cord1X, cord1Y);
+    ctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function strokeRect(x, y, width, height, color, stroke){
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke
+    ctx.rect(x, y, width, height);
+    ctx.stroke()
+  }
+
+  function DrawHex(x, y, color, size) {
+    ctx.beginPath();
+    for (var i = 0; i < 7; i++) {
+      ctx.lineTo(x + size * Math.cos(2 * Math.PI / 6 * i), y + size * 0.9 * Math.sin(2 * Math.PI / 6 * i));
+    }
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = "black"
+    ctx.stroke()
+  };
+
+      function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+        var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+        var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+
+        return ({ x: x, y: y });
+      }
+
+      function CubicN(pct, a, b, c, d) {
+        var t2 = pct * pct;
+        var t3 = t2 * pct;
+        return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+          + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+          + (c * 3 - c * 3 * pct) * t2
+          + d * t3;
+      }
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+    //#endregion
+
+
+  window.requestAnimationFrame(update);
+</script>

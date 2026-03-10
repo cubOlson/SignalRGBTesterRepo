@@ -1,0 +1,1247 @@
+<head>
+    <title>Palworld Dev</title>
+    <meta description="Gotta snatch 'em all in full RGB." />
+    <meta publisher="SignalRGB" />
+  
+    <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
+      tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
+      type="boolean" default="0" />
+    <meta property="healthHUDOn" label="Enable Health HUD" type="boolean" default="1" />
+    <meta property="blackToggle" label="Enable HUD Background" type="boolean" default="1" />
+    <meta property="healthColor" label="Health Color" type="color" default="#00ff00" min="0" max="360" />
+    <meta property="healthY" label="Health bar Y position" type="number" min="0" max="100" default="30" />
+    <meta property="healthX" label="Health bar X position" type="number" min="0" max="100" default="0" />
+    <meta property="healthWidth" label="Health bar width" type="number" min="0" max="100" default="100" />
+    <meta property="healthHeight" label="Health bar height" type="number" min="0" max="100" default="10" />
+    <meta property="shieldHUDOn" label="Enable Shield HUD" type="boolean" default="1" />
+    <meta property="shieldColor" label="Shield Color" type="color" default="#00ffff" min="0" max="360" />
+    <meta property="shieldY" label="shield bar Y position" type="number" min="0" max="100" default="40" />
+    <meta property="shieldX" label="shield bar X position" type="number" min="0" max="100" default="0" />
+    <meta property="shieldWidth" label="shield bar width" type="number" min="0" max="100" default="100" />
+    <meta property="shieldHeight" label="shield bar height" type="number" min="0" max="100" default="10" />
+    <meta property="hungerHUDOn" label="Enable Hunger HUD" type="boolean" default="1" />
+    <meta property="hungerColor" label="Hunger Color" type="color" default="#999900" min="0" max="360" />
+    <meta property="hungerY" label="hunger bar Y position" type="number" min="0" max="100" default="50" />
+    <meta property="hungerX" label="hunger bar X position" type="number" min="0" max="100" default="0" />
+    <meta property="hungerWidth" label="hunger bar width" type="number" min="0" max="100" default="100" />
+    <meta property="hungerHeight" label="hunger bar height" type="number" min="0" max="100" default="10" />
+    <meta property="palOn" label="Enable Pal Effects" type="boolean" default="1" />
+    <meta property="timeOn" label="Enable Day / Night Effects" type="boolean" default="1" />
+    <meta property="levelOn" label="Enable Level Up Effects" type="boolean" default="1" />
+    <meta property="deathOn" label="Enable Death Effect" type="boolean" default="1" />
+    <meta property="hungerOn" label="Enable Hunger Effect" type="boolean" default="1" />
+    <meta property="baseOn" label="Enable Base Effect" type="boolean" default="1" />
+    <meta property="bossOn" label="Enable Boss Effect" type="boolean" default="1" />
+
+    <meta meter="inGameCompassWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.4994" y="0.0292" width="0.0008" height="0.0035" 
+    h="0-360" s="0-100" l="95-100" >
+      <resolution size="2560X1080" x="0.4993" y="0.0292" width="0.0014" height="0.0028"  />
+      <resolution size="3440x1440" x="0.4993" y="0.0292" width="0.0014" height="0.0028"  />
+
+      <resolution size="3440x967" x="0.4999" y="0.0306" width="0.0005" height="0.0021"/>
+      <resolution size="3200x900" x="0.4999" y="0.0306" width="0.0005" height="0.0021"/>
+      <resolution size="3520x990" x="0.4999" y="0.0306" width="0.0005" height="0.0021"/>
+      <resolution size="3840x1080" x="0.4999" y="0.0306" width="0.0005" height="0.0021"/>
+      <resolution size="5120x1440" x="0.4999" y="0.0306" width="0.0005" height="0.0021"/>
+    </meta>
+
+    <meta meter="inGameCompassLong" type="area" tags="VLC,Game,Palworld,Pal" x="0.5029" y="0.0306" width="0.08" height="0.0007"  
+    h="0-360" s="0-40" l="60-100" >
+      <resolution size="2560X1080" x="0.5029" y="0.0306" width="0.08" height="0.0007"  />
+      <resolution size="3440x1440" x="0.5029" y="0.0306" width="0.08" height="0.0007"  />
+      
+      <resolution size="3440x967" x="0.5013" y="0.0313" width="0.0108" height="0.0007"/>
+      <resolution size="3200x900" x="0.5013" y="0.0313" width="0.0108" height="0.0007"/>
+      <resolution size="3520x990" x="0.5013" y="0.0313" width="0.0108" height="0.0007"/>
+      <resolution size="3840x1080" x="0.5013" y="0.0313" width="0.0108" height="0.0007"/>
+      <resolution size="5120x1440" x="0.5013" y="0.0313" width="0.0108" height="0.0007"/>
+    </meta>
+
+    <meta meter="inGameCompassNotWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.4896" y="0.0375" width="0.0188" height="0.0028"  
+    h="0-360" s="0-100" l="95-100" >
+      <resolution size="2560X1080" x="0.4984" y="0.0188" width="0.0029" height="0.0041"  />
+      <resolution size="3440x1440" x="0.4984" y="0.0188" width="0.0029" height="0.0041"  />
+
+      <resolution size="3440x967" x="0.4978" y="0.0174" width="0.0047" height="0.0048"/>
+      <resolution size="3200x900" x="0.4978" y="0.0174" width="0.0047" height="0.0048"/>
+      <resolution size="3520x990" x="0.4978" y="0.0174" width="0.0047" height="0.0048"/>
+      <resolution size="3840x1080" x="0.4978" y="0.0174" width="0.0047" height="0.0048"/>
+      <resolution size="5120x1440" x="0.4978" y="0.0174" width="0.0047" height="0.0048"/>
+    </meta>
+
+    <meta meter="shield" type="area" tags="VLC,Game,Palworld,Pal" x="0.0367" y="0.8972" width="0.1169" height="0.0048"  
+    h="180-225" s="80-100" l="75-100" >
+      <resolution size="2560X1080" x="0.0276" y="0.8972" width="0.0875" height="0.0006"  />
+      <resolution size="3440x1440" x="0.0276" y="0.8972" width="0.0875" height="0.0006"  />
+      
+      <resolution size="3440x967" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3200x900" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3520x990" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3840x1080" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="5120x1440" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+    </meta>
+
+    <meta meter="shieldRed1" type="area" tags="VLC,Game,Palworld,Pal" x="0.0367" y="0.8972" width="0.1169" height="0.0048"  
+    h="0-30" s="80-100" l="75-100" >
+      <resolution size="2560X1080" x="0.0276" y="0.8972" width="0.0875" height="0.0006"  />
+      <resolution size="3440x1440" x="0.0276" y="0.8972" width="0.0875" height="0.0006"  />
+      
+      <resolution size="3440x967" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3200x900" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3520x990" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3840x1080" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="5120x1440" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+    </meta>
+
+    <meta meter="shieldRed2" type="area" tags="VLC,Game,Palworld,Pal" x="0.0367" y="0.8972" width="0.1169" height="0.0048"  
+    h="330-360" s="80-100" l="75-100" >
+      <resolution size="2560X1080" x="0.0276" y="0.8972" width="0.0875" height="0.0006"  />
+      <resolution size="3440x1440" x="0.0276" y="0.8972" width="0.0875" height="0.0006"  />
+      
+      <resolution size="3440x967" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3200x900" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3520x990" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="3840x1080" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+      <resolution size="5120x1440" x="0.0186" y="0.8972" width="0.0585" height="0.0013"/>
+    </meta>
+
+    <meta meter="health" type="area" tags="VLC,Game,Palworld,Pal" x="0.037" y="0.9229" width="0.1177" height="0.002"  
+    h="135-180" s="50-100" l="50-90" >
+      <resolution size="2560X1080" x="0.0276" y="0.9243" width="0.0873" height="0.0006"  />
+      <resolution size="3440x1440" x="0.0276" y="0.9243" width="0.0873" height="0.0006"  />
+            
+      <resolution size="3440x967" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3200x900" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3520x990" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3840x1080" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="5120x1440" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+    </meta>
+
+    <meta meter="healthRed1" type="area" tags="VLC,Game,Palworld,Pal" x="0.037" y="0.9229" width="0.1177" height="0.002"  
+    h="0-30" s="80-100" l="75-100" >
+      <resolution size="2560X1080" x="0.0276" y="0.9243" width="0.0873" height="0.0006"  />
+      <resolution size="3440x1440" x="0.0276" y="0.9243" width="0.0873" height="0.0006"  />
+            
+      <resolution size="3440x967" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3200x900" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3520x990" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3840x1080" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="5120x1440" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+    </meta>
+
+    <meta meter="healthRed2" type="area" tags="VLC,Game,Palworld,Pal" x="0.037" y="0.9229" width="0.1177" height="0.002"  
+    h="330-360" s="80-100" l="75-100" >
+      <resolution size="2560X1080" x="0.0276" y="0.9243" width="0.0873" height="0.0006"  />
+      <resolution size="3440x1440" x="0.0276" y="0.9243" width="0.0873" height="0.0006"  />
+            
+      <resolution size="3440x967" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3200x900" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3520x990" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="3840x1080" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+      <resolution size="5120x1440" x="0.0183" y="0.9236" width="0.0582" height="-0.0007"/>
+    </meta>
+
+    <meta meter="healthWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.0262" y="0.9152" width="0.0035" height="0.0028"  
+    h="0-360" s="0-100" l="90-100" >
+      <resolution size="2560X1080" x="0.0206" y="0.9159" width="0.0015" height="0.0028"  />
+      <resolution size="3440x1440" x="0.0206" y="0.9159" width="0.0015" height="0.0028"  />
+                  
+      <resolution size="3440x967" x="0.0134" y="0.9145" width="0.0011" height="0.0028"/>
+      <resolution size="3200x900" x="0.0134" y="0.9145" width="0.0011" height="0.0028"/>
+      <resolution size="3520x990" x="0.0134" y="0.9145" width="0.0011" height="0.0028"/>
+      <resolution size="3840x1080" x="0.0134" y="0.9145" width="0.0011" height="0.0028"/>
+      <resolution size="5120x1440" x="0.0134" y="0.9145" width="0.0011" height="0.0028"/>
+    </meta>
+
+    <meta meter="hunger" type="area" tags="VLC,Game,Palworld,Pal" x="0.0371" y="0.9375" width="0.1169" height="0.0013"  
+    h="0-45" s="75-100" l="75-100" >
+      <resolution size="2560X1080" x="0.0273" y="0.9382" width="0.0873" height="-0.0014"  />
+      <resolution size="3440x1440" x="0.0273" y="0.9382" width="0.0873" height="-0.0014"  />
+
+      <resolution size="3440x967" x="0.0186" y="0.9382" width="0.0582" height="-0.0007"/>
+      <resolution size="3200x900" x="0.0186" y="0.9382" width="0.0582" height="-0.0007"/>
+      <resolution size="3520x990" x="0.0186" y="0.9382" width="0.0582" height="-0.0007"/>
+      <resolution size="3840x1080" x="0.0186" y="0.9382" width="0.0582" height="-0.0007"/>
+      <resolution size="5120x1440" x="0.0186" y="0.9382" width="0.0582" height="-0.0007"/>
+    </meta>
+
+    <meta meter="hungerWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.0297" y="0.9347" width="0.0005" height="0.0007"  
+    h="0-360" s="0-100" l="95-100" >
+      <resolution size="2560X1080" x="0.0198" y="0.9416" width="0.0008" height="0.0014"  />
+      <resolution size="3440x1440" x="0.0198" y="0.9416" width="0.0008" height="0.0014"  />
+      
+      <resolution size="3440x967" x="0.0128" y="0.9409" width="0.0003" height="0.0021"/>
+      <resolution size="3200x900" x="0.0128" y="0.9409" width="0.0003" height="0.0021"/>
+      <resolution size="3520x990" x="0.0128" y="0.9409" width="0.0003" height="0.0021"/>
+      <resolution size="3840x1080" x="0.0128" y="0.9409" width="0.0003" height="0.0021"/>
+      <resolution size="5120x1440" x="0.0128" y="0.9409" width="0.0003" height="0.0021"/>
+    </meta>
+
+    <meta meter="hudNotWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.0274" y="0.9249" width="0.0023" height="0.0035"  
+    h="0-360" s="0-100" l="95-100" >
+      <resolution size="2560X1080" x="0.0201" y="0.9249" width="0.0026" height="0.0035"  />
+      <resolution size="3440x1440" x="0.0201" y="0.9249" width="0.0026" height="0.0035"  />
+            
+      <resolution size="3440x967" x="0.014" y="0.9249" width="0.0005" height="0.0049"/>
+      <resolution size="3200x900" x="0.014" y="0.9249" width="0.0005" height="0.0049"/>
+      <resolution size="3520x990" x="0.014" y="0.9249" width="0.0005" height="0.0049"/>
+      <resolution size="3840x1080" x="0.014" y="0.9249" width="0.0005" height="0.0049"/>
+      <resolution size="5120x1440" x="0.014" y="0.9249" width="0.0005" height="0.0049"/>
+    </meta>
+
+    <meta meter="dayTimeWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.2138" y="0.9194" width="0.0039" height="0.009"  
+    h="0-360" s="0-100" l="80-100" >
+      <resolution size="2560X1080" x="0.1591" y="0.9201" width="0.0032" height="0.0083"  />
+      <resolution size="3440x1440" x="0.1591" y="0.9201" width="0.0032" height="0.0083"  />
+                  
+      <resolution size="3440x967" x="0.1064" y="0.9201" width="0.0024" height="0.0062"/>
+      <resolution size="3200x900" x="0.1064" y="0.9201" width="0.0024" height="0.0062"/>
+      <resolution size="3520x990" x="0.1064" y="0.9201" width="0.0024" height="0.0062"/>
+      <resolution size="3840x1080" x="0.1064" y="0.9201" width="0.0024" height="0.0062"/>
+      <resolution size="5120x1440" x="0.1064" y="0.9201" width="0.0024" height="0.0062"/>
+    </meta>
+
+    <meta meter="timeYellow" type="area" tags="VLC,Game,Palworld,Pal" x="0.2134" y="0.9069" width="0.0004" height="0.0007"  
+    h="50-60" s="25-50" l="90-100" >
+      <resolution size="2560X1080" x="0.1599" y="0.9055" width="0.0006" height="0.0014"  />
+      <resolution size="3440x1440" x="0.1599" y="0.9055" width="0.0006" height="0.0014"  />
+                        
+      <resolution size="3440x967" x="0.107" y="0.9055" width="0" height="0"/>
+      <resolution size="3200x900" x="0.107" y="0.9055" width="0" height="0"/>
+      <resolution size="3520x990" x="0.107" y="0.9055" width="0" height="0"/>
+      <resolution size="3840x1080" x="0.107" y="0.9055" width="0" height="0"/>
+      <resolution size="5120x1440" x="0.107" y="0.9055" width="0" height="0"/>
+    </meta>
+
+    <meta meter="palBlue" type="area" tags="VLC,Game,Palworld,Pal" x="0.0899" y="0.8332" width="0.0074" height="0"  
+    h="180-225" s="80-100" l="75-100" >
+      <resolution size="2560X1080" x="0.0698" y="0.8339" width="0.0023" height="0"  />
+      <resolution size="3440x1440" x="0.0698" y="0.8339" width="0.0023" height="0"  />
+                              
+      <resolution size="3440x967" x="0.0451" y="0.8318" width="0.0032" height="0"/>
+      <resolution size="3200x900" x="0.0451" y="0.8318" width="0.0032" height="0"/>
+      <resolution size="3520x990" x="0.0451" y="0.8318" width="0.0032" height="0"/>
+      <resolution size="3840x1080" x="0.0451" y="0.8318" width="0.0032" height="0"/>
+      <resolution size="5120x1440" x="0.0451" y="0.8318" width="0.0032" height="0"/>
+    </meta>
+
+    <meta meter="palRed1" type="area" tags="VLC,Game,Palworld,Pal" x="0.0922" y="0.829" width="0.0047" height="0"  
+    h="0-30" s="75-100" l="50-75" >
+      <resolution size="2560X1080" x="0.0689" y="0.8284" width="0.0029" height="0.0013"  />
+      <resolution size="3440x1440" x="0.0689" y="0.8284" width="0.0029" height="0.0013"  />
+                                    
+      <resolution size="3440x967" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="3200x900" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="3520x990" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="3840x1080" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="5120x1440" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+    </meta>
+
+    <meta meter="palRed2" type="area" tags="VLC,Game,Palworld,Pal" x="0.0922" y="0.829" width="0.0047" height="0"  
+    h="330-360" s="75-100" l="50-75" >
+      <resolution size="2560X1080" x="0.0689" y="0.8284" width="0.0029" height="0.0013"  />
+      <resolution size="3440x1440" x="0.0689" y="0.8284" width="0.0029" height="0.0013"  />
+                                    
+      <resolution size="3440x967" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="3200x900" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="3520x990" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="3840x1080" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+      <resolution size="5120x1440" x="0.0459" y="0.827" width="0.0018" height="0.0014"/>
+    </meta>
+
+    <meta meter="palSphereColor" type="colormean" tags="VLC,Game,Palworld,Pal" x="0.8128" y="0.9027" width="0.0055" height="0.0042"  
+    h="330-360" s="0-100" l="0-100" >
+      <resolution size="2560X1080" x="0.8616" y="0.9034" width="0.0017" height="0.0028"  />
+      <resolution size="3440x1440" x="0.8616" y="0.9034" width="0.0017" height="0.0028"  />
+                                          
+      <resolution size="3440x967" x="0.9075" y="0.9013" width="0.0012" height="0.0035"/>
+      <resolution size="3200x900" x="0.9075" y="0.9013" width="0.0012" height="0.0035"/>
+      <resolution size="3520x990" x="0.9075" y="0.9013" width="0.0012" height="0.0035"/>
+      <resolution size="3840x1080" x="0.9075" y="0.9013" width="0.0012" height="0.0035"/>
+      <resolution size="5120x1440" x="0.9075" y="0.9013" width="0.0012" height="0.0035"/>
+    </meta>
+
+    <meta meter="palSphereConfirm" type="area" tags="VLC,Game,Palworld,Pal" x="0.8034" y="0.8617" width="0.0082" height="0.0118"  
+    h="60-210" s="10-100" l="0-40" >
+      <resolution size="2560X1080" x="0.8543" y="0.8624" width="0.0021" height="0.0111"  />
+      <resolution size="3440x1440" x="0.8543" y="0.8624" width="0.0021" height="0.0111"  />
+   
+      <resolution size="3440x967" x="0.9032" y="0.8631" width="0.002" height="0.0097"/>
+      <resolution size="3200x900" x="0.9032" y="0.8631" width="0.002" height="0.0097"/>
+      <resolution size="3520x990" x="0.9032" y="0.8631" width="0.002" height="0.0097"/>
+      <resolution size="3840x1080" x="0.9032" y="0.8631" width="0.002" height="0.0097"/>
+      <resolution size="5120x1440" x="0.9032" y="0.8631" width="0.002" height="0.0097"/>
+    </meta>
+
+    <meta meter="palSphereNotColor" type="area" tags="VLC,Game,Palworld,Pal" x="0.8027" y="0.8548" width="0.059" height="0.0027"  
+    h="60-210" s="10-100" l="0-40" >
+      <resolution size="2560X1080" x="0.8537" y="0.8534" width="0.021" height="0.0034"  />
+      <resolution size="3440x1440" x="0.8537" y="0.8534" width="0.021" height="0.0034"  />
+         
+      <resolution size="3440x967" x="0.9038" y="0.852" width="0.0031" height="0.0035"/>
+      <resolution size="3200x900" x="0.9038" y="0.852" width="0.0031" height="0.0035"/>
+      <resolution size="3520x990" x="0.9038" y="0.852" width="0.0031" height="0.0035"/>
+      <resolution size="3840x1080" x="0.9038" y="0.852" width="0.0031" height="0.0035"/>
+      <resolution size="5120x1440" x="0.9038" y="0.852" width="0.0031" height="0.0035"/>
+    </meta>
+
+    <meta meter="levelUp" type="area" tags="VLC,Game,Palworld,Pal" x="0.4752" y="0.9534" width="0.0359" height="0.0028"  
+    h="180-225" s="50-100" l="25-75" >
+      <resolution size="2560X1080" x="0.4752" y="0.9534" width="0.0359" height="0.0028"  />
+      <resolution size="3440x1440" x="0.4752" y="0.9534" width="0.0359" height="0.0028"  />
+         
+      <resolution size="3440x967" x="0.4987" y="0.9534" width="0.0058" height="0.0007"/>
+      <resolution size="3200x900" x="0.4987" y="0.9534" width="0.0058" height="0.0007"/>
+      <resolution size="3520x990" x="0.4987" y="0.9534" width="0.0058" height="0.0007"/>
+      <resolution size="3840x1080" x="0.4987" y="0.9534" width="0.0058" height="0.0007"/>
+      <resolution size="5120x1440" x="0.4987" y="0.9534" width="0.0058" height="0.0007"/>
+    </meta>
+
+    <meta meter="levelUpNotBlue" type="area" tags="VLC,Game,Palworld,Pal" x="0.474" y="0.9465" width="0.05" height="0.0014"  
+    h="180-225" s="50-100" l="25-75" >
+      <resolution size="2560X1080" x="0.474" y="0.9465" width="0.05" height="0.0014"  />
+      <resolution size="3440x1440" x="0.474" y="0.9465" width="0.05" height="0.0014"  />
+               
+      <resolution size="3440x967" x="0.4949" y="0.9451" width="0.0102" height="0"/>
+      <resolution size="3200x900" x="0.4949" y="0.9451" width="0.0102" height="0"/>
+      <resolution size="3520x990" x="0.4949" y="0.9451" width="0.0102" height="0"/>
+      <resolution size="3840x1080" x="0.4949" y="0.9451" width="0.0102" height="0"/>
+      <resolution size="5120x1440" x="0.4949" y="0.9451" width="0.0102" height="0"/>
+    </meta>
+
+    <meta meter="baseWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.9695" y="0.0341" width="0.0055" height="0.0013"  
+    h="0-360" s="0-100" l="80-100" >
+      <resolution size="2560X1080" x="0.9779" y="0.0341" width="0.0029" height="0.0013"  />
+      <resolution size="3440x1440" x="0.9779" y="0.0341" width="0.0029" height="0.0013"  />
+                     
+      <resolution size="3440x967" x="0.9858" y="0.0341" width="0.0014" height="0.0013"/>
+      <resolution size="3200x900" x="0.9858" y="0.0341" width="0.0014" height="0.0013"/>
+      <resolution size="3520x990" x="0.9858" y="0.0341" width="0.0014" height="0.0013"/>
+      <resolution size="3840x1080" x="0.9858" y="0.0341" width="0.0014" height="0.0013"/>
+      <resolution size="5120x1440" x="0.9858" y="0.0341" width="0.0014" height="0.0013"/>
+    </meta>
+
+    <meta meter="baseGrey" type="area" tags="VLC,Game,Palworld,Pal" x="0.959" y="0.0479" width="0.0082" height="0.0119"  
+    h="0-360" s="0-100" l="25-50" >
+      <resolution size="2560X1080" x="0.9692" y="0.0479" width="0.0055" height="0.0119"  />
+      <resolution size="3440x1440" x="0.9692" y="0.0479" width="0.0055" height="0.0119"  />
+                           
+      <resolution size="3440x967" x="0.9805" y="0.0466" width="0.0023" height="0.0139"/>
+      <resolution size="3200x900" x="0.9805" y="0.0466" width="0.0023" height="0.0139"/>
+      <resolution size="3520x990" x="0.9805" y="0.0466" width="0.0023" height="0.0139"/>
+      <resolution size="3840x1080" x="0.9805" y="0.0466" width="0.0023" height="0.0139"/>
+      <resolution size="5120x1440" x="0.9805" y="0.0466" width="0.0023" height="0.0139"/>
+    </meta>
+
+    <meta meter="deathRed1" type="area" tags="VLC,Game,Palworld,Pal" x="0.4674" y="0.3669" width="0.0086" height="0.0028"  
+    h="0-30" s="50-100" l="25-50" >
+    <resolution size="2560X1080" x="0.4766" y="0.3662" width="0.0067" height="0.0049"  />
+    <resolution size="3440x1440" x="0.4766" y="0.3662" width="0.0067" height="0.0049"  />
+                                     
+    <resolution size="3440x967" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="3200x900" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="3520x990" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="3840x1080" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="5120x1440" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    </meta>
+
+    <meta meter="deathRed2" type="area" tags="VLC,Game,Palworld,Pal" x="0.4674" y="0.3669" width="0.0086" height="0.0028"  
+    h="330-360" s="50-100" l="25-50" >
+    <resolution size="2560X1080" x="0.4766" y="0.3662" width="0.0067" height="0.0049"  />
+    <resolution size="3440x1440" x="0.4766" y="0.3662" width="0.0067" height="0.0049"  />
+                                     
+    <resolution size="3440x967" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="3200x900" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="3520x990" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="3840x1080" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    <resolution size="5120x1440" x="0.4842" y="0.3648" width="0.004" height="0.0042"/>
+    </meta>
+
+    <meta meter="deathBlack" type="area" tags="VLC,Game,Palworld,Pal" x="0.4939" y="0.3704" width="0.009" height="0.0118"  
+    h="0-360" s="0-100" l="0-10" >
+    <resolution size="2560X1080" x="0.4894" y="0.369" width="0.0209" height="0.0028"  />
+    <resolution size="3440x1440" x="0.4894" y="0.369" width="0.0209" height="0.0028"  />
+                                         
+    <resolution size="3440x967" x="0.494" y="0.3676" width="0.0117" height="0.0021"/>
+    <resolution size="3200x900" x="0.494" y="0.3676" width="0.0117" height="0.0021"/>
+    <resolution size="3520x990" x="0.494" y="0.3676" width="0.0117" height="0.0021"/>
+    <resolution size="3840x1080" x="0.494" y="0.3676" width="0.0117" height="0.0021"/>
+    <resolution size="5120x1440" x="0.494" y="0.3676" width="0.0117" height="0.0021"/>
+    </meta>
+
+    <meta meter="bossRed1" type="area" tags="VLC,Game,Palworld,Pal" x="0.3341" y="0.1258" width="0.3314" height="0.0007"  
+    h="0-30" s="60-100" l="75-100" >
+      <resolution size="2560X1080" x="0.3774" y="0.123" width="0.2457" height="0"  />
+      <resolution size="3440x1440" x="0.3774" y="0.123" width="0.2457" height="0"  />
+                                 
+      <resolution size="3440x967" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="3200x900" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="3520x990" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="3840x1080" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="5120x1440" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+    </meta>
+
+    <meta meter="bossRed2" type="area" tags="VLC,Game,Palworld,Pal" x="0.3341" y="0.1258" width="0.3314" height="0.0007"  
+    h="330-360" s="60-100" l="75-100" >
+      <resolution size="2560X1080" x="0.3774" y="0.123" width="0.2457" height="0"  />
+      <resolution size="3440x1440" x="0.3774" y="0.123" width="0.2457" height="0"  />
+                                 
+      <resolution size="3440x967" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="3200x900" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="3520x990" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="3840x1080" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+      <resolution size="5120x1440" x="0.4176" y="0.1237" width="0.1645" height="0.0007"/>
+    </meta>
+
+    <meta meter="captureBlue" type="area" tags="VLC,Game,Palworld,Pal" x="0.9965" y="0.54" width="0.0031" height="0.05"  
+    h="200-270" s="0-100" l="50-95" >
+      <resolution size="2560X1080" x="0.9965" y="0.54" width="0.0031" height="0.05"  />
+      <resolution size="3440x1440" x="0.9965" y="0.54" width="0.0031" height="0.05"  />
+                                       
+      <resolution size="3440x967" x="0.9965" y="0.54" width="0.0031" height="0.05"/>
+      <resolution size="3200x900" x="0.9965" y="0.54" width="0.0031" height="0.05"/>
+      <resolution size="3520x990" x="0.9965" y="0.54" width="0.0031" height="0.05"/>
+      <resolution size="3840x1080" x="0.9965" y="0.54" width="0.0031" height="0.05"/>
+      <resolution size="5120x1440" x="0.9965" y="0.54" width="0.0031" height="0.05"/>
+    </meta>
+
+    <meta meter="captureNotWhite" type="area" tags="VLC,Game,Palworld,Pal" x="0.9781" y="0.647" width="0" height="0.0827"  
+    h="0-360" s="0-100" l="90-100" >
+      <resolution size="2560X1080" x="0.9855" y="0.6616" width="0.0008" height="0.0597"  />
+      <resolution size="3440x1440" x="0.9855" y="0.6616" width="0.0008" height="0.0597"  />
+                                             
+      <resolution size="3440x967" x="0.9855" y="0.6616" width="0.0008" height="0.0597"/>
+      <resolution size="3200x900" x="0.9855" y="0.6616" width="0.0008" height="0.0597"/>
+      <resolution size="3520x990" x="0.9855" y="0.6616" width="0.0008" height="0.0597"/>
+      <resolution size="3840x1080" x="0.9855" y="0.6616" width="0.0008" height="0.0597"/>
+      <resolution size="5120x1440" x="0.9855" y="0.6616" width="0.0008" height="0.0597"/>
+    </meta>
+
+    <meta meter="captureWhite0" type="area" tags="VLC,Game,Palworld,Pal" x="0.991" y="0.7241" width="0.002" height="0.0007"  
+    h="0-360" s="0-100" l="90-100" >
+    <resolution size="2560X1080" x="0.9936" y="0.7241" width="0" height="0"  />
+    <resolution size="3440x1440" x="0.9936" y="0.7241" width="0" height="0"  />
+                                                 
+    <resolution size="3440x967" x="0.9936" y="0.7241" width="0" height="0"/>
+    <resolution size="3200x900" x="0.9936" y="0.7241" width="0" height="0"/>
+    <resolution size="3520x990" x="0.9936" y="0.7241" width="0" height="0"/>
+    <resolution size="3840x1080" x="0.9936" y="0.7241" width="0" height="0"/>
+    <resolution size="5120x1440" x="0.9936" y="0.7241" width="0" height="0"/>
+    </meta>
+
+    <meta meter="captureWhite1" type="area" tags="VLC,Game,Palworld,Pal" x="0.9914" y="0.6901" width="0" height="0"  
+    h="0-360" s="0-100" l="90-100" >
+      <resolution size="2560X1080" x="0.9933" y="0.6901" width="0" height="0"  />
+      <resolution size="3440x1440" x="0.9933" y="0.6901" width="0" height="0"  />
+                                                       
+    <resolution size="3440x967" x="0.9933" y="0.6901" width="0" height="0"/>
+    <resolution size="3200x900" x="0.9933" y="0.6901" width="0" height="0"/>
+    <resolution size="3520x990" x="0.9933" y="0.6901" width="0" height="0"/>
+    <resolution size="3840x1080" x="0.9933" y="0.6901" width="0" height="0"/>
+    <resolution size="5120x1440" x="0.9933" y="0.6901" width="0" height="0"/>
+    </meta>
+
+    <meta meter="captureWhite2" type="area" tags="VLC,Game,Palworld,Pal" x="0.9914" y="0.6901" width="0" height="0"  
+    h="0-360" s="0-100" l="90-100" >
+      <resolution size="2560X1080" x="0.9933" y="0.656" width="0" height="0"  />
+      <resolution size="3440x1440" x="0.9933" y="0.656" width="0" height="0"  />
+                                                             
+    <resolution size="3440x967" x="0.9933" y="0.656" width="0" height="0"/>
+    <resolution size="3200x900" x="0.9933" y="0.656" width="0" height="0"/>
+    <resolution size="3520x990" x="0.9933" y="0.656" width="0" height="0"/>
+    <resolution size="3840x1080" x="0.9933" y="0.656" width="0" height="0"/>
+    <resolution size="5120x1440" x="0.9933" y="0.656" width="0" height="0"/>
+    </meta>
+
+  </head>
+  
+  <body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+  </body>
+  
+  <script>
+    console.log("2/2/2024")
+    var canvas, ctx;
+    canvas = document.getElementById('exCanvas');
+    ctx = canvas.getContext('2d');
+    var width = 320;
+    var height = 200;
+    var effects = [];
+
+    let gInGame = false
+    let gInHUD = false
+    let gAlpha = 1
+
+    let InGame1Meter = new Meter(5, inGameCallback)
+    let InGame2Meter = new Meter(5, inGameCallback)
+
+    let ShieldMeter = new Meter(5, ()=>"")
+    let ShieldRedMeter = new Meter(2, damageCallback)
+
+    let HealthMeter = new Meter(5, ()=>"")
+    let HealthRedMeter = new Meter(2, damageCallback)
+
+    let HungerMeter = new Meter(5, hungerCallback)
+
+    let HUDCheckMeter = new Meter(10, hudCallback)
+
+    let DaySunMeter = new Meter(10, timeCallback)
+    let TimeYellowMeter = new Meter(5, timeCallback)
+
+    let PalBlueMeter = new Meter(5, palCallback)
+    let PalRedMeter = new Meter(5, palCallback)
+
+    let SphereColorMeter = new Meter(6, sphereCallback)
+    let SphereConfirmMeter = new Meter(5, sphereCallback)
+
+    let LevelUpMeter = new Meter(10, levelUpCallback)
+
+    let BaseWhiteMeter = new Meter(10, baseCallback)
+    let BaseGreyMeter = new Meter(10, baseCallback)
+
+    let DeathRedMeter = new Meter(10, deathCallback)
+    let DeathBlackMeter = new Meter(10, deathCallback)
+
+    let BossRedMeter = new Meter(10, bossCallback)
+
+    let CaptureBlueMeter = new Meter(2, captureCallback)
+    let CaptureWhiteMeter = new Meter(10, captureCallback)
+
+    function update() {
+      DrawRect(0, 0, 320, 200, "hsla(0, 0%, 5%, .1)")
+  
+      copyScreen(gAlpha)
+
+      InGame1Meter.setValue(engine.vision.inGameCompassWhite)
+      InGame2Meter.setValue(engine.vision.inGameCompassLong)
+      
+      if(gInGame){
+        ShieldMeter.setValue(engine.vision.shield)
+        ShieldRedMeter.setValue(engine.vision.shieldRed1 + engine.vision.shieldRed2)
+        HealthMeter.setValue(engine.vision.health)
+        HealthRedMeter.setValue(engine.vision.healthRed1 + engine.vision.healthRed2)
+        HungerMeter.setValue(engine.vision.hunger)
+        HUDCheckMeter.setValue(engine.vision.hungerWhite + engine.vision.healthWhite)
+        DaySunMeter.setValue(engine.vision.dayTimeWhite)
+        TimeYellowMeter.setValue(engine.vision.timeYellow)
+        PalBlueMeter.setValue(engine.vision.palBlue)
+        PalRedMeter.setValue(engine.vision.palRed1 + engine.vision.palRed2)
+        LevelUpMeter.setValue(engine.vision.levelUp)
+        BaseWhiteMeter.setValue(engine.vision.baseWhite)
+        BaseGreyMeter.setValue(engine.vision.baseGrey)
+        BossRedMeter.setValue(engine.vision.bossRed1 + engine.vision.bossRed2)
+        CaptureBlueMeter.setValue(engine.vision.captureBlue)
+        CaptureWhiteMeter.setValue(engine.vision.captureWhite0 + engine.vision.captureWhite1)
+      } else {
+        DeathRedMeter.setValue(engine.vision.deathRed1 + engine.vision.deathRed2)
+        DeathBlackMeter.setValue(engine.vision.deathBlack)
+      }
+      if(gInHUD){
+        SphereColorMeter.setValue(engine.vision.palSphereColor[0])
+        SphereConfirmMeter.setValue(engine.vision.palSphereConfirm)
+      }
+  
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.lifetime <= 0){
+          effects.splice(i, 1)
+        }
+      })
+
+      drawHUD()
+  
+      window.requestAnimationFrame(update);
+    };
+    
+    function inGameCallback(){
+        if(InGame1Meter.value >= .95 && InGame2Meter.value >= .95 && engine.vision.inGameCompassNotWhite <= .1) gInGame = true
+        else if (InGame1Meter.value <= .25 && InGame2Meter.value <= .25) gInGame = false
+    }
+
+    let hudSphere = false
+    function hudCallback(){
+      if(gInGame && HUDCheckMeter.value >= 1.9) {
+        gInHUD = true
+        levelUpCallback()
+        if(!hudSphere && engine.vision.palSphereConfirm >= .95 && engine.vision.palSphereNotColor <= .05) {
+          if(palOn) effects.push(new palSphereColor())
+          hudSphere = true
+        }
+      } else if (!gInGame || HUDCheckMeter.value < .25) {
+        gInHUD = false
+        hudSphere = false
+      }
+    }
+
+    let timeGoing = false
+    function timeCallback(){
+      if(gInGame && gInHUD && DaySunMeter.value >= .95 && TimeYellowMeter.value == 1 && !timeGoing){
+        timeGoing = true
+        if(timeOn) effects.push(new nighttime())
+      }
+      if(gInGame && gInHUD && DaySunMeter.value < .95 && DaySunMeter.value > .15 && TimeYellowMeter.value == 1 && !timeGoing){
+        timeGoing = true
+        if(timeOn) effects.push(new daytime())
+      }
+    }
+
+    function damageCallback(){
+      if(gInGame && gInHUD && HealthMeter.value > .01 && HealthRedMeter.value >= .05 && HealthRedMeter.diff >= .05) effects.push(new streakDown())
+      if(gInGame && gInHUD && ShieldMeter.value > .01 && ShieldRedMeter.value >= .05 && ShieldRedMeter.diff >= .05) effects.push(new streakDown())
+    }
+
+    let palGoing = false
+    let deadPalGoing = false
+    function palCallback(){
+      if(gInGame && gInHUD && PalBlueMeter.value >= .95 && !palGoing) {
+        if(palOn) effects.push(new palOut())
+        palGoing = true
+      }
+      if(gInGame && gInHUD && PalBlueMeter.value <= .05 && palGoing) palGoing = false
+      if(gInGame && gInHUD && PalRedMeter.value >= .95 && !deadPalGoing) {
+        if(palOn) effects.push(new palDied())
+        deadPalGoing = true
+      }
+      if(gInGame && gInHUD && PalRedMeter.value <= .05 && deadPalGoing) deadPalGoing = false
+    }
+
+    function sphereCallback(){
+      if(gInGame && gInHUD && SphereColorMeter.diff > 20 && SphereConfirmMeter.value >= .95 && engine.vision.palSphereNotColor <= .05) if(palOn) effects.push(new palSphereColor())
+    }
+
+    let levelGoing = false
+    function levelUpCallback(){
+      if(gInGame && LevelUpMeter.value >= .95 && engine.vision.levelUpNotBlue <= .05 && !levelGoing){
+        levelGoing = true
+        if(levelOn) effects.push(new skillPoints())
+      }
+    }
+
+    let hungerGoing = false
+    function hungerCallback(){
+      if(gInGame && gInHUD && HungerMeter.value <= .3 && !hungerGoing){
+        hungerGoing = true
+        if(hungerOn) effects.push(new hungry())
+      }
+    }
+
+    let baseGoing = false
+    function baseCallback(){
+      if(gInGame && BaseGreyMeter.value >= .95 && BaseWhiteMeter.value >= .95 && !baseGoing){
+        baseGoing = true
+        if(baseOn) effects.push(new inBase())
+      }
+      if(gInGame && BaseGreyMeter.value <= .05 && BaseWhiteMeter.value <= .05) baseGoing = false
+    }
+
+    let deathGoing = false
+    function deathCallback(){
+      if(!gInGame && DeathBlackMeter.value >= .95 && DeathRedMeter.value >= .95 && !deathGoing){
+        deathGoing = true
+        if(deathOn) effects.push(new playerDeath())
+      }
+    }
+
+    let bossGoing = false
+    function bossCallback(){
+      if(gInGame && BossRedMeter.value >= .9 && !bossGoing){
+        bossGoing = true
+        if(bossOn) effects.push(new bossBattle())
+      }
+    }
+
+    let captureGoing = false
+    function captureCallback(){
+      if(gInGame && CaptureBlueMeter.value >= .05 && CaptureWhiteMeter.value >= 1 && !captureGoing && engine.vision.captureNotWhite <= .05){
+        captureGoing = true
+        if(palOn) effects.push(new palCaptured())
+      }
+      if(gInGame && CaptureBlueMeter.value <= .05 && CaptureWhiteMeter.value <= .05) captureGoing = false
+    }
+
+    function palCaptured(){
+        this.alpha = 0
+        this.rot = 0
+        this.hue = 0
+        this.target = 0
+        this.count = 1
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+            if(this.alpha < .75) this.alpha += .025
+            this.hue = this.rot / Math.PI * 2 * 40
+            ctx.beginPath()
+            ctx.moveTo(160, 100)
+            ctx.lineTo(320, 100)
+            ctx.arc(160, 100, 200, 0, this.rot)
+            ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`
+            ctx.fill()
+            if(this.rot < this.target) this.rot += (this.target - this.rot) / 10
+            if(this.count == 0) this.target += Math.PI / 2
+            this.count < 50 ? this.count++ : this.count = 0
+            if(this.rot > Math.PI * 2) {
+                this.lifetime = 0
+                effects.push(new captureHelp(190))
+            }
+        }
+    }
+
+    function bossBattle(){
+      this.effects = []
+      this.count = 0
+      this.draw = function(){
+        this.value = 100 - BossRedMeter.value * 100
+        if(this.count == 0) this.effects.push(new bossParticle(this.value))
+        this.count < 10 - this.value / 10 ? this.count++ : this.count = 0
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        if(!gInGame || BossRedMeter.value <= .001) {
+          this.lifetime = 0
+          bossGoing = false 
+        }
+      }
+    }
+
+    function bossParticle(val){
+      this.val = val
+      this.x = Math.random() * 320
+      this.y = 230
+      this.rad = 10
+      this.mod = 20 - Math.random() * 40
+      this.draw = function(){
+        this.y > 0 ? this.y -= this.val / 20 + 2 : this.lifetime = 0
+        DrawCircle(this.x, this.y, this.rad + this.y / 5, `hsl(${190 + this.val * 1.7}, 100%, ${20 + this.mod}%)`)
+      }
+    }
+
+    function playerDeath(){
+        this.rot = 0
+        this.length = 0
+        this.mod = 0
+        this.height = 0
+        this.draw = function(){
+          DrawRect(0, 0, 320, 200, `hsla(0, 100%, 50%, ${this.scale / 20})`)
+          if(this.rot) {
+            this.mod += (50 - this.mod) / 20
+            DrawRect(0, 0, 320, this.height, `hsla(0, 100%, ${Math.sin(Date.now() / 1000) * 10 + 10}%, .5)`)
+            this.height < 200 ? this.height++ : this.height = 200
+          }
+          ctx.save()
+          ctx.translate(160, 175)
+          ctx.rotate(-this.rot)
+          ctx.translate(-160 - this.mod, -185)
+          DrawCircle(133, 100, 30, "red")
+          DrawTriangle(107, 113, 160, 113, 160, 175, "red")
+          ctx.restore()
+          ctx.save()
+          ctx.translate(160, 175)
+          ctx.rotate(this.rot)
+          ctx.translate(-160 + this.mod, -185)
+          DrawCircle(187, 100, 30, "red")
+          DrawTriangle(160, 113, 213, 113, 160, 175, "red")
+          ctx.restore()
+          DrawLine([160, 0], [160, this.length * 4], `hsla(60, 100%, 60%, ${1 - ((this.length - 75) / 25)})`, this.length / 2)
+          this.length < 100 ? this.length+=4 : this.rot < .15 ? this.rot += .05 : this.rot = .15
+          if(gInGame || (DeathBlackMeter.value <= .05 && DeathRedMeter.value <= .05)) {
+            this.lifetime = 0
+            deathGoing = false
+          }
+        }
+    }
+
+    function inBase(){
+      this.lifetime = 100
+      this.draw = function(){
+        this.globalAlpha = this.lifetime / 100 
+        DrawRect(0, 0, 320, 200, `hsla(120, 100%, 30%, ${Math.sin(Date.now() / 1000) * .15 + .25})`)
+        this.globalAlpha = 1
+        this.lifetime--
+      }
+    }
+
+    function hungry(){
+      this.grad = ctx.createLinearGradient(160, 0, 160, 200)
+      this.grad.addColorStop(0, "yellow")
+      this.grad.addColorStop(1, "red")
+      this.draw = function(){
+        ctx.globalAlpha = Math.sin(Date.now() / 1000) * .25 + .35
+        DrawRect(0, 0, 320, 200, this.grad)
+        ctx.globalAlpha = 1
+        if(!gInGame || !gInHUD || HungerMeter.value > .3) {
+          this.lifetime = 0
+          hungerGoing = false
+        }
+      }
+    }
+
+    function captureHelp(hue){
+        this.rad = 1
+        this.hue = hue
+        this.draw = function(){
+            DrawStroke(160, 100, this.rad, `hsl(${this.hue}, 100%, 50%)`, 70)
+            this.rad < 200 ? this.rad += 5 : this.lifetime = 0
+        }
+    }
+
+    function skillPoints(){
+        this.rad = 1
+        gAlpha = .1
+        effects.push(new captureHelp(60))
+        this.draw = function(){
+            DrawStroke(160, 100, this.rad, `hsla(60, 100%, 50%, .25)`, 40)
+            this.rad = Math.sin(Date.now() / 2000) * 100 + 101
+            if(!gInGame || LevelUpMeter.value <= .05) {
+              this.lifetime = 0
+              levelGoing = false
+              gAlpha = 1
+            }
+        }
+    }
+
+    function palDied(){
+        this.x = 0
+        this.x1 = 320
+        this.index = 0
+        this.rad = 1
+        this.alpha = 1
+        this.count = 0
+        this.draw = function(){
+            ctx.globalAlpha = this.alpha
+            DrawLine([this.x, 0], [this.x + 320 / 40 * this.index, 5 * this.index], "red", 20)
+            DrawLine([this.x1, 0], [this.x1 - 320 / 40 * this.index, 5 * this.index], "red", 20)
+            this.index < 40 ? this.index+=2 : this.count < 15 ? this.count ++ : this.done = true
+            if(this.done){
+                DrawCircle(160, 100, this.rad, "red")
+                this.rad < 200 ? this.rad += 5 : this.lifetime = 0
+                this.alpha = 1.01 - this.rad / 200
+            }
+        }
+    }
+
+    function palOut(){
+        this.rad = 200
+        this.draw = function(){
+            if(!this.done) {
+                this.rad > 10 ? this.rad -= 5 : this.done = true
+                DrawStroke(160, 100, this.rad, `hsl(240, 100%, ${this.rad / 4 + 40}%)`, 50)
+            } else {
+                 this.rad < 300 ? this.rad += 5 : this.lifetime = 0
+                 DrawCircle(160, 100, this.rad, `hsla(240, 100%, 50%, ${1 - this.rad / 310})`)
+            }
+        }
+    }
+
+    function streakDown(){
+        this.y = 0
+        this.height = 75
+        gAlpha = .25
+        this.draw = function(){
+            DrawRect(0, this.y, 320, - this.height, "red")
+            DrawRect(0, this.y - this.height * 1.25, 320, -this.height / 1.5, "red")
+            DrawRect(0, this.y - this.height * 2.25, 320, -this.height / 2, "red")
+            this.y < 400 ? this.y+=8 : this.lifetime = 0
+            if(this.lifetime == 0) gAlpha = 1
+        }
+    }
+
+    function nighttime(){
+        this.alpha = 0
+        this.done = false
+        this.rot = 0
+        this.hue = 280
+        this.lit = 0
+        this.count = 50
+        gAlpha = .25
+        this.draw = function(){
+            this.grad = ctx.createRadialGradient(60, 200, 10, 60, 200, 300)
+            this.grad.addColorStop(0, `hsla(${this.hue + 10}, 100%, ${this.lit / 3}%, 1)`)
+            this.grad.addColorStop(1, `hsla(${this.hue + 10}, 100%, ${this.lit / 3}%, 0)`)
+            ctx.globalAlpha = this.alpha
+            ctx.save()
+            ctx.translate(160, 200)
+            ctx.rotate(this.rot)
+            ctx.translate(-160, -200)
+            if(!this.done) this.alpha < 1 ? this.alpha += .025 : this.done = true
+            DrawCircle(60, 200, 300, this.grad)
+            DrawCircle(60, 200, 60, `hsl(${this.hue}, 100%, ${this.lit}%)`)
+            DrawCircle(60, 180, 45, `hsla(${this.hue + 10}, 100%, ${this.lit / 3}%, 1)`)
+            ctx.restore()
+            ctx.globalAlpha = 1
+            this.rot < Math.PI / 2 ? this.rot+=.005 : this.count > 0 ? this.count-- : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+            if(this.hue > 220) this.hue -= .5
+            if(this.lit < 75) this.lit+=.5
+            if(this.lifetime == 0) {
+              timeGoing = false
+              gAlpha = 1
+            }
+        }
+    }
+
+    function daytime(){
+        this.alpha = 0
+        this.done = false
+        this.rot = 0
+        this.hue = 0
+        this.lit = 10
+        this.count = 50
+        gAlpha = .25
+        this.draw = function(){
+            this.grad = ctx.createRadialGradient(60, 200, 10, 60, 200, 300)
+            this.grad.addColorStop(0, `hsla(${this.hue - 10}, 100%, ${this.lit / 3}%, 1)`)
+            this.grad.addColorStop(1, `hsla(${this.hue - 10}, 100%, ${this.lit / 3}%, 0)`)
+            ctx.globalAlpha = this.alpha
+            ctx.save()
+            ctx.translate(160, 200)
+            ctx.rotate(this.rot)
+            ctx.translate(-160, -200)
+            if(!this.done) this.alpha < 1 ? this.alpha += .025 : this.done = true
+            DrawCircle(60, 200, 300, this.grad)
+            DrawCircle(60, 200, 60, `hsl(${this.hue}, 100%, ${this.lit}%)`)
+            ctx.restore()
+            ctx.globalAlpha = 1
+            this.rot < Math.PI / 2 ? this.rot+=.005 : this.count > 0 ? this.count-- : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+            if(this.hue < 60) this.hue+= .5
+            if(this.lit < 75) this.lit+=.5
+            if(this.lifetime == 0) {
+              timeGoing = false
+              gAlpha = 1
+            }
+        }
+    }
+
+    function palSphereColor(){
+        this.alpha = 0
+        this.count = 0
+        this.color = engine.vision.palSphereColor[0]
+        this.draw = function(){
+            ctx.globalAlpha = this.alpha
+            DrawRect(0, 0, 320, 200, `hsl(${this.color}, 100%, 50%)`)
+            ctx.globalAlpha = 1
+            if(this.count % 2 == 0) this.alpha < .5 ? this.alpha += .025 : this.count++
+            else this.alpha >= .025 ? this.alpha -= .025 : this.count++
+            if(this.count > 3) this.lifetime = 0
+        }
+    }
+
+    let designatedHealthSize = 0
+    let designatedShieldSize = 0
+    let designatedHungerSize = 0
+    let currentHealthSize = 0
+    let currentShieldSize = 0
+    let currentHungerSize = 0
+    function drawHUD() {
+      let hpColor = hexToHSL(healthColor)
+      let shColor = hexToHSL(shieldColor)
+      let huColor = hexToHSL(hungerColor)
+      designatedHealthSize = gInHUD? HealthMeter.value : 0;
+      designatedShieldSize = gInHUD? ShieldMeter.value : 0;
+      designatedHungerSize = gInHUD? HungerMeter.value : 0;
+      currentHealthSize = lerp(currentHealthSize, designatedHealthSize, 0.05);
+      currentShieldSize = lerp(currentShieldSize, designatedShieldSize, 0.05);
+      currentHungerSize = lerp(currentHungerSize, designatedHungerSize, 0.05);
+      let healthString = `hsl(${hpColor[0]}, ${hpColor[1]}%, ${hpColor[2]}%)`
+      let shieldString = `hsl(${shColor[0]}, ${shColor[1]}%, ${shColor[2]}%)`
+      let hungerString = `hsl(${huColor[0]}, ${huColor[1]}%, ${huColor[2]}%)`
+      if (healthHUDOn){
+        if(blackToggle) DrawRect(healthX * 3.2, healthY * 2, healthWidth * 3.2, healthHeight * 2, "black");
+        DrawRect(healthX * 3.2, healthY * 2, adjToggle ? healthWidth * 3.2 : currentHealthSize * healthWidth * 3.2, healthHeight * 2, healthString);
+      }
+      if (shieldHUDOn){
+        if(blackToggle) DrawRect(shieldX * 3.2, shieldY * 2, shieldWidth * 3.2, shieldHeight * 2, "black");
+        DrawRect(shieldX * 3.2, shieldY * 2, adjToggle ? shieldWidth * 3.2 : currentShieldSize * shieldWidth * 3.2, shieldHeight * 2, shieldString);
+      }
+      if (hungerHUDOn){
+        if(blackToggle) DrawRect(hungerX * 3.2, hungerY * 2, hungerWidth * 3.2, hungerHeight * 2, "black");
+        DrawRect(hungerX * 3.2, hungerY * 2, adjToggle ? hungerWidth * 3.2 : currentHungerSize * hungerWidth * 3.2, hungerHeight * 2, hungerString);
+      }
+    }
+
+  function lerp(a, b, speed) {
+    return a + speed * (b - a)
+  }
+
+    function exampleSquare(color){
+      this.lifetime = 100
+      this.color = color
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, this.color)
+        this.lifetime--
+        if(this.lifetime <= 0){
+          timeGoing = false
+          palGoing = false
+        }
+      }
+    }
+  
+    function DrawArc(x, y, start, end, radius, direction, color){
+      ctx.beginPath()
+      ctx.arc(x, y, radius, start, end, direction)
+      ctx.fillStyle = color
+      ctx.fill()
+    }
+  
+    function DrawLine(start, end, color, stroke){
+      ctx.beginPath()
+      ctx.moveTo(start[0], start[1])
+      ctx.lineTo(end[0], end[1])
+      ctx.strokeStyle = color
+      ctx.lineWidth = stroke
+      ctx.stroke()
+    }
+  
+    function DrawEllipse(x, y, width, height, rotation, color){
+      ctx.beginPath()
+      ctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+      ctx.fillStyle = color
+      ctx.fill()
+    }
+  
+    function DrawLightning(array, color, width){
+        ctx.beginPath()
+        ctx.moveTo(...array[0])
+        array.forEach((ele, i)=>{
+          if(i){
+            ctx.lineTo(...array[i])
+          }
+        });
+        ctx.strokeStyle = color;
+        ctx.lineJoin = "round";
+        ctx.lineWidth = width + Math.random() * width;
+        ctx.stroke()
+    }
+  
+    function DrawGear(x, y, radius, stroke, teeth, color){
+      DrawStroke(x, y, radius, color, stroke)
+      for(let i = 0; i < teeth; i++){
+        var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
+        var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
+        var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
+        ctx.save()
+        ctx.translate(ix, iy)
+        ctx.rotate(rotate)
+        ctx.translate(-ix, -iy)
+        DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, "orange")
+        ctx.restore()
+      }
+    }
+  
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+      ctx.fillStyle = color;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scaleX, scaleY)
+      let ex = new Path2D(path);
+      ctx.fill(ex);
+      ctx.restore();
+    };
+  
+    function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.moveTo(cord1X, cord1Y);
+      ctx.lineTo(cord2X, cord2Y);
+      ctx.lineTo(cord3X, cord3Y);
+      ctx.lineTo(cord1X, cord1Y);
+      ctx.fill();
+    };
+  
+    function DrawCircle(x, y, radius, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.fill();
+    };
+  
+    function DrawStroke(x, y, radius, color, stroke) {
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.stroke();
+    };
+  
+    function DrawRect(x, y, width, height, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, width, height);
+    };
+  
+    function strokeRect(x, y, width, height, color, stroke){
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke
+      ctx.rect(x, y, width, height);
+      ctx.stroke()
+    }
+  
+    function DrawHex(x, y, color, size) {
+      ctx.beginPath();
+      for (var i = 0; i < 7; i++) {
+        ctx.lineTo(x + size * Math.cos(2 * Math.PI / 6 * i), y + size * 0.9 * Math.sin(2 * Math.PI / 6 * i));
+      }
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = "black"
+      ctx.stroke()
+    };
+  
+        function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+          var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+          var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+  
+          return ({ x: x, y: y });
+        }
+  
+        function CubicN(pct, a, b, c, d) {
+          var t2 = pct * pct;
+          var t3 = t2 * pct;
+          return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+            + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+            + (c * 3 - c * 3 * pct) * t2
+            + d * t3;
+        }
+  
+    function hexToRgb(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+  
+    function hexToHSL(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+  
+      (r /= 255), (g /= 255), (b /= 255);
+      var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+      var h,
+        s,
+        l = (max + min) / 2;
+  
+      if (max === min) {
+        h = s = 0; // achromatic
+      } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+  
+      s = s * 100;
+      s = Math.round(s);
+      l = l * 100;
+      l = Math.round(l);
+      h = Math.round(360 * h);
+  
+      return [h, s, l];
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle =
+          "hsla(" +
+          hue[iZone] +
+          "," +
+          sat[iZone] +
+          "%," +
+          lightness[iZone] +
+          "%, " +
+          `${alpha}` +
+          ")";
+  
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function GetTime() {
+      return new Date().getTime()
+    }
+  
+    function StateHandler() {
+      var stack = [];
+      var state = null;
+  
+      var updateState = function () {
+        if (stack.length > 0) {
+          state = stack[stack.length - 1];
+        } else {
+          state = null;
+        }
+      };
+  
+      this.Push = function (newState) {
+        stack.push(newState);
+        updateState();
+      };
+  
+      this.Pop = function () {
+        stack.pop();
+        updateState();
+      };
+  
+      this.Process = function () {
+        if (state != null) {
+          state.Process();
+        }
+      };
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+  
+    function onCanvasTapped(x, y) {
+  
+    }
+  
+    window.requestAnimationFrame(update);
+  </script>

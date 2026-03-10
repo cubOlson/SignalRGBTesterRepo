@@ -1,0 +1,1143 @@
+<head>
+  <title>Among Us Dev</title>
+  <meta description="Metering and ambience for Among Us. v1.01" />
+  <meta publisher="SignalRGB" />
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Ambience"/>
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+  <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)" type="boolean" default="0" />
+  <meta property="taskColor" label="TaskBar Bar Color" type="color" default="#12ff00" min="0" max="360" />
+  <meta property="TaskBarX" label="TaskBar X" type="number" min="0" max="100" default="0" />
+  <meta property="TaskBarY" label="TaskBar Y" type="number" min="0" max="100" default="25" />
+  <meta property="TaskBarWidth" label="TaskBar Width" type="number" min="0" max="100" default="100" />
+  <meta property="TaskBarHeight" label="TaskBar Height" type="number" min="0" max="100" default="15" />
+  <meta property="taskbarOn" label="Enable Taskbar Effect" type="boolean" default="1" />
+  <meta property="vdOn" label="Enable Victory / Defeat Effects" type="boolean" default="1" />
+  <meta property="typeOn" label="Enable Crew / Impostor Effects" type="boolean" default="1" />
+  <meta property="killOn" label="Enable Kill Effects" type="boolean" default="1" />
+  <meta property="meetingOn" label="Enable Meeting Effects" type="boolean" default="1" />
+  <meta property="mainOn" label="Enable Menu Effects" type="boolean" default="1" />
+  <meta property="mapOn" label="Enable Map Effects" type="boolean" default="1" />
+
+  <meta meter="ChoseCrewmate" tags="VLC,Among" type="area" x="0.3012" y="0.1535" width="0.0336" height="0.0042"
+    h="171-191" s="25-50" l="70-100" hdr-h="0-191" hdr-s="0-20" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.3651" y="0.2111" width="0.0010" height="0.0042" />
+    <resolution aspect="24:10" x="0.3491" y="0.1611" width="0.0020" height="0.0021" />
+    <resolution aspect="16:11" x="0.746" y="0.2677" width="0.0004" height="0.0118" />
+  
+    <resolution size="3840x2160" x="0.3012" y="0.1535" width="0.0336" height="0.0042" />
+    <resolution size="2560x1080" x="0.2997" y="0.2271" width="0.0004" height="0.0176" />
+  </meta>
+  <meta meter="ChoseImposter" tags="VLC,process" type="area" x="0.2504" y="0.1653" width="0.0066" height="0.0701"
+    h="-30-30" s="80-100" l="50-100" hdr-h="-30-30" hdr-s="74-100" hdr-l="38-100">
+    <resolution aspect="3.55:1" x="0.3760" y="0.2130" width="0.0000" height="0.0270" />
+    <resolution aspect="24:10" x="0.4023" y="0.1660" width="0.0009" height="0.0028" />
+    <resolution aspect="16:11" x="0.2267" y="0.2458" width="0" height="0.0156" />
+  
+    <resolution size="3840x2160" x="0.2504" y="0.1653" width="0.0066" height="0.0701" />
+    <resolution size="2560x1080" x="0.3157" y="0.2317" width="0.0012" height="0.0158" />
+  </meta>
+
+  <meta meter="TotalTasks" tags="VLC,process" type="area" x="0.0164" y="0.0338" width="0.4270" height="0.00049"
+    h="0-360" s="0-40" l="10-100" hdr-h="0-360" hdr-s="0-40" hdr-l="10-100">
+    <resolution aspect="3.55:1" x="0.0164" y="0.0338" width="0.4270" height="0.00049" />
+    <resolution aspect="24:10" x="0.0131" y="0.0333" width="0.3163" height="0.0001" />
+    <resolution aspect="16:11" x="0.0164" y="0.0338" width="0.4270" height="0.00049" />
+  
+    <resolution size="3840x2160" x="0.0164" y="0.0338" width="0.4270" height="0.00049" />
+    <resolution size="2560x1080" x="0.0164" y="0.0338" width="0.4270" height="0.00049" />
+    
+  </meta>
+  <meta meter="FirstTaskCompleted" tags="VLC,process" type="area" x="0.0450" y="0.0625" width="0.0026" height="0"
+    h="104-124" s="38-88" l="46-100" hdr-h="104-124" hdr-s="38-88" hdr-l="46-100">
+    <resolution aspect="3.55:1" x="0.0164" y="0.0625" width="0.0027" height="-0.0007" />
+    <resolution aspect="24:10" x="0.0134" y="0.0618" width="0.0015" height="0.0021" />
+    <resolution aspect="16:11" x="0.0449" y="0.065" width="0.0028" height="0" />
+  
+    <resolution size="3840x2160" x="0.0198" y="0.0621" width="0.0068" height="0" />
+    <resolution size="2560x1080" x="0.0164" y="0.0625" width="0.0027" height="-0.0007" />
+  </meta>
+
+  <meta meter="BodyFoundWhite" tags="VLC,process" type="area" x="0.0023" y="0.4076" width="0.0242" height="0.0014"
+    h="0-10" s="0-20" l="90-100" hdr-h="0-10" hdr-s="0-20" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.0023" y="0.4076" width="0.0242" height="0.0014" />
+    <resolution aspect="24:10" x="0.0029" y="0.3264" width="0.0023" height="0.0063" />
+    <resolution aspect="16:11" x="0.0023" y="0.4076" width="0.0242" height="0.0014" />
+  
+    <resolution size="3840x2160" x="0.0023" y="0.4076" width="0.0242" height="0.0014" />
+    <resolution size="2560x1080" x="0.0023" y="0.4076" width="0.0242" height="0.0014" />
+    
+  </meta>
+
+  <meta meter="BodyFoundColor" tags="VLC,process" type="colormean" x="0.5523" y="0.8139" width="0.0234" height="0.0167">
+    <resolution aspect="3.55:1" x="0.5505" y="0.7713" width="0.0100" height="0.0167" />
+    <resolution aspect="24:10" x="0.5558" y="0.8118" width="0.0015" height="0.0035" />
+    <resolution aspect="16:11" x="0.5523" y="0.8139" width="0.0234" height="0.0167" />
+  
+    <resolution size="3840x2160" x="0.5523" y="0.8139" width="0.0234" height="0.0167" />
+    <resolution size="2560x1080" x="0.5523" y="0.8139" width="0.0234" height="0.0167"/>
+    
+  </meta>
+  <meta meter="BodyFoundConfirm" tags="VLC,process" type="area" x="0.5395" y="0.4528" width="0.0078" height="0.0014"
+    h="105-265" s="4-34" l="7-77" hdr-h="105-265" hdr-s="4-34" hdr-l="7-77">
+    <resolution aspect="3.55:1" x="0.5227" y="0.4556" width="0.0000" height="0.0001" />
+    <resolution aspect="24:10" x="0.5337" y="0.4542" width="0.0015" height="0.0005" />
+    <resolution aspect="16:11" x="0.5395" y="0.4528" width="0.0078" height="0.0014" />
+  
+    <resolution size="3840x2160" x="0.5423" y="0.4553" width="0.0021" height="0.0009" />
+    <resolution size="2560x1080" x="0.5334" y="0.456" width="0.0024" height="-0.0009"/>
+    
+  </meta>
+
+  <meta meter="meetingBlue" tags="VLC,process" type="area" x="0.4322" y="0.8853" width="0.0047" height="0.0167"
+    h="180-240" s="50-70" l="70-100" hdr-h="180-220" hdr-s="50-75" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.4685" y="0.8648" width="0.0102" height="0.0080" />
+    <resolution aspect="24:10" x="0.4840" y="0.8910" width="0.0052" height="0.0040" />
+    <resolution aspect="16:11"  x="0.4377" y="0.8793" width="0.0191" height="0.03"  />
+
+    <resolution size="3840x2160" x="0.4785" y="0.8944" width="0.0063" height="0.0167"  />
+    <resolution size="2560x1080" x="0.4857" y="0.873" width="0.0086" height="0.0112"  />
+  </meta> 
+
+  <meta meter="VotingGrey" tags="VLC,process" type="area" x="0.8434" y="0.1556" width="0.0102" height="0.0007"
+    h="0-360" s="0-25" l="53-100" hdr-h="0-360" hdr-s="0-25" hdr-l="53-100">
+    <resolution aspect="3.55:1" x="0.3161" y="0.1074" width="0.0008" height="0.0030" />
+    <resolution aspect="24:10" x="0.2259" y="0.1167" width="0.0009" height="0.0028" />
+    <resolution aspect="16:11" x="0.8671" y="0.1776" width="0.0059" height="0" />
+  
+    <resolution size="3840x2160" x="0.8434" y="0.1556" width="0.0102" height="0.0007" />
+    <resolution size="2560x1080" x="0.8628" y="0.1103" width="0.0016" height="0"/>
+    
+  </meta>
+
+  <meta meter="GetKilledRed" tags="VLC,process" type="area" x="0.0023" y="0.4076" width="0.0242" height="0.0014"
+    h="-30-30" s="80-100" l="70-100" hdr-h="-30-30" hdr-s="80-100" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.2010" y="0.3370" width="0.0034" height="0.0030" />
+    <resolution aspect="24:10" x="0.1544" y="0.4118" width="0.0029" height="0.0035" />
+    <resolution aspect="16:11" x="0.0117" y="0.2739" width="0.0051" height="0.0069" />
+  
+    <resolution size="3840x2160" x="0.0023" y="0.4076" width="0.0242" height="0.0014" />
+    <resolution size="2560x1080" x="0.0598" y="0.3299" width="0.0035" height="0.0037"/>
+    
+  </meta>
+
+  <meta meter="SettingGray" tags="VLC,process" type="area" x="0.8604" y="0.0445" width="0.0028" height="0"
+    h="0-360" s="0-20" l="60-100" hdr-h="0-360" hdr-s="0-20" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.9302" y="0.0444" width="0.0016" height="0.0002" />
+    <resolution aspect="24:10" x="0.8956" y="0.0465" width="0.0044" height="0.0010" />
+    <resolution aspect="16:11" x="0.8441" y="0.0457" width="0.0047" height="0.0006" />
+  
+    <resolution size="3840x2160" x="0.8596" y="0.0459" width="0.0021" height="0.0046"  />
+    <resolution size="2560x1080" x="0.8961" y="0.0491" width="0.0007" height="0"/>
+    
+  </meta>
+
+  <meta meter="MapWhite" tags="VLC,process" type="area" x="0.9461" y="0.0736" width="-0.0005" height="0.0107" 
+    h="0-360" s="0-20" l="83-100" hdr-h="0-360" hdr-s="0-20" hdr-l="83-100">
+    <resolution aspect="3.55:1" x="0.9734" y="0.0713" width="0.0005" height="0.0020" />
+     <resolution aspect="24:10" x="0.9605" y="0.0729" width="0.0000" height="0.0017" />
+    <resolution aspect="16:11" x="0.9426" y="0.0775" width="0" height="0.0057" />
+  
+    <resolution size="3840x2160" x="0.9628" y="0.0811" width="0.0002" height="0.0051"  />
+    <resolution size="2560x1080" x="0.9601" y="0.0778" width="0" height="0.0019"/>
+   
+  </meta>
+
+  <meta meter="MapBlue1" tags="VLC,process" type="area" x="0.4971" y="0.9375" width="0.0109" height="0.0007"  
+    h="200-250" s="75-100" l="75-100" hdr-h="200-250" hdr-s="75-100" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.5010" y="0.9241" width="0.0027" height="0.0010" />
+    <resolution aspect="24:10" x="0.5038" y="0.9368" width="0.0073" height="0.0005" />
+    <resolution aspect="16:11" x="0.508" y="0.9106" width="0.0102" height="0.0006" />
+  
+    <resolution size="3840x2160" x="0.5082" y="0.9259" width="0.006" height="0" />
+    <resolution size="2560x1080" x="0.5025" y="0.937" width="0.0086" height="0"/>
+    
+  </meta>
+
+  <meta meter="MapRed" tags="VLC,process" type="area" x="0.4971" y="0.9375" width="0.0109" height="0.0007" 
+    h="-30-30" s="80-100" l="80-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.5010" y="0.9241" width="0.0027" height="0.0010" />
+    <resolution aspect="24:10" x="0.5038" y="0.9368" width="0.0073" height="0.0005" />
+    <resolution aspect="16:11" x="0.508" y="0.9106" width="0.0102" height="0.0006" />
+  
+    <resolution size="3840x2160" x="0.5082" y="0.9259" width="0.006" height="0"  />
+    <resolution size="2560x1080" x="0.5025" y="0.937" width="0.0086" height="0"/>
+    
+  </meta>
+
+  <meta meter="DefeatRed" tags="VLC,process" type="area" x="0.3453" y="0.2676" width="0.0059" height="0.0167" 
+    h="-30-30" s="90-100" l="60-100" hdr-h="-30-30" hdr-s="90-100" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.4234" y="0.2519" width="0.0000" height="0.035"  />
+    <resolution aspect="24:10" x="0.3884" y="0.2528" width="0.0000" height="0.0035" />
+    <resolution aspect="16:11" x="0.3302" y="0.2408" width="-0.0004" height="0.0081"  />
+  
+    <resolution size="3840x2160" x="0.3453" y="0.2676" width="0.0059" height="0.0167"  />
+    <resolution size="2560x1080" x="0.3869" y="0.2614" width="0" height="0.0176" />
+    
+  </meta>
+
+  <meta meter="VictoryBlue" tags="VLC,process" type="area" x="0.3199" y="0.2533" width="0.00001" height="0.00001"
+    h="203-223" s="74-100" l="45-100" hdr-h="180-223" hdr-s="74-100" hdr-l="45-100">
+    <resolution aspect="3.55:1" x="0.4115" y="0.2343" width="0.0003" height="0.0020" />
+    <resolution aspect="24:10" x="0.3648" y="0.2389" width="0.0017" height="0.0056" />
+    <resolution aspect="16:11" x="0.3009" y="0.2433" width="0.0004" height="0.0125" />
+  
+    <resolution size="3840x2160" x="0.3199" y="0.2533" width="0.00001" height="0.00001" />
+    <resolution size="2560x1080" x="0.3669" y="0.2326" width="0.0004" height="0.013"/>
+    
+  </meta>
+
+  <meta meter="VictoryDefeatWhite" tags="VLC,process" type="area" x="0.8051" y="0.8014" width="0.0074" height="0.00001"
+    h="0-360" s="0-30" l="90-100" hdr-h="0-360" hdr-s="0-30" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.8896" y="0.7704" width="0.0023" height="0.0002" />
+    <resolution aspect="24:10" x="0.8567" y="0.8014" width="0.0015" height="0.0014" />
+    <resolution aspect="16:11" x="0.8206" y="0.7736" width="0.0039" height="0" />
+  
+    <resolution size="3840x2160" x="0.8051" y="0.8014" width="0.0074" height="0.00001" />
+    <resolution size="2560x1080" x="0.8652" y="0.772" width="0.0035" height="0"/>
+    
+  </meta>
+
+  <meta meter="ImposterConfirm" tags="VLC,process" type="area" x="0.7589" y="0.8506" width="0.0016" height="0.0028" 
+    h="-30-30" s="90-100" l="38-100" hdr-h="-30-30" hdr-s="90-100" hdr-l="38-100">
+    <resolution aspect="3.55:1" x="0.8786" y="0.8519" width="0.0010" height="0.0005" />
+    <resolution aspect="24:10" x="0.8192" y="0.8507" width="0.0015" height="0.0028" />
+    <resolution aspect="16:11" x="0.7308" y="0.853" width="0.0019" height="0.0019" />
+  
+    <resolution size="3840x2160" x="0.7575" y="0.8509" width="0.0023" height="0.0037" />
+    <resolution size="2560x1080" x="0.8085" y="0.8341" width="0.0016" height="0.0019"/>
+  </meta>
+
+  <meta meter="KillButton" tags="VLC,process" type="area" x="0.9363" y="0.7403" width="0.0051" height="0.0028" 
+    h="-30-30" s="70-100" l="20-100" hdr-h="-30-30" hdr-s="70-100" hdr-l="20-100">
+    <resolution aspect="3.55:1" x="0.9680" y="0.7426" width="0.0003" height="0.0008"  />
+    <resolution aspect="24:10" x="0.9526" y="0.7438" width="0.0006" height="0.0021" />
+    <resolution aspect="16:11" x="0.9363" y="0.7403" width="0.0051" height="0.0028"  />
+  
+    <resolution size="3840x2160" x="0.9363" y="0.7403" width="0.0030" height="0.0028"  />
+    <resolution size="2560x1080" x="0.9531" y="0.7451" width="0.0012" height="0.001" /> 
+  </meta>
+
+  <meta meter="ReportButton" tags="VLC,process" type="area" x="0.8441" y="0.8582" width="0.0027" height="0.0021" 
+    h="-30-30" s="90-100" l="32-100" hdr-h="-30-30" hdr-s="90-100" hdr-l="32-100">
+    <resolution aspect="3.55:1" x="0.9211" y="0.8546" width="0.0021" height="0.0070" />
+    <resolution aspect="24:10" x="0.8843" y="0.8535" width="0.0026" height="0.0060" />
+    <resolution aspect="16:11" x="0.8273" y="0.858" width="0.0035" height="0.0025" />
+  
+    <resolution size="3840x2160" x="0.8395" y="0.8536" width="0.0034" height="0.0033" />
+    <resolution size="2560x1080" x="0.8816" y="0.8536" width="0.0019" height="0.0055"/> 
+  </meta>
+
+  <meta meter="mainMenuGreen" tags="VLC,process" type="area" x="0.0926" y="0.0556" width="0.0008" height="0" 
+   h="100-160" s="80-100" l="80-100" hdr-h="100-160" hdr-s="80-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.0456" y="0.0574" width="0.0008" height="0.0021" />
+    <resolution aspect="24:10" x="0.0683" y="0.0542" width="0.0012" height="0.0028" />
+    <resolution aspect="16:11" x="0.1004" y="0.0569" width="0.0035" height="0.0019" />
+  
+    <resolution size="3840x2160" x="0.0901" y="0.0565" width="0.0039" height="0.0019" />
+    <resolution size="2560x1080" x="0.0672" y="0.0593" width="0.0035" height="0.0019"/>
+  </meta> 
+
+  <meta meter="deadRed" tags="VLC,process" type="area" x="0.0267" y="0.1319" width="0.2846" height="0.0035" 
+  h="-30-30" s="40-100" l="10-80" hdr-h="-30-30" hdr-s="0-100" hdr-l="0-100">
+    <resolution aspect="3.55:1" x="0.0115" y="0.1350" width="0.1453" height="0.0035" />
+    <resolution aspect="24:10" x="0.0198" y="0.1333" width="0.1558" height="0.0001" />
+    <resolution aspect="16:11" x="0.0267" y="0.1319" width="0.2846" height="0.0035" />
+  
+    <resolution size="3840x2160" x="0.0267" y="0.1319" width="0.2846" height="0.0035" />
+    <resolution size="2560x1080" x="0.0267" y="0.1319" width="0.2846" height="0.0035"/>
+  </meta> 
+
+</head>
+
+
+<body style="margin: 0; padding: 0; background: #000;">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  //Declaring variables
+  var canvas, ctx;
+  canvas = document.getElementById('exCanvas');
+  ctx = canvas.getContext('2d');
+  var effects = [];
+  var width = 320;
+  var height = 200;
+  var hiddenCanvas = document.createElement("canvas");
+  hiddenCanvas.width = width;
+  hiddenCanvas.height = height;
+  var hctx = hiddenCanvas.getContext("2d");
+  let gAlpha = 1
+  var totalTasksMultiplyValue = 0;
+  var taskValue = 0;
+  var theHUD = new drawHud()
+  var meetingPushed = false;
+
+
+  //Declaring meters
+  var ChoseCrewmate_Meter = new Meter(10, crewmateCallback)
+  var ChoseImposter_Meter = new Meter(10, imposterCallback)
+  var TotalTasks_Meter = new Meter(10, () => "")
+  var BodyFoundWhite_Meter = new Meter(20, () => "")
+  var BodyFoundColor_Meter = new Meter(20, () => "")
+  var BodyFoundConfirm_Meter = new Meter(20, meetingCallback)
+  var VotingGrey_Meter = new Meter(20, () => "")
+  var GetKilledRed_Meter = new Meter(20, GetKillCallback)
+  var SettingGray_Meter = new Meter(10, () => "")
+  var MapWhite_Meter = new Meter(10, () => "")
+  var FirstTask_Meter = new Meter(20, () => "")
+  var VictoryBlue_Meter = new Meter(30, VictoryCallback);
+  var DefeatRed_Meter = new Meter(30, DefeatCallback);
+  var ImposterConfirm_Meter = new Meter(20, () => "");
+  var KillButton_Meter = new Meter(20, KillCallback)
+  var MainMenuMeter = new Meter(10, MenuCallback)
+  var MapBlue1Meter = new Meter(10, MapCallback)
+  var MapRedMeter = new Meter(10, MapCallback)
+  var DeadRedMeter = new Meter(30, DeadCallback)
+  var meetingBlue_Meter = new Meter(20,meetingCallback)
+
+
+  function update() {
+
+    hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
+    hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
+    hctx.fillRect(0, 0, 320, 200);
+
+    backgroundHandler()
+    
+  
+    ChoseCrewmate_Meter.setValue(engine.vision.ChoseCrewmate);
+    ChoseImposter_Meter.setValue(engine.vision.ChoseImposter)
+    TotalTasks_Meter.setValue(engine.vision.TotalTasks)
+    BodyFoundWhite_Meter.setValue(engine.vision.BodyFoundWhite)
+    BodyFoundColor_Meter.setValue(engine.vision.BodyFoundColor[0])
+    BodyFoundConfirm_Meter.setValue(engine.vision.BodyFoundConfirm)
+    VotingGrey_Meter.setValue(engine.vision.VotingGrey)
+    SettingGray_Meter.setValue(engine.vision.SettingGray)
+    MapWhite_Meter.setValue(engine.vision.MapWhite)
+    FirstTask_Meter.setValue(engine.vision.FirstTaskCompleted)
+    VictoryBlue_Meter.setValue(engine.vision.VictoryBlue);
+    DefeatRed_Meter.setValue(engine.vision.DefeatRed);
+    GetKilledRed_Meter.setValue(engine.vision.GetKilledRed)
+    KillButton_Meter.setValue(engine.vision.KillButton);
+    ImposterConfirm_Meter.setValue(engine.vision.ImposterConfirm);
+    MainMenuMeter.setValue(engine.vision.mainMenuGreen);
+    MapBlue1Meter.setValue(engine.vision.MapBlue1);
+    MapRedMeter.setValue(engine.vision.MapRed);
+    DeadRedMeter.setValue(engine.vision.deadRed)
+    meetingBlue_Meter.setValue(engine.vision.meetingBlue)
+
+
+    //Effect handler 
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw(hctx);
+    } 
+    // Remove dead effects with filter
+    effects = effects.filter(effect => !(effect.lifetime <= 0));
+    
+    if(taskbarOn) theHUD.draw();
+    ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(hiddenCanvas, 0, 0);
+
+    window.requestAnimationFrame(update);
+  }
+
+  let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100,hctx)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        hctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        hctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+  function drawHud() {
+    this.width = 0;
+    this.alpha = .75;
+    this.old = 0;
+    this.draw = function(){
+      if (SettingGray_Meter.value >=.95 && MapWhite_Meter.value >=.95 || adjToggle) {
+        hctx.beginPath();
+        hctx.fillStyle = taskColor;
+        this.width = adjToggle ? TaskBarWidth * 3.2 : FirstTask_Meter.value < .1 ? 0 : (1 - TotalTasks_Meter.value) * 320
+        if(this.width != this.old){
+          this.old = this.width
+          this.alpha = .75
+        }
+        hctx.fillRect(TaskBarX * 3.2, TaskBarY * 2, this.width, TaskBarHeight * 2)
+        hctx.globalAlpha = this.alpha
+        DrawRect(TaskBarX * 3.2, TaskBarY * 2, this.width, TaskBarHeight * 2, "white")
+        hctx.globalAlpha = 1;
+        this.alpha > .05 ? this.alpha -= .05 : this.alpha = 0;
+      }
+    }
+  }
+
+  function DrawRect(x, y, width, height, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.fillRect(x, y, width, height);
+  };
+
+  //Callbacks 
+  function meetingCallback() {
+    if (BodyFoundWhite_Meter.value >= .95 && meetingBlue_Meter.value == 1 && MapWhite_Meter.value < .1 && SettingGray_Meter.value >= .95 && BodyFoundConfirm_Meter.value < .1 && !meetingPushed && meetingOn) {
+          effects.push(new emergencyMeeting())
+          meetingPushed = true
+          setTimeout(()=>{
+            voteGoing = true;
+            effects.push(new voting())
+          }, 4000)
+    }
+    if(BodyFoundWhite_Meter.value >= .95 && BodyFoundConfirm_Meter.value >=.95 && meetingBlue_Meter.value <.1 && SettingGray_Meter.value >= .95 && !meetingPushed && meetingOn){
+      meetingPushed = true
+        effects.push(new deadBodyEffect(`hsla(${engine.vision.BodyFoundColor[0]},${engine.vision.BodyFoundColor[1]}%,50%)`))
+        setTimeout(()=>{
+            voteGoing = true;
+            effects.push(new voting())
+          }, 10200)}
+  }
+
+  var isCrew = false;
+  function crewmateCallback() {
+    if (ChoseCrewmate_Meter.value >=.95 && MapWhite_Meter.value <.1 && SettingGray_Meter.value >=.95 && typeOn) {
+      isCrew = true;
+     effects.push(new pulseEffect("cyan", 1000))
+    }
+  }
+
+  function imposterCallback() {
+    if (ChoseImposter_Meter.value >= .95 && engine.vision.VictoryDefeatWhite < .1 && SettingGray_Meter.value >= .95 && MapWhite_Meter.value < .1 && typeOn) {
+      isCrew = false;
+      effects.push(new pulseEffect("red",1000))
+    }
+  }
+
+  function VictoryCallback() {
+    if (VictoryBlue_Meter.value >= .95 && engine.vision.VictoryDefeatWhite >= .95 && SettingGray_Meter.value < .1 && MapWhite_Meter.value < .1 && vdOn) {
+      effects.push(new VDEffect("cyan"))
+    }
+  }
+
+  function DefeatCallback() {
+    if (DefeatRed_Meter.value >= .95 && engine.vision.VictoryDefeatWhite >= .95 && SettingGray_Meter.value < .1 && MapWhite_Meter.value < .1 && vdOn) {
+      effects.push(new VDEffect("red"))
+    }
+  }
+
+  function GetKillCallback() {
+    if (GetKilledRed_Meter.value >= .95 && SettingGray_Meter.value >= .95 && MapWhite_Meter.value >= 0.8 && killOn) {
+      effects.push(new GettingKilledEffect("get"))
+    }
+  }
+
+  var voteGoing = false;
+  function votingCallback() {
+    if (VotingGrey_Meter.value < .1 && SettingGray_Meter.value < .1 && MapWhite_Meter.value < .1 || !meetingOn){
+      voteGoing = false;
+    }
+  }
+
+  function KillCallback() {
+    if (ImposterConfirm_Meter.value >= .95 && KillButton_Meter.value < .1 && KillButton_Meter.diff >= .5 && KillButton_Meter.decreased && engine.vision.ReportButton >= .95 && killOn) {
+      effects.push(new GettingKilledEffect("do"))
+    }
+  }
+
+  var menuPushed = false;
+  function MenuCallback(){
+    if(MainMenuMeter.value >= .95 && SettingGray_Meter.value < .1 && MapWhite_Meter.value < .1 && !menuPushed && mainOn){
+      menuPushed = true;
+      effects.push(new menuEffect())
+    }
+  }
+
+  var mapGoing = false;
+  function MapCallback(){
+    if((MapBlue1Meter.value >= .95 || MapRedMeter.value >= .95) && !mapGoing && mapOn){
+      mapGoing = true;
+      if(MapRedMeter.value >= .95){
+        effects.push(new mapRow("red"))
+      }else{
+        effects.push(new mapRow("blue"))
+      }
+      
+    } else if ((MapBlue1Meter.value < .1 || MapRedMeter.value < .1 )&& mapGoing) mapGoing = false;
+  }
+
+  var deadGoing = false;
+  function DeadCallback(){
+    if(DeadRedMeter.value >= .3 && BodyFoundWhite_Meter.value <.1 && !deadGoing && killOn && isCrew){
+      deadGoing = true;
+      effects.push(new dead())
+    } else if (DeadRedMeter.value < .1 && deadGoing){
+      deadGoing = false;
+    }
+  }
+
+  function dead(){
+    this.boi = new deadBoi(50, `hsl(${Math.random() * 360}, 100%, 50%)`, "left")
+    this.alpha = 0;
+    this.done = false;
+    this.lifetime = 1
+    this.draw = function(){
+      DrawRect(0, 0, 320, 200, "hsla(0, 0%, 0%, 1)")
+      hctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, "grey")
+      hctx.globalAlpha = this.alpha * 3 / 4;
+      this.boi.draw()
+      hctx.globalAlpha = 1;
+      if(!this.done){
+        this.alpha <= .55 ? this.alpha+=.05 : this.alpha = .6;
+      } else {
+        this.alpha >= .05 ? this.alpha-=.05 : this.lifetime = 0;
+      }
+      if(!deadGoing) this.done = true;
+    }
+  }
+
+  function deadBoi(scale, color, direction){
+    this.rotate = Math.random() * 5;
+    this.x = 160;
+    this.y = 100;
+    this.color = color;
+    this.scale = scale;
+    this.direction = direction;
+    this.lifetime = 10;
+    this.draw = function(){
+      DrawCharacter(this.x, this.y, this.scale, this.color, this.direction, this.rotate)
+      this.rotate+=.01
+      this.alpha <= .95 ? this.alpha+=.05 : this.alpha = 1;
+    }
+  }
+
+  function menuEffect(){
+    this.stars = []
+    this.effects = []
+    this.start = Date.now()
+    this.lifetime = 1;
+    this.done = false;
+    this.alpha = 1;
+    
+    this.draw = function(){
+      var elapsed = Date.now() - this.start
+      if(elapsed > 2000){
+        this.effects.push(new menuBoi(Math.random() * 320, Math.random() * 200, Math.random() * 20 + 10, `hsl(${Math.random() * 360}, 90%, 50%)`, Date.now() % 2 == 0 ? "right" : "left"))
+        this.start = Date.now()
+      }
+      hctx.globalAlpha = this.alpha;
+      DrawRect(0, 0, 320, 200, "black")
+      
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+      })
+      
+      this.effects = this.effects.filter(ele => ele.lifetime > 0);
+      
+      if(this.stars.length < 50 && Date.now() % 4 == 0) this.stars.push(new menuStar())
+      
+      this.stars.forEach((ele, i) => {
+        ele.draw()
+      })
+      
+      this.stars = this.stars.filter(ele => ele.lifetime > 0);
+      
+      hctx.globalAlpha = 1;
+      hctx.globalAlpha = 1;
+      if(this.done){
+        if(this.alpha >= .05){
+          this.alpha-=.05
+          if(this.alpha < .05){
+            this.lifetime = 0;
+            menuPushed = false;
+          }
+        }
+      }
+      if(MainMenuMeter.value < .2 || (MapWhite_Meter.value >= .95 || SettingGray_Meter.value >= .95)) {
+        this.done = true;
+      }
+    }
+  }
+
+  function menuStar(){
+    this.x = Math.random() * 300 - 20;
+    this.speed = Math.random() * .5 + .1;
+    this.y = Math.random() * 200 - 10;
+    this.lifetime = 1;
+    this.alpha = 0;
+    this.draw = function(){
+      hctx.globalAlpha = this.alpha
+      DrawCircle(this.x, this.y, 5, "grey")
+      this.x < 340 ? this.x+=this.speed : this.lifetime = 0;
+      this.y+=.01
+      hctx.globalAlpha = 1;
+      this.alpha <= .95 ? this.alpha+=.05 : this.alpha = 1;
+    }
+  }
+  
+  function menuBoi(x, y, scale, color, direction){
+    this.rotate = 0;
+    this.rv = .15 - Math.random() * .3
+    this.xv = 1 - Math.random() * 2
+    this.yv = 1 - Math.random() * 2
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.scale = scale;
+    this.direction = direction;
+    this.lifetime = 1;
+    this.alpha = 0;
+    this.draw = function(){
+      hctx.globalAlpha = this.alpha
+      DrawCharacter(this.x, this.y, this.scale, this.color, this.direction, this.rotate)
+      this.rotate+=this.rv;
+      this.x+=this.xv;
+      this.y+=this.yv;
+      if(this.x > 350 || this.x < -30 || this.y > 230 || this.y < -30) this.lifetime = 0;
+      hctx.globalAlpha = 1;
+      this.alpha <= .95 ? this.alpha+=.05 : this.alpha = 1;
+    }
+  }
+
+
+  function pulseEffect(color, speed){
+    this.alpha = 0;
+    this.start = Date.now();
+    this.lifetime = 1
+    this.draw = function (){
+      this.elapsed = Date.now() - this.start;
+      hctx.beginPath();
+      this.alpha = Math.sin(this.elapsed / speed);
+      hctx.globalAlpha = this.alpha;
+      hctx.fillStyle = color;
+      hctx.fillRect(0,0,320,200);
+      if(this.alpha < 0 ){
+        this.lifetime = 0;
+        hctx.globalAlpha = 1;
+      }
+    }
+  }
+
+  function deadBodyEffect(color) {
+    this.bloodSplatter = [];
+    this.firstPoint = ({ x: 160, y: 100 })
+    this.globalX = 80;
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.secondElapsed = 0;
+    this.lifetime = 1; 
+    
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+
+      if (200 - (this.elapsed - 7000) / 15 < 0) {
+        let gradient = hctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+        this.calculateVal = -1440 * Math.floor((-(this.elapsed - 200) / 1440) / 1) + ((-(this.elapsed + 100) / 1440) * (1440 / 1));
+        gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+        gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "red");
+        hctx.beginPath();
+        hctx.fillStyle = gradient;
+        hctx.fillRect(0, 0, 320, 200)
+        if (this.elapsed > 11400) {
+          this.lifetime = 0;
+        }
+      } else {
+        if (this.elapsed < 1300) {
+          let gradient = hctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+          this.calculateVal = -1440 * Math.floor((-(this.elapsed - 200) / 1440) / 1) + ((-(this.elapsed + 100) / 1440) * (1440 / 1));
+          gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, color);
+          gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+          hctx.beginPath();
+          hctx.fillStyle = gradient;
+          hctx.fillRect(0, 0, 320, 200)
+        } else {
+          hctx.beginPath()
+          hctx.fillStyle = "black"
+          hctx.fillRect(0, 0, 320, 200);
+          DrawCharacter(160, 120, SetRange(1300 - ((this.elapsed - 1400)), 35, 1300), color, "left", 90 * (Math.PI / 180));
+          if (this.elapsed > 3000) {
+            if (Math.random() > 0.9) {
+              this.bloodSplatter.push(new bloodSplatter([{ x: this.firstPoint.x, y: this.firstPoint.y }, { x: this.globalX + 100 + Math.random() * 20, y: 0 + Math.random() * 20 }, { x: this.globalX + 200, y: 50 }, { x: this.globalX + 200 + Math.random() * 40, y: 200 + Math.random() * 40 }], 5, 20, 15, "red"))
+            }
+            if (Math.random() > 0.9) {
+              this.bloodSplatter.push(new bloodSplatter([{ x: this.firstPoint.x, y: this.firstPoint.y }, { x: this.firstPoint.x - 40 + Math.random() * 20, y: 0 + Math.random() * 20 }, { x: this.globalX - 20, y: 50 }, { x: this.globalX - 20 + Math.random() * 40, y: 200 + Math.random() * 40 }], 5, 20, 15, "red"))
+            }
+          }
+          if (this.elapsed > 6000) {
+            if (Math.random() > 0.8) {
+              this.bloodSplatter.push(new bloodSplatter([{ x: Math.random() * 320, y: -50 }, { x: Math.random() * 320, y: 50 }, { x: Math.random() * 320, y: 100 }, { x: Math.random() * 320, y: 200 }], 25, 20, 5, "red"))
+            }
+            hctx.beginPath();
+            hctx.fillStyle = "red";
+            if((220 - (this.elapsed - 7000) / 15) < 5) {
+              this.lifetime = 0;
+              this.bloodSplatter = []
+              meetingPushed = false;
+            }
+            hctx.fillRect(0, 220 - (this.elapsed - 7000) / 15, 320, 200)
+          }
+          
+          this.bloodSplatter.forEach(element => {
+            element.draw();
+          });
+          
+          this.bloodSplatter = this.bloodSplatter.filter(element => element.lifetime > 0);
+        }
+      }
+    }
+  }
+
+  function mapRow(color){
+      this.effects = []
+      this.alpha = 0;
+      this.lifetime = 1; 
+      this.color = color
+      this.done = false;
+      
+      for(let i = 0; i < 20; i++){
+        let loopX = (i % 5) * 60 + 15
+        let loopY = Math.floor(i / 5) * 60 + 15
+        this.effects.push(new mapSquare(loopX, loopY, 50, Math.random() < .05 ? "white" : this.color))
+      }
+      
+      this.draw = function(){
+        hctx.globalAlpha = this.alpha
+        DrawRect(0, 0, 320, 200, "black")
+        
+        this.effects.forEach((ele, i) => {
+          ele.draw()
+          if(ele.lifetime <= 0){
+            this.effects.push(new mapSquare(ele.x, -45, ele.size, Math.random() < .05 ? "white" : this.color))
+          }
+        })
+        
+        
+        this.effects = this.effects.filter(ele => ele.lifetime > 0);
+        
+        hctx.globalAlpha = 1;
+        if(!this.done){
+          this.alpha <= .45 ? this.alpha += .05 : this.alpha = .5;
+        } else {
+          this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0;
+        }
+        if(!mapGoing) this.done = true;
+      }
+  }
+
+  function mapSquare(x, y, size, color){
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.color = color;
+      this.lifetime = 1; 
+      this.vy = Math.random() * 2 + .5
+      this.draw = function(){
+        DrawRect(this.x, this.y, this.size, this.size, this.color)
+        this.y+=this.vy
+        if(this.y > 200) this.lifetime = 0;
+      }
+  }
+
+  function voting(){
+      this.start = Date.now()
+      this.effects = []
+      this.num = true;
+      this.lifetime = 1; 
+      this.count = 0;
+      
+      this.draw = function(){
+        var elapsed = Date.now() - this.start;
+        DrawRect(0, 0, 320, 200, "hsla(0, 0%, 0%, 1)")
+        if(elapsed > 1000){
+          this.start = Date.now()
+          this.effects.push(new votingHelper(this.num))
+          this.count++
+          if(this.num == 0){
+            this.num = !this.num;
+            this.count = 0;
+          }
+          if(this.count == 2){
+            this.num = !this.num;
+            this.count = 0;
+          }
+        }
+        
+        this.effects.forEach((ele, i) => {
+          ele.draw()
+        })
+        
+        this.effects = this.effects.filter(ele => ele.lifetime > 0);
+        
+        if (VotingGrey_Meter.value < .3 || MapWhite_Meter.value < .1 || !meetingOn){
+          voteGoing = false;
+          this.lifetime = 0;
+        }
+      }
+  }
+
+  function votingHelper(dir){
+    this.x = dir ? 10 : 310;
+    this.y = 170;
+    this.hue = Math.random() * 360
+    this.target = 150;
+    this.width = dir ? 200 : -200;
+    this.offset = dir ? 30 : -30;
+    this.lifetime = 1;
+    this.start = Date.now()
+    this.draw = function(){
+      var elapsed = Date.now() - this.start;
+      if(elapsed > 1000){
+        this.target = this.y - 31;
+        this.start = Date.now()
+      }
+      if(this.target != this.y){
+        this.y -= (this.y - this.target) / 2
+        if(this.y < this.target) this.y = this.target
+      }
+      DrawRect(this.x, this.y, this.width, 30, "hsl(0, 0%, 90%)")
+      DrawCircle(this.x + this.offset, this.y + 15, 14, `hsl(${this.hue}, 75%, 50%)`)
+      if(this.y < -20) this.lifetime = 0;
+    }
+  }
+
+  
+  function emergencyMeeting(){
+    this.start = Date.now()
+    this.radius = 1;
+    this.radius2 = 40;
+    this.stroke = 55;
+    this.lit = 50;
+    this.lifetime = 1;
+    this.draw = function(){
+      var elapsed = Date.now() - this.start
+      if(elapsed < 900){
+        DrawCircle(160, 100, this.radius, `hsl(0, 100%, ${this.lit}%)`)
+        DrawStroke(160, 100, this.radius, `white`, 10)
+        this.radius < 70 ? this.radius+=5 : this.lit+=.5;
+      } else if (elapsed < 1800){
+        this.lit = 50;
+        DrawStroke(160, 100, this.radius2, "red", this.stroke)
+        this.radius2+=5;
+        this.stroke--;
+      } else {
+        this.lifetime = 0;
+        meetingPushed = false;
+      }
+    }
+  }
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.stroke();
+  };
+
+  function VDEffect(color){
+    this.x = 0;
+    this.color = color;
+    this.lifetime = 1; 
+    this.effects = []
+    
+    this.draw = function(){
+      if(this.x % 5 == 0 && this.x <= 160) this.effects.push(new VDHelper(this.x, this.color))
+      
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+      })
+      
+      this.effects = this.effects.filter(ele => ele.lifetime > 0);
+      
+      this.x++
+      if(this.effects.length == 0){
+        this.lifetime = 0;
+        if(mainOn) effects.push(new menuEffect())
+      } 
+    }
+  }
+
+ function VDHelper(offset, color){
+  this.x = offset;
+  this.alpha = 1;
+  this.radius = 1;
+  this.lifetime = 1;
+  this.color = color;
+  this.draw = function(){
+    hctx.globalAlpha = this.alpha;
+    DrawCircle(160 + this.x, 100, this.radius, this.color)
+    DrawCircle(160 - this.x, 100, this.radius, this.color)
+    hctx.globalAlpha = 1;
+    this.alpha > .01 ? this.alpha-=.01 : this.lifetime = 0;
+    this.radius++
+  }
+ }
+
+
+  function GettingKilledEffect(murder) {
+    this.bloodSplatter = [];
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.globalX = 80;
+    this.curve = [{ x: this.globalX, y: 100 }, { x: this.globalX, y: 140 }, { x: this.globalX + 200, y: 50 }, { x: this.globalX, y: 100 }];
+    this.rotation = 0;
+    this.firstPoint = ({ x: this.globalX + 80, y: 100 })
+    this.murder = murder;
+    this.lifetime = 1;
+
+    let percentage = 0;
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      if (this.elapsed < 1400) {
+        let gradient = hctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+        this.calculateVal = -1660 * Math.floor((this.elapsed / 1660) / 1) + ((this.elapsed / 1660) * (1660 / 1));
+        gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+        gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 100%, 50%,1)");
+        gradient.addColorStop(SetRange((-400 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
+        hctx.fillStyle = gradient;
+        hctx.fillRect(0, 0, 320, 200);
+      }
+      if (this.elapsed > 1400) {
+        hctx.globalAlpha = SetRange(percentage < 3 ? 1 : 4 - percentage, 0, 1);
+        hctx.fillStyle = "black";
+        hctx.fillRect(0, 0, 320, 200);
+      }
+      if (this.elapsed > 1800) {
+        percentage += 0.01;
+      }
+      hctx.beginPath();
+
+      DrawCharacter(this.firstPoint.x, this.firstPoint.y, 30, this.murder == "do" ? "red" : "green", "left", this.rotation)
+      DrawCharacter(this.globalX, 100, 30, this.murder == "do" ? "green" : "red", "right", 0)
+      if (percentage > 0 && percentage < 1) {
+        hctx.beginPath();
+        let point = getCubicBezierXYatPercent(this.curve[0], this.curve[1], this.curve[2], this.curve[3], percentage);
+        hctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
+        hctx.fillStyle = this.murder == "do" ? "green" : "red"
+        hctx.fill();
+      }
+      if (percentage > 0.6 && percentage < 0.95) {
+        this.rotation += 0.044
+        if (percentage < 0.75) {
+          this.firstPoint.y -= 1;
+        } else {
+          this.firstPoint.y += 1.5;
+        }
+        this.firstPoint.x += 1;
+      }
+      if (percentage > 0.6) {
+        if (Math.random() > 0.9) {
+          this.bloodSplatter.push(new bloodSplatter([{ x: this.firstPoint.x, y: this.firstPoint.y }, { x: this.globalX + 100 + Math.random() * 20, y: 0 + Math.random() * 20 }, { x: this.globalX + 200, y: 50 }, { x: this.globalX + 200 + Math.random() * 40, y: 200 + Math.random() * 40 }], 5, 20, 15, "red"))
+        }
+        if (Math.random() > 0.9) {
+          this.bloodSplatter.push(new bloodSplatter([{ x: this.firstPoint.x, y: this.firstPoint.y }, { x: this.firstPoint.x - 20 + Math.random() * 20, y: 0 + Math.random() * 20 }, { x: this.globalX + 50, y: 50 }, { x: this.globalX + 40 + Math.random() * 40, y: 200 + Math.random() * 40 }], 5, 20, 15, "red"))
+        }
+      }
+      this.bloodSplatter.forEach(element => {
+        element.draw();
+      });
+      
+      this.bloodSplatter = this.bloodSplatter.filter(element => element.lifetime > 0);
+      if (percentage > 4) {
+        this.lifetime = 0;
+      }
+      hctx.globalAlpha = 1;
+    }
+  }
+
+  function bloodSplatter(curve, width, size, speed, color) {
+    this.curve = curve;
+    this.percentage = 0;
+    this.width = width;
+    this.size = size;
+    this.color = color;
+    this.speed = speed;
+    this.lifetime = 1;
+
+    this.draw = function () {
+      this.percentage += this.speed / 1000;
+      hctx.beginPath();
+      hctx.fillStyle = this.color;
+      let point = getCubicBezierXYatPercent(this.curve[0], this.curve[1], this.curve[2], this.curve[3], this.percentage)
+      hctx.moveTo(point.x, point.y);
+      for (let index = 0; index < this.size; index++) {
+        let point2 = getCubicBezierXYatPercent(this.curve[0], this.curve[1], this.curve[2], this.curve[3], this.percentage + index / 100);
+        hctx.lineTo(point2.x, point2.y);
+      }
+
+      hctx.strokeStyle = color;
+      hctx.lineWidth = this.width;
+      hctx.stroke()
+
+      if (this.percentage > 1.2) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function DrawCharacter(x, y, size, color, direction, rotation) {
+    hctx.save();
+    hctx.translate(x, y)
+    hctx.rotate(rotation);
+    hctx.beginPath();
+    hctx.ellipse(0, 0 - size / 3, size / 1.5, size / 1.1, 0, 0, 2 * Math.PI)
+    let moddedSize = 1.32;
+    hctx.rect(0 - (size * moddedSize / 2), 0 - size / 2, size * moddedSize, size * 1.1)
+    hctx.rect(0 - (size * moddedSize / 2), 0 + size / 2, size / 2, size / 1.5)
+    hctx.rect(0 + size / 6, 0 + size / 2, size / 2, size / 1.5)
+    hctx.fillStyle = color;
+    hctx.strokeStyle = "black";
+    hctx.fill();
+    hctx.beginPath();
+    hctx.ellipse(direction == "right" ? 0 + size / 2.5 : 0 - size / 2.5, 0 - size / 2.5, size / 2, size / 3, 0, 0, 2 * Math.PI)
+    hctx.fillStyle = "#476270";
+    hctx.fill();
+    hctx.beginPath();
+    hctx.fillStyle = "#8ec6d5"
+    hctx.ellipse(direction == "right" ? 0 + size / 2 : 0 - size / 2, 0 - size / 2, size / 3, size / 5, 0, 0, 2 * Math.PI)
+    hctx.fill();
+    hctx.restore();
+  }
+
+  function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+    var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+    var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+
+    return ({ x: x, y: y });
+  }
+
+  function CubicN(pct, a, b, c, d) {
+    var t2 = pct * pct;
+    var t3 = t2 * pct;
+    return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+      + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+      + (c * 3 - c * 3 * pct) * t2
+      + d * t3;
+  }
+
+
+  function SetRange(num, min, max) {
+    return Math.min(Math.max(num, min), max)
+  }
+
+  //helper functions
+  function GetTime() {
+    return new Date().getTime();
+  }
+
+  function DrawCircle(x, y, radius, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.fill();
+  };
+
+
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.  
+      values.push(updatedValue);
+      if (values.length > this.size) { values.shift(); }
+
+      // Exit early if we've got a long-term match.
+      for (var i = 0; i < (values.length - 1); i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        //var fromZero = this.value === 0;
+        //var toZero = values[0] === 0;      
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    }
+  }
+
+ 
+  window.requestAnimationFrame(update);
+  
+
+</script>

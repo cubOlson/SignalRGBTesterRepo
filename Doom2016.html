@@ -1,0 +1,526 @@
+<head>
+  <title>Doom 2016 dev</title>
+  <meta description="Metering and effects for DOOM (2016)" />
+  <meta publisher="WhirlwindFX" />
+  <meta default="100" label="Ambiance brightness" max="100" min="0" property="keyScreenBrightness" type="number" />
+
+  <meta
+    meter="healthOCR"
+    tags = "doom"
+    x=".0921875"
+    y=".8898148"
+    width=".03125"
+    height=".034259"
+    confidence = "50"
+    type="ocr_numeric"
+  />
+  <meta
+    meter="shieldOCR"
+    tags = "doom"
+    x=".098958333"
+    y=".864814"
+    width=".0270833"
+    height=".0259259"
+    confidence = "50"
+    type="ocr_numeric"
+  />
+  <meta
+    meter="lowHealth"
+    tags = "doom"
+    x=".4479166"
+    y=".823148"
+    width=".1015625"
+    height=".03055555"
+    string = "LOW HEALTH"
+    confidence = "50"
+    type="ocr_textmatch"
+  />
+  <!-- <meta
+    meter="health1"
+    tags="doom, doom eternal"
+    x=".1421875"
+    y=".8972222"
+    width=".0859375"
+    h="170-200"
+    s="20-100"
+    l="60-100"
+    type="linear"
+  /> -->
+  <!-- <meta
+    meter="health2"
+    tags="doom, doom eternal"
+    x=".1421875"
+    y=".8972222"
+    width=".0859375"
+    h="220-250"
+    s="20-100"
+    l="0-100"
+    type="linear"
+  /> -->
+  <!-- <meta
+    meter="lowHealth"
+    tags="doom, doom eternal"
+    x=".1421875"
+    y=".8972222"
+    width=".0859375"
+    h="-20-10"
+    s="20-100"
+    l="40-100"
+    type="linear"
+  /> -->
+  <!-- <meta
+    meter="shield"
+    tags="doom, doom eternal"
+    x=".1421875"
+    y=".85555555"
+    width=".086979"
+    height=".0222222"
+    h="120-160"
+    s="60-100"
+    l="80-100"
+    type="area"
+  /> -->
+  <!-- <meta
+    meter="shield2"
+    tags="doom, doom eternal"
+    x=".1421875"
+    y=".85555555"
+    width=".086979"
+    height=".0222222"
+    h="120-160"
+    s="10-100"
+    l="10-90"
+    type="area"
+  /> -->
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var canvas, ctx;
+  var stateMgr = new StateHandler();
+  var bursts = [];
+
+  var healthMeter = new Meter(10, onHealthMeterChanged);
+  var shieldMeter = new Meter(10, onShieldMeterChanged);
+
+
+  // ----- callback functions -----
+  function onHealthMeterChanged() {
+    if (healthMeter.decreased && healthMeter.diff > 0.1) {
+      stateMgr.Push(new DamageState());
+    } else if (healthMeter.increased && healthMeter.diff > 0.1) {
+      stateMgr.Push(new HealState());
+    }
+  }
+
+  function onShieldMeterChanged() {
+    if (shieldMeter.decreased && shieldMeter.diff > 0.05) 
+      stateMgr.Push(new ShieldDownState());
+    else 
+      stateMgr.Push(new ShieldUpState());
+  }
+
+  // ----- State functions ----- 
+  function ShieldDownState() {
+    this.rects = [];
+    this.time = 100;
+
+    this.Process = function () {
+      var bool = Math.floor(Math.random() * 4) == 0;
+      if ( bool)
+        this.rects.push(new ShieldDamage());
+
+      for (i = 0; i < this.rects.length; i++) {
+        this.rects[i].Draw();
+      }
+      
+      this.time--;
+
+      if (this.time <= 0) {
+        this.time = 0;
+        this.complete = true;
+        stateMgr.Push(new IdleState());
+      }
+    }
+  }
+  function ShieldUpState() {
+    this.rects = [];
+    this.time = 100;
+
+    this.Process = function () {
+      var bool = Math.floor(Math.random() * 4) == 0;
+      if (bool)
+        this.rects.push(new GrowRectangle());
+
+      for (i = 0; i < this.rects.length; i++) {
+        this.rects[i].Draw();
+      }
+      
+      this.time--;
+
+      if (this.time <= 0) {
+        this.time = 0;
+        this.complete = true;
+        stateMgr.Push(new IdleState());
+      }
+    }
+  }
+
+  function ShieldDamage() {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.time = 0;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+
+      this.time++;
+
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var satBoost = sat[iZone] + 50;
+        ctx.fillStyle =
+          "hsla(" +
+          100 +
+          "," +
+          satBoost +
+          "%," +
+          lightness[iZone] +
+          "%, " +
+          keyScreenBrightness * 0.01 +
+          ")";
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+      if(bursts.length < 10){
+        bursts.push(new SheildDrop());
+      }
+    };
+  }
+
+
+  function GrowRectangle() {
+    
+
+    this.xRect = 160;
+    this.yRect = 100;
+    this.width = 0;
+    this.height = 0;
+    this.complete = false;
+
+    this.colors = ["#02fa1f", "#126316", "#5ef286", "black"];
+    this.color = this.colors[Math.floor(Math.random() * 4)];
+
+    this.Draw = function () {
+
+      
+
+      this.xRect -= 4;
+      this.yRect -= 2;
+      this.width += 8;
+      this.height += 4;
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.xRect, this.yRect, this.width, this.height);
+
+      if (this.xRect > 400)
+        this.complete = true;
+    }
+  }
+
+  function IdleState() {
+    this.Process = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        ctx.fillStyle =
+          'hsla(' + hue[iZone] + ',' + sat[iZone] + '%,' + lightness[iZone] * keyScreenBrightness * 0.01 + '%)';
+
+        let iRow = Math.floor(iZone / 28);
+        let iCol = iZone % 28;
+        let iWidth = 320 / 28;
+        let iHeight = 200 / 20;
+        let iZx = iCol * iWidth;
+        let iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+
+  function DamageState() {
+    this.start = new Date().getTime();
+    this.duration = 1000;
+    this.time = 0;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+
+      this.time++;
+
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var satBoost = sat[iZone] + 50;
+        ctx.fillStyle =  'hsla(' + hue[iZone] + ',' + sat[iZone] + '%,' + lightness[iZone] * keyScreenBrightness * 0.01 + '%)';
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+      if(bursts.length < 10){
+        bursts.push(new BloodDrop());
+      }
+    };
+  }
+
+  function HealState() {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateMgr.Pop();
+      }
+      this.Draw();
+    };
+
+    this.Draw = function () {
+
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var satBoost = sat[iZone] + 50;
+        ctx.fillStyle =
+          "hsla(" +
+          150 +
+          "," +
+          satBoost +
+          "%," +
+          lightness[iZone] +
+          "%, " +
+          keyScreenBrightness * 0.01 +
+          ")";
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+      if(bursts.length < 4){
+        bursts.push(new WaveUp());
+      }
+    };
+  }
+
+  
+  // ----- support functions -----
+  function SheildDrop() {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    
+    this.colors = ["#02fa1f", "#126316", "#5ef286", "black"];
+    this.color = this.colors[Math.floor(Math.random() * 4)];
+
+    this.lifetime = Math.random() * 30;
+    this.size = Math.random() * 10 + 50;
+
+    this.draw = function () {
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+      this.lifetime--;
+    };
+
+  }
+  function BloodDrop() {
+    this.x = Math.random() * 320;
+    this.y = Math.random() * 200;
+    this.r = Math.round((Math.random() * 200) + 80);
+    this.g = Math.round((Math.random() * 75) - 50);
+    this.b = Math.round((Math.random() * 85) - 50);
+    this.lifetime = Math.random() * 30;
+    this.size = Math.random() * 10 + 50;
+
+    this.draw = function () {
+      ctx.fillStyle = "rgb(" + this.r + "," + this.g + "," + this.b + ")";
+      ctx.fillRect(this.x, this.y, this.size, this.size);
+      this.lifetime--;
+    };
+
+  }
+
+  function WaveUp() {
+    this.x = 0;
+    this.y = 200;
+    this.r = Math.round((Math.random() * 85) - 50);
+    this.g = Math.round((Math.random() * 200) + 50);
+    this.b = Math.round((Math.random() * 75) - 50);
+    this.lifetime = Math.random() * 150;
+
+    this.draw = function () {
+      ctx.fillStyle = "rgb(" + this.r + "," + this.g + "," + this.b + ")";
+      ctx.fillRect(this.x, this.y, 320, 20);
+      this.y-= 5;
+      this.lifetime--;
+    };
+
+  }
+
+  // ----- SH and Meter -----
+  function StateHandler() {
+    var stack = [];
+    var state = null;
+
+    var updateState = function () {
+      if (stack.length > 0) {
+        state = stack[stack.length - 1];
+      } else {
+        state = null;
+      }
+    };
+
+    this.Push = function (newState) {
+      stack = [];
+      stack.push(new IdleState());
+      stack.push(newState);
+      updateState();
+    };
+
+    this.Pop = function () {
+      stack.pop();
+      updateState();
+    };
+
+    this.Process = function () {
+      if (state != null) {
+        state.Process();
+      }
+    };
+  }
+
+
+  
+  function Meter(count, callback) {
+    this.size = count;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      // Add and shift.
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      // Exit early if we've got a long-term match.
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+
+      // We got here, so we've got a matching value collection.
+      if (this.value !== values[0]) {
+        //var fromZero = this.value === 0;
+        //var toZero = values[0] === 0;
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    };
+  }
+
+  // ----- driver -----
+  function onEngineReady() {
+    // Grab canvas and rendering context.
+    canvas = document.getElementById("exCanvas");
+    ctx = canvas.getContext("2d");
+
+    stateMgr.Push(new IdleState());
+    // Start updates *after* our engine is accessible and ready.
+    window.requestAnimationFrame(update);
+  }
+
+  var x =0;
+  var dmg = new DamageState();
+  dmg.time = 121;
+  function update() {
+
+    if (engine.vision.healthOCR > 50 && engine.vision.healthOCR != -1) 
+      healthMeter.setValue(engine.vision.healthOCR);
+    if (engine.vision.lowHealth >= 0.5) {
+      dmg = new DamageState();
+      stateMgr.Push(dmg);
+    }
+
+  
+    if (engine.vision.shieldOCR > 0.1 && engine.vision.shieldOCR != -1) 
+      shieldMeter.setValue(engine.vision.shieldOCR);
+
+
+    // console.log(x++);
+    // console.log("health ocr: " + healthMeter.value);
+    // console.log("shield ocr: " + shieldMeter.value);
+    // console.log("lowHP ocr:  " + engine.vision.lowHealth);
+    // console.log("----------------");
+
+    stateMgr.Process();
+
+    for (i = 0; i < bursts.length; i++) {
+      bursts[i].draw();
+    }
+    for (i = 0; i < bursts.length; i++) {
+      if (bursts[i].lifetime <= 0) {
+        bursts.splice(i, 1);
+      }
+    }
+
+    window.requestAnimationFrame(update);
+  }
+
+</script>

@@ -1,0 +1,1038 @@
+<head>
+    <title>Dead By Daylight Dev</title>
+    <meta description="Watch out for the Entity with full RGB effects. v1.03" />
+    <meta publisher="SignalRGB" />
+  
+      <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+      <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+      default="Ambience"/>
+      <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+      <meta property="effectBrightness" label="Effect Brightness" type="number" default="100" min="0" max="100"/>
+      <meta property="actionOn" label="Action Bar Effect" type="boolean" default="1" />
+      <meta property="skillOn" label="Skill Check EFfect" type="boolean" default="1" />
+      <meta property="failOn" label="Skill Fail Effect" type="boolean" default="1" />
+      <meta property="bloodOn" label="Blood Points Effect" type="boolean" default="1" />
+      <meta property="endOn" label="End Game Effect" type="boolean" default="1" />
+      <meta property="hookedOn" label="Player Hooked Effect" type="boolean" default="1" />
+      <meta property="menuOn" label="Menu Effect" type="boolean" default="1" />
+
+    <meta meter="inGameNotWhite" tags="vlc,dead,screen" x="0.9101" y="0.8499" width="-0.0004" height="0.0014" 
+        h="0-360" s="0-25" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100" type="area">
+        <resolution aspect="3.55:1" x="0.9544" y="0.8481" width="0.0005" height="0.0020" />
+        <resolution aspect="24:10" x="0.9314" y="0.8472" width="0.00" height="0.0020" />
+        <resolution aspect="16:11" x="0.9082" y="0.8143" width="0" height="0.0018" />
+
+        <resolution size="3840x2160" x="0.9101" y="0.8527" width="0" height="0" />
+        <resolution size="2560x1080"  x="0.932" y="0.8489" width="0" height="0"  />
+        <resolution size="1920x1080"  x="0.9101" y="0.8499" width="-0.0004" height="0.0014"   />
+    </meta>
+
+    <meta meter="inGameWhite1" tags="vlc,dead,screen" x="0.9136" y="0.8582" width="0" height="0.0042"
+        h="0-360" s="0-25" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100" type="area">
+        <resolution aspect="3.55:1" x="0.9560" y="0.8583" width="0.0003" height="0.0014" />
+        <resolution aspect="24:10" x="0.9346" y="0.8569" width="0" height="0.0042" />
+        <resolution aspect="16:11" x="0.9125" y="0.8211" width="0" height="0.0019" />
+
+        <resolution size="3840x2160" x="0.9135" y="0.8592" width="-0.0008" height="0.0018"  />
+        <resolution size="2560x1080" x="0.9625" y="0.7915" width="0" height="0.0055"  />
+        <resolution size="1920x1080"  x="0.913" y="0.8563" width="0" height="0.0019"  />
+    </meta>
+
+    <meta meter="inGameWhite2" tags="vlc,dead,screen" x="0.9496" y="0.7936" width="0" height="0.0042"
+      h="0-360" s="0-25" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.9747" y="0.7917" width="0.0005" height="0.0000" />
+      <resolution aspect="24:10" x="0.9616" y="0.7924" width="0.0005" height="0.0000" />
+      <resolution aspect="16:11" x="0.9492" y="0.7642" width="0" height="0.0032" />
+
+      <resolution size="3840x2160" x="0.9492" y="0.7911" width="-0.0003" height="0.0023"   />
+      <resolution size="2560x1080" x="0.9351" y="0.8573" width="-0.0004" height="0.0046"  />
+      <resolution size="1920x1080"  x="0.9496" y="0.7936" width="0" height="0.0042"  />
+    </meta>
+
+    <meta meter="actionBar" tags="vlc,dead,screen" x="0.4381" y="0.8061" width="0.1512" height="0" 
+        h="0-360" s="20-100" l="60-95" hdr-h="0-360" hdr-s="0-100" hdr-l="50-100" type="area">
+        <resolution aspect="3.55:1" x="0.4646" y="0.8065" width="0.0755" height="0.0000" />
+        <resolution aspect="24:10" x="0.4468" y="0.8063" width="0.1131" height="0.0000" />
+        <resolution aspect="16:11" x="0.4295" y="0.7767" width="0.1516" height="-0.0025" />
+
+        <resolution size="3840x2160" x="0.429" y="0.8069" width="0.1516" height="0"  />
+        <resolution size="2560x1080" x="0.4467" y="0.8072" width="0.1129" height="-0.0009"  />
+        <resolution size="1920x1080"  x="0.4381" y="0.8061" width="0.1512" height="0"  />
+    </meta>
+
+    <meta meter="actionWhite" tags="vlc,dead,screen" x="0.4052" y="0.804" width="0.0036" height="0.0063" 
+        h="0-360" s="0-25" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100" type="area">
+        <resolution aspect="3.55:1" x="0.4526" y="0.8019" width="0.0013" height="0.0070" />
+        <resolution aspect="24:10" x="0.4299" y="0.8056" width="0.0023" height="0.0040" />
+        <resolution aspect="16:11" x="0.406" y="0.7749" width="0.0024" height="0.0037" />
+
+        <resolution size="3840x2160" x="0.4053" y="0.8022" width="0.0042" height="0.0079" />
+        <resolution size="2560x1080" x="0.4291" y="0.8035" width="0.0019" height="0.0065" />
+        <resolution size="1920x1080"  x="0.4052" y="0.804" width="0.0036" height="0.0063"   />
+    </meta>
+
+    <meta meter="actionNotWhite" tags="vlc,dead,screen" x="0.4193" y="0.7867" width="0.0027" height="0.0139"
+        h="0-360" s="0-25" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100" type="area">
+        <resolution aspect="3.55:1" x="0.4591" y="0.7843" width="0.0021" height="0.0150" />
+        <resolution aspect="24:10" x="0.4401" y="0.7903" width="0.0029" height="0.0185" />
+        <resolution aspect="16:11" x="0.4193" y="0.7624" width="0.0031" height="0.0118" />
+
+        <resolution size="3840x2160" x="0.4212" y="0.7911" width="0.0026" height="0.0213" />
+        <resolution size="2560x1080" x="0.4408" y="0.785" width="0.0004" height="0.0222" />
+        <resolution size="1920x1080"  x="0.4193" y="0.7867" width="0.0027" height="0.0139" />
+    </meta>
+
+    <meta meter="actionColor" tags="vlc,dead,screen" x="0.4385" y="0.8068" width="0.0003" height="0" 
+        h="0-360" s="0-25" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100" type="colormean">
+        <resolution aspect="3.55:1" x="0.4656" y="0.8065" width="0.0003" height="0" />
+        <resolution aspect="24:10" x="0.4477" y="0.8069" width="0.0015" height="0.00" />
+        <resolution aspect="16:11" x="0.4291" y="0.7755" width="0.0004" height="-0.0006" />
+
+        <resolution size="3840x2160" x="0.429" y="0.8064" width="0.0013" height="0" />
+        <resolution size="2560x1080" x="0.4467" y="0.8063" width="0.0007" height="0" />
+        <resolution size="1920x1080"  x="0.4385" y="0.8068" width="0.0003" height="0"  />
+    </meta>
+
+    <meta meter="skillCheck1" tags="vlc,dead,screen" x="0.476" y="0.4802" width="0" height="0.0104" 
+        h="0-360" s="0-25" l="50-100" hdr-h="0-360" hdr-s="0-25" hdr-l="50-100" type="area">
+        <resolution aspect="3.55:1" x="0.4883" y="0.4861" width="0.000" height="0.0000" />
+        <resolution aspect="24:10" x="0.4823" y="0.4785" width="0.0000" height="0.0010" />
+        <resolution aspect="16:11" x="0.476" y="0.4816" width="0" height="0.0093" />
+
+        <resolution size="3840x2160" x="0.5238" y="0.4785" width="0" height="0.0046"  />
+        <resolution size="2560x1080" x="0.4822" y="0.4791" width="-0.0004" height="0.0075"  />
+        <resolution size="1920x1080"  x="0.4763" y="0.4801" width="0" height="0.0046" />
+    </meta>
+
+    <meta meter="skillCheck2" tags="vlc,dead,screen" x="0.5236" y="0.4809" width="0" height="0.0049"
+        h="0-360" s="0-25" l="50-100" hdr-h="0-360" hdr-s="0-25" hdr-l="70-100" type="area">
+        <resolution aspect="3.55:1" x="0.5117" y="0.4750" width="0.000" height="0.00" />
+        <resolution aspect="24:10" x="0.5180" y="0.4826" width="0.000" height="0.0060" />
+        <resolution aspect="16:11" x="0.524" y="0.4816" width="0" height="0.0037" />
+
+        <resolution size="3840x2160"  x="0.4764" y="0.4803" width="0" height="0.0033"  />
+        <resolution size="2560x1080" x="0.5182" y="0.4801" width="0" height="0.0092"  />
+        <resolution size="1920x1080"  x="0.5236" y="0.4809" width="0" height="0.0049"  />
+    </meta>
+
+    <meta meter="skillCheckBlack" tags="vlc,dead,screen" x="0.4792" y="0.4917" width="0.0427" height="0.0000" 
+        h="0-360" s="0-100" l="0-20" hdr-h="0-360" hdr-s="0-100" hdr-l="0-20" type="area">
+        <resolution aspect="3.55:1" x="0.4895" y="0.4928" width="0.0192" height="-0.0005" />
+        <resolution aspect="24:10" x="0.4834" y="0.4917" width="0.0297" height="0.0000" />
+        <resolution aspect="16:11" x="0.4807" y="0.4953" width="0.0355" height="-0.0006" />
+
+        <resolution size="3840x2160" x="0.4792" y="0.4917" width="0.0427" height="0.0000"  />
+        <resolution size="2560x1080" x="0.483" y="0.4921" width="0.0309" height="0.0009"  />
+        <resolution size="1920x1080"  x="0.4792" y="0.4917" width="0.0427" height="0.0000"   />
+    </meta>
+
+    <meta meter="endGameRed" tags="vlc,dead,screen" x="0.1868" y="0.0174" width="0" height="0.0028" 
+        h="-30-30" s="75-100" l="75-100" hdr-h="0-30" hdr-s="75-100" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.3436" y="0.0204" width="0.0002" height="0.0005" />
+        <resolution aspect="24:10" x="0.2672" y="0.0181" width="0.0003" height="0.0025" />
+        <resolution aspect="16:11" x="0.1864" y="0.0669" width="0.0012" height="0" />
+
+        <resolution size="3840x2160" x="0.187" y="0.0199" width="-0.0002" height="0.0019" />
+        <resolution size="2560x1080" x="0.2649" y="0.0185" width="0" height="0.0037" />
+        <resolution size="1920x1080"  x="0.1868" y="0.0174" width="0" height="0.0028"  />
+    </meta>
+
+    <meta meter="endGameRed2" tags="vlc,dead,screen" x="0.1868" y="0.0174" width="0" height="0.0028" 
+        h="-30-30" s="75-100" l="75-100" hdr-h="330-360" hdr-s="75-100" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.3436" y="0.0204" width="0.0002" height="0.0005" />
+        <resolution aspect="24:10" x="0.2672" y="0.0181" width="0.0003" height="0.0025" />
+        <resolution aspect="16:11" x="0.1864" y="0.0669" width="0.0012" height="0" />
+
+        <resolution size="3840x2160" x="0.187" y="0.0199" width="-0.0002" height="0.0019" />
+        <resolution size="2560x1080" x="0.2649" y="0.0185" width="0" height="0.0037"  />
+        <resolution size="1920x1080"  x="0.1868" y="0.0174" width="0" height="0.0028"  />
+    </meta>
+
+    <meta meter="endGameColor" tags="vlc,dead,screen" x="0.1915" y="0.0236" width="0.6178" height="0.0035" 
+        h="0-45" s="75-100" l="70-100" hdr-h="0-45" hdr-s="75-100" hdr-l="70-100" type="area">
+        <resolution aspect="3.55:1" x="0.3458" y="0.0259" width="0.3065" height="0" />
+        <resolution aspect="24:10" x="0.2709" y="0.0250" width="0.4561" height="0.0009" />
+        <resolution aspect="16:11" x="0.1911" y="0.0713" width="0.6096" height="0.0006" />
+
+        <resolution size="3840x2160" x="0.1915" y="0.0264" width="0.617" height="0.0005"  />
+        <resolution size="2560x1080" x="0.2689" y="0.0241" width="0.4611" height="0.0037"  />
+        <resolution size="1920x1080"  x="0.1915" y="0.0236" width="0.6178" height="0.0035"  />
+    </meta>
+
+    <meta meter="endGameGrey" tags="vlc,dead,screen" x="0.1915" y="0.0236" width="0.6178" height="0.0035" 
+        h="0-360" s="0-30" l="35-75" hdr-h="0-360" hdr-s="0-30" hdr-l="35-75" type="area">
+        <resolution aspect="3.55:1" x="0.3458" y="0.0259" width="0.3065" height="0" />
+        <resolution aspect="24:10" x="0.2709" y="0.0250" width="0.4561" height="0.0009"/>
+        <resolution aspect="16:11" x="0.1911" y="0.0713" width="0.6096" height="0.0006" />
+
+        <resolution size="3840x2160" x="0.1915" y="0.0264" width="0.617" height="0.0005" />
+        <resolution size="2560x1080" x="0.2689" y="0.0241" width="0.4611" height="0.0037" />
+        <resolution size="1920x1080"  x="0.1915" y="0.0236" width="0.6178" height="0.0035"   />
+    </meta>
+
+    <meta meter="bloodPointsRed" tags="vlc,dead,screen" x="0.9555" y="0.0987" width="0" height="0" 
+        h="-30-30" s="75-100" l="25-80" hdr-h="340-360" hdr-s="80-100" hdr-l="80-100" type="area">
+        <resolution aspect="3.55:1" x="0.9776" y="0.0991" width="0" height="0" />
+        <resolution aspect="24:10" x="0.9657" y="0.0979" width="0.000" height="0.000" />
+        <resolution aspect="16:11" x="0.9555" y="0.1382" width="0" height="0" />
+
+        <resolution size="3840x2160" x="0.9529" y="0.0973" width="0" height="0" />
+        <resolution size="2560x1080" x="0.9656" y="0.0982" width="0.0004" height="0"  />
+        <resolution size="1920x1080" x="0.9555" y="0.0987" width="0" height="0"  />
+    </meta>
+
+    <meta meter="bloodPointsRed2" tags="vlc,dead,screen"  x="0.9586" y="0.1042" width="0" height="0" 
+      h="-30-30" s="75-100" l="25-80" hdr-h="340-360" hdr-s="70-100" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.9776" y="0.1000" width="0.000" height="0.000" />
+      <resolution aspect="24:10" x="0.9686" y="0.1021" width="0" height="0" />
+      <resolution aspect="16:11" x="0.9558" y="0.1413" width="0" height="0" />
+
+      <resolution size="3840x2160"  x="0.9591" y="0.1028" width="0" height="0" />
+      <resolution size="2560x1080" x="0.9695" y="0.1029" width="0" height="0"   />
+      <resolution size="1920x1080"  x="0.9586" y="0.1042" width="0" height="0"  />
+    </meta>
+
+    <meta meter="bloodPointsWhite" tags="vlc,dead,screen" x="0.9492" y="0.1077" width="0.0055" height="0.0153" 
+        h="0-360" s="0-10" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="70-100" type="area">
+        <resolution aspect="3.55:1" x="0.9743" y="0.1039" width="0.0031" height="0.020" />
+        <resolution aspect="24:10" x="0.9605" y="0.1097" width="0.0064" height="0.0120" />
+        <resolution aspect="16:11" x="0.9492" y="0.147" width="0.0051" height="0.0118" />
+
+        <resolution size="3840x2160" x="0.9497" y="0.1065" width="0.0042" height="0.0162"  />
+        <resolution size="2560x1080" x="0.9629" y="0.1047" width="0.0039" height="0.0139"  />
+        <resolution size="1920x1080"  x="0.9492" y="0.1077" width="0.0055" height="0.0153"   />
+    </meta>
+
+    <meta meter="playerHookedWhite" tags="vlc,dead,screen" x="0.068" y="0.435" width="0" height="0" 
+        h="0-360" s="0-10" l="60-100" hdr-h="0-360" hdr-s="0-10" hdr-l="60-100" type="area">
+        <resolution aspect="3.55:1" x="0.0341" y="0.4336" width="0" height="0" />
+        <resolution aspect="24:10" x="0.0509" y="0.4333" width="0.000" height="0.00" />
+        <resolution aspect="16:11" x="0.0684" y="0.4409" width="0" height="0" />
+
+        <resolution size="3840x2160" x="0.0685" y="0.4321" width="0.0003" height="0.0005"  />
+        <resolution size="2560x1080" x="0.0512" y="0.4356" width="0" height="0" />
+        <resolution size="1920x1080"  x="0.068" y="0.435" width="0" height="0"  />
+    </meta>
+
+    <meta meter="playerHookedRed" tags="vlc,dead,screen" x="0.052" y="0.4541" width="0" height="0"
+        h="-30-30" s="75-100" l="40-75" hdr-h="0-360" hdr-s="0-100" hdr-l="80-100" type="area">
+        <resolution aspect="3.55:1" x="0.0255" y="0.4370" width="0" height="0" />
+        <resolution aspect="24:10" x="0.0401" y="0.4458" width="0.000" height="0.00" />
+        <resolution aspect="16:11" x="0.052" y="0.4509" width="0" height="0" />
+
+        <resolution size="3840x2160" x="0.0529" y="0.4442" width="0" height="0.0007" />
+        <resolution size="2560x1080" x="0.0379" y="0.4411" width="0" height="0" />
+        <resolution size="1920x1080"  x="0.0547" y="0.4476" width="0" height="0" />
+    </meta>
+
+    <meta meter="playerHookedRed2" tags="vlc,dead,screen" x="0.052" y="0.4538" width="0" height="0" 
+        h="-30-30" s="75-100" l="40-75" hdr-h="0-360" hdr-s="0-100" hdr-l="80-100" type="area">
+        <resolution aspect="3.55:1" x="0.0253" y="0.4380" width="0" height="0" />
+        <resolution aspect="24:10" x="0.0381" y="0.4410" width="0" height="0" />
+        <resolution aspect="16:11" x="0.0524" y="0.4522" width="0" height="0" />
+
+        <resolution size="3840x2160" x="0.0531" y="0.4447" width="0.0013" height="0.0004"  />
+        <resolution size="2560x1080" x="0.0382" y="0.4411" width="0" height="0"/>
+        <resolution size="1920x1080"  x="0.0875" y="0.4226" width="0" height="0"  />
+    </meta>
+
+
+  </head>
+  
+  <body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+  </body>
+  
+  <script>
+    var canvas, ctx;
+    canvas = document.getElementById('exCanvas');
+    ctx = canvas.getContext('2d');
+    var width = 320;
+    var height = 200;
+    var effects = [];
+    var stateMgr = new StateHandler()
+
+    let hook = "M46.78,51.61c-9.97-15.26,7.79-25.55,7.79-25.55,0,0,16.51-21.5-11.21-25.23C15.63-2.91,26.53,26.07,26.53,26.07c-7.48,28.04,6.23,38.94,6.23,38.94,0,0,18.07,10.28,16.51,26.17-1.56,15.89-19.94,15.89-27.1,13.71-7.17-2.18-5.61-25.86-5.61-25.86-18.69-19-17.45-5.3-14.02-1.87s4.67,2.49,4.05,18.38,0,12.15,10.28,21.81c10.28,9.66,16.51,8.72,30.53,6.54,14.02-2.18,25.23-30.84,26.79-37.91,1.56-7.07-17.45-19.1-27.41-34.36ZM34.94,10.18c.93-7.48,3.74-.93,12.15,0,0,0,2.49,2.49,4.05,5s-3.74,5.59-10.12,8.08c-6.39,2.49-7.01-5.61-6.07-13.08Z"
+
+    var gInGame = false;
+
+    var inGameWhite1Meter = new Meter(5, inGameHandler)
+    var inGameWhite2Meter = new Meter(5, inGameHandler)
+
+    var ActionBarMeter = new Meter(2, actionHandler)
+    var ActionWhiteMeter = new Meter(5, actionHandler)
+    var ActionColorMeter = new Meter(5, ()=>{})
+
+    var Skill1Meter = new Meter(2, skillCheckHandler)
+    var Skill2Meter = new Meter(2, skillCheckHandler)
+    var SkillBlackMeter = new Meter(2, skillCheckHandler)
+
+    var EndRedMeter = new Meter(5, endGameHandler)
+    var EndColorMeter = new Meter(5, endGameHandler)
+    var EndGreyMeter = new Meter(5, endGameHandler)
+
+    var BloodRedMeter = new Meter(5, bloodPointHandler)
+    let BloodRed2Meter = new Meter(5, bloodPointHandler)
+    var BloodWhiteMeter = new Meter(5, bloodPointHandler)
+
+    var HookedWhiteMeter = new Meter(5, playerHookedHandler)
+    var HookedRedMeter = new Meter(10, playerHookedHandler)
+    
+    let idle = false;
+    function update() {
+        DrawRect(0, 0, 320, 200, "black")
+        backgroundHandler()
+        inGameWhite1Meter.setValue(engine.vision.inGameWhite1)
+        inGameWhite2Meter.setValue(engine.vision.inGameWhite2)
+
+        
+            ActionBarMeter.setValue(engine.vision.actionBar)
+            ActionWhiteMeter.setValue(engine.vision.actionWhite)
+            ActionColorMeter.setValue(engine.vision.actionColor[0])
+    
+            Skill1Meter.setValue(engine.vision.skillCheck1)
+            Skill2Meter.setValue(engine.vision.skillCheck2)
+            SkillBlackMeter.setValue(engine.vision.skillCheckBlack)
+    
+            EndRedMeter.setValue(engine.vision.endGameRed + engine.vision.endGameRed2)
+            EndColorMeter.setValue(engine.vision.endGameColor)
+            EndGreyMeter.setValue(engine.vision.endGameGrey)
+    
+            BloodRedMeter.setValue(engine.vision.bloodPointsRed)
+            BloodRed2Meter.setValue(engine.vision.bloodPointsRed2)
+            BloodWhiteMeter.setValue(engine.vision.bloodPointsWhite)
+            
+            HookedWhiteMeter.setValue(engine.vision.playerHookedWhite)
+            HookedRedMeter.setValue(engine.vision.playerHookedRed + engine.vision.playerHookedRed2)
+        
+
+        if(!gInGame && !idle && menuOn) {
+            effects.push(new outOfGame())
+            idle = true;
+        }
+        
+        ctx.globalAlpha = effectBrightness / 100
+      effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) effects.splice(i, 1)
+      })
+      ctx.globalAlpha = 1
+  
+      stateMgr.Process()
+  
+      window.requestAnimationFrame(update);
+    };
+
+    let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+    function inGameHandler(){
+        if(engine.vision.inGameNotWhite <.1 && inGameWhite1Meter.value >= .95 && inGameWhite2Meter.value >= .95){
+          gInGame = true;
+        } 
+        else if(engine.vision.inGameNotWhite >= .2 && (inGameWhite1Meter.value < .95 || inGameWhite2Meter.value < .95)){   
+          gInGame = false;
+        } 
+    }
+
+    let actionGoing = false;
+    function actionHandler(){
+        if(ActionWhiteMeter.value >= .3 && engine.vision.actionNotWhite < .25 && ActionBarMeter.value >= .1 && gInGame && !actionGoing) { 
+            actionGoing = true;
+            if (actionOn){
+              effects.push(new actionBar())
+            } 
+        } else if(ActionWhiteMeter.value <= 0 && ActionBarMeter.value < .1){
+            actionGoing = false;
+        }
+    }
+
+    let skillChecking = false;
+    function skillCheckHandler(){
+        if(Skill1Meter.value >= .9 && Skill2Meter.value >= .9 && SkillBlackMeter.value >= .9 && !skillChecking){
+            skillChecking = true
+            if(skillOn){
+              effects.push(new skillCheck())
+            } 
+        } else if (Skill1Meter.value <= .1 && Skill2Meter.value <= .1 && skillChecking) {
+            skillChecking = false
+        }
+    }
+
+    let inEndGame = false;
+    let gEndValue = 0;
+    function endGameHandler(){
+        if(EndRedMeter.value >=.95 && (EndColorMeter.value >= .2 || EndGreyMeter.value >= .2) && !inEndGame){
+            inEndGame = true;
+            if(endOn){
+              effects.push(new endGame())
+            } 
+        } else if (EndRedMeter.value < .1){
+            inEndGame = false;
+        }
+    }
+
+    function bloodPointHandler(){
+        if((BloodRedMeter.value >= .8 || BloodRed2Meter.value >= .8) && BloodWhiteMeter.value >= .1){
+            if(bloodOn){
+              effects.push(new bloodPoints())
+            } 
+        }
+    }
+
+    let gHooked = false;
+    function playerHookedHandler(){
+        if(HookedWhiteMeter.value >= .95 && HookedRedMeter.value >= .95  && !gHooked){
+            gHooked = true
+            if(hookedOn){
+              effects.push(new playerHooked())
+            } 
+        } else if (HookedWhiteMeter.value < .25 && HookedRedMeter.value < .1  && gHooked){
+            gHooked = false;
+        }
+    }
+
+    function outOfGame(){
+    this.backAlpha = 0;
+    this.go = false;
+    this.points = [
+      [100, 20, 150, Math.PI / 2],
+      [145, 20, 150, Math.PI / 2],
+      [190, 20, 150, Math.PI / 2],
+      [235, 20, 150, Math.PI / 2],
+      [45, 30, 250, Math.PI / 7]
+    ]
+    this.index = 0
+    this.effects = []
+    this.lifetime = 10
+    this.draw = function(){
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.backAlpha})`)
+      this.backAlpha < 1 ? this.backAlpha += .01 : this.go = true;
+
+      if(this.go && this.effects.length < 5){
+        if(this.effects.length){
+          if(this.effects[this.effects.length - 1].done){
+            this.effects.push(new outHelper(this.points[this.index][0], this.points[this.index][1], this.points[this.index][2], this.points[this.index][3]))
+            this.index < 4 ? this.index++ : this.index = 0;
+          }
+        } else {
+          this.effects.push(new outHelper(this.points[this.index][0], this.points[this.index][1], this.points[this.index][2], this.points[this.index][3]))
+          this.index++
+        }
+      }
+
+      
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0){
+          this.effects.splice(i, 1)
+        } 
+        if(this.effects.length == 5 && this.effects[4].done){
+          ele.grey = true
+        } 
+      })
+
+      if(gInGame || !menuOn){
+        this.lifetime = 0;
+        idle = false
+      } 
+    }
+  }
+
+  function outHelper(x, y, length, rotate){
+    this.x = x
+    this.y = y
+    this.rot = rotate
+    this.length = 0;
+    this.lengthEnd = length
+    this.step = length / 200
+    this.done = false
+    this.grey = false;
+    this.sat = 100;
+    this.draw = function(){
+      ctx.save()
+      ctx.translate(this.x, this.y)
+      ctx.rotate(this.rot)
+      ctx.translate(-this.x, -this.y)
+      if(!this.grey){
+        DrawRect(this.x, this.y, this.length, 30, "red")
+      }else {
+          DrawRect(this.x, this.y, this.length, 30, `hsla(0, ${this.sat}%, 50%, ${this.sat / 100})`)
+          this.sat > 0 ? this.sat-- : this.lifetime = 0;
+      }
+      ctx.restore()
+      this.length < this.lengthEnd ? this.length += this.step : this.done = true
+    }
+  }
+
+    function playerHooked(){
+        this.backAlpha = 0;
+        this.lifetime = 10;
+        this.draw = function(){
+          ctx.globalAlpha = this.backAlpha
+          let grad = ctx.createRadialGradient(160, 100, 5, 160, 100, 200)
+          grad.addColorStop(Math.sin(Date.now() / 1000) * .2 + .7, `hsla(0, 100%, 50%, 0)`)
+          grad.addColorStop(1, "red")
+          DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.backAlpha})`)
+          DrawRect(0, 0, 320, 200, grad)
+          this.backAlpha < 1 ? this.backAlpha += .01 : this.backAlpha = 1;
+          let tempRot = Math.sin(Date.now() / 500) * .5
+          ctx.save()
+          ctx.translate(160, 0)
+          ctx.rotate(tempRot)
+          ctx.translate(-160, 0)
+          DrawPath(100, 0, 1.5, hook, "grey")
+          StrokePath(100, 0, 1.5, 5, hook, "red")
+          ctx.restore()
+          ctx.globalAlpha = 1
+          if(!gHooked){
+            this.lifetime = 0;
+          } 
+        }
+    }
+
+    function endGame(){
+        this.backAlpha = 0;
+        this.count = 0;
+        this.lifetime = 10;
+        this.draw = function(){
+          let grad = ctx.createRadialGradient(160, 100, 1, 160, 100, 180)
+          let tempV = EndColorMeter.value > EndGreyMeter.value ? EndColorMeter.value : EndGreyMeter.value;
+          grad.addColorStop(tempV * .99, `hsla(10, 100%, 50%, ${.25})`)
+          grad.addColorStop(1, "red")
+          DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.backAlpha})`)
+          this.backAlpha < .75 ? this.backAlpha += .01 : this.backAlpha = .75;
+          DrawRect(0, 0, 320, 200, grad)
+          let tempX = Math.cos(Math.random() * 100) * 200 + 160
+          let tempY = Math.sin(Math.random() * 100) * 200 + 100
+          if(this.count == 3){
+            effects.push(new endParticle(tempX, tempY))
+          }
+          this.count < 3 ? this.count++ : this.count = 0;
+          if(!inEndGame){
+            this.lifetime = 0;
+          }
+        }
+    }
+
+    function endParticle(x, y){
+      this.x = x
+      this.vx = (160 - this.x) / 75
+      this.y = y
+      this.vy = (100 - this.y) / 75
+      this.radius = 50
+      this.lifetime = 50
+      this.draw = function(){
+        DrawCircle(this.x, this.y, this.radius, "hsla(0, 0%, 0%, .6)")
+        this.radius > 10 ? this.radius -=.5 : this.radius = 10
+        this.x+=this.vx
+        this.y+=this.vy
+        if(Math.abs(160 - this.x) < 5){
+          this.lifetime = 0;
+        } 
+      }
+    }
+
+    function bloodPoints(){
+        this.effects = [new bloodSpot()]
+        this.count = 0
+        this.lifetime = 10
+        this.draw = function(){
+          if(this.count < 20){
+            this.effects.push(new bloodSpot())
+            this.count++
+          }
+          this.effects.forEach((ele, i)=>{
+            ele.draw()
+            if(ele.lifetime <= 0){
+              this.effects.splice(i, 1)
+            }
+          })
+          if(this.effects.length == 0){
+            this.lifetime = 0;
+          }
+        }
+    }
+
+    function bloodSpot(){
+        this.mod = Math.random()
+        this.x = Math.random() * 320
+        this.vx = 2 - Math.random() * 4
+        this.y = 220
+        this.vy = Math.random() * -6 - 3
+        this.lifetime = 10;
+        this.draw = function(){
+          DrawCircle(this.x, this.y, 20, "hsla(0, 100%, 50%, .5)")
+          this.x+=this.vx
+          this.y > -10 ? this.y+=this.vy : this.lifetime = 0
+        }
+    }
+
+    function skillCheck(){
+        this.rad = 1;
+        this.alpha = .5
+        this.lifetime = 10;
+        this.draw = function(){
+          DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+          DrawStroke(160, 100, this.rad, "grey", 75)
+          DrawStroke(160, 100, this.rad, "red", 20)
+          this.rad < 250 ? this.rad+=5 : this.lifetime = 0;
+          this.alpha > 0 ? this.alpha -=.02 : this.alpha = 0;
+        }
+    }
+
+    function skillFail(){
+        this.alpha = 1
+        this.lifetime = 10;
+        this.draw = function(){
+          DrawRect(0, 0, 320, 200, `hsla(0, 100%, 40%, ${this.alpha})`)
+          this.alpha > .05 ? this.alpha-=.05 : this.lifetime = 0;
+        }
+    }
+
+    function actionBar(){
+        this.delay = 40
+        this.effects = []
+        this.lifetime = 10;
+        this.draw = function(){
+          DrawRect(0, 0, ActionBarMeter.value * 320, 200, `hsla(${ActionColorMeter.value}, 100%, 50%, .25)`)
+          this.effects.push(new actionParticle(ActionBarMeter.value * 320, Math.random() * 200, 1, ActionColorMeter.value))
+          this.effects.forEach((ele, i)=>{
+            ele.draw()
+            if(ele.lifetime <= 0){
+              this.effects.splice(i, 1)
+            } 
+          })
+          if(ActionBarMeter.decreased && ActionBarMeter.diff > .008 && skillChecking && this.delay == 0){
+            if(failOn){
+              effects.push(new skillFail())
+            } 
+            this.delay = 75;
+          } else this.color = ActionColorMeter.value
+          this.delay > 0 ? this.delay-- : this.delay = 0;
+          if(!actionGoing){
+            this.lifetime = 0;
+          }
+        }
+    }
+
+    function actionParticle(x, y, killer, color){
+      this.x = x;
+      this.vx = 0;
+      this.ax = -.05
+      this.y = y;
+      this.rad = 1;
+      this.killer = killer;
+      this.color = color;
+      this.lifetime = 10;
+      this.draw = function(){
+        if(this.killer){
+          DrawCircle(this.x, this.y, this.rad * 20, `hsla(${this.color}, 100%, 50%, .35)`)
+        } 
+        else DrawCircle(this.x, this.y, this.rad * 20, `hsla(${this.color}, 100%, 50%, .35)`)
+        this.x > -20 ? this.x+=this.vx : this.lifetime = 0;
+        this.vx+=this.ax
+        this.rad > .005 ? this.rad-= .005 : this.rad = .005;
+      }
+    }
+  
+    function lightning(size, color, width){
+      this.points = [];
+      this.color = color
+      this.width = width
+      while(this.points.length <= size){
+        this.points.push([this.points.length * (350 / size) - 25, 100])
+      }
+      this.draw = function(){
+        drawLightning(this.points, this.color, this.width)
+        this.points.forEach((ele, i)=>{
+          var mod = Math.sin(Date.now() / (100000 * Math.random()))
+          switch(i){
+            case 0:
+              this.points[i][1] < 90 ? this.points[i][1]+=2 : 
+                this.points[i][1] > 110 ? this.points[i][1]-=2 : 
+                  this.points[i][1] += mod * 10;
+              break;
+            case this.points.length - 1:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                  this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                      this.points[i][1] += mod * 10;
+              break;
+            default:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                    this.points[i][1] += mod * 10;
+              this.points[i][0] < i * (320 / this.points.length) ? this.points[i][0]+=5 : 
+                this.points[i][0] > i * (320 / this.points.length) + (320 / this.points.length) ? this.points[i][0]-=5 : 
+                    this.points[i][0] += mod * 10;
+              break;
+          }
+        })
+      }
+    }
+  
+    function drawLightning(array, color, width){
+        ctx.beginPath()
+        ctx.moveTo(...array[0])
+        array.forEach((ele, i)=>{
+          if(i){
+            ctx.lineTo(...array[i])
+          }
+        });
+        ctx.strokeStyle = color;
+        ctx.lineJoin = "round";
+        ctx.lineWidth = width + Math.random() * width;
+        ctx.stroke()
+    }
+  
+    function drawRadialGradient(color1, color2, inneRadius, fade) {
+      ctx.beginPath();
+      let gradient = ctx.createRadialGradient(160, 100, inneRadius, 160, 100, inneRadius + fade)
+      gradient.addColorStop(0, color1);
+      gradient.addColorStop(1, color2);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 320, 200);
+    }
+  
+    function drawArrow(x, y, width, height, color, lineWidth, rotation) {
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(x, y + height / 2);
+      ctx.rotate(rotation)
+      // ctx.moveTo(0,0+height/2);
+      // ctx.lineTo(0,0-height/2)
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.moveTo(0, 0)
+      ctx.moveTo(0 - 3, -height / 2);
+      ctx.lineTo(width / 2, height / 4)
+  
+      ctx.moveTo(0 + 3, -height / 2);
+      ctx.lineTo(-width / 2, height / 4)
+      ctx.stroke();
+      ctx.restore();
+    }
+  
+    function flare(x, y, color) {
+      this.x = x
+      this.y = y
+      this.color = color
+      this.start = Date.now();
+      this.elapsed = 0;
+      this.firstPoint = { x: this.x, y: this.y + 20 }
+      this.secondPoint = { x: this.x - 20 + Math.random() * 100, y: this.y + 50 + Math.random() * 100 };
+      this.thirdPoint = { x: this.x - 60 + Math.random() * 100, y: this.y + 100 + Math.random() * 100 };
+      this.fourthPoint = { x: -50, y: +150 + Math.random() * 100 }
+      this.draw = function () {
+        ctx.beginPath();
+        this.elapsed = Date.now() - this.start;
+        this.point = getCubicBezierXYatPercent(this.firstPoint, this.secondPoint, this.thirdPoint, this.fourthPoint, this.elapsed / 1500)
+        ctx.moveTo(this.point.x, this.point.y);
+        for (let index = 0; index < 20; index++) {
+          let point2 = getCubicBezierXYatPercent(this.firstPoint, this.secondPoint, this.thirdPoint, this.fourthPoint, this.elapsed / 1500 + index / 100);
+          ctx.lineTo(point2.x, point2.y);
+        }
+        ctx.strokeStyle = this.color
+        ctx.lineWidth = 7
+        ctx.stroke()
+        if (this.elapsed > 1500) {
+          this.lifetime = 0;
+        }
+      }
+    }
+  
+    function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+      var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+      var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+  
+      return ({ x: x, y: y });
+    }
+  
+    function CubicN(pct, a, b, c, d) {
+      var t2 = pct * pct;
+      var t3 = t2 * pct;
+      return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+        + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+        + (c * 3 - c * 3 * pct) * t2
+        + d * t3;
+    }
+  
+    function DrawGear(x, y, radius, stroke, teeth, color){
+      DrawStroke(x, y, radius, color, stroke)
+      for(let i = 0; i < teeth; i++){
+        var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
+        var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
+        var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
+        ctx.save()
+        ctx.translate(ix, iy)
+        ctx.rotate(rotate)
+        ctx.translate(-ix, -iy)
+        DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, color)
+        ctx.restore()
+      }
+    }
+  
+    function DrawPath(x, y, scale, path, color) {
+      ctx.fillStyle = color;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale)
+      let ex = new Path2D(path);
+      ctx.fill(ex);
+      ctx.restore();
+    };
+  
+    function StrokePath(x, y, scale, stroke, path, color) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale)
+      let ex = new Path2D(path);
+      ctx.stroke(ex);
+      ctx.restore();
+    };
+  
+    function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.moveTo(cord1X, cord1Y);
+      ctx.lineTo(cord2X, cord2Y);
+      ctx.lineTo(cord3X, cord3Y);
+      ctx.lineTo(cord1X, cord1Y);
+      ctx.fill();
+    };
+  
+    function DrawCircle(x, y, radius, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.fill();
+    };
+  
+    function DrawEllipse(x, xRad, y, yRad, rot, color) {
+        ctx.beginPath();
+        ctx.fillStyle = color;
+        ctx.ellipse(x, y, xRad, yRad, rot, 0, Math.PI * 2)
+        ctx.fill();
+      };
+  
+    function DrawStroke(x, y, radius, color, stroke) {
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.stroke();
+    };
+  
+    function DrawRect(x, y, width, height, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, width, height);
+    };
+  
+    function DrawHex(x, y, color, size) {
+      ctx.beginPath();
+      for (var i = 0; i < 7; i++) {
+        ctx.lineTo(x + size * Math.cos(2 * Math.PI / 6 * i), y + size * 0.9 * Math.sin(2 * Math.PI / 6 * i));
+      }
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = "black"
+      ctx.stroke()
+    };
+  
+    function hexToRgb(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+  
+    function hexToHSL(H) {
+    // Convert hex to RGB first
+    let r = 0, g = 0, b = 0;
+    if (H.length == 4) {
+      r = "0x" + H[1] + H[1];
+      g = "0x" + H[2] + H[2];
+      b = "0x" + H[3] + H[3];
+    } else if (H.length == 7) {
+      r = "0x" + H[1] + H[2];
+      g = "0x" + H[3] + H[4];
+      b = "0x" + H[5] + H[6];
+    }
+    // Then to HSL
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    let cmin = Math.min(r,g,b),
+        cmax = Math.max(r,g,b),
+        delta = cmax - cmin,
+        h = 0,
+        s = 0,
+        l = 0;
+  
+    if (delta == 0)
+      h = 0;
+    else if (cmax == r)
+      h = ((g - b) / delta) % 6;
+    else if (cmax == g)
+      h = (b - r) / delta + 2;
+    else
+      h = (r - g) / delta + 4;
+  
+    h = Math.round(h * 60);
+  
+    if (h < 0)
+      h += 360;
+  
+    l = (cmax + cmin) / 2;
+    s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+    s = +(s * 100).toFixed(1);
+    l = +(l * 100).toFixed(1);
+  
+    return [h, s, l];
+  }
+  
+    function GetTime() {
+      return new Date().getTime()
+    }
+  
+    function StateHandler() {
+      var stack = [];
+      var state = null;
+  
+      var updateState = function () {
+        if (stack.length > 0) {
+          state = stack[stack.length - 1];
+        } else {
+          state = null;
+        }
+      };
+  
+      this.Push = function (newState) {
+        stack.push(newState);
+        updateState();
+      };
+  
+      this.Pop = function () {
+        stack.pop();
+        updateState();
+      };
+  
+      this.Process = function () {
+        if (state != null) {
+          state.Process();
+        }
+      };
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+  
+    window.requestAnimationFrame(update);
+  </script>

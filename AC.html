@@ -1,0 +1,466 @@
+<head>
+    <title>Assetto Corsa Demo</title>
+    <meta description="Assetto Corsa demo code in 10320x1440. Engine RPM effect is top left square, brake is top right, throttle is bottom." />
+    <meta publisher="SignalRGB" />
+  
+      <!-- <meta property="theBool" label="Boolean" type="boolean" default="0" />
+      <meta property="theText" label="Text Field" type="textfield" default="yourText">
+      <meta property="backColor" label="Background Color" type="color" default="#020202" min="0" max="360" />
+      <meta property="frontRange" label="Storm State" type="number" default="50" min="0" max="100">
+      <meta property="myComboBox" label="Combo Box Control" type="combobox" values="Option1,Option2,Option3"
+        default="Option1"/>
+      <meta property="userSensor1" label="Sensor Square 1" type="sensor" default="CPU Load"/> -->
+      <meta property="backColor" label="Background Color" type="color" default="#020202" min="0" max="360" />
+      <meta property="rpmOn" label="Engine RPM Effect" type="boolean" default="1" />
+      <meta property="throttleOn" label="Throttle Effect" type="boolean" default="1" />
+      <meta property="brakeOn" label="Brake Effect" type="boolean" default="1" />
+
+      <meta meter="inSim" tags="VLC,Assetto Corsa" x="0.7793" y="0.9166" width="0.002" height="0.0028" h="0-360" s="0-100" l="0-15" type="area">
+        <resolution size="10320x1440" x="0.7793" y="0.9166" width="0.002" height="0.0028" />
+      </meta>
+
+      <meta meter="notInSim" tags="VLC,Assetto Corsa" x="0.779" y="0.9236" width="0.0038" height="0.0007" h="0-360" s="0-100" l="0-15" type="area">
+        <resolution size="10320x1440" x="0.779" y="0.9236" width="0.0038" height="0.0007" />
+      </meta>
+
+      <meta meter="throttle" tags="VLC,Assetto Corsa" x="0.7293" y="0.8805" width="0" height="0.0305" h="100-140" s="50-100" l="60-100" type="area">
+        <resolution size="10320x1440" x="0.7293" y="0.8805" width="0" height="0.0305" />
+      </meta>
+
+      <meta meter="brake" tags="VLC,Assetto Corsa" x="0.7278" y="0.8805" width="0" height="0.0305" h="0-10" s="50-100" l="60-100" type="area">
+        <resolution size="10320x1440" x="0.7278" y="0.8805" width="0" height="0.0305" />
+      </meta>
+
+      <meta meter="throttle1" tags="VLC,Assetto Corsa" x="0.8075" y="0.836" width="0.0009" height="0.0035" h="0-360" s="0-10" l="90-100" type="area">
+        <resolution size="10320x1440" x="0.8075" y="0.836" width="0.0009" height="0.0035" />
+      </meta>
+
+      <meta meter="throttle2" tags="VLC,Assetto Corsa" x="0.8139" y="0.9069" width="0" height="0.0021" h="350-360" s="75-100" l="50-100" type="area">
+        <resolution size="10320x1440" x="0.8139" y="0.9069" width="0" height="0.0021" />
+      </meta>
+
+      <meta meter="throttle22" tags="VLC,Assetto Corsa" x="0.8139" y="0.9069" width="0" height="0.0021" h="0-10" s="75-100" l="50-100" type="area">
+        <resolution size="10320x1440" x="0.8139" y="0.9069" width="0" height="0.0021" />
+      </meta>
+
+      <meta meter="throttle3" tags="VLC,Assetto Corsa" x="0.8122" y="0.9222" width="0" height="-0.0014" h="350-360" s="75-100" l="50-100" type="area">
+        <resolution size="10320x1440" x="0.8122" y="0.9222" width="0" height="-0.0014" />
+      </meta>
+
+      <meta meter="throttle32" tags="VLC,Assetto Corsa" x="0.8122" y="0.9222" width="0" height="-0.0014" h="0-10" s="75-100" l="50-100" type="area">
+        <resolution size="10320x1440" x="0.8122" y="0.9222" width="0" height="-0.0014" />
+      </meta>
+    </head>
+    
+    <body style="margin: 0; padding: 0; background: #000;">
+      <canvas id="exCanvas" width="320" height="200"></canvas>
+    </body>
+    
+    <script>
+      var canvas, ctx;
+      canvas = document.getElementById('exCanvas');
+      ctx = canvas.getContext('2d');
+      var width = 320;
+      var height = 200;
+      var effects = [];
+      let gInSim = false
+
+      let InSimMeter = new Meter(10, inSimCallback)
+
+      let ThrottleMeter = new Meter(2, ()=>"")
+      let BrakeMeter = new Meter(2, ()=>"")
+
+      let T1Meter = new Meter(3, ()=>"")
+      let T2Meter = new Meter(3, ()=>"")
+      let T3Meter = new Meter(3, ()=>"")
+     
+      function update() {
+        DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, 1)`)
+
+        InSimMeter.setValue(engine.vision.inSim)
+        if(gInSim){
+          ThrottleMeter.setValue(engine.vision.throttle)
+          BrakeMeter.setValue(engine.vision.brake)
+          T1Meter.setValue(engine.vision.throttle1)
+          T2Meter.setValue(engine.vision.throttle2 + engine.vision.throttle22)
+          T3Meter.setValue(engine.vision.throttle3 + engine.vision.throttle32)
+        }
+
+        if(effects.length < 1){
+          effects.push(new engineRPMEffect())
+          effects.push(new brakeEffect())
+          effects.push(new throttleEffect())
+        }
+    
+        effects.forEach((ele, i) => {
+          ele.draw()
+          if(ele.lifetime <= 0){
+            effects.splice(i, 1)
+          }
+        })
+    
+        window.requestAnimationFrame(update);
+      };
+  
+    let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    function inSimCallback(){
+      if(InSimMeter.value >= .95 && engine.vision.notInSim <= .05) gInSim = true
+      else if (InSimMeter.value <= .05) gInSim = false
+    }
+
+    function throttleEffect(){
+      this.width = 0
+        this.draw = function(){
+            if(throttleOn) DrawRect(0, 100, this.width, 100, `hsl(120, 100%, 40%)`)
+            this.width += (ThrottleMeter.value * 320 - this.width) / 3
+        }
+    }
+
+    function brakeEffect(){
+        this.draw = function(){
+            if(brakeOn) DrawRect(160, 0, 160, 100, `hsl(0, 100%, ${BrakeMeter.value * 50}%)`)
+        }
+    }
+
+    function engineRPMEffect(){
+        this.draw = function(){
+          console.log(Date.now())
+            if(T1Meter.value <= .05) this.color = `hsl(120, 100%, ${ThrottleMeter.value * 40 + 10}%)`
+            if (T1Meter.value >= .95) this.color = `hsl(${120 + ThrottleMeter.value * 70}, 100%, 50%)`
+            if (T1Meter.value >= .95 && T2Meter.value >= .95) this.color = `hsl(${30 - ThrottleMeter.value * 30}, 100%, 50%)`
+            if (T1Meter.value >= .95 && T2Meter.value >= .95 && T3Meter.value >= .95) this.color = `hsl(0, 100%, ${Math.sin(Date.now() / 150) * 10 + 50}%)`
+            if(rpmOn) DrawRect(0, 0, 160, 100, this.color)
+        }
+    }
+  
+    function innerEffects(){
+          this.effects = []
+          this.Add = (cb, arr) => {
+              this.effects.push(new cb(...arr))
+          }
+          this.draw = () => {
+              this.effects.forEach((ele, i)=>{
+                  ele.draw()
+                  if(ele.lifetime <= 0) this.effects.splice(i, 1)
+              })
+          }
+      }
+  
+      function testTranslate(start, end, rot, scaleX, scaleY){
+          ctx.save()
+          ctx.translate(start[0], start[1])
+          ctx.scale(scaleX, scaleY)
+          ctx.rotate(rot)
+          ctx.translate(end[0], end[1])
+      }
+  
+    function DrawArc(x, y, start, end, radius, direction, color){
+      ctx.beginPath()
+      ctx.arc(x, y, radius, start, end, direction)
+      ctx.fillStyle = color
+      ctx.fill()
+    }
+  
+    function DrawLine(start, end, color, stroke){
+      ctx.beginPath()
+      ctx.moveTo(start[0], start[1])
+      ctx.lineTo(end[0], end[1])
+      ctx.strokeStyle = color
+      ctx.lineWidth = stroke
+      ctx.stroke()
+    }
+  
+    function DrawEllipse(x, y, width, height, rotation, color){
+      ctx.beginPath()
+      ctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+      ctx.fillStyle = color
+      ctx.fill()
+    }
+  
+    function lightning(size, color, width){
+        this.points = [];
+        this.color = color
+        this.width = width
+        while(this.points.length <= size){
+          this.points.push([this.points.length * (350 / size) - 25, 100])
+        }
+        this.draw = function(){
+          drawLightning(this.points, this.color, this.width)
+          this.points.forEach((ele, i)=>{
+            var mod = Math.sin(Date.now() / (100000 * Math.random()))
+            switch(i){
+              case 0:
+                this.points[i][1] < 90 ? this.points[i][1]+=2 : 
+                  this.points[i][1] > 110 ? this.points[i][1]-=2 : 
+                    this.points[i][1] += mod * 10;
+                break;
+              case this.points.length - 1:
+                this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                    this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                        this.points[i][1] += mod * 10;
+                break;
+              default:
+                this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                  this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                      this.points[i][1] += mod * 10;
+                this.points[i][0] < i * (320 / this.points.length) ? this.points[i][0]+=5 : 
+                  this.points[i][0] > i * (320 / this.points.length) + (320 / this.points.length) ? this.points[i][0]-=5 : 
+                      this.points[i][0] += mod * 10;
+                break;
+            }
+          })
+        }
+      }
+  
+    function DrawLightning(array, color, width){
+        ctx.beginPath()
+        ctx.moveTo(...array[0])
+        array.forEach((ele, i)=>{
+          if(i){
+            ctx.lineTo(...array[i])
+          }
+        });
+        ctx.strokeStyle = color;
+        ctx.lineJoin = "round";
+        ctx.lineWidth = width + Math.random() * width;
+        ctx.stroke()
+    }
+  
+    function DrawGear(x, y, radius, stroke, teeth, color){
+      DrawStroke(x, y, radius, color, stroke)
+      for(let i = 0; i < teeth; i++){
+        var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
+        var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
+        var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
+        ctx.save()
+        ctx.translate(ix, iy)
+        ctx.rotate(rotate)
+        ctx.translate(-ix, -iy)
+        DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, "orange")
+        ctx.restore()
+      }
+    }
+  
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+      ctx.fillStyle = color;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scaleX, scaleY)
+      let ex = new Path2D(path);
+      ctx.fill(ex);
+      ctx.restore();
+    };
+  
+    function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.moveTo(cord1X, cord1Y);
+      ctx.lineTo(cord2X, cord2Y);
+      ctx.lineTo(cord3X, cord3Y);
+      ctx.lineTo(cord1X, cord1Y);
+      ctx.fill();
+    };
+  
+    function DrawCircle(x, y, radius, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.fill();
+    };
+  
+    function DrawStroke(x, y, radius, color, stroke) {
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke;
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.stroke();
+    };
+  
+    function DrawRect(x, y, width, height, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, width, height);
+    };
+  
+    function strokeRect(x, y, width, height, color, stroke){
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = stroke
+      ctx.rect(x, y, width, height);
+      ctx.stroke()
+    }
+  
+    function DrawHex(x, y, color, size) {
+      ctx.beginPath();
+      for (var i = 0; i < 7; i++) {
+        ctx.lineTo(x + size * Math.cos(2 * Math.PI / 6 * i), y + size * 0.9 * Math.sin(2 * Math.PI / 6 * i));
+      }
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = "black"
+      ctx.stroke()
+    };
+  
+        function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+          var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+          var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+  
+          return ({ x: x, y: y });
+        }
+  
+        function CubicN(pct, a, b, c, d) {
+          var t2 = pct * pct;
+          var t3 = t2 * pct;
+          return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+            + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+            + (c * 3 - c * 3 * pct) * t2
+            + d * t3;
+        }
+  
+    function hexToRgb(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+  
+    function hexToHSL(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+  
+      (r /= 255), (g /= 255), (b /= 255);
+      var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+      var h,
+        s,
+        l = (max + min) / 2;
+  
+      if (max === min) {
+        h = s = 0; // achromatic
+      } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+  
+      s = s * 100;
+      s = Math.round(s);
+      l = l * 100;
+      l = Math.round(l);
+      h = Math.round(360 * h);
+  
+      return [h, s, l];
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle =
+          "hsla(" +
+          hue[iZone] +
+          "," +
+          sat[iZone] +
+          "%," +
+          lightness[iZone] +
+          "%, " +
+          `${alpha}` +
+          ")";
+  
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function GetTime() {
+      return new Date().getTime()
+    }
+  
+    function StateHandler() {
+      var stack = [];
+      var state = null;
+  
+      var updateState = function () {
+        if (stack.length > 0) {
+          state = stack[stack.length - 1];
+        } else {
+          state = null;
+        }
+      };
+  
+      this.Push = function (newState) {
+        stack.push(newState);
+        updateState();
+      };
+  
+      this.Pop = function () {
+        stack.pop();
+        updateState();
+      };
+  
+      this.Process = function () {
+        if (state != null) {
+          state.Process();
+        }
+      };
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+  
+    function onCanvasTapped(x, y) {
+  
+    }
+  
+    window.requestAnimationFrame(update);
+  </script>

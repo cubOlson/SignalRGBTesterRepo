@@ -1,0 +1,1121 @@
+<head>
+    <title>Arc Raiders Dev</title>
+    <meta description="Effects and ambience for Arc Raiders. v1.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+    <meta property="adjOn" label="Adjust Health / Shield Bar" tooltip="Turn on to adjust the health and shield bar on your devices. Will default to 100% size." type="boolean" default="0" />
+    <meta property="hpOn" label="Health Bar Effect" tooltip="Will enable the health bar effect." type="boolean" default="1" />
+    <meta property="hpX" label="Health Bar X" tooltip="Will move the health bar sideways." type="number" default="0" min="0" max="100">
+    <meta property="hpY" label="Health Bar Y" tooltip="Will move the health bar up or down." type="number" default="25" min="0" max="100">
+    <meta property="hpWidth" label="Health Bar Width" tooltip="Will change the maximum width of the health bar." type="number" default="100" min="0" max="100">
+    <meta property="hpHeight" label="Health Bar Height" tooltip="Will change the maximum height of the health bar." type="number" default="20" min="0" max="100">
+    <meta property="shieldOn" label="Shield Bar Effect" tooltip="Will enable the Shield bar effect." type="boolean" default="1" />
+    <meta property="shieldX" label="Shield Bar X" tooltip="Will move the Shield bar sideways." type="number" default="0" min="0" max="100">
+    <meta property="shieldY" label="Shield Bar Y" tooltip="Will move the Shield bar up or down." type="number" default="50" min="0" max="100">
+    <meta property="shieldWidth" label="Shield Bar Width" tooltip="Will change the maximum width of the Shield bar." type="number" default="100" min="0" max="100">
+    <meta property="shieldHeight" label="Shield Bar Height" tooltip="Will change the maximum height of the Shield bar." type="number" default="20" min="0" max="100">
+    <meta property="lowOn" label="Low Health Effect" tooltip="Will enable the low health effect to play when you are below 25% health." type="boolean" default="1" />
+    <meta property="healOn" label="Healing Effect" tooltip="Will enable the healing effect to play when you restore health or shields." type="boolean" default="1" />
+    <meta property="downOn" label="Downed Effect" tooltip="Will enable the downed effect to play when the player is crawling around with no health." type="boolean" default="1" />
+    <meta property="damageOn" label="Damage Effect" tooltip="Will enable the damage effect to play when damage is taken to health or shields." type="boolean" default="1" />
+    <meta property="sprintOn" label="Sprint Effect" tooltip="Will enable the sprint effect to play when the stamina bar is visible." type="boolean" default="1" />
+    <meta property="enOn" label="Encumbered Effect" tooltip="Will enable the encumbered effect to play when the player is carrying too much." type="boolean" default="1" />
+    <meta property="xpOn" label="XP Effect" tooltip="Will enable the xp effect to play when the player gains experience." type="boolean" default="1" />
+    <meta property="endOn" label="Victory/Defeat Effect" tooltip="Will enable the victory or defeat effect to play." type="boolean" default="1" />
+    <meta property="lootOn" label="Looting Effect" tooltip="Will enable the looting effect to play when the player loots a container." type="boolean" default="1" />
+
+    <meta meter="inGameWhiteCompass" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.4883" y="0.0185" width="0.0227" height="0.0125" 
+      h="0-360" s="0-20" l="40-100" hdr-h="0-360" hdr-s="0-20" hdr-l="40-100" type="area">
+      <resolution aspect="3.55:1" x="0.4941" y="0.021" width="0.0115" height="0.0104" />
+      <resolution aspect="24:10" x="0.4904" y="0.02" width="0.0183" height="0.013" />
+      <resolution aspect="16:11" x="0.4875" y="0.0205" width="0.0256" height="0.0133" />
+
+      <resolution size="3840x2160" x="0.4875" y="0.019" width="0.0237" height="0.0125" />
+      <resolution size="2560x1080" x="0.4910" y="0.0194" width="0.0172" height="0.0130" />
+    </meta>
+
+    <meta meter="health1" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0245" y="0.9444" width="0.0285" height="0.0000" 
+      h="0-360" s="0-20" l="75-100" hdr-h="0-360" hdr-s="0-20" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0205" y="0.9472" width="0.023" height="0.0007" />
+      <resolution aspect="24:10" x="0.019" y="0.9458" width="0.0233" height="0.0000" />
+      <resolution aspect="16:11" x="0.0275" y="0.9438" width="0.0304" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0234" y="0.9444" width="0.0302" height="0.0005" />
+      <resolution size="2560x1080" x="0.0180" y="0.9463" width="0.0297" height="0.0000" />
+    </meta>
+
+    <meta meter="health2" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0781" y="0.9326" width="0.0227" height="0.0000" 
+      h="0-360" s="0-20" l="75-100" hdr-h="0-360" hdr-s="0-20" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0357" y="0.9424" width="0.0187" height="0.0007" />
+      <resolution aspect="24:10" x="0.0523" y="0.9382" width="0.0265" height="0.0000" />
+      <resolution aspect="16:11" x="0.0915" y="0.9295" width="0.0363" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0753" y="0.9324" width="0.0346" height="0.0000" />
+      <resolution size="2560x1080" x="0.0551" y="0.9370" width="0.0324" height="0.0000" />
+    </meta>
+
+    <meta meter="health3" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.1219" y="0.9243" width="0.0359" height="0.0000" 
+      h="0-360" s="0-20" l="75-100" hdr-h="0-360" hdr-s="0-20" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0566" y="0.9382" width="0.0223" height="0.0001" />
+      <resolution aspect="24:10" x="0.1177" y="0.9299" width="-0.0267" height="0.0000" />
+      <resolution aspect="16:11" x="0.1458" y="0.9210" width="0.0304" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.1219" y="0.9241" width="0.0365" height="-0.0005" />
+      <resolution size="2560x1080" x="0.0902" y="0.9306" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="shield1" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0262" y="0.9243" width="0.0277" height="0.0000" 
+      h="180-225" s="50-100" l="50-100" hdr-h="180-270" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0205" y="0.927" width="0.023" height="0.0007" />
+      <resolution aspect="24:10" x="0.0189" y="0.9264" width="0.0238" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0295" y="0.9238" width="0.0256" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0234" y="0.9245" width="0.0312" height="0.0000" />
+      <resolution size="2560x1080" x="0.022" y="0.9259" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="shield2" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0797" y="0.9125" width="0.0262" height="0.0000" 
+      h="180-225" s="50-100" l="50-100" hdr-h="180-270" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0357" y="0.923" width="0.0187" height="0.0007" />
+      <resolution aspect="24:10" x="0.0549" y="0.9181" width="0.0262" height="0.0000" />
+      <resolution aspect="16:11" x="0.087" y="0.9114" width="0.0351" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0786" y="0.9125" width="0.0333" height="0.0000" />
+      <resolution size="2560x1080" x="0.0590" y="0.9167" width="0.0234" height="0.0000" />
+    </meta>
+
+    <meta meter="shield3" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.1250" y="0.9049" width="0.0332" height="0.0000" 
+      h="180-225" s="50-100" l="50-100" hdr-h="180-270" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0566" y="0.918" width="0.0223" height="0.0001" />
+      <resolution aspect="24:10" x="0.0910" y="0.9111" width="0.0273" height="0.0000" />
+      <resolution aspect="16:11" x="0.1363" y="0.9029" width="0.0399" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.1180" y="0.9056" width="0.0406" height="0.0000" />
+      <resolution size="2560x1080" x="0.0905" y="0.9111" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="healthRed1" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0245" y="0.9444" width="0.0285" height="0.0000" 
+      h="-20-20" s="50-75" l="70-95" hdr-h="-20-20" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0205" y="0.9472" width="0.023" height="0.0007" />
+      <resolution aspect="24:10" x="0.019" y="0.9458" width="0.0233" height="0.0000" />
+      <resolution aspect="16:11" x="0.0275" y="0.9438" width="0.0304" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0234" y="0.9444" width="0.0302" height="0.0005" />
+      <resolution size="2560x1080" x="0.0180" y="0.9463" width="0.0297" height="0.0000" />
+    </meta>
+
+    <meta meter="healthRed2" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0781" y="0.9326" width="0.0227" height="0.0000" 
+      h="-20-20" s="50-75" l="70-95" hdr-h="-20-20" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0357" y="0.9424" width="0.0187" height="0.0007" />
+      <resolution aspect="24:10" x="0.0523" y="0.9382" width="0.0265" height="0.0000" />
+      <resolution aspect="16:11" x="0.0915" y="0.9295" width="0.0363" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0753" y="0.9324" width="0.0346" height="0.0000" />
+      <resolution size="2560x1080" x="0.0551" y="0.9370" width="0.0324" height="0.0000" />
+    </meta>
+
+    <meta meter="healthRed3" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.1219" y="0.9243" width="0.0359" height="0.0000" 
+      h="-20-20" s="50-75" l="70-95" hdr-h="-20-20" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0566" y="0.9382" width="0.0223" height="0.0001" />
+      <resolution aspect="24:10" x="0.1177" y="0.9299" width="-0.0267" height="0.0000" />
+      <resolution aspect="16:11" x="0.1458" y="0.9210" width="0.0304" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.1219" y="0.9241" width="0.0365" height="-0.0005" />
+      <resolution size="2560x1080" x="0.0902" y="0.9306" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="shieldRed1" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0262" y="0.9243" width="0.0277" height="0.0000" 
+      h="-20-20" s="50-75" l="70-95" hdr-h="-20-20" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0205" y="0.927" width="0.023" height="0.0007" />
+      <resolution aspect="24:10" x="0.0189" y="0.9264" width="0.0238" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0295" y="0.9238" width="0.0256" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0234" y="0.9245" width="0.0312" height="0.0000" />
+      <resolution size="2560x1080" x="0.022" y="0.9259" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="shieldRed2" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0797" y="0.9125" width="0.0262" height="0.0000" 
+      h="-20-20" s="50-75" l="70-95" hdr-h="-20-20" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0357" y="0.923" width="0.0187" height="0.0007" />
+      <resolution aspect="24:10" x="0.0549" y="0.9181" width="0.0262" height="0.0000" />
+      <resolution aspect="16:11" x="0.087" y="0.9114" width="0.0351" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0786" y="0.9125" width="0.0333" height="0.0000" />
+      <resolution size="2560x1080" x="0.0590" y="0.9167" width="0.0234" height="0.0000" />
+    </meta>
+
+    <meta meter="shieldRed3" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.1250" y="0.9049" width="0.0332" height="0.0000" 
+      h="-20-20" s="50-75" l="70-95" hdr-h="-20-20" hdr-s="25-75" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.0566" y="0.918" width="0.0223" height="0.0001" />
+      <resolution aspect="24:10" x="0.0910" y="0.9111" width="0.0273" height="0.0000" />
+      <resolution aspect="16:11" x="0.1363" y="0.9029" width="0.0399" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.1180" y="0.9056" width="0.0406" height="0.0000" />
+      <resolution size="2560x1080" x="0.0905" y="0.9111" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="healthYellow1" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0245" y="0.9444" width="0.0285" height="0.0000" 
+      h="35-65" s="60-100" l="50-100" hdr-h="30-90" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0205" y="0.9472" width="0.023" height="0.0007" />
+      <resolution aspect="24:10" x="0.019" y="0.9458" width="0.0233" height="0.0000" />
+      <resolution aspect="16:11" x="0.0275" y="0.9438" width="0.0304" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0234" y="0.9444" width="0.0302" height="0.0005" />
+      <resolution size="2560x1080" x="0.0180" y="0.9463" width="0.0297" height="0.0000" />
+    </meta>
+
+    <meta meter="healthYellow2" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0781" y="0.9326" width="0.0227" height="0.0000" 
+      h="35-65" s="60-100" l="50-100" hdr-h="30-90" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0357" y="0.9424" width="0.0187" height="0.0007" />
+      <resolution aspect="24:10" x="0.0523" y="0.9382" width="0.0265" height="0.0000" />
+      <resolution aspect="16:11" x="0.0915" y="0.9295" width="0.0363" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0753" y="0.9324" width="0.0346" height="0.0000" />
+      <resolution size="2560x1080" x="0.0551" y="0.9370" width="0.0324" height="0.0000" />
+    </meta>
+
+    <meta meter="healthYellow3" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.1219" y="0.9243" width="0.0359" height="0.0000" 
+      h="35-65" s="60-100" l="50-100" hdr-h="30-90" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0566" y="0.9382" width="0.0223" height="0.0001" />
+      <resolution aspect="24:10" x="0.1177" y="0.9299" width="-0.0267" height="0.0000" />
+      <resolution aspect="16:11" x="0.1458" y="0.9210" width="0.0304" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.1219" y="0.9241" width="0.0365" height="-0.0005" />
+      <resolution size="2560x1080" x="0.0902" y="0.9306" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="shieldYellow1" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0262" y="0.9243" width="0.0277" height="0.0000" 
+      h="35-65" s="60-100" l="50-100" hdr-h="30-90" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0205" y="0.927" width="0.023" height="0.0007" />
+      <resolution aspect="24:10" x="0.0189" y="0.9264" width="0.0238" height="-0.0007" />
+      <resolution aspect="16:11" x="0.0295" y="0.9238" width="0.0256" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0234" y="0.9245" width="0.0312" height="0.0000" />
+      <resolution size="2560x1080" x="0.022" y="0.9259" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="shieldYellow2" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0797" y="0.9125" width="0.0262" height="0.0000" 
+      h="35-65" s="60-100" l="50-100" hdr-h="30-90" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0357" y="0.923" width="0.0187" height="0.0007" />
+      <resolution aspect="24:10" x="0.0549" y="0.9181" width="0.0262" height="0.0000" />
+      <resolution aspect="16:11" x="0.087" y="0.9114" width="0.0351" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.0786" y="0.9125" width="0.0333" height="0.0000" />
+      <resolution size="2560x1080" x="0.0590" y="0.9167" width="0.0234" height="0.0000" />
+    </meta>
+
+    <meta meter="shieldYellow3" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.1250" y="0.9049" width="0.0332" height="0.0000" 
+      h="35-65" s="60-100" l="50-100" hdr-h="30-90" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.0566" y="0.918" width="0.0223" height="0.0001" />
+      <resolution aspect="24:10" x="0.0910" y="0.9111" width="0.0273" height="0.0000" />
+      <resolution aspect="16:11" x="0.1363" y="0.9029" width="0.0399" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.1180" y="0.9056" width="0.0406" height="0.0000" />
+      <resolution size="2560x1080" x="0.0905" y="0.9111" width="0.0285" height="0.0000" />
+    </meta>
+
+    <meta meter="sprint1" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.4465" y="0.8972" width="0.0004" height="0.0125" 
+      h="0-360" s="0-20" l="50-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4733" y="0.898" width="0.0002" height="0.013" />
+      <resolution aspect="24:10" x="0.4602" y="0.897" width="0.0005" height="0.0139" />
+      <resolution aspect="16:11" x="0.4405" y="0.8965" width="0.0005" height="0.0143" />
+
+      <resolution size="3840x2160" x="0.4465" y="0.897" width="0.0005" height="0.0144" />
+      <resolution size="2560x1080" x="0.46" y="0.897" width="0.0005" height="0.0148" />
+    </meta>
+
+    <meta meter="sprint2" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.5535" y="0.897" width="0.0005" height="0.0139" 
+      h="0-360" s="0-20" l="50-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5266" y="0.8972" width="0.0002" height="0.0111" />
+      <resolution aspect="24:10" x="0.5396" y="0.897" width="0.0005" height="0.0132" />
+      <resolution aspect="16:11" x="0.559" y="0.8975" width="0.0005" height="0.0124" />
+
+      <resolution size="3840x2160" x="0.5535" y="0.897" width="0.0005" height="0.0139" />
+      <resolution size="2560x1080" x="0.54" y="0.897" width="0.0005" height="0.0148" />
+    </meta>
+
+    <meta meter="sprintNotGrey" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.4430" y="0.9132" width="0.0059" height="0.0021" 
+      h="0-360" s="0-20" l="50-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4715" y="0.8951" width="0.0008" height="0.0139" />
+      <resolution aspect="24:10" x="0.4573" y="0.9125" width="0.0038" height="0.0014" />
+      <resolution aspect="16:11" x="0.4369" y="0.9114" width="0.0071" height="0.0038" />
+
+      <resolution size="3840x2160" x="0.4430" y="0.9132" width="0.0059" height="0.0021" />
+      <resolution size="2560x1080" x="0.4574" y="0.9139" width="0.0047" height="0.0046" />
+    </meta>
+
+    <meta meter="sprintValue" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.4488" y="0.9021" width="0.1020" height="0.0014" 
+      h="0-360" s="0-20" l="75-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4748" y="0.9021" width="0.0506" height="0.0014" />
+      <resolution aspect="24:10" x="0.4619" y="0.9021" width="0.0759" height="0.0007" />
+      <resolution aspect="16:11" x="0.4429" y="0.9019" width="0.1143" height="0.0019" />
+
+      <resolution size="3840x2160" x="0.4488" y="0.9021" width="0.1020" height="0.0014" />
+      <resolution size="2560x1080" x="0.4617" y="0.9037" width="0.0766" height="0.0000" />
+    </meta>
+
+    <meta meter="heavyBlack" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.4992" y="0.8757" width="0.0014" height="0.0056" 
+      h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4992" y="0.8757" width="0.0014" height="0.0056" />
+      <resolution aspect="24:10" x="0.4992" y="0.8757" width="0.0014" height="0.0056" />
+      <resolution aspect="16:11" x="0.4992" y="0.8757" width="0.0014" height="0.0056" />
+
+      <resolution size="3840x2160" x="0.4992" y="0.8757" width="0.0014" height="0.0056" />
+      <resolution size="2560x1080" x="0.4992" y="0.8757" width="0.0014" height="0.0056" />
+    </meta>
+
+    <meta meter="heavyRed" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.5023" y="0.8688" width="0.0006" height="0.0160" 
+      h="-20-20" s="50-75" l="70-95" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5023" y="0.8688" width="0.0006" height="0.0160" />
+      <resolution aspect="24:10" x="0.5023" y="0.8688" width="0.0006" height="0.0160" />
+      <resolution aspect="16:11" x="0.5023" y="0.8688" width="0.0006" height="0.0160" />
+
+      <resolution size="3840x2160" x="0.5023" y="0.8688" width="0.0006" height="0.0160" />
+      <resolution size="2560x1080" x="0.5023" y="0.8688" width="0.0006" height="0.0160" />
+    </meta>
+
+    <meta meter="xpYellow" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0359" y="0.3271" width="0.0043" height="0.0153" 
+      h="30-50" s="75-100" l="75-100" hdr-h="30-90" hdr-s="75-100" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0098" y="0.3257" width="0.0209" height="0.0000" />
+      <resolution aspect="24:10" x="0.0273" y="0.3292" width="0.0026" height="0.0104" />
+      <resolution aspect="16:11" x="0.0393" y="0.3267" width="0.0065" height="0.0162" />
+
+      <resolution size="3840x2160" x="0.0352" y="0.3269" width="0.0062" height="0.0176" />
+      <resolution size="2560x1080" x="0.0262" y="0.3287" width="0.0047" height="0.0130" />
+    </meta>
+
+    <meta meter="xpBlack" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0212" y="0.3299" width="0.0121" height="0.0118" 
+      h="0-360" s="0-100" l="0-30" hdr-h="0-360" hdr-s="0-100" hdr-l="5-30" type="area">
+      <resolution aspect="3.55:1" x="0.0105" y="0.33" width="0.0063" height="0.0125" />
+      <resolution aspect="24:10" x="0.0165" y="0.33" width="0.0090" height="0.0125" />
+      <resolution aspect="16:11" x="0.0245" y="0.3305" width="0.0131" height="0.0124" />
+
+      <resolution size="3840x2160" x="0.0212" y="0.3299" width="0.0121" height="0.0118" />
+      <resolution size="2560x1080" x="0.016" y="0.33" width="0.0098" height="0.0130" />
+    </meta>
+
+    <meta meter="lossOrangeRed" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.7781" y="0.4792" width="0.0180" height="0.0396" 
+      h="20-45" s="60-90" l="75-100" hdr-h="10-70" hdr-s="50-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.6820" y="0.4819" width="0.0076" height="0.0333" />
+      <resolution aspect="24:10" x="0.7055" y="0.4806" width="0.0145" height="0.0375" />
+      <resolution aspect="16:11" x="0.8198" y="0.4808" width="0.0234" height="0.0367" />
+
+      <resolution size="3840x2160" x="0.7633" y="0.4806" width="0.0128" height="0.0394" />
+      <resolution size="2560x1080" x="0.6766" y="0.4787" width="0.0141" height="0.0407" />
+    </meta>
+
+    <meta meter="winGreen" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.7781" y="0.4792" width="0.0180" height="0.0396" 
+      h="130-170" s="10-50" l="60-100" hdr-h="0-180" hdr-s="0-50" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.6820" y="0.4819" width="0.0076" height="0.0333" />
+      <resolution aspect="24:10" x="0.7055" y="0.4806" width="0.0145" height="0.0375" />
+      <resolution aspect="16:11" x="0.8198" y="0.4808" width="0.0234" height="0.0367" />
+
+      <resolution size="3840x2160" x="0.7633" y="0.4806" width="0.0128" height="0.0394" />
+      <resolution size="2560x1080" x="0.6766" y="0.4787" width="0.0141" height="0.0407" />
+    </meta>
+
+    <meta meter="lootWhite" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0738" y="0.2215" width="0.0426" height="0.0167" 
+      h="0-360" s="0-50" l="40-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.2870" y="0.223" width="0.0227" height="0.0148" />
+      <resolution aspect="24:10" x="0.1831" y="0.2208" width="0.0297" height="0.0174" />
+      <resolution aspect="16:11" x="0.0744" y="0.2000" width="0.0458" height="0.0143" />
+
+      <resolution size="3840x2160" x="0.0734" y="0.2218" width="0.0430" height="0.0185" />
+      <resolution size="2560x1080" x="0.1797" y="0.2235" width="0.0316" height="0.0167" />
+    </meta>
+
+    <meta meter="lootNotWhite" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0676" y="0.2410" width="0.0125" height="0.0035" 
+      h="0-360" s="0-50" l="40-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.2880" y="0.2417" width="0.0258" height="0.0019" />
+      <resolution aspect="24:10" x="0.1791" y="0.2396" width="0.0067" height="0.0028" />
+      <resolution aspect="16:11" x="0.0708" y="0.2190" width="0.0125" height="0.0048" />
+
+      <resolution size="3840x2160" x="0.0711" y="0.2444" width="0.0070" height="0.0028" />
+      <resolution size="2560x1080" x="0.1812" y="0.2426" width="0.0121" height="0.0065" />
+    </meta>
+
+    <meta meter="lootBlue" tags="vlc,ArcRaiders,Arc Raiders,arc" x="0.0762" y="0.2444" width="0.0473" height="0.0153" 
+      h="210-300" s="25-75" l="0-40" hdr-h="210-270" hdr-s="25-75" hdr-l="10-50" type="area">
+      <resolution aspect="3.55:1" x="0.2812" y="0.2139" width="0.0039" height="0.0361" />
+      <resolution aspect="24:10" x="0.1828" y="0.1792" width="0.0288" height="0.0229" />
+      <resolution aspect="16:11" x="0.0738" y="0.1714" width="0.0464" height="0.0181" />
+
+      <resolution size="3840x2160" x="0.0760" y="0.2463" width="0.0240" height="0.0116" />
+      <resolution size="2560x1080" x="0.1824" y="0.2454" width="0.0375" height="0.0102" />
+    </meta>
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = 320;
+    const height = 200;
+    let effects = [];
+    
+    // Create a hidden canvas
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width = 320;
+    hiddenCanvas.height = 200;
+    // Don't attach to DOM
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    let InGameCompassMeter = new Meter(3, inGameCallback)
+
+    let HealthMeter = new Meter(3, inGameCallback)
+    let RedHealthMeter = new Meter(5, healthCallback)
+    let YellowHealthMeter = new Meter(5, healthCallback)
+
+    let ShieldMeter = new Meter(3, inGameCallback)
+    let RedShieldMeter = new Meter(5, shieldCallback)
+    let YellowShieldMeter = new Meter(5, shieldCallback)
+
+    let Sprint1Meter = new Meter(5, sprintCallback)
+    let Sprint2Meter = new Meter(5, sprintCallback)
+    let SprintNotMeter = new Meter(5, sprintCallback)
+    let SprintValueMeter = new Meter(2, sprintCallback)
+
+    let EnRedMeter = new Meter(8, encumberedCallback)
+    let EnBlackMeter = new Meter(8, encumberedCallback)
+
+    let XPYellowMeter = new Meter(8, xpCallback)
+    let XPBlackMeter = new Meter(8, xpCallback)
+
+    let LossMeter = new Meter(5, endCallback)
+    let WinMeter = new Meter(5, endCallback)
+
+    let LootWhiteMeter = new Meter(8, lootCallback)
+    let LootNotWhiteMeter = new Meter(8, lootCallback)
+    let LootBlueMeter = new Meter(8, lootCallback)
+   
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+
+      InGameCompassMeter.setValue(engine.vision.inGameWhiteCompass)
+
+      HealthMeter.setValue((engine.vision.health1 + engine.vision.health2 + engine.vision.health3) / 3)
+      RedHealthMeter.setValue((engine.vision.healthRed1 + engine.vision.healthRed2 + engine.vision.healthRed3) / 3)
+      YellowHealthMeter.setValue((engine.vision.healthYellow1 + engine.vision.healthYellow2 + engine.vision.healthYellow3) / 3)
+
+      ShieldMeter.setValue((engine.vision.shield1 + engine.vision.shield2 + engine.vision.shield3) / 3)
+      RedShieldMeter.setValue((engine.vision.shieldRed1 + engine.vision.shieldRed2 + engine.vision.shieldRed3) / 3)
+      YellowShieldMeter.setValue((engine.vision.shieldYellow1 + engine.vision.shieldYellow2 + engine.vision.shieldYellow3) / 3)
+
+      Sprint1Meter.setValue(engine.vision.sprint1)
+      Sprint2Meter.setValue(engine.vision.sprint2)
+      SprintNotMeter.setValue(engine.vision.sprintNotGrey)
+      SprintValueMeter.setValue(engine.vision.sprintValue)
+
+      EnRedMeter.setValue(engine.vision.heavyRed)
+      EnBlackMeter.setValue(engine.vision.heavyBlack)
+
+      XPYellowMeter.setValue(engine.vision.xpYellow)
+      XPBlackMeter.setValue(engine.vision.xpBlack)
+
+      LossMeter.setValue(engine.vision.lossOrangeRed)
+      WinMeter.setValue(engine.vision.winGreen)
+
+      LootWhiteMeter.setValue(engine.vision.lootWhite)
+      LootNotWhiteMeter.setValue(engine.vision.lootNotWhite)
+      LootBlueMeter.setValue(engine.vision.lootBlue)
+  
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.lifetime <= 0){
+          effects.splice(i, 1)
+        }
+      })
+
+      if(adjOn && !gInGame){
+        if(hpOn){
+          DrawRect(hpX * 3.2, hpY * 2, hpWidth * 3.2, hpHeight * 2, "red")
+          DrawCircle(hpX * 3.2 + hpWidth * 3.2, hpY * 2 + hpHeight, hpHeight, "red")
+        }
+        if(shieldOn){
+          DrawRect(shieldX * 3.2, shieldY * 2, shieldWidth * 3.2, shieldHeight * 2, getColorString(200, 100, 50, 1))
+          DrawCircle(shieldX * 3.2 + shieldWidth * 3.2, shieldY * 2 + shieldHeight, shieldHeight, getColorString(200, 100, 50, 1))
+        }
+      }
+
+      ctx.drawImage(hiddenCanvas, 0, 0)
+  
+      window.requestAnimationFrame(update);
+    };
+    //#endregion
+
+    let gInGame = false
+    function inGameCallback(){
+      healthCallback()
+      shieldCallback()
+      if(InGameCompassMeter.value >= .15 && (HealthMeter.value >= .05 || RedHealthMeter.value >= .05 || YellowHealthMeter.value >= .05) && !gInGame) gInGame = true
+      else if(InGameCompassMeter.value <= .05 && HealthMeter.value < .05 && RedHealthMeter.value < .05 && gInGame) gInGame = false
+    }
+
+    let hpBarGoing = false
+    let hpLowGoing = false
+    let hpHealGoing = false
+    let downedGoing = false
+    function healthCallback(){
+      if(gInGame && HealthMeter.value >= .1 && !hpBarGoing){
+        hpBarGoing = true
+        if(hpOn) effects.push(new healthBar())
+      } else if (!gInGame || downedGoing) hpBarGoing = false
+
+      if(gInGame && HealthMeter.value <= .25 && HealthMeter.value >= .01 && !hpLowGoing && !downedGoing){
+        hpLowGoing = true
+        if(lowOn) effects.push(new lowHealth())
+      } else if ((gInGame && HealthMeter.value > .25) || !gInGame || downedGoing) hpLowGoing = false
+
+      if(gInGame && YellowHealthMeter.value >= .1 && !hpHealGoing){
+        hpHealGoing = true
+        if(healOn) effects.push(new healthHeal())
+      } else if ((gInGame && YellowHealthMeter.value <= .05) || !gInGame) hpHealGoing = false
+
+      if(gInGame && RedHealthMeter.value >= .5 && HealthMeter.value <= .05 && !downedGoing){
+        downedGoing = true
+        if(downOn) effects.push(new downed())
+      } else if ((gInGame && HealthMeter.value >= .1) || !gInGame) downedGoing = false
+
+      if(gInGame && HealthMeter.decreased && HealthMeter.diff > .1 && RedHealthMeter.value >= .05 && !downedGoing && !damageOn) effects.push(new tookDamage(0))
+    }
+
+    function healthHeal(){
+      this.rot = 0
+      this.alpha = 0
+      this.draw = function(){
+        if(hpHealGoing) this.alpha <= .95 ? this.alpha += .05 : this.rot += .01
+        else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        DrawRect(0, 0, 320, 200, getColorString(60, 100, 30, this.alpha / 3))
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(this.rot)
+        hiddenCtx.translate(-160, -100)
+        DrawRect(85, 80, 150, 40, getColorString(60, 100, 50, this.alpha))
+        DrawRect(140, 25, 40, 150, getColorString(60, 100, 50, this.alpha))
+        hiddenCtx.restore()
+      }
+    }
+
+    function particleOut(x, y, speed, size, hue, sat, lit){
+      this.x = x
+      this.y = y
+      this.vx = Math.random() * speed - speed / 2
+      this.vy = Math.random() * speed - speed / 2
+      this.size = size
+      this.hue = hue
+      this.sat = sat
+      this.lit = lit
+      this.lifetime = 100
+      this.draw = function(){
+        DrawCircle(this.x, this.y, this.size, getColorString(this.hue, this.sat, this.lit, this.lifetime / 100))
+        this.x += this.vx
+        this.y += this.vy
+        this.lifetime -= speed / 8
+      }
+    }
+
+    function tookDamage(hue){
+      this.hue = hue
+      this.x = 160
+      this.y = 100
+      this.vx = Math.random() * 10 - 5
+      this.vy = Math.random() * 10 - 5
+      this.width = 5
+      for(let i = 0; i < 10; i++) effects.push(new particleOut(this.x, this.y, 5, 5, Math.random() * 30, 100, 50))
+      this.draw = function(){
+        this.x += this.vx
+        this.y += this.vy
+        if(this.width < 75) {
+          this.width *= 1.11
+          DrawCircle(this.x, this.y, this.width, getColorString(60, 100, 50, 1))
+        } else {
+          for(let i = 0; i < 30; i++) effects.push(new particleOut(this.x, this.y, 40, 40, this.hue, 100, 50))
+          this.lifetime = 0
+        }
+      }
+    }
+
+    function downed(){
+      this.alpha = 0
+      this.draw = function(){
+        if(downedGoing && gInGame) this.alpha <= .99 ? this.alpha += .01 : this.alpha = 1
+        else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        if(victoryGoing || defeatGoing || InGameCompassMeter.value <= .05) this.lifetime = 0
+        DrawRect(0, 0, 320, 200, getColorString(0, 100, Math.cos(Date.now() / 200) * 30 + 50, this.alpha))
+        DrawPath(112, 45, heart, getColorString(0, 100, Math.sin(Date.now() / 200) * 30 + 50, this.alpha), .7, .7)
+      }
+    }
+
+    let heart = "m84.25,150.73l56.78-50.89s42.67-40.22,13.11-82.67-69.89,9.56-69.89,9.56c0,0-27.67-50.22-69.67-10.22s23.33,93.33,23.33,93.33l46.33,40.89Z"
+    function lowHealth(){
+      this.alpha = 0
+      this.alpha2 = 1
+      this.scale = 1
+      this.draw = function(){
+        let mod = Math.sin(Date.now() / 200) * 30 + 50
+        if(hpLowGoing){
+          if(mod < 22){
+            this.alpha2 = 1
+            this.scale = 1
+          } else {
+            this.alpha2 *= .94
+            this.scale *= 1.04
+          }
+          this.alpha <= .99 ? this.alpha += .01 : this.alpha = 1
+        } else {
+          this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+          if(this.alpha2 >= .05) this.alpha2 -= .05
+        }
+        DrawPath(109, 45, heart, getColorString(0, 100, mod, this.alpha), .7, .7)
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.scale(this.scale, this.scale)
+        hiddenCtx.translate(-160, -100)
+        DrawPath(109, 45, heart, getColorString(0, 100, mod, this.alpha2), .7, .7)
+        hiddenCtx.restore()
+      }
+    }
+
+    function healthBar(){
+      this.val = 0
+      this.draw = function(){
+        this.val += (HealthMeter.value - this.val) / 20
+        DrawRect(hpX * 3.2, hpY * 2, this.val * hpWidth * 3.2, hpHeight * 2, "red")
+        DrawCircle(hpX * 3.2 + this.val * hpWidth * 3.2, hpY * 2 + hpHeight, hpHeight, "red")
+        if(!hpBarGoing || !hpOn) this.val > .05 ? this.val *= .95 : this.lifetime = 0
+      }
+    }
+
+    let shieldBarGoing = false
+    let shieldHealGoing = false
+    function shieldCallback(){
+      if(gInGame && ShieldMeter.value >= .1 && !shieldBarGoing){
+        shieldBarGoing = true
+        if(shieldOn) effects.push(new shieldBar())
+      } else if (!gInGame || downedGoing) shieldBarGoing = false
+
+      if(gInGame && YellowShieldMeter.value >= .1 && !shieldHealGoing){
+        shieldHealGoing = true
+        if(healOn) effects.push(new shieldHeal())
+      } else if ((gInGame && YellowShieldMeter.value <= .05) || !gInGame) shieldHealGoing = false
+
+      if(gInGame && ShieldMeter.decreased && ShieldMeter.diff > .1 && RedShieldMeter.value >= .05 && !damageOn) effects.push(new tookDamage(200))
+    }
+
+    function shieldHeal(){
+      this.rot = 0
+      this.alpha = 0
+      this.draw = function(){
+        if(shieldHealGoing) this.alpha <= .95 ? this.alpha += .05 : this.rot += .01
+        else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        DrawRect(0, 0, 320, 200, getColorString(60, 100, 30, this.alpha / 3))
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(this.rot)
+        hiddenCtx.translate(-160, -100)
+        DrawRect(85, 80, 150, 40, getColorString(60, 100, 50, this.alpha))
+        DrawRect(140, 25, 40, 150, getColorString(60, 100, 50, this.alpha))
+        hiddenCtx.restore()
+      }
+    }
+
+    function shieldBar(){
+      this.val = 0
+      this.draw = function(){
+        this.val += (ShieldMeter.value - this.val) / 20
+        DrawRect(shieldX * 3.2, shieldY * 2, this.val * shieldWidth * 3.2, shieldHeight * 2, getColorString(200, 100, 45, 1))
+        DrawCircle(shieldX * 3.2 + this.val * shieldWidth * 3.2, shieldY * 2 + shieldHeight, shieldHeight, getColorString(200, 100, 45, 1))
+        if(!shieldBarGoing || !shieldOn) this.val > .05 ? this.val *= .95 : this.lifetime = 0
+      }
+    }
+
+    let sprintGoing = false
+    function sprintCallback(){
+      if(gInGame && Sprint1Meter.value >= .95 && Sprint2Meter.value >= .95 && engine.vision.sprintNotGrey <= .05 && !sprintGoing){
+        sprintGoing = true
+        if(sprintOn) effects.push(new sprinting())
+      } else if ((gInGame && Sprint1Meter.value <= .05 && Sprint2Meter.value <= .05) || !gInGame) sprintGoing = false
+    }
+
+    function sprinting(){
+      this.alpha = 0
+      this.draw = function(){
+        if(sprintGoing) this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
+        else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+        grad.addColorStop(0, getColorString(SprintValueMeter.value * 120, 100, 50, this.alpha * (Math.sin(Date.now() / (100 + 500 * SprintValueMeter.value)) * .01 + .03)))
+        grad.addColorStop(1, getColorString(SprintValueMeter.value * 120, 100, 50, this.alpha * (Math.sin(Date.now() / (100 + 500 * SprintValueMeter.value)) * .1 + .2)))
+        DrawRect(0, 0, 320, 200, grad)
+      }
+    }
+
+    let encumberedGoing = false
+    function encumberedCallback(){
+      if(gInGame && EnRedMeter.value >= .95 && EnBlackMeter.value >= .95 && !encumberedGoing){
+        encumberedGoing = true
+        if(enOn) effects.push(new encumbered())
+      } else if ((gInGame && EnRedMeter.value <= .05 && EnBlackMeter.value <= .05) || !gInGame) encumberedGoing = false
+    }
+
+    function encumbered(){
+      this.count = 0
+      this.count2 = 0
+      this.y = -450
+      this.alpha = 0
+      this.draw = function(){
+        if(encumberedGoing) this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
+        else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        DrawRect(0, this.y, 320, 200, getColorString(0, 100, 50, this.alpha * (Math.sin(Date.now() / 1000) * .15 + .16)))
+        if(this.y < 0) this.y += 2
+        if(!this.count && this.count2 < 6){
+          effects.push(new enHelp(getColorString(0, 100, this.count2 * 10, .9), 50, 2))
+          this.count2++
+        }
+        this.count < 24 ? this.count++ : this.count = 0
+      }
+    }
+
+    function enHelp(color, width, speed){
+      this.x = 160
+      this.y = 0
+      this.speed = speed
+      this.color = color
+      this.width = width
+      this.draw = function(){
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(this.x - 180, this.y - 50)
+        hiddenCtx.lineTo(this.x, this.y)
+        hiddenCtx.lineTo(this.x + 180, this.y - 50)
+        hiddenCtx.lineWidth = this.width
+        hiddenCtx.strokeStyle = this.color
+        hiddenCtx.stroke()
+        this.y < 300 ? this.y += this.speed : this.lifetime = 0
+      }
+    }
+
+    let xpGoing = false
+    function xpCallback(){
+      if(gInGame && XPYellowMeter.value >= .95 && XPBlackMeter.value >= .25 && !xpGoing){
+        xpGoing = true
+        if(xpOn) effects.push(new xpGain())
+      } else if ((gInGame && XPYellowMeter.value <= .05 && XPBlackMeter.value <= .05) || !gInGame) xpGoing = false
+    }
+
+    function xpGain(){
+      this.width = 0
+      this.x = 0
+      this.draw = function(){
+        DrawRect(this.x, 0, this.width - this.x / 2, 200, getColorString(50, 100, 50, .2))
+        DrawRect(this.width / 4 + this.x, 0, this.width / 2 - this.x / 2, 200, getColorString(30, 100, 50, .2))
+        if(this.width < 320) this.width += (350 - this.width) / 60
+        if(this.width > 250) this.x < 320 ? this.x += (350 - this.x) / 60 : this.lifetime = 0
+      }
+    }
+
+    let defeatGoing = false
+    let victoryGoing = false
+    function endCallback(){
+      if(WinMeter.value >= .95 && HealthMeter.value <= .05 && !victoryGoing){
+        victoryGoing = true
+        if(endOn) effects.push(new victory())
+      } else if (gInGame && HealthMeter.value > .5) victoryGoing = false
+
+      if(LossMeter.value >= .95 && HealthMeter.value <= .05 && !defeatGoing){
+        defeatGoing = true
+        if(endOn) effects.push(new defeat())
+      } else if (gInGame && HealthMeter.value > .5) defeatGoing = false
+    }
+
+    let skullD = "m95.66,56.44c-.83-4.33-1.17-9.17-3.5-12.5-2.33-3.33.17-2.5,0-3.83-.17-1.33-.17-2.33-1.33-4.33s-3.67-13.5-5-16-4.5-5.33-5.5-7.17c-1-1.83-6.83-5.67-8.83-7.17S60.66,1.44,56.99.76c-3.67-.67-10,.17-13.83,0-3.83-.17-12.5,3.33-14.67,3.83-2.17.5-10,8.33-11.33,9.17-1.33.83-7.33,12.33-8.17,14.33-.83,2-1.17,10.17-3.33,16.67-2.17,6.5-3.83,15.33-4.83,18.33s.5,10.67,2,9.33,5.17-1.33,11.33.67c6.17,2,5.17,10.33,5.17,10.33,0,0,1.17,5.17.33,6.33-.83,1.17.17,4,.17,4l-.17,1,1.17,1.83,3.17-.5,5,.67v-3.83l1.17-2.17.17-2,1.83-1s1.67-4.67,2.5-4c.83.67,3.83-1.17,3.83-1.17,0,0,6.17-.17,8.17-.83,2-.67-.83-7.5-.83-7.5l3,1.5s-1.17,4.33-1.17,5.17,9.5,1.5,10.5,1.67c1,.17,4.17,1,4.17,1,0,0,0,2.5.17,3.17.17.67,1.5,1.33,2.33,1.67s1,1.17,1.83,1.83c.83.67.17,1.67.17,3.17s2.33,3.83,3.17,4.33c.83.5,2.33-1.17,2.83-.83s4.17-.83,4.17-.83c0,0-1.17-6.5-.67-7s1.83-6.67,2.17-10.17c.33-3.5,2.83-5.67,5.5-8,2.67-2.33,6.17-.5,9,.33,2.83.83,2.83-.17,3.5-2.67.67-2.5,0-7.83-.83-12.17Zm-52.42-13.33c1.67-1.67,2-1.58,2-1.58l3.39-2.83s1.53,1.17,1.86,1.24c.33.07,2.83,2.1,3.75,2.93.92.83,3,3,3.66,4.25.66,1.25.5,3.67.5,4.4s-.75,2.27-1.17,3.52c-.42,1.25-.92,1.58-2.58,2.62-1.67,1.04-1.17,2.55-1.5,3.55-.33,1,.25,2.5,0,2.58-.25.08-1.92-.75-2.42-1.33s-.25-1.25-.5-2-.67-2.25-.92-3.58c-.25-1.33-.5-4.45-.5-4.45,0,0-.25,1.45-.56,2.2-.31.75-.69,4.5-.94,5.5s-1.08,1.75-2.08,2.58-2.17.58-2.17.58c0,0,.17-1.17,0-1.75-.17-.58-.17-2.08-.67-2.83s-1.25-1.08-1.92-1.83c-.67-.75-.83-1.17-1.02-2-.18-.83,0-3.35,0-3.35,0,0,.6-2.98.93-4.73.33-1.75,1.17-2,2.83-3.67Zm-23.83,8.25c-2.42-.33-2.67-.92-4.33-2.17-1.67-1.25-1.42-.41-3.33-1.83-1.92-1.42-1.42-1.17-2.17-2.75-.75-1.58.08-1.75.75-2.75s1.17-2.25,1.58-3.58c.42-1.33.25-1.17.83-2.58.58-1.42,1.67-1.83,2.92-3s2.58-1.33,4.17-2.42c1.58-1.08,2.83-1.17,4.92-1.58,2.08-.42,2.58-.25,4.67-.33,2.08-.08,2.83.42,5.08,1,2.25.58,2.67,1.83,3.17,2.67.5.83,1.5,3.08,1.75,4.08s-.25,4.08-.5,4.58-1,2.42-2.17,3.17c-1.17.75-2.42,2.33-3.67,2.92-1.25.58-4.58,2.41-4.58,2.41,0,0-4.75,2.09-5,2.17,0,0-1.67.33-4.08,0Zm56.53,35.97s-.33-.28-.44-.8c-.11-.52-.56-1.2-1.06-1.26-.5-.06-1.22,1.78-1.33,1.11-.11-.67-.44-2.11-.67-2.94-.22-.83-.94-.67-1.22-.5-.28.17-.72,1.94-.72.94s-.44-2.72-.44-2.72c0,0-.94-2-1.06-2.17-.11-.17-.72-1-1.28-.83-.56.17-.94.89-.94.89,0,0-.39-.89-.44-1.5-.06-.61-.78-1.5-1.22-2.33-.44-.83-1.5-.5-1.94-.39-.44.11-1.28,2.11-1.28,2.11,0,0-.44.17-.67-.44-.22-.61-1.39-1.83-1.72-2.22-.33-.39-2.5-.39-2.83-.22-.33.17,0,5.23,0,5.23l-1-3.51s-.83-1.56-1.61-2.5c-.78-.94-2.44-.33-3.72-.33s-1.06,2.28-1.06,2.28c0,0-4.67-2.28-5.5-2.61-.83-.33-1.78.28-3.06,1-1.28.72-1.5,2.61-1.44,2.11s-2.28-2.11-3.28-1.83-2.06,3.56-2.06,3.56l-1.06-1.17h-1.83l-1.83.78-.44,1.56-2.06-.28-1.06,2.39-.89,1.89s-.67-.17-1.28,0c-.61.17-.61,3.44-.61,3.44,0,0-.5-.72-2.28-3.44,0,0,.39-.22.67-.67s.61-.83,1-1.28c.39-.44,1.11-.72,2.44-1.09,1.33-.37.72-.52,1.22-1.52s.44-.89,1.11-1.67,1.11-.33,2.06-.44c.94-.11,1.44-.5,2.72-.89,1.28-.39,1.11-.33,1.78-.83s2.06-1,2.78-1.06,1.39.28,2.33.28.61-.39,1.39-.78,1.39-.78,2.78-.84c1.39-.06,1.56.12,3.06.67,1.5.56,1.33.56,1.89.72.56.17.56-.28,1.44-.89.89-.61,2.39-.5,3.11-.5s2.61,1.28,2.83,1.5c.22.22.61-.22,1.22-.56.61-.33,1.67-.17,2.5.06.83.22,1.17.78,1.94.94.78.17,1.33-.17,2.28,0,.94.17,1.83.44,2.56.89.72.44,1.44,1.5,1.67,1.67.22.17,1.94,1.56,2.39,2.06s1.44,2,1.83,2.56c.39.56.94,1.11,1.39,1.17.44.06.83-.94.83-.94l2.11,3.78v2.39Zm12.56-43.39c-1.17,1.08-2.17,1.33-3.08,2.42-.92,1.08-1.08,2.25-2.17,3.58-1.08,1.33-1.83.42-2.92.58-1.08.17-2,1.33-4.39,1.75-2.39.42-2.94-.17-5.78-1-2.83-.83-2.33-.67-4.33-2.09-2-1.42-6.83-6.83-6.83-6.83,0,0-.58-1.92-.92-2.92s-.08-2.67,0-3.83c.08-1.17,1.33-3.67,2.08-4.92s1.42-1.25,3.33-2.58c1.92-1.33,3.83-.58,7.33-.67s5.08,1.25,6.92,1.92c1.83.67,4.33,2.67,6.5,4.17,2.17,1.5,2.33,3.08,3,4.5.67,1.42,2.42,4.83,1.25,5.92Z"
+    let jawD = "m82.11,2.62c-2.56-.89-2.89-2.11-6.11-1.39s-4.85,1.16-6.37,3.27c-1.52,2.12-2.06,2.45-1.52,4.23.54,1.78,2.89,3.89,4,5.44,1.11,1.56,2.22.78,2.22,3.11s-1,2.78-2,5.11c-1,2.33-2.33,5.78-3,7.44s-.89,4-.89,4c0,0-.89-1.67-1.67-1.67s-4-.89-5.22.11-1.44.67-1.44,2.33,0,2.22-.22,2.89c-.22.67-.11,2,.11,2.67.22.67-2-.84-2.33.69-.33,1.53-.78,3.31-.78,3.31,0,0-1.11-.22-1.11.89s.22,2,.22,2c0,0-2.56-.11-3.11.56-.56.67-5.44-.33-6.44.78-1,1.11-3.56-1.89-4.22-.44-.67,1.44-1.33,2.78-1.33,2.78,0,0,.44-3-.33-3s-4.33-.44-4.56.33-.44-1-2.44-.33c-2,.67-1.78.56-3-.22s-2-.89-2.67-1.33c-.67-.44-2-1.56-2-2s-.11-1.56-.89-1.44c-.78.11-.56-1.73-.78-1.87s-1.44-.91-.89-2.13c.56-1.22.44-2.67.11-3-.33-.33-.67-2-.67-2,0,0-3.44-1.67-4.56-1.11s-3,0-3,0c0,0-1.67-5.67-2.56-7-.89-1.33-4-4.89-3.44-6.56s2.56-5,3.78-6.78,3.67-1.44,3.89-4.11c.22-2.67-.22-3.67-2.33-5-2.11-1.33-2.89-2.56-6-2.67-3.11-.11-5.56,1-6.67,2.44C.77,4.4,0,4.95.89,6.51c.89,1.56,1.78,3.22,1.78,3.22,0,0,4.89,23.67,4.89,25.44s.11,4.89,0,6.56c-.11,1.67-1.33,4-1.89,5.78s-.33,2.44,1,3.56c1.33,1.11,2.33,3.33,2.89,5.22.56,1.89,1.33,3.78,1.89,4.67.56.89,2.11,3.78,3,5,.89,1.22,3.44,2.89,4.56,4.44,1.11,1.56,1.11,2.78,3.56,4.33,2.44,1.56,4.78,3.44,6.33,3.78,1.56.33,2.67.56,5,.89,2.33.33,7.33.78,9,.78s5.44,1.22,7.78,0c2.33-1.22,5.78-3.56,7.33-4.67,1.56-1.11,5.56-3.78,6.67-5.33,1.11-1.56,4.44-5.33,5.44-6.44,1-1.11,2.22-3.33,3-5.11.78-1.78.78-4.33,1.33-5.33s3.78-3.56,4-4.11c.22-.56-.33-2.46-.89-3.95-.56-1.49-1.11-3.6-1.33-4.94s.22-5.33.56-8c.33-2.67,1.54-6.78,1.72-9.44s.28-11,.95-12.44c.67-1.44,2.89-3.78,3.22-4.67.33-.89,2-2.22-.56-3.11Zm-15.56,43.72c-.42.75-.83,2.58-.92,3.5-.08.92-1.75,1.42-3.33,2.67-1.58,1.25-1.58,1.08-2.92,2.08-1.33,1-1.75.83-3.08,2-1.33,1.17-1.67,1.08-3.67,1.25s-2.58.33-4.5.75c-1.92.42-4-.42-7.33-.92-3.33-.5-3.75-.17-6.17.08-2.42.25-3.25.67-6.75-.5-3.5-1.17-1-1.58-1.92-2.42s-2.92-.42-4.33-1.67c-1.42-1.25-2.42-1.92-3.83-2.83-1.42-.92-2-2.5-2.5-3.42-.5-.92-.5-6.67-.5-6.67,0,0,1,1.92,1.46,2.42.46.5.21,1.67.67,3.29.46,1.62.25,1.46,1.79,2.58.85.62.98-.05.92-.78-.13-.61-.21-1.22-.21-1.22,0,0,.17.62.21,1.22.15.69.36,1.38.58,1.16.42-.42,1.29-1.67,1.29-1.67,0,0-.17,3.29.33,4.21s1.88.38,2.54-.08c.67-.46,1.29-1.46,1.29-1.46,0,0,0,1.08-.12,2.79s1.25,1.42,2.08,1.83c.83.42,1.54-.17,2.75-.75,1.21-.58.38-2.5.38-2.5,0,0,.42,1.04.88,2.04.46,1,.75,1.46,1.33,2.42.58.96,1,0,1.88-.88s.83-3.12.83-3.12c0,0,.46.75.62,1.54.17.79.25,1,.58,2.12.33,1.12,1.54.5,2.33.5s1.21-.25,1.63-.5.74-1.75,1.15-.58.55,1.17,1.8,1.46c1.25.29,1.46-.42,1.79-1.21s.79-3.62.79-3.62l.17,1.33s.25,1.38.33,2.42c.08,1.04.42,1.38,1.71,1.54,1.29.17,1.25-.83,1.71-1.71.46-.88.96-2.42.96-2.42,0,0,0,1,.17,2.29.17,1.29.29.83.79,1.17s1.58.17,2.96-.08,1.08-.46,1.25-2.17c.17-1.71.25-2.38.25-2.38,0,0,.58.75.96,1.83.38,1.08.92-.08,1.71-.83s.71-.71.71-.71c0,0,1.21-.25,1.75-.79.54-.54,0-1.49,0-1.49,0,0,.29-.43.88-.26.58.17.71-.17,1.79-.71,1.08-.54.54-.83.62-1.33s.17-.42.83-1.38c.53-.76.87-1.94.95-2.29,0-.03,0-.07.01-.09.02-.05.01,0-.01.09-.05.42.07,2.13-.32,2.83Z"
+    function defeat(){
+      this.alpha = 0
+      this.alpha2 = 0
+      this.alpha3 = 1
+      this.shot = false
+      this.mod = 0
+      this.count = 0
+      this.effects = []
+      this.draw = function(){
+        this.alpha <= .95 ? this.alpha += .05 : this.alpha2 = 1
+        if(this.alpha2 == 1 && !this.shot){
+          for(let i = 0; i < 25; i++) this.effects.push(new particleOut(160, 55, 8, 10, 0, 75, 80))
+          this.shot = true
+        }
+        if(this.shot){
+          this.mod += (30 - this.mod) / 75
+          if(this.count++ < 15) this.effects.push(new defeatHelp())
+          if(this.mod > 29) this.alpha3 >= .005 ? this.alpha3 -= .005 : this.lifetime = 0
+        }
+        DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.alpha * .9))
+        this.effects.forEach((ele, i)=>{
+          ele.draw(1)
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        DrawPath(118, 85 + this.mod, jawD, getColorString(0, 0, 80, this.alpha * this.alpha3), 1, 1)
+        DrawPath(112, 35 - this.mod, skullD, getColorString(0, 0, 90, this.alpha * this.alpha3), 1, 1)
+        DrawCircle(160, 50 - this.mod, 10, getColorString(0, 0, 50, this.alpha2 * this.alpha3))
+        DrawCircle(160, 48 - this.mod, 7, getColorString(0, 100, 30, this.alpha2 * this.alpha3))
+      }
+    }
+
+    function centerWeightedRandom(min, max) {
+      const center = (min + max) / 2;
+      const range = (max - min) / 2;
+
+      // Average multiple random values to create center bias
+      const r = (Math.random() + Math.random()) / 2;
+
+      return center + (r - 0.5) * 2 * range;
+    }
+
+    function defeatHelp(){
+      this.x = centerWeightedRandom(40, 280)
+      this.y = centerWeightedRandom(20, 180)
+      this.rad = 1
+      this.size = Math.random() * 200 + 10
+      this.draw = function(alpha){
+        DrawCircle(this.x, this.y, this.rad, getColorString(8, 100, 30, alpha))
+        if(this.rad < this.size - 1) this.rad += (this.size - this.rad) / 300
+      }
+    }
+
+    function victory(){
+      this.y = 0
+      this.y2 = 200
+      this.y3 = 200
+      this.count = 0
+      this.alpha = 0
+      this.alpha2 = 1
+      this.speed = 1
+      this.effects = []
+      this.draw = function(){
+        this.alpha <= 1 ? this.alpha += .05 : this.count < 50 ? this.count++ : this.y2 > 0 ? this.y2 -= .5 : this.y3 > -200 ? this.y3 -= this.speed : this.y3 = 200
+        if(this.y2 <= 0){
+          this.speed *= 1.0025
+          this.alpha2 >= .002 ? this.alpha2 -= .002 : this.lifetime = 0
+        }
+        if(this.y2 > 0 && Math.random() > .9) {
+          let tempX = Math.random() * 320
+          let tempY = Math.random() * 200
+          for(let i = 0; i < 15; i++) this.effects.push(new particleOut(tempX, tempY, 5, 20, Math.random() * 60, 100, 50))
+        }
+        this.effects.forEach((ele, i)=>{
+          ele.draw()
+          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+        })
+        DrawRect(0, 0 + this.y, 320, 30, getColorString(190, 75, this.y2 / 10 + 2, this.alpha * this.alpha2))
+        DrawRect(0, 0 + this.y, 30, 200, getColorString(190, 75, this.y2 / 10 + 2, this.alpha * this.alpha2))
+        DrawRect(290, 0 + this.y, 30, 200, getColorString(190, 75, this.y2 / 10 + 2, this.alpha * this.alpha2))
+        DrawRect(0, this.y2, 320, 200, getColorString(190, 75, this.y2 / 10 + 2, this.alpha * this.alpha2))
+        DrawRect(0, this.y3, 320, 100, getColorString(0, 0, 0, this.alpha * this.alpha2))
+        DrawRect(0, this.y3 + 100, 320, 20, getColorString(0, 0, 100, this.alpha * this.alpha2))
+        DrawRect(0, this.y3 + 120, 320, 20, getColorString(190, 75, 30, this.alpha * this.alpha2))
+                DrawRect(0, this.y3 + 140, 320, 20, getColorString(190, 75, 20, this.alpha * this.alpha2))
+                        DrawRect(0, this.y3 + 160, 320, 20, getColorString(190, 75, 10, this.alpha * this.alpha2))
+      }
+    }
+
+    let lootGoing = false
+    function lootCallback(){
+      if(engine.vision.inGameWhiteCompass < .05 && LootWhiteMeter.value >= .25 && LootBlueMeter.value >= .95 && engine.vision.lootNotWhite <= .05 && !lootGoing){
+        lootGoing = true
+        if(lootOn) effects.push(new looting())
+      } else if (gInGame || LootBlueMeter.value <= .1) lootGoing = false
+    }
+
+    function looting(){
+      this.alpha = 0
+      this.val1 = 0
+      this.val2 = 0
+      this.val3 = 0
+      this.draw = function(){
+        this.val1 += ((engine.audio.level * 2.5 + 100) - this.val1) / 20
+        if(this.val1 < 0) this.val1 = 0
+        this.val2 += ((engine.audio.width * 200) - this.val2) / 20
+        if(this.val2 < 0) this.val2 = 0
+        this.val3 += ((engine.audio.density * 100) - this.val3) / 20
+        if(lootGoing) this.alpha <= .99 ? this.alpha += .01 : this.alpha = 1
+        else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.alpha * .75))
+        DrawStroke(160, 100, this.val1 * 1.3, getColorString(10, this.val1, .8 * this.val3, this.alpha), this.val2)
+        DrawStroke(160, 100, this.val1 * 1, getColorString(50, this.val1, this.val3 * 1.5, this.alpha), this.val2)
+        DrawStroke(160, 100, this.val1 * .7, getColorString(130, this.val1, this.val3 * 2, this.alpha), this.val2)
+        DrawStroke(160, 100, this.val1 * .4, getColorString(200, this.val1, this.val3 * 2, this.alpha), this.val2)
+      }
+    }
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            hiddenCtx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hiddenCtx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            hiddenCtx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            hiddenCtx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
+    //#region Helper Functions
+  function DrawArc(x, y, start, end, radius, direction, color){
+    hiddenCtx.beginPath()
+    hiddenCtx.arc(x, y, radius, start, end, direction)
+    hiddenCtx.fillStyle = color
+    hiddenCtx.fill()
+  }
+
+  function DrawLine(start, end, color, stroke){
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(start[0], start[1])
+    hiddenCtx.lineTo(end[0], end[1])
+    hiddenCtx.strokeStyle = color
+    hiddenCtx.lineWidth = stroke
+    hiddenCtx.stroke()
+  }
+
+  function DrawEllipse(x, y, width, height, rotation, color){
+    hiddenCtx.beginPath()
+    hiddenCtx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    hiddenCtx.fillStyle = color
+    hiddenCtx.fill()
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.save();
+    hiddenCtx.translate(x, y);
+    hiddenCtx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    hiddenCtx.fill(ex);
+    hiddenCtx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.moveTo(cord1X, cord1Y);
+    hiddenCtx.lineTo(cord2X, cord2Y);
+    hiddenCtx.lineTo(cord3X, cord3Y);
+    hiddenCtx.lineTo(cord1X, cord1Y);
+    hiddenCtx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, width, height);
+  };
+
+  function strokeRect(x, y, width, height, color, stroke){
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke
+    hiddenCtx.rect(x, y, width, height);
+    hiddenCtx.stroke()
+  }
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+  function Meter(size, callback) {
+    this.size = size;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+    var stabilizedValue = null;
+
+    this.setValue = function (updatedValue) {
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      // Only check for stability if we have enough values
+      if (values.length < this.size) return;
+
+      // Early exit if the new value differs from the last stabilized value
+      if (stabilizedValue !== null && updatedValue !== stabilizedValue) {
+        stabilizedValue = null;
+        return;
+      }
+
+      // Check if all values are the same (only if we don't already know they are)
+      if (stabilizedValue === null) {
+        var firstValue = values[0];
+        for (var i = 1; i < values.length; i++) {
+          if (values[i] !== firstValue) return;
+        }
+        stabilizedValue = firstValue;
+      }
+
+      // Only trigger callback if value actually changed
+      if (this.value !== stabilizedValue) {
+        this.diff = Math.abs(this.value - stabilizedValue);
+        this.increased = this.value < stabilizedValue;
+        this.decreased = this.value > stabilizedValue;
+        this.value = stabilizedValue;
+        callback();
+      }
+    }
+  }
+
+  window.requestAnimationFrame(update);
+</script>

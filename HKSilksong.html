@@ -1,0 +1,1323 @@
+<head>
+    <title>Hollow Knight: Silksong</title>
+    <meta description="Ambience and metering for Hollow Knight: Silksong. v1.0" />
+    <meta publisher="SignalRGB" />
+    <meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background effect." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes the type of background effect." type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" tooltip="Changes the color of custom background effects." type="color" default="#010101" min="0" max="360" />
+    <meta property="adjToggle" label="Bar Adjust Toggle (turn off in-game)" 
+      tooltip="Turn on to adjust the health and silk bar placement. Turn off to play the game." type="boolean" default="0" />
+    <meta property="hpBarOn" label="enable Health Bar" tooltip="Turns on the health bar effect." type="boolean" default="1" />
+    <meta property="healthColor" label="Health Bar Color" tooltip="Changes the color of the health bar effect." type="color" default="#12ff00" min="0" max="360" />
+    <meta property="HealthBarX" label="Health Bar X" tooltip="Moves the health bar effect sideways." type="number" min="0" max="100" default="0" />
+    <meta property="HealthBarY" label="Health Bar Y" tooltip="Moves the health bar effect up or down." type="number" min="0" max="100" default="25" />
+    <meta property="HealthBarWidth" label="Health Bar Width" tooltip="Changes the maximum width of the health bar effect." type="number" min="0" max="100" default="100" />
+    <meta property="HealthBarHeight" label="Health Bar Height" tooltip="Changes the maximum height of the health bar effect." type="number" min="0" max="100" default="15" />
+    <meta property="silkBarOn" label="enable Silk Bar" tooltip="Turns on the silk bar effect." type="boolean" default="1" />
+    <meta property="SilkColor" label="Silk Bar Color" tooltip="Changes the color of the silk bar effect." type="color" default="#00c3ff" min="0" max="360" />
+    <meta property="SilkBarX" label="Silk Bar X" tooltip="Moves the silk bar effect sideways." type="number" min="0" max="100" default="0" />
+    <meta property="SilkBarY" label="Silk Bar Y" tooltip="Moves the silk bar effect up or down." type="number" min="0" max="100" default="40" />
+    <meta property="SilkBarWidth" label="Silk Bar Width" tooltip="Changes the maximum width of the silk bar effect." type="number" min="0" max="100" default="100" />
+    <meta property="SilkBarHeight" label="Silk Bar Height" tooltip="Changes the maximum height of the silk bar effect." type="number" min="0" max="100" default="15" />
+    <meta property="enableDamage" label="Damage effect" tooltip="Turns on the damage effect." type="boolean" default="1" />
+    <meta property="enableLowHealth" label="Low Health effect" tooltip="Turns on the low health effect." type="boolean" default="1" />
+    <meta property="enableUlt" label="Full Silk effect" tooltip="Turns on the full silkbar effect." type="boolean" default="1" />
+    <meta property="enableRest" label="Rest effect" tooltip="Turns on the rest effect." type="boolean" default="1" />
+    <meta property="enableBind" label="Bind effect" tooltip="Turns on the Bind (heal) effect." type="boolean" default="1" />
+    <meta property="enableBoss" label="Boss effect" tooltip="Turns on the boss fight initiates effect." type="boolean" default="1" />
+    <meta property="enableItem" label="Item effect" tooltip="Turns on the item pickup effect." type="boolean" default="1" />
+    <meta property="enableDialogue" label="Dialogue effect" tooltip="Turns on the NPC dialogue effect." type="boolean" default="1" />
+
+
+    <meta meter="inGameBrown" tags="vlc,Hollow Knight Silksong,HKS" x="0.0614" y="0.0931" width="0.0011" height="0" 
+      h="0-360" s="0-30" l="30-50" hdr-h="0-360" hdr-s="0-30" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.2815" y="0.0935" width="0.0013" height="0" />
+      <resolution aspect="24:10" x="0.1735" y="0.0938" width=".0009" height="0" />
+      <resolution aspect="16:11" x="0.0614" y="0.0844" width="0.0015" height="0" />
+
+      <resolution size="3840x2160" x="0.0625" y="0.0931" width="0.0011" height="0" />
+      <resolution size="2560x1080" x="0.1712" y="0.0927" width="0.0011" height="0" />
+    </meta>
+
+    <meta meter="inGameWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.1434" y="0.0987" width="0.0012" height="0" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.3221" y="0.0991" width="0.0010" height="0" />
+      <resolution aspect="24:10" x="0.2346" y="0.0993" width="0.0023" height="0" />
+      <resolution aspect="16:11" x="0.1434" y="0.0888" width="0.0016" height="0" />
+
+      <resolution size="3840x2160" x="0.1435" y="0.0991" width="0.0026" height="0.0009" />
+      <resolution size="2560x1080" x="0.2333" y="0.0992" width="0.0027" height="0" />
+    </meta>
+
+    <meta meter="inGameNotWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.1426" y="0.091" width="0.0036" height="0.0007"  
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.3219" y="0.0926" width="0.0013" height="0" />
+      <resolution aspect="24:10" x="0.2337" y="0.0931" width="0.0032" height="0" />
+      <resolution aspect="16:11" x="0.1438" y="0.0844" width="0.0024" height="0" />
+
+      <resolution size="3840x2160" x="0.1427" y="0.0926" width="0.0042" height="-0.0009" />
+      <resolution size="2560x1080" x="0.2325" y="0.0927" width="0.0031" height="0" />
+    </meta>
+
+    <meta meter="silkWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.0555" y="0.1584" width="0.0438" height="0.0313"  
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.2781" y="0.1583" width="0.0216" height="0.0280" />
+      <resolution aspect="24:10" x="0.1695" y="0.1576" width="0.0320" height="0.0310" />
+      <resolution aspect="16:11" x="0.0555" y="0.1413" width="0.0441" height="0.0294" />
+
+      <resolution size="3840x2160" x="0.0544" y="0.1579" width="0.0456" height="0.0325" />
+      <resolution size="2560x1080" x="0.1665" y="0.1576" width="0.0344" height="0.0342" />
+    </meta>
+
+    <meta meter="healthWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.1" y="0.0982" width="0.1135" height="-0.0019"
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.3005" y="0.0991" width="0.0576" height="-0.0010" />
+      <resolution aspect="24:10" x="0.2026" y="0.0986" width=".0869" height="-0.0037" />
+      <resolution aspect="16:11" x="0.1" y="0.0894" width="0.1161" height="-0.0037" />
+
+      <resolution size="3840x2160" x="0.1" y="0.0982" width="0.1135" height="-0.0019" />
+      <resolution size="2560x1080" x="0.2005" y="0.0982" width="0.0859" height="-0.0037" />
+    </meta>
+
+    <meta meter="ultWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.0602" y="0.0716" width="0.0023" height="0.0035"  
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.2792" y="0.0704" width="0.0023" height="0.0040" />
+      <resolution aspect="24:10" x="0.1712" y="0.0701" width="0.0032" height="0.0060" />
+      <resolution aspect="16:11" x="0.0574" y="0.0657" width="0.0043" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.0604" y="0.0709" width="0.0042" height="0.0041"/>
+      <resolution size="2560x1080" x="0.17" y="0.0723" width="0.0047" height="0.0074" />
+    </meta>
+
+    <meta meter="bossWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.061" y="0.8694" width="0.2258" height="0.0560" 
+      h="0-360" s="0-30" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.2810" y="0.8750" width="0.1146" height="0.0540" />
+      <resolution aspect="24:10" x="0.1776" y="0.8660" width="0.1532" height="0.0560" />
+      <resolution aspect="16:11" x="0.0664" y="0.8260" width="0.2107" height="0.0566" />
+
+      <resolution size="3840x2160" x="0.061" y="0.8694" width="0.2258" height="0.056"  />
+      <resolution size="2560x1080" x="0.1708" y="0.8694" width="0.1731" height="0.0566" />
+    </meta>
+
+    <meta meter="bossNotWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.0688" y="0.8573" width="0.1516" height="0.0024" 
+      h="0-360" s="0-30" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.3000" y="0.8537" width="0.0536" height="0.0001" />
+      <resolution aspect="24:10" x="0.2041" y="0.8569" width="0.0730" height="0.0001" />
+      <resolution aspect="16:11" x="0.1043" y="0.8224" width="0.097" height="-0.0006" />
+
+      <resolution size="3840x2160" x="0.0688" y="0.8573" width="0.1516" height="0.0024"  />
+      <resolution size="2560x1080" x="0.195" y="0.8536" width="0.086" height="0.0018" />
+    </meta>
+
+    <meta meter="itemsWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.0964" y="0.2275" width="0.0581" height="0.0296"
+      h="0-360" s="0-30" l="60-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.3042" y="0.2287" width="0.0318" height="0.0300" />
+      <resolution aspect="24:10" x="0.2084" y="0.2278" width="0.0506" height="0.0290" />
+      <resolution aspect="16:11" x="0.1098" y="0.2039" width="0.0633" height="0.0275" />
+
+      <resolution size="3840x2160" x="0.0964" y="0.2275" width="0.0581" height="0.0296" />
+      <resolution size="2560x1080" x="0.2059" y="0.2206" width="0.0477" height="0.0361" />
+    </meta>
+
+    <meta meter="itemsNotWhite" tags="vlc,Hollow Knight Silksong,HKS" x="0.1144" y="0.2223" width="0.0148" height="0" 
+      h="0-360" s="0-30" l="60-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.3146" y="0.2204" width="0.0148" height="0.0020" />
+      <resolution aspect="24:10" x="0.2267" y="0.2243" width="0.0206" height="0.0030" />
+      <resolution aspect="16:11" x="0.1254" y="0.2008" width="0.0352" height="0.0018" />
+
+      <resolution size="3840x2160" x="0.1144" y="0.2223" width="0.0148" height="0" />
+      <resolution size="2560x1080" x="0.22" y="0.2178" width="0.0215" height="0.0018" />
+    </meta>
+
+    <meta meter="itemColor" tags="vlc,Hollow Knight Silksong,HKS" x="0.0471" y="0.2427" width="0" height="0" 
+      h="0-360" s="0-30" l="70-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.2742" y="0.2426" width="0" height="0" />
+      <resolution aspect="24:10" x="0.1640" y="0.2458" width="0" height="0" />
+      <resolution aspect="16:11" x="0.0485" y="0.217" width="0" height="0" />
+
+      <resolution size="3840x2160" x="0.0471" y="0.2427" width="0" height="0"  />
+      <resolution size="2560x1080" x="0.1614" y="0.2437" width="0" height="0" />
+    </meta>
+
+    <meta meter="rest1White" tags="vlc,Hollow Knight Silksong,HKS" x="0.433" y="0.7026" width="0.0043" height="0.0021" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4979" y="0.7241" width="0.0042" height="0.0030" />
+      <resolution aspect="24:10" x="0.4959" y="0.7236" width="0.0044" height="0.0030" />
+      <resolution aspect="16:11" x="0.4959" y="0.6998" width="0.0047" height="0.0038" />
+
+      <resolution size="3840x2160" x="0.3991" y="0.7235" width="0.0039" height="0.0023"  />
+      <resolution size="2560x1080" x="0.4494" y="0.7062" width="0.0039" height="0.0028" />
+    </meta>
+
+    <meta meter="rest2White" tags="vlc,Hollow Knight Silksong,HKS" x="0.8927" y="0.8129" width="0.0211" height="0.0463"
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.9437" y="0.8167" width="0.0146" height="0.0380" />
+      <resolution aspect="24:10" x="0.9157" y="0.8132" width="0.0221" height="0.0410" />
+      <resolution aspect="16:11" x="0.8867" y="0.8293" width="0.0328" height="0.0406" />
+
+      <resolution size="3840x2160" x="0.8927" y="0.8129" width="0.0211" height="0.0463"  />
+      <resolution size="2560x1080" x="0.916" y="0.8137" width="0.0226" height="0.0464" />
+    </meta>
+
+    <meta meter="dialogueTopWHite" tags="vlc,Hollow Knight Silksong,HKS" x="0.4873" y="0.0438" width="0.0254" height="0.0431"
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4943" y="0.0472" width="0.0130" height="0.0370" />
+      <resolution aspect="24:10" x="0.4910" y="0.0431" width="0.0177" height="0.0415" />
+      <resolution aspect="16:11" x="0.4885" y="0.0901" width="0.025" height="0.0375" />
+
+      <resolution size="3840x2160" x="0.4874" y="0.0468" width="0.0231" height="0.037"  />
+      <resolution size="2560x1080" x="0.4877" y="0.0454" width="0.0238" height="0.038" />
+    </meta>
+
+    <meta meter="dialogueBottowWHite" tags="vlc,Hollow Knight Silksong,HKS" x="0.4262" y="0.4006" width="0.1406" height="0.0107"
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4760" y="0.3972" width="0.0555" height="0.0180" />
+      <resolution aspect="24:10" x="0.4680" y="0.3958" width="0.0744" height="0.0150" />
+      <resolution aspect="16:11" x="0.4654" y="0.4071" width="0.0852" height="0.0157" />
+
+      <resolution size="3840x2160" x="0.4262" y="0.4006" width="0.1406" height="0.0107"/>
+      <resolution size="2560x1080" x="0.4654" y="0.4006" width="0.0704" height="0.0149" />
+    </meta>
+
+
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = 320;
+    const height = 200;
+    let effects = [];
+    let gSensor = 0;
+    let gAlpha = 1
+
+    var gInGame = false;
+    var lowHealthGoing = false;
+    var restGoing = false
+    var dialogueGoing = false;
+    var bossGoing = false;
+
+    var inGameBrownMeter = new Meter(5, inGameCallback);
+    var inGameWhiteMeter = new Meter(5, inGameCallback);
+    var silkWhiteMeter = new Meter(10, () => "");
+    var healthWhiteMeter =  new Meter(10, healthCallback);
+    var ultWhiteMeter = new Meter(5,ultCallback);
+    var bossWhiteMeter = new Meter(20, bossCallback);
+    var itemsWhiteMeter = new Meter(8,itemsCallback);
+    var rest1WhiteMeter = new Meter(5,restCallback);
+    var rest2WhiteMeter = new Meter(5,restCallback);
+    var itemColorMeter = new Meter(5,itemsCallback)
+    var dialogueTopWHiteMeter = new Meter(10, dialogueCallback);
+    var dialogueBottowWHiteMeter = new Meter(10, dialogueCallback);
+
+
+
+    //#region Update
+    function update() {
+      inGameBrownMeter.setValue(engine.vision.inGameBrown)
+      inGameWhiteMeter.setValue(engine.vision.inGameWhite)
+      silkWhiteMeter.setValue(engine.vision.silkWhite) 
+      healthWhiteMeter.setValue(engine.vision.healthWhite) 
+      ultWhiteMeter.setValue(engine.vision.ultWhite) 
+      bossWhiteMeter.setValue(engine.vision.bossWhite) 
+      itemsWhiteMeter.setValue(engine.vision.itemsWhite) 
+      rest1WhiteMeter.setValue(engine.vision.rest1White) 
+      rest2WhiteMeter.setValue(engine.vision.rest2White)
+      itemColorMeter.setValue(engine.vision.itemColor[0])
+      dialogueTopWHiteMeter.setValue(engine.vision.dialogueTopWHite)
+      dialogueBottowWHiteMeter.setValue(engine.vision.dialogueBottowWHite)
+
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+      DrawHUD();
+  
+      
+
+
+
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.lifetime <= 0){
+          effects.splice(i, 1)
+        }
+      })
+
+      window.requestAnimationFrame(update);
+    };
+    //#endregion
+    //#region Background Modes
+    // Background Configuration
+    let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+
+    //#endregion
+    
+    //#region callbacks
+
+    function inGameCallback(){
+      if(inGameBrownMeter.value >= 0.95 && inGameWhiteMeter.value >= 0.95 && engine.vision.inGameNotWhite <.1 ){
+        gInGame = true
+      } else{
+        gInGame = false
+
+      }
+    }
+
+    function healthCallback(){
+      if(enableDamage){
+        if(gInGame && healthWhiteMeter.decreased && healthWhiteMeter.diff >.08){
+          effects.push(new damage())
+        }
+      }
+      if(enableLowHealth){
+        if(gInGame && healthWhiteMeter.value <.28 && !lowHealthGoing){
+          effects.push(new lowHealth())
+          lowHealthGoing = true
+
+        }
+      }
+      
+      
+    }
+
+
+
+    function ultCallback(){
+      if(gInGame){
+        if(enableUlt){
+          if(ultWhiteMeter.value >=.95){
+          effects.push(new ultReady())
+          }
+        }
+        if(enableBind){
+          if(ultWhiteMeter.decreased && ultWhiteMeter.diff >.8 ){
+            effects.push(new bind())
+          }
+        }
+        
+
+      }
+      
+    }
+
+    function restCallback(){
+      if(enableRest){
+        if(gInGame){
+          if(rest1WhiteMeter.value >=.95){
+            restGoing = true
+            setTimeout(()=>{
+              if( rest2WhiteMeter.value >=.5 ){
+                effects.push(new rest())
+              }
+            },500)
+            
+          }
+        }
+        
+        
+      }
+    }
+
+    function itemsCallback(){
+      if(enableItem){
+        if(gInGame){
+          if(itemsWhiteMeter.increased && itemsWhiteMeter.diff > .03 && engine.vision.itemsNotWhite <.1){
+            effects.push(new ImpactEffect())
+          }
+        }
+        
+      } 
+      
+    }
+
+    function bossCallback(){
+      if(enableBoss){
+        if(gInGame){
+          if(bossWhiteMeter.value >=.13 && engine.vision.bossNotWhite <.1 &&  !bossGoing && !dialogueGoing){
+            effects.push(new boss())
+            bossGoing = true
+          }
+        }
+        
+      }
+    }
+
+    function dialogueCallback(){
+      if(enableDialogue){
+        if(dialogueTopWHiteMeter.value >=.25 && dialogueBottowWHiteMeter.value >=.24 && !dialogueGoing){
+          effects.push(new DialogueEffect())
+          dialogueGoing = true
+        }
+      }
+      
+    }
+
+
+
+
+
+    let smoothHealth = 0;
+    let smoothSilk = 0;
+
+    function DrawHUD() {
+    if (gInGame) {
+      const smoothFactor = 0.1; 
+      smoothHealth += (healthWhiteMeter.value - smoothHealth) * smoothFactor;
+      smoothSilk   += (silkWhiteMeter.value   - smoothSilk)   * smoothFactor;
+      if(hpBarOn) {
+        ctx.beginPath()
+        ctx.fillStyle = healthColor;
+        ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (smoothHealth/.71 ) * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      }
+      //Silk
+      if(silkBarOn){
+        ctx.beginPath()
+        ctx.fillStyle = SilkColor;
+        ctx.fillRect((SilkBarX * 3.2), (SilkBarY * 2), (smoothSilk/.95) * (SilkBarWidth * 3.2), (SilkBarHeight * 2))
+      }
+    } else if (adjToggle && !gInGame) {
+      if(hpBarOn){
+        ctx.beginPath()
+        ctx.fillStyle = healthColor;
+        ctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      }
+      //Silk
+      if(silkBarOn){
+        ctx.beginPath()
+        ctx.fillStyle = SilkColor;
+        ctx.fillRect((SilkBarX * 3.2), (SilkBarY * 2), (SilkBarWidth * 3.2), (SilkBarHeight*2))
+      }
+    }
+    
+  }
+
+
+  var pathSilksong = "M28.22,81.23C28.22,81.23,25.01,93,25.01,93C24.87,99.56,25.27,99.06,26.67,105C30.11,119.62,35.27,124.09,45.77,134.11C48.71,136.92,56.83,144.31,60.28,145.48C67.48,147.92,74.86,139.67,79.42,135.32C83.75,131.2,84.82,131.32,89.63,125.71C99.43,114.27,100.13,106.33,100,92C99.89,80.29,95.97,73.64,89.95,64C89.95,64,85.21,56,85.21,56C85.21,56,77.43,46.09,77.43,46.09C74.42,41.88,68.51,32.39,62.87,32.46C59.86,32.5,57.54,35.16,55.72,37.26C53.18,40.2,43.41,53.79,42,57C42,57,35.3,67.21,35.3,67.21C32,72.23,30.2,76.72,28.22,81.23Z M86.23,101.22C91.47,101.68,92.52,113.54,87.2,118.06C85.27,121.69,71.97,128.26,72.94,115.36C75.93,99.02,81.17,100.33,86.23,101.22Z M39.05,101.74C47.63,99.7,51.27,103.85,52.07,112C52.51,116.41,54.57,124.3,46.98,122.96C35.45,120.91,29.22,107.6,39.05,101.74Z"
+
+
+
+    function lowHealth() {
+      this.count = 0;
+      this.lifetime = 1;
+      this.headX = 110;
+      this.headY = 20;
+      this.scalePulse = 0;
+      this.particles = [];
+
+      this.draw = function() {
+        if (healthWhiteMeter.value >= 0.4 || !gInGame) {
+          this.lifetime = 0;
+          lowHealthGoing = false;
+        }
+
+        ctx.save();
+        ctx.fillStyle = 'black';
+        ctx.globalAlpha = 0.5;
+        ctx.fillRect(0, 0, 320, 200);
+        ctx.restore();
+
+        this.particles.push(new SmokeParticle(this.headX + 50, this.headY + 150));
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+          this.particles[i].draw();
+          if (this.particles[i].lifetime <= 0) {
+            this.particles.splice(i, 1);
+          }
+        }
+
+        this.scalePulse += 0.20;
+        let pulse = 0.9 + Math.sin(this.scalePulse * 2) * 0.07;
+
+        const headWidth = 100;
+        const headHeight = 100;
+        const offsetX = -(headWidth * (pulse - 1)) / 2;
+        const offsetY = -(headHeight * (pulse - 1)) / 2;
+
+        ctx.save();
+        ctx.translate(this.headX + offsetX, this.headY + offsetY);
+        ctx.scale(pulse, pulse);
+        ctx.fillStyle = "hsl(0, 100%, 100%)";
+        ctx.fill(new Path2D(pathSilksong));
+        ctx.restore();
+      };
+    }
+
+
+
+  function SmokeParticle(startX, startY) {
+    this.x = startX + (Math.random() - 0.5) * 320; 
+    this.y = startY + (Math.random() - 0.5) * 100; 
+    this.vx = (Math.random() - 0.5) * 0.3;     
+    this.vy = -1 - Math.random() * 0.9;           
+    this.ax = 0;                                   
+    this.ay = -0.002 - Math.random() * 1.5;     
+    this.rad = 20 + Math.random() * 4;
+    this.maxRad = this.rad;
+    this.alpha = 0.6;
+    this.lifetime = 1;
+    this.age = 0;
+    this.maxAge = 150 + Math.random() * 30;
+    this.rotation = Math.random() * Math.PI * 2;
+    this.rotationSpeed = (Math.random() - 0.5) * 0.05;
+
+    this.draw = function() {
+      this.age++;
+
+  
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vx += this.ax;
+      this.vy += this.ay;
+      this.rotation += this.rotationSpeed;
+
+      let progress = this.age / this.maxAge;
+      this.alpha = 0.6 * (1 - progress);             
+      this.rad = this.maxRad * (1 + progress * 0.8); 
+
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+
+      ctx.globalAlpha = this.alpha * 0.3;
+      ctx.fillStyle = "hsl(0, 100%, 50%)";
+      ctx.beginPath();
+      ctx.ellipse(0, 0, this.rad * 1.5, this.rad, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+
+      ctx.globalAlpha = this.alpha * 0.5;
+      ctx.fillStyle = 'red';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, this.rad, this.rad * 0.9, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+      ctx.globalAlpha = 1;
+
+      if (this.age >= this.maxAge) {
+        this.lifetime = 0; 
+      }
+    }
+  }
+   
+    function rest() {
+      this.count = 0;
+      this.lifetime = 1;
+      
+      this.draw = function() {
+        if (this.count < 90) {
+          for (let i = 0; i < 2; i++) {
+            effects.push(new RestParticle());
+          }
+          this.count++;
+        } else if((rest1WhiteMeter.value <.1 && rest2WhiteMeter.value <.1) || !gInGame ){
+          this.lifetime = 0;
+          restGoing = false
+        }
+      }
+    }
+
+    function RestParticle() {
+      this.x = Math.random() * 320;
+      this.y = 230 + Math.random() * 20;
+      this.vy = -0.5 - Math.random() * 0.5;
+      this.ay = -0.05;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.rad = 3 + Math.random() * 2.5;
+      this.maxRad = this.rad;
+      this.alpha = 1;
+      this.hue = 60;
+      this.lifetime = 1;
+      this.age = 0;
+      this.maxAge = 100 + Math.random() * 50;
+      
+      this.draw = function() {
+        this.age++;
+        
+
+        this.y += this.vy;
+        this.x += this.vx;
+        this.vy += this.ay;
+        
+
+        let progress = this.age / this.maxAge;
+        this.alpha = 1 - progress;
+        this.rad = this.maxRad * (1 - progress * 0.5);
+        
+
+        ctx.globalAlpha = this.alpha * 0.3;
+        ctx.fillStyle = `hsl(${this.hue}, 100%, 60%)`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.rad * 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.rad * 2.5, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.globalAlpha = 1;
+        
+        if (this.age >= this.maxAge) {
+          this.lifetime = 0;
+        }
+      }
+    }
+
+    function bind() {
+      this.count = 0;
+      this.lifetime = 1;
+      this.waveOffset = 0;
+      
+      this.draw = function() {
+        if (this.count < 90) {
+
+          for (let i = 0; i < 1; i++) {
+            effects.push(new BindParticle(i * 40, this.waveOffset));
+          }
+          this.waveOffset += 0.4;
+          this.count++;
+        } else {
+          this.lifetime = 0;
+        }
+      }
+    }
+
+    function BindParticle(startX, wavePhase) {
+      this.x = startX;
+      this.y = 180;
+      this.wavePhase = wavePhase + (startX * 0.05);
+      this.vy = -1.8;
+      this.waveAmplitude = 120;
+      this.waveFrequency = 0.15;
+      this.rad = 3 + Math.random() * 2;
+      this.maxRad = this.rad;
+      this.alpha = 1;
+      this.hue = 60;
+      this.lifetime = 1;
+      this.age = 0;
+      this.maxAge = 110 + Math.random() * 30;
+      
+      this.draw = function() {
+        this.age++;
+        
+      
+        this.y += this.vy;
+        this.wavePhase += this.waveFrequency;
+        
+     
+        let waveX = 160 + Math.sin(this.wavePhase) * this.waveAmplitude;
+        
+ 
+        let progress = this.age / this.maxAge;
+        this.alpha = 1 - progress;
+        this.rad = this.maxRad * (1 - progress * 0.4);
+        
+   
+        ctx.globalAlpha = this.alpha * 0.5;
+        ctx.fillStyle = `hsl(${this.hue}, 100%, 60%)`;
+        ctx.beginPath();
+        ctx.arc(waveX, this.y, this.rad * 6, 0, Math.PI * 2);
+        ctx.fill();
+        
+   
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
+        ctx.beginPath();
+        ctx.arc(waveX, this.y, this.rad * 3, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.globalAlpha = 1;
+        
+        if (this.age >= this.maxAge || this.y < -10 ) {
+          this.lifetime = 0;
+        }
+      }
+    }
+
+    function boss() {
+      this.alpha = 1;
+      this.alpha2 = 0;
+      this.rad = 1;
+      this.stroke = 10;
+      this.width = 0;
+      this.width2 = 0;
+      this.cycles = 0;        
+      this.maxCycles = 3;   
+
+      this.draw = function() {
+        ctx.globalAlpha = this.alpha;
+        DrawRect(0, 0, 320, 200, `hsla(55, 100%, 20%, ${this.alpha2})`);
+        DrawStroke(160, 100, this.rad, "Yellow", this.stroke);
+        ctx.globalAlpha = 1;
+
+  
+        if (this.rad < 300) {
+          this.rad += 10;
+        } else if (this.width < 150) {
+          this.width += 100;
+        } else if (this.width2 < 200) {
+          this.width2 += 10;
+        } else if (this.alpha >= 0.05) {
+          this.alpha -= 0.05;
+        } else {
+      
+          this.cycles++;
+          if (this.cycles < this.maxCycles) {
+        
+            this.alpha = 1;
+            this.alpha2 = 0;
+            this.rad = 1;
+            this.stroke = 10;
+            this.width = 0;
+            this.width2 = 0;
+          } else {
+      
+            this.lifetime = 0;
+            bossGoing = false
+          }
+        }
+        if (this.stroke < 100) this.stroke += 5;
+        if (this.alpha2 <= 0.95) this.alpha2 += 0.05;
+      };
+    }
+
+    function ultReady() {
+      this.lifetime = 500;
+      this.pulses = 0; 
+      this.active = true;
+
+      this.draw = function () {
+        if (!this.active) return;
+
+        ctx.strokeStyle = `hsl(55, 100%, 90%)`;
+        ctx.lineWidth = 50;
+        ctx.beginPath();
+        ctx.arc(160, 100, this.lifetime, 0, Math.PI * 2);
+        ctx.stroke();
+
+        this.lifetime -= 10;
+
+       
+        if (this.lifetime <= 0) {
+          this.pulses++;
+          if (this.pulses < 1) {
+            this.lifetime = 500; 
+          } else {
+            this.active = false; 
+          }
+        }
+      };
+    }
+
+    function damage(){
+        this.alpha = 1
+        this.alpha2 = 0
+        this.rad = 1
+        this.stroke = 10
+        this.width = 0
+        this.width2 = 0
+        this.draw = function(){
+          ctx.globalAlpha = this.alpha
+          DrawRect(0, 0, 320, 200, `hsla(0, 100%, 20%, ${this.alpha2})`)
+          DrawStroke(160, 100, this.rad, "red", this.stroke)
+          ctx.globalAlpha = 1
+          this.rad < 300 ? this.rad += 10 : this.width < 150 ? this.width += 100 : this.width2 < 200 ? this.width2 += 10 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0;
+          if(this.stroke < 100) this.stroke+=5
+          if(this.alpha2 <= .95) this.alpha2 += .05
+        }
+    }
+
+    function ImpactEffect() {
+      this.x = 160;
+      this.y = 50;
+      this.count = 0;
+      this.lifetime = 1;
+      
+      this.draw = function() {
+       
+        if (this.count === 0) {
+          for (let i = 0; i < 50; i++) {
+            let angle = Math.random() * Math.PI - Math.PI;
+            effects.push(new ImpactParticle(this.x, this.y, angle));
+          }
+        }
+        this.count++;
+        if (this.count >= 60) this.lifetime = 0;
+      }
+    }
+
+    function ImpactParticle(x, y, angle) {
+      this.x = x;
+      this.y = y;
+      this.vx = Math.cos(angle) * (2 + Math.random() * 3);
+      this.vy = Math.sin(angle) * (1 + Math.random()) - 2;
+      this.ay = 0.2;
+      this.rad = 1 + Math.random() * 2;
+      this.alpha = 1;
+      this.lifetime = 1;
+      this.age = 0;
+      this.maxAge = 100;
+      this.bounced = false;
+      
+      this.draw = function() {
+        this.age++;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += this.ay;
+        
+        if (this.y > 190 && !this.bounced) {
+          this.vy *= -0.5;
+          this.bounced = true;
+        }
+        
+        let progress = this.age / this.maxAge;
+        this.alpha = 1 - progress;
+        
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = 'hsl(354, 100%, 40%)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.rad + 10, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.globalAlpha = this.alpha * 0.3;
+        ctx.fillStyle = 'hsl(354, 100%, 70%)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.rad + 13, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.globalAlpha = 1;
+        if (this.age >= this.maxAge) this.lifetime = 0;
+      }
+    }
+
+
+    function DialogueEffect() {
+      this.particles = [];
+      this.butterflies = [];
+      this.lifetime = 1;
+      this.initialized = false;
+      this.particleCount = 50;
+      this.butterflyCount = 20;
+      
+      this.draw = function() {
+        if (gInGame || (dialogueBottowWHiteMeter.value <.1 && dialogueTopWHiteMeter.value <.1)) {
+          this.lifetime == 0;
+          dialogueGoing = false
+          return; 
+        }
+
+        ctx.save();
+        ctx.fillStyle = 'black';
+        ctx.globalAlpha = 0.9; 
+        ctx.fillRect(0, 0, 320, 200); 
+        ctx.restore();
+      
+        if (!this.initialized) {
+          for (let i = 0; i < this.particleCount; i++) {
+            this.particles.push(new DialogueParticle());
+          }
+          for (let i = 0; i < this.butterflyCount; i++) {
+            this.butterflies.push(new DialogueButterfly());
+          }
+          this.initialized = true;
+        }
+        
+
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+          this.particles[i].draw(ctx);
+          if (this.particles[i].lifetime === 0) {
+            this.particles.splice(i, 1);
+          }
+        }
+        
+
+        for (let i = this.butterflies.length - 1; i >= 0; i--) {
+          this.butterflies[i].draw(ctx);
+          if (this.butterflies[i].lifetime === 0) {
+            this.butterflies.splice(i, 1);
+          }
+        }
+      };
+    }
+
+    function DialogueParticle() {
+      this.x = Math.random() * 320;
+      this.y = Math.random() * 200;
+      this.size = Math.random() * 3 + 3;
+      this.speedY = Math.random() * 0.5 + 0.2;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.alpha = Math.random() * 0.5 + 0.3;
+      this.lifetime = 1;
+      this.canvasWidth = 320;
+      this.canvasHeight = 200;
+      
+      this.draw = function() {
+
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        
+
+        if (this.y < -10) this.y = this.canvasHeight + 10;
+        if (this.x < -10) this.x = this.canvasWidth + 10;
+        if (this.x > this.canvasWidth + 10) this.x = -10;
+        
+
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = 'hsl(220, 100%, 50%)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      };
+    }
+
+    function DialogueButterfly() {
+      this.x = Math.random() * 320;
+      this.y = Math.random() * 200;
+      this.size = Math.random() * 4 + 8;
+      this.speedX = (Math.random() - 0.5) * 1.5;
+      this.speedY = (Math.random() - 0.5) * 1.5;
+      this.wingAngle = Math.random() * Math.PI * 2;
+      this.wingSpeed = Math.random() * 0.15 + 0.1;
+      this.glowPhase = Math.random() * Math.PI * 2;
+      this.glowSpeed = Math.random() * 0.05 + 0.03;
+      this.lifetime = 1;
+      this.canvasWidth = 320;
+      this.canvasHeight = 200;
+      
+
+      this.isButterfly = Math.random() > 0.5;
+      if (this.isButterfly) {
+        this.r = 255;
+        this.g = 255;
+        this.b = 0;
+      } else {
+        this.r = 130;
+        this.g = 255;
+        this.b = 130;
+      }
+      
+      this.draw = function() {
+
+        this.x += this.speedX;
+        this.y += this.speedY + Math.sin(this.wingAngle) * 0.3;
+        this.wingAngle += this.wingSpeed;
+        this.glowPhase += this.glowSpeed;
+        
+
+        if (this.x < -20) this.x = this.canvasWidth + 20;
+        if (this.x > this.canvasWidth + 20) this.x = -20;
+        if (this.y < -20) this.y = this.canvasHeight + 20;
+        if (this.y > this.canvasHeight + 20) this.y = -20;
+        
+
+        let glowIntensity = (Math.sin(this.glowPhase) + 1) * 0.5;
+        
+        ctx.save();
+        
+
+        let gradient = ctx.createRadialGradient(
+          this.x, this.y, 0,
+          this.x, this.y, this.size * 3
+        );
+        gradient.addColorStop(0, `rgba(${this.r}, ${this.g}, ${this.b}, ${0.6 * glowIntensity})`);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+        ctx.fill();
+        
+
+        ctx.globalAlpha = 0.8 + glowIntensity * 0.2;
+        ctx.fillStyle = `rgb(${this.r}, ${this.g}, ${this.b})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (this.isButterfly) {
+          let wingFlap = Math.abs(Math.sin(this.wingAngle)) * 0.5 + 0.5;
+          ctx.globalAlpha = 0.2 * wingFlap;
+          ctx.fillStyle = `rgb(${this.r}, ${this.g}, ${this.b})`;
+          
+
+          ctx.beginPath();
+          ctx.ellipse(
+            this.x - this.size * 1.5, this.y,
+            this.size * 2 * wingFlap, this.size * 1.5,
+            -Math.PI / 4, 0, Math.PI * 2
+          );
+          ctx.fill();
+          
+    
+          ctx.beginPath();
+          ctx.ellipse(
+            this.x + this.size * 1.5, this.y,
+            this.size * 2 * wingFlap, this.size * 1.5,
+            Math.PI / 4, 0, Math.PI * 2
+          );
+          ctx.fill();
+        }
+        
+
+        ctx.globalAlpha = 0.1 * glowIntensity;
+        ctx.strokeStyle = `rgb(${this.r}, ${this.g}, ${this.b})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.speedX * 3, this.y - this.speedY * 3);
+        ctx.stroke();
+        ctx.restore();
+      };
+    }
+   
+
+    //#endregion
+    
+  //#region Helper Functions
+  function innerEffects(){
+        this.effects = []
+        this.Add = (cb, arr) => {
+            this.effects.push(new cb(...arr))
+        }
+        this.draw = () => {
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+        }
+    }
+
+    function testTranslate(start, end, rot, scaleX, scaleY){
+        ctx.save()
+        ctx.translate(start[0], start[1])
+        ctx.scale(scaleX, scaleY)
+        ctx.rotate(rot)
+        ctx.translate(end[0], end[1])
+    }
+
+  function DrawArc(x, y, start, end, radius, direction, color){
+    ctx.beginPath()
+    ctx.arc(x, y, radius, start, end, direction)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  function DrawLine(start, end, color, stroke){
+    ctx.beginPath()
+    ctx.moveTo(start[0], start[1])
+    ctx.lineTo(end[0], end[1])
+    ctx.strokeStyle = color
+    ctx.lineWidth = stroke
+    ctx.stroke()
+  }
+
+  function drawRadialGradient(color1, color2, inneRadius, fade) {
+      ctx.beginPath();
+      let gradient = ctx.createRadialGradient(160, 100, inneRadius, 160, 100, inneRadius + fade)
+      gradient.addColorStop(0, color1);
+      gradient.addColorStop(1, color2);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 320, 200);
+  }
+
+  function DrawEllipse(x, y, width, height, rotation, color){
+    ctx.beginPath()
+    ctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  
+  function lightning(size, color, width){
+      this.points = [];
+      this.color = color
+      this.width = width
+      while(this.points.length <= size){
+        this.points.push([this.points.length * (350 / size) - 25, 100])
+      }
+      this.draw = function(){
+        drawLightning(this.points, this.color, this.width)
+        this.points.forEach((ele, i)=>{
+          var mod = Math.sin(Date.now() / (100000 * Math.random()))
+          switch(i){
+            case 0:
+              this.points[i][1] < 90 ? this.points[i][1]+=2 : 
+                this.points[i][1] > 110 ? this.points[i][1]-=2 : 
+                  this.points[i][1] += mod * 10;
+              break;
+            case this.points.length - 1:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                  this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                      this.points[i][1] += mod * 10;
+              break;
+            default:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                    this.points[i][1] += mod * 10;
+              this.points[i][0] < i * (320 / this.points.length) ? this.points[i][0]+=5 : 
+                this.points[i][0] > i * (320 / this.points.length) + (320 / this.points.length) ? this.points[i][0]-=5 : 
+                    this.points[i][0] += mod * 10;
+              break;
+          }
+        })
+      }
+    }
+
+  function DrawLightning(array, color, width){
+      ctx.beginPath()
+      ctx.moveTo(...array[0])
+      array.forEach((ele, i)=>{
+        if(i){
+          ctx.lineTo(...array[i])
+        }
+      });
+      ctx.strokeStyle = color;
+      ctx.lineJoin = "round";
+      ctx.lineWidth = width + Math.random() * width;
+      ctx.stroke()
+  }
+
+  function DrawGear(x, y, radius, stroke, teeth, color){
+    DrawStroke(x, y, radius, color, stroke)
+    for(let i = 0; i < teeth; i++){
+      var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
+      var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
+      var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
+      ctx.save()
+      ctx.translate(ix, iy)
+      ctx.rotate(rotate)
+      ctx.translate(-ix, -iy)
+      DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, "orange")
+      ctx.restore()
+    }
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(cord1X, cord1Y);
+    ctx.lineTo(cord2X, cord2Y);
+    ctx.lineTo(cord3X, cord3Y);
+    ctx.lineTo(cord1X, cord1Y);
+    ctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function strokeRect(x, y, width, height, color, stroke){
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke
+    ctx.rect(x, y, width, height);
+    ctx.stroke()
+  }
+
+  function DrawHex(x, y, color, size) {
+    ctx.beginPath();
+    for (var i = 0; i < 7; i++) {
+      ctx.lineTo(x + size * Math.cos(2 * Math.PI / 6 * i), y + size * 0.9 * Math.sin(2 * Math.PI / 6 * i));
+    }
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = "black"
+    ctx.stroke()
+  };
+
+      function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+        var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+        var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+
+        return ({ x: x, y: y });
+      }
+
+      function CubicN(pct, a, b, c, d) {
+        var t2 = pct * pct;
+        var t3 = t2 * pct;
+        return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+          + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+          + (c * 3 - c * 3 * pct) * t2
+          + d * t3;
+      }
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+
+
+  window.requestAnimationFrame(update);
+</script>

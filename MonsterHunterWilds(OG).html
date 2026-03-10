@@ -1,0 +1,907 @@
+<head>
+  <title>Monster Hunter Wilds</title>
+  <meta description="Ambience and effects for Monster Hunter Wilds. v1.02" />
+  <meta publisher="SignalRGB" />
+  
+    <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+    default="Custom Ambience"/>
+    <meta property="backColor" label="Custom Color" type="color" default="#060B11" min="0" max="360" />
+    <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" type="boolean" default="0" />
+    <meta property="hpHUDOn" label="Health HUD Effect" type="boolean" default="1" />
+    <meta property="hpColor" label="Health HUD Color" type="color" default="#00ff00" min="0" max="360" />
+    <meta property="hpX" label="Health Horizontal" type="number" default="0" min="0" max="100" />
+    <meta property="hpY" label="Health Vertical" type="number" default="30" min="0" max="100" />
+    <meta property="hpWidth" label="Health Width" type="number" default="100" min="0" max="100" />
+    <meta property="hpHeight" label="Health Height" type="number" default="20" min="0" max="100" />
+    <meta property="staminaHUDOn" label="Stamina HUD Effect" type="boolean" default="1" />
+    <meta property="staminaColor" label="Stamina HUD Color" type="color" default="#ffff00" min="0" max="360" />
+    <meta property="staminaX" label="Stamina Horizontal" type="number" default="0" min="0" max="100" />
+    <meta property="staminaY" label="Stamina Vertical" type="number" default="50" min="0" max="100" />
+    <meta property="staminaWidth" label="Stamina Width" type="number" default="100" min="0" max="100" />
+    <meta property="staminaHeight" label="Stamina Height" type="number" default="20" min="0" max="100" />
+    <meta property="redHealthOn" label="Red Health Effect" type="boolean" default="1" />
+    <meta property="lowHealthOn" label="Low Health Effect" type="boolean" default="1" />
+    <meta property="lowStaminaOn" label="Low Stamina Effect" type="boolean" default="1" />
+    <meta property="palicoOn" label="Palico Low Health Effect" type="boolean" default="1" />
+    <meta property="sharpOn" label="Weapon Sharpness Effect" type="boolean" default="1" />
+    <meta property="timerOn" label="Timed Quest Effect" type="boolean" default="1" />
+
+    <!-- new UI elements to determine if player is in-game -->
+    <meta meter="inGame01" tags="vlc,Monster Hunter Wilds,MHW" x="0.0365" y="0.0551" width="0" height="0" 
+      h="0-120" s="0-100" l="30-90" hdr-h="0-90" hdr-s="5-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.1899" y="0.0556" width="0" height="0" />
+      <resolution aspect="24:10" x="0.0410" y="0.0556" width="0" height="0" />
+      <resolution aspect="16:11" x="0.036" y="0.1001" width="0" height="0" />
+
+      <resolution size="3840x2160" x="0.0365" y="0.0551" width="0" height="0" />
+      <resolution size="2560x1080" x="0.0352" y="0.0556" width="0" height="0"  />
+    </meta>
+
+    <!-- new UI elements to determine if player is in-game -->
+    <meta meter="inGame02" tags="vlc,Monster Hunter Wilds,MHW" x="0.0362" y="0.0787" width="0" height="0" 
+      h="0-90" s="10-100" l="10-100" hdr-h="0-90" hdr-s="5-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.1896" y="0.0778" width="0" height="0" />
+      <resolution aspect="24:10" x="0.04" y="0.0792" width="0" height="0" />
+      <resolution aspect="16:11" x="0.0367" y="0.1213" width="0" height="0"   />
+
+      <resolution size="3840x2160" x="0.0362" y="0.0787" width="0" height="0" />
+      <resolution size="2560x1080" x="0.0348" y="0.0788" width="0" height="0"  />
+    </meta>
+
+    <!-- Negative check for UI elements to confirm in-game state -->
+    <meta meter="inGameNot" tags="vlc,Monster Hunter Wilds,MHW" x="0.0274" y="0.0686" width="0" height="0" 
+      h="0-90" s="0-100" l="50-100" hdr-h="0-90" hdr-s="5-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.1829" y="0.0676" width="0" height="0"  />
+      <resolution aspect="24:10" x="0.0300" y="0.0681" width="0" height="0" />
+      <resolution aspect="16:11" x="0.0262" y="0.1126" width="0" height="0" />
+
+      <resolution size="3840x2160" x="0.0274" y="0.0686" width="0" height="0"  />
+      <resolution size="2560x1080" x="0.0246" y="0.0677" width="0" height="0"  />
+    </meta>
+
+    <!-- new UI elements to determine if player is in-combat -->
+    <meta meter="inCombat01" tags="vlc,Monster Hunter Wilds,MHW" x="0.968" y="0.2283" width="0" height="0" 
+      h="10-80" s="0-60" l="20-90" hdr-h="0-90" hdr-s="5-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.8119" y="0.2278" width="0" height="0" />
+      <resolution aspect="24:10" x="0.9635" y="0.2279" width="0" height="0" />
+      <resolution aspect="16:11" x="0.968" y="0.2552" width="0" height="0"/>
+
+      <resolution size="3840x2160" x="0.968" y="0.2283" width="0" height="0"  />
+      <resolution size="2560x1080" x="0.968" y="0.228" width="0" height="0"  />
+    </meta>
+
+    <!-- new UI elements to determine if player is in-combat -->
+    <meta meter="inCombat02" tags="vlc,Monster Hunter Wilds,MHW" x="0.9687" y="0.3252" width="0" height="0" 
+      h="10-220" s="0-60" l="20-90" hdr-h="0-90" hdr-s="5-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.8145" y="0.3030" width="0" height="0" />
+      <resolution aspect="24:10" x="0.9645" y="0.303" width="0" height="0" />
+      <resolution aspect="16:11" x="0.973" y="0.324" width="0" height="0"  />
+
+      <resolution size="3840x2160" x="0.9687" y="0.3252" width="0" height="0"  />
+      <resolution size="2560x1080" x="0.9719" y="0.304" width="0" height="0"  />
+    </meta>
+
+    <!-- Negative check for elements in combat UI to confirm combat state -->
+    <meta meter="inCombatNot" tags="vlc,Monster Hunter Wilds,MHW" x="0.9723" y="0.3148" width="0" height="0"
+      h="10-80" s="0-60" l="20-90" hdr-h="0-90" hdr-s="0-100" hdr-l="0-100" type="area">
+      <resolution aspect="3.55:1" x="0.8143" y="0.3158" width="0" height="0" />
+      <resolution aspect="24:10" x="0.9660" y="0.3169" width="0" height="0" />
+      <resolution aspect="16:11" x="0.973" y="0.3333" width="0" height="0" />
+
+      <resolution size="3840x2160" x="0.9719" y="0.445" width="0" height="0" />
+      <resolution size="2560x1080" x="0.9715" y="0.3151" width="0" height="0"  />
+    </meta>
+
+    <!--End Of new meters-->
+
+    <!-- First segment of player health bar (leftmost section) -->
+    <meta meter="health1" tags="vlc,Monster Hunter Wilds,MHW" x="0.043" y="0.0507" width="0.05" height="0.0111" 
+      h="100-160" s="30-100" l="20-100" hdr-h="100-160" hdr-s="5-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.194" y="0.05" width="0.024" height="0.0112" />
+      <resolution aspect="24:10" x="0.0442" y="0.05" width="0.036" height="0.0105" />
+      <resolution aspect="16:11" x="0.043" y="0.0951" width="0.049" height="0.0087" />
+
+      <resolution size="3840x2160" x="0.0438" y="0.0491" width="0.0489" height="0.0111" />
+      <resolution size="2560x1080" x="0.041" y="0.0491" width="0.037" height="0.0115"  />
+    </meta>
+
+    <!-- Second segment of player health bar -->
+    <meta meter="health2" tags="vlc,Monster Hunter Wilds,MHW" x="0.093" y="0.0507" width="0.05" height="0.0111" 
+      h="100-160" s="30-100" l="20-100" hdr-h="100-160" hdr-s="5-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.218" y="0.05" width="0.024" height="0.0112" />
+      <resolution aspect="24:10" x="0.0802" y="0.05" width="0.036" height="0.0105" />
+      <resolution aspect="16:11" x="0.092" y="0.0951" width="0.049" height="0.0087" />
+
+      <resolution size="3840x2160" x="0.0927" y="0.0491" width="0.0489" height="0.0111" />
+      <resolution size="2560x1080" x="0.078" y="0.0491" width="0.037" height="0.0115"  />
+    </meta>
+
+    <!-- Third segment of player health bar -->
+    <meta meter="health3" tags="vlc,Monster Hunter Wilds,MHW" x="0.143" y="0.0507" width="0.05" height="0.0111" 
+      h="100-160" s="30-100" l="20-100" hdr-h="100-160" hdr-s="5-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.242" y="0.05" width="0.024" height="0.0112" />
+      <resolution aspect="24:10" x="0.1162" y="0.05" width="0.036" height="0.0105" />
+      <resolution aspect="16:11" x="0.141" y="0.0951" width="0.049" height="0.0087" />
+
+      <resolution size="3840x2160" x="0.1416" y="0.0491" width="0.0489" height="0.0111" />
+      <resolution size="2560x1080" x="0.115" y="0.0491" width="0.037" height="0.0115"  />
+    </meta>
+
+    <!-- Fourth segment of player health bar -->
+    <meta meter="health4" tags="vlc,Monster Hunter Wilds,MHW" x="0.193" y="0.0507" width="0.05" height="0.0111" 
+      h="100-160" s="30-100" l="20-100" hdr-h="100-160" hdr-s="5-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.266" y="0.05" width="0.024" height="0.0112" />
+      <resolution aspect="24:10" x="0.1522" y="0.05" width="0.036" height="0.0105" />
+      <resolution aspect="16:11" x="0.19" y="0.0951" width="0.049" height="0.0087" />
+
+      <resolution size="3840x2160" x="0.1905" y="0.0491" width="0.0489" height="0.0111" />
+      <resolution size="2560x1080" x="0.152" y="0.0491" width="0.037" height="0.0115"  />
+    </meta>
+
+    <!-- Fifth segment of player health bar (rightmost section) -->
+    <meta meter="health5" tags="vlc,Monster Hunter Wilds,MHW" x="0.243" y="0.0507" width="0.05" height="0.0111" 
+      h="100-160" s="30-100" l="20-100" hdr-h="100-160" hdr-s="5-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.29" y="0.05" width="0.024" height="0.0112" />
+      <resolution aspect="24:10" x="0.1882" y="0.05" width="0.036" height="0.0105" />
+      <resolution aspect="16:11" x="0.239" y="0.0951" width="0.049" height="0.0087" />
+
+      <resolution size="3840x2160" x="0.2394" y="0.0491" width="0.0489" height="0.0111" />
+      <resolution size="2560x1080" x="0.189" y="0.0491" width="0.037" height="0.0115"  />
+    </meta>
+
+    <!-- Detects red health indicator when player takes damage -->
+    <meta meter="healthRed" tags="vlc,Monster Hunter Wilds,MHW" x="0.0445" y="0.0507" width="0.2435" height="0.0084" 
+      h="-30-30" s="50-100" l="25-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="25-100" type="area">
+      <resolution aspect="3.55:1" x="0.1936" y="0.0507" width="0.1225" height="0.0077" />
+      <resolution aspect="24:10" x="0.0445" y="0.0486" width="0.182" height="0.0112" />
+      <resolution aspect="16:11" x="0.0434" y="0.0957" width="0.2454" height="0.0087" />
+
+      <resolution size="3840x2160" x="0.0438" y="0.0491" width="0.2448" height="0.0111" />
+      <resolution size="2560x1080" x="0.0403" y="0.0482" width="0.1836" height="0.013"  />
+    </meta>
+
+    <!-- First segment of player stamina bar (leftmost section) -->
+    <meta meter="stamina1" tags="vlc,Monster Hunter Wilds,MHW" x="0.0442" y="0.0785" width="0.08" height="0.0077" 
+      h="30-70" s="0-100" l="75-100" hdr-h="30-70" hdr-s="0-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.1938" y="0.078" width="0.041" height="0.0098" />
+      <resolution aspect="24:10" x="0.0448" y="0.0771" width="0.06" height="0.0112" />
+      <resolution aspect="16:11" x="0.0438" y="0.1182" width="0.082" height="0.0106" />
+
+      <resolution size="3840x2160" x="0.0442" y="0.0785" width="0.08" height="0.0077" />
+      <resolution size="2560x1080" x="0.0406" y="0.078" width="0.061" height="0.012"  />
+    </meta>
+
+    <!-- Second segment of player stamina bar -->
+    <meta meter="stamina2" tags="vlc,Monster Hunter Wilds,MHW" x="0.1242" y="0.0785" width="0.08" height="0.0077" 
+      h="30-70" s="0-100" l="75-100" hdr-h="30-70" hdr-s="0-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.2348" y="0.078" width="0.041" height="0.0098" />
+      <resolution aspect="24:10" x="0.1048" y="0.0771" width="0.06" height="0.0112" />
+      <resolution aspect="16:11" x="0.1258" y="0.1182" width="0.082" height="0.0106" />
+
+      <resolution size="3840x2160" x="0.1242" y="0.0785" width="0.08" height="0.0077" />
+      <resolution size="2560x1080" x="0.1016" y="0.078" width="0.061" height="0.012"  />
+    </meta>
+
+    <!-- Third segment of player stamina bar (rightmost section) -->
+    <meta meter="stamina3" tags="vlc,Monster Hunter Wilds,MHW" x="0.2042" y="0.0785" width="0.08" height="0.0077" 
+      h="30-70" s="0-100" l="75-100" hdr-h="30-70" hdr-s="0-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.2758" y="0.078" width="0.041" height="0.0098" />
+      <resolution aspect="24:10" x="0.1648" y="0.0771" width="0.06" height="0.0112" />
+      <resolution aspect="16:11" x="0.2078" y="0.1182" width="0.082" height="0.0106" />
+
+      <resolution size="3840x2160" x="0.2042" y="0.0785" width="0.08" height="0.0077" />
+      <resolution size="2560x1080" x="0.1626" y="0.078" width="0.061" height="0.012"  />
+    </meta>
+
+    <!-- Detects Palico (cat companion) health when it's low -->
+    <meta meter="palicoLow" tags="vlc,Monster Hunter Wilds,MHW" x="0.0504" y="0.2238" width="0.03" height="0.0076" 
+      h="100-160" s="30-100" l="20-100" hdr-h="100-160" hdr-s="30-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.1971" y="0.2238" width="0.0172" height="0.0076" />
+      <resolution aspect="24:10" x="0.0497" y="0.2231" width="0.0276" height="0.0069" />
+      <resolution aspect="16:11" x="0.0512" y="0.252" width="0.0293" height="0.0069" />
+
+      <resolution size="3840x2160" x="0.0504" y="0.2238" width="0.03" height="0.0076" />
+      <resolution size="2560x1080" x="0.0453" y="0.2255" width="0.0239" height="0.0064"  />
+    </meta>
+
+    <!-- Detects weapon sharpness gauge length -->
+    <meta meter="sharpLength" tags="VLC,Monster Hunter Wilds,MHW" x="0.038" y="0.1121" width="0.0495" height="0.0005" 
+      h="0-360" s="30-100" l="20-100" hdr-h="0-360" hdr-s="50-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.1912" y="0.1119" width="0.0239" height="0" />
+      <resolution aspect="24:10" x="0.0398" y="0.1112" width="0.0364" height="0.0014" />
+      <resolution aspect="16:11" x="0.0391" y="0.1507" width="0.0477" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.038" y="0.1121" width="0.0495" height="0.0005" />
+      <resolution size="2560x1080" x="0.0371" y="0.1121" width="0.036" height="0"  />
+    </meta>
+
+    <!-- Detects weapon sharpness color (changes based on sharpness level) -->
+    <meta meter="sharpColor" tags="vlc,Monster Hunter Wilds,MHW" x="0.0406" y="0.1149" width="0.0039" height="0.0041" 
+      h="0-360" s="50-100" l="20-100" type="colormean">
+      <resolution aspect="3.55:1" x="0.1918" y="0.1147" width="0.002" height="0.0027" />
+      <resolution aspect="24:10" x="0.0416" y="0.1161" width="0.0038" height="0.0027" />
+      <resolution aspect="16:11" x="0.0395" y="0.1545" width="0.0047" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.0406" y="0.1149" width="0.0039" height="0.0041" />
+      <resolution size="2560x1080" x="0.0379" y="0.1177" width="0.0027" height="0.0019"  />
+    </meta>
+
+    <meta meter="sharpConfirm" tags="vlc,Monster Hunter Wilds,MHW" x="0.0422" y="0.1079" width="0.0464" height="0" 
+      h="20-180" s="0-70" l="10-100" hdr-h="0-360" hdr-s="50-100" hdr-l="20-100" type="area">
+      <resolution aspect="3.55:1" x="0.1928" y="0.1077" width="0.0238" height="0" />
+      <resolution aspect="24:10" x="0.0439" y="0.1077" width="0.0343" height="0" />
+      <resolution aspect="16:11" x="0.0422" y="0.147" width="0.0473" height="0" />
+
+      <resolution size="3840x2160" x="0.0422" y="0.1079" width="0.0464" height="0" />
+      <resolution size="2560x1080" x="0.0391" y="0.1075" width="0.0344" height="0"  />
+    </meta>
+
+    <!-- Detects grey timer confirmation indicator for timed quests REDO GREY -->
+    <meta meter="timerConfirmGrey" tags="vlc,Monster Hunter Wilds,MHW" x="0.9691" y="0.2953" width="-0.0004" height="0.0299" 
+      h="0-360" s="0-50" l="25-75" hdr-h="30-60" hdr-s="0-50" hdr-l="40-100" type="area">
+      <resolution aspect="3.55:1" x="0.8125" y="0.2953" width="0" height="0.0285" />
+      <resolution aspect="24:10" x="0.9651" y="0.296" width="0" height="0.0292" />
+      <resolution aspect="16:11" x="0.9687" y="0.3221" width="0" height="0.0137" />
+
+      <resolution size="3840x2160" x="0.9691" y="0.2953" width="-0.0004" height="0.0299" />
+      <resolution size="2560x1080" x="0.9691" y="0.2956" width="-0.0004" height="0.0297"  />
+    </meta>
+
+    <!-- Detects red timer confirmation indicator for timed quests -->
+    <meta meter="timerConfirmRed" tags="vlc,Monster Hunter Wilds,MHW" x="0.9648" y="0.2467" width="0.0008" height="0.0229" 
+      h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8095" y="0.2536" width="0" height="0" />
+      <resolution aspect="24:10" x="0.9607" y="0.2418" width="0.0018" height="0.0341" />
+      <resolution aspect="16:11" x="0.9633" y="0.2583" width="0" height="0.045" />
+
+      <resolution size="3840x2160" x="0.9648" y="0.2467" width="0.0008" height="0.0229" />
+      <resolution size="2560x1080" x="0.9664" y="0.2502" width="0" height="0.0149"  />
+    </meta>
+
+    <!-- First yellow timer indicator for quest progress (0% phase) -->
+    <meta meter="timeYellow1" tags="vlc,Monster Hunter Wilds,MHW" x="0.968" y="0.2358" width="0.0002" height="0.0074" 
+      h="50-70" s="25-100" l="50-100" hdr-h="50-70" hdr-s="25-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8123" y="0.2349" width="0" height="0.0083" />
+      <resolution aspect="24:10" x="0.9645" y="0.2356" width="0" height="0.0076" />
+      <resolution aspect="16:11" x="0.968" y="0.2333" width="0.0003" height="0.0069" />
+
+      <resolution size="3840x2160" x="0.968" y="0.2358" width="0.0002" height="0.0074" />
+      <resolution size="2560x1080" x="0.9683" y="0.2345" width="0" height="0.0083"  />
+    </meta>
+
+    <!-- Second yellow timer indicator for quest progress (25% phase) -->
+    <meta meter="timeYellow2" tags="vlc,Monster Hunter Wilds,MHW" x="0.9768" y="0.2585" width="0.0029" height="0.0023" 
+      h="50-70" s="25-100" l="50-100" hdr-h="50-70" hdr-s="25-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8166" y="0.2578" width="0.0019" height="0.0021" />
+      <resolution aspect="24:10" x="0.97" y="0.2571" width="0.0032" height="0.0021" />
+      <resolution aspect="16:11" x="0.9758" y="0.2533" width="0.0051" height="0.0025" />
+    
+      <resolution size="3840x2160" x="0.9768" y="0.2585" width="0.0029" height="0.0023" />
+      <resolution size="2560x1080" x="0.9742" y="0.2586" width="0.0035" height="0"  />
+    </meta>
+
+    <!-- Second yellow timer indicator for quest progress (50% phase) -->
+    <meta meter="timeYellow3" tags="vlc,Monster Hunter Wilds,MHW" x="0.968" y="0.2737" width="0.0002" height="0.0079" 
+      h="50-70" s="25-100" l="50-100" hdr-h="50-70" hdr-s="25-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8123" y="0.2724" width="0.0006" height="0.0083" />
+      <resolution aspect="24:10" x="0.9642" y="0.2703" width="0.0009" height="0.0105" />
+      <resolution aspect="16:11" x="0.968" y="0.2633" width="0.0004" height="0.0119" />
+
+      <resolution size="3840x2160" x="0.968" y="0.2737" width="0.0002" height="0.0079" />
+      <resolution size="2560x1080" x="0.9683" y="0.2706" width="0" height="0.0093"  />
+    </meta>
+
+    <!-- Second yellow timer indicator for quest progress (75% phase) -->
+    <meta meter="timeYellow4" tags="vlc,Monster Hunter Wilds,MHW" x="0.9565" y="0.2575" width="0.0031" height="0.0028" 
+      h="50-70" s="25-100" l="50-100" hdr-h="50-70" hdr-s="25-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8062" y="0.2578" width="0.0022" height="0.0014" />
+      <resolution aspect="24:10" x="0.9552" y="0.2578" width="0.0041" height="0.0007" />
+      <resolution aspect="16:11" x="0.9609" y="0.2539" width="-0.001" height="0.0006" />
+
+      <resolution size="3840x2160" x="0.9565" y="0.2575" width="0.0031" height="0.0028" />
+      <resolution size="2560x1080" x="0.9597" y="0.2586" width="0.0036" height="0"  />
+    </meta>
+  </head>
+  
+  <body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+  </body>
+  
+  <script>
+    var canvas, ctx;
+    canvas = document.getElementById('exCanvas');
+    ctx = canvas.getContext('2d');
+    var width = 320;
+    var height = 200;
+    var effects = [];
+    let gInGame = false
+    let gInCombat = false
+
+    let HealthHUD = new healthHUD()
+    let StaminaHUD = new staminaHUD()
+
+    let InGame01Meter = new Meter(5, inGameHandler)
+    let InGame02Meter = new Meter(5, inGameHandler)
+
+    let InCombat01Meter = new Meter(5, inCombatHandler)
+    let InCombat02Meter = new Meter(5, inCombatHandler)
+
+    let Health1Meter = new Meter(2, healthHandler)
+    let Health2Meter = new Meter(2, healthHandler)
+    let Health3Meter = new Meter(2, healthHandler)
+    let Health4Meter = new Meter(2, healthHandler)
+    let Health5Meter = new Meter(2, healthHandler)
+    let RedHealthMeter = new Meter(5, healthHandler)
+
+    let Stamina1Meter = new Meter(2, staminaHandler)
+    let Stamina2Meter = new Meter(2, staminaHandler)
+    let Stamina3Meter = new Meter(2, staminaHandler)
+
+    let PalicoMeter = new Meter(5, palicoHandler)
+
+    let TimerConfirmGreyMeter = new Meter(10, timerHandler)
+    let TimerConfirmRedMeter = new Meter(10, timerHandler)
+    let Timer1Meter = new Meter(8, timerHandler)
+    let Timer2Meter = new Meter(8, timerHandler)
+    let Timer3Meter = new Meter(8, timerHandler)
+    let Timer4Meter = new Meter(8, timerHandler)
+
+    let SharpLengthMeter = new Meter(5, sharpHandler)
+    let SharpColorMeter = new Meter(1, sharpHandler)
+    let SharpConfirmMeter = new Meter(5, sharpHandler)
+   
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+
+
+      InGame01Meter.setValue(engine.vision.inGame01)
+      InGame02Meter.setValue(engine.vision.inGame02)
+
+      InCombat01Meter.setValue(engine.vision.inCombat01)
+      InCombat02Meter.setValue(engine.vision.inCombat02)
+
+      Health1Meter.setValue(engine.vision.health1)
+      Health2Meter.setValue(engine.vision.health2)
+      Health3Meter.setValue(engine.vision.health3)
+      Health4Meter.setValue(engine.vision.health4)
+      Health5Meter.setValue(engine.vision.health5)
+      RedHealthMeter.setValue(engine.vision.healthRed)
+
+      Stamina1Meter.setValue(engine.vision.stamina1)
+      Stamina2Meter.setValue(engine.vision.stamina2)
+      Stamina3Meter.setValue(engine.vision.stamina3)
+
+      PalicoMeter.setValue(engine.vision.palicoLow)
+
+      TimerConfirmRedMeter.setValue(engine.vision.timerConfirmRed)
+      TimerConfirmGreyMeter.setValue(engine.vision.timerConfirmGrey)
+      Timer1Meter.setValue(engine.vision.timeYellow1)
+      Timer2Meter.setValue(engine.vision.timeYellow2)
+      Timer3Meter.setValue(engine.vision.timeYellow3)
+      Timer4Meter.setValue(engine.vision.timeYellow4)
+
+      SharpLengthMeter.setValue(engine.vision.sharpLength)
+      SharpColorMeter.setValue(engine.vision.sharpColor[0])
+      SharpConfirmMeter.setValue(engine.vision.sharpConfirm)
+  
+      effects.forEach((ele, i) => {
+        ele.draw()
+        if(ele.lifetime <= 0){
+          effects.splice(i, 1)
+        }
+      })
+
+      if(healthHUDGoing) HealthHUD.draw()
+      if(staminaHUDGoing) StaminaHUD.draw()
+
+      if(adjToggle){
+        DrawRect(staminaX * 3.2, staminaY * 2, staminaWidth * 3.2, staminaHeight * 2, staminaColor)
+        DrawRect(hpX * 3.2, hpY * 2, hpWidth * 3.2, hpHeight * 2, hpColor)
+      }
+  
+      window.requestAnimationFrame(update);
+    };
+
+    function inGameHandler(){
+      if(((InGame01Meter.value >= .95 && engine.vision.inGameNot <= .1) || (InGame02Meter.value >= .95 && engine.vision.inGameNot <= .1)) && !gInGame){
+        gInGame = true
+
+      } else if (InGame01Meter.value <= .05 && InGame02Meter.value <= .05 && gInGame){
+        gInGame = false
+
+      }
+    }
+
+    function inCombatHandler(){
+      if((InCombat01Meter.value >= .95 || InCombat02Meter.value >= .95) && (engine.vision.inCombatNot <= .05 || (engine.vision.health1 > .2 && engine.vision.palicoLow > .2)) && gInGame && !gInCombat){
+        gInCombat = true
+
+      } else if (InCombat01Meter.value <= .05 && InCombat02Meter.value <= .05 && gInCombat){
+        gInCombat = false
+      }
+    }
+
+
+    let healthHUDGoing = false
+    let redHealthGoing = false
+    let lowHealthGoing = false
+    function healthHandler(){
+      if(gInGame && (Health1Meter.value >= .3 || Health2Meter.value >= .1) && !healthHUDGoing){ 
+        healthHUDGoing = true
+      }
+      if(gInGame && gInCombat && RedHealthMeter.value >= .1 && RedHealthMeter.diff >= .05 && !redHealthGoing){
+        redHealthGoing = true
+        if(redHealthOn) effects.push(new redHealth())
+      }
+      if(gInGame && gInCombat && Health1Meter.value >= .2 && Health2Meter.value <= 0 && !lowHealthGoing){
+        lowHealthGoing = true
+        if(lowHealthOn) effects.push(new lowHealth())
+      }
+    }
+
+    let staminaHUDGoing = false
+    let lowStaminaGoing = false
+    function staminaHandler(){
+      if(gInGame && (Stamina1Meter.value >= .05 || Stamina2Meter.value >= .1) && !staminaHUDGoing){
+        staminaHUDGoing = true
+      }
+      if(Stamina1Meter.value >= .05 && Stamina2Meter.value <= 0 
+        && gInGame && gInCombat
+        && (Health1Meter.value >= .2 || Health2Meter.value >= .15) 
+        && !lowStaminaGoing){
+        lowStaminaGoing = true
+        if(lowStaminaOn) effects.push(new lowStamina())
+      }
+    }
+
+    let palicoGoing = false  
+    function palicoHandler(){
+      if(gInGame && gInCombat && PalicoMeter.value <= .01 && !palicoGoing){
+        palicoGoing = true
+        if(palicoOn) effects.push(new palicoLow())
+      }
+    }
+
+    let gTimer = false
+    let timeGoing = false
+    let timePhase = 0
+    function timerHandler(){
+      if(gInGame && gInCombat && TimerConfirmRedMeter.value >= .1 && TimerConfirmGreyMeter.value >= .95 && !gTimer) gTimer = true
+      else if(!gInGame || (gInGame && TimerConfirmRedMeter.value <= .05 && TimerConfirmGreyMeter.value <= .05)) {
+        gTimer = false
+        timePhase = 0
+      }
+      if(gTimer && Timer1Meter.value >= .95 && timePhase != 1 && !timeGoing){
+        timeGoing = true
+        timePhase = 1
+        if(timerOn) effects.push(new timeQuest(0))
+      }
+      if(gTimer && Timer2Meter.value >= .95 && timePhase != 2 && !timeGoing){
+        timeGoing = true
+        timePhase = 2
+        if(timerOn) effects.push(new timeQuest(.25))
+      }
+      if(gTimer && Timer3Meter.value >= .95 && timePhase != 3 && !timeGoing){
+        timeGoing = true
+        timePhase = 3
+        if(timerOn) effects.push(new timeQuest(.5))
+      }
+      if(gTimer && Timer4Meter.value >= .95 && timePhase != 4 && !timeGoing){
+        timeGoing = true
+        timePhase = 4
+        if(timerOn) effects.push(new timeQuest(.75))
+      }
+    }
+
+    let sharpGoing = false
+    let sharpValue = 1
+    let sharpColor = 120
+    function sharpHandler(){
+      if(gInGame && SharpConfirmMeter.value >= .95 && SharpLengthMeter.value >= .15 && !sharpGoing){
+        sharpGoing = true
+        sharpValue = SharpLengthMeter.value
+        sharpColor = SharpColorMeter.value
+      }
+      if(gInGame && SharpConfirmMeter.value >= .95 && (Math.abs(SharpLengthMeter.value - sharpValue) >= .2 || Math.abs(SharpColorMeter.value - sharpColor) >= 30) && sharpGoing){
+        sharpGoing = false
+        sharpValue = SharpLengthMeter.value
+        sharpColor = SharpColorMeter.value
+        if(sharpOn) effects.push(new sharpness(SharpColorMeter.value))
+      }
+      if(!gInGame) sharpGoing = false
+    }
+
+    function sharpness(hue){
+      this.hue = hue ? hue : 120
+      this.rot = 0
+      this.x = -50
+      this.a = 0
+      this.draw = function(){
+          DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.a / 4))
+          ctx.save()
+          ctx.translate(-50, 250)
+          ctx.rotate(this.rot)
+          ctx.translate(50, -250)
+          DrawRect(-50, 250, 500, 150, getColorString(this.hue, 100, 40, this.a))
+          DrawRect(this.x, 250, 80, 150, getColorString(0, 0, 100, this.a / 2))
+          ctx.restore()
+          this.x < 400 ? this.a < 1 ? this.a += .05 : this.a = 1 : this.a > .05 ? this.a -= .05 : this.lifetime = 0
+          this.rot > -.79 ? this.rot += (-.8 - this.rot) / 10 : this.x < 500 ? this.x += 15 : this.x = 500
+      }
+  }
+
+    function timeQuest(angle){
+      this.angle = angle 
+      this.a = 0
+      this.val = 0
+      this.rad = 1
+      this.switch = false
+      this.draw = function(){
+          DrawStroke(160, 100, this.rad, getColorString(60, 100, 50, this.a), 15)
+          if(this.rad < 300) this.rad += 5
+          ctx.beginPath()
+          ctx.moveTo(160, 100)
+          ctx.arc(160, 100, 100, -Math.PI / 2, Math.PI * 2 * (this.val + .001) - Math.PI / 2, true)
+          ctx.fillStyle = getColorString(60, 100, 30, this.a * .75)
+          ctx.fill()
+          ctx.beginPath()
+          if(this.half) this.a >= .01 ? this.a -= .01 : this.lifetime = 0
+          else this.a <= .95 ? this.a += .05 : this.val < this.angle ? this.val += (this.angle + .01 - this.val) / 20 : this.half = true
+          ctx.save()
+          ctx.translate(160, 100)
+          ctx.rotate(this.val * 6.25)
+          ctx.translate(-160, -100)
+          ctx.moveTo(160, 100)
+          ctx.lineTo(160, 0)
+          ctx.strokeStyle = getColorString(60, 100, 75, this.a)
+          ctx.lineWidth = 20
+          ctx.stroke()
+          ctx.restore()
+          DrawCircle(160, 100, 10, getColorString(60, 100, 75, this.a))
+          if(this.lifetime <= 0) timeGoing = false
+      }
+    }
+
+    function lowStamina(){
+      this.a = 0
+      this.hue = 0
+      this.switch = false
+      this.draw = function(){
+          let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+          grad.addColorStop(0, getColorString(this.hue, 100, 50, 0))
+          grad.addColorStop(1, getColorString(this.hue, 100, 50, 1 * this.a))
+          DrawRect(0, 0, 320, 200, grad)
+          if(!this.switch) this.hue < 59.5 ? this.hue += (60 - this.hue) / 8 : this.switch = true
+          else this.hue > .5 ? this.hue += (0 - this.hue) / 8 : this.switch = false
+          if(!gInGame || !gInCombat || (gInCombat && gInGame && Stamina1Meter.value >= .2)){
+            lowStaminaGoing = false
+            this.a >= .1 ? this.a -= .1 : this.lifetime = 0
+          } else this.a <= .99 ? this.a += .01 : this.a = 1
+      }
+    }
+
+    function lowHealth(){
+      this.a = 0
+      this.hue = 120
+      this.switch = true
+      this.draw = function(){
+          let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+          grad.addColorStop(0, getColorString(this.hue, 100, 50, 0))
+          grad.addColorStop(1, getColorString(this.hue, 100, 50, 1 * this.a))
+          DrawRect(0, 0, 320, 200, grad)
+          if(!this.switch) this.hue < 119.5 ? this.hue += (120 - this.hue) / 8 : this.switch = true
+          else this.hue > .5 ? this.hue += (0 - this.hue) / 8 : this.switch = false
+          if(!gInGame || !gInCombat || Health1Meter.value > .2 ) {
+            lowHealthGoing = false
+            this.a >= .1 ? this.a -= .1 : this.lifetime = 0
+          } else this.a <= .99 ? this.a += .01 : this.a = 1
+      }
+    }
+
+    function palicoLow(){
+      this.count = 0
+      this.draw = function(){
+          this.count < 50 ? this.count++ : this.count = 0
+          if(!this.count) effects.push(new palicoHelp())
+          if(!gInGame || !gInCombat || PalicoMeter.value >= .25){
+            this.lifetime = 0
+            palicoGoing = false
+          }
+      }
+    }
+
+    function palicoHelp(){
+      this.scale = .1
+      this.a = 1
+      this.draw = function(){
+          ctx.save()
+          ctx.translate(160, 100)
+          ctx.scale(this.scale, this.scale)
+          ctx.translate(-160, -100)
+          DrawCircle(150, 90, 10, getColorString(0, 100, 50, this.a))
+          DrawCircle(170, 90, 10, getColorString(0, 100, 50, this.a))
+          DrawCircle(160, 100, 10, getColorString(0, 100, 50, this.a))
+          ctx.beginPath()
+          ctx.moveTo(141, 95)
+          ctx.lineTo(179, 95)
+          ctx.lineTo(160, 120)
+          ctx.fillStyle = getColorString(0, 100, 50, this.a)
+          ctx.fill()
+          ctx.restore()
+          this.scale < 20 ? this.scale += (21 - this.scale) / 40 : this.lifetime = 0
+          if(this.scale <= 5) this.a = this.scale * .2
+          else this.a = 1 - this.scale * .05
+          if(this.a <= 0) this.lifetime = 0
+      }
+    }
+
+    function redHealth(){
+      this.count = 0
+      this.draw = function(){
+          if(!this.count) effects.push(new redHealthHelp())
+          this.count < 5 ? this.count++ : this.count = 0
+        if(RedHealthMeter.value <= .01 || !gInGame || !gInCombat) {
+          this.lifetime = 0
+          redHealthGoing = false
+        }
+      }
+    }
+
+  function redHealthHelp(){
+      this.x = Math.random() * 320
+      this.y = -10
+      this.draw = function(){
+          DrawCircle(this.x, this.y - 50, 5, getColorString(0, 100, 50, .25))
+          DrawCircle(this.x, this.y - 40, 10, getColorString(0, 100, 50, .5))
+          DrawCircle(this.x, this.y - 20, 15, getColorString(0, 100, 50, .75))
+          DrawCircle(this.x, this.y, 18, getColorString(0, 100, 50, 1))
+          this.y < 250 ? this.y += 3 : this.lifetime = 0
+      }
+  }
+
+    function healthHUD(){
+      this.val = 0
+      this.draw = function(){
+        if(!gInGame || Health1Meter.value <= .15) this.val *= .95
+        else {
+          if(Health5Meter.value >= .05) this.val += (.8 + Health5Meter.value * 3 / 5 - this.val) / 10
+          else if(Health4Meter.value >= .05) this.val += (.6 + Health4Meter.value * 3 / 5 - this.val) / 10
+          else if(Health3Meter.value >= .05) this.val += (.4 + Health3Meter.value * 3 / 5 - this.val) / 10
+          else if(Health2Meter.value >= .05) this.val += (.2 + Health2Meter.value * 3 / 5 - this.val) / 10
+          else if(Health1Meter.value >= .05) this.val += (0 + Health1Meter.value * 3 / 5 - this.val) / 10
+        }
+        if(hpHUDOn) DrawRect(hpX * 3.2, hpY * 2, this.val * hpWidth * 3.2, hpHeight * 2, hpColor)
+      }
+    }
+
+    function staminaHUD(){
+      this.val = 0
+      this.draw = function(){
+        if(!gInGame || (Stamina1Meter.value <= .05 && Stamina2Meter.value <= 0)) this.val *= .95  
+        else {
+          if(Stamina3Meter.value >= .05) this.val += (.66 + Stamina3Meter.value / 2.4 - this.val) / 10
+          else if(Stamina2Meter.value >= .05) this.val += (.33 + Stamina2Meter.value / 2.4 - this.val) / 10
+          else if(Stamina1Meter.value >= .05) this.val += (0 + Stamina1Meter.value / 2.4 - this.val) / 10
+        }
+        if(staminaHUDOn) DrawRect(staminaX * 3.2, staminaY * 2, this.val * staminaWidth * 3.2, staminaHeight * 2, staminaColor)
+      }
+    }
+
+  let proBack = []
+  function onbackColorChanged(){
+    proBack = hexToHSL(backColor)
+  }
+
+  let backgroundEaseHue = 0;
+  let backgroundEaseLit = 0;
+  let backgroundEaseSat = 0
+  let gCycle = 0
+  function backgroundHandler(){
+      switch(backgroundMode){
+          case "Color Cycle": 
+          DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+          gCycle < 360 ? gCycle += .5 : gCycle = 0
+          break;
+          case "Color Cycle Ambience": 
+          copyScreen(ambienceAlpha / 100)
+          gCycle < 360 ? gCycle += .5 : gCycle = 0
+          break;
+          case "Custom": 
+          DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+          break;
+          case "Ambience": 
+          copyScreen(ambienceAlpha / 100)
+          break;
+          case "Custom Ambience": 
+          copyScreen(ambienceAlpha / 100)
+          break;
+          case "Ambience Audio Visualizer": 
+          copyScreenAudio(ambienceAlpha / 100)
+          break;
+          case "Custom Audio Visualizer": 
+          backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+          backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+          DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+          break;
+          case "Color Cycle Audio Visualizer": 
+          backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+          backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+          gCycle < 360 ? gCycle += .5 : gCycle = 0
+          DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+          break;
+      }
+  }
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function hexToHSL(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    (r /= 255), (g /= 255), (b /= 255);
+    var max = Math.max(r, g, b),
+      min = Math.min(r, g, b);
+    var h,
+      s,
+      l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    s = s * 100;
+    s = Math.round(s);
+    l = l * 100;
+    l = Math.round(l);
+    h = Math.round(360 * h);
+
+    return [h, s, l];
+  }
+
+  let audioScreenSat = 0
+  let audioScreenLit = 0
+  function copyScreenAudio(alpha) {
+    let lightness = new Int8Array(engine.zone.lightness);
+    let sat = new Int8Array(engine.zone.saturation);
+    let hue = new Int16Array(engine.zone.hue);
+    audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+    audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+    for (var iZone = 0; iZone < 560; iZone++) {
+      var iRow = Math.floor(iZone / 28);
+      var iCol = iZone % 28;
+      var iWidth = 320 / 28;
+      var iHeight = 200 / 20;
+      var iZx = iCol * iWidth;
+      var iZy = iRow * iHeight;
+      ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+      ctx.fillRect(iZx, iZy, iWidth, iHeight);
+    }
+  }
+
+  function copyScreen(alpha) {
+    let lightness = new Int8Array(engine.zone.lightness);
+    let sat = new Int8Array(engine.zone.saturation);
+    let hue = new Int16Array(engine.zone.hue);
+    for (var iZone = 0; iZone < 560; iZone++) {
+      var iRow = Math.floor(iZone / 28);
+      var iCol = iZone % 28;
+      var iWidth = 320 / 28;
+      var iHeight = 200 / 20;
+      var iZx = iCol * iWidth;
+      var iZy = iRow * iHeight;
+      ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+      ctx.fillRect(iZx, iZy, iWidth, iHeight);
+    }
+  }
+
+  function DrawCircle(x, y, radius, color) {
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.arc(x, y, radius, 0, 2 * Math.PI)
+  ctx.fill();
+};
+
+function DrawStroke(x, y, radius, color, stroke) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = stroke;
+  ctx.arc(x, y, radius, 0, 2 * Math.PI)
+  ctx.stroke();
+};
+
+function DrawRect(x, y, width, height, color) {
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, width, height);
+};
+
+function strokeRect(x, y, width, height, color, stroke){
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = stroke
+  ctx.rect(x, y, width, height);
+  ctx.stroke()
+}
+
+function getColorString(hue, sat, lit, alpha) {
+      return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`
+  }
+
+function hexToHSL(hex) {
+    const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+    const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+    const max = Math.max(...rgb);
+    const min = Math.min(...rgb);
+    const l = (max + min) / 2;
+    
+    if (max === min) return [0, 0, Math.round(l * 100)];
+    
+    const d = max - min;
+    const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    
+    let h;
+    const [nr, ng, nb] = rgb;
+    if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+    else if (max === ng) h = (nb - nr) / d + 2;
+    else h = (nr - ng) / d + 4;
+    
+    return [
+      Math.round(h * 60),
+      Math.round(s * 100),
+      Math.round(l * 100)
+    ];
+  }
+
+  function Meter(size, callback) {
+    this.size = size;
+    this.value = 0;
+    this.diff = 0;
+    this.increased = false;
+    this.decreased = false;
+    var values = [];
+
+    this.setValue = function (updatedValue) {
+      values.push(updatedValue);
+      if (values.length > this.size) {
+        values.shift();
+      }
+
+      for (var i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+      if (this.value !== values[0]) {
+        this.diff = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value = values[0];
+        callback();
+      }
+    }
+  }
+
+  window.requestAnimationFrame(update);
+</script>

@@ -1,0 +1,909 @@
+<head>
+    <title>Borderlands 4 Dev</title>
+    <meta description="Metering and ambience for Borderlands 4. v1.05" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" tooltip="Adjusts the brightness of the background style." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes the background style" type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" type="color" tooltip="Adjusts the background color" default="#010101" min="0" max="360" />
+    <meta property="adjOn" label="Adjust Health / Shield Bar Position" tooltip="Turn on to adjust the active Bars. It will cover the actual Bar if you leave it on." type="boolean" default="0" />
+    <meta property="hpOn" label="Health Bar Effect" tooltip="Enable to see the health bar." type="boolean" default="1" />
+    <meta property="hpX" label="Health Bar X" tooltip="Moves the health Bar left or right." type="number" default="0" min="0" max="100">
+    <meta property="hpY" label="Health Bar Y" tooltip="Moves the health Bar up or down." type="number" default="50" min="0" max="100">
+    <meta property="hpWidth" label="Health Bar Width" tooltip="Adjusts the maximum width of the health Bar." type="number" default="100" min="0" max="100">
+    <meta property="hpHeight" label="Health Bar Height" tooltip="Adjusts the maximum height of the health Bar." type="number" default="20" min="0" max="100">
+    <meta property="shieldOn" label="Shield Bar Effect" tooltip="Enable to see the shield bar." type="boolean" default="1" />
+    <meta property="shieldX" label="Shield Bar X" tooltip="Moves the Shield Bar left or right." type="number" default="0" min="0" max="100">
+    <meta property="shieldY" label="Shield Bar Y" tooltip="Moves the Shield Bar up or down." type="number" default="20" min="0" max="100">
+    <meta property="shieldWidth" label="Shield Bar Width" tooltip="Adjusts the maximum width of the Shield Bar." type="number" default="100" min="0" max="100">
+    <meta property="shieldHeight" label="Shield Bar Height" tooltip="Adjusts the maximum height of the Shield Bar." type="number" default="20" min="0" max="100">
+    <meta property="breakOn" label="Shield Break EFfect" tooltip="Enable to see the broken shield effect." type="boolean" default="1" />
+    <meta property="combatOn" label="Combat Effects" tooltip="Enable to see the in / out of combat effects." type="boolean" default="1" />
+    <meta property="levelOn" label="Level Up Effects" tooltip="Enable to see the level up and skill point effects." type="boolean" default="1" />
+    <meta property="lowOn" label="Low Health Effects" tooltip="Enable to see the low health and fight for your life effects." type="boolean" default="1" />
+    <meta property="deathOn" label="Death Effects" tooltip="Enable to see the death life effect." type="boolean" default="1" />
+
+    <meta meter="inGameColor" tags="vlc,Borderlands,Borderlands 4" x="0.4988" y="0.0667" width="0.0016" height="0.0007" 
+      h="0-360" s="25-100" l="30-100" hdr-h="0-360" hdr-s="30-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.4996" y="0.0653" width="0.0006" height="0.0000" />
+      <resolution aspect="24:10" x="0.4991" y="0.0653" width="0.0009" height="0.0000" />
+      <resolution aspect="16:11" x="0.4990" y="0.0650" width="0.0010" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.4988" y="0.0667" width="0.0016" height="0.0007" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="inGameWhite" tags="vlc,Borderlands,Borderlands 4" x="0.064" y="0.8993" width="0.0152" height="0.025"
+      h="0-360" s="0-10" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0361" y="0.8979" width="0.0047" height="0.0257" />
+      <resolution aspect="24:10" x="0.0512" y="0.8986" width="0.0070" height="0.0257" />
+      <resolution aspect="16:11" x="0.0745" y="0.8975" width="0.0089" height="0.0250" />
+
+      <resolution size="3840x2160" x="0.064" y="0.8993" width="0.0152" height="0.025" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="inGameNotWhite" tags="vlc,Borderlands,Borderlands 4" x="0.0684" y="0.8889" width="0.0063" height="0.0000"
+      h="0-360" s="0-10" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0318" y="0.9306" width="0.0004" height="0.0007" />
+      <resolution aspect="24:10" x="0.0465" y="0.9285" width="0.0012" height="0.0035" />
+      <resolution aspect="16:11" x="0.0693" y="0.9333" width="0.0010" height="0.0033" />
+
+      <resolution size="3840x2160" x="0.0684" y="0.8889" width="0.0063" height="0.0000" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="healthRed" tags="vlc,Borderlands,Borderlands 4" x="0.1258" y="0.9125" width="0.1000" height="-0.0007"
+      h="-30-30" s="0-100" l="20-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0646" y="0.9132" width="0.0574" height="0.0000" />
+      <resolution aspect="24:10" x="0.0951" y="0.9111" width="0.0770" height="0.0014" />
+      <resolution aspect="16:11" x="0.1396" y="0.9108" width="0.1083" height="0.0008" />
+
+      <resolution size="3840x2160" x="0.1258" y="0.9125" width="0.1000" height="-0.0007" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="shieldBlue" tags="vlc,Borderlands,Borderlands 4" x="0.1266" y="0.8854" width="0.0984" height="-0.0007"
+      h="180-225" s="0-100" l="30-100" hdr-h="170-210" hdr-s="10-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0650" y="0.8840" width="0.0568" height="0.0035" />
+      <resolution aspect="24:10" x="0.0948" y="0.8833" width="0.0773" height="0.0007" />
+      <resolution aspect="16:11" x="0.1396" y="0.8833" width="0.1089" height="0.0008" />
+
+      <resolution size="3840x2160" x="0.1266" y="0.8854" width="0.0984" height="-0.0007" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="shieldYellow" tags="vlc,Borderlands,Borderlands 4" x="0.1266" y="0.8854" width="0.0984" height="-0.0007"
+      h="40-80" s="0-100" l="30-100" hdr-h="40-80" hdr-s="10-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0650" y="0.8840" width="0.0568" height="0.0035" />
+      <resolution aspect="24:10" x="0.0948" y="0.8833" width="0.0773" height="0.0007" />
+      <resolution aspect="16:11" x="0.1396" y="0.8833" width="0.1089" height="0.0008" />
+
+      <resolution size="3840x2160" x="0.1266" y="0.8854" width="0.0984" height="-0.0007" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="combatRed" tags="vlc,Borderlands,Borderlands 4" x="0.3410" y="0.0667" width="0.0738" height="-0.0014"
+      h="-30-20" s="30-100" l="20-100" hdr-h="-50-10" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4107" y="0.0597" width="0.0012" height="0.0021" />
+      <resolution aspect="24:10" x="0.3669" y="0.0604" width="0.0017" height="0.0021" />
+      <resolution aspect="16:11" x="0.3010" y="0.0617" width="0.0036" height="0.0000" />
+
+      <resolution size="3840x2160" x="0.3410" y="0.0667" width="0.0738" height="-0.0014" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="combatNotRed" tags="vlc,Borderlands,Borderlands 4" x="0.3379" y="0.0583" width="0.0770" height="0.0000"
+      h="-30-20" s="30-100" l="20-100" hdr-h="-50-10" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4092" y="0.0451" width="0.0021" height="0.0062" />
+      <resolution aspect="24:10" x="0.3610" y="0.0604" width="0.0012" height="0.0014" />
+      <resolution aspect="16:11" x="0.2922" y="0.0600" width="0.0021" height="0.0033" />
+
+      <resolution size="3840x2160" x="0.3379" y="0.0583" width="0.0770" height="0.0000" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+    
+    <meta meter="miniCombatRed" tags="vlc,Borderlands,Borderlands 4" x="0.9309" y="0.0597" width="0.0020" height="0.0785"
+      h="-30-20" s="50-90" l="50-100" hdr-h="-50-10" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9609" y="0.0639" width="0.0016" height="0.0771" />
+      <resolution aspect="24:10" x="0.9451" y="0.0611" width="0.0029" height="0.0799" />
+      <resolution aspect="16:11" x="0.9234" y="0.0758" width="0.0031" height="0.0625" />
+
+      <resolution size="3840x2160" x="0.9309" y="0.0597" width="0.0020" height="0.0785" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="miniCombatNotRed" tags="vlc,Borderlands,Borderlands 4" x="0.93" y="0.1382" width="0.0045" height="0.0125"
+      h="-30-20" s="50-90" l="50-100" hdr-h="-50-10" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9604" y="0.1396" width="0.0031" height="0.0111" />
+      <resolution aspect="24:10" x="0.9451" y="0.1410" width="0.0032" height="0.0083" />
+      <resolution aspect="16:11" x="0.9224" y="0.1400" width="0.0047" height="0.0092" />
+
+      <resolution size="3840x2160" x="0.93" y="0.1382" width="0.0045" height="0.0125" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="miniConfirmYellow" tags="vlc,Borderlands,Borderlands 4" x="0.93" y="0.1382" width="0.0045" height="0.0125"
+      h="30-60" s="50-90" l="50-100" hdr-h="30-60" hdr-s="50-75" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9604" y="0.1396" width="0.0031" height="0.0111" />
+      <resolution aspect="24:10" x="0.9451" y="0.1410" width="0.0032" height="0.0083" />
+      <resolution aspect="16:11" x="0.9224" y="0.1400" width="0.0047" height="0.0092" />
+
+      <resolution size="3840x2160" x="0.93" y="0.1382" width="0.0045" height="0.0125" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="xpLevel" tags="vlc,Borderlands,Borderlands 4" x="0.0484" y="0.9062" width="0.0005" height="0.0167"
+      h="20-60" s="35-75" l="80-100" hdr-h="40-80" hdr-s="10-50" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0248" y="0.9069" width="0.0000" height="0.0132" />
+      <resolution aspect="24:10" x="0.0366" y="0.9062" width="0.0000" height="0.0188" />
+      <resolution aspect="16:11" x="0.0531" y="0.9050" width="0.0000" height="0.0200" />
+
+      <resolution size="3840x2160" x="0.0484" y="0.9062" width="0.0005" height="0.0167" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="skillPoint" tags="vlc,Borderlands,Borderlands 4" x="0.0715" y="0.8861" width="0.0016" height="0.0021"
+      h="20-60" s="35-75" l="80-100" hdr-h="40-80" hdr-s="0-50" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0379" y="0.8819" width="0.0018" height="0.0028" />
+      <resolution aspect="24:10" x="0.0541" y="0.8847" width="0.0017" height="0.0021" />
+      <resolution aspect="16:11" x="0.0781" y="0.8842" width="0.0021" height="0.0033" />
+
+      <resolution size="3840x2160" x="0.0715" y="0.8861" width="0.0016" height="0.0021" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="ffylRed" tags="vlc,Borderlands,Borderlands 4" x="0.3930" y="0.6993" width="0.0164" height="0.0063"
+      h="-30-30" s="75-100" l="65-100" hdr-h="-30-20" hdr-s="60-100" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4113" y="0.6986" width="0.0016" height="0.0021" />
+      <resolution aspect="24:10" x="0.4052" y="0.7028" width="0.0035" height="0.0021" />
+      <resolution aspect="16:11" x="0.3964" y="0.7025" width="0.0021" height="0.0008" />
+
+      <resolution size="3840x2160" x="0.3930" y="0.6993" width="0.0164" height="0.0063" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="ffylBlack" tags="vlc,Borderlands,Borderlands 4" x="0.4000" y="0.7500" width="0.0016" height="0.0021"
+      h="-60-20" s="30-75" l="0-20" hdr-h="310-360" hdr-s="30-75" hdr-l="0-40" type="area">
+      <resolution aspect="3.55:1" x="0.4125" y="0.7514" width="0.0004" height="0.0021" />
+      <resolution aspect="24:10" x="0.4067" y="0.7528" width="0.0003" height="0.0007" />
+      <resolution aspect="16:11" x="0.3974" y="0.7533" width="0.0010" height="0.0017" />
+
+      <resolution size="3840x2160" x="0.4000" y="0.7530" width="0.0016" height="0.0021" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="ffylLength" tags="vlc,Borderlands,Borderlands 4" x="0.4270" y="0.7493" width="0.1832" height="-0.0014"
+      h="-30-30" s="70-90" l="60-90" hdr-h="-30-20" hdr-s="60-100" hdr-l="80-100" type="area">
+      <resolution aspect="3.55:1" x="0.4260" y="0.7472" width="0.0916" height="0.0007" />
+      <resolution aspect="24:10" x="0.4259" y="0.7479" width="0.1381" height="0.0014" />
+      <resolution aspect="16:11" x="0.4255" y="0.7467" width="0.2026" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.4270" y="0.7493" width="0.1832" height="-0.0014" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="noSprintLeft" tags="vlc,Borderlands,Borderlands 4" x="0.0459" y="0.9028" width="0.0005" height="0.0257"
+      h="0-360" s="0-10" l="35-75" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0235" y="0.9042" width="0.0000" height="0.0222" />
+      <resolution aspect="24:10" x="0.0346" y="0.9035" width="0.0005" height="0.0257" />
+      <resolution aspect="16:11" x="0.051" y="0.902" width="0.0005" height="0.0283" />
+
+      <resolution size="3840x2160" x="0.0459" y="0.9028" width="0.0005" height="0.0257" />
+      <resolution size="1920x1080" x="0.0455" y="0.9046" width="0.0005" height="0.0222" />
+    </meta>
+
+    <meta meter="noSprintRight" tags="vlc,Borderlands,Borderlands 4" x="0.0983" y="0.8965" width="0.0004" height="0.0236"
+      h="0-360" s="0-25" l="35-75" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.0539" y="0.8972" width="0.0001" height="0.0222" />
+      <resolution aspect="24:10" x="0.0756" y="0.903" width="0.0005" height="0.019" />
+      <resolution aspect="16:11" x="0.108" y="0.8958" width="0.0005" height="0.0258" />
+
+      <resolution size="3840x2160" x="0.0983" y="0.8965" width="0.0004" height="0.0236" />
+      <resolution size="1920x1080" x="0.0983" y="0.8965" width="0.0004" height="0.0236" />
+    </meta>
+
+    <meta meter="jetPackLeft" tags="vlc,Borderlands,Borderlands 4" x="0.448" y="0.7585" width="0.001" height="0.007"
+      h="30-70" s="30-100" l="60-100" hdr-h="30-70" hdr-s="30-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.474" y="0.763" width="0.0001" height="0.002" />
+      <resolution aspect="24:10" x="0.4615" y="0.758" width="0.0001" height="0.0069" />
+      <resolution aspect="16:11" x="0.442" y="0.7575" width="0.0001" height="0.0067" />
+
+      <resolution size="3840x2160" x="0.448" y="0.7578" width="0" height="0.0055" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="jetPackRight" tags="vlc,Borderlands,Borderlands 4" x="0.5518" y="0.7596" width="0.0004" height="0.0041"
+      h="30-70" s="30-100" l="60-100" hdr-h="30-70" hdr-s="30-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.526" y="0.759" width="0.0001" height="0.003" />
+      <resolution aspect="24:10" x="0.5385" y="0.758" width="0.0001" height="0.0069" />
+      <resolution aspect="16:11" x="0.558" y="0.758" width="0.0001" height="0.008" />
+
+      <resolution size="3840x2160" x="0.552" y="0.7591" width="0" height="0.0051" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="jetPackNotYellow" tags="vlc,Borderlands,Borderlands 4" x="0.4427" y="0.7565" width="0.0000" height="0.0157"
+      h="30-80" s="30-90" l="60-100" hdr-h="30-70" hdr-s="30-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.4715" y="0.7597" width="0.0002" height="0.0090" />
+      <resolution aspect="24:10" x="0.4576" y="0.7597" width="0.0015" height="0.0111" />
+      <resolution aspect="16:11" x="0.4357" y="0.7590" width="0.0018" height="0.0124" />
+
+      <resolution size="3840x2160" x="0.4427" y="0.7565" width="0.0000" height="0.0157" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+
+    <meta meter="jetPackValue" tags="vlc,Borderlands,Borderlands 4" x="0.4505" y="0.7593" width="0.0995" height="0.0009"
+      h="0-360" s="0-100" l="35-100" hdr-h="0-360" hdr-s="0-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4754" y="0.7590" width="0.0494" height="0.0014" />
+      <resolution aspect="24:10" x="0.4640" y="0.7590" width="0.0730" height="0.0007" />
+      <resolution aspect="16:11" x="0.4458" y="0.7600" width="0.1101" height="0.0019" />
+
+      <resolution size="3840x2160" x="0.4505" y="0.7593" width="0.0995" height="0.0009" />
+      <!-- <resolution size="2560x1080" x="0.4977" y="0.0472" width="0.0035" height="0.0014" /> -->
+    </meta>
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    var canvas, ctx;
+    canvas = document.getElementById('exCanvas');
+    ctx = canvas.getContext('2d');
+    var effects = [];
+    var width = 320;
+    var height = 200;
+    var hiddenCanvas = document.createElement("canvas");
+    hiddenCanvas.width = width;
+    hiddenCanvas.height = height;
+    var hctx = hiddenCanvas.getContext("2d");
+    let gAlpha = 1
+
+    let InGameColorMeter = new Meter(5, inGameCallback)
+    let InGameWhiteMeter = new Meter(5, inGameCallback)
+    let InGameNotWhiteMeter = new Meter(2, inGameCallback)
+
+    let HealthRedMeter = new Meter(5, healthCallback)
+    let ShieldBlueMeter = new Meter(5, shieldCallback)
+    let ShieldYellowMeter = new Meter(5, shieldCallback)
+
+    let CombatMeter = new Meter(8, combatCallback)
+    let CombatNotMeter = new Meter(2, combatCallback)
+    let MiniCombatMeter = new Meter(8, combatCallback)
+    let MiniCombatNotMeter = new Meter(2, combatCallback)
+    let MiniConfirmMeter = new Meter(10, combatCallback)
+
+    let XPMeter = new Meter(5, xpCallback)
+
+    let SkillMeter = new Meter(5, skillCallback)
+
+    let FFYLRedMeter = new Meter(5, ffylCallback)
+    let FFYLBlackMeter = new Meter(5, ffylCallback)
+    let FFYLLengthMeter = new Meter(2, ffylCallback)
+
+    let NoSprintMeter = new Meter(1, sprintCallback)
+
+    let LeftJetMeter = new Meter(5, jetCallback)
+    let RightJetMeter = new Meter(5, jetCallback)
+    let NoJetMeter = new Meter(1, jetCallback)
+    let JetValueMeter = new Meter(1, jetCallback)
+
+    function update() {
+      hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
+      hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
+      hctx.fillRect(0, 0, 320, 200);
+      backgroundHandler()
+
+      InGameColorMeter.setValue(engine.vision.inGameColor)
+      InGameWhiteMeter.setValue(engine.vision.inGameWhite)
+      InGameNotWhiteMeter.setValue(engine.vision.inGameNotWhite)
+
+      HealthRedMeter.setValue(engine.vision.healthRed)
+
+      ShieldBlueMeter.setValue(engine.vision.shieldBlue)
+      ShieldYellowMeter.setValue(engine.vision.shieldYellow)
+
+      CombatMeter.setValue(engine.vision.combatRed)
+      CombatNotMeter.setValue(engine.vision.combatNotRed)
+      MiniCombatMeter.setValue(engine.vision.miniCombatRed)
+      MiniCombatNotMeter.setValue(engine.vision.miniCombatNotRed)
+      MiniConfirmMeter.setValue(engine.vision.miniConfirmYellow)
+
+      XPMeter.setValue(engine.vision.xpLevel)
+
+      SkillMeter.setValue(engine.vision.skillPoint)
+
+      FFYLRedMeter.setValue(engine.vision.ffylRed)
+      FFYLBlackMeter.setValue(engine.vision.ffylBlack)
+      FFYLLengthMeter.setValue(engine.vision.ffylLength)
+
+      NoSprintMeter.setValue(engine.vision.noSprintLeft + engine.vision.noSprintRight)
+
+      LeftJetMeter.setValue(engine.vision.jetPackLeft)
+      RightJetMeter.setValue(engine.vision.jetPackRight)
+      JetValueMeter.setValue(engine.vision.jetPackNotYellow)
+      JetValueMeter.setValue(engine.vision.jetPackValue)
+  
+      //Effect handler 
+      for (let i = 0; i < effects.length; i++) {
+        effects[i].draw(hctx);
+      } 
+      // Remove dead effects with filter
+      effects = effects.filter(effect => !(effect.lifetime <= 0));
+
+      if(adjOn && !gInGame){
+        if(hpOn) DrawRect(hpX * 3.2, hpY * 2, hpWidth * 3.2, hpHeight * 2, "red")
+        if(shieldOn) DrawRect(shieldX * 3.2, shieldY * 2, shieldWidth * 3.2, shieldHeight * 2, "cyan")
+      }
+      
+      if(miniTimer > 0) miniTimer--
+      if(ffylTimer > 0) ffylTimer--
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.drawImage(hiddenCanvas, 0, 0);
+
+      window.requestAnimationFrame(update);
+    };
+
+    let gInGame = false
+    function inGameCallback(){
+      if((InGameColorMeter.value >= .95 || HealthRedMeter.value >= .25) && InGameWhiteMeter.value >= .2 && InGameNotWhiteMeter.value <= .1) gInGame = true
+      else if (InGameColorMeter.value <= .25 && InGameWhiteMeter.value <= .05) gInGame = false
+    }
+
+    let healthGoing = false
+    let lowHealthGoing = false
+    function healthCallback(){
+      if(gInGame && HealthRedMeter.value >= .05 && !healthGoing){
+        healthGoing = true
+        if(hpOn) effects.push(new healthHUD())
+      } else if (!gInGame) healthGoing = false
+
+      if(gInGame && HealthRedMeter.value <= .25 && !lowHealthGoing){
+        lowHealthGoing = true
+        if(lowOn && gNoSprint) effects.push(new lowHealth())
+      } else if (!gInGame || (gInGame && HealthRedMeter.value > .25)) lowHealthGoing = false
+    }
+
+    let shieldGoing = false
+    let breakGoing = false
+    function shieldCallback(){
+      if(gInGame && (ShieldBlueMeter.value >= .05 || ShieldYellowMeter.value >= .05) && !shieldGoing){
+        shieldGoing = true
+        if(shieldOn) effects.push(new shieldHUD())
+      } else if (!gInGame) shieldGoing = false
+
+      if(gInGame && ShieldBlueMeter.value <= .1 && ShieldYellowMeter.value <= .1 && !breakGoing){
+        breakGoing = true
+        if(shieldOn && gNoSprint) effects.push(new shieldBreak())
+      } else if (!gInGame || (gInGame && (ShieldBlueMeter.value > .2 || ShieldYellowMeter.value > .2))) breakGoing = false
+    }
+
+    let combatGoing = false
+    let peaceGoing = false
+    let miniTimer = 0
+    function combatCallback(){
+      if(MiniCombatMeter.value >= .1) miniTimer = 2000
+      if(gInGame && ((CombatMeter.value >= .95 && CombatNotMeter.value <= .1) || (MiniCombatMeter.value >= .1 && MiniCombatNotMeter.value <= .05)) && !combatGoing){
+        combatGoing = true
+        peaceGoing = false
+        if(combatOn && gNoSprint) effects.push(new inCombat())
+      } else if (gInGame && ((CombatMeter.value <= .1 && MiniConfirmMeter.value <= .05) || (MiniConfirmMeter.value >= .25 && !miniTimer))){
+        if(!peaceGoing && combatGoing && combatOn && gNoSprint) effects.push(new outCombat())
+        combatGoing = false
+        peaceGoing = true
+      }
+    }
+
+    let xpGoing = false
+    function xpCallback(){
+      if(gInGame && XPMeter.value <= .05 && !xpGoing){
+        xpGoing = true
+        if(levelOn && gNoSprint) effects.push(new levelUp())
+      } else if (gInGame && XPMeter.value >= .95) xpGoing = false
+    }
+
+    let skillGoing = false
+    function skillCallback(){
+      if(gInGame && SkillMeter.value >= .95 && !skillGoing){
+        skillGoing = true
+        if(levelOn && gNoSprint) effects.push(new skillPoint())
+      } else if (!gInGame || gInGame && SkillMeter.value <= .05) skillGoing = false
+    }
+
+    let ffylGoing = false
+    let ffylTimer = 0
+    function ffylCallback(){
+      if(FFYLLengthMeter.value >= .1 && FFYLRedMeter.value >= .95) ffylTimer = 500
+      if(gInGame && FFYLRedMeter.value >= .95 && FFYLBlackMeter.value >= .95 && FFYLLengthMeter.value >= .05 && !ffylGoing){
+        ffylGoing = true
+        if(lowOn) effects.push(new fightLife())
+      } else if (!gInGame || (gInGame && FFYLRedMeter.value <= .1 && FFYLBlackMeter.value <= .1)) {
+          ffylGoing = false
+          if(!gInGame && deathOn && ffylTimer) effects.push(new death()) 
+      }
+    }
+
+    let gNoSprint = false
+    function sprintCallback(){
+      if(gInGame && NoSprintMeter.value >= 1.75) gNoSprint = true
+      else if (gInGame && NoSprintMeter.value <= .2) gNoSprint = false
+    }
+
+    let jetGoing = false
+    function jetCallback(){
+      if(gInGame && LeftJetMeter.value >= .95 && RightJetMeter.value >= .95 && NoJetMeter.value <= .1 && JetValueMeter.value >= .05 && !jetGoing){
+        jetGoing = true
+        effects.push(new jetpackUse())
+      } else if (!gInGame || (gInGame && LeftJetMeter.value <= .05 && RightJetMeter.value <= .05)) jetGoing = false
+    }
+
+    function jetpackUse(){
+        this.val = 0
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, getColorString(0, 100, 25, (100 - this.val) / 200))
+            if(!jetGoing) this.val < .99 ? this.val *= 1.01 : this.lifetime = 0
+            else this.val += (JetValueMeter.value * 100 - this.val) / 20
+            DrawRect(0, 0, this.val * 3.2, 200, getColorString(this.val * .3, 100 - this.val / 1.5, 50, Math.sin(Date.now() / 100) * (101 - this.val) / 200 + .6))
+        }
+    }
+
+    function death(){
+        this.alpha = 0
+        this.count = 1
+        this.mod = 20
+        this.lifetime = 150
+        for(let i = 0; i < 20; i++){
+          effects.push(new particleSource(160, 100, 0, 40, 10))
+          setTimeout(()=>{
+            effects.push(new particleSource(160, 100, 0, 25, 10))
+          }, 30 * i)
+        }
+        this.draw = function(){
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.alpha * this.lifetime / 150))
+            this.alpha <= .99 ? this.alpha += .01 : this.count < this.mod ? this.count++ : this.count = 0
+            if(!this.count) {
+                effects.push(new particleSource(160, 100, 190 + this.mod * 3, 50 - this.mod * 2, 20 - this.mod / 2))
+                if(this.mod > 1) this.mod--
+                else this.lifetime--
+            }
+            DrawCircle(160, 100, 300 - this.lifetime * 2, getColorString(0, 0, 100, this.lifetime / 200))
+        }
+    }
+
+    let ffylSkull = "m244.37,1s11.56,40.26-4.15,58.93c0,0,21.33-2.37,21.04,5.04s-6.22,18.37-10.52,20.44-20.89,4.74-30.96,3.56-9.48-.89-16.59-6.22l-8.59-6.22s15.11,13.63,5.93,18.67l-9.19,5.04s-10.96,4.44-11.85,4.74-5.04,2.37-1.48,4.74,12.44,2.07,14.52,2.07,8-1.19,9.48,2.67-5.04,10.96-7.11,12.15-5.04,5.33-6.22,8.89-1.78,9.78-1.78,9.78c0,0,37.93-40.52,41.19-44.26s6.52-7,11.26-5.81,9.48,5.63,8.59,9.48-3.26,9.19-4.15,10.07-2.37.89,1.48,1.78,12.15-2.37,13.33,1.78l1.19,4.15s-2.07,8-6.52,12.15-14.22,8.89-18.07,8.89h-3.85s-4.44-2.96-10.37,0-8.59,10.67-8.59,13.93.89,11.26.89,15.41v4.15s-.3,4.44-3.26,6.52-22.52,20.74-22.52,20.74l-8-5.04-2.9-18.67s-1.25,13.04-2.73,14.22-8.59,2.67-8.59,2.67l-4.26-14.52-6.7,14.81s-5.33,3.56-9.19-.89-6.52-15.11-6.52-15.11l-4.15-2.96,2.67,18.07-5.63,4.19h-5.33s-19.85-21.96-21.63-26.11.3-9.19,0-15.11-2.07-14.52-3.85-14.81-16.59-.89-20.44-.89-9.78-3.26-13.33-7.41-7.41-11.2-6.22-13.6,2.96-3.88,6.81-3.58,8.3,2.67,10.07,1.78,4.44-8.3,2.37-13.33-3.26-11.56-1.48-12.15,6.52-.22,12.15,5.22,19.85,20.85,23.7,23.81l3.85,2.96s10.96,13.63,12.15,14.52-6.22-13.63-8.3-17.19-5.04-10.07-2.67-10.67,4.15-2.67,9.19-3.56,10.07-2.07,10.07-4.74-2.37-6.81-5.33-7.7-10.67-2.37-13.93-4.44-3.26-11.26-3.26-14.81,3.85-7.41,3.85-7.41l-6.81,4.15s.89,10.07-2.96,11.85l-3.85,1.78s-19.26.3-24-2.07-13.63-5.04-16-8.3-7.55-3.56-5.85-9.78-.08-7.7,2-8,5.93,1.19,7.41-.59,8.59-6.22,7.11-8-10.37-9.78-10.37-14.22-1.19-16.59,2.07-24.89,7.41-12.7,7.41-12.7H1v204.41h320V1h-76.63Z"
+    function fightLife(){
+        this.alpha = 0
+        this.effects = []
+        this.lifetime = 1
+        this.draw = function(){
+          if(!ffylGoing) this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+          else if(this.alpha < 1) this.alpha += .05
+            DrawRect(0, 0, 320, 200, getColorString(0, 100, 5, this.alpha))
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+            })
+            
+            this.effects = this.effects.filter(ele => ele.lifetime > 0)
+            DrawPath(-1, -1, ffylSkull, getColorString(0, 100, Math.sin(Date.now() / 150) * 5 + 5, this.alpha), 1, 1)
+            DrawTriangle(160, 110, 175, 150, 145, 150, getColorString(0, 100, 5, this.alpha))
+            this.effects.push(new flHelp(FFYLLengthMeter.value * 50))
+        }
+    }
+
+    function flHelp(rad){
+        this.x = Math.random() * 150 + 85
+        this.y = 200
+        this.rad = rad
+        this.lifetime = 1
+        this.mod = Math.random() * 1000
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(0 - this.mod / 30, 100, 50, 1))
+            this.y > 0 ? this.y -= 3 : this.lifetime = 0
+            this.rad > 1 ? this.rad-=.5 : this.lifetime = 0
+        }
+    }
+
+    function skillPoint(){
+      this.rad = 1
+      this.lifetime = 5000
+      this.draw = function(){
+        DrawStroke(160, 100, this.rad, getColorString(45, 100, 50, .5), this.rad / 2)
+        this.rad < 400 ? this.rad += 2 : this.done = true
+        if(this.done) this.lifetime--
+        if(!this.lifetime) skillGoing = false
+      }
+    }
+
+  function levelUp(){
+      this.rad = 1
+      this.y = 200
+      this.draw = function(){
+        DrawStroke(160, 100, this.rad, getColorString(60, 100, 50, 1), this.rad / 1.1)
+        DrawRect(0, this.y, 320, 40, getColorString(60, 100, 50, 1))
+        if(this.rad < 400) this.rad += 8
+        if(this.rad > 200) this.y > -40 ? this.y -= 10 : this.lifetime = 0
+      }
+    }
+
+    function outCombat(){
+        this.y = 0
+        this.alpha = .5
+        this.draw = function(){
+            DrawRect(0, this.y, 320, -200, getColorString(120, 100, 40, this.alpha))
+            this.y < 200 ? this.y += (210 - this.y) / 30 : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+        }
+    }
+
+    function inCombat(){
+        this.count = 0
+        this.lifetime = 200
+        this.draw = function(){
+            this.count < 8 ? this.count++ : this.count = 0
+            this.lifetime--
+            if(!this.count) effects.push(new combatHelp(Math.random() > .5))
+        }
+    }
+
+    function combatHelp(dir){
+        this.x = 0
+        this.y = Math.random() * 200
+        this.stroke = 60
+        this.hue = Math.random() * 360
+        for(let i = 0; i < 15; i++) effects.push(new particleSource(dir ? 0 : 320, this.y, this.hue, 40, 15))
+        this.draw = function(){
+            DrawLine([this.x, this.y], [this.x + 320, this.y], getColorString(this.hue, 100, 40 + this.stroke, 1), this.stroke)
+            this.stroke > 5 ? this.stroke -= 5 : this.lifetime = 0
+        }
+    }
+
+    function particleSource(x, y, hue, rad, speed){
+        this.x = x
+        this.vx = Math.random() * speed - speed / 2
+        this.y = y
+        this.vy = Math.random() * speed - speed / 2
+        this.hue = hue
+        this.rad = rad
+        this.draw = function(){
+            DrawCircle(this.x, this.y, this.rad, getColorString(this.hue, 100, 30, 1))
+            this.x += this.vx
+            this.y += this.vy
+            this.rad > 1 ? this.rad-- : this.lifetime = 0
+        }
+    }
+
+    function lowHealth(){
+      this.alpha = 0
+      this.draw = function(){
+          if(this.alpha < .01) this.points = generateVignettePoints()
+          hctx.beginPath()
+          this.points.forEach(ele => {
+              hctx.arc(ele.x, ele.y, ele.radius, 0, Math.PI * 2, false)
+          })
+          hctx.fillStyle = getColorString(0, 100, 40, this.alpha)
+          hctx.fill()
+          this.alpha = Math.sin(Date.now() / 150) * .5 + .5
+          if(!lowHealthGoing || !gInGame) this.lifetime = 0
+      }
+    }
+    
+    function generateVignettePoints(count = 50, rectWidth = 320, rectHeight = 200) {
+      const points = [];
+      const centerX = rectWidth / 2;
+      const centerY = rectHeight / 2;
+      const maxRadius = Math.min(centerX, centerY);
+      const minRadius = maxRadius * 0.2;
+    
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * 2 * Math.PI;
+        const rad = Math.random() * 150 + 50
+        let tempX = Math.cos(angle) * rad + centerX
+        let tempY = Math.sin(angle) * rad + centerY
+
+        points.push({
+          x: tempX,
+          y: tempY,
+          radius: rad * rad / 600,
+        });
+      }
+
+      return points;
+    }
+
+    function shieldBreak(){
+      this.rad = 100
+      this.hue = 220
+      this.alpha = 0
+      this.draw = function(){
+          hctx.beginPath()
+          for(let i = 0; i < 20; i++){
+              let tempX = i % 5 * 75
+              let tempY = Math.floor(i / 5) * 75
+              hctx.arc(tempX, tempY, this.rad, 0, Math.PI * 2, false)
+          }
+          hctx.fillStyle = getColorString(this.hue, 100, 50, this.alpha)
+          hctx.fill()
+          this.alpha <= .95 ? this.alpha += .05 : this.hue < 360 ? this.hue += 14 : this.rad > 5 ? this.rad -= 2 : this.lifetime = 0
+      }
+    }
+
+    function healthHUD(){
+      this.val = 0
+      this.oldVal = 0
+      this.lit = 50
+      this.draw = function(){
+          if(this.done) this.val > .01 ? this.val *= .95 : this.lifetime = 0
+          else this.val += (HealthRedMeter.value - this.val) / 20
+          let temp = Math.abs(this.oldVal - this.val)
+          if(temp > .5){
+              this.lit += temp
+              this.oldVal = this.val
+          }
+          DrawRect(hpX * 3.2, hpY * 2, this.val * hpWidth * 3.2, hpHeight * 2, getColorString(0, 100, this.lit, 1))
+          if(this.lit > 40) this.lit *= .99
+          if(!healthGoing || !hpOn) this.done = true
+      }
+    }
+
+    function shieldHUD(){
+      this.val = 0
+      this.oldVal = 0
+      this.lit = 50
+      this.draw = function(){
+          if(this.done) this.val > .01 ? this.val *= .95 : this.lifetime = 0
+          else this.val += ((ShieldBlueMeter.value + ShieldYellowMeter.value) - this.val) / 20
+          let temp = Math.abs(this.oldVal - this.val)
+          if(temp > .5){
+              this.lit += temp
+              this.oldVal = this.val
+          }
+          DrawRect(shieldX * 3.2, shieldY * 2, this.val * shieldWidth * 3.2, shieldHeight * 2, getColorString(190, 100, this.lit, 1))
+          if(this.lit > 40) this.lit *= .99
+          if(!shieldGoing || !shieldOn) this.done = true
+      }
+    }
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            hctx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hctx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            hctx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            hctx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
+    //#region Helper Functions
+  function DrawArc(x, y, start, end, radius, direction, color){
+    hctx.beginPath()
+    hctx.arc(x, y, radius, start, end, direction)
+    hctx.fillStyle = color
+    hctx.fill()
+  }
+
+  function DrawLine(start, end, color, stroke){
+    hctx.beginPath()
+    hctx.moveTo(start[0], start[1])
+    hctx.lineTo(end[0], end[1])
+    hctx.strokeStyle = color
+    hctx.lineWidth = stroke
+    hctx.stroke()
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    hctx.fillStyle = color;
+    hctx.save();
+    hctx.translate(x, y);
+    hctx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    hctx.fill(ex);
+    hctx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.moveTo(cord1X, cord1Y);
+    hctx.lineTo(cord2X, cord2Y);
+    hctx.lineTo(cord3X, cord3Y);
+    hctx.lineTo(cord1X, cord1Y);
+    hctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.fillRect(x, y, width, height);
+  };
+
+  function strokeRect(x, y, width, height, color, stroke){
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke
+    hctx.rect(x, y, width, height);
+    hctx.stroke()
+  }
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+
+  window.requestAnimationFrame(update);
+</script>

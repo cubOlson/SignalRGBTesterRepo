@@ -1,0 +1,739 @@
+<head>
+    <title>World of Warcraft Dev</title>
+    <meta description="Effects and ambience for World of Warcraft's default UI. v1.01" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
+    <meta property="hpHUD" label="Health HUD effect" type="boolean" default="1" />
+    <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" type="boolean" default="0" />
+    <meta property="healthColor" label="Health HUD Color" type="color" default="#12ff00" min="0" max="360" />
+    <meta property="healthX" label="Health Bar X" type="number" min="0" max="100" default="0" />
+    <meta property="healthY" label="Health Bar Y" type="number" min="0" max="100" default="25" />
+    <meta property="healthWidth" label="Health Bar Width" type="number" min="0" max="100" default="100" />
+    <meta property="healthHeight" label="Health Bar Height" type="number" min="0" max="100" default="20" />
+    <meta property="manaHUD" label="Mana HUD effect" type="boolean" default="1" />
+    <meta property="manaColor" label="Mana HUD Color" type="color" default="#0012ff" min="0" max="360" />
+    <meta property="manaX" label="Mana Bar X" type="number" min="0" max="100" default="0" />
+    <meta property="manaY" label="Mana Bar Y" type="number" min="0" max="100" default="50" />
+    <meta property="manaWidth" label="Mana Bar Width" type="number" min="0" max="100" default="100" />
+    <meta property="manaHeight" label="Mana Bar Height" type="number" min="0" max="100" default="20" />
+    <meta property="xpOn" label="Level Up Effect" type="boolean" default="1" />
+    <meta property="deathOn" label="Death Effect" type="boolean" default="1" />
+    <meta property="combatOn" label="Combat Effect" type="boolean" default="1" />
+    <meta property="vibesOn" label="Aura Effects" type="boolean" default="1" />
+
+      <!-- Last edited: 2026-03-10T18:47:04Z | 2026-03-10 11:47:04 MST -->
+  <meta meter="mapYellow" tags="VLC,World of Warcraft" x="0.9473" y="0.0278" width="0.0008" height="0.0014"
+    h="40-80" s="25-75" l="45-100" hdr-h="40-80" hdr-s="25-75" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.9736" y="0.0278" width="0.0006" height="0.0014" />
+    <resolution aspect="24:10" x="0.9605" y="0.0278" width="0.0006" height="0.0014" />
+    <resolution aspect="16:11" x="0.9420" y="0.0275" width="0.0008" height="0.0006" />
+
+    <resolution size="3840x2160" x="0.9473" y="0.0278" width="0.0008" height="0.0014" />
+    <resolution size="3840x1080" x="0.9708" y="0.0306" width="0.0000" height="0.0000" />
+    <resolution size="2560x1080" x="0.9563" y="0.0306" width="0.0000" height="0.0000" />
+    <resolution size="1920x1080" x="0.9415" y="0.0352" width="0.0010" height="0.0019" />
+  </meta>
+
+      <!-- Last edited: 2026-03-10T18:55:00Z | 2026-03-10 11:55:00 MST -->
+  <meta meter="mapWhite" tags="VLC,World of Warcraft" x="0.9156" y="0.0625" width="-0.0012" height="0.0028"
+    h="0-360" s="0-100" l="66-100" hdr-h="0-360" hdr-s="0-100" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.9575" y="0.0639" width="0.0004" height="0.0000" />
+    <resolution aspect="24:10" x="0.9360" y="0.0660" width="0.0003" height="0.0000" />
+    <resolution aspect="16:11" x="0.9043" y="0.0650" width="0.0012" height="0.0000" />
+
+    <resolution size="3840x2160" x="0.9156" y="0.0625" width="-0.0012" height="0.0028" />
+    <resolution size="3840x1080" x="0.9526" y="0.0713" width="0.0000" height="0.0000" />
+    <resolution size="2560x1080" x="0.9289" y="0.0713" width="0.0000" height="0.0000" />
+    <resolution size="1920x1080" x="0.9047" y="0.0704" width="0.0015" height="0.0009" />
+  </meta>
+
+      <!-- Last edited: 2026-03-10T18:55:48Z | 2026-03-10 11:55:48 MST -->
+  <meta meter="notMapYellow" tags="VLC,World of Warcraft" x="0.9379" y="0.0271" width="0.0039" height="0.0021"
+    h="40-80" s="25-75" l="45-100" hdr-h="40-80" hdr-s="25-75" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.9570" y="0.0389" width="0.0031" height="0.0042" />
+    <resolution aspect="24:10" x="0.9485" y="0.0306" width="0.0020" height="0.0035" />
+    <resolution aspect="16:11" x="0.9262" y="0.0288" width="0.0023" height="0.0019" />
+
+    <resolution size="3840x2160" x="0.9379" y="0.0271" width="0.0039" height="0.0021" />
+    <resolution size="3840x1080" x="0.9641" y="0.0296" width="0.0018" height="0.0037" />
+    <resolution size="2560x1080" x="0.9469" y="0.0278" width="0.0035" height="0.0083" />
+    <resolution size="1920x1080" x="0.9474" y="0.0315" width="0.0036" height="0.0056" />
+  </meta>
+
+      <!-- Last edited: 2026-03-10T18:57:02Z | 2026-03-10 11:57:02 MST -->
+  <meta meter="healthGreen" tags="VLC,World of Warcraft" x="0.2918" y="0.7458" width="0.0551" height="0.0056"
+    h="80-140" s="50-100" l="22-100" hdr-h="80-140" hdr-s="50-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.3961" y="0.7451" width="0.0270" height="-0.0007" />
+    <resolution aspect="24:10" x="0.3451" y="0.7458" width="0.0404" height="0.0007" />
+    <resolution aspect="16:11" x="0.2684" y="0.7462" width="0.0613" height="-0.0006" />
+
+    <resolution size="3840x2160" x="0.2918" y="0.7458" width="0.0551" height="0.0056" />
+    <resolution size="3840x1080" x="0.3844" y="0.7185" width="0.0305" height="0.0000" />
+    <resolution size="2560x1080" x="0.3266" y="0.7204" width="0.0457" height="0.0019" />
+    <resolution size="1920x1080" x="0.2687" y="0.7148" width="0.0604" height="0.0015" />
+  </meta>
+
+      <!-- Last edited: 2026-03-10T18:58:01Z | 2026-03-10 11:58:01 MST -->
+  <meta meter="manaBlue" tags="VLC,World of Warcraft" x="0.2914" y="0.7611" width="0.0555" height="0.0014"
+    h="0-360" s="24-100" l="21-100" hdr-h="200-220" hdr-s="50-100" hdr-l="40-100" type="area">
+    <resolution aspect="3.55:1" x="0.3961" y="0.7618" width="0.0273" height="0.0007" />
+    <resolution aspect="24:10" x="0.3453" y="0.7625" width="0.0401" height="0.0000" />
+    <resolution aspect="16:11" x="0.2687" y="0.7619" width="0.0598" height="0.0006" />
+
+    <resolution size="3840x2160" x="0.2914" y="0.7611" width="0.0555" height="0.0014" />
+    <resolution size="3840x1080" x="0.3846" y="0.7352" width="0.0299" height="0.0009" />
+    <resolution size="2560x1080" x="0.3277" y="0.7370" width="0.0445" height="0.0000" />
+    <resolution size="1920x1080" x="0.2693" y="0.7324" width="0.0604" height="0.0019" />
+  </meta>
+
+      <!-- Last edited: 2026-03-10T19:01:42Z | 2026-03-10 12:01:42 MST -->
+  <meta meter="combatRed" tags="VLC,World of Warcraft" x="0.2742" y="0.7729" width="0.0145" height="0.0007"
+    h="-20-20" s="50-100" l="50-100" hdr-h="-20-20" hdr-s="50-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.3873" y="0.7236" width="0.0021" height="0.0014" />
+    <resolution aspect="24:10" x="0.3314" y="0.7736" width="0.0073" height="0.0000" />
+    <resolution aspect="16:11" x="0.2500" y="0.7731" width="0.0066" height="0.0006" />
+
+    <resolution size="3840x2160" x="0.2742" y="0.7729" width="0.0145" height="0.0007" />
+    <resolution size="3840x1080" x="0.3740" y="0.7481" width="0.0023" height="0.0000" />
+    <resolution size="2560x1080" x="0.3129" y="0.7472" width="0.0051" height="0.0019" />
+    <resolution size="1920x1080" x="0.2604" y="0.7472" width="0.0057" height="0.0019" />
+  </meta>
+
+    <meta meter="xpPurple" tags="VLC,World of Warcraft" type="area" x="0.3941" y="0.9889" width="0.0223" height="0.0028"
+        h="240-300" s="50-100" l="0-65" hdr-h="240-300" hdr-s="50-100" hdr-l="0-65">
+        <resolution aspect="3.55:1" x="0.4607" y="0.9896" width="0.0107" height="0.0021" />
+        <resolution aspect="24:10" x="0.4424" y="0.9896" width="0.0137" height="0.0014" />
+        <resolution aspect="16:11" x="0.4125" y="0.9906" width="0.0242" height="0.0000" />
+
+        <resolution size="3840x2160" x="0.3941" y="0.9889" width="0.0223" height="0.0028" />
+        <resolution size="3840x1080" x="0.4570" y="0.9880" width="0.0102" height="0.0009" />
+        <resolution size="2560x1080" x="0.4359" y="0.9889" width="0.0152" height="0.0000" />
+        <resolution size="1920x1080" x="0.3941" y="0.9889" width="0.0223" height="0.0028" />
+    </meta>
+
+    <meta meter="deathBlack" tags="VLC,World of Warcraft" type="area" x="0.4703" y="0.1368" width="0.0598" height="0.0021"
+        h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
+        <resolution aspect="3.55:1" x="0.4844" y="0.1375" width="0.0309" height="0.0014" />
+        <resolution aspect="24:10" x="0.4860" y="0.1368" width="0.0262" height="0.0007" />
+        <resolution aspect="16:11" x="0.4758" y="0.1388" width="0.0445" height="0.0006" />
+
+        <resolution size="3840x2160" x="0.4703" y="0.1368" width="0.0598" height="0.0021" />
+        <resolution size="3840x1080" x="0.4815" y="0.1528" width="0.0341" height="0.0000" />
+        <resolution size="2560x1080" x="0.4789" y="0.1546" width="0.0352" height="0.0009" />
+        <resolution size="1920x1080" x="0.4703" y="0.1368" width="0.0598" height="0.0021" />
+    </meta>
+
+    <meta meter="outerVibe1" tags="VLC,World of Warcraft" type="colormean" x="0.0008" y="0.3924" width="0.0012" height="0.0465"
+        h="180-220" s="50-75" l="50-75" hdr-h="180-220" hdr-s="50-75" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.4775" y="0.0042" width="0.0289" height="0.0007" />
+        <resolution aspect="24:10" x="0.3314" y="0.7736" width="0.0073" height="0.0000" />
+        <resolution aspect="16:11" x="0.4813" y="0.0044" width="0.0383" height="0.0012" />
+
+        <resolution size="3840x2160" x="0.0008" y="0.3924" width="0.0012" height="0.0465" />
+        <resolution size="3840x1080" x="0.4852" y="0.0037" width="0.0341" height="0.0019" />
+        <resolution size="2560x1080" x="0.4898" y="0.0046" width="0.0242" height="0.0019" />
+        <resolution size="1920x1080" x="0.0008" y="0.3924" width="0.0012" height="0.0465" />
+    </meta>
+
+    <meta meter="outerVibe2" tags="VLC,World of Warcraft" type="colormean" x="0.4883" y="0.0007" width="0.0211" height="0.0007"
+        h="180-220" s="50-75" l="50-75" hdr-h="180-220" hdr-s="50-75" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.0008" y="0.4160" width="0.0010" height="0.0687" />
+        <resolution aspect="24:10" x="0.0012" y="0.3653" width="0.0003" height="0.0743" />
+        <resolution aspect="16:11" x="0.0008" y="0.3819" width="0.0008" height="0.0706" />
+
+        <resolution size="3840x2160" x="0.4883" y="0.0007" width="0.0211" height="0.0007" />
+        <resolution size="3840x1080" x="0.0008" y="0.3481" width="0.0003" height="0.0806" />
+        <resolution size="2560x1080" x="0.0004" y="0.4389" width="0.0008" height="0.1287" />
+        <resolution size="1920x1080" x="0.4883" y="0.0007" width="0.0211" height="0.0007" />
+    </meta>
+
+    <meta meter="innerVibe1" tags="VLC,World of Warcraft" type="colormean" x="0.4957" y="0.5111" width="0.0023" height="0.0076"
+        h="180-220" s="50-75" l="50-75" hdr-h="180-220" hdr-s="50-75" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.4992" y="0.4882" width="0.0023" height="0.0090" />
+        <resolution aspect="24:10" x="0.5006" y="0.4875" width="0.0023" height="0.0042" />
+        <resolution aspect="16:11" x="0.4977" y="0.4850" width="0.0074" height="0.0094" />
+
+        <resolution size="3840x2160" x="0.4957" y="0.5111" width="0.0023" height="0.0076" />
+        <resolution size="3840x1080" x="0.4971" y="0.4815" width="0.0010" height="0.0083" />
+        <resolution size="2560x1080" x="0.4984" y="0.4852" width="0.0027" height="0.0056" />
+        <resolution size="1920x1080" x="0.4957" y="0.5111" width="0.0023" height="0.0076" />
+    </meta>
+
+    <meta meter="innerVibe2" tags="VLC,World of Warcraft" type="colormean" x="0.4598" y="0.4896" width="0.0023" height="0.0049"
+        h="180-220" s="50-75" l="50-75" hdr-h="180-220" hdr-s="50-75" hdr-l="75-100">
+        <resolution aspect="3.55:1" x="0.4852" y="0.4882" width="0.0010" height="0.0097" />
+        <resolution aspect="24:10" x="0.4805" y="0.4771" width="0.0023" height="0.0049" />
+        <resolution aspect="16:11" x="0.4754" y="0.4719" width="0.0051" height="0.0056" />
+
+        <resolution size="3840x2160" x="0.4598" y="0.4896" width="0.0023" height="0.0049" />
+        <resolution size="3840x1080" x="0.4878" y="0.4722" width="0.0021" height="0.0083" />
+        <resolution size="2560x1080" x="0.4871" y="0.4731" width="0.0016" height="0.0065" />
+        <resolution size="1920x1080" x="0.4598" y="0.4896" width="0.0023" height="0.0049" />
+    </meta>
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const width = 320;
+    const height = 200;
+    const canvas = document.getElementById('exCanvas');
+    const ctx = canvas.getContext('2d');
+    var hiddenCanvas = document.createElement("canvas");
+    hiddenCanvas.width = width;
+    hiddenCanvas.height = height;
+    var hctx = hiddenCanvas.getContext("2d");
+    let effects = [];
+
+    let gHealth = new healthHUD(0)
+    let gMana = new healthHUD(1)
+
+    let InGameYellowMeter = new Meter(5, inGameCallback)
+    let InGameWhiteMeter = new Meter(5, inGameCallback)
+
+    let HealthMeter = new Meter(5, healthCallback)
+    let ManaMeter = new Meter(5, manaCallback)
+
+    let XPMeter = new Meter(5, xpCallback)
+
+    let DeathMeter = new Meter(5, deathCallback)
+
+    let CombatMeter = new Meter(5, combatCallback)
+
+    let VibeOuter1Meter = new Meter(2, vibeCallback)
+    let VibeOuter2Meter = new Meter(2, vibeCallback)
+    let VibeInner1Meter = new Meter(2, vibeCallback)
+    let VibeInner2Meter = new Meter(2, vibeCallback)
+
+    let OVArray = [[0, 0, 0], [0, 0, 0]]
+    let IVArray = [[0, 0, 0], [0, 0, 0]]
+
+    let HUDArray = [[0, 0, 0, 0, "black"], [0, 0, 0, 0, "black"]]
+   
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+
+      InGameYellowMeter.setValue(engine.vision.mapYellow)
+      InGameWhiteMeter.setValue(engine.vision.mapWhite)
+
+      HealthMeter.setValue(engine.vision.healthGreen)
+      ManaMeter.setValue(engine.vision.manaBlue)
+
+      XPMeter.setValue(engine.vision.xpPurple)
+
+      DeathMeter.setValue(engine.vision.deathBlack)
+
+      CombatMeter.setValue(engine.vision.combatRed)
+
+      VibeOuter1Meter.setValue(engine.vision.outerVibe1[0])
+      VibeOuter2Meter.setValue(engine.vision.outerVibe2[0])
+      VibeInner1Meter.setValue(engine.vision.innerVibe1[0])
+      VibeInner2Meter.setValue(engine.vision.innerVibe2[0])
+
+      OVArray = [[engine.vision.outerVibe1[0], engine.vision.outerVibe1[1], engine.vision.outerVibe1[2]], [engine.vision.outerVibe2[0], engine.vision.outerVibe2[1], engine.vision.outerVibe2[2]]]
+      IVArray = [[engine.vision.innerVibe1[0], engine.vision.innerVibe1[1], engine.vision.innerVibe1[2]], [engine.vision.innerVibe2[0], engine.vision.innerVibe2[1], engine.vision.innerVibe2[2]]]
+
+      HUDArray = [[healthX, healthY, healthWidth, healthHeight, healthColor, HealthMeter.value], [manaX, manaY, manaWidth, manaHeight, manaColor, ManaMeter.value]]
+        
+      if(healthPushed && hpHUD) gHealth.draw()
+      if(manaPushed && manaHUD) gMana.draw()
+
+      effects.forEach(ele => ele.draw())
+
+      effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+      if(adjToggle){
+        if(hpHUD) DrawRect(HUDArray[0][0] * 3.2, HUDArray[0][1] * 2, HUDArray[0][2] * 3.2, HUDArray[0][3] * 2, HUDArray[0][4])
+        if(manaHUD) DrawRect(HUDArray[1][0] * 3.2, HUDArray[1][1] * 2, HUDArray[1][2] * 3.2, HUDArray[1][3] * 2, HUDArray[1][4])
+      }
+
+      ctx.drawImage(hiddenCanvas, 0, 0);
+  
+      window.requestAnimationFrame(update);
+    };
+
+    let gInGame = false
+    function inGameCallback(){
+        if(InGameYellowMeter.value >= .95 && InGameWhiteMeter.value >= .95 && engine.vision.notMapYellow <= .05) gInGame = true
+        else if (InGameWhiteMeter.value <= .25 && InGameYellowMeter.value <= .05) gInGame = false
+    }
+
+    let healthPushed = false
+    function healthCallback(){
+        if(gInGame && HealthMeter.value >= .1 && !healthPushed){
+            healthPushed = true
+        } else if (!gInGame) healthPushed = false
+    }
+
+    let manaPushed = false
+    function manaCallback(){
+        if(gInGame && ManaMeter.value >= .1 && !manaPushed){
+            manaPushed = true
+        } else if (!gInGame) manaPushed = false
+    }
+
+    let xpPushed = false
+    function xpCallback(){
+        if(gInGame && XPMeter.value >= .95 && !xpPushed) xpPushed = true
+        else if (gInGame && XPMeter.value <= .05 && xpPushed){
+            if(xpOn) effects.push(new levelUp())
+            xpPushed = false
+        }
+    }
+
+    let deathPushed = false
+    function deathCallback(){
+        if(gInGame && DeathMeter.value >= .95 && HealthMeter.value <= .05 && !deathPushed){
+            deathPushed = true
+            if(deathOn) effects.push(new death())
+        }
+    }
+
+    let combatPushed = false
+    function combatCallback(){
+        if(gInGame && CombatMeter.value >= .95 && !combatPushed){
+            combatPushed = true
+            if(combatOn) effects.push(new inCombat())
+        }
+    }
+
+    let OutColor = [0, 0, 0]
+    let InColor = [0, 0, 0]
+    let innerVibePushed = false
+    let outerVibePushed = false
+    function vibeCallback(){
+        let tempO1 = hslToRgb(...OVArray[0])
+        let tempO2 = hslToRgb(...OVArray[1])
+        let tempI1 = hslToRgb(...IVArray[0])
+        let tempI2 = hslToRgb(...IVArray[1])
+
+        OutColor = [(tempO1[0] + tempO2[0]) / 2, (tempO1[1] + tempO2[1]) / 2, (tempO1[2] + tempO2[2]) / 2]
+        InColor = [(tempI1[0] + tempI2[0]) / 2, (tempI1[1] + tempI2[1]) / 2, (tempI1[2] + tempI2[2]) / 2]
+
+        if(!innerVibePushed) {
+            if(vibesOn) effects.push(new personalAura())
+            innerVibePushed = true
+        }
+        if(!outerVibePushed) {
+            if(vibesOn) effects.push(new screenAura())
+            outerVibePushed = true
+        }
+    }
+
+    function levelUp(){
+      this.rot = 0
+      this.count = 0
+      this.draw = function(){
+        this.rot < Math.PI * 6 ? this.rot += .05 : this.lifetime = 0
+        this.count < 10 ? this.count++ : this.count = 0
+        if(this.count == 0) effects.push(new circleHelp(this.rot))
+        if(this.lifetime == 0) xpPushed = false
+      }
+    }
+
+    function circleHelp(rot){
+      this.rot = rot
+      this.y = 100
+      this.draw = function(){
+        hctx.save()
+        hctx.translate(160, 100)
+        hctx.rotate(this.rot)
+        hctx.translate(-160, -100)
+        DrawCircle(160, this.y, (161 - this.y) / 2, getColorString(60, 100, 50, (this.y + 50) / 150))
+        hctx.restore()
+        this.y > -50 ? this.y -= 2 : this.lifetime = 0
+      }
+    }
+
+    function inCombat(){
+      this.rot = -2
+      this.rad = 1
+      this.alpha = 1
+      this.draw = function(){
+        if(this.rot < Math.PI / 4) this.rot += (Math.PI / 4 - this.rot) / 25
+        if(this.rot > Math.PI / 5) this.rad < 200 ? this.rad += 3 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
+        drawSword(80, 200, this.rot, this.alpha)
+        drawSword(240, 200, -this.rot, this.alpha)
+        DrawStroke(160, 100, this.rad, "yellow", 20)
+        if(this.lifetime == 0) combatPushed = false
+      }
+    }
+
+    function drawSword(x, y, rot, alpha){
+      hctx.save()
+      hctx.translate(x, y)
+      hctx.rotate(rot)
+      hctx.translate(-x, -y)
+      DrawCircle(x, y, 15, getColorString(0, 100, 50, alpha))
+      DrawRect(x - 7, y, 14, -50, getColorString(0, 100, 50, alpha))
+      DrawRect(x - 40, y - 60, 80, 10, getColorString(0, 100, 50, alpha))
+      DrawRect(x - 20, y - 60, 40, -150, getColorString(0, 100, 50, alpha))
+      DrawTriangle(x - 20, y - 210, x + 20, y - 210, x, y - 250, getColorString(0, 100, 50, alpha))
+      hctx.restore()
+    }
+
+    function death(){
+      this.y = 50
+      this.alpha = 0
+      this.alpha2 = 0
+      this.half = false
+      this.draw = function(){
+        DrawRect(0, 0, 320, 200, getColorString(190, 80, 10, this.alpha))
+        if(this.half){
+          this.alpha2 < 1 ? this.alpha2 += .025 : this.y > -200 ? this.y -- : this.alpha > .025 ? this.alpha -= .025 : this.lifetime = 0
+          drawAngel(this.alpha2, this.y)
+        } else {
+          this.alpha <= .74 ? this.alpha += .01 : this.half = true
+        }
+        if(this.lifetime == 0) deathPushed = false
+      }
+    }
+
+    function drawAngel(alpha, y){
+      hctx.save()
+      hctx.translate(0, y)
+      DrawLine([200, 60], [310, 150], getColorString(190, 50, 80, alpha), 20)
+            DrawLine([190, 80], [300, 170], getColorString(190, 50, 80, alpha), 20)
+      DrawLine([120, 60], [10, 150], getColorString(190, 50, 80, alpha), 20)
+            DrawLine([130, 80], [20, 170], getColorString(190, 50, 80, alpha), 20)
+      DrawCircle(120, 100, 35, getColorString(210, 90, 50, alpha))
+      DrawCircle(200, 100, 35, getColorString(210, 90, 50, alpha))
+      DrawCircle(180, 90, 20, getColorString(220, 80, 30, alpha))
+      DrawCircle(140, 90, 20, getColorString(220, 80, 30, alpha))
+      DrawCircle(160, 65, 20, getColorString(190, 50, 80, alpha))
+      DrawTriangle(140, 80, 180, 80, 160, 200, getColorString(200, 90, 75, alpha))
+      hctx.restore()
+    }
+
+    function screenAura(){
+        this.val = 0
+        this.alpha = .75
+        this.draw = function(){
+        let grad = hctx.createRadialGradient(160, 100, 75, 160, 100, 200)
+        this.val += (OutColor[0] - this.val) / 30
+        grad.addColorStop(0, `rgba(${this.val}, ${OutColor[1]}, ${OutColor[2]}, 0)`)
+        grad.addColorStop(.4, `rgba(${this.val}, ${OutColor[1]}, ${OutColor[2]}, ${this.alpha})`)
+        grad.addColorStop(.6, `rgba(${this.val}, ${OutColor[1]}, ${OutColor[2]}, ${this.alpha})`)
+        grad.addColorStop(1, `rgba(${this.val}, ${OutColor[1]}, ${OutColor[2]}, 0)`)
+        DrawCircle(160, 100, 200, grad)
+        if(!gInGame) this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+        if(this.lifetime == 0) outerVibePushed = false
+      }
+    }
+
+    function personalAura(){
+        this.val = 0
+        this.alpha = .75
+        this.draw = function(){
+        let grad = hctx.createRadialGradient(160, 100, 10, 160, 100, 75)
+        this.val += (InColor[0] - this.val) / 30
+        grad.addColorStop(0, `rgba(${this.val}, ${InColor[1]}, ${InColor[2]}, 0)`)
+        grad.addColorStop(.4, `rgba(${this.val}, ${InColor[1]}, ${InColor[2]}, ${this.alpha})`)
+        grad.addColorStop(.6, `rgba(${this.val}, ${InColor[1]}, ${InColor[2]}, ${this.alpha})`)
+        grad.addColorStop(1, `rgba(${this.val}, ${InColor[1]}, ${InColor[2]}, 0)`)
+        DrawCircle(160, 100, 75, grad)
+        if(!gInGame) this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+        if(this.lifetime == 0) innerVibePushed = false
+      }
+    }
+
+    function healthHUD(type){
+      this.val = 0
+      this.type = type
+      this.draw = function(){
+        this.val += (HUDArray[this.type][5] * 3.2 - this.val) / 20
+        DrawRect(HUDArray[this.type][0], HUDArray[this.type][1], this.val * HUDArray[this.type][2] * 3.2, HUDArray[this.type][3] * 2, HUDArray[this.type][4])
+      }
+    }
+
+    //#endregion
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            hctx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hctx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            hctx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            hctx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
+
+    //#region Helper Functions
+  function innerEffects(){
+        this.effects = []
+        this.Add = (cb, arr) => {
+            this.effects.push(new cb(...arr))
+        }
+        this.draw = () => {
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+        }
+    }
+
+    function testTranslate(start, end, rot, scaleX, scaleY){
+        hctx.save()
+        hctx.translate(start[0], start[1])
+        hctx.scale(scaleX, scaleY)
+        hctx.rotate(rot)
+        hctx.translate(end[0], end[1])
+    }
+
+  function DrawArc(x, y, start, end, radius, direction, color){
+    hctx.beginPath()
+    hctx.arc(x, y, radius, start, end, direction)
+    hctx.fillStyle = color
+    hctx.fill()
+  }
+
+  function DrawLine(start, end, color, stroke){
+    hctx.beginPath()
+    hctx.moveTo(start[0], start[1])
+    hctx.lineTo(end[0], end[1])
+    hctx.strokeStyle = color
+    hctx.lineWidth = stroke
+    hctx.stroke()
+  }
+
+  function DrawEllipse(x, y, width, height, rotation, color){
+    hctx.beginPath()
+    hctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    hctx.fillStyle = color
+    hctx.fill()
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    hctx.fillStyle = color;
+    hctx.save();
+    hctx.translate(x, y);
+    hctx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    hctx.fill(ex);
+    hctx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.moveTo(cord1X, cord1Y);
+    hctx.lineTo(cord2X, cord2Y);
+    hctx.lineTo(cord3X, cord3Y);
+    hctx.lineTo(cord1X, cord1Y);
+    hctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.fillRect(x, y, width, height);
+  };
+
+  function strokeRect(x, y, width, height, color, stroke){
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke
+    hctx.rect(x, y, width, height);
+    hctx.stroke()
+  }
+
+  const hslToRgb = (h,s,l) => {
+    s/=100;l/=100;h/=360
+    const k = n => (n + h/.0833) % 12
+    const a = s * Math.min(l, 1-l)
+    const f = n => l - a * Math.max(-1, Math.min(k(n)-3, 9-k(n), 1))
+    return [f(0), f(8), f(4)].map(x => Math.round(x*255))
+  }
+
+  const hexToRgb = hex => [1,3,5].map(i => parseInt(hex.slice(i,i+2), 16))
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+
+
+  window.requestAnimationFrame(update);
+</script>

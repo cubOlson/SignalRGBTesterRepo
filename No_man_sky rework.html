@@ -1,0 +1,951 @@
+<head>
+<title>No Man's Sky</title>
+<meta description="Metering and ambiance for No Man's Sky." />
+<meta publisher="SignalRGB" />
+
+<meta property="keyScreenBrightness" label="Ambience brightness" type="number" min="0" max="100" default="100" />
+
+<meta
+property="enableShieldDe"
+label="Shield Decrease Effect"
+type="boolean"
+default="1"
+/>
+
+<meta
+property="shieldDown"
+label="Shield Down Color"
+type="color"
+min="0"
+max="360"
+default="#ff0000"
+/>
+
+<meta
+property="enableHealthDe"
+label="Life Support Decrease Effect"
+type="boolean"
+default="1"
+/>
+
+<meta
+property="lifeSupportDown"
+label="Life Support Down Color"
+type="color"
+min="0"
+max="360"
+default="#ff0000"
+/>
+
+<meta
+property="enableEnviroDe"
+label="Environment Bar Decrease Effect"
+type="boolean"
+default="1"
+/>
+
+<meta
+property="enableOverheat"
+label="Overheat Effect"
+type="boolean"
+default="1"
+/>
+
+<meta property="enableScan" label="Scan Effect" type="boolean" default="1" />
+
+<meta meter="inGame" type="area" tags="VLC,Game" x="0.0735" y="0.8228" width="0" height="0" h="0-360" s="0-20" l="95-100" >
+  <resolution size="2560x1080" x="0.075" y="0.8228" width="0.0012" height="0.0007"  />
+  <resolution size="3440x1440" x="0.075" y="0.8228" width="0.0012" height="0.0007"  />
+
+  <resolution size="2560x720" x="0.0768" y="0.8221" width="0.0011" height="0.0018" />
+  <resolution size="3200x900" x="0.0768" y="0.8221" width="0.0011" height="0.0018" />
+  <resolution size="3520x990" x="0.0768" y="0.8221" width="0.0011" height="0.0018" />
+  <resolution size="3840x1080" x="0.0768" y="0.8221" width="0.0011" height="0.0018" />
+  <resolution size="5120x1440" x="0.0768" y="0.8221" width="0.0011" height="0.0018" />
+</meta>
+
+<meta meter="overheatBar" type="area" tags="VLC,Game" x="0.8961" y="0.1042" width="0.0679" height="-0.0007" h="0-360" s="0-40" l="90-100" >
+  <resolution size="2560x1080" x="0.8456" y="0.1112" width="0.0494" height="-0.0007"  />
+  <resolution size="3440x1440" x="0.8456" y="0.1112" width="0.0494" height="-0.0007"  />
+  
+  <resolution size="2560x720" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="3200x900" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="3520x990" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="3840x1080" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="5120x1440" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+</meta>
+
+<meta meter="overheatBar2" type="area" tags="VLC,Game" x="0.8093" y="0.113" width="0.0844" height="0.00" h="0-360" s="0-40" l="90-100" >
+  <resolution size="2560x1080" x="0.904" y="0.1042" width="0.0562" height="-0.0007"  />
+  <resolution size="3440x1440" x="0.904" y="0.1042" width="0.0562" height="-0.0007"  />
+    
+  <resolution size="2560x720" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="3200x900" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="3520x990" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="3840x1080" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="5120x1440" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+</meta>
+
+<meta meter="overheatBarHigh" type="area" tags="VLC,Game" x="0.8961" y="0.1042" width="0.0679" height="-0.0007"  h="0-80" s="31-100" l="20-100"  >
+  <resolution size="2560x1080" x="0.8456" y="0.1112" width="0.0494" height="-0.0007" />
+  <resolution size="3440x1440" x="0.8456" y="0.1112" width="0.0494" height="-0.0007"  />
+
+  <resolution size="2560x720" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="3200x900" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="3520x990" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="3840x1080" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+  <resolution size="5120x1440" x="0.8807" y="0.1075" width="0.0412" height="0.0001" />
+</meta>
+
+<meta meter="overheatBarHigh2" type="area" tags="VLC,Game" x="0.8093" y="0.113" width="0.0844" height="0.00" h="0-80" s="31-100" l="20-100" >
+  <resolution size="2560x1080" x="0.904" y="0.1042" width="0.0562" height="-0.0007" />
+  <resolution size="3440x1440" x="0.904" y="0.1042" width="0.0562" height="-0.0007"  />
+      
+  <resolution size="2560x720" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="3200x900" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="3520x990" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="3840x1080" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+  <resolution size="5120x1440" x="0.92" y="0.1038" width="0.037" height="0.0001"  />
+</meta>
+
+<meta meter="scan" tags="No Man's Sky" type="ocr_textmatch" x="0.4745" y="0.3565" width="0.0099" height="0.0194" string="D" confidence="70">
+  <resolution size="2560x1080" x="0.483" y="0.3565" width="0.006" height="0.0174" />
+  <resolution size="3440x1440" x="0.483" y="0.3565" width="0.006" height="0.0174"  />
+        
+  <resolution size="2560x720" x="0.4885" y="0.3577" width="0.004" height="0.0167"  />
+  <resolution size="3200x900" x="0.4885" y="0.3577" width="0.004" height="0.0167"  />
+  <resolution size="3520x990" x="0.4885" y="0.3577" width="0.004" height="0.0167"  />
+  <resolution size="3840x1080" x="0.4885" y="0.3577" width="0.004" height="0.0167"  />
+  <resolution size="5120x1440" x="0.4885" y="0.3577" width="0.004" height="0.0167"  />
+</meta>
+
+<meta meter="coldBar1" type="area" tags="VLC,Game" x="0.0852" y="0.7901" width="0.0778" height="0.0007" h="200-230" s="60-80" l="90-100" >
+  <resolution size="2560x1080" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+  <resolution size="3440x1440" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+            
+  <resolution size="2560x720" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="coldBar2" type="area" tags="VLC,Game" x="0.1708" y="0.7832" width="0.0676" height="0.0021" h="200-230" s="60-80" l="90-100" >
+  <resolution size="2560x1080" x="0.1436" y="0.7846" width="0.0547" height="-0.0014" />
+  <resolution size="3440x1440" x="0.1436" y="0.7846" width="0.0547" height="-0.0014"  />
+              
+  <resolution size="2560x720" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="toxicBar1" type="area" tags="VLC,Game" x="0.0852" y="0.7901" width="0.0778" height="0.0007" h="105-115" s="50-65" l="50-75" >
+  <resolution size="2560x1080" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+  <resolution size="3440x1440" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+              
+  <resolution size="2560x720" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="toxicBar2" type="area" tags="VLC,Game" x="0.1708" y="0.7832" width="0.0676" height="0.0021" h="105-115" s="50-65" l="50-75"  >
+  <resolution size="2560x1080" x="0.1436" y="0.7846" width="0.0547" height="-0.0014" />
+  <resolution size="3440x1440" x="0.1436" y="0.7846" width="0.0547" height="-0.0014"  />
+                
+  <resolution size="2560x720" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="heatBar1" type="area" tags="VLC,Game" x="0.0852" y="0.7901" width="0.0778" height="0.0007" h="6-17" s="79-90" l="65-75" >
+  <resolution size="2560x1080" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+  <resolution size="3440x1440" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+              
+  <resolution size="2560x720" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="heatBar2" type="area" tags="VLC,Game" x="0.1708" y="0.7832" width="0.0676" height="0.0021" h="6-17" s="79-90" l="65-75"  >
+  <resolution size="2560x1080" x="0.1436" y="0.7846" width="0.0547" height="-0.0014" />
+  <resolution size="3440x1440" x="0.1436" y="0.7846" width="0.0547" height="-0.0014"  />
+                
+  <resolution size="2560x720" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="radiationBar1" type="area" tags="VLC,Game" x="0.0852" y="0.7901" width="0.0778" height="0.0007" h="0-40" s="70-100" l="80-100" >
+  <resolution size="2560x1080" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+  <resolution size="3440x1440" x="0.0849" y="0.7894" width="0.0643" height="0.0014" />
+              
+  <resolution size="2560x720" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.0847" y="0.7915" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="radiationBar2" type="area" tags="VLC,Game" x="0.1708" y="0.7832" width="0.0676" height="0.0021" h="0-40" s="70-100" l="80-100" >
+  <resolution size="2560x1080" x="0.1436" y="0.7846" width="0.0547" height="-0.0014" />
+  <resolution size="3440x1440" x="0.1436" y="0.7846" width="0.0547" height="-0.0014"  />
+                
+  <resolution size="2560x720" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.1253" y="0.7878" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="lifeSupport1" type="area" tags="VLC,Game" x="0.0864" y="0.8416" width="0.0844" height="-0.0007" h="0-360" s="0-40" l="90-100" >
+  <resolution size="2560x1080" x="0.0858" y="0.8416" width="0.0643" height="0.0014" />
+  <resolution size="3440x1440" x="0.0858" y="0.8416" width="0.0643" height="0.0014"  />
+          
+  <resolution size="2560x720" x="0.0847" y="0.8434" width="0.0403" height="0"  />
+  <resolution size="3200x900" x="0.0847" y="0.8434" width="0.0403" height="0"  />
+  <resolution size="3520x990" x="0.0847" y="0.8434" width="0.0403" height="0"  />
+  <resolution size="3840x1080" x="0.0847" y="0.8434" width="0.0403" height="0"  />
+  <resolution size="5120x1440" x="0.0847" y="0.8434" width="0.0403" height="0"  />
+</meta>
+
+<meta meter="lifeSupport2" type="area" tags="VLC,Game" x="0.1755" y="0.8332" width="0.0648" height="0.0028" h="0-360" s="0-40" l="90-100" >
+  <resolution size="2560x1080" x="0.1445" y="0.8368" width="0.0547" height="-0.0014" />
+  <resolution size="3440x1440" x="0.1445" y="0.8368" width="0.0547" height="-0.0014"  />
+            
+  <resolution size="2560x720" x="0.1253" y="0.8397" width="0.0359" height="0.0001"  />
+  <resolution size="3200x900" x="0.1253" y="0.8397" width="0.0359" height="0.0001"  />
+  <resolution size="3520x990" x="0.1253" y="0.8397" width="0.0359" height="0.0001"  />
+  <resolution size="3840x1080" x="0.1253" y="0.8397" width="0.0359" height="0.0001"  />
+  <resolution size="5120x1440" x="0.1253" y="0.8397" width="0.0359" height="0.0001"  />
+</meta>
+
+<meta meter="inScan" type="area" tags="VLC,Game" x="0.4814" y="0.0424" width="0.0266" height="-0.0007" h="7-47" s="43-83" l="35-100" >
+  <resolution size="2560x1080" x="0.4814" y="0.0424" width="0.0266" height="-0.0007" />
+  <resolution size="3440x1440" x="0.4814" y="0.0424" width="0.0266" height="-0.0007"  />
+</meta>
+
+<meta meter="holdMining" type="area" tags="VLC,Game" x="0.9664" y="0.1529" width="0" height="0" h="0-360" s="0-20" l="90-100" >
+  <resolution size="2560x1080" x="0.9622" y="0.1376" width="0.0009" height="0.0014" />
+  <resolution size="3440x1440" x="0.9622" y="0.1376" width="0.0009" height="0.0014"  />
+              
+  <resolution size="2560x720" x="0.9596" y="0.1455" width="0" height="0.0019"  />
+  <resolution size="3200x900" x="0.9596" y="0.1455" width="0" height="0.0019"  />
+  <resolution size="3520x990" x="0.9596" y="0.1455" width="0" height="0.0019"  />
+  <resolution size="3840x1080" x="0.9596" y="0.1455" width="0" height="0.0019"  />
+  <resolution size="5120x1440" x="0.9596" y="0.1455" width="0" height="0.0019"  />
+</meta>
+
+<meta meter="environmentColor" type="colormean" tags="VLC,Game" x="0.0856" y="0.7922" width="0" height="0" >
+  <resolution size="2560x1080" x="0.0849" y="0.7894" width="0.0006" height="0.0042" />
+  <resolution size="3440x1440" x="0.0849" y="0.7894" width="0.0006" height="0.0042"  />
+                
+  <resolution size="2560x720" x="0.0841" y="0.7905" width="0" height="0.0047"  />
+  <resolution size="3200x900" x="0.0841" y="0.7905" width="0" height="0.0047"  />
+  <resolution size="3520x990" x="0.0841" y="0.7905" width="0" height="0.0047"  />
+  <resolution size="3840x1080" x="0.0841" y="0.7905" width="0" height="0.0047"  />
+  <resolution size="5120x1440" x="0.0841" y="0.7905" width="0" height="0.0047"  />
+</meta>
+
+<meta meter="damageWhite" type="area" tags="VLC,Game" x="0.0731" y="0.1334" width="0" height="0" h="0-360" s="0-40" l="90-100" >
+  <resolution size="2560x1080" x="0.0715" y="0.1286" width="0.0006" height="0.0027" />
+  <resolution size="3440x1440" x="0.0715" y="0.1286" width="0.0006" height="0.0027"  />
+                  
+  <resolution size="2560x720" x="0.0729" y="0.1279" width="0.0006" height="0.0046"  />
+  <resolution size="3200x900" x="0.0729" y="0.1279" width="0.0006" height="0.0046"  />
+  <resolution size="3520x990" x="0.0729" y="0.1279" width="0.0006" height="0.0046"  />
+  <resolution size="3840x1080" x="0.0729" y="0.1279" width="0.0006" height="0.0046"  />
+  <resolution size="5120x1440" x="0.0729" y="0.1279" width="0.0006" height="0.0046"  />
+</meta>
+
+<meta meter="damageRed" type="area" tags="VLC,Game" x="0.0559" y="0.1133" width="0" height="0" h="0-50" s="36-90" l="70-100" >
+  <resolution size="2560x1080" x="0.064" y="0.1022" width="0.0003" height="0.0041" />
+  <resolution size="3440x1440" x="0.064" y="0.1022" width="0.0003" height="0.0041"  />
+                    
+  <resolution size="2560x720" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="3200x900" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="3520x990" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="3840x1080" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="5120x1440" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+</meta>
+
+<meta meter="damageRed2" type="area" tags="VLC,Game" x="0.0559" y="0.1133" width="0" height="0" h="300-360" s="36-90" l="70-100" >
+  <resolution size="2560x1080" x="0.064" y="0.1022" width="0.0003" height="0.0041" />
+  <resolution size="3440x1440" x="0.064" y="0.1022" width="0.0003" height="0.0041"  />
+                    
+  <resolution size="2560x720" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="3200x900" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="3520x990" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="3840x1080" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+  <resolution size="5120x1440" x="0.0685" y="0.1038" width="0.0003" height="0.0056"  />
+</meta>
+</head>
+
+
+
+
+<body style="margin: 0; padding: 0; background: #000;">
+<canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+var inGame_Meter = new Meter(5,inGamecallback); 
+
+var overheatBar_Meter = new Meter(10,overheatBarHighcallback); 
+var overheatBarHigh_Meter = new Meter(10,overheatBarHighcallback); 
+
+var scan_Meter = new Meter(5,scancallback); 
+
+var lifeSupport_Meter = new Meter(5,lifeSupportcallback); 
+
+let environmentBar_Meter = new Meter(5,environmentBarcallback);
+
+var inScan_Meter = new Meter(5,()=>""); 
+var holdMining_Meter = new Meter(5,()=>""); 
+var environmentColor_Meter = new Meter(5,()=>""); 
+
+var damageWhiteMeter = new Meter(5, damagecallback)
+var damageMeter = new Meter(2,damagecallback);
+let likelyCharing = 0;
+
+let isInGame = false;
+
+const COOLDOWNENVIRONMENT = 5000;
+
+let environmentCooldown = 0;
+let lifeSupportCooldown = 0;
+
+ function inGamecallback () {
+  if (inGame_Meter.value ==1 && lifeSupport_Meter.value >0 ){
+    isInGame = true;
+  } else {
+    isInGame = false;
+  }
+}
+
+function damagecallback(){
+  if (enableShieldDe && isInGame && damageMeter.value >=1 && engine.vision.damageWhite == 1 && damageWhiteMeter.value == 1){
+    var colors = hexToHSL(shieldDown);
+    console.log("damage");
+    effects.length = 0;
+        stateHdlr.Push(new colorFilter(0,-100,1000))
+          for (let i = 0; i < 20; i++) {
+            setTimeout(function () {
+              effects.push(
+                new moveableBar(
+                  i * 20,
+                  160,
+                  100,
+                  20,
+                  0,
+                  -5,
+                  colors.h + random(-20, 20),
+                  colors.s + random(-20, 20),
+                  colors.l,
+                  0.9
+                )
+              );
+            }, i * 30);
+            setTimeout(function () {
+              effects.push(
+                new moveableBar(
+                  i * 20,
+                  160,
+                  100,
+                  20,
+                  0,
+                  5,
+                  colors.h + random(-20, 20),
+                  colors.s + random(-20, 20),
+                  colors.l,
+                  0.9
+                )
+              );
+            }, i * 30);
+          }
+  }
+}
+
+
+ function overheatBarHighcallback () {
+  if(overheatBar_Meter.value>0){
+    likelyCharing = Date.now();
+  }
+  if (overheatBarHigh_Meter.value >=1.9 && overheatBar_Meter.value <=0.1 && isInGame && Date.now() - likelyCharing < 2000){
+    var colors = hexToHSL("#FF0000");
+        for (let i = 0; i < 20 * 3; i++) {
+          setTimeout(function () {
+            effects.push(
+              new moveableBar(
+                160,
+                100,
+                20,
+                20,
+                random(-8, 8),
+                random(-8, 8),
+                colors.h + random(-20, 20),
+                colors.s + random(-20, 20),
+                colors.l,
+                0.9
+              )
+            );
+          }, random(0, 1200));
+          setTimeout(function () {
+            effects.push(
+              new moveableBar(
+                160,
+                100,
+                20,
+                20,
+                random(-8, 8),
+                random(-8, 8),
+                colors.h + random(-20, 20),
+                colors.s + random(-20, 20),
+                colors.l,
+                0.9
+              )
+            );
+          }, random(0, 1200));
+        }
+  }
+}
+
+let scanGoing = false
+ function scancallback () {
+  if (enableScan && inScan_Meter.value == 1 && !scanGoing){
+    if (scan_Meter.value==1){
+      scanGoing = true
+      var colors = hexToHSL("#4dff00");
+      stateHdlr.Push(new WallUpState(colors.h, colors.s, colors.l, 0.7));
+    }
+
+  }
+}
+
+ function lifeSupportcallback () {
+  inGamecallback();
+  if(isInGame && enableHealthDe && Date.now()>lifeSupportCooldown){
+    var colors = hexToHSL(lifeSupportDown);
+    lifeSupportCooldown = Date.now() + COOLDOWNENVIRONMENT;
+          for (let i = 0; i < 20 * 2; i++) {
+            setTimeout(function () {
+              effects.push(
+                new moveableBar(
+                  -30,
+                  Math.random() * 200,
+                  10,
+                  30,
+                  10,
+                  0,
+                  colors.h + random(-10, 10),
+                  colors.s,
+                  colors.l,
+                  0.9
+                )
+              );
+            }, Math.random() * 2000);
+            setTimeout(function () {
+              effects.push(
+                new moveableBar(
+                  320,
+                  Math.random() * 200,
+                  10,
+                  30,
+                  -10,
+                  0,
+                  colors.h + random(-10, 10),
+                  colors.s,
+                  colors.l,
+                  0.9
+                )
+              );
+            }, Math.random() * 2000);
+          }
+  }
+ 
+}
+
+
+
+
+
+function environmentBarcallback () {
+  inGamecallback();
+  if ( isInGame &&environmentBar_Meter.decreased && Date.now() > environmentCooldown) {
+      if (enableEnviroDe) {
+        let colors = engine.vision.environmentColor[0];
+        environmentCooldown = Date.now() + COOLDOWNENVIRONMENT;
+        for (let i = 0; i < 20; i++) {
+          {
+            setTimeout(function () {
+              effects.push(
+                new moveableBar(
+                  0,
+                  i * 10,
+                  20,
+                  320,
+                  random(-7, 7),
+                  0,
+                  colors + random(-20, 20),
+                  100,
+                  50,
+                  0.7
+                )
+              );
+            }, i * 50);
+          }
+        }
+      }
+    }
+}
+
+let canvas, ctx;
+
+let effects = [];
+let stateHdlr = new StateHandler();
+
+function update(){
+
+inGame_Meter.setValue(engine.vision.inGame)
+overheatBar_Meter.setValue(engine.vision.overheatBar + engine.vision.overheatBar2)
+overheatBarHigh_Meter.setValue(engine.vision.overheatBarHigh + engine.vision.overheatBarHigh2)
+
+scan_Meter.setValue(engine.vision.scan)
+lifeSupport_Meter.setValue((engine.vision.lifeSupport1 + engine.vision.lifeSupport2)/2)
+inScan_Meter.setValue(engine.vision.inScan)
+holdMining_Meter.setValue(engine.vision.holdMining)
+environmentColor_Meter.setValue(engine.vision.environmentColor[0])
+damageMeter.setValue(engine.vision.damageRed + engine.vision.damageRed2)
+damageWhiteMeter.setValue(engine.vision.damageWhite)
+
+
+  if( environmentColor_Meter.value >200 &&  environmentColor_Meter.value <230){
+    environmentBar_Meter.setValue((engine.vision.coldBar1 + engine.vision.coldBar2)/2)
+  } else if (environmentColor_Meter.value >105 && environmentColor_Meter.value <115){
+    environmentBar_Meter.setValue((engine.vision.toxicBar1 + engine.vision.toxicBar2)/2)
+  } else if (environmentColor_Meter.value >6 && environmentColor_Meter.value <15){
+    environmentBar_Meter.setValue((engine.vision.heatBar1 + engine.vision.heatBar2)/2)
+  } else if (environmentColor_Meter.value >0 && environmentColor_Meter.value <40){
+    environmentBar_Meter.setValue((engine.vision.radiationBar1 + engine.vision.radiationBar2)/2)
+  } else {
+    environmentBar_Meter.setValue(0)
+  }
+    
+
+
+
+
+copyScreen(1);
+
+
+
+stateHdlr.Process();
+for (let i = 0; i < effects.length; i++) {
+  effects[i].draw();
+  if (effects[i].lifetime <= 0) {
+    effects.splice(i, 1);
+  }
+};
+
+
+  window.requestAnimationFrame(update);
+}
+
+
+function moveableBar(
+    x,
+    y,
+    width,
+    height,
+    xDirection,
+    yDirection,
+    hue,
+    sat,
+    lit,
+    alpha
+  ) {
+    this.x = x;
+    this.y = y;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 50;
+    this.size = 0;
+    this.ydirection = yDirection;
+    this.xdirection = xDirection;
+    this.width = width;
+    this.height = height;
+
+    this.draw = function () {
+      ctx.fillStyle =
+        "hsla(" +
+        this.hue +
+        "," +
+        this.sat +
+        "%," +
+        this.lit +
+        "%," +
+        this.alpha +
+        " )";
+      ctx.fillRect(this.x, this.y, this.height, this.width);
+      this.lifetime--;
+      this.y -= this.ydirection;
+      this.x += this.xdirection;
+    };
+  }
+
+  
+  function WallUpState(hue, sat, lit, alpha = 1) {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.count = 2000;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+    this.alpha = alpha;
+    this.lifetime = 80;
+
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        scanGoing = false
+        stateHdlr.Pop();
+      }
+      this.draw();
+    };
+
+    this.draw = function () {
+      var pctUp = 1 - this.count / 2000;
+      ctx.fillStyle =
+        "hsla(" +
+        (this.hue + random(-15, 15)) +
+        "," +
+        (this.sat + random(-15, 15)) +
+        "%," +
+        (this.lit + random(-15, 15)) +
+        "%," +
+        this.alpha +
+        ")";
+      ctx.fillRect(0, 200 - 200 * pctUp, 320, 300);
+      this.count -= 28;
+      ctx.fillStyle =
+        "hsla(" +
+        (this.hue + random(-15, 15)) +
+        "," +
+        (this.sat + random(-15, 15)) +
+        "%," +
+        (this.lit + random(-15, 15)) +
+        "%," +
+        this.alpha +
+        ")";
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+      ctx.fillStyle =
+        "hsla(" +
+        (this.hue + random(-15, 15)) +
+        "," +
+        (this.sat + random(-15, 15)) +
+        "%," +
+        (this.lit + random(-15, 15)) +
+        "%," +
+        this.alpha +
+        ")";
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+      ctx.fillRect(Math.random() * 320, 200 - 200 * pctUp, 20, 300);
+
+      this.lifetime--;
+    };
+  }
+
+  
+  function OpenBars() {
+    this.start = new Date().getTime();
+    this.duration = 2000;
+    this.lifetime = 50;
+    this.size = 0;
+    this.flashing;
+    var x1 = 140;
+    var x2 = 150;
+    var x3 = 170;
+    var x4 = 180;
+    var x5 = -40;
+    var x6 = -20;
+    var x7 = 340;
+    var x8 = 380;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateHdlr.Pop();
+      }
+      this.Draw();
+    };
+    this.Draw = function () {
+      ctx.fillStyle = color1;
+      ctx.fillRect(x1, 0, 20, 200);
+      ctx.fillStyle = color2;
+      ctx.fillRect(x2, 0, 20, 200);
+      ctx.fillStyle = color2;
+      ctx.fillRect(x3, 0, 20, 200);
+      ctx.fillStyle = color1;
+      ctx.fillRect(x4, 0, 20, 200);
+
+      if (x1 > -20) {
+        x1 -= 5;
+      }
+      if (x2 > -20) {
+        x2 -= 5;
+      }
+      if (x3 <= 320) {
+        x3 += 5;
+      }
+      if (x4 <= 320) {
+        x4 += 5;
+      }
+    };
+    this.lifetime--;
+  }
+
+
+function random(min, max) {
+  var num = Math.floor(Math.random() * (max - min)) + min;
+  // if min = 10 max = 15 random var = 0.1544465; it will return approzimately 10 because of math.floor
+  return num;
+}
+
+
+
+function DrawRect(x, y, width, height, color) {
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, width, height);
+};
+
+function DrawCircle(x, y, radius, color) {
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.arc(x, y, radius, 0, 2 * Math.PI)
+  ctx.fill();
+};
+
+function StrokeCircle(x, y, width, height, color) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 30;
+  ctx.arc(x, y, width, 0, 2 * Math.PI);
+  ctx.stroke();
+};
+
+function renderPath(x, y, path, color, size) {
+  ctx.fillStyle = color;
+  ctx.save();
+  ctx.transform(size / 10, 0, 0, size / 10, 160 - 10 * 16.5, 79 - size * 7.5);
+  ctx.translate(x, y);
+  let ex = new Path2D(path);
+  ctx.fill(ex);
+  ctx.restore();
+
+  function getXAndYForPathPoint(point1, point2, percentage) {
+    let speed = { x: (point2.x - point1.x) * percentage, y: (point2.y - point1.y) * percentage }
+    return { x: point1.x + speed.x, y: point1.y + speed.y }
+  }
+}
+
+
+function hexToHSL(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    (r /= 255), (g /= 255), (b /= 255);
+    var max = Math.max(r, g, b),
+      min = Math.min(r, g, b);
+    var h,
+      s,
+      l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    s = s * 100;
+    s = Math.round(s);
+    l = l * 100;
+    l = Math.round(l);
+    h = Math.round(360 * h);
+
+    var colors = [];
+    colors["h"] = h;
+    colors["s"] = s;
+    colors["l"] = l;
+
+    return colors;
+  }
+
+
+
+
+function copyScreen(alpha) {
+  let lightness = new Int8Array(engine.zone.lightness);
+  let sat = new Int8Array(engine.zone.saturation);
+  let hue = new Int16Array(engine.zone.hue);
+  for (var iZone = 0; iZone < 560; iZone++) {
+    ctx.fillStyle =
+      "hsla(" +
+      hue[iZone] +
+      "," +
+      sat[iZone] +
+      "%," +
+      lightness[iZone] * keyScreenBrightness * 0.01 +
+      "%, " +
+      alpha
+      +
+      ")";
+    var iRow = Math.floor(iZone / 28);
+    var iCol = iZone % 28;
+    var iWidth = 320 / 28;
+    var iHeight = 200 / 20;
+    var iZx = iCol * iWidth;
+    var iZy = iRow * iHeight;
+
+    ctx.fillRect(iZx, iZy, iWidth, iHeight);
+  }
+}
+
+function colorFilter(hue, lightnessOffset = 0, milliseconds = 4000) {
+    this.start = new Date().getTime();
+    this.duration = milliseconds;
+    this.hue = hue;
+    this.lightnessOffset = lightnessOffset;
+    this.Process = function () {
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        stateHdlr.Pop();
+      }
+      this.draw();
+    };
+
+    this.draw = function () {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var satBoost = sat[iZone] + 35;
+        ctx.fillStyle =
+          "hsla(" +
+          this.hue +
+          "," +
+          satBoost +
+          "%," +
+          (lightness[iZone] + this.lightnessOffset) +
+          "%, " +
+          keyScrenBrightness * 0.01 +
+          ")";
+
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+
+        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    };
+  }
+
+
+function StateHandler() {
+  var stack = [];
+  var state = null;
+
+  var updateState = function () {
+    if (stack.length > 0) {
+      state = stack[stack.length - 1];
+    } else {
+      state = null;
+    }
+  };
+
+  this.Push = function (newState) {
+    stack.push(newState);
+    updateState();
+  };
+
+  this.Pop = function () {
+    stack.pop();
+    updateState();
+  };
+
+  this.Process = function () {
+    if (state != null) {
+      state.Process();
+    }
+  };
+}
+
+
+
+function Meter(size, callback) {
+  this.size = size;
+  this.value = 0;
+  this.diff = 0;
+  this.increased = false;
+  this.decreased = false;
+  var values = [];
+
+  this.setValue = function (updatedValue) {
+    values.push(updatedValue);
+    if (values.length > this.size) {
+      values.shift();
+    }
+
+    for (var i = 0; i < values.length - 1; i++) {
+      if (values[i] !== values[i + 1]) return;
+    }
+    if (this.value !== values[0]) {
+      this.diff = Math.abs(this.value - values[0]);
+      this.increased = this.value < values[0];
+      this.decreased = this.value > values[0];
+      this.value = values[0];
+      callback();
+    }
+  };
+}
+
+
+function onEngineReady() {
+  // Grab canvas and rendering context.
+  c = document.getElementById("exCanvas");
+  ctx = c.getContext("2d");
+  window.requestAnimationFrame(update);
+}
+onEngineReady()
+</script>
