@@ -329,6 +329,8 @@
         healthHUDGoing = true
         if(hpOn) effects.push(new healthHUD())
       } else if (!gInGame) healthHUDGoing = false
+
+        if(gInGame) deadGoing = false
     }
 
     let vehicleGoing = false
@@ -938,3 +940,4 @@
 
   window.requestAnimationFrame(update);
 </script>
+
