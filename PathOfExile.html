@@ -1,6 +1,6 @@
 <head>
-  <title>Path of Exile 2 Dev</title>
-  <meta description="Ambience and metering for Path of Exile 2. v1.02" />
+  <title>Path of Exile 2</title>
+  <meta description="Ambience and metering for Path of Exile 2. v1.04" />
   <meta publisher="SignalRGB" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
   default="Ambience"/>
@@ -8,7 +8,6 @@
   <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
   <meta property="HUDOn" label="HUD effects" type="boolean" default="1" />
   <meta property="adjToggle" label="HUD Adjust Toggle (turn off in-game)" type="boolean" default="0" />
-  <meta property="HUDBack" label="Custom HUD Background" type="boolean" default="0" />
   <meta property="HealthColor" label="Health HUD Color" type="color" default="#12ff00" min="0" max="360" />
   <meta property="HealthX" label="Health X" type="number" min="0" max="100" default="0" />
   <meta property="HealthY" label="Health Y" type="number" min="0" max="100" default="25" />
@@ -16,7 +15,7 @@
   <meta property="HealthHeight" label="Health Height" type="number" min="0" max="100" default="20" />
   <meta property="ManaColor" label="Mana HUD Color" type="color" default="#00c3ff" min="0" max="360" />
   <meta property="ManaX" label="Mana X" type="number" min="0" max="100" default="0" />
-  <meta property="ManaY" label="Mana Y" type="number" min="0" max="100" default="50" />
+  <meta property="ManaY" label="Mana Y" type="number" min="0" max="100" default="45" />
   <meta property="ManaWidth" label="Mana Width" type="number" min="0" max="100" default="100" />
   <meta property="ManaHeight" label="Mana Height" type="number" min="0" max="100" default="20" />
   <meta property="hpOn" label="Health Effects" type="boolean" default="1" />
@@ -30,7 +29,7 @@
 
   <!-- HUD, Low Health, Full Health, Low Mana, Full Mana, No Shield, Full Shield, Damaged Shield, XP Gain, Level Up, Electrified, Poisoned, Player Dead, Teleport, Loading -->
   <meta meter="inGame1" type="area" tags="vlc,path of exile" x="0.1243" y="0.9166" width="0" height="0.0632" 
-    h="0-90" s="0-100" l="10-50" hdr-h="0-90" hdr-s="0-50" hdr-l="20-60">
+    h="0-90" s="0-100" l="10-50" hdr-h="0-90" hdr-s="0-50" hdr-l="0-70">
     <resolution aspect="3.55:1" x="0.2247" y="0.9173" width="0.0001" height="0.0619" />
     <resolution aspect="24:10" x="0.0927" y="0.9181" width="0.0003" height="0.0300" />
     <resolution aspect="16:11" x="0.1379" y="0.925" width="0" height="0.0187" /> 
@@ -40,44 +39,53 @@
   </meta>
 
   <meta meter="inGame2" type="area" tags="vlc,path of exile" x="0.1258" y="0.9159" width="0" height="0.0619" 
-    h="0-360" s="0-100" l="0-20" hdr-h="0-360" hdr-s="0-100" hdr-l="0-20">
+    h="0-360" s="0-100" l="0-20" hdr-h="0-360" hdr-s="0-100" hdr-l="0-30">
     <resolution aspect="3.55:1" x="0.2256" y="0.9173" width="0.0002" height="0.0605" />
     <resolution aspect="24:10" x="0.0939" y="0.9166" width="0.0003" height="0.0612" />
     <resolution aspect="16:11" x="0.1895" y="0.9325" width="-0.0008" height="0.0387" />
 
     <resolution size="3840x2160" x="0.1258" y="0.9159" width="0" height="0.0619"  />
+    <resolution size="2560x1080" x="0.0939" y="0.9166" width="0.0003" height="0.0612"/> 
   </meta>
 
   <meta meter="hpRed" type="area" tags="vlc,path of exile" x="0.0657" y="0.8346" width="0.0003" height="0.1404" 
     h="-30-40" s="45-100" l="15-70" hdr-h="-40-20" hdr-s="50-100" hdr-l="20-100">
     <resolution aspect="3.55:1" x="0.1959" y="0.8353" width="-0.0002" height="0.1376" />
     <resolution aspect="24:10" x="0.0491" y="0.8346" width="0.0024" height="0.1397" />
+    <resolution aspect="16:11" x="0.0657" y="0.8346" width="0.0003" height="0.1404"  />
 
     <resolution size="3840x2160" x="0.0657" y="0.8346" width="0.0003" height="0.1404"  />
+    <resolution size="2560x1080" x="0.0491" y="0.8346" width="0.0024" height="0.1397"/> 
   </meta>
 
   <meta meter="hpElectric" type="area" tags="vlc,path of exile" x="0.0406" y="0.9333" width="0.0137" height="0.0215" 
     h="190-240" s="0-100" l="0-100" hdr-h="190-240" hdr-s="0-100" hdr-l="0-100">
     <resolution aspect="3.55:1" x="0.183" y="0.9368" width="0.0043" height="0.018" />
     <resolution aspect="24:10" x="0.0317" y="0.9444" width="0.0099" height="0.0195" />
+    <resolution aspect="16:11" x="0.0406" y="0.9333" width="0.0137" height="0.0215"  />
 
     <resolution size="3840x2160" x="0.0406" y="0.9333" width="0.0137" height="0.0215"  />
+    <resolution size="2560x1080" x="0.0317" y="0.9444" width="0.0099" height="0.0195"/>
   </meta>
 
   <meta meter="hpPoison" type="area" tags="vlc,path of exile" x="0.0657" y="0.8346" width="0.0003" height="0.1404" 
     h="70-100" s="30-100" l="15-70" hdr-h="70-100" hdr-s="30-100" hdr-l="15-70">
     <resolution aspect="3.55:1" x="0.1959" y="0.8353" width="-0.0002" height="0.1376" />
     <resolution aspect="24:10" x="0.0491" y="0.8346" width="0.0024" height="0.1397" />
+    <resolution aspect="16:11" x="0.0657" y="0.8346" width="0.0003" height="0.1404"   />
 
-    <resolution size="3840x2160" x="0.0657" y="0.8346" width="0.0003" height="0.1404" />
+    <resolution size="3840x2160" x="0.0657" y="0.8346" width="0.0003" height="0.1404"   />
+    <resolution size="2560x1080" x="0.0491" y="0.8346" width="0.0024" height="0.1397"/>
   </meta>
 
   <meta meter="manaBlue" type="area" tags="vlc,path of exile" x="0.9316" y="0.8409" width="0.0055" height="0.132" 
     h="190-230" s="10-100" l="0-70" hdr-h="180-270" hdr-s="0-100" hdr-l="20-100">
     <resolution aspect="3.55:1" x="0.8037" y="0.8388" width="0.0015" height="0.1313" />
     <resolution aspect="24:10" x="0.9503" y="0.8367" width="0.0046" height="0.1404" />
+    <resolution aspect="16:11" x="0.9316" y="0.8409" width="0.0055" height="0.132"    />
 
     <resolution size="3840x2160" x="0.9316" y="0.8409" width="0.0055" height="0.132" />
+    <resolution size="2560x1080" x="0.9503" y="0.8367" width="0.0046" height="0.1404"/>
   </meta>
 
   <meta meter="firstShieldBlue" type="area" tags="vlc,path of exile" x="0.0723" y="0.811" width="0.0055" height="0.0014" 
@@ -87,6 +95,7 @@
     <resolution aspect="16:11" x="0.0774" y="0.8086" width="0.0047" height="-0.0006" /> 
 
     <resolution size="3840x2160" x="0.0723" y="0.811" width="0.0055" height="0.0014" />
+    <resolution size="2560x1080" x="0.0521" y="0.811" width="0.0084" height="0.0028"/>
   </meta>
 
   <meta meter="lastShieldBlue" type="area" tags="vlc,path of exile" x="0.0684" y="0.9924" width="0.0047" height="0.0027" 
@@ -96,62 +105,77 @@
     <resolution aspect="16:11" x="0.0754" y="0.9925" width="0.0055" height="-0.0006" />  
 
     <resolution size="3840x2160" x="0.0684" y="0.9924" width="0.0047" height="0.0027" />
+    <resolution size="2560x1080" x="0.0503" y="0.9931" width="0.007" height="0"/>
   </meta>
 
   <meta meter="xp" type="area" tags="vlc,path of exile" x="0.3021" y="0.9931" width="0.397" height="0.0005" 
     h="15-55" s="0-40" l="50-90" hdr-h="20-70" hdr-s="0-100" hdr-l="50-100">
     <resolution aspect="3.55:1" x="0.3138" y="0.9907" width="0.3700" height="0.0020" />
     <resolution aspect="24:10" x="0.2254" y="0.9931" width="0.5498" height="0.0007" />
+    <resolution aspect="16:11" x="0.3021" y="0.9931" width="0.397" height="0.0005"  /> 
 
     <resolution size="3840x2160" x="0.3021" y="0.9931" width="0.397" height="0.0005" />
+    <resolution size="2560x1080" x="0.2254" y="0.9931" width="0.5498" height="0.0007"/>
   </meta>
 
   <meta meter="deathRed" type="area" tags="vlc,path of exile" x="0.4717" y="0.6776" width="0.0535" height="0.0069" 
     h="-20-20" s="50-100" l="50-100" hdr-h="-20-20" hdr-s="50-100" hdr-l="50-100">
     <resolution aspect="3.55:1" x="0.4858" y="0.6803" width="0.0264" height="0.0042" />
     <resolution aspect="24:10" x="0.4632" y="0.6769" width="0.0713" height="0.0048" />
+    <resolution aspect="16:11" x="0.4717" y="0.6776" width="0.0535" height="0.0069"   />
 
     <resolution size="3840x2160" x="0.4717" y="0.6776" width="0.0535" height="0.0069" />
+    <resolution size="2560x1080" x="0.4632" y="0.6769" width="0.0713" height="0.0048"/>
   </meta>
 
   <meta meter="deathBlack" type="area" tags="vlc,path of exile" x="0.4846" y="0.6505" width="0.0293" height="0.0041" 
     h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-20">
     <resolution aspect="3.55:1" x="0.4935" y="0.6511" width="0.0111" height="0.0007" />
     <resolution aspect="24:10" x="0.4542" y="0.6498" width="0.0747" height="0.0111" />
+    <resolution aspect="16:11" x="0.4846" y="0.6505" width="0.0293" height="0.0041"  />
 
     <resolution size="3840x2160" x="0.4846" y="0.6505" width="0.0293" height="0.0041" />
+    <resolution size="2560x1080" x="0.4542" y="0.6498" width="0.0747" height="0.0111"/>
   </meta>
 
   <meta meter="teleportYellow" type="area" tags="vlc,path of exile" x="0.4943" y="0.0361" width="0.0082" height="0.0007" 
     h="20-60" s="0-100" l="10-95" hdr-h="40-70" hdr-s="0-75" hdr-l="50-100">
     <resolution aspect="3.55:1" x="0.4966" y="0.0354" width="0.0037" height="0.0007" />
     <resolution aspect="24:10" x="0.5295" y="0.0174" width="0.0111" height="0.0034" />
+    <resolution aspect="16:11" x="0.4943" y="0.0361" width="0.0082" height="0.0007"   />
 
     <resolution size="3840x2160" x="0.4943" y="0.0361" width="0.0082" height="0.0007" />
+    <resolution size="2560x1080" x="0.5295" y="0.0174" width="0.0111" height="0.0034"/>
   </meta>
 
   <meta meter="teleportBlue" type="area" tags="vlc,path of exile" x="0.5834" y="0.0056" width="0.0067" height="0.0055" 
     h="180-240" s="0-100" l="0-80" hdr-h="180-260" hdr-s="0-100" hdr-l="0-100">
     <resolution aspect="3.55:1" x="0.5423" y="0.0076" width="0.0027" height="0.0056" />
     <resolution aspect="24:10" x="0.5333" y="0.0014" width="0.023" height="0.0028" />
+    <resolution aspect="16:11" x="0.5834" y="0.0056" width="0.0067" height="0.0055"   />
 
     <resolution size="3840x2160" x="0.5834" y="0.0056" width="0.0067" height="0.0055" />
+    <resolution size="2560x1080" x="0.5333" y="0.0014" width="0.023" height="0.0028"/>
   </meta>
 
   <meta meter="loadingBlack" type="area" tags="vlc,path of exile" x="0.4494" y="0.7985" width="0.0942" height="0.0005" 
     h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
     <resolution aspect="3.55:1" x="0.4886" y="0.7978" width="0.0265" height="0" />
     <resolution aspect="24:10" x="0.449" y="0.7985" width="0.1" height="0" />
+    <resolution aspect="16:11" x="0.4494" y="0.7985" width="0.0942" height="0.0005" />
 
     <resolution size="3840x2160" x="0.4494" y="0.7985" width="0.0942" height="0.0005" />
+    <resolution size="2560x1080" x="0.449" y="0.7985" width="0.1" height="0"/>
   </meta>
 
   <meta meter="loadingBrown" type="area" tags="vlc,path of exile" x="0.474" y="0.804" width="0.0504" height="0" 
     h="0-40" s="10-50" l="0-40" hdr-h="0-40" hdr-s="10-50" hdr-l="0-40">
     <resolution aspect="3.55:1" x="0.5005" y="0.8054" width="0.0078" height="0.0007" />
     <resolution aspect="24:10" x="0.4432" y="0.7922" width="0.116" height="-0.0007" />
+    <resolution aspect="16:11" x="0.474" y="0.804" width="0.0504" height="0" />
 
     <resolution size="3840x2160" x="0.474" y="0.804" width="0.0504" height="0" />
+    <resolution size="2560x1080" x="0.4432" y="0.7922" width="0.116" height="-0.0007"/>
   </meta>
 </head>
 
@@ -160,10 +184,18 @@
 </body>
 
 <script>
-  var canvas, ctx;
+  const canvas = document.getElementById('exCanvas');
+  const ctx = canvas.getContext('2d');
+  // Create a hidden canvas
+  const hiddenCanvas = document.createElement('canvas');
+  hiddenCanvas.width = 320;
+  hiddenCanvas.height = 200;
+  // Don't attach to DOM
+  const hiddenCtx = hiddenCanvas.getContext('2d');
   var effects = [];
   let HUDValues = []
   let HUDPOS = []
+  let gInGame = false
 
   let InGame1Meter = new Meter(5, inGameHandler)
   let InGame2Meter = new Meter(5, inGameHandler)
@@ -188,38 +220,40 @@
   let LoadBrownMeter = new Meter(5, loadingHandler)
 
   function update() {
-    DrawRect(0, 0, 320, 200, "black")
-    backgroundHandler()
-
     InGame1Meter.setValue(engine.vision.inGame1)
     InGame2Meter.setValue(engine.vision.inGame2)
-
     HPMeter.setValue(engine.vision.hpRed)
     PoisonMeter.setValue(engine.vision.hpPoison)
     ElectricMeter.setValue(engine.vision.hpElectric)
     ManaMeter.setValue(engine.vision.manaBlue)
-    if(PoisonMeter.value >= .05 && HPMeter.value <= .05) HUDValues = [PoisonMeter.value, ManaMeter.value]
-    else HUDValues = [HPMeter.value, ManaMeter.value]
-    HUDPOS = [[HealthX, HealthY, HealthWidth, HealthHeight, HealthColor], [ManaX, ManaY, ManaWidth, ManaHeight, ManaColor]]
-
     TopShieldMeter.setValue(engine.vision.firstShieldBlue)
     BottomShieldMeter.setValue(engine.vision.lastShieldBlue)
-
     XPMeter.setValue(engine.vision.xp)
-
     DeadBlackMeter.setValue(engine.vision.deathBlack)
     DeadRedMeter.setValue(engine.vision.deathRed)
-
     TeleBlueMeter.setValue(engine.vision.teleportBlue)
     TeleYellowMeter.setValue(engine.vision.teleportYellow)
-
     LoadBlackMeter.setValue(engine.vision.loadingBlack)
     LoadBrownMeter.setValue(engine.vision.loadingBrown)
 
-    effects.forEach((ele, i)=>{
-      ele.draw()
-      if(ele.lifetime <= 0) effects.splice(i, 1)
-    })
+    DrawRect(0, 0, 320, 200, "black")
+    backgroundHandler()
+
+    if(HUDOn){
+      DrawHUD();
+    }
+
+    //Effect handler 
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw();
+    }
+    // Remove dead effects with filter
+    effects = effects.filter(ele =>
+      ele.lifetime === undefined || ele.lifetime > 0
+    );
+
+
+    ctx.drawImage(hiddenCanvas, 0, 0)
 
     window.requestAnimationFrame(update);
   }
@@ -229,14 +263,12 @@
       proBack = hexToHSL(backColor)
     }
 
-    let gInGame = false
+    
     function inGameHandler(){
-      if(InGame1Meter.value >= .95 && InGame2Meter.value >= .95 && (HPMeter.value > .05 || ManaMeter.value > .05)){
+      if(InGame1Meter.value >= .95 && InGame2Meter.value >= .95 && (HPMeter.value >= .05 || ManaMeter.value >= .05)){
         gInGame = true
-        effects.push(new hudEffect(0))
-        effects.push(new hudEffect(1))
       }
-      else if((InGame1Meter.value <= .25 || InGame2Meter.value <= .25) && HPMeter.value <= .05 && ManaMeter.value <= .05) {
+      else {
         gInGame = false
       }
       if(gInGame){
@@ -262,7 +294,7 @@
       } else if((TeleBlueMeter.value <= .05 && TeleYellowMeter.value <= .05) || !gInGame) teleportGoing = false
     }
 
-    let deadGoing = true
+    let deadGoing = false
     function deathHandler(){
       if(DeadBlackMeter.value >= .95 && DeadRedMeter.value >= .1 && gInGame && !deadGoing){
         if(deathOn) effects.push(new death())
@@ -277,11 +309,11 @@
     }
 
     function DrawStroke(x, y, radius, color, stroke) {
-      ctx.beginPath();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = stroke;
-      ctx.arc(x, y, radius, 0, 2 * Math.PI)
-      ctx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.strokeStyle = color;
+      hiddenCtx.lineWidth = stroke;
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.stroke();
     };
 
     let oldShield = 0
@@ -404,21 +436,44 @@
       } 
     }
 
-    function hudEffect(index){
-      this.index = index
-      this.value = 0
-      this.draw = function(){
-        let temp;
-        if(HPMeter.value >= .01 || PoisonMeter.value >= .01) temp = HUDValues[this.index]
-        else temp = 0
-        let pos = HUDPOS[this.index]
-        this.value += (temp - this.value) / 20
-        if(HUDBack) DrawRect(pos[0] * 3.2, pos[1] * 2, pos[2] * 3.2, pos[3] * 2, backColor)
-        if(HUDOn && gInGame && !adjToggle) DrawRect(pos[0] * 3.2, pos[1] * 2, this.value * 320, pos[3] * 2, pos[4])
-        if(adjToggle) DrawRect(pos[0] * 3.2, pos[1] * 2, pos[2] * 3.2, pos[3] * 2, pos[4])
-        if(!gInGame || !HUDOn) this.lifetime = 0
+    let smoothHealth = 0;
+    let smoothMana = 0;
+    function DrawHUD() {
+    if (gInGame) {
+      if(PoisonMeter.value >= .05 && HPMeter.value <= .05){
+        const smoothFactor = 0.1; 
+        smoothHealth += (PoisonMeter.value - smoothHealth) * smoothFactor;
+        smoothMana   += (ManaMeter.value   - smoothMana)   * smoothFactor;
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = HealthColor;
+        hiddenCtx.fillRect((HealthX * 3.2), (HealthY * 2), (smoothHealth/.71 ) * (HealthWidth * 3.2), (HealthHeight * 2))
+        //Mana
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = ManaColor;
+        hiddenCtx.fillRect((ManaX * 3.2), (ManaY * 2), (smoothMana/.95) * (ManaWidth * 3.2), (ManaHeight * 2))
+      }else{
+        const smoothFactor = 0.1; 
+        smoothHealth += (HPMeter.value - smoothHealth) * smoothFactor;
+        smoothMana   += (ManaMeter.value   - smoothMana)   * smoothFactor;
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = HealthColor;
+        hiddenCtx.fillRect((HealthX * 3.2), (HealthY * 2), (smoothHealth/.71 ) * (HealthWidth * 3.2), (HealthHeight * 2))
+        //Mana
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = ManaColor;
+        hiddenCtx.fillRect((ManaX * 3.2), (ManaY * 2), (smoothMana/.95) * (ManaWidth * 3.2), (ManaHeight * 2))
       }
+      
+    } else if (adjToggle && !gInGame) {
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = HealthColor;
+      hiddenCtx.fillRect((HealthX * 3.2), (HealthY * 2), (HealthWidth * 3.2), (HealthHeight * 2))
+      //Mana
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = ManaColor;
+      hiddenCtx.fillRect((ManaX * 3.2), (ManaY * 2), (ManaWidth * 3.2), (ManaHeight*2))
     }
+  }
 
     let backgroundEaseHue = 0;
     let backgroundEaseLit = 0;
@@ -461,24 +516,24 @@
     }
 
     function DrawCircle(x, y, radius, color) {
-      ctx.beginPath();
-      ctx.fillStyle = color;
-      ctx.arc(x, y, radius, 0, 2 * Math.PI)
-      ctx.fill();
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = color;
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.fill();
     };
 
     function DrawRect(x, y, width, height, color) {
-      ctx.beginPath();
-      ctx.fillStyle = color;
-      ctx.fillRect(x, y, width, height);
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = color;
+      hiddenCtx.fillRect(x, y, width, height);
     };
 
     function StrokeRect(x, y, width, height, color, stroke){
-      ctx.beginPath();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = stroke
-      ctx.rect(x, y, width, height);
-      ctx.stroke()
+      hiddenCtx.beginPath();
+      hiddenCtx.strokeStyle = color;
+      hiddenCtx.lineWidth = stroke
+      hiddenCtx.rect(x, y, width, height);
+      hiddenCtx.stroke()
     }
 
     function frozen(){
@@ -498,12 +553,12 @@
       this.count = 1
       this.alpha = 1
       this.draw = function(){
-        ctx.beginPath()
-        ctx.moveTo(160 + this.x, 100 + this.y)
-        ctx.lineTo(160 + this.x * this.count, 100 + this.y * this.count)
-        ctx.lineWidth = 15
-        ctx.strokeStyle = `hsla(190, 100%, 70%, ${this.alpha})`
-        ctx.stroke()
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(160 + this.x, 100 + this.y)
+        hiddenCtx.lineTo(160 + this.x * this.count, 100 + this.y * this.count)
+        hiddenCtx.lineWidth = 15
+        hiddenCtx.strokeStyle = `hsla(190, 100%, 70%, ${this.alpha})`
+        hiddenCtx.stroke()
         this.count <= 5.5 ? this.count += .5 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
       }
     }
@@ -537,6 +592,7 @@
       this.alpha = 0
       this.count = 0
       this.effects = []
+      this.lifetime = 1
       this.draw = function(){
         let mod = 25 - Math.random() * 50
         this.count < 2 ? this.count++ : this.count = 0
@@ -545,17 +601,19 @@
           else this.effects.push(new electricHelper(320, 100 + mod))
         this.switch = !this.switch
         }
-        ctx.beginPath()
-        ctx.moveTo(-10, 100)
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(-10, 100)
         this.effects.forEach((ele, i)=>{
           ele.draw()
-          ctx.lineTo(ele.x, ele.y)
-          if(ele.lifetime <= 0) this.effects.splice(i, 1)
+          hiddenCtx.lineTo(ele.x, ele.y)
         })
-        ctx.lineTo(330, 100)
-        ctx.lineWidth = 20
-        ctx.strokeStyle = `hsla(190, 100%, 50%, ${this.alpha})`
-        ctx.stroke()
+        
+        this.effects = this.effects.filter(ele => ele.lifetime > 0)
+
+        hiddenCtx.lineTo(330, 100)
+        hiddenCtx.lineWidth = 20
+        hiddenCtx.strokeStyle = `hsla(190, 100%, 50%, ${this.alpha})`
+        hiddenCtx.stroke()
         if(electricGoing) this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
         else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
       }
@@ -564,6 +622,7 @@
     function electricHelper(x, y){
       this.x = x
       this.y = y
+      this.lifetime = 1
       this.mod = 2 - Math.random() * 4
       this.dir = x > 160 ? -1 : 1
       this.draw = function(){
@@ -586,7 +645,7 @@
 
     function fullShield(){
       this.draw = function(){
-        let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+        let grad = hiddenCtx.createRadialGradient(160, 100, 10, 160, 100, 200)
         grad.addColorStop(.33, 'hsla(190, 100%, 50%, 0)')
         grad.addColorStop(1, `hsla(190, 100%, 50%, ${Math.sin(Date.now() / 1000) * .25 + .75})`)
         DrawRect(0, 0, 320, 200, grad)
@@ -596,7 +655,7 @@
 
     function damagedShield(){
       this.draw = function(){
-        let grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+        let grad = hiddenCtx.createRadialGradient(160, 100, 10, 160, 100, 200)
         grad.addColorStop(Math.sin(Date.now() / 500) * .25 + .33, 'hsla(300, 100%, 50%, 0)')
         grad.addColorStop(1, `hsla(210, 100%, 50%, ${Math.sin(Date.now() / 500) * .25 + .75})`)
         DrawRect(0, 0, 320, 200, grad)
@@ -605,7 +664,7 @@
     }
 
     function shieldBreak(){
-      this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+      this.grad = hiddenCtx.createRadialGradient(160, 100, 10, 160, 100, 200)
       this.grad.addColorStop(.25, 'hsla(0, 100%, 50%, 0)')
       this.grad.addColorStop(1, `hsla(0, 100%, 50%, 1)`)
       this.show = true
@@ -638,13 +697,15 @@
       this.hue = hue
       this.effects = []
       this.count = 0
+      this.lifetime = 1
       this.draw = function(){
         if(!this.count) this.effects.push(new lowResourceHelp(this.hue))
         this.count < 5 ? this.count++ : this.count = 0
         this.effects.forEach((ele, i)=>{
           ele.draw()
-          if(ele.lifetime <= 0) this.effects.splice(i, 1)
         })
+        
+        this.effects = this.effects.filter(ele => ele.lifetime > 0)
         if((!lowHealthGoing && this.hue == 0) || (!lowManaGoing && this.hue == 240) || !gInGame) {
           this.lifetime = 0
           gAlpha = 1
@@ -656,6 +717,7 @@
       this.hue = hue
       this.x = Math.random() * 200 + 60
       this.y = -15
+      this.lifetime = 1
       this.targetX = this.x
       this.draw = function(){
         DrawCircle(this.x, this.y, 30, `hsla(${this.hue}, 100%, ${Math.cos(this.y / 20) * 10 + 30}%, 1)`)
@@ -672,7 +734,7 @@
       this.checked = false;
       this.draw = function(){
         var elapsed = Date.now() - this.start;
-        var grd = ctx.createRadialGradient(160, 200, 1, 160, 200, this.radius);
+        var grd = hiddenCtx.createRadialGradient(160, 200, 1, 160, 200, this.radius);
         grd.addColorStop(0, "red");
         grd.addColorStop(1, "rgba(255, 0, 0, .1)");
         DrawCircle(160, 200, 300, grd)
@@ -698,17 +760,17 @@
     this.rotate = -2.5 + Math.random() * 2
     this.lifetime = 10;
     this.draw = function(){
-      ctx.save();
-      ctx.translate(160, 250);
-      ctx.rotate(this.rotate)
-      ctx.translate(-160, -250)
+      hiddenCtx.save();
+      hiddenCtx.translate(160, 250);
+      hiddenCtx.rotate(this.rotate)
+      hiddenCtx.translate(-160, -250)
       this.tail.forEach((ele, i) => {
-        ctx.globalAlpha = .85 - .15 * i;
+        hiddenCtx.globalAlpha = .85 - .15 * i;
         DrawCircle(ele[0], ele[1], 18 - 2 * i, "black");
-        ctx.globalAlpha = 1;
+        hiddenCtx.globalAlpha = 1;
       })
       DrawCircle(this.x, this.y, 20, "black");
-      ctx.restore();
+      hiddenCtx.restore();
       this.switch ? this.tail.unshift([this.x, this.y]) : this.switch = !this.switch;
       if(this.tail.length > 9){
         this.tail.pop()
@@ -725,29 +787,29 @@
     this.rotate = 0;
     this.alpha = 0;
     this.count = 0
-    var gradient = ctx.createRadialGradient(160, 100, 1, 160, 100, 200);
+    var gradient = hiddenCtx.createRadialGradient(160, 100, 1, 160, 100, 200);
     gradient.addColorStop(0, 'rgba(25, 110, 255, 1)');
     gradient.addColorStop(.5, 'rgba(50, 110, 255, .7)');
     gradient.addColorStop(1, 'rgba(150, 150, 255, .05)');
     this.draw = function(){
       this.count < 20 ? this.count++ : this.count = 0
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       var elapsed = Date.now() - this.start;
       DrawCircle(160, 100, 200, gradient)
-      ctx.save()
-      ctx.translate(160, 100)
-      ctx.rotate(this.rotate)
-      ctx.translate(-160, -100)
+      hiddenCtx.save()
+      hiddenCtx.translate(160, 100)
+      hiddenCtx.rotate(this.rotate)
+      hiddenCtx.translate(-160, -100)
       DrawRect(130, 70, 60, 60, 'rgba(100, 200, 255, 1)')
-      ctx.translate(160, 100)
-      ctx.rotate(Math.PI / 4)
-      ctx.translate(-160, -100)
+      hiddenCtx.translate(160, 100)
+      hiddenCtx.rotate(Math.PI / 4)
+      hiddenCtx.translate(-160, -100)
       DrawRect(130, 70, 60, 60, 'rgba(100, 200, 255, 1)')
       DrawRect(140, 80, 40, 40, "blue")
-      ctx.restore()
+      hiddenCtx.restore()
       var radius = Math.sin(Date.now() / 1000) * 10 + 80;
       DrawStroke(160, 100, radius, 'rgba(100, 200, 255, 1)', 20)
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if(teleportGoing) this.alpha < 1 ? this.alpha+=.1 : null;
       else this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
       if(elapsed > 300 && !this.count){
@@ -770,18 +832,18 @@
       this.lifetime = 10;
       this.rotate = 0;
       this.draw = function(){
-        ctx.save()
-        ctx.translate(100, 100)
-        ctx.rotate(this.rotate)
-        ctx.translate(-100, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(100, 100)
+        hiddenCtx.rotate(this.rotate)
+        hiddenCtx.translate(-100, -100)
         DrawGear(115, 100, 30, 20, 8, "gold")
-        ctx.restore()
-        ctx.save()
-        ctx.translate(220, 100)
-        ctx.rotate(-this.rotate)
-        ctx.translate(-220, -100)
+        hiddenCtx.restore()
+        hiddenCtx.save()
+        hiddenCtx.translate(220, 100)
+        hiddenCtx.rotate(-this.rotate)
+        hiddenCtx.translate(-220, -100)
         DrawGear(205, 100, 30, 20, 8, "gold")
-        ctx.restore()
+        hiddenCtx.restore()
         this.rotate+=.03
         if(!loadGoing) this.lifetime = 0
       }
@@ -793,12 +855,12 @@
       var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
       var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
       var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
-      ctx.save()
-      ctx.translate(ix, iy)
-      ctx.rotate(rotate)
-      ctx.translate(-ix, -iy)
+      hiddenCtx.save()
+      hiddenCtx.translate(ix, iy)
+      hiddenCtx.rotate(rotate)
+      hiddenCtx.translate(-ix, -iy)
       DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, "orange")
-      ctx.restore()
+      hiddenCtx.restore()
     }
   }
 
@@ -811,10 +873,10 @@
       this.draw = function(){
         DrawEllipse(160, 150, this.radius, this.radius / 3, 0, `hsla(60, 100%, 50%, ${this.alpha1})`)
         DrawRect(this.x, 150, this.width, -this.radius * 2, `hsla(60, 100%, 60%, ${this.alpha1})`)
-        ctx.beginPath()
-        ctx.ellipse(160, 150, this.width / 2, this.width / 6, 0, 0, Math.PI)
-        ctx.fillStyle = `hsla(60, 100%, 60%, ${this.alpha1})`
-        ctx.fill()
+        hiddenCtx.beginPath()
+        hiddenCtx.ellipse(160, 150, this.width / 2, this.width / 6, 0, 0, Math.PI)
+        hiddenCtx.fillStyle = `hsla(60, 100%, 60%, ${this.alpha1})`
+        hiddenCtx.fill()
         this.radius += 10
         this.x -= 1
         this.width += 2
@@ -911,8 +973,8 @@
         var iHeight = 200 / 20;
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
-        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
-        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
   
@@ -928,15 +990,11 @@
         var iHeight = 200 / 20;
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
-        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
-        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
-
-  function onEngineReady() {
-    // Grab canvas and rendering context.
-    canvas = document.getElementById("exCanvas");
-    ctx = canvas.getContext("2d");
+   
     window.requestAnimationFrame(update);
-  }
+  
 </script>
