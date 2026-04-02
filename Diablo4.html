@@ -1,9 +1,12 @@
 <head>
-<title>Diablo 4</title>
-<meta description="Unleash Diablo 4 with effects that set your room ablaze in RGB. v1.06" />
+<title>Diablo 4 dev</title>
+<meta description="Unleash Diablo 4 with effects that set your room ablaze in RGB. v1.07" />
 <meta publisher="SignalRGB" />
 
-<meta property="keyScreenBrightness" label="Ambience brightness" type="number" min="0" max="100" default="100" />
+<meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+<meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+default="Ambience"/>
+<meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
 <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
 tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
 type="boolean" default="0" />
@@ -55,7 +58,7 @@ type="boolean" default="0" />
 </meta>
 
 <meta meter="inGame" type="area" tags="VLC,Game,Diablo" x="0.3767" y="0.9187" width="0" height="0" 
-  h="176-216" s="5-52" l="10-79" hdr-h="176-216" hdr-s="5-52" hdr-l="10-79" >
+  h="150-250" s="0-60" l="0-80" hdr-h="176-216" hdr-s="5-52" hdr-l="10-79" >
   <resolution aspect="3.55:1" x="0.4380" y="0.9176" width="0.0005" height="0.0005" />
   <resolution aspect="24:10" x="0.4078" y="0.9174" width="0.0003" height="0.0014" />
   <resolution aspect="16:11" x="0.3638" y="0.9243" width="0" height="0"  />
@@ -354,55 +357,17 @@ type="boolean" default="0" />
 </body>
 
 <script>
-const health_Meter = new Meter(5,healthCallback);
-
-const inGame_Meter = new Meter(2,inGameCallback); 
-const inGame2_Meter = new Meter(2,inGameCallback); 
-
-const flaskWhite_Meter = new Meter(8,flaskCallback); 
-
-const dodge_Meter = new Meter(5,dodgeCallback); 
-
-const level_Meter = new Meter(5,levelCallback); 
-
-const SafeZoneAbility0_Meter = new Meter(15,SafeZoneCallback); 
-
-const DeadRed_Meter = new Meter(8,DeadCallback); 
-const DeadBlack_Meter = new Meter(8,DeadCallback); 
-
-const mana_Meter = new Meter(5,manaCallback);
-const manaBright_Meter = new Meter(5,()=>"")
-const manaCol_Meter = new Meter(5,()=>"");
-
-const ability1_Meter = new Meter(3, ability1Callback)
-const ability2_Meter = new Meter(3, ability2Callback)
-const ability3_Meter = new Meter(3, ability3Callback)
-const ability4_Meter = new Meter(3, ability4Callback)
-const ability5_Meter = new Meter(3, ability5Callback)
-const ability6_Meter = new Meter(3, ability6Callback)
-const ability1Col_Meter = new Meter(10, ability1Callback)
-const ability2Col_Meter = new Meter(10, ability2Callback)
-const ability3Col_Meter = new Meter(10, ability3Callback)
-const ability4Col_Meter = new Meter(10, ability4Callback)
-const ability5Col_Meter = new Meter(10, ability5Callback)
-const ability6Col_Meter = new Meter(10, ability6Callback)
-
-const hasSkillGreyMeter = new Meter(10, skillAvailableCallback)
-const hasSkillYellowMeter = new Meter(3, skillAvailableCallback)
-
-const eventCompleteWhiteMeter = new Meter(10, eventCompleteCallback)
-const eventCompleteRedMeter = new Meter(10, eventCompleteCallback)
-
-const questCompleteColorMeter = new Meter(1, questCompleteCallback)
-const questCompleteRedMeter = new Meter(8, questCompleteCallback)
-const questCompleteWhiteMeter = new Meter(8, questCompleteCallback)
-
-const buffedGreenMeter = new Meter(10, buffedCallback)
-
-const waypointBlueMeter = new Meter(10, waypointCallback)
-const waypointRedMeter = new Meter(10, waypointCallback)
-
-
+var canvas, ctx;
+canvas = document.getElementById('exCanvas');
+ctx = canvas.getContext('2d');
+var width = 320;
+var height = 200;
+var hiddenCanvas = document.createElement("canvas");
+hiddenCanvas.width = width;
+hiddenCanvas.height = height;
+var hctx = hiddenCanvas.getContext("2d");
+let gAlpha = 1
+var effects = [];
 let designatedHealthSize = 0;
 let currentHealthSize = 0;
 let designatedManaSize = 0;
@@ -411,49 +376,94 @@ let currentManaSize = 0;
 let gInGame = false;
 let gInSafeZone = false;
 let gPlayCopyScreen = true
-
-let canvas, ctx;
-
-const foreGroundEffects = new childArray();
-const backGroundEffects= new childArray()
-
-const stateHdlr = new StateHandler();
-let latestLocation = {x:0,y:0}
+let flaskGoing = false;
+let dodgeGoing = false;
+let levelUpGoing = false;
+let deadGoing = false;
 let lowHealthPlaying = false;
 let lowManaPlaying = false;
+let waypointGoing = false;
+let eventCompleteGoing = false;
+
+let latestLocation = {x:0,y:0}
+var health_Meter = new Meter(5,healthCallback);
+
+var inGame_Meter = new Meter(2,inGameCallback); 
+var inGame2_Meter = new Meter(2,inGameCallback); 
+
+var flaskWhite_Meter = new Meter(8,flaskCallback); 
+
+var dodge_Meter = new Meter(5,dodgeCallback); 
+
+var level_Meter = new Meter(5,levelCallback); 
+
+var SafeZoneAbility0_Meter = new Meter(15,SafeZoneCallback); 
+
+var DeadRed_Meter = new Meter(8,DeadCallback); 
+var DeadBlack_Meter = new Meter(8,DeadCallback); 
+
+var mana_Meter = new Meter(5,manaCallback);
+var manaBright_Meter = new Meter(5,()=>"")
+var manaCol_Meter = new Meter(5,()=>"");
+
+var ability1_Meter = new Meter(3, ability1Callback)
+var ability2_Meter = new Meter(3, ability2Callback)
+var ability3_Meter = new Meter(3, ability3Callback)
+var ability4_Meter = new Meter(3, ability4Callback)
+var ability5_Meter = new Meter(3, ability5Callback)
+var ability6_Meter = new Meter(3, ability6Callback)
+var ability1Col_Meter = new Meter(10, ability1Callback)
+var ability2Col_Meter = new Meter(10, ability2Callback)
+var ability3Col_Meter = new Meter(10, ability3Callback)
+var ability4Col_Meter = new Meter(10, ability4Callback)
+var ability5Col_Meter = new Meter(10, ability5Callback)
+var ability6Col_Meter = new Meter(10, ability6Callback)
+
+var hasSkillGreyMeter = new Meter(10, skillAvailableCallback)
+var hasSkillYellowMeter = new Meter(3, skillAvailableCallback)
+
+var eventCompleteWhiteMeter = new Meter(10, eventCompleteCallback)
+var eventCompleteRedMeter = new Meter(10, eventCompleteCallback)
+
+var questCompleteColorMeter = new Meter(1, questCompleteCallback)
+var questCompleteRedMeter = new Meter(8, questCompleteCallback)
+var questCompleteWhiteMeter = new Meter(8, questCompleteCallback)
+
+var buffedGreenMeter = new Meter(10, buffedCallback)
+
+var waypointBlueMeter = new Meter(10, waypointCallback)
+var waypointRedMeter = new Meter(10, waypointCallback)
+
 
 function update(){
+  hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
+  hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
+  hctx.fillRect(0, 0, 320, 200);
+
+  backgroundHandler()
   if(Date.now() % 2) inGameCallback()
-inGame_Meter.setValue(engine.vision.inGame)
-inGame2_Meter.setValue(engine.vision.inGame2)
-if(engine.vision.health > 0.99 || engine.vision.health < 0.93)
-health_Meter.setValue(engine.vision.health + engine.vision.health2)
-mana_Meter.setValue(engine.vision.mana)
-manaBright_Meter.setValue(engine.vision.manaBright)
-
-if (engine.vision.mana > 0.3){
+  inGame_Meter.setValue(engine.vision.inGame)
+  inGame2_Meter.setValue(engine.vision.inGame2)
+  health_Meter.setValue(engine.vision.health + engine.vision.health2)
+  mana_Meter.setValue(engine.vision.mana)
+  manaBright_Meter.setValue(engine.vision.manaBright)
   manaCol_Meter.setValue(engine.vision.manaCol)
-}
-
-
   flaskWhite_Meter.setValue(engine.vision.flaskWhite)
   dodge_Meter.setValue(engine.vision.dodge)
   level_Meter.setValue(engine.vision.level)
   SafeZoneAbility0_Meter.setValue(engine.vision.safeZoneAbility0)
-  
-  
-    ability1_Meter.setValue(engine.vision.ability1[2])
-    ability2_Meter.setValue(engine.vision.ability2[2])
-    ability3_Meter.setValue(engine.vision.ability3[2])
-    ability4_Meter.setValue(engine.vision.ability4[2])
-    ability5_Meter.setValue(engine.vision.ability5[2])
-    ability6_Meter.setValue(engine.vision.ability6[2])
-    ability1Col_Meter.setValue(engine.vision.ability1[0])
-    ability2Col_Meter.setValue(engine.vision.ability2[0])
-    ability3Col_Meter.setValue(engine.vision.ability3[0])
-    ability4Col_Meter.setValue(engine.vision.ability4[0])
-    ability5Col_Meter.setValue(engine.vision.ability5[0])
-    ability6Col_Meter.setValue(engine.vision.ability6[0])
+  ability1_Meter.setValue(engine.vision.ability1[2])
+  ability2_Meter.setValue(engine.vision.ability2[2])
+  ability3_Meter.setValue(engine.vision.ability3[2])
+  ability4_Meter.setValue(engine.vision.ability4[2])
+  ability5_Meter.setValue(engine.vision.ability5[2])
+  ability6_Meter.setValue(engine.vision.ability6[2])
+  ability1Col_Meter.setValue(engine.vision.ability1[0])
+  ability2Col_Meter.setValue(engine.vision.ability2[0])
+  ability3Col_Meter.setValue(engine.vision.ability3[0])
+  ability4Col_Meter.setValue(engine.vision.ability4[0])
+  ability5Col_Meter.setValue(engine.vision.ability5[0])
+  ability6Col_Meter.setValue(engine.vision.ability6[0])
 
   hasSkillGreyMeter.setValue(engine.vision.skillPointGrey)
   hasSkillYellowMeter.setValue(engine.vision.skillPointYellow)
@@ -461,20 +471,27 @@ if (engine.vision.mana > 0.3){
   waypointBlueMeter.setValue(engine.vision.waypointBlue)
   waypointRedMeter.setValue(engine.vision.waypointRed + engine.vision.waypointRed2)
 
-DeadRed_Meter.setValue(engine.vision.deadRed)
-DeadBlack_Meter.setValue(engine.vision.deadBlack)
-eventCompleteWhiteMeter.setValue(engine.vision.eventCompleteWhite)
-eventCompleteRedMeter.setValue(engine.vision.eventCompleteRed + engine.vision.eventCompleteRed2)
-questCompleteColorMeter.setValue(engine.vision.questColor[0])
-questCompleteRedMeter.setValue(engine.vision.questRed)
-questCompleteWhiteMeter.setValue(engine.vision.questWhite)
-
-
-  if(gPlayCopyScreen) copyScreen(1);
-  backGroundEffects.draw();
-  foreGroundEffects.draw();
-  stateHdlr.Process();
+  DeadRed_Meter.setValue(engine.vision.deadRed)
+  DeadBlack_Meter.setValue(engine.vision.deadBlack)
+  eventCompleteWhiteMeter.setValue(engine.vision.eventCompleteWhite)
+  eventCompleteRedMeter.setValue(engine.vision.eventCompleteRed + engine.vision.eventCompleteRed2)
+  questCompleteColorMeter.setValue(engine.vision.questColor[0])
+  questCompleteRedMeter.setValue(engine.vision.questRed)
+  questCompleteWhiteMeter.setValue(engine.vision.questWhite)
+  flaskCallback();
+  dodgeCallback();
+  //Effect handler 
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw(hctx);
+    }
+    // Remove dead effects with filter
+    effects = effects.filter(ele =>
+      ele.lifetime === undefined || ele.lifetime > 0
+    );
   drawHud();
+  ctx.clearRect(0, 0, width, height);
+  ctx.drawImage(hiddenCanvas, 0, 0);
+
   window.requestAnimationFrame(update);
 }
 
@@ -533,44 +550,127 @@ questCompleteWhiteMeter.setValue(engine.vision.questWhite)
     return a + speed * (b - a)
   }
 
+  let proBack = []
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100,hctx)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
+            break;
+        }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        hctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        hctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
   let menuGoing = false
  function inGameCallback () {
   if (engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 && (DeadBlack_Meter.value != 1 || DeadRed_Meter.value != 1) && health_Meter.value > .05) {
     gInGame = true;
   } else {
     gInGame = false;
-    backGroundEffects.clear()
     if(!menuGoing && enableMenu){
-      foreGroundEffects.push(new InMenu())
+      effects.push(new InMenu())
       menuGoing = true
     } 
   }
 }
 
- function flaskCallback () {
-  if (flaskWhite_Meter.value > 0.95 && enableFlask && engine.vision.inGame >= 0.95) {
-   foreGroundEffects.push(new flaskEffect())
-  }
+
+function flaskCallback() {
+  if (flaskWhite_Meter.value >= .95 && enableFlask && engine.vision.inGame >= 0.95 && !flaskGoing) {
+    effects.push(new flaskEffect())
+    flaskGoing = true;
+  } 
 }
 
- function dodgeCallback () {
-  if (dodge_Meter.value > 0.95 && enableDodge && engine.vision.inGame >= 0.95) {
-    foreGroundEffects.push(new dodgeEffect())
-  }
+function dodgeCallback() {
+  if (dodge_Meter.value > 0.95 && enableDodge && engine.vision.inGame >= 0.95 && !dodgeGoing) {
+    effects.push(new dodgeEffect())
+    dodgeGoing = true;
+  } 
 }
 
  function levelCallback () {
   if(engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 && level_Meter.value <= 0.1 && level_Meter.decreased && enableLevelUp){
-    foreGroundEffects.push(new levelUpEffect())
+    effects.push(new levelUpEffect())
   }
 }
 
  function SafeZoneCallback () {
   if (SafeZoneAbility0_Meter.increased && SafeZoneAbility0_Meter.diff >.4 && SafeZoneAbility0_Meter.value >.5 && !gInSafeZone && enableSafeZone && engine.vision.inGame >= 0.95){
-    foreGroundEffects.push(new EnterSafe())
+    effects.push(new EnterSafe())
     gInSafeZone = true;
   } else if(gInSafeZone && SafeZoneAbility0_Meter.decreased && SafeZoneAbility0_Meter.diff <.4 && SafeZoneAbility0_Meter.value <.2) {
-    foreGroundEffects.push(new ExitSafe())
+    effects.push(new ExitSafe())
     gInSafeZone = false;
   }
 
@@ -578,7 +678,7 @@ questCompleteWhiteMeter.setValue(engine.vision.questWhite)
 
  function DeadCallback () {
   if (DeadRed_Meter.value >= 0.95 && DeadBlack_Meter.value >= 0.95  && enableDead){
-    foreGroundEffects.push(new deadEffect())
+    effects.push(new deadEffect())
   }
 }
 
@@ -587,7 +687,7 @@ const particleAmount = 50;
 let ability1Delay = Date.now()
 function ability1Callback(){
   if(ability1_Meter.diff >5 && ability1_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability1Delay > 300){
-   backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability1Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+   effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability1Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
    ability1Delay = Date.now()
   }
 }
@@ -595,7 +695,7 @@ function ability1Callback(){
 let ability2Delay = Date.now()
 function ability2Callback(){
   if(ability2_Meter.diff >5 && ability2_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability2Delay > 300){
-    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability2Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability2Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
     ability2Delay = Date.now()
   }
 }
@@ -603,7 +703,7 @@ function ability2Callback(){
 let ability3Delay = Date.now()
 function ability3Callback(){
   if(ability3_Meter.diff >5 && ability3_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability3Delay > 300){
-    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability3Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability3Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
     ability3Delay = Date.now()
   }
 }
@@ -611,7 +711,7 @@ function ability3Callback(){
 let ability4Delay = Date.now()
 function ability4Callback(){
   if(ability4_Meter.diff >5 && ability4_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability4Delay > 300){
-    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability4Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability4Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
     ability4Delay = Date.now()
   }
 }
@@ -619,7 +719,7 @@ function ability4Callback(){
 let ability5Delay = Date.now()
 function ability5Callback(){
   if(ability5_Meter.diff >5 && ability5_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability5Delay > 300){
-    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability5Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability5Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
     ability5Delay = Date.now()
   }
 }
@@ -627,7 +727,7 @@ function ability5Callback(){
 let ability6Delay = Date.now()
 function ability6Callback(){
   if(ability6_Meter.diff >5 && ability6_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability6Delay > 300){
-    backGroundEffects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability6Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
+    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability6Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
     ability6Delay = Date.now()
   }
 }
@@ -635,7 +735,7 @@ function ability6Callback(){
 function healthCallback (){
   if (gInGame && enableHealth && engine.vision.inGame >= 0.95){
     if (health_Meter.value < 0.2 && !lowHealthPlaying){
-      backGroundEffects.push(new lowHealth())
+      effects.push(new lowHealth())
       lowHealthPlaying = true;
     } else if ((lowHealthPlaying && health_Meter.value > 0.25) || !gInGame || menuGoing){ 
       lowHealthPlaying = false
@@ -646,7 +746,7 @@ function healthCallback (){
 function manaCallback (){
   if (gInGame && enableMana && engine.vision.inGame >= 0.95){
     if (mana_Meter.value < 0.2 && !lowManaPlaying){
-      backGroundEffects.push(new lowMana())
+      effects.push(new lowMana())
       lowManaPlaying = true
     } else if ((lowManaPlaying && mana_Meter.value > 0.25) || !gInGame || menuGoing){
       lowManaPlaying = false
@@ -657,21 +757,21 @@ function manaCallback (){
 let eventGoing = false
 function eventCompleteCallback(){
   if(eventCompleteWhiteMeter.value >= .6 && eventCompleteRedMeter.value >= .75 && gInGame && !eventGoing && engine.vision.inGame >= 0.95){
-    if(enableEvent) foreGroundEffects.push(new eventComplete())
+    if(enableEvent) effects.push(new eventComplete())
     eventGoing = true
   } else if (eventCompleteWhiteMeter.value <= 0.1 && eventCompleteRedMeter.value <= 0.1) eventGoing = false;
 }
 
 function skillAvailableCallback(){
   if(hasSkillGreyMeter.value >= 0.95 && hasSkillYellowMeter.value >= 0.95 && gInGame && engine.vision.inGame >= 0.95){
-    if(enableLevelUp) foreGroundEffects.push(new hasSkillPoint())
+    if(enableLevelUp) effects.push(new hasSkillPoint())
   }
 }
 
 let questGoing = false
 function questCompleteCallback(){
   if(questCompleteRedMeter.value > .3 && questCompleteWhiteMeter.value > .1 && !questGoing && gInGame && engine.vision.inGame >= 0.95){
-    if(enableQuest) foreGroundEffects.push(new questComplete())
+    if(enableQuest) effects.push(new questComplete())
     questGoing = true
   } else if (questCompleteRedMeter.value <= 0.1 && questCompleteWhiteMeter.value <= 0.1 && gInGame) questGoing = false
 }
@@ -679,15 +779,14 @@ function questCompleteCallback(){
 let buffed = false
 function buffedCallback(){
   if(buffedGreenMeter.value > .3 && buffedGreenMeter.increased && engine.vision.buffedNotGreen <=.1 && gInGame && !buffed && engine.vision.inGame >= 0.95){
-    if(enableBuff) foreGroundEffects.push(new gotBuffed())
+    if(enableBuff) effects.push(new gotBuffed())
     buffed = true
   } else if (gInGame && buffedGreenMeter.value <= 0.1) buffed = false
 }
 
-let waypointGoing = false;
 function waypointCallback(){
   if(waypointBlueMeter.value >= 0.95 && waypointRedMeter.value >= 0.95 && gInGame && !waypointGoing){
-    if(enableWaypoint) foreGroundEffects.push(new waypoint())
+    if(enableWaypoint) effects.push(new waypoint())
     waypointGoing = true
   }
 }
@@ -695,9 +794,9 @@ function waypointCallback(){
 function gotBuffed(){
     this.count = 0
     this.draw = function(){
-      if(this.count == 0) foreGroundEffects.push(new rJumpHelp(120, 90, 20))
-      if(this.count == 20) foreGroundEffects.push(new rJumpHelp(120, 90, 30))
-      if(this.count == 40) foreGroundEffects.push(new rJumpHelp(120, 90, 40))
+      if(this.count == 0) effects.push(new rJumpHelp(120, 90, 20))
+      if(this.count == 20) effects.push(new rJumpHelp(120, 90, 30))
+      if(this.count == 40) effects.push(new rJumpHelp(120, 90, 40))
       this.count < 41 ? this.count++ : this.lifetime = 0;
       if(!gInGame) this.lifetime = 0
     }
@@ -711,13 +810,13 @@ function gotBuffed(){
     this.vy = 0
     this.lifetime = 100
     this.draw = function(){
-      ctx.beginPath()
-      ctx.moveTo(0, this.y + 100)
-      ctx.lineTo(160, this.y)
-      ctx.lineTo(320, this.y + 100)
-      ctx.strokeStyle = `hsl(${this.hue}, ${this.sat}%, ${this.lit}%)`
-      ctx.lineWidth = 50
-      ctx.stroke()
+      hctx.beginPath()
+      hctx.moveTo(0, this.y + 100)
+      hctx.lineTo(160, this.y)
+      hctx.lineTo(320, this.y + 100)
+      hctx.strokeStyle = `hsl(${this.hue}, ${this.sat}%, ${this.lit}%)`
+      hctx.lineWidth = 50
+      hctx.stroke()
       this.y > -100 ? this.y-=this.vy : this.lifetime = 0
       this.vy+=.05
       if(!gInGame) this.lifetime = 0
@@ -734,8 +833,9 @@ function waypoint(){
       if(this.count < 300) this.effects.push(new wayParticle())
       this.effects.forEach((ele, i)=>{
         ele.draw()
-        if(ele.lifetime <= 0) this.effects.splice(i, 1)
       })
+      
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
       this.count < 300 ? this.count++ : this.effects.length > 0 ? this.effects.pop() : this.lifetime = 0
       if(!gInGame) this.lifetime = 0
       if(this.lifetime == 0){
@@ -751,16 +851,17 @@ function waypoint(){
     this.y = 100
     this.rad = 40 + 20 * Math.random()
     this.mod = Math.random() + .5
+    this.lifetime = 1
     this.draw = function(){
-      ctx.save()
-      ctx.translate(160, 100)
-      ctx.rotate(this.rot)
-      ctx.translate(-160, -100)
+      hctx.save()
+      hctx.translate(160, 100)
+      hctx.rotate(this.rot)
+      hctx.translate(-160, -100)
       DrawCircle(this.x, this.y, this.rad, `hsl(${this.rad + 180}, 100%, 50%)`)
       this.x < 160 ? this.x++ : this.lifetime = 0;
       if(this.rad > 1) this.rad-=.25
       this.rot+=.025 * this.mod
-      ctx.restore()
+      hctx.restore()
       if(!gInGame) this.lifetime = 0
     }
   }
@@ -768,12 +869,12 @@ function waypoint(){
   function questComplete(){
     this.count = 0
     this.draw = function(){
-      if(this.count == 0) foreGroundEffects.push(new rJumpHelp(0, 100, 10))
-      if(this.count == 20) foreGroundEffects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 20))
-      if(this.count == 40) foreGroundEffects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 30))
-      if(this.count == 60) foreGroundEffects.push(new rJumpHelp(0, 100, 40))
-      if(this.count == 80) foreGroundEffects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 50))
-      if(this.count == 100) foreGroundEffects.push(new rJumpHelp(0, 100, 60))
+      if(this.count == 0) effects.push(new rJumpHelp(0, 100, 10))
+      if(this.count == 20) effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 20))
+      if(this.count == 40) effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 30))
+      if(this.count == 60) effects.push(new rJumpHelp(0, 100, 40))
+      if(this.count == 80) effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 50))
+      if(this.count == 100) effects.push(new rJumpHelp(0, 100, 60))
       this.count < 101 ? this.count++ : this.lifetime = 0;
       if(!gInGame) this.lifetime = 0
     }
@@ -792,9 +893,9 @@ function waypoint(){
       }
       this.effects.forEach((ele, i)=>{
         ele.draw()
-        if(ele.lifetime <= 0) this.effects.splice(i, 1)
       })
-      this.count < 300 ? this.count++ : this.effects.length == 0 ? null : this.lifetime = 0;
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
+      this.count < 300 ? this.count++ : this.effects.length == 0 ? this.lifetime = 0 : null;
       if(!gInGame) this.lifetime = 0
     }
   }
@@ -804,6 +905,7 @@ function waypoint(){
     this.mod = Math.random()
     this.y = 250
     this.rad = 10
+    this.lifetime = 1;
     this.draw = function(){
       DrawCircle(this.x, this.y, this.rad, `hsla(${this.mod * 60}, ${100}%, ${75}%, .9)`)
       this.x += Math.sin(Date.now() / (1000 * this.mod)) * 5
@@ -816,6 +918,7 @@ function waypoint(){
     this.mod = Math.random()
     this.y = 180 + Math.abs(160 - this.x) * .6
     this.rad = rad
+    this.lifetime = 1;
     this.draw = function(){
       DrawCircle(this.x, this.y, this.rad, `hsla(${this.rad}, ${100}%, ${50}%, .9)`)
       this.rad > .25 ? this.rad -= .25 : this.rad = .1
@@ -837,11 +940,11 @@ function hasSkillPoint(){
   }
 
   function DrawStroke(x, y, radius, color, stroke) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = stroke;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.stroke();
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.stroke();
   };
 
 function InMenu(){
@@ -850,12 +953,12 @@ function InMenu(){
     this.stop = 1
     this.lifetime = 10;
     this.draw = function(){
-      let grad = ctx.createLinearGradient(160, 0, 160, 200)
+      let grad = hctx.createLinearGradient(160, 0, 160, 200)
       grad.addColorStop(1, `hsla(10, 100%, ${40 * this.stop}%, ${this.alpha})`)
       grad.addColorStop(.35, `hsla(0, 0%, 2%, ${this.alpha})`)
       DrawRect(0, 0, 320, 200, grad)
       this.stop = Math.sin(Date.now() / 500) * .25 + .5
-      if(Math.random() > .9 && this.half) foreGroundEffects.push(new inMenuParticle())
+      if(Math.random() > .9 && this.half) effects.push(new inMenuParticle())
       if(this.half) gPlayCopyScreen = false
       if(gInGame){
          this.alpha > 0 ? this.alpha -= .025 : this.lifetime = 0;
@@ -882,100 +985,96 @@ function InMenu(){
 
 
 function deadEffect(){
-  this.particles = new childArray();
+  this.particles = []
   this.start = Date.now();
+  this.counter = 0;
+  this.lifetime = 1;
 
-  this.draw = function (){
+  this.draw = function(){
     let elapsed = Date.now() - this.start;
     this.alpha = getAlpha(elapsed,1000,8000,1000);
     DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
-    ctx.globalAlpha = this.alpha
+    hctx.globalAlpha = this.alpha
     DrawCircle(160,100,elapsed/200,"hsl(200,25%,60%)");
+    
+    this.counter++;
+    
     if (200- elapsed/30 >10){
+      if(this.counter % 3 === 0) {
         for (let index = 0; index < 3; index++) {
-        let rot = elapsed/600 + ((Math.PI*2/3)*index);
-        let x = 160 + Math.cos(rot)*(200- elapsed/30);
-        let y = 100 + Math.sin(rot)*(200 - elapsed/30);
-        this.particles.push(new TrailParticle(x,y,20,"red",1000))
+          let rot = elapsed/600 + ((Math.PI*2/3)*index);
+          let x = 160 + Math.cos(rot)*(200- elapsed/30);
+          let y = 100 + Math.sin(rot)*(200 - elapsed/30);
+          this.particles.push(new TrailParticle(x,y,20,"red",1000))
+        }
       }
     } else {
       if (rng(1,false)>0.85 && this.alpha ==1)
       this.particles.push(new wobblyExplosionParticle(160,100,{x:rng(5),y:rng(5)},{x:rng(50),y:rng(50)},100,2000,"red",20))
     }
-    this.particles.draw();
-    ctx.globalAlpha = 1;
+    
+
+    this.particles.forEach(p => p.draw());
+    
+    this.particles = this.particles.filter(p => p.lifetime > 0);
+    
+    hctx.globalAlpha = 1;
     if(this.alpha == 0){
-      this.lifetime =0;
+      this.lifetime = 0;
     }
+   
   }
 }
 
 function flaskEffect(){
   this.x = 0;
   this.start = Date.now();
-  this.bubbbles = new childArray();
-
-  this.draw = function (){
+  this.bubbles = []
+  this.lifetime = 1;
+  this.draw = function(){
     let elapsed = Date.now() - this.start;
-    this.bubbbles.push(new bubble(rng(320,false), 250, rng(30,false), {x:rng(3), y:rng(-3,false)},{x:rng(10), y:0},500,"hsla(121, 100%, 71%, 1)",`hsla(121, ${80+rng(30,false)}%, ${50+rng(30,false)}%, 0.8)`,2,4000));
-    this.alpha = getAlpha(elapsed, 700, 2000, 700,0.9);
+    this.alpha = getAlpha(elapsed, 700, 2000, 700, 0.9);
     DrawRect(0,0,320,200,`hsla(0, 0%, 0%, ${this.alpha})`);
-    ctx.globalAlpha = this.alpha+0.1;
-    this.bubbbles.draw();
-    ctx.globalAlpha = 1;
-    if(this.alpha ==0){
-      this.lifetime= 0;
+    hctx.globalAlpha = this.alpha+0.1;
+    this.bubbles.push(new bubble(rng(320,false), 250, rng(30,false), {x:rng(3), y:rng(-3,false)},{x:rng(10), y:0},500,"hsla(121, 100%, 71%, 1)",`hsla(121, ${80+rng(30,false)}%, ${50+rng(30,false)}%, 0.8)`,2,4000));
+    this.bubbles.forEach(b => b.draw());
+    this.bubbles = this.bubbles.filter(b => b.lifetime > 0);
+    hctx.globalAlpha = 1;
+    if(this.alpha == 0 || !gInGame){
+      this.lifetime = 0;
+      flaskGoing = false; 
     }
-    if(!gInGame) this.lifetime = 0
   }
 }
 
 
-function dodgeEffect () {
+function dodgeEffect() {
     this.duration = 1000;
-    this.particles = new childArray();
+    this.particles = []
     this.start = Date.now();
     this.elapsed = 0;
-    this.particles = new childArray();
+    this.lifetime = 1;
 
   this.draw = function(){
     this.x = -60 + this.elapsed/1.5
     this.elapsed = Date.now() - this.start;
     this.alpha = getAlpha(this.elapsed,300,this.duration,300,0.9)
-    ctx.globalAlpha = this.alpha;
+    hctx.globalAlpha = this.alpha;
     DrawRect(0,0,320,200,"black");
     DrawRect(this.x,0,30,200,"orange")
-    ctx.globalAlpha = 1;
-    this.particles.push(new trailParticle(this.x,rng(200,false),30,"orange",500))
-    this.particles.draw();
-    if(!gInGame) this.lifetime = 0
+    hctx.globalAlpha = 1;
+    this.particles.push(new TrailParticle(this.x,rng(200,false),30,"orange",500))
+    
+    this.particles.forEach(p => p.draw());
+    this.particles = this.particles.filter(p => p.lifetime > 0);
+    if(this.x > 320 || this.alpha === 0 || !gInGame) {
+      this.lifetime = 0;
+      dodgeGoing = false;
+    }
   }
 }
 
-function trailParticle(x,y,size,color,duration, colorspeed =0){
-    this.x = x;
-    this.y = y;
-    this.size = size;
-    this.color = color;
-    this.duration = duration;
-    this.start = Date.now();
-    this.draw = function(){
-      this.elapsed = (Date.now() - this.start);
-      this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
-      ctx.globalAlpha = this.alpha;
-      if (colorspeed != 0){
-        this.color.h -= colorspeed;
-        DrawCircle(this.x,this.y,this.size*this.alpha,`hsla(${this.color.h},${this.color.s}%,${this.color.l}%)`)
-      } else {
-        DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
-      }
-   
-      ctx.globalAlpha = 1;
-      if(this.elapsed > this.duration){
-        this.lifetime = 0;
-      }
-    }
-  }
+
 
   function EnterSafe(){
   this.alpha = 1;
@@ -983,10 +1082,10 @@ function trailParticle(x,y,size,color,duration, colorspeed =0){
   this.rad = 1
   this.draw = function(){
     this.rad < 160 ? this.rad += 2 : this.rad = 160
-    ctx.globalAlpha = this.alpha
+    hctx.globalAlpha = this.alpha
     DrawStroke(160, 100, this.rad, `hsl(${this.rad * 3/4}, 100%, 50%)`, this.stroke)
     this.stroke < 320 ? this.stroke+=2 : this.alpha > .02 ? this.alpha -= .02 : this.lifetime = 0;
-    ctx.globalAlpha = 1
+    hctx.globalAlpha = 1
     if(!gInGame) this.lifetime = 0
   }
 }
@@ -997,10 +1096,10 @@ function ExitSafe(){
   this.rad = 1
   this.draw = function(){
     this.rad < 160 ? this.rad += 2 : this.rad = 160
-    ctx.globalAlpha = this.alpha
+    hctx.globalAlpha = this.alpha
     DrawStroke(160, 100, this.rad, `hsl(${120 - this.rad * 3/4}, 100%, 50%)`, this.stroke)
     this.stroke < 320 ? this.stroke+=2 : this.alpha > .02 ? this.alpha -= .02 : this.lifetime = 0;
-    ctx.globalAlpha = 1
+    hctx.globalAlpha = 1
     if(!gInGame) this.lifetime = 0
   }
 }
@@ -1027,12 +1126,15 @@ function ExitSafe(){
           x: ((Math.random() - 0.5) * this.speed),
           y: this.yspeed
         }))
-      this.draw = function () {
-        this.lifetime = this.duration - (Date.now() - this.start)
-        this.particles.forEach((Particle, index) => {
-          Particle.draw()
-        })
-      }
+    }
+    
+    this.draw = function () {
+      this.lifetime = this.duration - (Date.now() - this.start)
+      
+      this.particles.forEach((Particle, index) => {
+        Particle.draw()
+      })
+      this.particles = this.particles.filter(Particle => Particle.alpha > 0)
     }
   };
 
@@ -1044,23 +1146,25 @@ function ExitSafe(){
       this.radius = radius;
       this.velocity = velocity;
       this.alpha = 1 * fadeSpeed;
+      this.lifetime = 1
     }
     draw() {
-      ctx.globalAlpha = this.alpha;
-      ctx.beginPath()
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-      ctx.fillStyle = this.color
-      ctx.fill()
+      hctx.globalAlpha = this.alpha;
+      hctx.beginPath()
+      hctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+      hctx.fillStyle = this.color
+      hctx.fill()
       this.x += this.velocity.x
       this.y += this.velocity.y
       this.alpha -= 0.01
-      ctx.globalAlpha = 1;
+      hctx.globalAlpha = 1;
     }
   }
 
 function levelUpEffect(){
   this.start = Date.now();
-  this.particles = new childArray();
+  this.particles = []
+  this.lifetime = 1
   setTimeout(() => {
     this.particles.push(new MovingArrow(160,200,160,200,0,4,"yellow"))
       setTimeout(() => {
@@ -1072,12 +1176,14 @@ function levelUpEffect(){
     this.elapsed = Date.now() - this.start;
     this.alpha = getAlpha(this.elapsed,600, 2000, 600);
     DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
-    const bgGrad = ctx.createRadialGradient(160,100,this.elapsed/3,160,100,this.elapsed/3+30);
+    const bgGrad = hctx.createRadialGradient(160,100,this.elapsed/3,160,100,this.elapsed/3+30);
     bgGrad.addColorStop(0,`hsla(0,0%,0%,0)`);
     bgGrad.addColorStop(0.5,`yellow`);
     bgGrad.addColorStop(1,`hsla(0,0%,0%,0)`);
     DrawRect(0,0,320,200,bgGrad);
-    this.particles.draw();
+
+    this.particles.forEach(p => p.draw());
+    this.particles = this.particles.filter(p => p.lifetime > 0);
     if(this.alpha ==0){
       this.lifetime= 0;
     }
@@ -1092,12 +1198,13 @@ function TrailParticle(x=160,y=100,size=10,color="red",duration=2000){
       this.color = color;
       this.duration = duration;
       this.start = Date.now();
+      this.lifetime = 1
       this.draw = function(){
         this.elapsed = (Date.now() - this.start);
         this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
-        ctx.globalAlpha = this.alpha;
+        hctx.globalAlpha = this.alpha;
         DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
-        ctx.globalAlpha = 1;
+        hctx.globalAlpha = 1;
         if(this.elapsed > this.duration){
           this.lifetime = 0;
         }
@@ -1107,25 +1214,6 @@ function TrailParticle(x=160,y=100,size=10,color="red",duration=2000){
     function SetRange(num, min, max) {
       return Math.min(Math.max(num, min), max)
     }
-
-
-function childArray(){
-  this.children = [];
-  this.push = function(child){
-    this.children.push(child);
-  }
-  this.draw = function(){
-    this.children.forEach((child,i) => {
-      child.draw();
-      if (child.lifetime <=0){
-        this.children.splice(i,1);
-      }
-    });
-  }
-  this.clear = function(){
-    this.children = [];
-  }
-}
 
 function rng(amount, negative = true){
   return (Math.random()- (negative?0.5:0))*amount;
@@ -1149,6 +1237,7 @@ class basicEffect {
     this.start = Date.now();
     this.duration = duration;
     this.elapsed = 0;
+    this.lifetime = 1
   }
   update (){
     this.elapsed = Date.now() - this.start;
@@ -1159,7 +1248,7 @@ class basicEffect {
 }
 
 class wobblyMotion extends basicEffect {
-  constructor(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000){
+  constructor(x,y,speed,wobbleMove, wobbleSpeed, duration){
   super(duration);
   this.x = x;
   this.y = y;
@@ -1167,6 +1256,7 @@ class wobblyMotion extends basicEffect {
   this.wobbleMove = wobbleMove;
   this.wobbleSpeed = wobbleSpeed;
   this.start = Date.now();
+  this.lifetime = 1
   }
   update (){
     super.update();
@@ -1181,15 +1271,20 @@ class wobblyMotion extends basicEffect {
 
 class wobblyExplosionParticle extends wobblyMotion {
   constructor(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000,color,radius){
-    super(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000);
+    super(x,y,speed,wobbleMove, wobbleSpeed, duration);
     this.color = color;
     this.radius = radius;
-    this.particles = new childArray();
+    this.particles = [];
+    this.lifetime = 1
   }
   draw(){
     const pos = super.update();
     this.particles.push(new TrailParticle(pos.x,pos.y,this.radius,this.color, this.duration/3))
-    this.particles.draw();
+    
+    this.particles.forEach(p => p.draw());
+    
+    this.particles = this.particles.filter(p => p.lifetime > 0);
+    
     if (this.elapsed > this.duration){
       this.lifetime = 0;
     }
@@ -1199,42 +1294,51 @@ class wobblyExplosionParticle extends wobblyMotion {
 class bubble extends wobblyMotion{
   constructor(x,y,radius,speed,wobbleMove, wobbleSpeed, strokeCol, fillCol, lineWidth,duration = 1000){
 
-  super(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000);
+  super(x,y,speed,wobbleMove, wobbleSpeed, duration);
   this.radius = radius;
   this.strokeCol = strokeCol;
   this.fillCol = fillCol;
   this.lineWidth = lineWidth;
+  this.lifetime = 1
   }
   draw(){
-    ctx.beginPath();
-    ctx.strokeStyle = this.strokeCol;
-    ctx.fillStyle = this.fillCol;
-    ctx.lineWidth = this.lineWidth;
+    hctx.beginPath();
+    hctx.strokeStyle = this.strokeCol;
+    hctx.fillStyle = this.fillCol;
+    hctx.lineWidth = this.lineWidth;
     const pos = super.update();
-    ctx.arc(pos.x, pos.y, this.radius, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fill();
+    hctx.arc(pos.x, pos.y, this.radius, 0, 2 * Math.PI);
+    hctx.stroke();
+    hctx.fill();
     if (this.elapsed > this.duration){
       this.lifetime = 0;
     }
   }
 }
 
-function lowHealth() {
+  function lowHealth() {
     this.start = Date.now();
-    this.particles = new childArray();
+    this.particles = []
+    this.lifetime = 1;
 
     this.draw = function() {
       if (rng(1,false)>0.96)
       this.particles.push(new wobblyExplosionParticle(rng(320,false),-10,{x:rng(5),y:rng(5, false)},{x:rng(30,false),y:0},2,3000,"red",15))
+      
       this.elapsed = Date.now() - this.start;
-      const radius = Math.sin(this.elapsed / 200) * 120 + 180; // increase the radius value
-      const bgGrad = ctx.createRadialGradient(160, 100, 0, 160, 100, radius);
+      const radius = Math.sin(this.elapsed / 200) * 120 + 180;
+      const bgGrad = hctx.createRadialGradient(160, 100, 0, 160, 100, radius);
       bgGrad.addColorStop(0, `hsla(0,0%,0%,0)`);
       bgGrad.addColorStop(0.5, `red`);
       bgGrad.addColorStop(1, `hsla(0,0%,0%,0)`);
       DrawRect(0, 0, 320, 200, bgGrad);
-      this.particles.draw();
+      
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+      
       if (!lowHealthPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95)){
         this.lifetime = 0;
       }
@@ -1244,8 +1348,9 @@ function lowHealth() {
 
 function lowMana() {
   this.start = Date.now();
-  this.particles = new childArray();
+  this.particles = []
   this.mnColor = hexToHSL(manaColor)
+  this.lifetime = 1;
 
   this.draw = function() {
     if (rng(1, false) > 0.96) {
@@ -1253,13 +1358,16 @@ function lowMana() {
       this.particles.push(new wobblyExplosionParticle(dir? -10 :330 , rng(200,false), {x: dir?3:-3, y: rng(5)}, {x: rng(0, false), y: rng(30,false)}, 2, 3000, `hsla(${this.mnColor.h}, ${this.mnColor.s}%, ${this.mnColor.l}%, .3)`, 15));
     }
     this.elapsed = Date.now() - this.start;
-    const radius = Math.sin(this.elapsed / 200) * 120 + 180; // increase the radius value
-    const bgGrad = ctx.createRadialGradient(160, 100, 0, 160, 100, radius);
+    const radius = Math.sin(this.elapsed / 200) * 120 + 180;
+    const bgGrad = hctx.createRadialGradient(160, 100, 0, 160, 100, radius);
     bgGrad.addColorStop(0, `hsla(0,0%,0%,0)`);
     bgGrad.addColorStop(0.5, `hsla(${this.mnColor.h}, ${this.mnColor.s}%, ${this.mnColor.l}%, .8)`);
     bgGrad.addColorStop(1, `hsla(0,0%,0%,0)`);
     DrawRect(0, 0, 320, 200, bgGrad);
-    this.particles.draw();
+    this.particles.forEach(p => p.draw());
+    
+    this.particles = this.particles.filter(p => p.lifetime > 0);
+    
     if (!lowManaPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95)) {
       this.lifetime = 0;
     }
@@ -1275,14 +1383,15 @@ function MovingArrow(x=160, y=320, width=320, height=150,rotation=90,speed=3, co
       this.color = color;
       this.rotation = rotation;
       this.speed = speed;
+      this.lifetime = 1
       this.draw = function () {
-        ctx.beginPath();
-        ctx.save();
-        ctx.translate(160, 100);
-        ctx.rotate(this.rotation * Math.PI / 180);
-        ctx.translate(-160, -100);
+        hctx.beginPath();
+        hctx.save();
+        hctx.translate(160, 100);
+        hctx.rotate(this.rotation * Math.PI / 180);
+        hctx.translate(-160, -100);
           DrawArrow(this.x, this.y, this.width, this.height, this.color)
-        ctx.restore();
+        hctx.restore();
         this.y -= this.speed;
         if (this.y < -this.height) {
           this.lifetime = 0;
@@ -1309,23 +1418,23 @@ function MovingArrow(x=160, y=320, width=320, height=150,rotation=90,speed=3, co
           }
           this.draw = function () {
             if (this.background) {
-              ctx.beginPath();
-              ctx.fillStyle = "black";
-              ctx.fillRect(0, 0, 320, 200);
+              hctx.beginPath();
+              hctx.fillStyle = "black";
+              hctx.fillRect(0, 0, 320, 200);
             }
-            ctx.lineWidth = this.width;
-            ctx.beginPath();
+            hctx.lineWidth = this.width;
+            hctx.beginPath();
             for (let i = 0; i < this.amount; i++) {
-              ctx.beginPath();
+              hctx.beginPath();
               if (this.radius - i * (this.width * 2) > 0) {
-                ctx.arc(this.x, this.y, this.radius - i * (this.width * 2), 0, 2 * Math.PI);
+                hctx.arc(this.x, this.y, this.radius - i * (this.width * 2), 0, 2 * Math.PI);
               }
               if (this.fill == "fill") {
-                ctx.fillStyle = this.col;
-                ctx.fill();
+                hctx.fillStyle = this.col;
+                hctx.fill();
               } else {
-                ctx.strokeStyle = this.col;
-                ctx.stroke();
+                hctx.strokeStyle = this.col;
+                hctx.stroke();
               }
             }
 
@@ -1341,123 +1450,61 @@ function MovingArrow(x=160, y=320, width=320, height=150,rotation=90,speed=3, co
 
 
 function DrawRect(x, y, width, height, color) {
-  ctx.beginPath();
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, width, height);
+  hctx.beginPath();
+  hctx.fillStyle = color;
+  hctx.fillRect(x, y, width, height);
 };
 
 function DrawCircle(x, y, radius, color) {
-  ctx.beginPath();
-  ctx.fillStyle = color;
-  ctx.arc(x, y, radius, 0, 2 * Math.PI)
-  ctx.fill();
+  hctx.beginPath();
+  hctx.fillStyle = color;
+  hctx.arc(x, y, radius, 0, 2 * Math.PI)
+  hctx.fill();
 };
 
 function StrokeCircle(x, y, width, height, color) {
-  ctx.beginPath();
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 30;
-  ctx.arc(x, y, width, 0, 2 * Math.PI);
-  ctx.stroke();
+  hctx.beginPath();
+  hctx.strokeStyle = color;
+  hctx.lineWidth = 30;
+  hctx.arc(x, y, width, 0, 2 * Math.PI);
+  hctx.stroke();
 };
 
 function renderPath(x, y, path, color, size, type="fill", strokeWidth = 5) {
-  ctx.fillStyle = color;
-  ctx.strokeStyle = color;
-  ctx.save();
-  ctx.transform(size / 10, 0, 0, size / 10, 160 - 10 * 16.5, 79 - size * 7.5);
-  ctx.translate(x, y);
+  hctx.fillStyle = color;
+  hctx.strokeStyle = color;
+  hctx.save();
+  hctx.transform(size / 10, 0, 0, size / 10, 160 - 10 * 16.5, 79 - size * 7.5);
+  hctx.translate(x, y);
   let ex = new Path2D(path);
 
   if (type == "fill"){
-    ctx.fill(ex);
+    hctx.fill(ex);
   } else if (type == "stroke"){
-    ctx.lineWidth = strokeWidth;
-    ctx.stroke(ex);
+    hctx.lineWidth = strokeWidth;
+    hctx.stroke(ex);
   }
 
-  ctx.restore();
+  hctx.restore();
 }
 
 
 
   function DrawArrow(x, y, width, angle, color) {
-    ctx.beginPath();
-    ctx.moveTo(x - width, y + angle);
-    ctx.lineTo(x, y);
-    ctx.lineTo(x + width, y + angle);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 30;
-    ctx.stroke();
+    hctx.beginPath();
+    hctx.moveTo(x - width, y + angle);
+    hctx.lineTo(x, y);
+    hctx.lineTo(x + width, y + angle);
+    hctx.strokeStyle = color;
+    hctx.lineWidth = 30;
+    hctx.stroke();
   }
-
-        
-
 
 
 function getXAndYForPathPoint(point1, point2, percentage) {
     let speed = { x: (point2.x - point1.x) * percentage, y: (point2.y - point1.y) * percentage }
     return { x: point1.x + speed.x, y: point1.y + speed.y }
   }
-
-
-function copyScreen(alpha) {
-  let lightness = new Int8Array(engine.zone.lightness);
-  let sat = new Int8Array(engine.zone.saturation);
-  let hue = new Int16Array(engine.zone.hue);
-  for (let iZone = 0; iZone < 560; iZone++) {
-    ctx.fillStyle =
-      "hsla(" +
-      hue[iZone] +
-      "," +
-      sat[iZone] +
-      "%," +
-      lightness[iZone] * keyScreenBrightness * 0.01 +
-      "%, " +
-      alpha
-      +
-      ")";
-    let iRow = Math.floor(iZone / 28);
-    let iCol = iZone % 28;
-    let iWidth = 320 / 28;
-    let iHeight = 200 / 20;
-    let iZx = iCol * iWidth;
-    let iZy = iRow * iHeight;
-
-    ctx.fillRect(iZx, iZy, iWidth, iHeight);
-  }
-}
-
-
-function StateHandler() {
-  let stack = [];
-  let state = null;
-
-  let updateState = function () {
-    if (stack.length > 0) {
-      state = stack[stack.length - 1];
-    } else {
-      state = null;
-    }
-  };
-
-  this.Push = function (newState) {
-    stack.push(newState);
-    updateState();
-  };
-
-  this.Pop = function () {
-    stack.pop();
-    updateState();
-  };
-
-  this.Process = function () {
-    if (state != null) {
-      state.Process();
-    }
-  };
-}
-
 
 
 function Meter(size, Callback) {
@@ -1539,12 +1586,6 @@ function hexToHSL(hex) {
       latestLocation = {x:x, y:y}; 
   }
 
-
-function onEngineReady() {
-  // Grab canvas and rendering context.
-  c = document.getElementById("exCanvas");
-  ctx = c.getContext("2d");
   window.requestAnimationFrame(update);
-}
-onEngineReady()
+
 </script>
