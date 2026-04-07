@@ -151,7 +151,7 @@
 
   <!-- Last edited: 2026-04-06T22:20:23Z | 2026-04-06 15:20:23 MST -->
   <meta meter="badRed" tags="vlc,Hytale" x="0.2414" y="0.9118" width="0.0043" height="0.0000"
-    h="-19-26" s="30-79" l="12-74" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+    h="-19-26" s="30-79" l="40-74" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
     <resolution aspect="3.55:1" x="0.3707" y="0.9120" width="0.0025" height="0.0010" />
     <resolution aspect="24:10" x="0.3049" y="0.9118" width="0.0064" height="0.0000" />
     <resolution aspect="16:11" x="0.2115" y="0.9100" width="0.0063" height="0.0017" />
@@ -164,7 +164,7 @@
 
     <!-- Last edited: 2026-04-06T22:34:20Z | 2026-04-06 15:34:20 MST -->
   <meta meter="badNotRed" tags="vlc,Hytale" x="0.2328" y="0.9056" width="0.0012" height="0.0118"
-    h="-19-26" s="30-79" l="12-74" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
+    h="-19-26" s="30-79" l="40-74" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100" type="area">
     <resolution aspect="3.55:1" x="0.3658" y="0.9062" width="0.0006" height="0.0090" />
     <resolution aspect="24:10" x="0.3003" y="0.9056" width="0.0015" height="0.0118" />
     <resolution aspect="16:11" x="0.2016" y="0.9042" width="0.0021" height="0.0075" />
@@ -289,14 +289,14 @@
     let StaminaYellowMeter = new Meter(5, barCallback)
     let StaminaNotYellowMeter = new Meter(5, barCallback)
 
-    let HealGreen1Meter = new Meter(5, conditionCallback)
-    let HealGreen2Meter = new Meter(5, conditionCallback)
-    let BadRedMeter = new Meter(5, conditionCallback)
-    let HealNotGreenMeter = new Meter(5, conditionCallback)
+    let HealGreen1Meter = new Meter(10, conditionCallback)
+    let HealGreen2Meter = new Meter(10, conditionCallback)
+    let BadRedMeter = new Meter(10, conditionCallback)
+    let HealNotGreenMeter = new Meter(10, conditionCallback)
 
-    let AttackYellowMeter = new Meter(5, actionCallback)
-    let DefenseYellowMeter = new Meter(5, actionCallback)
-    let ADNotYellowMeter = new Meter(5, actionCallback)
+    let AttackYellowMeter = new Meter(7, actionCallback)
+    let DefenseYellowMeter = new Meter(7, actionCallback)
+    let ADNotYellowMeter = new Meter(7, actionCallback)
 
     let UltYellowMeter = new Meter(5, ultCallback)
     let UltNotYellowMeter = new Meter(5, ultCallback)
@@ -418,7 +418,7 @@
         console.log("Dead")
       } if (gInGame) deadGoing = false
     }
-    
+
     //#endregion
     //#region Background Modes
     // Background Configuration
