@@ -355,11 +355,11 @@
       if(gInGame){
         if(HealthRedMeter.value >= .05 && engine.vision.healthNotRed < .1 && !healthGoing){
           healthGoing = true
-          console.log("Health Bar pushed")
+          effects.push(new healthBar())
         }
         if(StaminaYellowMeter.value >= .05 && engine.vision.staminaNotYellow < .1 && !staminaGoing){
           staminaGoing = true
-          console.log("Stamina Bar pushed")
+          effects.push(new staminaBar())
         }
       } else {
         healthGoing = false
@@ -373,11 +373,11 @@
       if(gInGame){
         if((HealGreen1Meter.value >= .95 || HealGreen2Meter.value >= .95) && engine.vision.healNotGreen < .1 && !healingGoing){
           healingGoing = true
-          console.log("Healing")
+          effects.push(new healing())
         } else if ((HealGreen1Meter.value <= .1 && HealGreen2Meter.value <= .1) || !gInGame) healingGoing = false
         if(BadRedMeter.value >= .95 && engine.vision.badNotRed < .1 && !badGoing){
           badGoing = true
-          console.log("Bad effect")
+          effects.push(new badCondition())
         } else if (BadRedMeter.value <= .1) badGoing = false
       } else {
         healingGoing = false
@@ -391,12 +391,12 @@
       if(gInGame){
         if(AttackYellowMeter.value >= .95 && engine.vision.ADNotYellow < .1 && !attackGoing){
           attackGoing = true
-          console.log("Attack")
+          effects.push(new attack())
         } else if (AttackYellowMeter.value < .1) attackGoing = false
         if(DefenseYellowMeter.value >= .95 && engine.vision.ADNotYellow < .1 && !defenseGoing){
           defenseGoing = true
-          console.log("Defense")
-        } else if (DefenseYellowMeter.value >= .95) defenseGoing = false
+          effects.push(new defense())
+        } else if (DefenseYellowMeter.value < .1) defenseGoing = false
       } else {
         attackGoing = false
         defenseGoing = false
@@ -404,10 +404,19 @@
     }
 
     let ultGoing = false
+    let ultUsed = false
     function ultCallback() {
+      if(gInGame && ultGoing && UltYellowMeter.value <= .1 && !ultUsed){
+        ultGoing = false
+        ultUsed = true
+        effects.push(new ultimateUsed())
+        setTimeout(()=>{
+          ultUsed = false
+        }, 5000)
+      }
       if(gInGame && UltYellowMeter.value >= .95 && engine.vision.ultNotYellow < .1 && !ultGoing){
         ultGoing = true
-        console.log("Ultimate pushed")
+        effects.push(new ultimateCharged())
       } else if (!gInGame || UltYellowMeter.value < .1) ultGoing = false
     }
 
@@ -415,7 +424,7 @@
     function deadCallback() {
       if(!gInGame && DeadBlueMeter.value >= .95 && DeadRedMeter.value >= .95 && !deadGoing){
         deadGoing = true
-        console.log("Dead")
+        effects.push(new playerDeath())
       } if (gInGame) deadGoing = false
     }
 
@@ -758,5 +767,510 @@
       }
     }
     //#endregion
+
+    //#region Effects
+
+    function healthBar() {
+        this.val = HealthRedMeter.value * 100
+        this.draw = function () {
+            if (!healthGoing) { this.lifetime = 0; return }
+            this.val += (HealthRedMeter.value * 100 - this.val) / 10
+            let x = 0, y = 178, w = 320, h = 14
+            let fillW = w * this.val / 100
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, 0.25))
+            DrawRect(x, y, w, h, getColorString(0, 100, 6, 0.8))
+            let lit = 15 + (this.val / 100) * 35
+            DrawRect(x, y, fillW, h, getColorString(0, 100, lit, 1))
+            if (fillW > 0)
+                DrawRect(x, y, fillW, h * 0.2, getColorString(0, 60, 80, 0.2))
+            if (this.val < 30) {
+                let pulse = (Math.sin(Date.now() / 280) + 1) / 2
+                let intensity = (30 - this.val) / 30
+                let grad = ctx.createRadialGradient(x, y + h / 2, 0, x, y + h / 2, 320)
+                grad.addColorStop(0, getColorString(0, 100, 50, intensity * pulse * 0.55))
+                grad.addColorStop(1, getColorString(0, 100, 20, 0))
+                DrawRect(0, 0, 320, 200, grad)
+            }
+        }
+    }
+
+    function staminaBar() {
+        this.val = StaminaYellowMeter.value * 100
+        this.draw = function () {
+            if (!staminaGoing) { this.lifetime = 0; return }
+            this.val += (StaminaYellowMeter.value * 100 - this.val) / 10
+            let x = 0, y = 162, w = 320, h = 10
+            let fillW = w * this.val / 100
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, 0.25))
+            DrawRect(x, y, w, h, getColorString(45, 100, 6, 0.8))
+            let lit = 15 + (this.val / 100) * 35
+            DrawRect(x, y, fillW, h, getColorString(45, 100, lit, 1))
+            if (fillW > 0)
+                DrawRect(x, y, fillW, h * 0.2, getColorString(55, 60, 85, 0.2))
+            if (this.val < 20) {
+                let pulse = (Math.sin(Date.now() / 220) + 1) / 2
+                let intensity = (20 - this.val) / 20
+                let grad = ctx.createRadialGradient(x, y + h / 2, 0, x, y + h / 2, 320)
+                grad.addColorStop(0, getColorString(45, 100, 50, intensity * pulse * 0.45))
+                grad.addColorStop(1, getColorString(45, 100, 20, 0))
+                DrawRect(0, 0, 320, 200, grad)
+            }
+        }
+    }
+
+    function healing() {
+        this.start    = Date.now()
+        this.a        = 0
+        this.orbs     = []
+        this.glowDone = false
+        const FADE_IN = 400, SUSTAIN = 1200, FADE_OUT = 400
+        const GLOW_TOTAL = FADE_IN + SUSTAIN + FADE_OUT
+        this.draw = function () {
+            if (!healingGoing) { this.lifetime = 0; return }
+            let elapsed = Date.now() - this.start
+            if (elapsed < FADE_IN) this.a = elapsed / FADE_IN
+            else if (elapsed < FADE_IN + SUSTAIN) this.a = 1
+            else if (elapsed < GLOW_TOTAL) this.a = 1 - (elapsed - FADE_IN - SUSTAIN) / FADE_OUT
+            else { this.a = 0; this.glowDone = true }
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.a * 0.25))
+            if (elapsed < FADE_IN + SUSTAIN && Math.random() > 0.55) this.orbs.push(new healOrb())
+            if (!this.glowDone) {
+                let grad = ctx.createRadialGradient(160, 220, 0, 160, 80, 240)
+                grad.addColorStop(0, getColorString(120, 100, 45, this.a * 0.45))
+                grad.addColorStop(1, getColorString(120, 100, 20, 0))
+                DrawRect(0, 0, 320, 200, grad)
+            }
+            this.orbs = this.orbs.filter(orb => { orb.draw(); return !orb.done })
+            if (this.glowDone && this.orbs.length === 0) this.lifetime = 0
+        }
+    }
+
+    function healOrb() {
+        this.x = Math.random() * 320; this.y = 210 + Math.random() * 20
+        this.size = Math.random() * 7.5 + 4.5
+        this.hue  = 100 + Math.random() * 40
+        this.drift = (Math.random() - 0.5) * 1.5
+        this.speed = Math.random() * 1.5 + 1
+        this.start = Date.now(); this.done = false
+        const LIFE = 5000
+        this.draw = function () {
+            let age = Date.now() - this.start
+            if (age >= LIFE) { this.done = true; return }
+            let a = 1 - age / LIFE
+            DrawCircle(this.x, this.y, this.size, getColorString(this.hue, 100, 50, a))
+            DrawCircle(this.x, this.y, this.size * 0.35, getColorString(this.hue, 60, 82, a * 0.8))
+            this.y -= this.speed
+            this.x += Math.sin(this.y / 18) * this.drift
+        }
+    }
+
+    function badCondition() {
+        this.start = Date.now(); this.a = 0; this.particles = []; this.glowDone = false
+        const FADE_IN = 400, SUSTAIN = 1200, FADE_OUT = 400
+        const GLOW_TOTAL = FADE_IN + SUSTAIN + FADE_OUT
+        this.draw = function () {
+            if (!badGoing) { this.lifetime = 0; return }
+            let elapsed = Date.now() - this.start
+            if (elapsed < FADE_IN) this.a = elapsed / FADE_IN
+            else if (elapsed < FADE_IN + SUSTAIN) this.a = 1
+            else if (elapsed < GLOW_TOTAL) this.a = 1 - (elapsed - FADE_IN - SUSTAIN) / FADE_OUT
+            else { this.a = 0; this.glowDone = true }
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.a * 0.25))
+            if (elapsed < FADE_IN + SUSTAIN && Math.random() > 0.6) this.particles.push(new debuffParticle())
+            if (!this.glowDone) {
+                let pulse = (Math.sin(Date.now() / 220) + 1) / 2
+                let outerAlpha = this.a * (0.35 + pulse * 0.25)
+                [[0,0],[320,0],[0,200],[320,200]].forEach(([cx,cy]) => {
+                    let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 260)
+                    grad.addColorStop(0,   getColorString(290, 100, 25, outerAlpha))
+                    grad.addColorStop(0.5, getColorString(300, 100, 20, outerAlpha * 0.5))
+                    grad.addColorStop(1,   getColorString(300, 100, 10, 0))
+                    DrawRect(0, 0, 320, 200, grad)
+                })
+            }
+            this.particles = this.particles.filter(p => { p.draw(); return !p.done })
+            if (this.glowDone && this.particles.length === 0) this.lifetime = 0
+        }
+    }
+
+    function debuffParticle() {
+        this.x = Math.random() * 320; this.y = -5 - Math.random() * 15
+        this.size = Math.random() * 12 + 6
+        this.hue  = 270 + Math.random() * 40
+        this.drift = (Math.random() - 0.5) * 1.5; this.speed = Math.random() * 1.5 + 0.8
+        this.start = Date.now(); this.done = false
+        const LIFE = 5000
+        this.draw = function () {
+            let age = Date.now() - this.start
+            if (age >= LIFE) { this.done = true; return }
+            let a = 1 - age / LIFE
+            DrawCircle(this.x, this.y, this.size, getColorString(this.hue, 100, 45, a))
+            DrawCircle(this.x, this.y, this.size * 0.35, getColorString(this.hue + 20, 80, 70, a * 0.7))
+            this.y += this.speed
+            this.x += Math.sin(this.y / 20) * this.drift
+        }
+    }
+
+    function attack() {
+        this.start = Date.now(); this.slashes = []; this.sparks = []
+        let count = 2 + Math.floor(Math.random() * 2)
+        let baseAngle = (Math.random() - 0.5) * 0.8
+        for (let i = 0; i < count; i++)
+            this.slashes.push(new attackSlash(baseAngle + (i - (count-1)/2) * 0.22))
+        for (let i = 0; i < 14; i++) this.sparks.push(new attackSpark())
+        this.draw = function () {
+            if (!attackGoing) { this.lifetime = 0; return }
+            let elapsed = Date.now() - this.start
+            let flashA = Math.max(0, 1 - elapsed / 400)
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, Math.min(1, elapsed / 80) * flashA * 0.25))
+            if (flashA > 0) {
+                let grad = ctx.createRadialGradient(160, 100, 0, 160, 100, 180)
+                grad.addColorStop(0,   getColorString(50, 100, 80, flashA * 0.75))
+                grad.addColorStop(0.4, getColorString(35, 100, 55, flashA * 0.4))
+                grad.addColorStop(1,   getColorString(30, 100, 30, 0))
+                DrawRect(0, 0, 320, 200, grad)
+            }
+            let allSlashesDone = true
+            this.slashes.forEach(s => { s.draw(); if (!s.done) allSlashesDone = false })
+            this.sparks = this.sparks.filter(sp => { sp.draw(); return !sp.done })
+            if (flashA <= 0 && allSlashesDone && this.sparks.length === 0) this.lifetime = 0
+        }
+    }
+
+    function attackSlash(angle) {
+        this.angle = angle; this.start = Date.now(); this.done = false
+        const EXPAND = 300, LINGER = 80, FADE = 200
+        const TOTAL = EXPAND + LINGER + FADE, lineW = 12 + Math.random() * 16
+        this.draw = function () {
+            let elapsed = Date.now() - this.start
+            if (elapsed >= TOTAL) { this.done = true; return }
+            let prog  = Math.min(1, elapsed / EXPAND)
+            let alpha = elapsed < EXPAND + LINGER ? 1 : 1 - (elapsed - EXPAND - LINGER) / FADE
+            let len   = prog * 240
+            ctx.save()
+            ctx.translate(160, 100); ctx.rotate(this.angle); ctx.translate(-160, -100)
+            DrawLine([160 - len, 100], [160 + len, 100], getColorString(40, 100, 65, alpha), lineW)
+            DrawLine([160 - len*0.6, 100], [160 + len*0.6, 100], getColorString(55, 60, 92, alpha * 0.7), lineW * 0.3)
+            ctx.restore()
+        }
+    }
+
+    function attackSpark() {
+        let angle = Math.random() * Math.PI * 2, speed = Math.random() * 6 + 3
+        this.x = 160; this.y = 100
+        this.vx = Math.cos(angle) * speed; this.vy = Math.sin(angle) * speed
+        this.size = Math.random() * 3 + 1.5; this.hue = 35 + Math.random() * 25
+        this.start = Date.now(); this.done = false
+        const LIFE = 350
+        this.draw = function () {
+            let age = Date.now() - this.start
+            if (age >= LIFE) { this.done = true; return }
+            DrawCircle(this.x, this.y, this.size, getColorString(this.hue, 100, 70, 1 - age / LIFE))
+            this.x += this.vx; this.y += this.vy; this.vx *= 0.88; this.vy *= 0.88
+        }
+    }
+
+    function defense() {
+        this.start = Date.now(); this.shieldY = 260; this.a = 0
+        this.pulseFired = false; this.pulseStart = 0
+        const TARGET_Y = 95, RISE_DUR = 700, HOLD_DUR = 600, FADE_DUR = 500
+        const TOTAL = RISE_DUR + HOLD_DUR + FADE_DUR
+        this.draw = function () {
+            if (!defenseGoing) { this.lifetime = 0; return }
+            let elapsed = Date.now() - this.start
+            if (elapsed >= TOTAL) { this.lifetime = 0; return }
+            let riseT = Math.min(1, elapsed / RISE_DUR)
+            let eased = 1 - Math.pow(1 - riseT, 3)
+            this.shieldY = 260 - eased * (260 - TARGET_Y)
+            this.a = riseT < 1 ? eased : elapsed < RISE_DUR + HOLD_DUR
+                ? 1 : 1 - (elapsed - RISE_DUR - HOLD_DUR) / FADE_DUR
+            if (riseT >= 1 && !this.pulseFired) { this.pulseFired = true; this.pulseStart = Date.now() }
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, this.a * 0.25))
+            let glow = ctx.createRadialGradient(160, this.shieldY, 0, 160, this.shieldY, 210)
+            glow.addColorStop(0,   getColorString(40, 100, 55, this.a * 0.35))
+            glow.addColorStop(0.5, getColorString(35, 100, 40, this.a * 0.15))
+            glow.addColorStop(1,   getColorString(30, 100, 20, 0))
+            DrawRect(0, 0, 320, 200, glow)
+            if (this.pulseFired) {
+                let pe = Date.now() - this.pulseStart
+                if (pe < 550) {
+                    let pr = (pe / 550) * 240, pa = (1 - pe / 550) * this.a
+                    DrawStroke(160, this.shieldY, pr,        getColorString(45, 100, 65, pa * 0.85), 8)
+                    DrawStroke(160, this.shieldY, pr * 0.75, getColorString(50, 80,  80, pa * 0.35), 3)
+                }
+            }
+            drawShield(160, this.shieldY, 110, 140, this.a)
+        }
+    }
+
+    function drawShield(cx, cy, w, h, alpha) {
+        ctx.save(); ctx.beginPath()
+        ctx.moveTo(cx - w/2, cy - h*0.30)
+        ctx.quadraticCurveTo(cx, cy - h*0.52, cx + w/2, cy - h*0.30)
+        ctx.lineTo(cx + w/2, cy + h*0.08)
+        ctx.quadraticCurveTo(cx + w/3, cy + h*0.50, cx, cy + h*0.50)
+        ctx.quadraticCurveTo(cx - w/3, cy + h*0.50, cx - w/2, cy + h*0.08)
+        ctx.closePath()
+        ctx.fillStyle = getColorString(38, 90, 18, alpha * 0.92); ctx.fill()
+        ctx.strokeStyle = getColorString(44, 100, 52, alpha); ctx.lineWidth = 5; ctx.stroke()
+        DrawCircle(cx, cy - h*0.06, w*0.225, getColorString(43, 100, 48, alpha * 0.9))
+        DrawStroke(cx, cy - h*0.06, w*0.225, getColorString(50, 80, 72, alpha), 2)
+        ctx.restore()
+    }
+
+    function playerDeath() {
+        this.start = Date.now(); this.particles = []
+        const FLASH_DUR = 420, DARK_DUR = 580, RISE_DUR = 1100, HOLD_DUR = 1200, FADE_DUR = 900
+        const DARK_START = FLASH_DUR * 0.35
+        const RISE_START = DARK_START + DARK_DUR
+        const HOLD_START = RISE_START + RISE_DUR
+        const FADE_START = HOLD_START + HOLD_DUR
+        const TOTAL = FADE_START + FADE_DUR
+        const BASE_REST = 168, BASE_START = 300
+        this.draw = function () {
+            if (!deadGoing) { this.lifetime = 0; return }
+            let elapsed = Date.now() - this.start
+            if (elapsed >= TOTAL) { this.lifetime = 0; return }
+            if (elapsed < FLASH_DUR) {
+                let flashA = 1 - elapsed / FLASH_DUR
+                let grad = ctx.createRadialGradient(160, 100, 0, 160, 100, 250)
+                grad.addColorStop(0,   getColorString(0, 100, 55, flashA * 0.95))
+                grad.addColorStop(0.5, getColorString(0, 100, 30, flashA * 0.6))
+                grad.addColorStop(1,   getColorString(0, 100, 10, 0))
+                DrawRect(0, 0, 320, 200, grad)
+            }
+            if (elapsed > DARK_START) {
+                let darkT = Math.min(1, (elapsed - DARK_START) / DARK_DUR)
+                let darkA = elapsed < FADE_START ? darkT * 0.92 : 0.92 * (1 - (elapsed - FADE_START) / FADE_DUR)
+                DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, darkA))
+            }
+            if (elapsed > RISE_START) {
+                let riseT = Math.min(1, (elapsed - RISE_START) / RISE_DUR)
+                let ease  = 1 - Math.pow(1 - riseT, 3)
+                let baseY = BASE_START + (BASE_REST - BASE_START) * ease
+                let stoneA = elapsed < FADE_START ? Math.min(1, riseT * 2) : 1 - (elapsed - FADE_START) / FADE_DUR
+                if (elapsed < FADE_START && Math.random() > 0.45) this.particles.push(new deathParticle(160, baseY))
+                drawTombstone(160, baseY, stoneA)
+            }
+            this.particles = this.particles.filter(p => { p.draw(); return !p.done })
+        }
+    }
+
+    function drawTombstone(cx, baseY, alpha) {
+        const W = 72, bodyH = 90, archR = 36
+        let topY = baseY - bodyH
+        let gGrad = ctx.createRadialGradient(cx, baseY, 4, cx, baseY, 100)
+        gGrad.addColorStop(0,   getColorString(0, 85, 20, alpha * 0.5))
+        gGrad.addColorStop(0.5, getColorString(0, 70, 10, alpha * 0.2))
+        gGrad.addColorStop(1,   getColorString(0,  0,  0, 0))
+        ctx.fillStyle = gGrad; ctx.fillRect(cx - 100, baseY - 100, 200, 100)
+        let rim = getColorString(0, 0, 28, alpha), stone = getColorString(0, 0, 14, alpha)
+        ctx.beginPath(); ctx.arc(cx, topY, archR + 2, Math.PI, 0); ctx.fillStyle = rim; ctx.fill()
+        DrawRect(cx - W/2 - 2, topY - 2, W + 4, bodyH + 4, rim)
+        ctx.beginPath(); ctx.arc(cx, topY, archR, Math.PI, 0); ctx.fillStyle = stone; ctx.fill()
+        DrawRect(cx - W/2, topY, W, bodyH, stone)
+        ctx.save(); ctx.font = "bold 18px serif"
+        ctx.fillStyle = getColorString(0, 0, 5, alpha)
+        ctx.textAlign = "center"; ctx.textBaseline = "middle"
+        ctx.fillText("RIP", cx, topY + bodyH * 0.38); ctx.restore()
+        let crackA = alpha * 0.35
+        DrawLine([cx - W/2, baseY], [cx - W/2 - 18, baseY + 12], getColorString(0, 80, 25, crackA), 1.5)
+        DrawLine([cx + W/2, baseY], [cx + W/2 + 14, baseY + 10], getColorString(0, 80, 25, crackA), 1.5)
+        DrawLine([cx - 10,  baseY], [cx - 16, baseY + 16], getColorString(0, 80, 25, crackA), 1)
+        DrawLine([cx + 8,   baseY], [cx + 18, baseY + 14], getColorString(0, 80, 25, crackA), 1)
+    }
+
+    function deathParticle(sx, baseY) {
+        this.x = Math.random() * 320; this.y = baseY - Math.random() * 30
+        this.vx = (Math.random() - 0.5) * 0.55; this.vy = -(Math.random() * 0.7 + 0.25)
+        this.size = Math.random() * 11 + 6
+        let isRed = Math.random() > 0.5
+        this.hue = 0; this.sat = isRed ? 80 : 0; this.lit = isRed ? (16 + Math.random() * 16) : (10 + Math.random() * 18)
+        this.start = Date.now(); this.done = false
+        const LIFE = 2800 + Math.random() * 1400
+        this.draw = function () {
+            let age = Date.now() - this.start
+            if (age >= LIFE) { this.done = true; return }
+            let a = Math.min(1, age / 350) * (1 - age / LIFE) * 0.8
+            DrawCircle(this.x, this.y, this.size, getColorString(this.hue, this.sat, this.lit, a))
+            this.x += this.vx + Math.sin(this.y / 35) * 0.2; this.y += this.vy; this.vy *= 0.997
+        }
+    }
+
+    function ultimateCharged() {
+        this.start = Date.now(); this.bolts = []; this.sparks = []
+        const BUILD = 1330, PEAK = 315, FADE_OUT = 350
+        const TOTAL = BUILD + PEAK + FADE_OUT
+        const CX = 160, CY = 100
+        this.draw = function () {
+            if (!ultGoing) { this.lifetime = 0; return }
+            let elapsed = Date.now() - this.start
+            if (elapsed >= TOTAL) { this.lifetime = 0; return }
+            let masterA = elapsed < 140 ? elapsed / 140 : elapsed < BUILD + PEAK ? 1 : Math.max(0, 1 - (elapsed - BUILD - PEAK) / FADE_OUT)
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, masterA * 0.25))
+            let buildT = Math.min(1, elapsed / BUILD)
+            let pulse  = (Math.sin(Date.now() / 160) + 1) / 2
+            let ringR  = 22 + buildT * 36
+            let gGrad  = ctx.createRadialGradient(CX, CY, 0, CX, CY, ringR * 3.2)
+            gGrad.addColorStop(0,   getColorString(205, 100, 70, masterA * (0.18 + buildT * 0.35 + pulse * 0.08)))
+            gGrad.addColorStop(0.5, getColorString(210, 100, 45, masterA * (0.08 + buildT * 0.15)))
+            gGrad.addColorStop(1,   getColorString(215, 100, 25, 0))
+            DrawRect(0, 0, 320, 200, gGrad)
+            ctx.save(); ctx.beginPath()
+            ctx.arc(CX, CY, ringR, -Math.PI/2, -Math.PI/2 + buildT * Math.PI * 2)
+            ctx.strokeStyle = getColorString(52, 100, 65, masterA * 0.75)
+            ctx.lineWidth = 9; ctx.lineCap = "round"; ctx.stroke(); ctx.restore()
+            DrawStroke(CX, CY, ringR + 1, getColorString(210, 100, 55, masterA * (0.45 + pulse * 0.15)), 18)
+            DrawStroke(CX, CY, ringR, getColorString(0, 0, 96, masterA), 4)
+            if (elapsed > BUILD) {
+                let flare = Math.sin(((elapsed - BUILD) / PEAK) * Math.PI) * masterA
+                DrawStroke(CX, CY, ringR, getColorString(52,  100, 80, flare * 0.85), 22)
+                DrawStroke(CX, CY, ringR, getColorString(0,   0,  100, flare),          5)
+                let pGrad = ctx.createRadialGradient(CX, CY, ringR * 0.4, CX, CY, 220)
+                pGrad.addColorStop(0,   getColorString(52,  100, 85, flare * 0.65))
+                pGrad.addColorStop(0.3, getColorString(205, 100, 60, flare * 0.35))
+                pGrad.addColorStop(1,   getColorString(210, 100, 35, 0))
+                DrawRect(0, 0, 320, 200, pGrad)
+            }
+            if (buildT > 0.12 && Math.random() > Math.max(0.2, 0.75 - buildT * 0.65))
+                this.bolts.push(new chargeBolt(CX, CY, ringR))
+            this.bolts  = this.bolts.filter(b  => { b.draw(masterA);  return !b.done  })
+            if (buildT > 0.25 && Math.random() > 0.58) this.sparks.push(new chargeSpark(CX, CY, ringR))
+            this.sparks = this.sparks.filter(sp => { sp.draw(masterA); return !sp.done })
+        }
+    }
+
+    function chargeBolt(cx, cy, ringR) {
+        let angle = Math.random() * Math.PI * 2
+        let outDist = 45 + Math.random() * 75, aJitter = (Math.random() - 0.5) * 0.55
+        let sx = cx + Math.cos(angle) * ringR,               sy = cy + Math.sin(angle) * ringR
+        let ex = cx + Math.cos(angle + aJitter) * (ringR + outDist)
+        let ey = cy + Math.sin(angle + aJitter) * (ringR + outDist)
+        this.pts = [[sx, sy]]
+        let segs = 4 + Math.floor(Math.random() * 4)
+        let dx = ex - sx, dy = ey - sy, len = Math.sqrt(dx*dx + dy*dy)
+        for (let i = 1; i < segs; i++) {
+            let t = i / segs, perp = (Math.random() - 0.5) * 15
+            this.pts.push([sx + dx*t + (-dy/len)*perp, sy + dy*t + (dx/len)*perp])
+        }
+        this.pts.push([ex, ey])
+        this.start = Date.now(); this.done = false
+        const LIFE = 90 + Math.random() * 90
+        this.draw = function (masterA) {
+            let age = Date.now() - this.start
+            if (age >= LIFE) { this.done = true; return }
+            let a = (1 - age / LIFE) * masterA
+            DrawLightning(this.pts, getColorString(208, 100, 55, a * 0.65), 4)
+            DrawLightning(this.pts, getColorString(0,   0,  98, a),         1.5)
+        }
+    }
+
+    function chargeSpark(cx, cy, ringR) {
+        let angle = Math.random() * Math.PI * 2
+        this.x = cx + Math.cos(angle) * ringR; this.y = cy + Math.sin(angle) * ringR
+        this.vx = Math.cos(angle) * (1.5 + Math.random() * 2.5)
+        this.vy = Math.sin(angle) * (1.5 + Math.random() * 2.5)
+        this.size = Math.random() * 2.5 + 1; this.hue = 48 + Math.random() * 10
+        this.start = Date.now(); this.done = false
+        const LIFE = 250 + Math.random() * 280
+        this.draw = function (masterA) {
+            let age = Date.now() - this.start
+            if (age >= LIFE) { this.done = true; return }
+            let a = (1 - age / LIFE) * masterA * 0.95
+            DrawCircle(this.x, this.y, this.size, getColorString(this.hue, 100, 72, a))
+            this.x += this.vx; this.y += this.vy; this.vx *= 0.94; this.vy *= 0.94
+        }
+    }
+
+    function ultimateUsed() {
+        this.start = Date.now(); this.sparks = []; this.impactFired = false
+        this.cracks = []
+        for (let i = 0; i < 4; i++) {
+            let angle = (i / 4) * Math.PI * 2 + (Math.random() - 0.5) * 0.6
+            let dist  = 38 + Math.random() * 52
+            let ex = 160 + Math.cos(angle) * dist, ey = 100 + Math.sin(angle) * dist
+            let pts = [[160, 100]]
+            let segs = 3 + Math.floor(Math.random() * 3)
+            let dx = ex - 160, dy = ey - 100, len = Math.sqrt(dx*dx + dy*dy)
+            for (let j = 1; j < segs; j++) {
+                let t = j / segs, perp = (Math.random() - 0.5) * 14
+                pts.push([160 + dx*t + (-dy/len)*perp, 100 + dy*t + (dx/len)*perp])
+            }
+            pts.push([ex, ey]); this.cracks.push(pts)
+        }
+        const STREAK_DUR = 180, IMPACT_DUR = 350, HOLD_DUR = 550, FADE_DUR = 750
+        const TOTAL = STREAK_DUR + IMPACT_DUR + HOLD_DUR + FADE_DUR
+        this.draw = function () {
+            if (!ultUsed) { this.lifetime = 0; return }
+            let elapsed = Date.now() - this.start
+            let masterA = elapsed < 60 ? elapsed / 60 : elapsed < STREAK_DUR + IMPACT_DUR + HOLD_DUR ? 1 : Math.max(0, 1 - (elapsed - STREAK_DUR - IMPACT_DUR - HOLD_DUR) / FADE_DUR)
+            DrawRect(0, 0, 320, 200, getColorString(0, 0, 0, masterA * 0.25))
+            if (elapsed < STREAK_DUR) {
+                let t = elapsed / STREAK_DUR, tipX = -20 + 180 * t, tipY = -20 + 120 * t
+                for (let s = 4; s >= 0; s--) {
+                    let trailT = Math.max(0, t - s * 0.14)
+                    let trailX = -20 + 180 * trailT, trailY = -20 + 120 * trailT
+                    let ta = ((5 - s) / 5) * masterA
+                    DrawLine([trailX, trailY], [tipX, tipY], getColorString(208, 100, 62, ta * 0.8), (5-s)*4)
+                    DrawLine([trailX, trailY], [tipX, tipY], getColorString(0, 0, 98, ta),            (5-s)*1.2)
+                }
+            }
+            if (elapsed >= STREAK_DUR && !this.impactFired) {
+                this.impactFired = true
+                for (let i = 0; i < 26; i++) this.sparks.push(new strikeParticle())
+            }
+            if (elapsed >= STREAK_DUR) {
+                let ie = elapsed - STREAK_DUR
+                let impA = (ie < IMPACT_DUR ? Math.min(1, ie / 60) : Math.max(0, 1 - (ie - IMPACT_DUR) / HOLD_DUR)) * masterA
+                if (impA > 0) {
+                    let iGrad = ctx.createRadialGradient(160, 100, 0, 160, 100, 230)
+                    iGrad.addColorStop(0,    getColorString(55,  100, 98, impA * 0.95))
+                    iGrad.addColorStop(0.12, getColorString(52,  100, 78, impA * 0.75))
+                    iGrad.addColorStop(0.4,  getColorString(210, 100, 58, impA * 0.4))
+                    iGrad.addColorStop(1,    getColorString(210, 100, 30, 0))
+                    DrawRect(0, 0, 320, 200, iGrad)
+                    let crackT = Math.min(1, ie / 220)
+                    this.cracks.forEach(pts => {
+                        let sub = pts.slice(0, Math.max(2, Math.round(crackT * (pts.length-1)) + 1))
+                        DrawLightning(sub, getColorString(210, 100, 68, impA * 0.6), 5)
+                        DrawLightning(sub, getColorString(55,  100, 90, impA * 0.9), 2)
+                    })
+                }
+            }
+            ;[0, 130, 260].forEach(offset => {
+                let ringAge = elapsed - STREAK_DUR - offset
+                if (ringAge <= 0) return
+                const RING_DUR = 680
+                if (ringAge > RING_DUR) return
+                let rt = ringAge / RING_DUR, ra = (1 - rt) * masterA
+                DrawStroke(160, 100, rt*250,        getColorString(210, 100, 65, ra * 0.88), 7)
+                DrawStroke(160, 100, rt*250*0.83,   getColorString(52,  100, 82, ra * 0.45), 3)
+            })
+            this.sparks = this.sparks.filter(sp => { sp.draw(); return !sp.done })
+            if (masterA <= 0 && this.sparks.length === 0) this.lifetime = 0
+        }
+    }
+
+    function strikeParticle() {
+        let angle = Math.random() * Math.PI * 2, speed = Math.random() * 6 + 2.5
+        this.x = 160 + (Math.random()-0.5)*6; this.y = 100 + (Math.random()-0.5)*6
+        this.vx = Math.cos(angle)*speed; this.vy = Math.sin(angle)*speed
+        this.size = Math.random()*5+2
+        let r = Math.random()
+        this.hue = r < 0.45 ? 52 : (r < 0.75 ? 210 : 0)
+        this.sat = this.hue === 0 ? 0 : 100; this.lit = this.hue === 0 ? 96 : 65
+        this.start = Date.now(); this.done = false
+        const LIFE = 550 + Math.random() * 750
+        this.draw = function () {
+            let age = Date.now() - this.start
+            if (age >= LIFE) { this.done = true; return }
+            let a = Math.min(1, age/50) * (1 - age/LIFE) * 0.9
+            DrawCircle(this.x, this.y, this.size, getColorString(this.hue, this.sat, this.lit, a))
+            this.x += this.vx; this.y += this.vy; this.vx *= 0.91; this.vy *= 0.91
+        }
+    }
+
+    //#endregion Effects
+
   window.requestAnimationFrame(update);
 </script>
