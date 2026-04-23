@@ -1,6 +1,6 @@
 <head> 
     <title>Marvel Rivals Dev</title>
-    <meta description="Ambience and effects for Marvel Rivals. v1.03" />
+    <meta description="Ambience and effects for Marvel Rivals. v1.04" />
     <meta publisher="SignalRGB" />
   
     <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
@@ -20,9 +20,10 @@
     <meta property="shieldOn" label="Shield Effect" type="boolean" default="1" />
     <meta property="damageOn" label="Damage Effect" type="boolean" default="1" />
     <meta property="killOn" label="Kill Effect" type="boolean" default="1" />
+    <meta property="deathOn" label="Death Effect" type="boolean" default="1" />
     <meta property="overtimeOn" label="Overtime Effect" type="boolean" default="1" />
-    <meta property="endGameOn" label="Game End Effects" type="boolean" default="1" />
-    <meta property="gameModeOn" label="Game Type Effects" type="boolean" default="1" />
+    <meta property="endGameOn" label="Victory/Defeat Effects" type="boolean" default="1" />
+    <meta property="gameModeOn" label="Match Effects" type="boolean" default="1" />
 
     <meta meter="inGameWhite" tags="vlc,Marvel Rivals,marvel" x="0.4780" y="0.905" width="0.015" height="0.0208" 
         h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
@@ -53,7 +54,7 @@
       <resolution aspect="16:11" x="0.4064" y="0.9462" width="0" height="0" />
 
       <resolution size="5120x1440" x="0.4544" y="0.9395" width="0.0014" height="0.0035"  />
-      <resolution size="3840x2160" x="0.4091" y="0.9398" width="0.0013" height="0.0014"  />
+      <resolution size="3840x2160" x="0.4066" y="0.9384" width="0" height="0.0023"  />
       <resolution size="2560x1080" x="0.4306" y="0.9425" width="0" height="0"/>  
   </meta>
 
@@ -114,7 +115,7 @@
 
     <meta meter="zoneCheckBlue" tags="vlc,Marvel Rivals,marvel" x="0.3992" y="0.0399" width="0.0005" height="0.0009"  
       h="180-300" s="0-50" l="50-100" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
-      <resolution aspect="3.55:1" x="0.4496" y="0.0398" width="0.0034" height="0" /> 
+      <resolution aspect="3.55:1" x="0.4505" y="0.0454" width="0.0000" height="0.0010" /> 
       <resolution aspect="24:10" x="0.4255" y="0.0396" width="0.0006" height="0.0014" />
       <resolution aspect="16:11" x="0.4002" y="0.04" width="0" height="0" />
 
@@ -134,7 +135,7 @@
 
     <meta meter="pushGreyDiamond" tags="vlc,Marvel Rivals,marvel" x="0.6346" y="0.0813" width="0.0016" height="0.0021"
       h="0-360" s="0-20" l="60-90" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
-       <resolution aspect="3.55:1" x="0.5671" y="0.0813" width="0.0008" height="0.0028" /> 
+       <resolution aspect="3.55:1" x="0.5672" y="0.0815" width="0.0005" height="0.0010" /> 
       <resolution aspect="24:10" x="0.6002" y="0.0813" width="0.0006" height="0.0014" />
       <resolution aspect="16:11" x="0.6347" y="0.0759" width="0" height="-0.0008" />
 
@@ -238,47 +239,68 @@
       <resolution size="2560x1080" x="0.5045" y="0.5273" width="0" height="0"  /> 
     </meta>
 
-    <meta meter="victoryOrange" tags="vlc,Marvel Rivals,marvel" x="0.0703" y="0.5959" width="-0.0031" height="-0.0028"
+    <meta meter="victoryOrange" tags="vlc,Marvel Rivals,marvel" x="0.322" y="0.7554" width="0.0094" height="0"
       h="15-50" s="50-90" l="50-100" hdr-h="40-80" hdr-s="30-70" hdr-l="65-100" type="area">
       <resolution aspect="3.55:1" x="0.2172" y="0.7429" width="0.0022" height="0.0076" /> 
-      <resolution aspect="24:10" x="0.0776" y="0.7422" width="0.0044" height="0.0132" />
-      <resolution aspect="16:11" x="0.1381" y="0.7056" width="0" height="0"  />
+      <resolution aspect="24:10" x="0.3584" y="0.7569" width="0.0113" height="0.0005" />
+      <resolution aspect="16:11" x="0.2849" y="0.7586" width="0.0176" height="0.0012"   />
 
       <resolution size="5120x1440" x="0.2172" y="0.7443" width="0.0016" height="0.0041"  />
-      <resolution size="3840x2160" x="0.1414" y="0.7281" width="0" height="0" />
-      <resolution size="2560x1080" x="0.2263" y="0.7294" width="0" height="0"  />
+      <resolution size="3840x2160" x="0.4077" y="0.7397" width="0.0239" height="0.0023" />
+      <resolution size="2560x1080" x="0.3642" y="0.7563" width="0.0078" height="0.0018"  />
     </meta>
 
-    <meta meter="victoryYellow" tags="vlc,Marvel Rivals,marvel" x="0.0792" y="0.6617" width="-0.0089" height="-0.0065" 
+    <meta meter="victoryYellow" tags="vlc,Marvel Rivals,marvel" x="0.202" y="0.6421" width="0.0286" height="0.007"
       h="50-70" s="50-85" l="50-100" hdr-h="40-80" hdr-s="30-70" hdr-l="65-100" type="area">
-      <resolution aspect="3.55:1" x="0.2213" y="0.7137" width="0.0039" height="0.0049" /> 
-      <resolution aspect="24:10" x="0.0901" y="0.7074" width="0.0091" height="0.0084" />
-      <resolution aspect="16:11" x="0.2116" y="0.6197" width="0.0015" height="0"  />
+      <resolution aspect="3.55:1" x="0.3581" y="0.5796" width="0.0039" height="0.0190" /> 
+      <resolution aspect="24:10" x="0.2927" y="0.5722" width="0.0038" height="0.0240" />
+      <resolution aspect="16:11" x="0.1751" y="0.5791" width="0.0082" height="0.0206"   />
 
       <resolution size="5120x1440" x="0.2219" y="0.7109" width="0.0022" height="0.0063"  />
-      <resolution size="3840x2160" x="0.0959" y="0.6503" width="0" height="0"  />
-      <resolution size="2560x1080" x="0.2739" y="0.6432" width="0" height="0"  />  
+      <resolution size="3840x2160" x="0.4105" y="0.6786" width="0.0091" height="0.0092"  />
+      <resolution size="2560x1080" x="0.2513" y="0.5922" width="0.0047" height="0.0195"  />  
     </meta>
 
-    <meta meter="defeatDarkGrey" tags="vlc,Marvel Rivals,marvel" x="0.2345" y="0.3197" width="0.0036" height="0.0065" 
-      h="0-360" s="0-50" l="40-80" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
-       <resolution aspect="3.55:1" x="0.8122" y="0.4696" width="0.0094" height="0" /> 
-      <resolution aspect="24:10" x="0.982" y="0.4774" width="0.0046" height="0.0097" />
-      <resolution aspect="16:11" x="0.9273" y="0.474" width="0.0047" height="0.0013"  />
+    <meta meter="defeatDarkGrey" tags="vlc,Marvel Rivals,marvel" x="0.7483" y="0.46" width="0.0528" height="0.0112" 
+      h="180-360" s="0-50" l="40-80" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
+       <resolution aspect="3.55:1" x="0.7224" y="0.4694" width="0.0159" height="0.0130" /> 
+      <resolution aspect="24:10" x="0.6648" y="0.4560" width="0.0413" height="0.0160" />
+      <resolution aspect="16:11" x="0.7569" y="0.4578" width="0.0333" height="0.0119"   />
 
-      <resolution size="3840x2160" x="0.9766" y="0.4632" width="0" height="0" />
-      <resolution size="2560x1080" x="0.9629" y="0.4708" width="0" height="0"  />
+      <resolution size="3840x2160" x="0.8429" y="0.4664" width="0.0784" height="0.0162" />
+      <resolution size="2560x1080" x="0.6792" y="0.4625" width="0.0355" height="0.0092" />
     </meta>
 
-    <meta meter="defeatLightGrey" tags="vlc,Marvel Rivals,marvel" x="0.9448" y="0.5163" width="0.013" height="0.0202" 
-      h="0-360" s="0-50" l="60-90" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
-       <resolution aspect="3.55:1" x="0.7791" y="0.5142" width="0.0109" height="0.0004" /> 
-      <resolution aspect="24:10" x="0.9448" y="0.5163" width="0.013" height="0.0202" />
-      <resolution aspect="16:11" x="0.9484" y="0.5121" width="0" height="0"  />
+    <meta meter="defeatLightGrey" tags="vlc,Marvel Rivals,marvel" x="0.7882" y="0.5087" width="0.0109" height="0.0396" 
+      h="180-360" s="0-50" l="75-100" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
+       <resolution aspect="3.55:1" x="0.6693" y="0.6000" width="0.0073" height="0.0490" /> 
+      <resolution aspect="24:10" x="0.7477" y="0.5250" width="0.0189" height="0.0910" />
+      <resolution aspect="16:11" x="0.7722" y="0.4903" width="0.0203" height="0.0369"  />
 
-      <resolution size="3840x2160" x="0.9318" y="0.5053" width="0" height="0"   />
-      <resolution size="2560x1080" x="0.9429" y="0.5283" width="0" height="0"  />  
+      <resolution size="3840x2160" x="0.8114" y="0.5364" width="0.0065" height="0.0398"   />
+      <resolution size="2560x1080" x="0.7265" y="0.5051" width="0.0086" height="0.0306"  />  
     </meta>
+
+    <meta meter="ultBlue" tags="vlc,Marvel Rivals,marvel" x="0.0246" y="0.8742" width="0.0016" height="0.0014"  
+      h="180-360" s="20-50" l="75-100" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
+      <resolution aspect="3.55:1" x="0.1763" y="0.8713" width="0.0005" height="0.0030" /> 
+      <resolution aspect="24:10" x="0.0224" y="0.8729" width="0.0020" height="0.0030" />
+      <resolution aspect="16:11" x="0.0242" y="0.8856" width="0.0024" height="0.0031"  />
+
+      <resolution size="3840x2160" x="0.024" y="0.8726" width="0.0023" height="0.0005" />
+      <resolution size="2560x1080" x="0.018" y="0.8721" width="0.0019" height="0.0028"  />
+    </meta>
+
+    <meta meter="ultNotBlue" tags="vlc,Marvel Rivals,marvel" x="0.0219" y="0.8624" width="0.0027" height="0.0021" 
+      h="180-360" s="20-50" l="50-80" hdr-h="0-360" hdr-s="0-20" hdr-l="65-100" type="area">
+      <resolution aspect="3.55:1" x="0.1747" y="0.8611" width="0.0021" height="0.0008" /> 
+      <resolution aspect="24:10" x="0.0195" y="0.8632" width="0.0049" height="0.0030" />
+      <resolution aspect="16:11" x="0.0215" y="0.8768" width="0.0059" height="0.0025"  />
+    
+      <resolution size="3840x2160" x="0.0229" y="0.8634" width="0.0018" height="0.0018"  />
+      <resolution size="2560x1080" x="0.0164" y="0.8628" width="0.0035" height="0.001"   />
+    </meta>
+
   </head>
   
   <body style="margin: 0; padding: 0; background: #000;">
@@ -302,12 +324,12 @@
     //Push effects - start of push
     //Conquest effects - start of conquest
     //Doom Match - start of doom match
-    let InGameWhiteMeter = new Meter(3, inGameHandler)
+    let InGameWhiteMeter = new Meter(5, inGameHandler)
     let PushGreyDiamondMeter = new Meter(5, inGameHandler)
     let ZoneCheckBlueMeter = new Meter(5, inGameHandler)
-    let HealthConfirmMeter = new Meter(2, inGameHandler)
+    let HealthConfirmMeter = new Meter(5, inGameHandler)
 
-    let HealthWhiteMeter = new Meter(3, healthHandler)
+    let HealthWhiteMeter = new Meter(5, healthHandler)
     let HealthRedMeter = new Meter(2, healthHandler)
     let HealthBlueMeter = new Meter(3, healthHandler)
 
@@ -326,12 +348,15 @@
     let VictoryYellowMeter = new Meter(10, victoryHandler)
     let DefeatDarkGreyMeter = new Meter(10, defeatHandler)
     let DefeatLightGreyMeter = new Meter(10, defeatHandler)
+
+    var ultBlueMeter = new Meter(10, inGameHandler)
    
-function update() {
+    function update() {
       hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
       hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
       hctx.fillRect(0, 0, 320, 200);
       backgroundHandler()
+
 
       InGameWhiteMeter.setValue(engine.vision.inGameWhite)
       PushGreyDiamondMeter.setValue(engine.vision.pushGreyDiamond)
@@ -351,7 +376,8 @@ function update() {
       HealthBlueMeter.setValue(engine.vision.healthBlue)
       KillRedBotMeter.setValue(engine.vision.killRedBot)
       KillRedTopMeter.setValue(engine.vision.killRedTop)
-  
+      ultBlueMeter.setValue(engine.vision.ultBlue)
+
   
       //Effect handler 
       for (let i = 0; i < effects.length; i++) {
@@ -370,37 +396,58 @@ function update() {
       }
       ctx.clearRect(0, 0, width, height);
       ctx.drawImage(hiddenCanvas, 0, 0);
-  
+      
       window.requestAnimationFrame(update);
     };
-    let deathGoing = false
-    let gInGame = false
-    let gGameType = "No type"
+    
+    var gInGame = false
+    var gGameType = "No type"
+    var typeGoing = false
     function inGameHandler() {
-      if(InGameWhiteMeter.value > .09 && engine.vision.inGameNotWhite < .25 && HealthConfirmMeter.value >= .25){
+      if((InGameWhiteMeter.value > 0.09 && InGameWhiteMeter.value < 0.7) && engine.vision.inGameNotWhite < 0.1 && HealthConfirmMeter.value >= 0.25 && (ultBlueMeter.value >= 0.95 && engine.vision.ultNotBlue < 0.1)){
         gInGame = true
-        if(PushGreyDiamondMeter.value >= .95 && engine.vision.pushNotGreyDiamond < .1 && ZoneCheckBlueMeter.value < .25){
-          if(gGameType != "Push" && gameModeOn) effects.push(new convoyStart())
-          gGameType = "Push"
-        } 
-        if(ZoneCheckBlueMeter.value >= .95 && engine.vision.zoneCheckNotBlue < .1 && PushGreyDiamondMeter.value < .25) {
-          if(gGameType != "Zone" && gameModeOn) effects.push(new dominationStart())
-          gGameType = "Zone"
-        } 
-        if(ConquestBlueMeter.value >= .85 && ConquestOrangeMeter.value >= .85) {
-          if(gGameType != "Conquest" && gameModeOn) effects.push(new conquestStart())
-          gGameType = "Conquest"
-        }
-        if(DoomBlueMeter.value >= .85 && ZoneCheckBlueMeter.value < .1 && DoomOrangeMeter.value >= .85) {
-          if(gGameType != "Doom Match" && gameModeOn) effects.push(new doomStart())
-          gGameType = "Doom Match"
+        if (!typeGoing) {
+
+          if(PushGreyDiamondMeter.value >= .95 && engine.vision.pushNotGreyDiamond < .1 && ZoneCheckBlueMeter.value < .25){
+            if(gameModeOn) effects.push(new convoyStart())
+            gGameType = "Push"
+            typeGoing = true
+          } 
+
+          else if(ZoneCheckBlueMeter.value >= .95 && engine.vision.zoneCheckNotBlue < .1 && PushGreyDiamondMeter.value < .25 && DoomOrangeMeter.value <.1 && DoomBlueMeter.value <.1 ) {
+            if(gameModeOn) effects.push(new dominationStart())
+            gGameType = "Zone"
+            typeGoing = true
+          } 
+
+          else if(ConquestBlueMeter.value >= .95 && ConquestOrangeMeter.value >= .95 && PushGreyDiamondMeter.value < .1 && ZoneCheckBlueMeter.value < .1 && engine.vision.zoneCheckNotBlue < .1) {
+            if(gameModeOn) effects.push(new conquestStart())
+            gGameType = "Conquest"
+            typeGoing = true
+          }
+
+          else if(DoomBlueMeter.value >= .95 && DoomOrangeMeter.value >= .95 && (ZoneCheckBlueMeter.value < .1 && engine.vision.zoneCheckNotBlue < .1) && (ConquestBlueMeter.value <.1 && ConquestOrangeMeter.value <.1) ) {
+            if(gameModeOn) effects.push(new doomStart())
+            gGameType = "Doom Match"
+            typeGoing = true
+          }
+
         }
         healthHandler()
-      } else if (InGameWhiteMeter.value > .09 && InGameWhiteMeter.value < .2  && engine.vision.inGameNotWhite < .1 && HealthConfirmMeter.value < .1 && HealthWhiteMeter.value <.1 &&  !deathGoing){
+      
+      } else if (InGameWhiteMeter.value < 0.05 || (PushGreyDiamondMeter.value < 0.1 && ZoneCheckBlueMeter.value < 0.1 && ConquestBlueMeter.value < 0.1 && DoomBlueMeter.value < 0.1) || HealthConfirmMeter.value < 0.1){
+        gInGame = false
+        
+        deathCallback()
+        
+      }
+    }
+    
+    var deathGoing = false
+    function deathCallback(){
+      if(deathOn && !deathGoing && (InGameWhiteMeter.value > 0.06 && InGameWhiteMeter.value < 0.2) && engine.vision.inGameNotWhite < 0.1 && (ultBlueMeter.value >= 0.95 && engine.vision.ultNotBlue < 0.1) ){
         effects.push(new DeathSlideEffect())
         deathGoing = true
-      } else if (InGameWhiteMeter.value < .05 || (PushGreyDiamondMeter.value < .1 && ZoneCheckBlueMeter.value < .1 && ConquestBlueMeter.value < .1) || HealthConfirmMeter.value < .1){
-        gInGame = false
       }
     }
 
@@ -412,7 +459,7 @@ function update() {
       }
     }
 
-    function testCircle(hue){
+    function testCircle(hue){ 
       this.hue = hue
       this.draw = ()=>{
         DrawCircle(160, 100, 50, getColorString(this.hue, 100, 50, 1))
@@ -420,57 +467,79 @@ function update() {
       }
     }
 
-    let oldHealth = 0
+    var oldHealth = 0
+    var oldShield = 0
+    var shieldGoing = false
+    var hpHUDGoing = false
+    var damageGoing = false
+    var lowHealthGoing = false
+    var healGoing = false
+    var shieldActive = false
     function healthHandler() {
+
       if((HealthWhiteMeter.value >= .05 || HealthBlueMeter.value >= .05) && HealthConfirmMeter.value >= .75 && !hpHUDGoing && hudOn){
         effects.push(new healthHUD())
         hpHUDGoing = true
       }
-      if(HealthBlueMeter.value >= .05 && HealthConfirmMeter.value >= .75 && !shieldGoing && shieldOn){
+
+      var currentShield = HealthBlueMeter.value
+      var shieldNow = currentShield >= 0.05
+      if (gInGame && shieldOn && HealthConfirmMeter.value >= .95 && !shieldGoing && ((shieldNow && !shieldActive) || (currentShield - oldShield > 0.05) || (oldShield - currentShield > 0.08) )){
         effects.push(new shield())
         shieldGoing = true
-      } else if (HealthBlueMeter.value == 0) shieldGoing = false
+      }
+
       if(gInGame && HealthRedMeter.value >= .05 && HealthConfirmMeter.value >= .75 && !damageGoing && damageOn){
         effects.push(new damage())
         damageGoing = true
       }
-      if((HealthBlueMeter.value + HealthWhiteMeter.value < .33) && HealthConfirmMeter.value >= .75 && !lowHealthGoing && lowHealthOn){
+
+      if((gInGame && HealthBlueMeter.value + HealthWhiteMeter.value < .33) && HealthConfirmMeter.value >= .75 && !lowHealthGoing && lowHealthOn){
         effects.push(new lowHealth())
         lowHealthGoing = true
       }
-      if(gInGame && HealthWhiteMeter.value - oldHealth > .05 && HealthConfirmMeter.value >= .75 && !healGoing && healOn){
+
+      if(gInGame && HealthWhiteMeter.value - oldHealth > .05 && HealthConfirmMeter.value >= .95 && !healGoing && healOn){
         effects.push(new heal())
         healGoing = true
       }
+
       oldHealth = HealthWhiteMeter.value
+      shieldActive = shieldNow  
+      oldShield = currentShield
     }
 
-    let overtimeGoing = false
+    var overtimeGoing = false
     function overtimeHandler() {
       if(ZoneOvertimeMeter.value >= .75 && engine.vision.zoneNotOvertime < .1  && gInGame && !overtimeGoing && overtimeOn){
         overtimeGoing = true
         effects.push(new overtime())
       }
     }
-
+    var killGoing = false
     function killHandler() {
-      if(KillRedBotMeter.value >= .95 && KillRedTopMeter.value >= .95 && HealthConfirmMeter.value >= .75 && engine.vision.killNotRedLeft <= .1 && engine.vision.killNotRedRight <= .1 && !killGoing && killOn){
+      if(KillRedBotMeter.value >= .90 && KillRedTopMeter.value >= .90 && HealthConfirmMeter.value >= .75 && engine.vision.killNotRedLeft <= .1 && engine.vision.killNotRedRight <= .1 && !killGoing && killOn){
         effects.push(new kill())
         killGoing = true
       }
     }
 
-    let victoryGoing = false
+    var victoryGoing = false
     function victoryHandler() {
-      if(VictoryOrangeMeter.value >= .95 && VictoryYellowMeter.value >= .95 && !victoryGoing && endGameOn && HealthWhiteMeter.value <.1){
+      if(VictoryOrangeMeter.value >= .95 && VictoryYellowMeter.value >= .95 && !gInGame && !victoryGoing && endGameOn && HealthWhiteMeter.value <.1){
         effects.push(new victory())
+        typeGoing = false
+        gGameType = "No type"
         victoryGoing = true
       }
     }
 
+    var defeatGoing = false
     function defeatHandler() {
       if(DefeatDarkGreyMeter.value >= .95 && DefeatLightGreyMeter.value >= .95 && !gInGame && !defeatGoing && endGameOn){
         effects.push(new defeat())
+        typeGoing = false
+        gGameType = "No type"
         defeatGoing = true
       }
     }
@@ -552,7 +621,7 @@ function update() {
         }
     }
 
-    let defeatGoing = false
+    
     function defeat(){
         this.a = 1
         this.x = 0
@@ -561,6 +630,7 @@ function update() {
             DrawRect(0, 0, 320, 200, getColorString(40, 0, 40 - Math.abs(160 - this.x) / 4, this.a / 1.5))
             DrawCircle(this.x, 100, 200 - Math.abs(160 - this.x), getColorString(60, 0, Math.abs(160 - this.x) / 3, this.a))
             this.x < 320 ? this.x ++ : this.count < 50 ? this.count++ : this.lifetime = 0
+            defeatGoing = false
             this.a = 1 - Math.abs(160 - this.x) / 160
         }
     }
@@ -574,35 +644,63 @@ function update() {
             DrawRect(0, 0, 320, 200, getColorString(40, 100, 50 - Math.abs(160 - this.x) / 4, this.a / 1.5))
             DrawCircle(this.x, 100, 100 - Math.abs(160 - this.x) / 2, getColorString(60, 100, 80 - Math.abs(160 - this.x) / 3, this.a))
             this.x < 320 ? this.x ++ : this.count < 50 ? this.count++ : this.lifetime = 0
+            victoryGoing = false
             this.a = 1 - Math.abs(160 - this.x) / 160
-            if(this.lifetime == 0) victoryGoing = false
+            
         }
     }
 
-    let killGoing = false
+    
     function kill(){
-        this.a = 0
-        this.count = 0
-        this.offset = 0
-        this.rad = 200
-        this.draw = function(){
-            if(this.done) this.count < 50 ? this.count++ : this.a >= .01 ? this.a -= .01 : this.lifetime = 0
-            else this.a <= .9 ? this.a += .1 : this.a = 1
-            DrawRect(0, 0, 320, 200, getColorString(60, 100, 20, this.a / 2))
-            DrawStroke(160, 100, this.rad, getColorString(0, 100, 50, this.a), 20)
-            this.rad > 75 ? this.rad -= 8 : this.rad = 75
-            this.offset < 200 ? this.offset += 8 : this.done = true
-            hctx.save()
-            hctx.translate(160, 100)
-            hctx.rotate(Math.PI / 4)
-            hctx.translate(-160, -100)
-            DrawRect(160 - this.offset / 2, 90, this.offset, 20, getColorString(0, 100, 50, this.a))
-            DrawRect(150, 100 - this.offset / 2, 20, this.offset, getColorString(0, 100, 50, this.a))
-            hctx.restore()
-            if(!this.lifetime) killGoing = false
-        }
-    }
+      this.a = 0
+      this.count = 0
+      this.offset = 0
+      this.rad = 200
 
+      this.draw = function(){
+        this.count++
+
+        if (this.count >= 50) {
+          this.done = true
+        }
+
+        if (this.done) {
+          if (this.a > 0.01) {
+            this.a -= 0.01
+          } else {
+            this.a = 0
+            this.lifetime = 0
+            killGoing = false
+          }
+        } else {
+          if (this.a < 1) {
+            this.a += 0.1
+          }
+        }
+        if (this.offset < 200) {
+          this.offset += 8
+        }
+
+        if (this.rad > 75) {
+          this.rad -= 8
+        } else {
+          this.rad = 75
+        }
+
+        DrawRect(0, 0, 320, 200, getColorString(60, 100, 20, this.a / 2))
+        DrawStroke(160, 100, this.rad, getColorString(0, 100, 50, this.a), 20)
+
+        hctx.save()
+        hctx.translate(160, 100)
+        hctx.rotate(Math.PI / 4)
+        hctx.translate(-160, -100)
+
+        DrawRect(160 - this.offset / 2, 90, this.offset, 20, getColorString(0, 100, 50, this.a))
+        DrawRect(150, 100 - this.offset / 2, 20, this.offset, getColorString(0, 100, 50, this.a))
+
+        hctx.restore()
+      }
+    }
     function DeathSlideEffect(color = "rgba(255, 0, 0, 1)", speed = 1) {
       this.y = -20;         
       this.height = 220;   
@@ -611,7 +709,7 @@ function update() {
         DrawRect(0, this.y, 320, this.height, color);
         this.y += speed;
 
-        if (gInGame ) {
+        if (this.y >= 200) {
           this.done = true;
           this.lifetime = 0;
           deathGoing = false
@@ -619,7 +717,7 @@ function update() {
       };
     }
 
-    let healGoing = false
+    
     function heal(){
         this.a = 1
         this.y = 200
@@ -633,7 +731,7 @@ function update() {
         }
     }
 
-    let lowHealthGoing = false
+    
     function lowHealth(){
         this.a = 0
         this.draw = function(){
@@ -646,7 +744,7 @@ function update() {
         }
     }
 
-    let damageGoing = false
+    
     function damage(){
         this.x1 = Math.random() * 320
         this.x2 = Math.random() * 320
@@ -666,19 +764,40 @@ function update() {
         }
     }
 
-    let shieldGoing = false
+    
     function shield(){
-        this.rad = 1
-        this.a = 0
-        this.draw = function(){
-            DrawCircle(160, 100, this.rad, getColorString(220, 100, 30, this.a))
-            this.rad < 200 ? this.rad += 10 : this.done = true
-            if(this.done) this.a >= .025 ? this.a -= .025 : this.lifetime = 0
-            else this.a <= .95 ? this.a += .05 : this.a = 1
+      this.rad = 1
+      this.a = 0
+
+      this.draw = function(){
+
+        DrawCircle(160, 100, this.rad, getColorString(220, 100, 30, this.a))
+
+        if (this.rad < 200) {
+          this.rad += 10
+        } else {
+          this.done = true
         }
+
+        if (this.done) {
+          if (this.a > 0.025) {
+            this.a -= 0.025
+          } else {
+            this.a = 0
+            this.lifetime = 0
+            shieldGoing = false
+          }
+        } else {
+          if (this.a < 0.95) {
+            this.a += 0.05
+          } else {
+            this.a = 1
+          }
+        }
+      }
     }
 
-    let hpHUDGoing = false
+    
     function healthHUD(){
         this.val = 0
         this.draw = function(){
