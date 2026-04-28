@@ -664,6 +664,7 @@
             (DeadBlack_Meter.value != 1 || DeadRed_Meter.value != 1) &&
             health_Meter.value > 0.05) {
             gInGame = true;
+            deadGoing = false
         } else {
             gInGame = false;
             if (!menuGoing && enableMenu) {
@@ -708,8 +709,9 @@
     }
 
     function DeadCallback() {
-        if (DeadRed_Meter.value >= 0.95 && DeadBlack_Meter.value >= 0.95 && enableDead) {
+        if (DeadRed_Meter.value >= 0.95 && DeadBlack_Meter.value >= 0.95 && enableDead && !deadGoing) {
             effects.push(new deadEffect());
+            deadGoing = true
         }
     }
 
