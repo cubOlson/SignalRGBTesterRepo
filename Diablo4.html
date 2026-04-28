@@ -1,43 +1,84 @@
 <head>
-<title>Diablo 4 dev</title>
-<meta description="Unleash Diablo 4 with effects that set your room ablaze in RGB. v1.07" />
+<title>Diablo 4 Dev</title>
+<meta description="Unleash Diablo 4 with effects that set your room ablaze in RGB. v1.1.0" />
 <meta publisher="SignalRGB" />
 
-<meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
-<meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
-default="Ambience"/>
-<meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
-<meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
-tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
-type="boolean" default="0" />
-<meta property="enableHealth" label="Health Bar effect" type="boolean" default="1" />
-<meta property="enableHealthHUD" label="Health Bar" type="boolean" default="1" />
-<meta property="healthColor" label="Health Bar Color" type="color" default="#6fff00" min="0" max="360" />
-<meta property="healthY" label="Health bar Y position" type="number" min="0" max="100" default="25" />
-<meta property="healthX" label="Health bar X position" type="number" min="0" max="100" default="0" />
-<meta property="healthWidth" label="Health bar width" type="number" min="0" max="100" default="100" />
-<meta property="healthHeight" label="Health bar height" type="number" min="0" max="100" default="20" />
-<meta property="enableMana" label="Mana Bar effect" type="boolean" default="1" />
-<meta property="enableManaHUD" label="Mana Bar" type="boolean" default="1" />
-<meta property="manaColor" label="Mana Bar Color" type="color" default="#aa00ff" min="0" max="360" />
-<meta property="manaY" label="Mana bar Y position" type="number" min="0" max="100" default="35" />
-<meta property="manaX" label="Mana bar X position" type="number" min="0" max="100" default="0" />
-<meta property="manaWidth" label="Mana bar width" type="number" min="0" max="100" default="100" />
-<meta property="manaHeight" label="Mana bar height" type="number" min="0" max="100" default="20" />
-<meta property="blackToggle" label="HUD Background Black" type="boolean" default="1" />
-<meta property="enableDead" label="Death effect" type="boolean" default="1" />
-<meta property="enableSafeZone" label="Safezone effects" type="boolean" default="1" />
-<meta property="enableAbility" label="Ability effects" type="boolean" default="1" />
-<meta property="enableDodge" label="Dodge effect" type="boolean" default="1" />
-<meta property="enableFlask" label="Flask effect" type="boolean" default="1" />
-<meta property="enableLevelUp" label="Level up effect" type="boolean" default="1" />
-<meta property="enableEvent" label="Event Completion effect" type="boolean" default="1" />
-<meta property="enableQuest" label="Quest completion effect" type="boolean" default="1" />
-<meta property="enableBuff" label="Buff effect" type="boolean" default="1" />
-<meta property="enableWaypoint" label="Waypoint Discovery effect" type="boolean" default="1" />
-<meta property="enableMenu" label="In-Menu effect" type="boolean" default="1" />
+<!-- ═══════════════════════════════════════════════════════════
+     ACTIVE USER-FACING CONTROLS
+     All properties below appear as controls in the SignalRGB UI.
+     Values are injected into the JS scope by name at runtime.
+     ═══════════════════════════════════════════════════════════ -->
 
-<meta meter="health" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  
+<!-- Background controls -->
+<meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background effect." type="number" default="100" min="0" max="100" />
+<meta property="backgroundMode" label="Background Mode" tooltip="Changes the background mode." type="list"
+      values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+      default="Ambience"/>
+<!-- backColor is only relevant when mode is "Custom" or "Custom Ambience" -->
+<meta property="backColor" label="Custom Color" tooltip="Sets the background color when Custom or Custom Ambience mode is selected." type="color" default="#010101" min="0" max="360" />
+
+<!-- Adjustment mode — shows bars at full width for positioning.
+     Has no effect while in-game (automatically ignored when gInGame is true). -->
+<meta property="adjToggle" label="Adjustment Mode"
+      tooltip="Shows the health and mana bars at full width so you can position them on your devices. This setting has no effect while in-game — safe to leave on, but turn off before playing for accurate bar fill."
+      type="boolean" default="0" />
+
+<!-- Health bar position/size — values are 0–100 (%) mapped to canvas 320×200 in JS.
+     X/Y set the top-left corner; width/height set the bar dimensions. -->
+<meta property="enableHealth" label="Health Warning Effect" tooltip="Enables the low-health warning effect on your devices." type="boolean" default="1" />
+<meta property="enableHealthHUD" label="Health Bar" tooltip="Enables the health bar overlay on your devices." type="boolean" default="1" />
+<meta property="healthColor" label="Health Bar Color" tooltip="Sets the color of the health bar overlay." type="color" default="#6fff00" min="0" max="360" />
+<meta property="healthY" label="Health Bar Y" tooltip="Adjusts the vertical position of the health bar overlay on your devices." type="number" min="0" max="100" default="25" />
+<meta property="healthX" label="Health Bar X" tooltip="Adjusts the horizontal position of the health bar overlay on your devices." type="number" min="0" max="100" default="0" />
+<meta property="healthWidth" label="Health Bar Width" tooltip="Adjusts the width of the health bar overlay on your devices." type="number" min="0" max="100" default="100" />
+<meta property="healthHeight" label="Health Bar Height" tooltip="Adjusts the height of the health bar overlay on your devices." type="number" min="0" max="100" default="20" />
+
+<!-- Mana bar position/size — same coordinate system as health bar. -->
+<meta property="enableMana" label="Mana Warning Effect" tooltip="Enables the low-mana warning effect on your devices." type="boolean" default="1" />
+<meta property="enableManaHUD" label="Mana Bar" tooltip="Enables the mana bar overlay on your devices." type="boolean" default="1" />
+<meta property="manaColor" label="Mana Bar Color" tooltip="Sets the color of the mana bar overlay." type="color" default="#aa00ff" min="0" max="360" />
+<meta property="manaY" label="Mana Bar Y" tooltip="Adjusts the vertical position of the mana bar overlay on your devices." type="number" min="0" max="100" default="35" />
+<meta property="manaX" label="Mana Bar X" tooltip="Adjusts the horizontal position of the mana bar overlay on your devices." type="number" min="0" max="100" default="0" />
+<meta property="manaWidth" label="Mana Bar Width" tooltip="Adjusts the width of the mana bar overlay on your devices." type="number" min="0" max="100" default="100" />
+<meta property="manaHeight" label="Mana Bar Height" tooltip="Adjusts the height of the mana bar overlay on your devices." type="number" min="0" max="100" default="20" />
+
+<!-- HUD display options -->
+<meta property="blackToggle" label="HUD Background Black" tooltip="Draws a black trough behind the health and mana bars for better visibility on bright backgrounds." type="boolean" default="1" />
+
+<!-- Effect toggles — each boolean gates its corresponding effect class in JS.
+     Disabling a toggle mid-effect causes the effect to expire on the next draw() call. -->
+<meta property="enableDead" label="Death Effect" tooltip="Enables the death effect on your devices." type="boolean" default="1" />
+<meta property="enableSafeZone" label="Safe Zone Effects" tooltip="Enables the safe zone entry and exit effects on your devices." type="boolean" default="1" />
+<meta property="enableAbility" label="Ability Effects" tooltip="Enables the ability-use particle effects on your devices." type="boolean" default="1" />
+<meta property="enableDodge" label="Dodge Effect" tooltip="Enables the dodge dash effect on your devices." type="boolean" default="1" />
+<meta property="enableFlask" label="Flask Effect" tooltip="Enables the potion use effect on your devices." type="boolean" default="1" />
+<meta property="enableLevelUp" label="Level Up Effect" tooltip="Enables the level-up and skill point effects on your devices." type="boolean" default="1" />
+<meta property="enableEvent" label="Event Completion Effect" tooltip="Enables the world event completion effect on your devices." type="boolean" default="1" />
+<meta property="enableQuest" label="Quest Completion Effect" tooltip="Enables the quest completion effect on your devices." type="boolean" default="1" />
+<meta property="enableBuff" label="Buff Effect" tooltip="Enables the buff received effect on your devices." type="boolean" default="1" />
+<meta property="enableWaypoint" label="Waypoint Discovery Effect" tooltip="Enables the waypoint discovery effect on your devices." type="boolean" default="1" />
+<meta property="enableMenu" label="In-Menu Effect" tooltip="Enables the ambient fire effect shown when you are out of game." type="boolean" default="1" />
+
+<!-- ═══════════════════════════════════════════════════════════
+     VISION METERS
+     Each meter captures a small region of the game screen and
+     measures what percentage of its pixels match the given HSL
+     range. The JS Meter class smooths readings over N frames
+     before firing a callback.
+
+     TESTER NOTE: If an effect never fires, load a screenshot in
+     the QA Tool and verify the meter region captures the right
+     pixels at the right color. Adjust HSL ranges or coordinates
+     as needed.
+     ═══════════════════════════════════════════════════════════ -->
+
+<!-- ── IN-GAME DETECTION ──────────────────────────────────────
+     inGame and inGame2 sample two distinct HUD landmarks that are
+     only present during active gameplay. Both feed inGameCallback
+     → sets/clears gInGame, which gates all gameplay effects.
+     ──────────────────────────────────────────────────────────── -->
+
+<meta meter="health" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"
   h="0-20" s="35-100" l="0-100" hdr-h="0-20" hdr-s="35-100" hdr-l="0-100" >
   <resolution aspect="3.55:1" x="0.4081" y="0.862" width="0.0003" height="0.0542" />
   <resolution aspect="24:10" x="0.3631" y="0.8618" width="0.0009" height="0.1118" />
@@ -47,7 +88,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.3619" y="0.8628" width="0.0011" height="0.1085" />
 </meta>
 
-<meta meter="health2" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  
+<meta meter="health2" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"
   h="240-360" s="35-100" l="0-100" hdr-h="240-360" hdr-s="35-100" hdr-l="0-100" >
   <resolution aspect="3.55:1" x="0.4081" y="0.862" width="0.0003" height="0.0542" />
   <resolution aspect="24:10" x="0.3631" y="0.8618" width="0.0009" height="0.1118" />
@@ -57,7 +98,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.3619" y="0.8628" width="0.0011" height="0.1085"  />
 </meta>
 
-<meta meter="inGame" type="area" tags="VLC,Game,Diablo" x="0.3767" y="0.9187" width="0" height="0" 
+<meta meter="inGame" type="area" tags="VLC,Game,Diablo" x="0.3767" y="0.9187" width="0" height="0"
   h="150-250" s="0-60" l="0-80" hdr-h="176-216" hdr-s="5-52" hdr-l="10-79" >
   <resolution aspect="3.55:1" x="0.4380" y="0.9176" width="0.0005" height="0.0005" />
   <resolution aspect="24:10" x="0.4078" y="0.9174" width="0.0003" height="0.0014" />
@@ -67,7 +108,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.4084" y="0.9249" width="0" height="0"  />
 </meta>
 
-<meta meter="inGame2" type="area" tags="VLC,Game,Diablo" x="0.7085" y="0.8707" width="0" height="0" 
+<meta meter="inGame2" type="area" tags="VLC,Game,Diablo" x="0.7085" y="0.8707" width="0" height="0"
   h="155-215" s="10-65" l="9-50" hdr-h="155-215" hdr-s="10-65" hdr-l="9-50" >
   <resolution aspect="3.55:1" x="0.5612" y="0.9259" width="0" height="0" />
   <resolution aspect="24:10" x="0.6544" y="0.8681" width="0.0003" height="0.0014" />
@@ -77,7 +118,12 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.66" y="0.8823" width="0" height="0"  />
 </meta>
 
-<meta meter="flaskWhite" type="area" tags="VLC,Game,Diablo" x="0.3504" y="0.8562" width="0" height="0" 
+<!-- ── IN-GAME ACTION DETECTION ────────────────────────────────
+     Flask, dodge, level-up, and safe-zone meters. Each feeds its
+     own callback and spawns a one-shot effect.
+     ──────────────────────────────────────────────────────────── -->
+
+<meta meter="flaskWhite" type="area" tags="VLC,Game,Diablo" x="0.3504" y="0.8562" width="0" height="0"
   h="0-40" s="20-60" l="50-100" hdr-h="40-60" hdr-s="20-50" hdr-l="80-100" >
   <resolution aspect="3.55:1" x="0.4250" y="0.8454" width="0" height="0.0005" />
   <resolution aspect="24:10" x="0.3872" y="0.8486" width="0.001" height="0.0005" />
@@ -87,7 +133,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.3861" y="0.8545" width="0.0008" height="0" />
 </meta>
 
-<meta meter="dodge" type="area" tags="VLC,Game,Diablo" x="0.6518" y="0.8548" width="0" height="0"  
+<meta meter="dodge" type="area" tags="VLC,Game,Diablo" x="0.6518" y="0.8548" width="0" height="0"
   h="0-30" s="20-60" l="50-100" hdr-h="30-50" hdr-s="30-60" hdr-l="75-100" >
   <resolution aspect="3.55:1" x="0.5750" y="0.8583" width="0" height="0.0005" />
   <resolution aspect="24:10" x="0.6113" y="0.8583" width="0.0005" height="0.0005" />
@@ -97,7 +143,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.6131" y="0.8591" width="0" height="0" />
 </meta>
 
-<meta meter="level" type="area" tags="VLC,Game,Diablo" x="0.4237" y="0.8842" width="0.0093" height="0.0055" 
+<meta meter="level" type="area" tags="VLC,Game,Diablo" x="0.4237" y="0.8842" width="0.0093" height="0.0055"
   h="12-100" s="60-100" l="20-55" hdr-h="0-180" hdr-s="60-100" hdr-l="50-100" >
   <resolution aspect="3.55:1" x="0.4633" y="0.8843" width="0.0036" height="0" />
   <resolution aspect="24:10" x="0.4448" y="0.8861" width="0.0058" height="0.0007" />
@@ -116,6 +162,12 @@ type="boolean" default="0" />
   <resolution size="3840x2160" x="0.407" y="0.9090" width="0.1881" height="0.0027"  />
   <resolution size="2560x1080" x="0.4306" y="0.9064" width="0.1403" height="0.0009" />
 </meta>
+
+<!-- ── DEATH DETECTION ────────────────────────────────────────
+     Both meters must reach ≥95% AND gInGame must be false before
+     deadEffect fires — the death screen replaces the HUD so the
+     inGame meters will have already cleared gInGame.
+     ──────────────────────────────────────────────────────────── -->
 
 <meta meter="deadRed" type="area" tags="VLC,Game,Diablo" x="0.5111" y="0.1939" width="0.002" height="0"
   h="-30-30" s="80-100" l="20-40" hdr-h="-30-30" hdr-s="60-100" hdr-l="50-100" >
@@ -137,7 +189,13 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.5229" y="0.2178" width="0" height="0"   />
 </meta>
 
-<meta meter="mana" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098" 
+<!-- ── MANA DETECTION ─────────────────────────────────────────
+     mana samples the orb fill; manaBright catches bright/near-full
+     states; manaCol is a colormean for reading the current mana hue.
+     Feed manaCallback → mana bar fill and low-mana warning.
+     ──────────────────────────────────────────────────────────── -->
+
+<meta meter="mana" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098"
   h="0-360" s="10-100" l="10-100" hdr-h="0-360" hdr-s="20-100" hdr-l="10-100" >
   <resolution aspect="3.55:1" x="0.5898" y="0.862" width="0.0008" height="0.0556" />
   <resolution aspect="24:10" x="0.6346" y="0.8618" width="0.0003" height="0.1111" />
@@ -147,7 +205,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.6358" y="0.861" width="0.0008" height="0.1121"  />
 </meta>
 
-<meta meter="manaBright" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098" 
+<meta meter="manaBright" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098"
   h="0-360" s="00-20" l="60-100" hdr-h="0-360" hdr-s="00-20" hdr-l="60-100" >
   <resolution aspect="3.55:1" x="0.5898" y="0.862" width="0.0008" height="0.0556" />
   <resolution aspect="24:10" x="0.6346" y="0.8618" width="0.0003" height="0.1111" />
@@ -165,6 +223,12 @@ type="boolean" default="0" />
   <resolution size="3840x2160" x="0.6827" y="0.9687" width="0" height="0" />
   <resolution size="2560x1080" x="0.6377" y="0.9639" width="0" height="0" />
 </meta>
+
+<!-- ── ABILITY SLOT DETECTION ────────────────────────────────
+     Six ability slots, each as a colormean. Index [2] is lightness
+     (brightness drop triggers the effect); index [0] is hue
+     (used for the particle color).
+     ──────────────────────────────────────────────────────────── -->
 
 <meta meter="ability1" type="colormean" tags="VLC,Game,Diablo" x="0.4209" y="0.9062" width="0" height="0" >
   <resolution aspect="3.55:1" x="0.4596" y="0.9064" width="0.0005" height="0.0005" />
@@ -220,6 +284,11 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.5678" y="0.9064" width="0" height="0" />
 </meta>
 
+<!-- ── SKILL POINT DETECTION ─────────────────────────────────
+     Grey = available slot, yellow = new point earned.
+     Both must be ≥95% together to trigger skillAvailableCallback.
+     ──────────────────────────────────────────────────────────── -->
+
 <meta meter="skillPointGrey" tags="VLC,Game,Diablo" type="area" x="0.7222" y="0.8193" width="0" height="0"
   h="180-220" s="0-50" l="20-60" hdr-h="90-220" hdr-s="0-50" hdr-l="0-60" >
   <resolution aspect="3.55:1" x="0.6112" y="0.8194" width="0" height="0" />
@@ -230,7 +299,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.6671" y="0.8193" width="0" height="0"  />
 </meta>
 
-<meta meter="skillPointYellow" tags="VLC,Game,Diablo" type="area" x="0.7223" y="0.8389" width="0.0005" height="0.0005" 
+<meta meter="skillPointYellow" tags="VLC,Game,Diablo" type="area" x="0.7223" y="0.8389" width="0.0005" height="0.0005"
   h="40-210" s="25-100" l="45-100" hdr-h="0-90" hdr-s="25-100" hdr-l="45-100" >
   <resolution aspect="3.55:1" x="0.6109" y="0.8457" width="0.0002" height="0.0042" />
   <resolution aspect="24:10" x="0.6654" y="0.8486" width="0.0005" height="0.0005" />
@@ -240,7 +309,12 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.6667" y="0.8397" width="0" height="0" />
 </meta>
 
-<meta meter="eventCompleteWhite" tags="VLC,process,Diablo" type="area" x="0.5004" y="0.1667" width="0.001" height="0.0005" 
+<!-- ── WORLD EVENTS, QUESTS, BUFFS, AND WAYPOINTS ─────────────
+     Each group uses positive + color/negative meters to confirm
+     the specific UI state before spawning its effect.
+     ──────────────────────────────────────────────────────────── -->
+
+<meta meter="eventCompleteWhite" tags="VLC,process,Diablo" type="area" x="0.5004" y="0.1667" width="0.001" height="0.0005"
   h="0-50" s="0-100" l="65-100" hdr-h="0-70" hdr-s="0-100" hdr-l="65-100" >
   <resolution aspect="3.55:1" x="0.4997" y="0.1880" width="0" height="0" />
   <resolution aspect="24:10" x="0.5004" y="0.1654" width="0.0003" height="0.0014" />
@@ -248,9 +322,9 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.5004" y="0.1667" width="0.001" height="0.0005" />
   <resolution size="2560x1080" x="0.4959" y="0.1742" width="0.0035" height="0"   />
-</meta> 
+</meta>
 
-<meta meter="eventCompleteRed" tags="VLC,process,Diablo" type="area" x="0.4887" y="0.1757" width="0.0004" height="0.0063" 
+<meta meter="eventCompleteRed" tags="VLC,process,Diablo" type="area" x="0.4887" y="0.1757" width="0.0004" height="0.0063"
   h="-30-30" s="75-100" l="20-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-100" >
   <resolution aspect="3.55:1" x="0.4945" y="0.1792" width="0.0003" height="0.0056" />
   <resolution aspect="24:10" x="0.4917" y="0.1751" width="0.0006" height="0.0007" />
@@ -260,7 +334,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.492" y="0.1789" width="0" height="0" />
 </meta>
 
-<meta meter="eventCompleteRed2" tags="VLC,process,Diablo" type="area" x="0.4887" y="0.1757" width="0.0004" height="0.0063" 
+<meta meter="eventCompleteRed2" tags="VLC,process,Diablo" type="area" x="0.4887" y="0.1757" width="0.0004" height="0.0063"
   h="-30-30" s="75-100" l="20-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-100" >
   <resolution aspect="3.55:1" x="0.4945" y="0.1792" width="0.0003" height="0.0056" />
   <resolution aspect="24:10" x="0.4917" y="0.1751" width="0.0006" height="0.0007" />
@@ -270,7 +344,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.492" y="0.1789" width="0" height="0" />
 </meta>
 
-<meta meter="questColor" tags="VLC,process,Diablo" type="colormean" x="0.1164" y="0.5611" width="0.0016" height="0.0042" 
+<meta meter="questColor" tags="VLC,process,Diablo" type="colormean" x="0.1164" y="0.5611" width="0.0016" height="0.0042"
   h="197-217" s="63-93" l="78-100" hdr-h="197-217" hdr-s="63-93" hdr-l="78-100" >
   <resolution aspect="3.55:1" x="0.1365" y="0.5620" width="0" height="0" />
   <resolution aspect="24:10" x="0.0875" y="0.5618" width="0" height="0" />
@@ -278,9 +352,9 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.1175" y="0.5628" width="0" height="0" />
   <resolution size="2560x1080" x="0.0875" y="0.5412" width="0" height="0" />
-</meta> 
+</meta>
 
-<meta meter="questRed" tags="VLC,process,Diablo" type="area" x="0.1480" y="0.5646" width="0.1031" height="0.0005" 
+<meta meter="questRed" tags="VLC,process,Diablo" type="area" x="0.1480" y="0.5646" width="0.1031" height="0.0005"
   h="-30-30" s="50-100" l="0-70" hdr-h="-30-30" hdr-s="50-100" hdr-l="0-70" >
   <resolution aspect="3.55:1" x="0.1513" y="0.5565" width="0.0651" height="0.0030" />
   <resolution aspect="24:10" x="0.1081" y="0.5375" width="0.0840" height="0.0030" />
@@ -288,9 +362,9 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.1701" y="0.5665" width="0.0427" height="-0.0005" />
   <resolution size="2560x1080" x="0.1082" y="0.5663" width="0.0481" height="0.0157"  />
-</meta> 
+</meta>
 
-<meta meter="questWhite" tags="VLC,process,Diablo" type="area" x="0.1480" y="0.5646" width="0.1031" height="0.0005" 
+<meta meter="questWhite" tags="VLC,process,Diablo" type="area" x="0.1480" y="0.5646" width="0.1031" height="0.0005"
   h="0-360" s="0-30" l="80-100" hdr-h="0-360" hdr-s="0-30" hdr-l="80-100" >
   <resolution aspect="3.55:1" x="0.1508" y="0.5602" width="0.0781" height="0.0140" />
   <resolution aspect="24:10" x="0.1081" y="0.5375" width="0.0840" height="0.0030" />
@@ -298,9 +372,9 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.1701" y="0.5665" width="0.0427" height="-0.0005" />
   <resolution size="2560x1080" x="0.1082" y="0.5663" width="0.0481" height="0.0157" />
-</meta> 
+</meta>
 
-<meta meter="buffedGreen" tags="VLC,process,Diablo" type="area" x="0.4023" y="0.8139" width="0.0504" height="0.0005" 
+<meta meter="buffedGreen" tags="VLC,process,Diablo" type="area" x="0.4023" y="0.8139" width="0.0504" height="0.0005"
   h="90-130" s="50-100" l="20-80" hdr-h="90-180" hdr-s="50-100" hdr-l="50-100" >
   <resolution aspect="3.55:1" x="0.4513" y="0.814" width="0.0266" height="0.0000" />
   <resolution aspect="24:10" x="0.4285" y="0.8139" width="0.0363" height="0.0000" />
@@ -308,9 +382,9 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.4027" y="0.8147" width="0.0633" height="0"  />
   <resolution size="2560x1080" x="0.4271" y="0.8156" width="0.0461" height="-0.001"  />
-</meta> 
+</meta>
 
-<meta meter="buffedNotGreen" tags="VLC,process,Diablo" type="area" x="0.404" y="0.816" width="0.001" height="0.0005" 
+<meta meter="buffedNotGreen" tags="VLC,process,Diablo" type="area" x="0.404" y="0.816" width="0.001" height="0.0005"
   h="90-130" s="50-100" l="20-80" hdr-h="90-180" hdr-s="50-100" hdr-l="50-100" >
   <resolution aspect="3.55:1" x="0.4529" y="0.8176" width="0" height="0.0000" />
   <resolution aspect="24:10" x="0.4282" y="0.8153" width="0.0005" height="0.0005" />
@@ -318,9 +392,9 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.4038" y="0.818" width="0.0007" height="-0.0005"   />
   <resolution size="2560x1080" x="0.4279" y="0.8184" width="0" height="0"   />
-</meta> 
+</meta>
 
-<meta meter="waypointBlue" tags="VLC,process,Diablo" type="area" x="0.4996" y="0.6382" width="0.0005" height="0.0005" 
+<meta meter="waypointBlue" tags="VLC,process,Diablo" type="area" x="0.4996" y="0.6382" width="0.0005" height="0.0005"
   h="180-225" s="0-100" l="50-100" hdr-h="180-225" hdr-s="0-100" hdr-l="50-100" >
   <resolution aspect="3.55:1" x="0.4992" y="0.6454" width="0.0005" height="0.0005" />
   <resolution aspect="24:10" x="0.4996" y="0.6382" width="0.0005" height="0.0005" />
@@ -330,7 +404,7 @@ type="boolean" default="0" />
   <resolution size="2560x1080" x="0.4996" y="0.6382" width="0.0005" height="0.0005" />
 </meta>
 
-<meta meter="waypointRed" tags="VLC,process,Diablo" type="area" x="0.4984" y="0.6507" width="0.001" height="0.0005" 
+<meta meter="waypointRed" tags="VLC,process,Diablo" type="area" x="0.4984" y="0.6507" width="0.001" height="0.0005"
   h="-30-30" s="60-100" l="0-60" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-90" >
   <resolution aspect="3.55:1" x="0.4984" y="0.6507" width="0.0005" height="0.0000" />
   <resolution aspect="24:10" x="0.4984" y="0.6507" width="0.0005" height="0.0005" />
@@ -338,9 +412,9 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.4928" y="0.6359" width="0.0006" height="0.0005"  />
   <resolution size="2560x1080"  x="0.4924" y="0.6404" width="0" height="0"  />
-</meta> 
+</meta>
 
-<meta meter="waypointRed2" tags="VLC,process,Diablo" type="area" x="0.4984" y="0.6507" width="0.001" height="0.0005" 
+<meta meter="waypointRed2" tags="VLC,process,Diablo" type="area" x="0.4984" y="0.6507" width="0.001" height="0.0005"
   h="-30-30" s="60-100" l="0-60" hdr-h="-30-30" hdr-s="60-100" hdr-l="50-80" >
   <resolution aspect="3.55:1" x="0.4984" y="0.6507" width="0.0005" height="0.0000" />
   <resolution aspect="24:10" x="0.4984" y="0.6507" width="0.0005" height="0.0005" />
@@ -348,7 +422,7 @@ type="boolean" default="0" />
 
   <resolution size="3840x2160" x="0.5072" y="0.6387" width="0.0007" height="0"  />
   <resolution size="2560x1080" x="0.5061" y="0.6321" width="0" height="0" />
-</meta> 
+</meta>
 
 </head>
 
@@ -357,1235 +431,1300 @@ type="boolean" default="0" />
 </body>
 
 <script>
-var canvas, ctx;
-canvas = document.getElementById('exCanvas');
-ctx = canvas.getContext('2d');
-var width = 320;
-var height = 200;
-var hiddenCanvas = document.createElement("canvas");
-hiddenCanvas.width = width;
-hiddenCanvas.height = height;
-var hctx = hiddenCanvas.getContext("2d");
-let gAlpha = 1
-var effects = [];
-let designatedHealthSize = 0;
-let currentHealthSize = 0;
-let designatedManaSize = 0;
-let currentManaSize = 0;
+    // ═══════════════════════════════════════════════════════════════
+    // CANVAS SETUP
+    // SignalRGB renders this 320×200 canvas onto the device layout.
+    // All draw coordinates are in canvas pixels; user-facing position/
+    // size values (0–100) map as: x * 3.2  (320/100),  y * 2  (200/100).
+    // ═══════════════════════════════════════════════════════════════
+    const canvas = document.getElementById('exCanvas');
+    const ctx    = canvas.getContext('2d');
+    const width  = 320;
+    const height = 200;
 
-let gInGame = false;
-let gInSafeZone = false;
-let gPlayCopyScreen = true
-let flaskGoing = false;
-let dodgeGoing = false;
-let levelUpGoing = false;
-let deadGoing = false;
-let lowHealthPlaying = false;
-let lowManaPlaying = false;
-let waypointGoing = false;
-let eventCompleteGoing = false;
+    // Hidden canvas — all effects composite here each frame, then blit to ctx.
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width  = width;
+    hiddenCanvas.height = height;
+    const hctx = hiddenCanvas.getContext('2d');
 
-let latestLocation = {x:0,y:0}
-var health_Meter = new Meter(5,healthCallback);
+    // Zone grid dimensions — must match the engine's zone layout
+    const ZONE_COLS   = 28;
+    const ZONE_ROWS   = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
 
-var inGame_Meter = new Meter(2,inGameCallback); 
-var inGame2_Meter = new Meter(2,inGameCallback); 
+    // Active effects pool — drawn each frame, removed when lifetime <= 0
+    let effects = [];
 
-var flaskWhite_Meter = new Meter(8,flaskCallback); 
+    // ── Game state flags ─────────────────────────────────────────────
+    let gInGame            = false;
+    let gInSafeZone        = false;
+    let flaskGoing         = false;
+    let dodgeGoing         = false;
+    let deadGoing          = false;
+    let lowHealthPlaying   = false;
+    let lowManaPlaying     = false;
+    let waypointGoing      = false;
+    let eventCompleteGoing = false;
 
-var dodge_Meter = new Meter(5,dodgeCallback); 
+    let latestLocation = { x: 0, y: 0 };
 
-var level_Meter = new Meter(5,levelCallback); 
+    // ── HUD bar smoothing ────────────────────────────────────────────
+    let designatedHealthSize = 0;
+    let currentHealthSize    = 0;
+    let designatedManaSize   = 0;
+    let currentManaSize      = 0;
 
-var SafeZoneAbility0_Meter = new Meter(15,SafeZoneCallback); 
+    // ═══════════════════════════════════════════════════════════════
+    // METER DECLARATIONS
+    // Meter(size, callback) smooths a vision signal over `size` stable
+    // frames before updating .value and firing the callback.
+    // Larger size = more stable but slower to react.
+    // ═══════════════════════════════════════════════════════════════
 
-var DeadRed_Meter = new Meter(8,DeadCallback); 
-var DeadBlack_Meter = new Meter(8,DeadCallback); 
+    let health_Meter  = new Meter(5, healthCallback);
+    let inGame_Meter  = new Meter(2, inGameCallback);
+    let inGame2_Meter = new Meter(2, inGameCallback);
 
-var mana_Meter = new Meter(5,manaCallback);
-var manaBright_Meter = new Meter(5,()=>"")
-var manaCol_Meter = new Meter(5,()=>"");
+    let flaskWhite_Meter       = new Meter(8,  flaskCallback);
+    let dodge_Meter            = new Meter(5,  dodgeCallback);
+    let level_Meter            = new Meter(5,  levelCallback);
+    let SafeZoneAbility0_Meter = new Meter(15, SafeZoneCallback);
 
-var ability1_Meter = new Meter(3, ability1Callback)
-var ability2_Meter = new Meter(3, ability2Callback)
-var ability3_Meter = new Meter(3, ability3Callback)
-var ability4_Meter = new Meter(3, ability4Callback)
-var ability5_Meter = new Meter(3, ability5Callback)
-var ability6_Meter = new Meter(3, ability6Callback)
-var ability1Col_Meter = new Meter(10, ability1Callback)
-var ability2Col_Meter = new Meter(10, ability2Callback)
-var ability3Col_Meter = new Meter(10, ability3Callback)
-var ability4Col_Meter = new Meter(10, ability4Callback)
-var ability5Col_Meter = new Meter(10, ability5Callback)
-var ability6Col_Meter = new Meter(10, ability6Callback)
+    let DeadRed_Meter   = new Meter(8, DeadCallback);
+    let DeadBlack_Meter = new Meter(8, DeadCallback);
 
-var hasSkillGreyMeter = new Meter(10, skillAvailableCallback)
-var hasSkillYellowMeter = new Meter(3, skillAvailableCallback)
+    let mana_Meter       = new Meter(5, manaCallback);
+    let manaBright_Meter = new Meter(5, () => "");  // value-only; no callback needed
+    let manaCol_Meter    = new Meter(5, () => "");  // value-only; color read directly
 
-var eventCompleteWhiteMeter = new Meter(10, eventCompleteCallback)
-var eventCompleteRedMeter = new Meter(10, eventCompleteCallback)
+    // Ability brightness meters (lightness drop fires the callback)
+    let ability1_Meter = new Meter(3, ability1Callback);
+    let ability2_Meter = new Meter(3, ability2Callback);
+    let ability3_Meter = new Meter(3, ability3Callback);
+    let ability4_Meter = new Meter(3, ability4Callback);
+    let ability5_Meter = new Meter(3, ability5Callback);
+    let ability6_Meter = new Meter(3, ability6Callback);
 
-var questCompleteColorMeter = new Meter(1, questCompleteCallback)
-var questCompleteRedMeter = new Meter(8, questCompleteCallback)
-var questCompleteWhiteMeter = new Meter(8, questCompleteCallback)
+    // Ability color meters (stabilized hue used for particle color)
+    let ability1Col_Meter = new Meter(10, ability1Callback);
+    let ability2Col_Meter = new Meter(10, ability2Callback);
+    let ability3Col_Meter = new Meter(10, ability3Callback);
+    let ability4Col_Meter = new Meter(10, ability4Callback);
+    let ability5Col_Meter = new Meter(10, ability5Callback);
+    let ability6Col_Meter = new Meter(10, ability6Callback);
 
-var buffedGreenMeter = new Meter(10, buffedCallback)
+    let hasSkillGreyMeter   = new Meter(10, skillAvailableCallback);
+    let hasSkillYellowMeter = new Meter(3,  skillAvailableCallback);
 
-var waypointBlueMeter = new Meter(10, waypointCallback)
-var waypointRedMeter = new Meter(10, waypointCallback)
+    let eventCompleteWhiteMeter = new Meter(10, eventCompleteCallback);
+    let eventCompleteRedMeter   = new Meter(10, eventCompleteCallback);
+
+    let questCompleteColorMeter = new Meter(1, questCompleteCallback);
+    let questCompleteRedMeter   = new Meter(8, questCompleteCallback);
+    let questCompleteWhiteMeter = new Meter(8, questCompleteCallback);
+
+    let buffedGreenMeter  = new Meter(10, buffedCallback);
+    let waypointBlueMeter = new Meter(10, waypointCallback);
+    let waypointRedMeter  = new Meter(10, waypointCallback);
 
 
-function update(){
-  hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-  hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
-  hctx.fillRect(0, 0, 320, 200);
+    //#region Update
+    // ═══════════════════════════════════════════════════════════════
+    // MAIN UPDATE LOOP — called every animation frame (~60fps).
+    // Order: clear → background → feed meters (may trigger callbacks)
+    //        → draw effects → remove expired → draw HUD → composite.
+    // ═══════════════════════════════════════════════════════════════
+    function update() {
+        DrawRect(0, 0, 320, 200, "black");
+        backgroundHandler();
 
-  backgroundHandler()
-  if(Date.now() % 2) inGameCallback()
-  inGame_Meter.setValue(engine.vision.inGame)
-  inGame2_Meter.setValue(engine.vision.inGame2)
-  health_Meter.setValue(engine.vision.health + engine.vision.health2)
-  mana_Meter.setValue(engine.vision.mana)
-  manaBright_Meter.setValue(engine.vision.manaBright)
-  manaCol_Meter.setValue(engine.vision.manaCol)
-  flaskWhite_Meter.setValue(engine.vision.flaskWhite)
-  dodge_Meter.setValue(engine.vision.dodge)
-  level_Meter.setValue(engine.vision.level)
-  SafeZoneAbility0_Meter.setValue(engine.vision.safeZoneAbility0)
-  ability1_Meter.setValue(engine.vision.ability1[2])
-  ability2_Meter.setValue(engine.vision.ability2[2])
-  ability3_Meter.setValue(engine.vision.ability3[2])
-  ability4_Meter.setValue(engine.vision.ability4[2])
-  ability5_Meter.setValue(engine.vision.ability5[2])
-  ability6_Meter.setValue(engine.vision.ability6[2])
-  ability1Col_Meter.setValue(engine.vision.ability1[0])
-  ability2Col_Meter.setValue(engine.vision.ability2[0])
-  ability3Col_Meter.setValue(engine.vision.ability3[0])
-  ability4Col_Meter.setValue(engine.vision.ability4[0])
-  ability5Col_Meter.setValue(engine.vision.ability5[0])
-  ability6Col_Meter.setValue(engine.vision.ability6[0])
+        if (Date.now() % 2) inGameCallback();
 
-  hasSkillGreyMeter.setValue(engine.vision.skillPointGrey)
-  hasSkillYellowMeter.setValue(engine.vision.skillPointYellow)
-  buffedGreenMeter.setValue(engine.vision.buffedGreen)
-  waypointBlueMeter.setValue(engine.vision.waypointBlue)
-  waypointRedMeter.setValue(engine.vision.waypointRed + engine.vision.waypointRed2)
+        // In-game detection
+        inGame_Meter.setValue(engine.vision.inGame);
+        inGame2_Meter.setValue(engine.vision.inGame2);
 
-  DeadRed_Meter.setValue(engine.vision.deadRed)
-  DeadBlack_Meter.setValue(engine.vision.deadBlack)
-  eventCompleteWhiteMeter.setValue(engine.vision.eventCompleteWhite)
-  eventCompleteRedMeter.setValue(engine.vision.eventCompleteRed + engine.vision.eventCompleteRed2)
-  questCompleteColorMeter.setValue(engine.vision.questColor[0])
-  questCompleteRedMeter.setValue(engine.vision.questRed)
-  questCompleteWhiteMeter.setValue(engine.vision.questWhite)
-  flaskCallback();
-  dodgeCallback();
-  //Effect handler 
-    for (let i = 0; i < effects.length; i++) {
-      effects[i].draw(hctx);
+        // Health and mana bars
+        health_Meter.setValue(engine.vision.health + engine.vision.health2);
+        mana_Meter.setValue(engine.vision.mana);
+        manaBright_Meter.setValue(engine.vision.manaBright);
+        manaCol_Meter.setValue(engine.vision.manaCol);
+
+        // One-shot action effects
+        flaskWhite_Meter.setValue(engine.vision.flaskWhite);
+        dodge_Meter.setValue(engine.vision.dodge);
+        level_Meter.setValue(engine.vision.level);
+        SafeZoneAbility0_Meter.setValue(engine.vision.safeZoneAbility0);
+
+        // Abilities — brightness [2] and color [0] per slot
+        ability1_Meter.setValue(engine.vision.ability1[2]);
+        ability2_Meter.setValue(engine.vision.ability2[2]);
+        ability3_Meter.setValue(engine.vision.ability3[2]);
+        ability4_Meter.setValue(engine.vision.ability4[2]);
+        ability5_Meter.setValue(engine.vision.ability5[2]);
+        ability6_Meter.setValue(engine.vision.ability6[2]);
+        ability1Col_Meter.setValue(engine.vision.ability1[0]);
+        ability2Col_Meter.setValue(engine.vision.ability2[0]);
+        ability3Col_Meter.setValue(engine.vision.ability3[0]);
+        ability4Col_Meter.setValue(engine.vision.ability4[0]);
+        ability5Col_Meter.setValue(engine.vision.ability5[0]);
+        ability6Col_Meter.setValue(engine.vision.ability6[0]);
+
+        // Notifications and world state
+        hasSkillGreyMeter.setValue(engine.vision.skillPointGrey);
+        hasSkillYellowMeter.setValue(engine.vision.skillPointYellow);
+        buffedGreenMeter.setValue(engine.vision.buffedGreen);
+        waypointBlueMeter.setValue(engine.vision.waypointBlue);
+        waypointRedMeter.setValue(engine.vision.waypointRed + engine.vision.waypointRed2);
+
+        // Death
+        DeadRed_Meter.setValue(engine.vision.deadRed);
+        DeadBlack_Meter.setValue(engine.vision.deadBlack);
+
+        // Events and quests
+        eventCompleteWhiteMeter.setValue(engine.vision.eventCompleteWhite);
+        eventCompleteRedMeter.setValue(engine.vision.eventCompleteRed + engine.vision.eventCompleteRed2);
+        questCompleteColorMeter.setValue(engine.vision.questColor[0]);
+        questCompleteRedMeter.setValue(engine.vision.questRed);
+        questCompleteWhiteMeter.setValue(engine.vision.questWhite);
+
+        // Flask and dodge poll every frame for responsiveness
+        flaskCallback();
+        dodgeCallback();
+
+        // Draw all active effects, then remove any that have expired
+        effects.forEach(ele => ele.draw());
+        effects = effects.filter(ele => !(ele.lifetime <= 0));
+
+        drawHud();
+        ctx.drawImage(hiddenCanvas, 0, 0);
+        window.requestAnimationFrame(update);
     }
-    // Remove dead effects with filter
-    effects = effects.filter(ele =>
-      ele.lifetime === undefined || ele.lifetime > 0
-    );
-  drawHud();
-  ctx.clearRect(0, 0, width, height);
-  ctx.drawImage(hiddenCanvas, 0, 0);
+    //#endregion
 
-  window.requestAnimationFrame(update);
-}
 
-  function drawHud() {
-      let hpColor = hexToHSL(healthColor);
-      let mnColor = hexToHSL(manaColor);
+    function drawHud() {
+        // adjActive: adjToggle is only honored when the player is NOT in-game.
+        // This prevents the full-width positioning preview from showing during gameplay.
+        const adjActive = adjToggle && !gInGame;
 
-      if (gInGame) {
-          designatedHealthSize = health_Meter.value;
-        if (engine.vision.mana > 0.3) { 
-            designatedManaSize = mana_Meter.value + manaBright_Meter.value;
-        } 
-      } else {
-          designatedHealthSize = 0;
-          designatedManaSize = 0;
-      }
+        const [hH, hS, hL] = hexToHSL(healthColor);
+        const [mH, mS, mL] = hexToHSL(manaColor);
 
-      currentHealthSize = lerp(currentHealthSize, designatedHealthSize, 0.05);
-      currentManaSize = lerp(currentManaSize, designatedManaSize, 0.05);
+        if (gInGame) {
+            designatedHealthSize = health_Meter.value;
+            if (engine.vision.mana > 0.3) {
+                designatedManaSize = mana_Meter.value + manaBright_Meter.value;
+            }
+        } else {
+            designatedHealthSize = 0;
+            designatedManaSize   = 0;
+        }
 
-      let healthString = `hsl(${hpColor.h}, ${hpColor.s}%, ${hpColor.l}%)`
-      let manaString = `hsl(${mnColor.h}, ${mnColor.s}%, ${mnColor.l}%)`
+        currentHealthSize = lerp(currentHealthSize, designatedHealthSize, 0.05);
+        currentManaSize   = lerp(currentManaSize,   designatedManaSize,   0.05);
 
-      if (enableHealthHUD) {
-          if (blackToggle) {
-              DrawRect((healthX * 3.2), (healthY * 2), (healthWidth * 3.2), healthHeight, "black");
-          }
+        const healthString = `hsl(${hH}, ${hS}%, ${hL}%)`;
+        const manaString   = `hsl(${mH}, ${mS}%, ${mL}%)`;
 
-          let healthBarWidth;
-          if (adjToggle) {
-              healthBarWidth = (healthWidth * 3.2);
-          } else {
-              healthBarWidth = currentHealthSize * (healthWidth * 3.2);
-          }
+        if (enableHealthHUD) {
+            if (blackToggle) {
+                DrawRect((healthX * 3.2), (healthY * 2), (healthWidth * 3.2), healthHeight, "black");
+            }
+            const healthBarWidth = adjActive
+                ? (healthWidth * 3.2)
+                : currentHealthSize * (healthWidth * 3.2);
+            DrawRect((healthX * 3.2), (healthY * 2), healthBarWidth, healthHeight, healthString);
+        }
 
-          DrawRect((healthX * 3.2), (healthY * 2), healthBarWidth, healthHeight, healthString);
-      }
-
-      if (enableManaHUD) {
-          if (blackToggle) {
-              DrawRect((manaX * 3.2), (manaY * 2), (manaWidth * 3.2), manaHeight, "black");
-          }
-
-          let manaBarWidth;
-          if (adjToggle) {
-              manaBarWidth = (manaWidth * 3.2);
-          } else {
-              manaBarWidth = currentManaSize * (manaWidth * 3.2) * 1.05;
-          }
-
-          DrawRect((manaX * 3.2), (manaY * 2), manaBarWidth, manaHeight, manaString);
-      }
-  }
-
-  function lerp(a, b, speed) {
-    return a + speed * (b - a)
-  }
-
-  let proBack = []
-    function onbackColorChanged(){
-      proBack = hexToHSL(backColor)
-    }
-
-    let backgroundEaseHue = 0;
-    let backgroundEaseLit = 0;
-    let backgroundEaseSat = 0
-    let gCycle = 0
-    function backgroundHandler(){
-        switch(backgroundMode){
-            case "Color Cycle": 
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            break;
-            case "Color Cycle Ambience": 
-            copyScreen(ambienceAlpha / 100)
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            break;
-            case "Custom": 
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
-            break;
-            case "Ambience": 
-            copyScreen(ambienceAlpha / 100,hctx)
-            break;
-            case "Custom Ambience": 
-            copyScreen(ambienceAlpha / 100)
-            break;
-            case "Ambience Audio Visualizer": 
-            copyScreenAudio(ambienceAlpha / 100)
-            break;
-            case "Custom Audio Visualizer": 
-            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
-            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
-            break;
-            case "Color Cycle Audio Visualizer": 
-            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
-            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
-            break;
+        if (enableManaHUD) {
+            if (blackToggle) {
+                DrawRect((manaX * 3.2), (manaY * 2), (manaWidth * 3.2), manaHeight, "black");
+            }
+            const manaBarWidth = adjActive
+                ? (manaWidth * 3.2)
+                : currentManaSize * (manaWidth * 3.2) * 1.05;
+            DrawRect((manaX * 3.2), (manaY * 2), manaBarWidth, manaHeight, manaString);
         }
     }
 
-    let audioScreenSat = 0
-    let audioScreenLit = 0
+
+    //#region Callbacks
+    // ═══════════════════════════════════════════════════════════════
+    // CALLBACKS
+    // Each callback is fired by one or more Meters when their signal
+    // stabilizes. Callbacks evaluate the current state of all related
+    // meters and flags, then push effects or flip state booleans.
+    // ═══════════════════════════════════════════════════════════════
+
+    let menuGoing = false;
+    function inGameCallback() {
+        if (engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 &&
+            (DeadBlack_Meter.value != 1 || DeadRed_Meter.value != 1) &&
+            health_Meter.value > 0.05) {
+            gInGame = true;
+        } else {
+            gInGame = false;
+            if (!menuGoing && enableMenu) {
+                effects.push(new InMenu());
+                menuGoing = true;
+            }
+        }
+    }
+
+    function flaskCallback() {
+        if (flaskWhite_Meter.value >= 0.95 && enableFlask && engine.vision.inGame >= 0.95 && !flaskGoing) {
+            effects.push(new flaskEffect());
+            flaskGoing = true;
+        }
+    }
+
+    function dodgeCallback() {
+        if (dodge_Meter.value > 0.95 && enableDodge && engine.vision.inGame >= 0.95 && !dodgeGoing) {
+            effects.push(new dodgeEffect());
+            dodgeGoing = true;
+        }
+    }
+
+    function levelCallback() {
+        if (engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 &&
+            level_Meter.value <= 0.1 && level_Meter.decreased && enableLevelUp) {
+            effects.push(new levelUpEffect());
+        }
+    }
+
+    function SafeZoneCallback() {
+        if (SafeZoneAbility0_Meter.increased && SafeZoneAbility0_Meter.diff > 0.4 &&
+            SafeZoneAbility0_Meter.value > 0.5 && !gInSafeZone && enableSafeZone &&
+            engine.vision.inGame >= 0.95) {
+            effects.push(new EnterSafe());
+            gInSafeZone = true;
+        } else if (gInSafeZone && SafeZoneAbility0_Meter.decreased &&
+                   SafeZoneAbility0_Meter.diff < 0.4 && SafeZoneAbility0_Meter.value < 0.2) {
+            effects.push(new ExitSafe());
+            gInSafeZone = false;
+        }
+    }
+
+    function DeadCallback() {
+        if (DeadRed_Meter.value >= 0.95 && DeadBlack_Meter.value >= 0.95 && enableDead) {
+            effects.push(new deadEffect());
+        }
+    }
+
+    const particleAmount = 50;
+
+    let ability1Delay = Date.now();
+    function ability1Callback() {
+        if (ability1_Meter.diff > 5 && ability1_Meter.decreased && enableAbility && gInGame &&
+            engine.vision.inGame >= 0.95 && Date.now() - ability1Delay > 300) {
+            effects.push(new ParticleExplosion(latestLocation.x, latestLocation.y, `hsl(${ability1Col_Meter.value},100%,50%)`, 5, 2000, particleAmount, 12, 2));
+            ability1Delay = Date.now();
+        }
+    }
+
+    let ability2Delay = Date.now();
+    function ability2Callback() {
+        if (ability2_Meter.diff > 5 && ability2_Meter.decreased && enableAbility && gInGame &&
+            engine.vision.inGame >= 0.95 && Date.now() - ability2Delay > 300) {
+            effects.push(new ParticleExplosion(latestLocation.x, latestLocation.y, `hsl(${ability2Col_Meter.value},100%,50%)`, 5, 2000, particleAmount, 12, 2));
+            ability2Delay = Date.now();
+        }
+    }
+
+    let ability3Delay = Date.now();
+    function ability3Callback() {
+        if (ability3_Meter.diff > 5 && ability3_Meter.decreased && enableAbility && gInGame &&
+            engine.vision.inGame >= 0.95 && Date.now() - ability3Delay > 300) {
+            effects.push(new ParticleExplosion(latestLocation.x, latestLocation.y, `hsl(${ability3Col_Meter.value},100%,50%)`, 5, 2000, particleAmount, 12, 2));
+            ability3Delay = Date.now();
+        }
+    }
+
+    let ability4Delay = Date.now();
+    function ability4Callback() {
+        if (ability4_Meter.diff > 5 && ability4_Meter.decreased && enableAbility && gInGame &&
+            engine.vision.inGame >= 0.95 && Date.now() - ability4Delay > 300) {
+            effects.push(new ParticleExplosion(latestLocation.x, latestLocation.y, `hsl(${ability4Col_Meter.value},100%,50%)`, 5, 2000, particleAmount, 12, 2));
+            ability4Delay = Date.now();
+        }
+    }
+
+    let ability5Delay = Date.now();
+    function ability5Callback() {
+        if (ability5_Meter.diff > 5 && ability5_Meter.decreased && enableAbility && gInGame &&
+            engine.vision.inGame >= 0.95 && Date.now() - ability5Delay > 300) {
+            effects.push(new ParticleExplosion(latestLocation.x, latestLocation.y, `hsl(${ability5Col_Meter.value},100%,50%)`, 5, 2000, particleAmount, 12, 2));
+            ability5Delay = Date.now();
+        }
+    }
+
+    let ability6Delay = Date.now();
+    function ability6Callback() {
+        if (ability6_Meter.diff > 5 && ability6_Meter.decreased && enableAbility && gInGame &&
+            engine.vision.inGame >= 0.95 && Date.now() - ability6Delay > 300) {
+            effects.push(new ParticleExplosion(latestLocation.x, latestLocation.y, `hsl(${ability6Col_Meter.value},100%,50%)`, 5, 2000, particleAmount, 12, 2));
+            ability6Delay = Date.now();
+        }
+    }
+
+    function healthCallback() {
+        if (gInGame && enableHealth && engine.vision.inGame >= 0.95) {
+            if (health_Meter.value < 0.2 && !lowHealthPlaying) {
+                effects.push(new lowHealth());
+                lowHealthPlaying = true;
+            } else if ((lowHealthPlaying && health_Meter.value > 0.25) || !gInGame || menuGoing) {
+                lowHealthPlaying = false;
+            }
+        }
+    }
+
+    function manaCallback() {
+        if (gInGame && enableMana && engine.vision.inGame >= 0.95) {
+            if (mana_Meter.value < 0.2 && !lowManaPlaying) {
+                effects.push(new lowMana());
+                lowManaPlaying = true;
+            } else if ((lowManaPlaying && mana_Meter.value > 0.25) || !gInGame || menuGoing) {
+                lowManaPlaying = false;
+            }
+        }
+    }
+
+    let eventGoing = false;
+    function eventCompleteCallback() {
+        if (eventCompleteWhiteMeter.value >= 0.6 && eventCompleteRedMeter.value >= 0.75 &&
+            gInGame && !eventGoing && engine.vision.inGame >= 0.95) {
+            if (enableEvent) effects.push(new eventComplete());
+            eventGoing = true;
+        } else if (eventCompleteWhiteMeter.value <= 0.1 && eventCompleteRedMeter.value <= 0.1) {
+            eventGoing = false;
+        }
+    }
+
+    function skillAvailableCallback() {
+        if (hasSkillGreyMeter.value >= 0.95 && hasSkillYellowMeter.value >= 0.95 &&
+            gInGame && engine.vision.inGame >= 0.95) {
+            if (enableLevelUp) effects.push(new hasSkillPoint());
+        }
+    }
+
+    let questGoing = false;
+    function questCompleteCallback() {
+        if (questCompleteRedMeter.value > 0.3 && questCompleteWhiteMeter.value > 0.1 &&
+            !questGoing && gInGame && engine.vision.inGame >= 0.95) {
+            if (enableQuest) effects.push(new questComplete());
+            questGoing = true;
+        } else if (questCompleteRedMeter.value <= 0.1 && questCompleteWhiteMeter.value <= 0.1 && gInGame) {
+            questGoing = false;
+        }
+    }
+
+    let buffed = false;
+    function buffedCallback() {
+        if (buffedGreenMeter.value > 0.3 && buffedGreenMeter.increased &&
+            engine.vision.buffedNotGreen <= 0.1 && gInGame && !buffed &&
+            engine.vision.inGame >= 0.95) {
+            if (enableBuff) effects.push(new gotBuffed());
+            buffed = true;
+        } else if (gInGame && buffedGreenMeter.value <= 0.1) {
+            buffed = false;
+        }
+    }
+
+    function waypointCallback() {
+        if (waypointBlueMeter.value >= 0.95 && waypointRedMeter.value >= 0.95 &&
+            gInGame && !waypointGoing) {
+            if (enableWaypoint) effects.push(new waypoint());
+            waypointGoing = true;
+        }
+    }
+    //#endregion
+
+
+    //#region Background
+    // ═══════════════════════════════════════════════════════════════
+    // BACKGROUND SYSTEM
+    // Eight modes are supported (see backgroundMode meta property).
+    // Mode routing uses string.includes() so shared keywords act as
+    // feature flags — a mode name containing "Ambience" opts into
+    // screen capture; "Color Cycle" opts into hue rotation; "Audio"
+    // opts into audio-reactive sat/lit modulation.
+    // ═══════════════════════════════════════════════════════════════
+
+    // proBack: [H, S, L] for the user's custom color.
+    // Populated by onbackColorChanged when backColor is set.
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // audioEase: exponentially smoothed audio density → sat/lit.
+    // Smoothing factor 1/10 gives ~90% of target in ~22 frames at 60fps.
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0; // current hue offset for color cycle modes (0–360, wraps)
+
+    function updateAudioEase() {
+        const target = engine.audio.density * 100;
+        audioEase.sat += (target - audioEase.sat) / 10;
+        audioEase.lit += (target - audioEase.lit) / 10;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        if (backgroundMode.includes("Color Cycle")) updateColorCycle();
+        if (backgroundMode.includes("Audio"))       updateAudioEase();
+
+        // Ambience modes: copy per-zone screen data into the canvas
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Non-ambience modes: draw a single flat color rectangle.
+        // hue: base custom hue + cycle offset (0 when not cycling)
+        // sat/lit: audio-driven range if Audio mode, else from backColor
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9  + 10 : proBack[2];
+        hctx.fillStyle = `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+        hctx.fillRect(0, 0, 320, 200);
+    }
+
+    // copyScreenAudio: per-zone ambience with audio-modulated sat and lightness.
+    // satMult (0.5–1.0) boosts zone saturation with audio density.
+    // litMult (0–1.0) dims/brightens zone lightness with audio density.
     function copyScreenAudio(alpha) {
-      let lightness = new Int8Array(engine.zone.lightness);
-      let sat = new Int8Array(engine.zone.saturation);
-      let hue = new Int16Array(engine.zone.hue);
-      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
-      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
-      for (var iZone = 0; iZone < 560; iZone++) {
-        var iRow = Math.floor(iZone / 28);
-        var iCol = iZone % 28;
-        var iWidth = 320 / 28;
-        var iHeight = 200 / 20;
-        var iZx = iCol * iWidth;
-        var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
-      }
+        const lightness = new Int8Array(engine.zone.lightness);
+        const sat       = new Int8Array(engine.zone.saturation);
+        const hue       = new Int16Array(engine.zone.hue);
+        const zw = 320 / ZONE_COLS;
+        const zh = 200 / ZONE_ROWS;
+        const satMult = audioEase.sat / 200 + 0.5;
+        const litMult = audioEase.lit / 100;
+        for (let i = 0; i < TOTAL_ZONES; i++) {
+            const row = Math.floor(i / ZONE_COLS);
+            const col = i % ZONE_COLS;
+            hctx.fillStyle = `hsla(${hue[i]}, ${sat[i] * satMult}%, ${lightness[i] * litMult}%, ${alpha})`;
+            hctx.fillRect(col * zw, row * zh, zw, zh);
+        }
     }
-  
+
+    // copyScreen: per-zone ambience with optional hue modification.
+    //   Custom Ambience      → replace all zone hues with backColor hue
+    //   Color Cycle Ambience → shift all zone hues by gCycle offset
+    //   Plain Ambience       → use native zone hues unchanged
     function copyScreen(alpha) {
-      let lightness = new Int8Array(engine.zone.lightness);
-      let sat = new Int8Array(engine.zone.saturation);
-      let hue = new Int16Array(engine.zone.hue);
-      for (var iZone = 0; iZone < 560; iZone++) {
-        var iRow = Math.floor(iZone / 28);
-        var iCol = iZone % 28;
-        var iWidth = 320 / 28;
-        var iHeight = 200 / 20;
-        var iZx = iCol * iWidth;
-        var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
-      }
-    }
-
-  let menuGoing = false
- function inGameCallback () {
-  if (engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 && (DeadBlack_Meter.value != 1 || DeadRed_Meter.value != 1) && health_Meter.value > .05) {
-    gInGame = true;
-  } else {
-    gInGame = false;
-    if(!menuGoing && enableMenu){
-      effects.push(new InMenu())
-      menuGoing = true
-    } 
-  }
-}
-
-
-function flaskCallback() {
-  if (flaskWhite_Meter.value >= .95 && enableFlask && engine.vision.inGame >= 0.95 && !flaskGoing) {
-    effects.push(new flaskEffect())
-    flaskGoing = true;
-  } 
-}
-
-function dodgeCallback() {
-  if (dodge_Meter.value > 0.95 && enableDodge && engine.vision.inGame >= 0.95 && !dodgeGoing) {
-    effects.push(new dodgeEffect())
-    dodgeGoing = true;
-  } 
-}
-
- function levelCallback () {
-  if(engine.vision.inGame >= 0.95 && engine.vision.inGame2 >= 0.95 && level_Meter.value <= 0.1 && level_Meter.decreased && enableLevelUp){
-    effects.push(new levelUpEffect())
-  }
-}
-
- function SafeZoneCallback () {
-  if (SafeZoneAbility0_Meter.increased && SafeZoneAbility0_Meter.diff >.4 && SafeZoneAbility0_Meter.value >.5 && !gInSafeZone && enableSafeZone && engine.vision.inGame >= 0.95){
-    effects.push(new EnterSafe())
-    gInSafeZone = true;
-  } else if(gInSafeZone && SafeZoneAbility0_Meter.decreased && SafeZoneAbility0_Meter.diff <.4 && SafeZoneAbility0_Meter.value <.2) {
-    effects.push(new ExitSafe())
-    gInSafeZone = false;
-  }
-
-}
-
- function DeadCallback () {
-  if (DeadRed_Meter.value >= 0.95 && DeadBlack_Meter.value >= 0.95  && enableDead){
-    effects.push(new deadEffect())
-  }
-}
-
-const particleAmount = 50;
-
-let ability1Delay = Date.now()
-function ability1Callback(){
-  if(ability1_Meter.diff >5 && ability1_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability1Delay > 300){
-   effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability1Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
-   ability1Delay = Date.now()
-  }
-}
-
-let ability2Delay = Date.now()
-function ability2Callback(){
-  if(ability2_Meter.diff >5 && ability2_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability2Delay > 300){
-    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability2Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
-    ability2Delay = Date.now()
-  }
-}
-
-let ability3Delay = Date.now()
-function ability3Callback(){
-  if(ability3_Meter.diff >5 && ability3_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability3Delay > 300){
-    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability3Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
-    ability3Delay = Date.now()
-  }
-}
-
-let ability4Delay = Date.now()
-function ability4Callback(){
-  if(ability4_Meter.diff >5 && ability4_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability4Delay > 300){
-    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability4Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
-    ability4Delay = Date.now()
-  }
-}
-
-let ability5Delay = Date.now()
-function ability5Callback(){
-  if(ability5_Meter.diff >5 && ability5_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability5Delay > 300){
-    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability5Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
-    ability5Delay = Date.now()
-  }
-}
-
-let ability6Delay = Date.now()
-function ability6Callback(){
-  if(ability6_Meter.diff >5 && ability6_Meter.decreased && enableAbility && gInGame && engine.vision.inGame >= 0.95 && Date.now() - ability6Delay > 300){
-    effects.push(new ParticleExplosion(latestLocation.x,latestLocation.y, `hsl(${ability6Col_Meter.value},100%,50%)`,5,2000,particleAmount,12,2 ))
-    ability6Delay = Date.now()
-  }
-}
-
-function healthCallback (){
-  if (gInGame && enableHealth && engine.vision.inGame >= 0.95){
-    if (health_Meter.value < 0.2 && !lowHealthPlaying){
-      effects.push(new lowHealth())
-      lowHealthPlaying = true;
-    } else if ((lowHealthPlaying && health_Meter.value > 0.25) || !gInGame || menuGoing){ 
-      lowHealthPlaying = false
-    }
-  }
-}
-
-function manaCallback (){
-  if (gInGame && enableMana && engine.vision.inGame >= 0.95){
-    if (mana_Meter.value < 0.2 && !lowManaPlaying){
-      effects.push(new lowMana())
-      lowManaPlaying = true
-    } else if ((lowManaPlaying && mana_Meter.value > 0.25) || !gInGame || menuGoing){
-      lowManaPlaying = false
-    }
-  }
-}
-
-let eventGoing = false
-function eventCompleteCallback(){
-  if(eventCompleteWhiteMeter.value >= .6 && eventCompleteRedMeter.value >= .75 && gInGame && !eventGoing && engine.vision.inGame >= 0.95){
-    if(enableEvent) effects.push(new eventComplete())
-    eventGoing = true
-  } else if (eventCompleteWhiteMeter.value <= 0.1 && eventCompleteRedMeter.value <= 0.1) eventGoing = false;
-}
-
-function skillAvailableCallback(){
-  if(hasSkillGreyMeter.value >= 0.95 && hasSkillYellowMeter.value >= 0.95 && gInGame && engine.vision.inGame >= 0.95){
-    if(enableLevelUp) effects.push(new hasSkillPoint())
-  }
-}
-
-let questGoing = false
-function questCompleteCallback(){
-  if(questCompleteRedMeter.value > .3 && questCompleteWhiteMeter.value > .1 && !questGoing && gInGame && engine.vision.inGame >= 0.95){
-    if(enableQuest) effects.push(new questComplete())
-    questGoing = true
-  } else if (questCompleteRedMeter.value <= 0.1 && questCompleteWhiteMeter.value <= 0.1 && gInGame) questGoing = false
-}
-
-let buffed = false
-function buffedCallback(){
-  if(buffedGreenMeter.value > .3 && buffedGreenMeter.increased && engine.vision.buffedNotGreen <=.1 && gInGame && !buffed && engine.vision.inGame >= 0.95){
-    if(enableBuff) effects.push(new gotBuffed())
-    buffed = true
-  } else if (gInGame && buffedGreenMeter.value <= 0.1) buffed = false
-}
-
-function waypointCallback(){
-  if(waypointBlueMeter.value >= 0.95 && waypointRedMeter.value >= 0.95 && gInGame && !waypointGoing){
-    if(enableWaypoint) effects.push(new waypoint())
-    waypointGoing = true
-  }
-}
-
-function gotBuffed(){
-    this.count = 0
-    this.draw = function(){
-      if(this.count == 0) effects.push(new rJumpHelp(120, 90, 20))
-      if(this.count == 20) effects.push(new rJumpHelp(120, 90, 30))
-      if(this.count == 40) effects.push(new rJumpHelp(120, 90, 40))
-      this.count < 41 ? this.count++ : this.lifetime = 0;
-      if(!gInGame) this.lifetime = 0
-    }
-  }
-
-  function rJumpHelp(hue, sat, lit){
-    this.hue = hue
-    this.sat = sat
-    this.lit = lit
-    this.y = 300
-    this.vy = 0
-    this.lifetime = 100
-    this.draw = function(){
-      hctx.beginPath()
-      hctx.moveTo(0, this.y + 100)
-      hctx.lineTo(160, this.y)
-      hctx.lineTo(320, this.y + 100)
-      hctx.strokeStyle = `hsl(${this.hue}, ${this.sat}%, ${this.lit}%)`
-      hctx.lineWidth = 50
-      hctx.stroke()
-      this.y > -100 ? this.y-=this.vy : this.lifetime = 0
-      this.vy+=.05
-      if(!gInGame) this.lifetime = 0
-    }
-  }
-
-function waypoint(){
-    this.effects = []
-    this.alpha = 0
-    this.count = 0;
-    this.draw = function(){
-      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
-      this.alpha < .5 ? this.alpha += .025 : gPlayCopyScreen = false
-      if(this.count < 300) this.effects.push(new wayParticle())
-      this.effects.forEach((ele, i)=>{
-        ele.draw()
-      })
-      
-      this.effects = this.effects.filter(ele => ele.lifetime > 0)
-      this.count < 300 ? this.count++ : this.effects.length > 0 ? this.effects.pop() : this.lifetime = 0
-      if(!gInGame) this.lifetime = 0
-      if(this.lifetime == 0){
-        gPlayCopyScreen = true
-        waypointGoing = false
-      } 
-    }
-  }
-
-  function wayParticle(){
-    this.rot = Math.random() * Math.PI * 2
-    this.x = -50
-    this.y = 100
-    this.rad = 40 + 20 * Math.random()
-    this.mod = Math.random() + .5
-    this.lifetime = 1
-    this.draw = function(){
-      hctx.save()
-      hctx.translate(160, 100)
-      hctx.rotate(this.rot)
-      hctx.translate(-160, -100)
-      DrawCircle(this.x, this.y, this.rad, `hsl(${this.rad + 180}, 100%, 50%)`)
-      this.x < 160 ? this.x++ : this.lifetime = 0;
-      if(this.rad > 1) this.rad-=.25
-      this.rot+=.025 * this.mod
-      hctx.restore()
-      if(!gInGame) this.lifetime = 0
-    }
-  }
-
-  function questComplete(){
-    this.count = 0
-    this.draw = function(){
-      if(this.count == 0) effects.push(new rJumpHelp(0, 100, 10))
-      if(this.count == 20) effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 20))
-      if(this.count == 40) effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 30))
-      if(this.count == 60) effects.push(new rJumpHelp(0, 100, 40))
-      if(this.count == 80) effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 50))
-      if(this.count == 100) effects.push(new rJumpHelp(0, 100, 60))
-      this.count < 101 ? this.count++ : this.lifetime = 0;
-      if(!gInGame) this.lifetime = 0
-    }
-  }
-
-  function eventComplete(){
-    this.alpha = 0;
-    this.count = 0;
-    this.effects = []
-    this.draw = function(){
-      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
-      this.alpha < .75 ? this.alpha += .025 : this.alpha = .75;
-      if(this.effects.length < 100 && this.count < 300){
-        this.effects.push(new hellParticle(50))
-        if(Math.random() > .9) this.effects.push(new hellSpark())
-      }
-      this.effects.forEach((ele, i)=>{
-        ele.draw()
-      })
-      this.effects = this.effects.filter(ele => ele.lifetime > 0)
-      this.count < 300 ? this.count++ : this.effects.length == 0 ? this.lifetime = 0 : null;
-      if(!gInGame) this.lifetime = 0
-    }
-  }
-
-  function hellSpark(){
-    this.x = Math.random() * 320
-    this.mod = Math.random()
-    this.y = 250
-    this.rad = 10
-    this.lifetime = 1;
-    this.draw = function(){
-      DrawCircle(this.x, this.y, this.rad, `hsla(${this.mod * 60}, ${100}%, ${75}%, .9)`)
-      this.x += Math.sin(Date.now() / (1000 * this.mod)) * 5
-      this.y > -50 ? this.y -= 10: this.lifetime = 0
-    }
-  }
-
-  function hellParticle(rad){
-    this.x = Math.random() * 320
-    this.mod = Math.random()
-    this.y = 180 + Math.abs(160 - this.x) * .6
-    this.rad = rad
-    this.lifetime = 1;
-    this.draw = function(){
-      DrawCircle(this.x, this.y, this.rad, `hsla(${this.rad}, ${100}%, ${50}%, .9)`)
-      this.rad > .25 ? this.rad -= .25 : this.rad = .1
-      this.x += Math.sin(Date.now() / (1000 * this.mod)) * 3
-      this.y > -50 ? this.y -= 1 : this.lifetime = 0
-    }
-  }
-
-function hasSkillPoint(){
-    this.rad = 1
-    this.stroke = 5
-    this.lifetime = 10
-    this.draw = function(){
-      DrawStroke(160, 100, this.rad, `hsla(60, 100%, 50%, .25)`, this.stroke)
-      this.rad < 300 ? this.rad += 3 : this.lifetime = 0
-      this.stroke+=2
-      if(!gInGame) this.lifetime = 0
-    }
-  }
-
-  function DrawStroke(x, y, radius, color, stroke) {
-    hctx.beginPath();
-    hctx.strokeStyle = color;
-    hctx.lineWidth = stroke;
-    hctx.arc(x, y, radius, 0, 2 * Math.PI)
-    hctx.stroke();
-  };
-
-function InMenu(){
-    this.alpha = 0;
-    this.half = false;
-    this.stop = 1
-    this.lifetime = 10;
-    this.draw = function(){
-      let grad = hctx.createLinearGradient(160, 0, 160, 200)
-      grad.addColorStop(1, `hsla(10, 100%, ${40 * this.stop}%, ${this.alpha})`)
-      grad.addColorStop(.35, `hsla(0, 0%, 2%, ${this.alpha})`)
-      DrawRect(0, 0, 320, 200, grad)
-      this.stop = Math.sin(Date.now() / 500) * .25 + .5
-      if(Math.random() > .9 && this.half) effects.push(new inMenuParticle())
-      if(this.half) gPlayCopyScreen = false
-      if(gInGame){
-         this.alpha > 0 ? this.alpha -= .025 : this.lifetime = 0;
-         if(!this.lifetime) gPlayCopyScreen = true
-      } else this.alpha < .65 ? this.alpha += .005 : this.half = true;
-      if(questGoing || eventGoing) this.lifetime = 0
-      if(!this.lifetime) menuGoing = false
-    }
-  }
-
-  function inMenuParticle(){
-    this.x = Math.random() * 320
-    this.y = 210
-    this.rad = 15
-    this.mod = Math.random()
-    this.hue = Math.random() * 60
-    this.draw = function(){
-      DrawCircle(this.x, this.y, this.rad, `hsla(${this.hue}, 90%, ${50}%, ${this.rad / 15})`)
-      this.y-=((211 - this.y) / 20)
-      this.x+=Math.sin(Date.now() / (500 * this.mod)) * 5
-      this.rad > .06 ? this.rad -= .06 : this.lifetime = 0;
-    }
-  }
-
-
-function deadEffect(){
-  this.particles = []
-  this.start = Date.now();
-  this.counter = 0;
-  this.lifetime = 1;
-
-  this.draw = function(){
-    let elapsed = Date.now() - this.start;
-    this.alpha = getAlpha(elapsed,1000,8000,1000);
-    DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
-    hctx.globalAlpha = this.alpha
-    DrawCircle(160,100,elapsed/200,"hsl(200,25%,60%)");
-    
-    this.counter++;
-    
-    if (200- elapsed/30 >10){
-      if(this.counter % 3 === 0) {
-        for (let index = 0; index < 3; index++) {
-          let rot = elapsed/600 + ((Math.PI*2/3)*index);
-          let x = 160 + Math.cos(rot)*(200- elapsed/30);
-          let y = 100 + Math.sin(rot)*(200 - elapsed/30);
-          this.particles.push(new TrailParticle(x,y,20,"red",1000))
+        const lightness = new Int8Array(engine.zone.lightness);
+        const sat       = new Int8Array(engine.zone.saturation);
+        const hue       = new Int16Array(engine.zone.hue);
+        const zw = 320 / ZONE_COLS;
+        const zh = 200 / ZONE_ROWS;
+        for (let i = 0; i < TOTAL_ZONES; i++) {
+            const row = Math.floor(i / ZONE_COLS);
+            const col = i % ZONE_COLS;
+            const finalHue = backgroundMode === "Custom Ambience"
+                ? proBack[0]
+                : hue[i] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0);
+            hctx.fillStyle = `hsla(${finalHue}, ${sat[i]}%, ${lightness[i]}%, ${alpha})`;
+            hctx.fillRect(col * zw, row * zh, zw, zh);
         }
-      }
-    } else {
-      if (rng(1,false)>0.85 && this.alpha ==1)
-      this.particles.push(new wobblyExplosionParticle(160,100,{x:rng(5),y:rng(5)},{x:rng(50),y:rng(50)},100,2000,"red",20))
     }
-    
+    //#endregion
 
-    this.particles.forEach(p => p.draw());
-    
-    this.particles = this.particles.filter(p => p.lifetime > 0);
-    
-    hctx.globalAlpha = 1;
-    if(this.alpha == 0){
-      this.lifetime = 0;
+
+    //#region Effects
+    // ═══════════════════════════════════════════════════════════════
+    // EFFECTS
+    // Each effect is a constructor function. Instances are pushed into
+    // the effects[] array and drawn every frame until lifetime <= 0.
+    // ═══════════════════════════════════════════════════════════════
+
+    // ── gotBuffed ────────────────────────────────────────────────────
+    // Launches a series of rJumpHelp wave lines at increasing lightness.
+    function gotBuffed() {
+        this.count = 0;
+        this.draw = function () {
+            if (this.count == 0)  effects.push(new rJumpHelp(120, 90, 20));
+            if (this.count == 20) effects.push(new rJumpHelp(120, 90, 30));
+            if (this.count == 40) effects.push(new rJumpHelp(120, 90, 40));
+            this.count < 41 ? this.count++ : this.lifetime = 0;
+            if (!gInGame) this.lifetime = 0;
+        };
     }
-   
-  }
-}
 
-function flaskEffect(){
-  this.x = 0;
-  this.start = Date.now();
-  this.bubbles = []
-  this.lifetime = 1;
-  this.draw = function(){
-    let elapsed = Date.now() - this.start;
-    this.alpha = getAlpha(elapsed, 700, 2000, 700, 0.9);
-    DrawRect(0,0,320,200,`hsla(0, 0%, 0%, ${this.alpha})`);
-    hctx.globalAlpha = this.alpha+0.1;
-    this.bubbles.push(new bubble(rng(320,false), 250, rng(30,false), {x:rng(3), y:rng(-3,false)},{x:rng(10), y:0},500,"hsla(121, 100%, 71%, 1)",`hsla(121, ${80+rng(30,false)}%, ${50+rng(30,false)}%, 0.8)`,2,4000));
-    this.bubbles.forEach(b => b.draw());
-    this.bubbles = this.bubbles.filter(b => b.lifetime > 0);
-    hctx.globalAlpha = 1;
-    if(this.alpha == 0 || !gInGame){
-      this.lifetime = 0;
-      flaskGoing = false; 
+    // ── rJumpHelp ────────────────────────────────────────────────────
+    // A V-shaped wave line that rises from y=300 upward. Used by
+    // gotBuffed, questComplete, and similar notification effects.
+    function rJumpHelp(hue, sat, lit) {
+        this.hue      = hue;
+        this.sat      = sat;
+        this.lit      = lit;
+        this.y        = 300;
+        this.vy       = 0;
+        this.lifetime = 100;
+        this.draw = function () {
+            hctx.beginPath();
+            hctx.moveTo(0, this.y + 100);
+            hctx.lineTo(160, this.y);
+            hctx.lineTo(320, this.y + 100);
+            hctx.strokeStyle = `hsl(${this.hue}, ${this.sat}%, ${this.lit}%)`;
+            hctx.lineWidth = 50;
+            hctx.stroke();
+            this.y > -100 ? this.y -= this.vy : this.lifetime = 0;
+            this.vy += 0.05;
+            if (!gInGame) this.lifetime = 0;
+        };
     }
-  }
-}
 
-
-function dodgeEffect() {
-    this.duration = 1000;
-    this.particles = []
-    this.start = Date.now();
-    this.elapsed = 0;
-    this.lifetime = 1;
-
-  this.draw = function(){
-    this.x = -60 + this.elapsed/1.5
-    this.elapsed = Date.now() - this.start;
-    this.alpha = getAlpha(this.elapsed,300,this.duration,300,0.9)
-    hctx.globalAlpha = this.alpha;
-    DrawRect(0,0,320,200,"black");
-    DrawRect(this.x,0,30,200,"orange")
-    hctx.globalAlpha = 1;
-    this.particles.push(new TrailParticle(this.x,rng(200,false),30,"orange",500))
-    
-    this.particles.forEach(p => p.draw());
-    this.particles = this.particles.filter(p => p.lifetime > 0);
-    if(this.x > 320 || this.alpha === 0 || !gInGame) {
-      this.lifetime = 0;
-      dodgeGoing = false;
+    // ── waypoint ─────────────────────────────────────────────────────
+    // Spiraling particles converging to center on waypoint discovery.
+    function waypoint() {
+        this.effects = [];
+        this.alpha   = 0;
+        this.count   = 0;
+        this.draw = function () {
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
+            this.alpha < 0.5 ? this.alpha += 0.025 : null;
+            if (this.count < 300) this.effects.push(new wayParticle());
+            this.effects.forEach(ele => ele.draw());
+            this.effects = this.effects.filter(ele => ele.lifetime > 0);
+            this.count < 300 ? this.count++ : this.effects.length > 0 ? this.effects.pop() : this.lifetime = 0;
+            if (!gInGame) this.lifetime = 0;
+            if (this.lifetime == 0) waypointGoing = false;
+        };
     }
-  }
-}
 
-
-
-  function EnterSafe(){
-  this.alpha = 1;
-  this.stroke = 5;
-  this.rad = 1
-  this.draw = function(){
-    this.rad < 160 ? this.rad += 2 : this.rad = 160
-    hctx.globalAlpha = this.alpha
-    DrawStroke(160, 100, this.rad, `hsl(${this.rad * 3/4}, 100%, 50%)`, this.stroke)
-    this.stroke < 320 ? this.stroke+=2 : this.alpha > .02 ? this.alpha -= .02 : this.lifetime = 0;
-    hctx.globalAlpha = 1
-    if(!gInGame) this.lifetime = 0
-  }
-}
-
-function ExitSafe(){
-  this.alpha = 1;
-  this.stroke = 5;
-  this.rad = 1
-  this.draw = function(){
-    this.rad < 160 ? this.rad += 2 : this.rad = 160
-    hctx.globalAlpha = this.alpha
-    DrawStroke(160, 100, this.rad, `hsl(${120 - this.rad * 3/4}, 100%, 50%)`, this.stroke)
-    this.stroke < 320 ? this.stroke+=2 : this.alpha > .02 ? this.alpha -= .02 : this.lifetime = 0;
-    hctx.globalAlpha = 1
-    if(!gInGame) this.lifetime = 0
-  }
-}
-
-
-
-  function ParticleExplosion(x, y, color, speed, duration, particleAmount, particleSize, fadeSpeed) {
-    this.start = Date.now();
-    this.col = color;
-    this.speed = speed;
-    this.duration = duration;
-    this.lifetime = 2000;
-    this.amount = particleAmount;
-    this.size = particleSize
-    this.x = x;
-    this.y = y;
-    this.fadeSpeed = fadeSpeed;
-    this.particles = [];
-
-    while (this.particles.length < this.amount) {
-      this.yspeed = ((Math.random() - 0.5) * this.speed);
-      this.particles.push(new ExplosionParticle(this.x, this.y, this.size, this.col, this.fadeSpeed,
-        {
-          x: ((Math.random() - 0.5) * this.speed),
-          y: this.yspeed
-        }))
+    // ── wayParticle ──────────────────────────────────────────────────
+    // Orbiting particle that spirals in from the left edge toward center.
+    function wayParticle() {
+        this.rot      = Math.random() * Math.PI * 2;
+        this.x        = -50;
+        this.y        = 100;
+        this.rad      = 40 + 20 * Math.random();
+        this.mod      = Math.random() + 0.5;
+        this.lifetime = 1;
+        this.draw = function () {
+            hctx.save();
+            hctx.translate(160, 100);
+            hctx.rotate(this.rot);
+            hctx.translate(-160, -100);
+            DrawCircle(this.x, this.y, this.rad, `hsl(${this.rad + 180}, 100%, 50%)`);
+            this.x < 160 ? this.x++ : this.lifetime = 0;
+            if (this.rad > 1) this.rad -= 0.25;
+            this.rot += 0.025 * this.mod;
+            hctx.restore();
+            if (!gInGame) this.lifetime = 0;
+        };
     }
-    
-    this.draw = function () {
-      this.lifetime = this.duration - (Date.now() - this.start)
-      
-      this.particles.forEach((Particle, index) => {
-        Particle.draw()
-      })
-      this.particles = this.particles.filter(Particle => Particle.alpha > 0)
+
+    // ── questComplete ────────────────────────────────────────────────
+    // Sequenced wave lines using the quest completion color.
+    function questComplete() {
+        this.count = 0;
+        this.draw = function () {
+            if (this.count == 0)   effects.push(new rJumpHelp(0, 100, 10));
+            if (this.count == 20)  effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 20));
+            if (this.count == 40)  effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 30));
+            if (this.count == 60)  effects.push(new rJumpHelp(0, 100, 40));
+            if (this.count == 80)  effects.push(new rJumpHelp(questCompleteColorMeter.value, 100, 50));
+            if (this.count == 100) effects.push(new rJumpHelp(0, 100, 60));
+            this.count < 101 ? this.count++ : this.lifetime = 0;
+            if (!gInGame) this.lifetime = 0;
+        };
     }
-  };
 
-  class ExplosionParticle {
-    constructor(x, y, radius, color, fadeSpeed, velocity) {
-      this.x = x;
-      this.y = y;
-      this.color = color;
-      this.radius = radius;
-      this.velocity = velocity;
-      this.alpha = 1 * fadeSpeed;
-      this.lifetime = 1
+    // ── eventComplete ────────────────────────────────────────────────
+    // Particle fountain effect for world event completions.
+    function eventComplete() {
+        this.alpha   = 0;
+        this.count   = 0;
+        this.effects = [];
+        this.draw = function () {
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
+            this.alpha < 0.75 ? this.alpha += 0.025 : this.alpha = 0.75;
+            if (this.effects.length < 100 && this.count < 300) {
+                this.effects.push(new hellParticle(50));
+                if (Math.random() > 0.9) this.effects.push(new hellSpark());
+            }
+            this.effects.forEach(ele => ele.draw());
+            this.effects = this.effects.filter(ele => ele.lifetime > 0);
+            this.count < 300 ? this.count++ : this.effects.length == 0 ? this.lifetime = 0 : null;
+            if (!gInGame) this.lifetime = 0;
+        };
     }
-    draw() {
-      hctx.globalAlpha = this.alpha;
-      hctx.beginPath()
-      hctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-      hctx.fillStyle = this.color
-      hctx.fill()
-      this.x += this.velocity.x
-      this.y += this.velocity.y
-      this.alpha -= 0.01
-      hctx.globalAlpha = 1;
+
+    // ── hellSpark ────────────────────────────────────────────────────
+    // Fast-rising bright spark spawned by eventComplete.
+    function hellSpark() {
+        this.x        = Math.random() * 320;
+        this.mod      = Math.random();
+        this.y        = 250;
+        this.rad      = 10;
+        this.lifetime = 1;
+        this.draw = function () {
+            DrawCircle(this.x, this.y, this.rad, `hsla(${this.mod * 60}, 100%, 75%, .9)`);
+            this.x += Math.sin(Date.now() / (1000 * this.mod)) * 5;
+            this.y > -50 ? this.y -= 10 : this.lifetime = 0;
+        };
     }
-  }
 
-function levelUpEffect(){
-  this.start = Date.now();
-  this.particles = []
-  this.lifetime = 1
-  setTimeout(() => {
-    this.particles.push(new MovingArrow(160,200,160,200,0,4,"yellow"))
-      setTimeout(() => {
-      this.particles.push(new MovingArrow(160,200,160,200,0,4,"yellow"))
-    }, 800);
-  }, 500);
-
-  this.draw = function (){
-    this.elapsed = Date.now() - this.start;
-    this.alpha = getAlpha(this.elapsed,600, 2000, 600);
-    DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
-    const bgGrad = hctx.createRadialGradient(160,100,this.elapsed/3,160,100,this.elapsed/3+30);
-    bgGrad.addColorStop(0,`hsla(0,0%,0%,0)`);
-    bgGrad.addColorStop(0.5,`yellow`);
-    bgGrad.addColorStop(1,`hsla(0,0%,0%,0)`);
-    DrawRect(0,0,320,200,bgGrad);
-
-    this.particles.forEach(p => p.draw());
-    this.particles = this.particles.filter(p => p.lifetime > 0);
-    if(this.alpha ==0){
-      this.lifetime= 0;
+    // ── hellParticle ─────────────────────────────────────────────────
+    // Slow-rising large particle spawned by eventComplete.
+    function hellParticle(rad) {
+        this.x        = Math.random() * 320;
+        this.mod      = Math.random();
+        this.y        = 180 + Math.abs(160 - this.x) * 0.6;
+        this.rad      = rad;
+        this.lifetime = 1;
+        this.draw = function () {
+            DrawCircle(this.x, this.y, this.rad, `hsla(${this.rad}, 100%, 50%, .9)`);
+            this.rad > 0.25 ? this.rad -= 0.25 : this.rad = 0.1;
+            this.x += Math.sin(Date.now() / (1000 * this.mod)) * 3;
+            this.y > -50 ? this.y -= 1 : this.lifetime = 0;
+        };
     }
-    if(!gInGame) this.lifetime = 0
-  }
-}
 
-function TrailParticle(x=160,y=100,size=10,color="red",duration=2000){
-      this.x = x;
-      this.y = y;
-      this.size = size;
-      this.color = color;
-      this.duration = duration;
-      this.start = Date.now();
-      this.lifetime = 1
-      this.draw = function(){
-        this.elapsed = (Date.now() - this.start);
-        this.alpha = SetRange(1-(this.elapsed / this.duration),0,1);
-        hctx.globalAlpha = this.alpha;
-        DrawCircle(this.x,this.y,this.size*this.alpha,this.color)
-        hctx.globalAlpha = 1;
-        if(this.elapsed > this.duration){
-          this.lifetime = 0;
+    // ── hasSkillPoint ────────────────────────────────────────────────
+    // Expanding yellow ring burst when a skill point is available.
+    function hasSkillPoint() {
+        this.rad      = 1;
+        this.stroke   = 5;
+        this.lifetime = 10;
+        this.draw = function () {
+            DrawStroke(160, 100, this.rad, `hsla(60, 100%, 50%, .25)`, this.stroke);
+            this.rad < 300 ? this.rad += 3 : this.lifetime = 0;
+            this.stroke += 2;
+            if (!gInGame) this.lifetime = 0;
+        };
+    }
+
+    // ── InMenu ───────────────────────────────────────────────────────
+    // Ambient fire gradient with rising ember particles when out of game.
+    function InMenu() {
+        this.alpha    = 0;
+        this.half     = false;
+        this.stop     = 1;
+        this.lifetime = 10;
+        this.draw = function () {
+            let grad = hctx.createLinearGradient(160, 0, 160, 200);
+            grad.addColorStop(1,    `hsla(10, 100%, ${40 * this.stop}%, ${this.alpha})`);
+            grad.addColorStop(0.35, `hsla(0, 0%, 2%, ${this.alpha})`);
+            DrawRect(0, 0, 320, 200, grad);
+            this.stop = Math.sin(Date.now() / 500) * 0.25 + 0.5;
+            if (Math.random() > 0.9 && this.half) effects.push(new inMenuParticle());
+            if (gInGame) {
+                this.alpha > 0 ? this.alpha -= 0.025 : this.lifetime = 0;
+            } else {
+                this.alpha < 0.65 ? this.alpha += 0.005 : this.half = true;
+            }
+            if (questGoing || eventGoing) this.lifetime = 0;
+            if (!this.lifetime) menuGoing = false;
+        };
+    }
+
+    // ── inMenuParticle ───────────────────────────────────────────────
+    // Rising ember particle spawned by InMenu.
+    function inMenuParticle() {
+        this.x   = Math.random() * 320;
+        this.y   = 210;
+        this.rad = 15;
+        this.mod = Math.random();
+        this.hue = Math.random() * 60;
+        this.draw = function () {
+            DrawCircle(this.x, this.y, this.rad, `hsla(${this.hue}, 90%, 50%, ${this.rad / 15})`);
+            this.y -= ((211 - this.y) / 20);
+            this.x += Math.sin(Date.now() / (500 * this.mod)) * 5;
+            this.rad > 0.06 ? this.rad -= 0.06 : this.lifetime = 0;
+        };
+    }
+
+    // ── deadEffect ───────────────────────────────────────────────────
+    // Expanding blue orb with rotating trail particles on death.
+    function deadEffect() {
+        this.particles = [];
+        this.start     = Date.now();
+        this.counter   = 0;
+        this.lifetime  = 1;
+        this.draw = function () {
+            let elapsed = Date.now() - this.start;
+            this.alpha = getAlpha(elapsed, 1000, 8000, 1000);
+            DrawRect(0, 0, 320, 200, `hsla(0,0%,0%,${this.alpha})`);
+            hctx.globalAlpha = this.alpha;
+            DrawCircle(160, 100, elapsed / 200, "hsl(200,25%,60%)");
+            this.counter++;
+            if (200 - elapsed / 30 > 10) {
+                if (this.counter % 3 === 0) {
+                    for (let index = 0; index < 3; index++) {
+                        let rot = elapsed / 600 + ((Math.PI * 2 / 3) * index);
+                        let x   = 160 + Math.cos(rot) * (200 - elapsed / 30);
+                        let y   = 100 + Math.sin(rot) * (200 - elapsed / 30);
+                        this.particles.push(new TrailParticle(x, y, 20, "red", 1000));
+                    }
+                }
+            } else {
+                if (rng(1, false) > 0.85 && this.alpha == 1)
+                    this.particles.push(new wobblyExplosionParticle(160, 100, {x: rng(5), y: rng(5)}, {x: rng(50), y: rng(50)}, 100, 2000, "red", 20));
+            }
+            this.particles.forEach(p => p.draw());
+            this.particles = this.particles.filter(p => p.lifetime > 0);
+            hctx.globalAlpha = 1;
+            if (this.alpha == 0) this.lifetime = 0;
+        };
+    }
+
+    // ── flaskEffect ──────────────────────────────────────────────────
+    // Rising green bubble burst on potion use.
+    function flaskEffect() {
+        this.x        = 0;
+        this.start    = Date.now();
+        this.bubbles  = [];
+        this.lifetime = 1;
+        this.draw = function () {
+            let elapsed = Date.now() - this.start;
+            this.alpha = getAlpha(elapsed, 700, 2000, 700, 0.9);
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
+            hctx.globalAlpha = this.alpha + 0.1;
+            this.bubbles.push(new bubble(
+                rng(320, false), 250, rng(30, false),
+                {x: rng(3), y: rng(-3, false)}, {x: rng(10), y: 0},
+                500, "hsla(121, 100%, 71%, 1)", `hsla(121, ${80 + rng(30, false)}%, ${50 + rng(30, false)}%, 0.8)`,
+                2, 4000
+            ));
+            this.bubbles.forEach(b => b.draw());
+            this.bubbles = this.bubbles.filter(b => b.lifetime > 0);
+            hctx.globalAlpha = 1;
+            if (this.alpha == 0 || !gInGame) {
+                this.lifetime = 0;
+                flaskGoing = false;
+            }
+        };
+    }
+
+    // ── dodgeEffect ──────────────────────────────────────────────────
+    // Orange streak sweeping across the canvas on dodge.
+    function dodgeEffect() {
+        this.duration  = 1000;
+        this.particles = [];
+        this.start     = Date.now();
+        this.elapsed   = 0;
+        this.lifetime  = 1;
+        this.draw = function () {
+            this.x       = -60 + this.elapsed / 1.5;
+            this.elapsed = Date.now() - this.start;
+            this.alpha   = getAlpha(this.elapsed, 300, this.duration, 300, 0.9);
+            hctx.globalAlpha = this.alpha;
+            DrawRect(0, 0, 320, 200, "black");
+            DrawRect(this.x, 0, 30, 200, "orange");
+            hctx.globalAlpha = 1;
+            this.particles.push(new TrailParticle(this.x, rng(200, false), 30, "orange", 500));
+            this.particles.forEach(p => p.draw());
+            this.particles = this.particles.filter(p => p.lifetime > 0);
+            if (this.x > 320 || this.alpha === 0 || !gInGame) {
+                this.lifetime = 0;
+                dodgeGoing = false;
+            }
+        };
+    }
+
+    // ── EnterSafe / ExitSafe ─────────────────────────────────────────
+    // Expanding hue-shifted ring on safe zone entry and exit.
+    function EnterSafe() {
+        this.alpha  = 1;
+        this.stroke = 5;
+        this.rad    = 1;
+        this.draw = function () {
+            this.rad < 160 ? this.rad += 2 : this.rad = 160;
+            hctx.globalAlpha = this.alpha;
+            DrawStroke(160, 100, this.rad, `hsl(${this.rad * 3 / 4}, 100%, 50%)`, this.stroke);
+            this.stroke < 320 ? this.stroke += 2 : this.alpha > 0.02 ? this.alpha -= 0.02 : this.lifetime = 0;
+            hctx.globalAlpha = 1;
+            if (!gInGame) this.lifetime = 0;
+        };
+    }
+
+    function ExitSafe() {
+        this.alpha  = 1;
+        this.stroke = 5;
+        this.rad    = 1;
+        this.draw = function () {
+            this.rad < 160 ? this.rad += 2 : this.rad = 160;
+            hctx.globalAlpha = this.alpha;
+            DrawStroke(160, 100, this.rad, `hsl(${120 - this.rad * 3 / 4}, 100%, 50%)`, this.stroke);
+            this.stroke < 320 ? this.stroke += 2 : this.alpha > 0.02 ? this.alpha -= 0.02 : this.lifetime = 0;
+            hctx.globalAlpha = 1;
+            if (!gInGame) this.lifetime = 0;
+        };
+    }
+
+    // ── ParticleExplosion ────────────────────────────────────────────
+    // Burst of directional particles centered at (x, y). Used for ability effects.
+    function ParticleExplosion(x, y, color, speed, duration, particleAmount, particleSize, fadeSpeed) {
+        this.start     = Date.now();
+        this.col       = color;
+        this.speed     = speed;
+        this.duration  = duration;
+        this.lifetime  = 2000;
+        this.amount    = particleAmount;
+        this.size      = particleSize;
+        this.x         = x;
+        this.y         = y;
+        this.fadeSpeed = fadeSpeed;
+        this.particles = [];
+        while (this.particles.length < this.amount) {
+            this.yspeed = ((Math.random() - 0.5) * this.speed);
+            this.particles.push(new ExplosionParticle(this.x, this.y, this.size, this.col, this.fadeSpeed,
+                { x: ((Math.random() - 0.5) * this.speed), y: this.yspeed }
+            ));
         }
-      }
+        this.draw = function () {
+            this.lifetime = this.duration - (Date.now() - this.start);
+            this.particles.forEach(p => p.draw());
+            this.particles = this.particles.filter(p => p.alpha > 0);
+        };
     }
 
-    function SetRange(num, min, max) {
-      return Math.min(Math.max(num, min), max)
+    class ExplosionParticle {
+        constructor(x, y, radius, color, fadeSpeed, velocity) {
+            this.x        = x;
+            this.y        = y;
+            this.color    = color;
+            this.radius   = radius;
+            this.velocity = velocity;
+            this.alpha    = 1 * fadeSpeed;
+            this.lifetime = 1;
+        }
+        draw() {
+            hctx.globalAlpha = this.alpha;
+            hctx.beginPath();
+            hctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            hctx.fillStyle = this.color;
+            hctx.fill();
+            this.x     += this.velocity.x;
+            this.y     += this.velocity.y;
+            this.alpha -= 0.01;
+            hctx.globalAlpha = 1;
+        }
     }
 
-function rng(amount, negative = true){
-  return (Math.random()- (negative?0.5:0))*amount;
-}
-
-
-function getAlpha(elapsed, fadeInTime, duration, fadeOutTime, maxAlpha = 1) {
-  if (elapsed < fadeInTime) {
-    return (elapsed / fadeInTime) * maxAlpha;
-  } else if (elapsed < fadeInTime + duration) {
-    return maxAlpha;
-  } else if (elapsed < fadeInTime + duration + fadeOutTime) {
-    return maxAlpha - ((elapsed - fadeInTime - duration) / fadeOutTime) * maxAlpha;
-  } else {
-    return 0;
-  }
-}
-
-class basicEffect {
-  constructor( duration = 1000){
-    this.start = Date.now();
-    this.duration = duration;
-    this.elapsed = 0;
-    this.lifetime = 1
-  }
-  update (){
-    this.elapsed = Date.now() - this.start;
-    if (this.elapsed > this.duration){
-      this.lifetime = 0;
+    // ── levelUpEffect ────────────────────────────────────────────────
+    // Expanding radial ring with rising arrow lines on level up.
+    function levelUpEffect() {
+        this.start     = Date.now();
+        this.particles = [];
+        this.lifetime  = 1;
+        setTimeout(() => {
+            this.particles.push(new MovingArrow(160, 200, 160, 200, 0, 4, "yellow"));
+            setTimeout(() => {
+                this.particles.push(new MovingArrow(160, 200, 160, 200, 0, 4, "yellow"));
+            }, 800);
+        }, 500);
+        this.draw = function () {
+            this.elapsed = Date.now() - this.start;
+            this.alpha   = getAlpha(this.elapsed, 600, 2000, 600);
+            DrawRect(0, 0, 320, 200, `hsla(0,0%,0%,${this.alpha})`);
+            const bgGrad = hctx.createRadialGradient(160, 100, this.elapsed / 3, 160, 100, this.elapsed / 3 + 30);
+            bgGrad.addColorStop(0,   `hsla(0,0%,0%,0)`);
+            bgGrad.addColorStop(0.5, `yellow`);
+            bgGrad.addColorStop(1,   `hsla(0,0%,0%,0)`);
+            DrawRect(0, 0, 320, 200, bgGrad);
+            this.particles.forEach(p => p.draw());
+            this.particles = this.particles.filter(p => p.lifetime > 0);
+            if (this.alpha == 0) this.lifetime = 0;
+            if (!gInGame) this.lifetime = 0;
+        };
     }
-  }
-}
 
-class wobblyMotion extends basicEffect {
-  constructor(x,y,speed,wobbleMove, wobbleSpeed, duration){
-  super(duration);
-  this.x = x;
-  this.y = y;
-  this.speed = speed;
-  this.wobbleMove = wobbleMove;
-  this.wobbleSpeed = wobbleSpeed;
-  this.start = Date.now();
-  this.lifetime = 1
-  }
-  update (){
-    super.update();
-    this.elapsed = Date.now() - this.start;
-    this.x = this.x + this.speed.x;
-    this.y = this.y + this.speed.y;
-    const drawX = this.x + Math.sin(this.elapsed/this.wobbleSpeed) * this.wobbleMove.x;
-    const drawY = this.y + Math.sin(this.elapsed/this.wobbleSpeed) * this.wobbleMove.y;
-    return {x:drawX,y:drawY}
-  }
-}
-
-class wobblyExplosionParticle extends wobblyMotion {
-  constructor(x,y,speed,wobbleMove, wobbleSpeed, duration = 1000,color,radius){
-    super(x,y,speed,wobbleMove, wobbleSpeed, duration);
-    this.color = color;
-    this.radius = radius;
-    this.particles = [];
-    this.lifetime = 1
-  }
-  draw(){
-    const pos = super.update();
-    this.particles.push(new TrailParticle(pos.x,pos.y,this.radius,this.color, this.duration/3))
-    
-    this.particles.forEach(p => p.draw());
-    
-    this.particles = this.particles.filter(p => p.lifetime > 0);
-    
-    if (this.elapsed > this.duration){
-      this.lifetime = 0;
+    // ── lowHealth ────────────────────────────────────────────────────
+    // Pulsing red vignette + falling blood particles while health is critical.
+    function lowHealth() {
+        this.start     = Date.now();
+        this.particles = [];
+        this.lifetime  = 1;
+        this.draw = function () {
+            if (rng(1, false) > 0.96)
+                this.particles.push(new wobblyExplosionParticle(rng(320, false), -10, {x: rng(5), y: rng(5, false)}, {x: rng(30, false), y: 0}, 2, 3000, "red", 15));
+            this.elapsed = Date.now() - this.start;
+            const radius = Math.sin(this.elapsed / 200) * 120 + 180;
+            const bgGrad = hctx.createRadialGradient(160, 100, 0, 160, 100, radius);
+            bgGrad.addColorStop(0,   `hsla(0,0%,0%,0)`);
+            bgGrad.addColorStop(0.5, `red`);
+            bgGrad.addColorStop(1,   `hsla(0,0%,0%,0)`);
+            DrawRect(0, 0, 320, 200, bgGrad);
+            this.particles.forEach(p => p.draw());
+            this.particles = this.particles.filter(p => p.lifetime > 0);
+            if (!lowHealthPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95))
+                this.lifetime = 0;
+        };
     }
-  }
-} 
 
-class bubble extends wobblyMotion{
-  constructor(x,y,radius,speed,wobbleMove, wobbleSpeed, strokeCol, fillCol, lineWidth,duration = 1000){
-
-  super(x,y,speed,wobbleMove, wobbleSpeed, duration);
-  this.radius = radius;
-  this.strokeCol = strokeCol;
-  this.fillCol = fillCol;
-  this.lineWidth = lineWidth;
-  this.lifetime = 1
-  }
-  draw(){
-    hctx.beginPath();
-    hctx.strokeStyle = this.strokeCol;
-    hctx.fillStyle = this.fillCol;
-    hctx.lineWidth = this.lineWidth;
-    const pos = super.update();
-    hctx.arc(pos.x, pos.y, this.radius, 0, 2 * Math.PI);
-    hctx.stroke();
-    hctx.fill();
-    if (this.elapsed > this.duration){
-      this.lifetime = 0;
+    // ── lowMana ──────────────────────────────────────────────────────
+    // Pulsing mana-colored vignette + side-entering particles while mana is critical.
+    function lowMana() {
+        this.start     = Date.now();
+        this.particles = [];
+        this.mnColor   = hexToHSL(manaColor); // [H, S, L]
+        this.lifetime  = 1;
+        this.draw = function () {
+            if (rng(1, false) > 0.96) {
+                const dir = rng(1, false) > 0.5;
+                this.particles.push(new wobblyExplosionParticle(
+                    dir ? -10 : 330, rng(200, false),
+                    {x: dir ? 3 : -3, y: rng(5)},
+                    {x: rng(0, false), y: rng(30, false)},
+                    2, 3000,
+                    `hsla(${this.mnColor[0]}, ${this.mnColor[1]}%, ${this.mnColor[2]}%, .3)`,
+                    15
+                ));
+            }
+            this.elapsed = Date.now() - this.start;
+            const radius = Math.sin(this.elapsed / 200) * 120 + 180;
+            const bgGrad = hctx.createRadialGradient(160, 100, 0, 160, 100, radius);
+            bgGrad.addColorStop(0,   `hsla(0,0%,0%,0)`);
+            bgGrad.addColorStop(0.5, `hsla(${this.mnColor[0]}, ${this.mnColor[1]}%, ${this.mnColor[2]}%, .8)`);
+            bgGrad.addColorStop(1,   `hsla(0,0%,0%,0)`);
+            DrawRect(0, 0, 320, 200, bgGrad);
+            this.particles.forEach(p => p.draw());
+            this.particles = this.particles.filter(p => p.lifetime > 0);
+            if (!lowManaPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95))
+                this.lifetime = 0;
+        };
     }
-  }
-}
-
-  function lowHealth() {
-    this.start = Date.now();
-    this.particles = []
-    this.lifetime = 1;
-
-    this.draw = function() {
-      if (rng(1,false)>0.96)
-      this.particles.push(new wobblyExplosionParticle(rng(320,false),-10,{x:rng(5),y:rng(5, false)},{x:rng(30,false),y:0},2,3000,"red",15))
-      
-      this.elapsed = Date.now() - this.start;
-      const radius = Math.sin(this.elapsed / 200) * 120 + 180;
-      const bgGrad = hctx.createRadialGradient(160, 100, 0, 160, 100, radius);
-      bgGrad.addColorStop(0, `hsla(0,0%,0%,0)`);
-      bgGrad.addColorStop(0.5, `red`);
-      bgGrad.addColorStop(1, `hsla(0,0%,0%,0)`);
-      DrawRect(0, 0, 320, 200, bgGrad);
-      
-      this.particles.forEach(particle => {
-        particle.draw();
-      });
-      
-      this.particles = this.particles.filter(particle => particle.lifetime > 0);
-      
-      if (!lowHealthPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95)){
-        this.lifetime = 0;
-      }
-    };
-  }
+    //#endregion
 
 
-function lowMana() {
-  this.start = Date.now();
-  this.particles = []
-  this.mnColor = hexToHSL(manaColor)
-  this.lifetime = 1;
+    //#region Helpers
+    // ═══════════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS & CLASSES
+    // ═══════════════════════════════════════════════════════════════
 
-  this.draw = function() {
-    if (rng(1, false) > 0.96) {
-      const dir = rng(1, false) > 0.5;
-      this.particles.push(new wobblyExplosionParticle(dir? -10 :330 , rng(200,false), {x: dir?3:-3, y: rng(5)}, {x: rng(0, false), y: rng(30,false)}, 2, 3000, `hsla(${this.mnColor.h}, ${this.mnColor.s}%, ${this.mnColor.l}%, .3)`, 15));
-    }
-    this.elapsed = Date.now() - this.start;
-    const radius = Math.sin(this.elapsed / 200) * 120 + 180;
-    const bgGrad = hctx.createRadialGradient(160, 100, 0, 160, 100, radius);
-    bgGrad.addColorStop(0, `hsla(0,0%,0%,0)`);
-    bgGrad.addColorStop(0.5, `hsla(${this.mnColor.h}, ${this.mnColor.s}%, ${this.mnColor.l}%, .8)`);
-    bgGrad.addColorStop(1, `hsla(0,0%,0%,0)`);
-    DrawRect(0, 0, 320, 200, bgGrad);
-    this.particles.forEach(p => p.draw());
-    
-    this.particles = this.particles.filter(p => p.lifetime > 0);
-    
-    if (!lowManaPlaying || (DeadBlack_Meter.value >= 0.95 && DeadRed_Meter.value >= 0.95)) {
-      this.lifetime = 0;
-    }
-  };
-}
+    // ─── DRAW PRIMITIVES ────────────────────────────────────────────
 
-
-function MovingArrow(x=160, y=320, width=320, height=150,rotation=90,speed=3, color="red") {
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.height = height;
-      this.color = color;
-      this.rotation = rotation;
-      this.speed = speed;
-      this.lifetime = 1
-      this.draw = function () {
+    // DrawRect: filled rectangle — also accepts canvas gradient objects as color
+    function DrawRect(x, y, width, height, color) {
         hctx.beginPath();
-        hctx.save();
-        hctx.translate(160, 100);
-        hctx.rotate(this.rotation * Math.PI / 180);
-        hctx.translate(-160, -100);
-          DrawArrow(this.x, this.y, this.width, this.height, this.color)
-        hctx.restore();
-        this.y -= this.speed;
-        if (this.y < -this.height) {
-          this.lifetime = 0;
-        }
-      }
+        hctx.fillStyle = color;
+        hctx.fillRect(x, y, width, height);
     }
 
-    function RippleEffect(x=160, y=100, speed=1, duration=3000, rippleWidth=20, color="red", inOrOut="out", fillOrStroke="stroke", amountOfRipples=4, background=true) {
-          this.col = color;
-          this.speed = speed;
-          this.dur = duration;
-          this.width = rippleWidth;
-          this.start = Date.now();
-          this.lifetime;
-          this.x = x;
-          this.y = y;
-          this.fill = fillOrStroke;
-          this.radius = 0;
-          this.amount = amountOfRipples;
-          this.background = background;
-          if (inOrOut == "in") {
+    // DrawCircle: filled circle — orbs, sparks, particles
+    function DrawCircle(x, y, radius, color) {
+        hctx.beginPath();
+        hctx.fillStyle = color;
+        hctx.arc(x, y, radius, 0, 2 * Math.PI);
+        hctx.fill();
+    }
+
+    // DrawStroke: outlined circle (no fill) — rings, halos
+    function DrawStroke(x, y, radius, color, stroke) {
+        hctx.beginPath();
+        hctx.strokeStyle = color;
+        hctx.lineWidth   = stroke;
+        hctx.arc(x, y, radius, 0, 2 * Math.PI);
+        hctx.stroke();
+    }
+
+    // StrokeCircle: outlined circle with fixed lineWidth=30 (legacy alias)
+    function StrokeCircle(x, y, width, height, color) {
+        hctx.beginPath();
+        hctx.strokeStyle = color;
+        hctx.lineWidth   = 30;
+        hctx.arc(x, y, width, 0, 2 * Math.PI);
+        hctx.stroke();
+    }
+
+    // renderPath: draws an SVG path string scaled and translated onto the canvas
+    function renderPath(x, y, path, color, size, type = "fill", strokeWidth = 5) {
+        hctx.fillStyle   = color;
+        hctx.strokeStyle = color;
+        hctx.save();
+        hctx.transform(size / 10, 0, 0, size / 10, 160 - 10 * 16.5, 79 - size * 7.5);
+        hctx.translate(x, y);
+        let ex = new Path2D(path);
+        if (type == "fill") {
+            hctx.fill(ex);
+        } else if (type == "stroke") {
+            hctx.lineWidth = strokeWidth;
+            hctx.stroke(ex);
+        }
+        hctx.restore();
+    }
+
+    // DrawArrow: V-shaped chevron stroke used by levelUpEffect
+    function DrawArrow(x, y, width, angle, color) {
+        hctx.beginPath();
+        hctx.moveTo(x - width, y + angle);
+        hctx.lineTo(x, y);
+        hctx.lineTo(x + width, y + angle);
+        hctx.strokeStyle = color;
+        hctx.lineWidth   = 30;
+        hctx.stroke();
+    }
+
+    // getXAndYForPathPoint: linear interpolation between two {x,y} points
+    function getXAndYForPathPoint(point1, point2, percentage) {
+        let speed = { x: (point2.x - point1.x) * percentage, y: (point2.y - point1.y) * percentage };
+        return { x: point1.x + speed.x, y: point1.y + speed.y };
+    }
+
+    // ─── ANIMATION HELPERS ──────────────────────────────────────────
+
+    // MovingArrow: rising chevron used by levelUpEffect
+    function MovingArrow(x = 160, y = 320, width = 320, height = 150, rotation = 90, speed = 3, color = "red") {
+        this.x        = x;
+        this.y        = y;
+        this.width    = width;
+        this.height   = height;
+        this.color    = color;
+        this.rotation = rotation;
+        this.speed    = speed;
+        this.lifetime = 1;
+        this.draw = function () {
+            hctx.beginPath();
+            hctx.save();
+            hctx.translate(160, 100);
+            hctx.rotate(this.rotation * Math.PI / 180);
+            hctx.translate(-160, -100);
+            DrawArrow(this.x, this.y, this.width, this.height, this.color);
+            hctx.restore();
+            this.y -= this.speed;
+            if (this.y < -this.height) this.lifetime = 0;
+        };
+    }
+
+    // RippleEffect: concentric expanding (or contracting) rings
+    function RippleEffect(x = 160, y = 100, speed = 1, duration = 3000, rippleWidth = 20, color = "red", inOrOut = "out", fillOrStroke = "stroke", amountOfRipples = 4, background = true) {
+        this.col        = color;
+        this.speed      = speed;
+        this.dur        = duration;
+        this.width      = rippleWidth;
+        this.start      = Date.now();
+        this.lifetime;
+        this.x          = x;
+        this.y          = y;
+        this.fill       = fillOrStroke;
+        this.radius     = 0;
+        this.amount     = amountOfRipples;
+        this.background = background;
+        if (inOrOut == "in") {
             this.radius = 200 + (this.width * (this.amount * 2));
-            this.speed = -this.speed
-          }
-          this.draw = function () {
+            this.speed  = -this.speed;
+        }
+        this.draw = function () {
             if (this.background) {
-              hctx.beginPath();
-              hctx.fillStyle = "black";
-              hctx.fillRect(0, 0, 320, 200);
+                hctx.beginPath();
+                hctx.fillStyle = "black";
+                hctx.fillRect(0, 0, 320, 200);
             }
             hctx.lineWidth = this.width;
-            hctx.beginPath();
             for (let i = 0; i < this.amount; i++) {
-              hctx.beginPath();
-              if (this.radius - i * (this.width * 2) > 0) {
-                hctx.arc(this.x, this.y, this.radius - i * (this.width * 2), 0, 2 * Math.PI);
-              }
-              if (this.fill == "fill") {
-                hctx.fillStyle = this.col;
-                hctx.fill();
-              } else {
-                hctx.strokeStyle = this.col;
-                hctx.stroke();
-              }
+                hctx.beginPath();
+                if (this.radius - i * (this.width * 2) > 0) {
+                    hctx.arc(this.x, this.y, this.radius - i * (this.width * 2), 0, 2 * Math.PI);
+                }
+                if (this.fill == "fill") {
+                    hctx.fillStyle = this.col;
+                    hctx.fill();
+                } else {
+                    hctx.strokeStyle = this.col;
+                    hctx.stroke();
+                }
             }
-
-            this.radius += this.speed;
+            this.radius  += this.speed;
             this.lifetime = this.dur - (Date.now() - this.start);
-            if (this.lifetime <= 0) {
-              utilityPlayed = false;
-            }
-          }
+            if (this.lifetime <= 0) utilityPlayed = false;
+        };
+    }
+
+    // TrailParticle: shrinking circle that fades over `duration` ms
+    function TrailParticle(x = 160, y = 100, size = 10, color = "red", duration = 2000) {
+        this.x        = x;
+        this.y        = y;
+        this.size     = size;
+        this.color    = color;
+        this.duration = duration;
+        this.start    = Date.now();
+        this.lifetime = 1;
+        this.draw = function () {
+            this.elapsed = Date.now() - this.start;
+            this.alpha   = SetRange(1 - (this.elapsed / this.duration), 0, 1);
+            hctx.globalAlpha = this.alpha;
+            DrawCircle(this.x, this.y, this.size * this.alpha, this.color);
+            hctx.globalAlpha = 1;
+            if (this.elapsed > this.duration) this.lifetime = 0;
+        };
+    }
+
+    // ─── BASE CLASSES ───────────────────────────────────────────────
+
+    // basicEffect: base class providing elapsed-time tracking and lifetime management
+    class basicEffect {
+        constructor(duration = 1000) {
+            this.start    = Date.now();
+            this.duration = duration;
+            this.elapsed  = 0;
+            this.lifetime = 1;
         }
-
-
-
-
-function DrawRect(x, y, width, height, color) {
-  hctx.beginPath();
-  hctx.fillStyle = color;
-  hctx.fillRect(x, y, width, height);
-};
-
-function DrawCircle(x, y, radius, color) {
-  hctx.beginPath();
-  hctx.fillStyle = color;
-  hctx.arc(x, y, radius, 0, 2 * Math.PI)
-  hctx.fill();
-};
-
-function StrokeCircle(x, y, width, height, color) {
-  hctx.beginPath();
-  hctx.strokeStyle = color;
-  hctx.lineWidth = 30;
-  hctx.arc(x, y, width, 0, 2 * Math.PI);
-  hctx.stroke();
-};
-
-function renderPath(x, y, path, color, size, type="fill", strokeWidth = 5) {
-  hctx.fillStyle = color;
-  hctx.strokeStyle = color;
-  hctx.save();
-  hctx.transform(size / 10, 0, 0, size / 10, 160 - 10 * 16.5, 79 - size * 7.5);
-  hctx.translate(x, y);
-  let ex = new Path2D(path);
-
-  if (type == "fill"){
-    hctx.fill(ex);
-  } else if (type == "stroke"){
-    hctx.lineWidth = strokeWidth;
-    hctx.stroke(ex);
-  }
-
-  hctx.restore();
-}
-
-
-
-  function DrawArrow(x, y, width, angle, color) {
-    hctx.beginPath();
-    hctx.moveTo(x - width, y + angle);
-    hctx.lineTo(x, y);
-    hctx.lineTo(x + width, y + angle);
-    hctx.strokeStyle = color;
-    hctx.lineWidth = 30;
-    hctx.stroke();
-  }
-
-
-function getXAndYForPathPoint(point1, point2, percentage) {
-    let speed = { x: (point2.x - point1.x) * percentage, y: (point2.y - point1.y) * percentage }
-    return { x: point1.x + speed.x, y: point1.y + speed.y }
-  }
-
-
-function Meter(size, Callback) {
-  this.size = size;
-  this.value = 0;
-  this.diff = 0;
-  this.increased = false;
-  this.decreased = false;
-  let values = [];
-
-  this.setValue = function (updatedValue) {
-    values.push(updatedValue);
-    if (values.length > this.size) {
-      values.shift();
+        update() {
+            this.elapsed = Date.now() - this.start;
+            if (this.elapsed > this.duration) this.lifetime = 0;
+        }
     }
 
-    for (let i = 0; i < values.length - 1; i++) {
-      if (values[i] !== values[i + 1]) return;
-    }
-    if (this.value !== values[0]) {
-      this.diff = Math.abs(this.value - values[0]);
-      this.increased = this.value < values[0];
-      this.decreased = this.value > values[0];
-      this.value = values[0];
-      Callback();
-    }
-  };
-}
-
-
-function hexToHSL(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-
-    var r = parseInt(result[1], 16);
-    var g = parseInt(result[2], 16);
-    var b = parseInt(result[3], 16);
-
-    (r /= 255), (g /= 255), (b /= 255);
-    var max = Math.max(r, g, b),
-      min = Math.min(r, g, b);
-    var h,
-      s,
-      l = (max + min) / 2;
-
-    if (max === min) {
-      h = s = 0; // achromatic
-    } else {
-      var d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      switch (max) {
-        case r:
-          h = (g - b) / d + (g < b ? 6 : 0);
-          break;
-        case g:
-          h = (b - r) / d + 2;
-          break;
-        case b:
-          h = (r - g) / d + 4;
-          break;
-      }
-      h /= 6;
+    // wobblyMotion: base class for physics-driven particles with sine-wave wobble
+    class wobblyMotion extends basicEffect {
+        constructor(x, y, speed, wobbleMove, wobbleSpeed, duration) {
+            super(duration);
+            this.x           = x;
+            this.y           = y;
+            this.speed       = speed;
+            this.wobbleMove  = wobbleMove;
+            this.wobbleSpeed = wobbleSpeed;
+            this.start       = Date.now();
+            this.lifetime    = 1;
+        }
+        update() {
+            super.update();
+            this.elapsed = Date.now() - this.start;
+            this.x += this.speed.x;
+            this.y += this.speed.y;
+            const drawX = this.x + Math.sin(this.elapsed / this.wobbleSpeed) * this.wobbleMove.x;
+            const drawY = this.y + Math.sin(this.elapsed / this.wobbleSpeed) * this.wobbleMove.y;
+            return { x: drawX, y: drawY };
+        }
     }
 
-    s = s * 100;
-    s = Math.round(s);
-    l = l * 100;
-    l = Math.round(l);
-    h = Math.round(360 * h);
+    // wobblyExplosionParticle: spawns trailing circles along a wobbly path
+    class wobblyExplosionParticle extends wobblyMotion {
+        constructor(x, y, speed, wobbleMove, wobbleSpeed, duration = 1000, color, radius) {
+            super(x, y, speed, wobbleMove, wobbleSpeed, duration);
+            this.color     = color;
+            this.radius    = radius;
+            this.particles = [];
+            this.lifetime  = 1;
+        }
+        draw() {
+            const pos = super.update();
+            this.particles.push(new TrailParticle(pos.x, pos.y, this.radius, this.color, this.duration / 3));
+            this.particles.forEach(p => p.draw());
+            this.particles = this.particles.filter(p => p.lifetime > 0);
+            if (this.elapsed > this.duration) this.lifetime = 0;
+        }
+    }
 
-    var colors = [];
-    colors['h'] = h;
-    colors['s'] = s;
-    colors['l'] = l;
+    // bubble: wobbly rising circle with stroke — used by flaskEffect
+    class bubble extends wobblyMotion {
+        constructor(x, y, radius, speed, wobbleMove, wobbleSpeed, strokeCol, fillCol, lineWidth, duration = 1000) {
+            super(x, y, speed, wobbleMove, wobbleSpeed, duration);
+            this.radius    = radius;
+            this.strokeCol = strokeCol;
+            this.fillCol   = fillCol;
+            this.lineWidth = lineWidth;
+            this.lifetime  = 1;
+        }
+        draw() {
+            hctx.beginPath();
+            hctx.strokeStyle = this.strokeCol;
+            hctx.fillStyle   = this.fillCol;
+            hctx.lineWidth   = this.lineWidth;
+            const pos = super.update();
+            hctx.arc(pos.x, pos.y, this.radius, 0, 2 * Math.PI);
+            hctx.stroke();
+            hctx.fill();
+            if (this.elapsed > this.duration) this.lifetime = 0;
+        }
+    }
 
-    return colors;
-  }
+    // ─── UTILITIES ──────────────────────────────────────────────────
 
-  function onCanvasTapped(x, y) {
-      latestLocation = {x:x, y:y}; 
-  }
+    // lerp: linear interpolation — used for smooth bar fill transitions
+    function lerp(a, b, speed) {
+        return a + speed * (b - a);
+    }
 
-  window.requestAnimationFrame(update);
+    // SetRange: clamp num between min and max
+    function SetRange(num, min, max) {
+        return Math.min(Math.max(num, min), max);
+    }
 
+    // rng: random value in [-amount/2, amount/2] (or [0, amount] if negative=false)
+    function rng(amount, negative = true) {
+        return (Math.random() - (negative ? 0.5 : 0)) * amount;
+    }
+
+    // getAlpha: fade-in → hold → fade-out envelope returning 0–maxAlpha
+    function getAlpha(elapsed, fadeInTime, duration, fadeOutTime, maxAlpha = 1) {
+        if (elapsed < fadeInTime) {
+            return (elapsed / fadeInTime) * maxAlpha;
+        } else if (elapsed < fadeInTime + duration) {
+            return maxAlpha;
+        } else if (elapsed < fadeInTime + duration + fadeOutTime) {
+            return maxAlpha - ((elapsed - fadeInTime - duration) / fadeOutTime) * maxAlpha;
+        } else {
+            return 0;
+        }
+    }
+
+    // hexToHSL: converts a CSS hex color string to [H(0–360), S(0–100), L(0–100)].
+    // Returns an array so callers can use index access or destructuring.
+    function hexToHSL(hex) {
+        const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+        const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+        const max = Math.max(...rgb);
+        const min = Math.min(...rgb);
+        const l   = (max + min) / 2;
+        if (max === min) return [0, 0, Math.round(l * 100)];
+        const d = max - min;
+        const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        let h;
+        const [nr, ng, nb] = rgb;
+        if      (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+        else if (max === ng) h = (nb - nr) / d + 2;
+        else                 h = (nr - ng) / d + 4;
+        return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)];
+    }
+
+    // Meter(size, callback): frame-stabilizing debouncer for vision signals.
+    // setValue(v) updates .value and fires callback only when the last `size`
+    // readings are all identical. .diff / .increased / .decreased track changes.
+    function Meter(size, callback) {
+        this.size      = size;
+        this.value     = 0;
+        this.diff      = 0;
+        this.increased = false;
+        this.decreased = false;
+        let values = [];
+        this.setValue = function (updatedValue) {
+            values.push(updatedValue);
+            if (values.length > this.size) values.shift();
+            for (let i = 0; i < values.length - 1; i++) {
+                if (values[i] !== values[i + 1]) return;
+            }
+            if (this.value !== values[0]) {
+                this.diff      = Math.abs(this.value - values[0]);
+                this.increased = this.value < values[0];
+                this.decreased = this.value > values[0];
+                this.value     = values[0];
+                callback();
+            }
+        };
+    }
+
+    // onCanvasTapped: called by SignalRGB when the user clicks the canvas.
+    // Tracks cursor position so ability effects spawn at the click location.
+    function onCanvasTapped(x, y) {
+        latestLocation = { x: x, y: y };
+    }
+    //#endregion
+
+    window.requestAnimationFrame(update);
 </script>
