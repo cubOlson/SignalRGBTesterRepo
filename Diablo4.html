@@ -466,6 +466,7 @@
     let lowManaPlaying     = false;
     let waypointGoing      = false;
     let eventCompleteGoing = false;
+    let skillPointGoing = false;
 
     let latestLocation = { x: 0, y: 0 };
 
@@ -808,7 +809,8 @@
         if (hasSkillGreyMeter.value >= 0.95 && hasSkillYellowMeter.value >= 0.95 &&
             gInGame && engine.vision.inGame >= 0.95) {
             if (enableLevelUp) effects.push(new hasSkillPoint());
-        }
+            skillPointGoing = true
+        } else if (gInGame && hasSkillGreyMeter.value <= .1 && hasSkillYellowMeter.value <= .1) skillPointGoing = false
     }
 
     let questGoing = false;
@@ -1106,7 +1108,7 @@
             DrawStroke(160, 100, this.rad, `hsla(60, 100%, 50%, .25)`, this.stroke);
             this.rad < 300 ? this.rad += 3 : this.lifetime = 0;
             this.stroke += 2;
-            if (!gInGame) this.lifetime = 0;
+            if (!gInGame || !skillPointGoing) this.lifetime = 0;
         };
     }
 
