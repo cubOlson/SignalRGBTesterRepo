@@ -1,6 +1,6 @@
 <head>
   <title>League of Legends Devv</title>
-  <meta description="Metering and ambience for League of Legends. v1.09" />
+  <meta description="Metering and ambience for League of Legends. v1.10" />
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -220,7 +220,7 @@
   </meta>
 
   <meta meter="greyDragon" tags="league" type="area" x=".9490" y=".9140" width=".004" height=".01" 
-    h="0-360" s="0-40" l="40-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100" >
+    h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100" >
     <resolution aspect="3.55:1" x="0.9740" y="0.9135" width="0.0029" height="0.0111" />
     <resolution aspect="24:10" x=".9613" y=".9150" width=".0035" height=".0090" />
     <resolution aspect="16:11" x="0.9432" y="0.9150" width="0.0062" height="0.0092" />
@@ -240,7 +240,7 @@
   </meta>
 
   <meta meter="greyBaron" tags="league" type="area" x=".9038" y=".8175" width=".0035" height=".01"
-    h="1-360" s="1-30" l="30-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100" >
+    h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100" >
     <resolution aspect="3.55:1" x="0.9526" y="0.8185" width="0.0010" height="0.0065" />
     <resolution aspect="24:10" x="0.9275" y="0.8172" width="0.0039" height="0.0084" />
     <resolution aspect="16:11" x="0.8929" y="0.8168" width="0.0040" height="0.0112" />
@@ -316,7 +316,7 @@
     <resolution aspect="16:11" x="0.6741" y="0.1388" width="0.0023" height="0.0007" />
 
     <resolution size="3840x2160" x="0.6603" y="0.1366" width="0.0024" height="0.0014" />
-    <resolution size="2560x1080" x="0.6151" y="0.1381" width="0.0012" height="0.0018"  />
+    <resolution size="2560x1080" x="0.6206" y="0.1335" width="0.0011" height="0.0046"  />
   </meta>
 
   <meta meter="alliedTurret" tags="league" x="0.6062" y="0.1326" width="0.0043" height="0.0063" 
@@ -326,7 +326,7 @@
     <resolution aspect="16:11" x="0.6180" y="0.1325" width="0.0036" height="0.0050" />
 
     <resolution size="3840x2160"  x="0.6004" y="0.1357" width="0.0021" height="0.0014" />
-    <resolution size="2560x1080" x="0.5744" y="0.1418" width="0.0016" height="0"    />
+    <resolution size="2560x1080" x="0.5752" y="0.1362" width="0.0016" height="0.0037"    />
   </meta>
 
   <meta meter="blueConfirmation" tags="league" type="area" x=".4869" y=".1701" width=".0093" height=".0001" 
@@ -340,7 +340,7 @@
   </meta>
 
   <meta meter="enemyTurret" tags="league" type="area" x="0.6107" y="0.1399" width="0.0011" height="0.0028"  
-    h="190-210" s="50-100" l="75-100" hdr-h="180-210" hdr-s="50-75" hdr-l="90-100">
+    h="-20-20" s="50-75" l="75-100" hdr-h="-20-20" hdr-s="0-70" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.5531" y="0.1333" width="0.0021" height="0.0037" />
     <resolution aspect="24:10" x=".5817" y=".1368" width=".0020" height=".0020" /> 
     <resolution aspect="16:11" x="0.6202" y="0.1376" width="0.0015" height="0.0012" />
@@ -350,7 +350,7 @@
   </meta>
 
   <meta meter="firstEnemyTurret" tags="league" type="area" x="0.6589" y="0.1369" width="0.0031" height="0.0028"
-    h="190-210" s="50-100" l="75-100" hdr-h="180-210" hdr-s="50-75" hdr-l="90-100">
+    h="-20-20" s="50-75" l="75-100" hdr-h="-20-20" hdr-s="0-50" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.5802" y="0.1361" width="0.0005" height="0.0010" />
     <resolution aspect="24:10" x="0.6180" y="0.1368" width="0.0013" height="0.0037" />
     <resolution aspect="16:11" x="0.6741" y="0.1388" width="0.0023" height="0.0007" />
@@ -1930,7 +1930,7 @@
 
   var greyDPlayed = false;
   function dragonEffects() {
-    if (greyDragonMeter.value > .45 && greyDragonMeter.value < .9 && !greyDPlayed && enableDragon) {
+    if (greyDragonMeter.value > .3 && greyDragonMeter.value < .9 && !greyDPlayed && enableDragon) {
       greyDPlayed = true;
       effects.push(new dragonEffect("grey", "blue"));
     }
@@ -1942,7 +1942,7 @@
 
   var greyBPlayed = false;
   function baronEffects() {
-    if (greyBaronMeter.value >= .4 && greyBaronMeter.value <= .9 && !greyBPlayed && enableDragon) {
+    if (greyBaronMeter.value >= .3 && greyBaronMeter.value <= .9 && !greyBPlayed && enableDragon) {
       greyBPlayed = true;
       effects.push(new baronEffect("grey", "blue"));
     }
@@ -2006,11 +2006,11 @@
   var turretTimer = GetTime();
   function turretEffects() {
     var turretElapsed = GetTime() - turretTimer;
-    if ((alliedTurretMeter.value > .65 || firstAlliedTurretMeter.value > .65) && enableTower && engine.vision.blueConfirmation <.1 && turretElapsed >= 5000) {
+    if ((alliedTurretMeter.value > .90 || firstAlliedTurretMeter.value > .90) && enableTower && engine.vision.blueConfirmation <.1 && turretElapsed >= 5000) {
       effects.push(new fallingTurret("blue"));
       turretTimer = GetTime();
     }
-    if ((enemyTurretMeter.value > .65 || firstEnemyTurretMeter.value > .65) && enableTower && engine.vision.blueConfirmation >= .95 && turretElapsed >= 5000) {
+    if ((enemyTurretMeter.value > .90 || firstEnemyTurretMeter.value > .90) && enableTower && engine.vision.blueConfirmation >= .95 && turretElapsed >= 5000) {
       effects.push(new fallingTurret("red"));
       turretTimer = GetTime();
     }
