@@ -1,10 +1,12 @@
 <head>
   <title>Cyberpunk 2077 Dev</title>
-  <meta description="Do it for Jackie (in full RGB). v1.31" />
+  <meta description="Do it for Jackie (in full RGB). v1.3.2" />
   <meta publisher="SignalRGB" />
-
-  <meta property="screenBrightness" label="Ambience Brightness" type="number" default="100" min="0" max="100">
-  <meta property="backColor" label="Background Color" type="color" default="#000000" min="0" max="360" />
+  <meta property="backgroundMode" label="Background Mode" type="list" 
+        values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+        default="Ambience"/>
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
   <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)"
   tooltip="When this is enabled you will be able to see the health and shieldbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game"
   type="boolean" default="0" />
@@ -228,7 +230,7 @@
   </meta>
 
   <meta meter="scanRed1" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.5034" y="0.5246" width="0" height="0"
-    h="-30-30" s="40-80" l="75-100" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
+    h="-20-20" s="40-80" l="50-100" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
     <resolution aspect="3.55:1" x="0.4284" y="0.4991" width="0.0003" height="0.0000" />
     <resolution aspect="24:10" x="0.3933" y="0.4965" width="0.0003" height="0" />
     <resolution aspect="16:11" x="0.3564" y="0.4978" width="0.0008" height="0.0006" />
@@ -238,7 +240,7 @@
   </meta>
 
   <meta meter="scanRed2" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.4638" y="0.6905" width="0.0015" height="-0.0019"
-    h="-30-30" s="40-80" l="75-100" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
+    h="-20-20" s="40-80" l="75-100" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
     <resolution aspect="3.55:1" x="0.4831" y="0.6889" width="0.0008" height="0" />
     <resolution aspect="24:10" x="0.4744" y="0.6868" width="0.0012" height="0.000" />
     <resolution aspect="16:11" x="0.465" y="0.6704" width="0.0024" height="0" />
@@ -248,7 +250,7 @@
   </meta>
 
   <meta meter="scanNotRed" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.4643" y="0.6821" width="0.0031" height="-0.0009" 
-    h="-30-30" s="40-70" l="15-50" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
+    h="-20-20" s="40-80" l="75-100" hdr-h="0-60" hdr-s="25-80" hdr-l="50-100" type="area">
     <resolution aspect="3.55:1" x="0.5237" y="0.4955" width="0.0012" height="0.0062" />
     <resolution aspect="24:10" x="0.5347" y="0.4955" width="0.0032" height="0.0069" />
     <resolution aspect="16:11" x="0.5483" y="0.5897" width="0.0004" height="-0.0006"   />
@@ -429,6 +431,10 @@
   var width = 320;
   var height = 200;
   var effects = [];
+  var hiddenCanvas = document.createElement("canvas");
+  hiddenCanvas.width = width;
+  hiddenCanvas.height = height;
+  var hctx = hiddenCanvas.getContext("2d");
   let gInGame = false
   let gCrouched = false
   let gCall = false
@@ -449,6 +455,7 @@
   let gNoBack = false
   let copyAlpha = 1
   let gHUDAlpha = 0
+  let gAlpha = 1
 
   let InGameBlue1 = new Meter(5, inGameCallback)
   let InGameRed1 = new Meter(5, inGameCallback)
@@ -492,16 +499,15 @@
   let JoytoyRedMeter2 = new Meter(15, joytoyCallback)
  
   function update() {
-    DrawRect(0, 0, 320, 200, backColor)
+    hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
+    hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
+    hctx.fillRect(0, 0, 320, 200);
+    backgroundHandler()
 
     if(!gInGame && idleOn && !gCall){
       if(gCount < 100) gCount++
       if(gCount == 100 && effects.length < 1) effects.push(new idle())
     } else gCount = 0
-
-    if(gNoBack) copyAlpha >=.01 ? copyAlpha -= .01 : copyAlpha = 0
-    else copyAlpha < 1 ? copyAlpha += .01 : copyAlpha = 1
-    copyScreen(copyAlpha * screenBrightness / 100)
 
     InGameBlue1.setValue(engine.vision.inGameMapBlue)
     InGameRed1.setValue(engine.vision.inGameMapRed)
@@ -535,24 +541,148 @@
     
 
     
-    effects.forEach((ele, i) => {
-      ele.draw()
-      if(ele.lifetime <= 0){
-        effects.splice(i, 1)
-      }
-    })
+    //Effect handler 
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw();
+    }
+    // Remove dead effects with filter
+    effects = effects.filter(ele =>
+      ele.lifetime === undefined || ele.lifetime > 0
+    );
+
+    
 
     if(!gHealth) gHUDAlpha >=.01 ? gHUDAlpha -= .01 : gHUDAlpha = 0
     else gHUDAlpha < 1 ? gHUDAlpha += .01 : gHUDAlpha = 1
-    ctx.globalAlpha = gHUDAlpha
+    hctx.globalAlpha = gHUDAlpha
     drawHud()
-    ctx.globalAlpha = 1
-
+    hctx.globalAlpha = 1
+    ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(hiddenCanvas, 0, 0);
     window.requestAnimationFrame(update);
   };
 
+  //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            hctx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hctx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            hctx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            hctx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion  
+
   function inGameCallback(){
-    //if((InGameBlue1.value >= .75 || InGameRed1.value >= .75 || InGameGreen1.value >= .75) && ((InGameBlue2.value >= .75 || InGameRed2.value >= .75) || (InGameBlue3.value >= .75 || InGameRed3.value >= .75))){
     if(((InGameBlue2.value >= .75 || InGameRed2.value >= .75) || (InGameBlue3.value >= .75 || InGameRed3.value >= .75))){
       gInGame = true
     } 
@@ -752,9 +882,9 @@
       if(this.half) this.alpha > 0 ? this.alpha -= .01 : this.lifetime = 0
       else this.alpha < 1 ? this.alpha += .01 : this.half = true
       if(this.alpha < 0) this.alpha = 0
-      ctx.globalAlpha = this.alpha
+      hctx.globalAlpha = this.alpha
       DrawRect(this.x, this.y, 50, 50, this.color)
-      ctx.globalAlpha = 1
+      hctx.globalAlpha = 1
     }
   }
 
@@ -771,10 +901,8 @@
       this.y > 0 ? this.y -- : this.half = true
       if(this.half){
         if(denseMeter.diff > .25) this.effects.push(new encryptStroke())
-        this.effects.forEach((ele, i)=>{
-          ele.draw()
-          if(ele.lifetime <= 0) this.effects.splice(i, 1)
-        })
+        for (let i = 0; i < this.effects.length; i++) this.effects[i].draw()
+        this.effects = this.effects.filter(ele => ele.lifetime > 0)
       }
       if(!gEncrypt || !encryptionOn) this.lifetime = 0
     }
@@ -782,6 +910,7 @@
 
   function encryptStroke(){
     this.rad = 1
+    this.lifetime = 1
     this.draw = function(){
       DrawStroke(width / 2, height / 2, this.rad, `hsl(${190}, 100%, 50%)`, this.rad / 5)
       this.rad < 300 ? this.rad += 3 : this.lifetime = 0
@@ -794,15 +923,15 @@
     this.draw = function(){
       if(gVehicle && vehicleOn && gInGame) this.alpha < 1 ? this.alpha += .01 : this.alpha = 1
       else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
-      ctx.globalAlpha = this.alpha
-      this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 300)
+      hctx.globalAlpha = this.alpha
+      this.grad = hctx.createRadialGradient(160, 100, 10, 160, 100, 300)
       this.grad.addColorStop(0, `hsla(${RevMeter.value * 2 * 120 + 240}, 100%, 50%, 0)`)
       this.grad.addColorStop(Math.sin(Date.now() / 500) * .1 + .8, `hsla(${RevMeter.value * 2 * 120 + 240}, 100%, 50%, .5)`)
       this.grad.addColorStop(1, `hsla(${RevMeter.value * 2 * 120 + 240}, 100%, 50%, 1)`)
       DrawRect(0, 0, 320, 200, this.grad)
       if(this.count == 0) effects.push(new vehicleHelp(`hsl(${RevMeter.value * 2 * 120 + 240}, 100%, 50%)`, RevMeter.value * 2 / .25 + 3))
       this.count < (30 - RevMeter.value * 2 / .05) ? this.count++ : this.count = 0
-      ctx.globalAlpha = 1
+      hctx.globalAlpha = 1
     }
   }
 
@@ -824,15 +953,13 @@
     this.draw = function(){
       if(gJoytoy && joytoyOn) this.alpha < 1 ? this.alpha += .025 : this.alpha = 1
       else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
-      ctx.globalAlpha = this.alpha
+      hctx.globalAlpha = this.alpha
       let color = `hsl(340, 100%, ${70 + Math.sin(Date.now() / 500) * 20}%)`
       if(this.count == 0) this.hearts.push(new heart(160, 90, color))
       this.count < 20 ? this.count++ : this.count = 0
-      this.hearts.forEach((ele, i)=>{
-        ele.draw()
-        if(ele.lifetime <= 0) this.hearts.splice(i, 1)
-      })
-      ctx.globalAlpha = 1
+      for (let i = 0; i < this.hearts.length; i++) this.hearts[i].draw()
+      this.hearts = this.hearts.filter(ele => ele.lifetime > 0)
+      hctx.globalAlpha = 1
     }
   }
 
@@ -841,28 +968,29 @@
     this.y = y
     this.color = color
     this.scale = 1
+    this.lifetime = 1
     this.draw = function(){
       let alpha = 1 + (7 - this.scale)
       if(alpha <= 0){
         alpha = 0
         this.lifetime = 0
       }
-      ctx.globalAlpha = alpha
-      ctx.save()
-      ctx.translate(this.x, this.y)
-      ctx.scale(this.scale, this.scale)
-      ctx.translate(-this.x, -this.y)
-      ctx.beginPath()
-      ctx.arc(this.x, this.y, 30, Math.PI / 2, 0, true)
-      ctx.arc(this.x + 15, this.y, 15, 0, Math.PI, true)
-      ctx.arc(this.x - 15, this.y, 15, 0, Math.PI, true)
-      ctx.arc(this.x, this.y, 30, Math.PI, Math.PI / 2, true)
-      ctx.closePath()
-      ctx.fillStyle = this.color
-      ctx.fill()
-      ctx.restore()
+      hctx.globalAlpha = alpha
+      hctx.save()
+      hctx.translate(this.x, this.y)
+      hctx.scale(this.scale, this.scale)
+      hctx.translate(-this.x, -this.y)
+      hctx.beginPath()
+      hctx.arc(this.x, this.y, 30, Math.PI / 2, 0, true)
+      hctx.arc(this.x + 15, this.y, 15, 0, Math.PI, true)
+      hctx.arc(this.x - 15, this.y, 15, 0, Math.PI, true)
+      hctx.arc(this.x, this.y, 30, Math.PI, Math.PI / 2, true)
+      hctx.closePath()
+      hctx.fillStyle = this.color
+      hctx.fill()
+      hctx.restore()
       this.scale += .025
-      ctx.globalAlpha = 1
+      hctx.globalAlpha = 1
     }
   }
 
@@ -884,10 +1012,8 @@
       DrawRect(0, 0, width, height, "hsla(0, 0%, 0%, .025)")
       if(this.count == 0) this.effects.push(new deathParticle())
       this.count < 10 ? this.count++ : this.count = 0
-      this.effects.forEach((ele, i)=>{
-        ele.draw()
-        if(ele.lifetime <= 0) this.effects.splice(i, 1)
-      })
+      for (let i = 0; i < this.effects.length; i++) this.effects[i].draw()
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
       if(!gDead || gInGame){
         this.lifetime = 0
         gNoBack = false
@@ -896,6 +1022,7 @@
   }
 
   function deathParticle(){
+    this.lifetime = 1
     this.y = -20
     this.x = Math.floor(Math.random() * 16) * 20
     this.draw = function(){
@@ -909,22 +1036,22 @@
     this.rot = 0
     this.draw = function(){
       DrawRect(0, 0, 320, 200, `hsla(120, 100%, 50%, ${this.alpha})`)
-      this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 300)
+      this.grad = hctx.createRadialGradient(160, 100, 10, 160, 100, 300)
       this.grad.addColorStop(0, `hsla(120, 100%, 50%, 0)`)
       this.grad.addColorStop(Math.sin(Date.now() / 500) * .2 + .6, `hsla(0, 100%, 50%, ${this.alpha * 3})`)
       this.grad.addColorStop(1, `hsla(0, 100%, 50%, ${this.alpha * 3})`)
       DrawRect(0, 0, 320, 200, this.grad)
-      ctx.save()
-      ctx.translate(160, 100)
-      ctx.rotate(this.rot)
-      ctx.translate(-160, -100)
-      ctx.beginPath()
-      ctx.moveTo(160, 100)
-      ctx.lineTo(160, -100)
-      ctx.strokeStyle = `hsla(0, 100%, 50%, ${this.alpha * 3})`
-      ctx.lineWidth = 20
-      ctx.stroke()
-      ctx.restore()
+      hctx.save()
+      hctx.translate(160, 100)
+      hctx.rotate(this.rot)
+      hctx.translate(-160, -100)
+      hctx.beginPath()
+      hctx.moveTo(160, 100)
+      hctx.lineTo(160, -100)
+      hctx.strokeStyle = `hsla(0, 100%, 50%, ${this.alpha * 3})`
+      hctx.lineWidth = 20
+      hctx.stroke()
+      hctx.restore()
       this.rot += .05
       if(!gScan || !scanOn){
         this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
@@ -958,13 +1085,11 @@
     this.draw = function(){
       if(this.count == 0) this.dots.push(new idleParticle())
       this.count < 5 ? this.count++ : this.count = 0
-      ctx.globalAlpha = this.alpha
+      hctx.globalAlpha = this.alpha
       DrawRect(0, 0, 320, 200, "hsl(60, 100%, 30%)")
-      this.dots.forEach((ele, i)=>{
-        ele.draw()
-        if(ele.lifetime <= 0) this.dots.splice(i, 1)
-      })
-      ctx.globalAlpha = 1
+      for (let i = 0; i < this.dots.length; i++) this.dots[i].draw()
+      this.dots = this.dots.filter(ele => ele.lifetime > 0)
+      hctx.globalAlpha = 1
       if(gInGame || !idleOn || effects.length > 1 || gCall){
         this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
         gNoBack = false
@@ -973,6 +1098,7 @@
   }
 
   function idleParticle(){
+    this.lifetime = 1
     this.mod = Math.random()
     this.y = Math.random() * 200
     this.x = this.mod > .5 ? 0 : 320
@@ -990,12 +1116,12 @@
     this.draw = function(){
       if(gWanted && wantedOn && gInGame) this.alpha < 1 ? this.alpha += .025 : this.alpha = 1
       else this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
-      ctx.globalAlpha = this.alpha
+      hctx.globalAlpha = this.alpha
       DrawRect(0, 0, 80, 200, `hsl(240, 100%, ${Math.sin(Date.now() / 100) * 20 + 60}%)`)
       DrawRect(80, 0, 80, 200, `hsl(0, 100%, ${Math.sin((Date.now() - 1000) / 100) * 20 + 60}%)`)
       DrawRect(160, 0, 80, 200, `hsl(240, 100%, ${Math.sin(Date.now() / 100) * 20 + 60}%)`)
       DrawRect(240, 0, 80, 200, `hsl(0, 100%, ${Math.sin((Date.now() - 1000) / 100) * 20 + 60}%)`)
-      ctx.globalAlpha = 1
+      hctx.globalAlpha = 1
     }
   }
 
@@ -1007,11 +1133,11 @@
     this.draw = function(){
       if(!this.half) this.alpha <= .7 ? this.alpha += .05 : this.dist1 < 100 ? this.dist1 += 5 : this.dist2 < 100 ? this.dist2 += 5 : this.half = true
       else this.alpha2 >= .05 ? this.alpha2 -= .05 : this.lifetime = 0
-      ctx.globalAlpha = this.alpha2
+      hctx.globalAlpha = this.alpha2
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
       DrawLine([0, 50], [this.dist1 * 3.2, 50 + this.dist1], "red", 30)
       DrawLine([320, 50], [320 - this.dist2 * 3.2, 50 + this.dist2], "red", 30)
-      ctx.globalAlpha = 1
+      hctx.globalAlpha = 1
     }
   }
 
@@ -1022,13 +1148,13 @@
     this.height = 1
     this.half = false
     this.draw = function(){
-      ctx.globalAlpha = this.alpha3
+      hctx.globalAlpha = this.alpha3
       this.x = Math.sin(Date.now() / 500) * 40 + width / 2
       DrawRect(0, 0, width, height, `hsla(0, 0%, 0%, ${this.alpha})`)
       if(this.alpha >= .5) DrawEllipse(width / 2, height / 2, 100, this.height, 0, "red")
       if(this.height == 100) DrawCircle(this.x, height / 2, 40, `hsla(190, 100%, 50%, ${this.alpha2})`)
       this.alpha < .5 ? this.alpha += .01 : this.height < 100 ? this.height++ : this.alpha2 < 1 ? this.alpha2 += .025 : this.alpha2 = 1
-      ctx.globalAlpha = 1
+      hctx.globalAlpha = 1
       if(!gCrouched || !sneakOn) this.alpha3 >= .025 ? this.alpha3 -= .025 : this.lifetime = 0
     }
   }
@@ -1058,40 +1184,40 @@
   }
 
   function DrawLine(start, end, color, stroke){
-    ctx.beginPath()
-    ctx.moveTo(start[0], start[1])
-    ctx.lineTo(end[0], end[1])
-    ctx.strokeStyle = color
-    ctx.lineWidth = stroke
-    ctx.stroke()
+    hctx.beginPath()
+    hctx.moveTo(start[0], start[1])
+    hctx.lineTo(end[0], end[1])
+    hctx.strokeStyle = color
+    hctx.lineWidth = stroke
+    hctx.stroke()
   }
 
   function DrawEllipse(x, y, width, height, rotation, color){
-    ctx.beginPath()
-    ctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
-    ctx.fillStyle = color
-    ctx.fill()
+    hctx.beginPath()
+    hctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    hctx.fillStyle = color
+    hctx.fill()
   }
 
   function DrawCircle(x, y, radius, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.fill();
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.fill();
   };
 
   function DrawStroke(x, y, radius, color, stroke) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = stroke;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.stroke();
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.stroke();
   };
 
   function DrawRect(x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height);
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.fillRect(x, y, width, height);
   };
 
   function hexToHSL(hex) {
@@ -1147,7 +1273,7 @@
       var iHeight = 200 / 20;
       var iZx = iCol * iWidth;
       var iZy = iRow * iHeight;
-      ctx.fillStyle =
+      hctx.fillStyle =
         "hsla(" +
         hue[iZone] +
         "," +
@@ -1158,7 +1284,7 @@
         `${alpha}` +
         ")";
 
-      ctx.fillRect(iZx, iZy, iWidth, iHeight);
+      hctx.fillRect(iZx, iZy, iWidth, iHeight);
     }
 
   }
