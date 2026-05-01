@@ -1,47 +1,120 @@
 <head>
-<<<<<<< Updated upstream
-  <title>Minecraft Java Devvv</title>
-  <meta description="Game integration for Minecraft Java edition. Set your GUI scale to Auto. v1.08" />
-=======
-  <title>Minecraft Java Devv</title>
-  <meta description="Game integration for Minecraft Java edition. Set your GUI scale to Auto. v1.09" />
->>>>>>> Stashed changes
+  <title>Minecraft Java Dev</title>
+  <meta description="Game integration for Minecraft Java edition. Set your GUI scale to Auto. v1.1.0" />
   <meta publisher="SignalRGB" />
+  <!-- ═══════════════════════════════════════════════════════════
+       ACTIVE USER-FACING CONTROLS
+       All properties below appear as controls in the SignalRGB UI.
+       Values are injected into the JS scope by name at runtime.
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Background -->
   <meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background effect." type="number" default="100" min="0" max="100" />
-  <meta property="backgroundMode" label="Background Mode" tooltip="Changes the kind of background effect you see." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
-  default="Ambience"/>
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes the kind of background effect you see." type="list"
+    values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+    default="Ambience"/>
+  <!-- backColor is only relevant when mode is "Custom" or "Custom Ambience" -->
   <meta property="backColor" label="Custom Color" type="color" tooltip="Controls the color of the custom background effects." default="#010101" min="0" max="360" />
+
+  <!-- HUD bar system — visible when enableHud is on -->
   <meta property="enableHud" label="Enable Health and Hunger Bars" tooltip="Turn on the health and hunger bar effects." type="boolean" default="1" />
   <meta property="adjMeter" label="Adjust Bar Effects" tooltip="Allows you to adjust the position of the health and hunger bars while not in game." type="boolean" default="0" />
-  <meta property="twinklyBars" label="Switch Bar Style" tooltip="Switches to a graphic Health and Hunger bar style." type="boolean" default="0" />
-  <meta property="enableHealth" label="Health effects" tooltip="Enable low health and damage effects." type="boolean" default="1" />
+  <meta property="twinklyBars" label="Switch Bar Style" tooltip="Switches to a graphic Health and Hunger bar style." type="boolean" default="1" />
+
+  <!-- Health bar position/size — values are 0–100 (%) mapped to canvas 320×200.
+       X/Y set top-left corner; Width/Height set bar dimensions.
+       In graphic style, Width sets element size and Height sets element count. -->
+  <meta property="enableHealth" label="Health Effects" tooltip="Enable low health and damage effects." type="boolean" default="1" />
   <meta property="healthColor" label="Health Color" tooltip="Sets the health bar color." type="color" default="#ff0000" min="0" max="360" />
-  <meta property="healthY" label="Health Bar Y" tooltip="Moves the health bar up and down." type="number" min="0" max="100" default="35" />
+  <meta property="healthY" label="Health Bar Y" tooltip="Moves the health bar up and down." type="number" min="0" max="100" default="24" />
   <meta property="healthX" label="Health Bar X" tooltip="Moves the health bar left and right." type="number" min="0" max="100" default="0" />
-  <meta property="healthWidth" label="Health width [Switch Size]" tooltip="Changes the width of the health bar, or the size of the graphic health bar." type="number" min="0" max="100" default="100" />
-  <meta property="healthHeight" label="Health height [Switch Heart Amount]" tooltip="Changes the height of the health bar, or number of graphic elements." type="number" min="0" max="100" default="15" />
-  <meta property="enableHunger" label="enable Hunger effect" tooltip="Enable the low food and starving effects." type="boolean" default="1" />
+  <meta property="healthWidth" label="Health Width [Switch Size]" tooltip="Changes the width of the health bar, or the size of the graphic health bar." type="number" min="0" max="100" default="50" />
+  <meta property="healthHeight" label="Health Height [Switch Heart Amount]" tooltip="Changes the height of the health bar, or number of graphic elements." type="number" min="0" max="100" default="100" />
+
+  <!-- Hunger bar position/size — same coordinate system as health bar -->
+  <meta property="enableHunger" label="Enable Hunger Effect" tooltip="Enable the low food and starving effects." type="boolean" default="1" />
   <meta property="foodColor" label="Food Color" tooltip="Sets the food bar color." type="color" default="#ffaa00" min="0" max="360" />
-  <meta property="foodY" label="Food Bar Y" tooltip="Moves the food bar up and down." type="number" min="0" max="100" default="45" />
+  <meta property="foodY" label="Food Bar Y" tooltip="Moves the food bar up and down." type="number" min="0" max="100" default="40" />
   <meta property="foodX" label="Food Bar X" tooltip="Moves the food bar left and right." type="number" min="0" max="100" default="0" />
-  <meta property="foodWidth" label="Food width [Switch Size]" tooltip="Sets the width of the food bar, or the size of the graphic elements." type="number" min="0" max="100" default="100" />
-  <meta property="foodHeight" label="Food height [Switch Meat Amount]" tooltip="Sets the height of the food bar, or the number of graphic elements." type="number" min="0" max="100" default="15" />
-  <meta property="enableXP" label="enable XP effect" tooltip="Turns on the XP effect." type="boolean" default="1" />
-  <meta property="enableSleep" label="enable Sleep effect" tooltip="Turns on the sleeping effect." type="boolean" default="1" />
-  <meta property="enableCrafting" label="enable Crafting effect" tooltip="Turns on the crafting table effect." type="boolean" default="1" />
-  <meta property="enableAnvil" label="enable Anvil effect" tooltip="Turns on the Anvil table effect." type="boolean" default="1" />
-  <meta property="enableEnchantment" label="enable Enchantment effect" tooltip="Turns on the Enchantment table effect." type="boolean" default="1" />
-  <meta property="enableSmithing" label="enable Smithing effect" tooltip="Turns on the Smithing table effect." type="boolean" default="1" />
-  <meta property="enableFurnace" label="enable Furnace effect" tooltip="Turns on the Furnace table effect." type="boolean" default="1" />
-  <meta property="enableChest" label="enable Chest effects" tooltip="Turns on the Chest tables effects." type="boolean" default="1" />
-  <meta property="enableMenu" label="enable Menu effect" tooltip="Turns on the Menu effect." type="boolean" default="1" />
-  <meta property="enableStatus" label="enable Status effect" tooltip="Turns on the status effect effects." type="boolean" default="1" />
-  <meta property="enableBoss" label="enable Boss effects" tooltip="Turns on the boss effects." type="boolean" default="1" />
-  <meta property="enableRecipe" label="enable Recipe effect" tooltip="Turns on the new recipe effect." type="boolean" default="1" />
-  <meta property="enableMount" label="enable Mount effect" tooltip="Turns on the mounted effect." type="boolean" default="1" />
-  <meta property="enableUnderwater" label="enable Underwater effect" tooltip="Turns on the swimming effect." type="boolean" default="1" />
-  <meta property="enableFreeze" label="enable Freeze effect" tooltip="Turns on the freeze effect." type="boolean" default="1" />
+  <meta property="foodWidth" label="Food Width [Switch Size]" tooltip="Sets the width of the food bar, or the size of the graphic elements." type="number" min="0" max="100" default="63" />
+  <meta property="foodHeight" label="Food Height [Switch Meat Amount]" tooltip="Sets the height of the food bar, or the number of graphic elements." type="number" min="0" max="100" default="100" />
+
+  <!-- Effect toggles — each boolean gates its corresponding effect class in JS.
+       Disabling a toggle removes the effect on the next draw() call. -->
+  <meta property="enableXP" label="Enable XP Effect" tooltip="Turns on the XP effect." type="boolean" default="1" />
+  <meta property="enableSleep" label="Enable Sleep Effect" tooltip="Turns on the sleeping effect." type="boolean" default="1" />
+  <meta property="enableCrafting" label="Enable Crafting Effect" tooltip="Turns on the crafting table effect." type="boolean" default="1" />
+  <meta property="enableAnvil" label="Enable Anvil Effect" tooltip="Turns on the Anvil table effect." type="boolean" default="1" />
+  <meta property="enableEnchantment" label="Enable Enchantment Effect" tooltip="Turns on the Enchantment table effect." type="boolean" default="1" />
+  <meta property="enableSmithing" label="Enable Smithing Effect" tooltip="Turns on the Smithing table effect." type="boolean" default="1" />
+  <meta property="enableFurnace" label="Enable Furnace Effect" tooltip="Turns on the Furnace table effect." type="boolean" default="1" />
+  <meta property="enableChest" label="Enable Chest Effects" tooltip="Turns on the Chest effects." type="boolean" default="1" />
+  <meta property="enableMenu" label="Enable Menu Effect" tooltip="Turns on the Menu effect." type="boolean" default="1" />
+  <meta property="enableStatus" label="Enable Status Effects" tooltip="Turns on the status effect effects." type="boolean" default="1" />
+  <meta property="enableBoss" label="Enable Boss Effects" tooltip="Turns on the boss effects." type="boolean" default="1" />
+  <meta property="enableRecipe" label="Enable Recipe Effect" tooltip="Turns on the new recipe effect." type="boolean" default="1" />
+  <meta property="enableMount" label="Enable Mount Effect" tooltip="Turns on the mounted effect." type="boolean" default="1" />
+  <meta property="enableUnderwater" label="Enable Underwater Effect" tooltip="Turns on the swimming effect." type="boolean" default="1" />
+  <meta property="enableFreeze" label="Enable Freeze Effect" tooltip="Turns on the freeze effect." type="boolean" default="1" />
   
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VISION METERS
+       Each meter captures a small region of the game screen and
+       measures what percentage of its pixels match the given HSL
+       range. The JS Meter class smooths readings over N frames
+       before firing a callback.
+
+       Detection strategy: most game states use a POSITIVE meter
+       (confirms the expected color IS present) alongside a raw
+       engine.vision guard in the callback that confirms the
+       region is NOT that color at baseline. A few states also
+       use a dedicated negative meter for additional stability.
+
+       TESTER NOTE: If an effect never fires, load a screenshot in
+       the QA Tool and verify the meter region captures the right
+       pixels at the right color. Adjust HSL ranges or coordinates
+       as needed. Set GUI scale to Auto in Minecraft options.
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- ── IN-GAME DETECTION ──────────────────────────────────────
+       inGame1 samples the full hotbar row — it fills in only when
+       the player HUD is visible (in-game). inGame1Not samples the
+       left edge of the same row, which stays dark inside menus.
+       Used as a raw engine.vision guard in onGameChanged(), not
+       as a separate Meter, so it reacts on the current frame.
+       ──────────────────────────────────────────────────────────── -->
+
+   <meta meter="inGame1" tags="minecraft, vlc" x="0.2896" y="0.9194" width="0.4165" height="-0.0014" 
+    h="0-360" s="0-10" l="45-85" hdr-h="0-360" hdr-s="0-50" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4070" y="0.9269" width="0.1841" height="0.0005" />
+    <resolution aspect="24:10" x="0.3439" y="0.9194" width="0.3110" height="0.0014" />
+    <resolution aspect="16:11" x="0.2892" y="0.9243" width="0.4193" height="0.0010" />
+    
+    <resolution size="5120x1440" x="0.3953" y="0.9139" width="0.2096" height="0.0000" />
+    <resolution size="3840x2160" x="0.2912" y="0.918" width="0.4142" height="0.0009" />
+    <resolution size="2560x1080" x="0.3607" y="0.9277" width="0.2767" height="0" />
+    <resolution size="1920x1080" x="0.3153" y="0.9286" width="0.3684" height="0"  />
+  </meta>
+
+  <meta meter="inGame1Not" tags="minecraft, vlc" x="0.2915" y="0.902" width="0.0438" height="0.0007"
+    h="0-360" s="0-10" l="45-85" hdr-h="0-360" hdr-s="0-50" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4068" y="0.9120" width="0.0195" height="0.001" />
+    <resolution aspect="24:10" x="0.3456" y="0.9028" width="0.0337" height="0.0005" />
+    <resolution aspect="16:11" x="0.2876" y="0.9143" width="0.0477" height="-0.0019" />
+
+    <resolution size="5120x1440" x="0.3953" y="0.9019" width="0.0250" height="0.0001" />    
+    <resolution size="3840x2160" x="0.2891" y="0.9018" width="0.0534" height="0" />
+    <resolution size="2560x1080" x="0.3611" y="0.9138" width="0.0277" height="0.0009" />
+    <resolution size="1920x1080" x="0.3137" y="0.9129" width="0.0365" height="-0.0009" />
+  </meta>
+
+  <!-- ── UNDERWATER (AIR BUBBLES) ──────────────────────────────
+       Three sample points across the bubble row. bubble1 drives
+       the Meter callback; bubble2 and bubble3 are read as raw
+       engine.vision values in onBubblechanged() — all three must
+       be ≥95% simultaneously to confirm the player is underwater.
+       ──────────────────────────────────────────────────────────── -->
 
   <meta meter="bubble1" tags="minecraft, vlc" x="0.7003" y="0.8013" width="0.0015" height="0" 
     h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
@@ -79,6 +152,14 @@
     <resolution size="1920x1080" x="0.6774" y="0.8341" width="0.0011" height="0"  />
   </meta>
 
+  <!-- ── HEALTH ─────────────────────────────────────────────────
+       health: the filled portion of the health bar (red pixels).
+       lowHp: a narrow left slice — low when health is nearly empty.
+       LastHealth: the last heart position pixel for change detection.
+       healthB: blue tint overlay on hearts → freeze/frostbite state.
+       healthG: green tint overlay on hearts → poison state.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="health" tags="minecraft, vlc" x="0.2892" y="0.8513" width="0.1829" height="0" 
     h="-30-30" s="70-100" l="70-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="80-100" type="area">
     <resolution aspect="3.55:1" x="0.4065" y="0.8731" width="0.0807" height="0.0010" />
@@ -89,30 +170,6 @@
     <resolution size="3840x2160" x="0.2881" y="0.8532" width="0.1849" height="0"/>
     <resolution size="2560x1080" x="0.3603" y="0.8712" width="0.1215" height="0" />
     <resolution size="1920x1080" x="0.3127" y="0.8665" width="0.1636" height="0"  />
-  </meta>
-
-  <meta meter="Food" tags="minecraft, vlc" x="0.7085" y="0.8714" width="0.0004" height="0.0021" 
-    h="35-75" s="0-30" l="80-100" hdr-h="0-30" hdr-s="0-30" hdr-l="75-100" type="area">
-    <resolution aspect="3.55:1" x="0.5930" y="0.8852" width="0.000" height="0.000" />
-    <resolution aspect="24:10" x="0.6567" y="0.8715" width="0.0000" height="0.0000" />
-    <resolution aspect="16:11" x="0.7097" y="0.8831" width="0" height="0" />
-    
-    <resolution size="5120x1440" x="0.6051" y="0.8681" width="0.0002" height="0.0014" />
-    <resolution size="3840x2160" x="0.7088" y="0.8712" width="0.0005" height="0.0019" />
-    <resolution size="2560x1080" x="0.6393" y="0.886" width="0" height="0" />
-    <resolution size="1920x1080" x="0.6858" y="0.8869" width="0" height="0.001" />
-  </meta>
-
-  <meta meter="FoodBar" tags="minecraft, vlc" x="0.5252" y="0.852" width="0.1798" height="0.0014" 
-    h="0-50" s="40-80" l="65-100" hdr-h="0-50" hdr-s="40-100" hdr-l="50-100" type="area">
-    <resolution aspect="3.55:1" x="0.5120" y="0.8694" width="0.0755" height="0.0010" />
-    <resolution aspect="24:10" x="0.5198" y="0.8542" width="0.1279" height="0.0040" />
-    <resolution aspect="16:11" x="0.5256" y="0.8655" width="0.1739" height="0.0007" />
-    
-    <resolution size="5120x1440" x="0.5137" y="0.8465" width="0.0881" height="0.0014" />
-    <resolution size="3840x2160" x="0.5257" y="0.8513" width="0.1719" height="0.0037" />
-    <resolution size="2560x1080" x="0.517" y="0.8684" width="0.1141" height="0.0037" />
-    <resolution size="1920x1080" x="0.5237" y="0.8684" width="0.1517" height="0.0046"  />
   </meta>
 
   <meta meter="lowHp" tags="minecraft, vlc" x="0.2896" y="0.8513" width="0.0441" height="0" 
@@ -139,6 +196,13 @@
     <resolution size="1920x1080" x="0.3137" y="0.8749" width="0.0104" height="0"  />
   </meta>
 
+   <!-- ── FREEZE / FROSTBITE ────────────────────────────────────
+       healthB: blue tint on the heart row → player is freezing.
+       healthG: green tint on the heart row → player is poisoned.
+       Both are fed into separate meters that share the health row
+       area but detect distinct color overlays.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="healthB" tags="minecraft, vlc" x="0.2966" y="0.8527" width="0.0004" height="-0.0007" 
     h="160-205" s="20-60" l="80-100" hdr-h="0-30" hdr-s="0-30" hdr-l="80-100" type="area">
     <resolution aspect="3.55:1" x="0.4096" y="0.8685" width="0.000" height="0.0000" />
@@ -163,6 +227,42 @@
     <resolution size="1920x1080" x="0.3174" y="0.873" width="0.0041" height="0.0028" />
   </meta>
 
+   <!-- ── FOOD / HUNGER ─────────────────────────────────────────
+       Food: a tiny reference pixel on the hunger bar edge.
+       FoodBar: the filled portion of the full hunger bar.
+       lowFoodMeter uses Food; foodBarMeter uses FoodBar for the HUD.
+       ──────────────────────────────────────────────────────────── -->
+
+  <meta meter="Food" tags="minecraft, vlc" x="0.7085" y="0.8714" width="0.0004" height="0.0021" 
+    h="35-75" s="0-30" l="80-100" hdr-h="0-30" hdr-s="0-30" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.5930" y="0.8852" width="0.000" height="0.000" />
+    <resolution aspect="24:10" x="0.6567" y="0.8715" width="0.0000" height="0.0000" />
+    <resolution aspect="16:11" x="0.7097" y="0.8831" width="0" height="0" />
+    
+    <resolution size="5120x1440" x="0.6051" y="0.8681" width="0.0002" height="0.0014" />
+    <resolution size="3840x2160" x="0.7088" y="0.8712" width="0.0005" height="0.0019" />
+    <resolution size="2560x1080" x="0.6393" y="0.886" width="0" height="0" />
+    <resolution size="1920x1080" x="0.6858" y="0.8869" width="0" height="0.001" />
+  </meta>
+
+  <meta meter="FoodBar" tags="minecraft, vlc" x="0.5252" y="0.852" width="0.1798" height="0.0014" 
+    h="0-50" s="40-80" l="65-100" hdr-h="0-50" hdr-s="40-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.5120" y="0.8694" width="0.0755" height="0.0010" />
+    <resolution aspect="24:10" x="0.5198" y="0.8542" width="0.1279" height="0.0040" />
+    <resolution aspect="16:11" x="0.5256" y="0.8655" width="0.1739" height="0.0007" />
+    
+    <resolution size="5120x1440" x="0.5137" y="0.8465" width="0.0881" height="0.0014" />
+    <resolution size="3840x2160" x="0.5257" y="0.8513" width="0.1719" height="0.0037" />
+    <resolution size="2560x1080" x="0.517" y="0.8684" width="0.1141" height="0.0037" />
+    <resolution size="1920x1080" x="0.5237" y="0.8684" width="0.1517" height="0.0046"  />
+  </meta>
+
+  <!-- ── XP BAR ─────────────────────────────────────────────────
+       xp: samples the full XP bar region (green). Callback fires
+       on increase (XP gained) or large decrease (level-up drain).
+       Only fed when gInGame is true to skip processing in menus.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="xp" tags="minecraft, vlc" x="0.2892" y="0.8937" width="0.4185" height="0.0014" 
     h="70-110" s="30-70" l="55-100" hdr-h="80-100" hdr-s="30-100" hdr-l="0-100" type="area">
     <resolution aspect="3.55:1" x="0.4068" y="0.9037" width="0.1849" height="0.0020" />
@@ -174,6 +274,14 @@
     <resolution size="2560x1080" x="0.3615" y="0.9036" width="0.2766" height="0.0019" />
     <resolution size="1920x1080" x="0.3147" y="0.9045" width="0.369" height="0.001"  />
   </meta>
+
+  <!-- ── BOSS HEALTH BAR ────────────────────────────────────────
+       boss: the filled (purple) portion of the boss bar at the top.
+       bossWhite: the white background behind the boss bar text.
+       Used together: boss drives the active bar fill; bossWhite
+       dropping to zero (while bossKillListen is armed) fires the
+       boss-kill celebration effect.
+       ──────────────────────────────────────────────────────────── -->
 
   <meta meter="boss" tags="minecraft, vlc" x="0.2923" y="0.0556" width="0.4134" height="0.0007" 
     h="260-330" s="80-100" l="70-100" hdr-h="260-330" hdr-s="80-100" hdr-l="65-100" type="area">
@@ -197,29 +305,12 @@
     <resolution size="1920x1080" x="0.4642" y="0.0208" width="0.0633" height="0.0202"  />
   </meta>
 
-  <meta meter="inGame1" tags="minecraft, vlc" x="0.2896" y="0.9194" width="0.4165" height="-0.0014" 
-    h="0-360" s="0-10" l="45-85" hdr-h="0-360" hdr-s="0-50" hdr-l="75-100" type="area">
-    <resolution aspect="3.55:1" x="0.4070" y="0.9269" width="0.1841" height="0.0005" />
-    <resolution aspect="24:10" x="0.3439" y="0.9194" width="0.3110" height="0.0014" />
-    <resolution aspect="16:11" x="0.2892" y="0.9243" width="0.4193" height="0.0010" />
-    
-    <resolution size="5120x1440" x="0.3953" y="0.9139" width="0.2096" height="0.0000" />
-    <resolution size="3840x2160" x="0.2912" y="0.918" width="0.4142" height="0.0009" />
-    <resolution size="2560x1080" x="0.3607" y="0.9277" width="0.2767" height="0" />
-    <resolution size="1920x1080" x="0.3153" y="0.9286" width="0.3684" height="0"  />
-  </meta>
-
-  <meta meter="inGame1Not" tags="minecraft, vlc" x="0.2915" y="0.902" width="0.0438" height="0.0007"
-    h="0-360" s="0-10" l="45-85" hdr-h="0-360" hdr-s="0-50" hdr-l="75-100" type="area">
-    <resolution aspect="3.55:1" x="0.4068" y="0.9120" width="0.0195" height="0.001" />
-    <resolution aspect="24:10" x="0.3456" y="0.9028" width="0.0337" height="0.0005" />
-    <resolution aspect="16:11" x="0.2876" y="0.9143" width="0.0477" height="-0.0019" />
-
-    <resolution size="5120x1440" x="0.3953" y="0.9019" width="0.0250" height="0.0001" />    
-    <resolution size="3840x2160" x="0.2891" y="0.9018" width="0.0534" height="0" />
-    <resolution size="2560x1080" x="0.3611" y="0.9138" width="0.0277" height="0.0009" />
-    <resolution size="1920x1080" x="0.3137" y="0.9129" width="0.0365" height="-0.0009" />
-  </meta>
+  <!-- ── STATUS EFFECTS ────────────────────────────────────────
+       Four-meter system per status type (good and bad).
+       Grey + Black confirm the icon background appears (the status
+       icon slot is occupied). Main + Accent sample the icon's color
+       to determine what color to use for the spiral effect.
+       ──────────────────────────────────────────────────────────── -->
 
   <meta meter="goodStatusGrey" tags="minecraft, vlc" type="area" x="0.832" y="0.0104" width="0.159" height="-0.0014"
     h="0-360" s="0-10" l="15-55" hdr-h="0-45" hdr-s="0-30" hdr-l="50-100">
@@ -317,6 +408,13 @@
     <resolution size="1920x1080" x="0.9682" y="0.1279" width="0.0016" height="0"  />
   </meta>
 
+  <!-- ── MENU / UI OVERLAY ─────────────────────────────────────
+       inMenuBlack + inMenuWhite together confirm any crafting-style
+       menu is open. The dark border (Black) and bright title
+       background (White) must both be ≥95% before the crafting-
+       specific meters are checked. menuGoing prevents double-fires.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="inMenuBlack" tags="minecraft, vlc" type="area" x="0.6772" y="0.1571" width="0.0008" height="0"
     h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
     <resolution aspect="3.55:1" x="0.5569" y="0.1944" width="0.0016" height="0.0002" />
@@ -341,6 +439,11 @@
     <resolution size="1920x1080" x="0.6389" y="0.1974" width="0.0026" height="0.0009"    />
   </meta>
 
+  <!-- ── ANVIL ──────────────────────────────────────────────────
+       anvilWhiteHammer: the white hammer icon unique to the anvil UI.
+       Checked inside anvilChanged() only after inMenu is confirmed.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="anvilWhiteHammer" tags="minecraft, vlc" type="area" x="0.3669" y="0.1946" width="0.0016" height="0.0187"
     h="0-360" s="0-20" l="80-100" hdr-h="0-30" hdr-s="0-20" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.4435" y="0.2519" width="0.0010" height="0.0030" />
@@ -352,6 +455,10 @@
     <resolution size="2560x1080" x="0.4120" y="0.2347" width="0.0000" height="0.0000" />
     <resolution size="1920x1080" x="0.3814" y="0.2391" width="0.0011" height="0"  />
   </meta>
+
+  <!-- ── ENCHANTMENT TABLE ──────────────────────────────────────
+       Brown leather-book color unique to the enchantment table UI.
+       ──────────────────────────────────────────────────────────── -->
 
   <meta meter="enchantmentTableBrown" tags="minecraft, vlc" type="area" x="0.3603" y="0.3287" width="0.0074" height="-0.0007"
     h="30-45" s="50-75" l="50-75" hdr-h="0-45" hdr-s="50-75" hdr-l="75-100">
@@ -365,6 +472,10 @@
     <resolution size="1920x1080" x="0.3778" y="0.3466" width="0.0031" height="0"  />
   </meta>
 
+  <!-- ── SMITHING TABLE ────────────────────────────────────────
+       Blue-grey netherite ingot slot color unique to the smithing UI.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="smithingTable" type="area" tags="minecraft, vlc" x="0.3619" y="0.2349" width="0.0027" height="0.0035" 
     h="173-213" s="6-46" l="41-81" hdr-h="180-250" hdr-s="0-30" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.4396" y="0.2667" width="0.0002" height="0.0002" />
@@ -376,6 +487,12 @@
     <resolution size="2560x1080" x="0.4091" y="0.266" width="0" height="0" />
     <resolution size="1920x1080" x="0.3788" y="0.266" width="0" height="0"  />
   </meta>
+
+  <!-- ── CHEST DETECTION ───────────────────────────────────────
+       Large chest (lChest) and small chest (sChest) each have a
+       Black + White pair. Either pair at ≥95% confirms a chest is
+       open; both pairs dropping clears inChest.
+       ──────────────────────────────────────────────────────────── -->
 
   <meta meter="lChestBlack" type="area" tags="minecraft, vlc" x="0.6788" y="0.0389" width="0.0047" height="0"
     h="0-15" s="0-15" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10">
@@ -425,29 +542,10 @@
     <resolution size="1920x1080" x="0.6368" y="0.1909" width="0.0031" height="0"  />
   </meta>
 
-  <meta meter="newRecipePurple" type="area" tags="minecraft, vlc" x="0.9461" y="0.0313" width="0.0004" height="0.033" 
-    h="269-309" s="46-100" l="20-60" hdr-h="240-360" hdr-s="40-100" hdr-l="50-100" >
-    <resolution aspect="3.55:1" x="0.9732" y="0.0315" width="0.0044" height="0.0170" />
-    <resolution aspect="24:10" x="0.7735" y="0.0264" width="0.011" height="0.033" />
-    <resolution aspect="16:11" x="0.8648" y="0.0244" width="0.1059" height="0.025" />   
-
-    <resolution size="5120x1440" x="0.8947" y="0.0354" width="0.0127" height="0.0222" />
-    <resolution size="3840x2160" x="0.8648" y="0.0273" width="0.1058" height="0.0287"  />
-    <resolution size="2560x1080" x="0.9086" y="0.0259" width="0.0726" height="0.0251" />
-    <resolution size="1920x1080" x="0.729" y="0.0389" width="0.0005" height="0.0074"   />
-  </meta>
-
-  <meta meter="newRecipeWhite" type="area" tags="minecraft, vlc" x="0.984" y="0.0479" width="-0.0004" height="0.0188" 
-    h="0-360" s="0-100" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="80-100">
-    <resolution aspect="3.55:1" x="0.9938" y="0.0361" width="0.0008" height="0.0260" />
-    <resolution aspect="24:10" x="0.7712" y="0.0299" width="0.0017" height="0.025" />
-    <resolution aspect="16:11" x="0.9328" y="0.0686" width="0" height="0" />    
-
-    <resolution size="5120x1440" x="0.9338" y="0.0153" width="0.0062" height="0.0028" />
-    <resolution size="3840x2160" x="0.9854" y="0.0398" width="-0.0005" height="0.0362" />
-    <resolution size="2560x1080" x="0.9918" y="0.0287" width="-0.0024" height="0.0501" />
-    <resolution size="1920x1080" x="0.984" y="0.0479" width="-0.0004" height="0.0188"   />
-  </meta>
+  <!-- ── CRAFTING TABLE ────────────────────────────────────────
+       inCraftingGreen / inCraftingGreenOpenBook: the green output
+       arrow that appears inside crafting table and recipe-book views.
+       ──────────────────────────────────────────────────────────── -->
 
   <meta meter="inCraftingGreen" type="area" tags="minecraft, vlc" x="0.3275" y="0.3238" width="0.0011" height="0.0021" 
     h="95-135" s="13-53" l="30-70" hdr-h="100-180" hdr-s="20-50" hdr-l="75-100">
@@ -473,6 +571,11 @@
     <resolution size="1920x1080" x="0.5044" y="0.3494" width="0" height="0"  />
   </meta>
 
+  <!-- ── FURNACE ───────────────────────────────────────────────
+       inFurnaceGreen / inFurnaceGreenOpenBook: the green output
+       arrow inside the furnace UI, both normal and recipe-book views.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="inFurnaceGreen" type="area" tags="minecraft, vlc" x="0.3623" y="0.3231" width="0.0023" height="0.0035" 
     h="95-135" s="13-53" l="30-70" hdr-h="100-180" hdr-s="20-50" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.4396" y="0.3463" width="0.001" height="0.000" />
@@ -496,6 +599,40 @@
     <resolution size="2560x1080" x="0.5295" y="0.3438" width="0" height="0" />
     <resolution size="1920x1080" x="0.5362" y="0.3503" width="0" height="0"  />
   </meta>
+
+  <!-- ── NEW RECIPE NOTIFICATION ───────────────────────────────
+       Purple + White toast notification in the top-right corner
+       when a new crafting recipe is unlocked.
+       ──────────────────────────────────────────────────────────── -->
+
+  <meta meter="newRecipePurple" type="area" tags="minecraft, vlc" x="0.9461" y="0.0313" width="0.0004" height="0.033" 
+    h="269-309" s="46-100" l="20-60" hdr-h="240-360" hdr-s="40-100" hdr-l="50-100" >
+    <resolution aspect="3.55:1" x="0.9732" y="0.0315" width="0.0044" height="0.0170" />
+    <resolution aspect="24:10" x="0.7735" y="0.0264" width="0.011" height="0.033" />
+    <resolution aspect="16:11" x="0.8648" y="0.0244" width="0.1059" height="0.025" />   
+
+    <resolution size="5120x1440" x="0.8947" y="0.0354" width="0.0127" height="0.0222" />
+    <resolution size="3840x2160" x="0.8648" y="0.0273" width="0.1058" height="0.0287"  />
+    <resolution size="2560x1080" x="0.9086" y="0.0259" width="0.0726" height="0.0251" />
+    <resolution size="1920x1080" x="0.729" y="0.0389" width="0.0005" height="0.0074"   />
+  </meta>
+
+  <meta meter="newRecipeWhite" type="area" tags="minecraft, vlc" x="0.984" y="0.0479" width="-0.0004" height="0.0188" 
+    h="0-360" s="0-100" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="80-100">
+    <resolution aspect="3.55:1" x="0.9938" y="0.0361" width="0.0008" height="0.0260" />
+    <resolution aspect="24:10" x="0.7712" y="0.0299" width="0.0017" height="0.025" />
+    <resolution aspect="16:11" x="0.9328" y="0.0686" width="0" height="0" />    
+
+    <resolution size="5120x1440" x="0.9338" y="0.0153" width="0.0062" height="0.0028" />
+    <resolution size="3840x2160" x="0.9854" y="0.0398" width="-0.0005" height="0.0362" />
+    <resolution size="2560x1080" x="0.9918" y="0.0287" width="-0.0024" height="0.0501" />
+    <resolution size="1920x1080" x="0.984" y="0.0479" width="-0.0004" height="0.0188"   />
+  </meta>
+
+  <!-- ── MOUNT (HORSE / BOAT) ──────────────────────────────────
+       mountBlack + mountOrange together confirm the mount health
+       bar is visible. Both at ≥95% → player is currently riding.
+       ──────────────────────────────────────────────────────────── -->
 
   <meta meter="mountBlack" type="area" tags="minecraft, vlc" x="0.7014" y="0.8749" width="0.0008" height="0.0021" 
     h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-15">
@@ -521,6 +658,13 @@
     <resolution size="1920x1080" x="0.6842" y="0.873" width="0" height="0"  />
   </meta>
 
+  <!-- ── SLEEP ─────────────────────────────────────────────────
+       sleepWhite: the bright white fade-out that covers the screen
+       when entering a bed. sleepBlack: the dark background behind
+       the sleep overlay. Health must be minimal to avoid false fires
+       from other full-screen white effects.
+       ──────────────────────────────────────────────────────────── -->
+
   <meta meter="sleepWhite" tags="minecraft, vlc" type="area" x="0.4381" y="0.8590" width="0.1211" height="0.0305"
     h="0-360" s="0-100" l="60-100" hdr-h="0-30" hdr-s="0-30" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.4721" y="0.8713" width="0.0547" height="0.0300" />
@@ -544,6 +688,8 @@
     <resolution size="2560x1080" x="0.4896" y="0.8563" width="0.0043" height="0" />
     <resolution size="1920x1080" x="0.5102" y="0.8563" width="0.0057" height="0"  />
   </meta>
+
+  
 </head>
 
 <body style="margin: 0; padding: 0; background: #000">
@@ -551,97 +697,151 @@
 </body>
 
 <script>
-  let canvas, ctx;
-  canvas = document.getElementById("exCanvas");
-  ctx = canvas.getContext("2d");
-  var width = 320;
-  var height = 200;
-  var effects = [];
-  var hiddenCanvas = document.createElement("canvas");
-  hiddenCanvas.width = width;
+  //#region Canvas Setup
+  // ═══════════════════════════════════════════════════════════════
+  // CANVAS SETUP
+  // SignalRGB renders this 320×200 canvas onto the device layout.
+  // All draw coordinates are in canvas pixels.
+  // User-facing position/size values (0–100) scale to pixels via:
+  //   x * 3.2  (320 / 100)   y * 2.0  (200 / 100)
+  //
+  // Draw-order layers (bottom to top each frame):
+  //   1. Black fill (clear hidden canvas)
+  //   2. Background effect (ambience / color cycle / custom)
+  //   3. effects[]     — gameplay reactions (damage, heal, XP, etc.)
+  //   4. sleep[]       — full-screen sequences (sleeping, enchanting)
+  //   5. bossEffects[] — persistent HUD bars and boss sequences
+  //   6. HUD overlay   — health/hunger bars (UpdateUi)
+  //   7. Composite: hiddenCanvas → ctx
+  // ═══════════════════════════════════════════════════════════════
+  const canvas = document.getElementById('exCanvas');
+  const ctx    = canvas.getContext('2d');
+  const width  = 320;
+  const height = 200;
+
+  const hiddenCanvas = document.createElement('canvas');
+  hiddenCanvas.width  = width;
   hiddenCanvas.height = height;
-  var hctx = hiddenCanvas.getContext("2d");
-  var gAlpha = 1
+  const hctx = hiddenCanvas.getContext('2d');
 
-  let healthMeter = new Meter(12, onHealthMeterChanged);
-  let lastHealthMeter = new Meter(5, () => "")
-  let lowHpMeter = new Meter(5, onLowHpChanged)
-  let bubbleMeter = new Meter(5, onBubblechanged)
-  let freezeMeter = new Meter(5, onFreezeChange)
-  let poisonMeter = new Meter(5, () => "")
+  let effects     = [];
+  let sleep       = [];
+  let bossEffects = [];
+  //#endregion
 
+  //#region Meter Declarations
+  // ═══════════════════════════════════════════════════════════════
+  // METER DECLARATIONS
+  // Each Meter(size, callback) smooths the vision signal over `size`
+  // consecutive identical frames before updating .value and firing
+  // the callback. Larger size = more stable but slower to react.
+  // Meters marked "in-game only" are fed conditionally in update()
+  // to skip unnecessary processing when the HUD is not visible.
+  // ═══════════════════════════════════════════════════════════════
+
+  // Health
+  let healthMeter     = new Meter(12, onHealthMeterChanged)
+  let lastHealthMeter = new Meter(5,  () => "")
+  let lowHpMeter      = new Meter(5,  onLowHpChanged)
+  let freezeMeter     = new Meter(5,  onFreezeChange)   // blue tint = freeze
+  let poisonMeter     = new Meter(5,  () => "")          // green tint = poison
+
+  // Hunger
   let foodBarMeter = new Meter(15, () => "")
   let lowFoodMeter = new Meter(10, onFoodMeterChanged)
 
-  let xpMeter = new Meter(10, onXpMeterChanged);
+  // XP (in-game only)
+  let xpMeter = new Meter(10, onXpMeterChanged)
 
-  let bossMeter = new Meter(10, onBossMeterChanged);
-  let bossWhiteMeter = new Meter(10, onBossMeterChanged);
+  // Boss fight (in-game only)
+  let bossMeter      = new Meter(10, onBossMeterChanged)
+  let bossWhiteMeter = new Meter(10, onBossMeterChanged)
 
+  // In-game detection
   let inGameMeter = new Meter(5, onGameChanged)
-  
-  let gStatGreyMeter = new Meter(8, goodStatusChanged)
-  let gStatBlackMeter = new Meter(3, () => "")
-  let gStatMainMeter = new Meter(3, () => "")
+
+  // Status effects (in-game only)
+  let gStatGreyMeter   = new Meter(8, goodStatusChanged)
+  let gStatBlackMeter  = new Meter(3, () => "")
+  let gStatMainMeter   = new Meter(3, () => "")
   let gStatAccentMeter = new Meter(3, () => "")
-  let bStatGreyMeter = new Meter(8, badStatusChanged)
-  let bStatBlackMeter = new Meter(3, () => "")
-  let bStatMainMeter = new Meter(3, () => "")
+  let bStatGreyMeter   = new Meter(8, badStatusChanged)
+  let bStatBlackMeter  = new Meter(3, () => "")
+  let bStatMainMeter   = new Meter(3, () => "")
   let bStatAccentMeter = new Meter(3, () => "")
 
+  // Menus and crafting UI
   let inMenuBlackMeter = new Meter(5, menuChanged)
   let inMenuWhiteMeter = new Meter(5, menuChanged)
 
-  let anvilWhiteHammerMeter = new Meter(6, anvilChanged)
-
+  // Crafting interfaces
+  let anvilWhiteHammerMeter      = new Meter(6, anvilChanged)
   let enchantmentTableBrownMeter = new Meter(6, enchantChanged)
-
-  let smithingTableBlueMeter = new Meter(6, smithChanged)
-
-  let furnaceGreenMeter = new Meter(6, furnaceChanged)
-  let furnaceGreenBookMeter = new Meter(6, furnaceChanged)
-
-  let craftingTableGreenMeter = new Meter(6, craftingChanged)
+  let smithingTableBlueMeter     = new Meter(6, smithChanged)
+  let furnaceGreenMeter          = new Meter(6, furnaceChanged)
+  let furnaceGreenBookMeter      = new Meter(6, furnaceChanged)
+  let craftingTableGreenMeter    = new Meter(6, craftingChanged)
   let craftingTableGreenBookMeter = new Meter(6, craftingChanged)
 
+  // Sleep
   let sleepWhiteMeter = new Meter(15, inSleepChanged)
   let sleepBlackMeter = new Meter(15, inSleepChanged)
 
+  // Chest
   let lChestBlackMeter = new Meter(3, chestChanged)
   let lChestWhiteMeter = new Meter(3, chestChanged)
   let sChestBlackMeter = new Meter(3, chestChanged)
   let sChestWhiteMeter = new Meter(3, chestChanged)
 
+  // New recipe notification
   let newRecipePMeter = new Meter(6, onRecipeChanged)
   let newRecipeWMeter = new Meter(6, onRecipeChanged)
 
-  let onMountBlackMeter = new Meter(6, onMountChanged)
-  let onmountOrangeMeter = new Meter(6, onMountChanged)
+  // Mount (horse / boat)
+  let onMountBlackMeter  = new Meter(6, onMountChanged)
+  let onMountOrangeMeter = new Meter(6, onMountChanged)
 
-  let sleep = [];
-  let bossEffects = [];
-  let inGame = false;
-  let freezeGoing = false;
-  let bubblegoing = false;
-  let lowHpGoing = false;
-  let bossGoing = false;
-  let goodStatusGoing = false;
-  let badStatusGoing = false;
-  let menuGoing = false;
-  let anvilGoing = false;
-  let enchantGoing = false;
-  let sleepGoing = false;
-  let bossKillGoing = false;
-  let bossKillListen = false;
-  let inChest = false;
-  let onMountGoing = false;
+  // Underwater bubbles (in-game only)
+  let bubbleMeter = new Meter(5, onBubblechanged)
+  //#endregion
 
+  //#region State Variables
+  let gInGame          = false;  // true while the in-game HUD is visible
+  let lowHpGoing      = false;  // true while low health state effect is active
+  let bossGoing       = false;  // true while boss health bar effect is active
+  let bossKillGoing   = false;  // true while boss-kill celebration is running
+  let bossKillListen  = false;  // true when waiting for boss health to hit zero
+  let freezeGoing     = false;  // true while freeze/frostbite effect is active
+  let bubblegoing     = false;  // true while underwater bubble effect is active
+  let goodStatusGoing = false;  // true while a good status spiral is running
+  let badStatusGoing  = false;  // true while a bad status spiral is running
+  let menuGoing       = false;  // true while any crafting-UI overlay is active
+  let anvilGoing      = false;  // reserved (unused — menuGoing handles all menu states)
+  let enchantGoing    = false;  // reserved (unused — menuGoing handles all menu states)
+  let sleepGoing      = false;  // true while the sleeping sequence is running
+  let inChest         = false;  // true while a chest open animation is playing
+  let onMountGoing    = false;  // true while the player is mounted
+  let foodStatePlaying = false; // true while a FoodState effect is active
+  //#endregion
+
+  //#region Animation Data
   let horseAnim= [" M 29,88 49,99 L 29 88 L 49 99 L 78 85 L 103 103 L 122 133 L 122 163 L 117 188 L 93 205 L 92 235 L 81 265 L 60 292 L 72 304 L 85 284 L 105 267 L 119 259 L 115 244 L 138 215 L 164 193 L 194 198 L 224 201 L 254 202 L 284 196 L 290 219 L 297 249 L 292 279 L 266 306 L 274 326 L 293 297 L 321 269 L 318 239 L 335 240 L 365 262 L 392 288 L 414 315 L 433 319 L 421 302 L 395 272 L 376 243 L 353 215 L 364 185 L 368 155 L 392 150 L 422 144 L 452 131 L 481 124 L 488 113 L 458 107 L 428 115 L 398 129 L 368 137 L 338 125 L 308 118 L 278 119 L 248 117 L 218 106 L 188 96 L 158 84 L 128 62 L 98 43 L 70 21 L 60 32 L 46 62 Z"," M 21,97 40,112 L 21 97 L 40 112 L 68 96 L 97 113 L 116 143 L 121 173 L 109 200 L 85 223 L 78 253 L 80 283 L 96 283 L 88 261 L 98 231 L 126 213 L 123 236 L 111 266 L 99 296 L 89 325 L 112 325 L 113 298 L 125 268 L 142 238 L 157 208 L 184 200 L 214 202 L 244 203 L 274 200 L 300 200 L 311 230 L 336 257 L 335 287 L 319 317 L 340 314 L 350 284 L 364 254 L 357 239 L 387 253 L 413 280 L 437 303 L 449 292 L 430 279 L 406 249 L 382 226 L 361 202 L 372 172 L 379 150 L 409 150 L 439 141 L 469 126 L 491 113 L 479 103 L 449 110 L 419 123 L 389 136 L 359 131 L 329 119 L 299 117 L 269 120 L 239 117 L 209 108 L 179 100 L 149 91 L 119 70 L 89 53 L 61 32 L 51 43 L 37 73 Z"," M 17,114 38,123 L 17 114 L 38 123 L 68 110 L 96 128 L 113 157 L 118 187 L 109 217 L 86 247 L 64 274 L 62 304 L 85 298 L 84 272 L 109 244 L 136 215 L 157 217 L 157 247 L 157 277 L 155 307 L 163 326 L 169 297 L 173 267 L 177 237 L 182 207 L 212 207 L 242 205 L 272 200 L 302 191 L 318 218 L 346 243 L 369 273 L 377 303 L 367 333 L 390 319 L 388 289 L 378 259 L 363 231 L 389 229 L 411 254 L 428 277 L 452 283 L 440 265 L 419 242 L 405 212 L 377 206 L 367 187 L 374 157 L 394 152 L 424 150 L 454 138 L 484 123 L 497 103 L 467 107 L 437 120 L 407 131 L 377 135 L 347 119 L 317 114 L 287 116 L 257 120 L 227 118 L 197 110 L 167 106 L 137 95 L 107 77 L 77 63 L 57 53 L 50 66 L 27 96 Z"," M 23,123 40,141 L 23 123 L 40 141 L 68 123 L 96 135 L 114 165 L 117 195 L 109 225 L 89 254 L 70 283 L 53 312 L 75 315 L 83 290 L 104 261 L 128 233 L 150 206 L 178 215 L 190 245 L 201 275 L 210 305 L 218 325 L 220 295 L 214 265 L 208 235 L 210 211 L 240 208 L 270 202 L 300 190 L 319 211 L 347 227 L 377 239 L 403 265 L 422 292 L 443 297 L 431 281 L 424 262 L 440 256 L 419 246 L 409 216 L 399 189 L 369 193 L 371 169 L 380 146 L 410 155 L 440 151 L 470 136 L 495 113 L 483 107 L 453 120 L 423 131 L 393 136 L 363 122 L 333 111 L 303 110 L 273 117 L 243 122 L 213 120 L 183 114 L 153 111 L 123 95 L 93 80 L 64 61 L 52 68 L 41 98 Z"," M 32,129 52,140 L 32 129 L 52 140 L 81 126 L 107 144 L 122 174 L 129 204 L 128 234 L 116 264 L 106 294 L 86 323 L 115 307 L 127 277 L 144 247 L 161 218 L 188 217 L 210 240 L 226 270 L 242 300 L 262 325 L 276 316 L 257 301 L 242 271 L 230 241 L 220 212 L 250 207 L 280 197 L 305 194 L 327 214 L 357 217 L 382 219 L 381 249 L 411 268 L 436 286 L 441 258 L 421 240 L 415 210 L 399 193 L 380 182 L 371 166 L 377 140 L 407 152 L 437 154 L 467 145 L 495 125 L 482 117 L 452 126 L 422 131 L 392 131 L 362 117 L 332 106 L 302 107 L 272 115 L 242 121 L 212 122 L 182 117 L 152 112 L 122 94 L 92 79 L 72 69 L 65 80 L 44 109 Z"," M 43,127 61,144 L 43 127 L 61 144 L 89 127 L 113 144 L 135 174 L 153 204 L 167 233 L 162 263 L 173 293 L 170 323 L 197 309 L 180 279 L 184 249 L 195 219 L 216 234 L 233 263 L 258 291 L 288 300 L 290 280 L 263 275 L 238 245 L 230 215 L 256 205 L 286 193 L 313 205 L 343 211 L 362 218 L 356 248 L 382 272 L 383 245 L 374 224 L 390 204 L 397 232 L 406 262 L 423 266 L 413 247 L 408 217 L 408 187 L 383 182 L 365 170 L 371 140 L 392 141 L 422 153 L 452 155 L 482 150 L 493 136 L 467 132 L 437 131 L 407 125 L 377 120 L 347 105 L 317 102 L 287 107 L 257 118 L 227 122 L 197 118 L 167 117 L 137 98 L 107 82 L 82 66 L 74 77 L 57 107 Z"," M 53,127 73,137 L 53 127 L 73 137 L 103 124 L 123 148 L 143 178 L 160 207 L 190 219 L 209 238 L 222 262 L 243 288 L 247 318 L 263 327 L 266 303 L 250 273 L 280 275 L 284 258 L 258 262 L 237 242 L 229 212 L 259 203 L 289 193 L 319 207 L 348 208 L 336 238 L 342 268 L 358 267 L 349 246 L 360 216 L 379 205 L 376 235 L 387 265 L 403 256 L 391 235 L 392 205 L 391 177 L 361 180 L 363 160 L 367 130 L 392 135 L 422 152 L 452 160 L 482 159 L 482 146 L 452 136 L 422 125 L 392 115 L 362 112 L 332 100 L 302 100 L 272 111 L 242 120 L 212 121 L 182 118 L 152 102 L 122 82 L 95 61 L 83 67 L 73 96 L 54 125 Z"," M 62,113 82,126 L 62 113 L 82 126 L 111 111 L 129 137 L 147 167 L 159 197 L 167 222 L 164 246 L 194 257 L 224 274 L 252 296 L 282 296 L 270 272 L 242 272 L 231 248 L 225 219 L 247 206 L 277 196 L 307 207 L 335 222 L 311 251 L 316 281 L 334 276 L 330 252 L 354 222 L 352 236 L 357 266 L 375 260 L 368 236 L 379 206 L 378 181 L 348 182 L 362 156 L 363 126 L 393 137 L 423 153 L 453 163 L 481 165 L 475 151 L 445 135 L 415 122 L 385 115 L 355 113 L 325 102 L 295 103 L 265 114 L 235 120 L 205 114 L 175 106 L 145 80 L 115 62 L 98 56 L 91 72 L 68 102 Z"," M 64,97 83,112 L 64 97 L 83 112 L 111 96 L 129 121 L 141 151 L 151 181 L 133 196 L 118 213 L 141 242 L 167 257 L 197 267 L 226 283 L 256 272 L 234 256 L 209 260 L 202 234 L 218 207 L 248 203 L 278 195 L 303 219 L 319 246 L 290 268 L 292 298 L 315 291 L 315 266 L 326 277 L 347 260 L 351 235 L 376 207 L 356 191 L 344 181 L 362 152 L 369 126 L 399 138 L 429 150 L 459 164 L 474 162 L 468 145 L 438 127 L 408 117 L 378 114 L 348 115 L 318 105 L 288 107 L 258 116 L 228 116 L 198 106 L 171 89 L 142 63 L 113 42 L 96 36 L 88 63 L 66 93 Z"," M 57,85 77,97 L 57 85 L 77 97 L 106 83 L 126 109 L 132 139 L 136 169 L 120 186 L 94 197 L 92 227 L 98 254 L 121 259 L 109 242 L 106 215 L 129 203 L 159 200 L 168 209 L 148 237 L 172 256 L 201 269 L 224 245 L 198 244 L 175 244 L 187 218 L 214 202 L 244 201 L 274 195 L 297 217 L 305 242 L 296 270 L 284 296 L 283 324 L 299 304 L 318 276 L 345 255 L 352 234 L 357 213 L 329 200 L 357 172 L 362 142 L 381 128 L 411 136 L 441 146 L 471 162 L 477 150 L 450 125 L 420 114 L 390 112 L 360 118 L 330 111 L 300 107 L 270 114 L 240 114 L 210 104 L 180 90 L 150 62 L 120 38 L 96 22 L 90 36 L 69 66 Z"," M 57,85 77,97 L 57 85 L 77 97 L 106 83 L 126 109 L 132 139 L 136 169 L 120 186 L 94 197 L 92 227 L 98 254 L 121 259 L 109 242 L 106 215 L 129 203 L 159 200 L 168 209 L 148 237 L 172 256 L 201 269 L 224 245 L 198 244 L 175 244 L 187 218 L 214 202 L 244 201 L 274 195 L 297 217 L 305 242 L 296 270 L 284 296 L 283 324 L 299 304 L 318 276 L 345 255 L 352 234 L 357 213 L 329 200 L 357 172 L 362 142 L 381 128 L 411 136 L 441 146 L 471 162 L 477 150 L 450 125 L 420 114 L 390 112 L 360 118 L 330 111 L 300 107 L 270 114 L 240 114 L 210 104 L 180 90 L 150 62 L 120 38 L 96 22 L 90 36 L 69 66 Z"," M 48,81 67,96 L 48 81 L 67 96 L 95 80 L 119 104 L 129 134 L 129 164 L 122 189 L 92 205 L 82 235 L 80 264 L 97 277 L 92 256 L 99 226 L 126 209 L 122 217 L 146 245 L 173 258 L 194 247 L 169 244 L 143 221 L 173 205 L 203 200 L 233 200 L 263 198 L 286 216 L 313 242 L 285 255 L 269 277 L 275 293 L 285 274 L 313 258 L 324 277 L 313 307 L 321 325 L 332 296 L 343 266 L 338 236 L 328 208 L 357 179 L 362 149 L 381 134 L 411 138 L 441 141 L 471 153 L 481 146 L 454 122 L 424 114 L 394 115 L 364 123 L 334 117 L 304 112 L 274 115 L 244 114 L 214 102 L 184 93 L 154 69 L 124 44 L 95 23 L 78 18 L 72 48 L 50 78 Z"]
 
+  //#endregion
+
+  //#region Update
+  // ═══════════════════════════════════════════════════════════════
+  // MAIN UPDATE LOOP — called every animation frame (~60fps).
+  // Order of operations:
+  //   1. Fill hidden canvas black (clear previous frame)
+  //   2. Draw background
+  //   3. Feed vision readings into Meters (may fire callbacks)
+  //   4. Draw and filter expired effects in each pool
+  //   5. Draw HUD bars if enabled
+  //   6. Composite hidden canvas onto main ctx
+  // ═══════════════════════════════════════════════════════════════
   function update() {
-    hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-    hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
-    hctx.fillRect(0, 0, 320, 200);
+    DrawRect(0, 0, 320, 200, 'black')
     backgroundHandler()
     
     inGameMeter.setValue(engine.vision.inGame1)
@@ -660,7 +860,7 @@
     newRecipeWMeter.setValue(engine.vision.newRecipeWhite)
     
     onMountBlackMeter.setValue(engine.vision.mountBlack)
-    onmountOrangeMeter.setValue(engine.vision.mountOrange)
+    onMountOrangeMeter.setValue(engine.vision.mountOrange)
 
     smithingTableBlueMeter.setValue(engine.vision.smithingTable)
   
@@ -682,24 +882,23 @@
     inMenuBlackMeter.setValue(engine.vision.inMenuBlack)
     inMenuWhiteMeter.setValue(engine.vision.inMenuWhite)
 
-    if (inGame) {
-      xpMeter.setValue(engine.vision.xp);
+    xpMeter.setValue(engine.vision.xp);
 
-      bossMeter.setValue(engine.vision.boss);
-      bossWhiteMeter.setValue(engine.vision.bossWhite);
+    bossMeter.setValue(engine.vision.boss);
+    bossWhiteMeter.setValue(engine.vision.bossWhite);
 
-      bubbleMeter.setValue(engine.vision.bubble1)
-      lowFoodMeter.setValue(engine.vision.Food)
+    bubbleMeter.setValue(engine.vision.bubble1)
+    lowFoodMeter.setValue(engine.vision.Food)
 
-      gStatGreyMeter.setValue(engine.vision.goodStatusGrey)
-      gStatBlackMeter.setValue(engine.vision.goodStatusBlack)
-      gStatMainMeter.setValue(engine.vision.goodMain)
-      gStatAccentMeter.setValue(engine.vision.goodAccent)
-      bStatGreyMeter.setValue(engine.vision.badStatusGrey)
-      bStatBlackMeter.setValue(engine.vision.badStatusBlack)
-      bStatMainMeter.setValue(engine.vision.badMain)
-      bStatAccentMeter.setValue(engine.vision.badAccent)
-    }
+    gStatGreyMeter.setValue(engine.vision.goodStatusGrey)
+    gStatBlackMeter.setValue(engine.vision.goodStatusBlack)
+    gStatMainMeter.setValue(engine.vision.goodMain)
+    gStatAccentMeter.setValue(engine.vision.goodAccent)
+    bStatGreyMeter.setValue(engine.vision.badStatusGrey)
+    bStatBlackMeter.setValue(engine.vision.badStatusBlack)
+    bStatMainMeter.setValue(engine.vision.badMain)
+    bStatAccentMeter.setValue(engine.vision.badAccent)
+ 
 
     if (enableBoss && bossKillListen) {
       if (bossWhiteMeter.value <.1 && bossWhiteMeter.decreased && !bossKillGoing &&
@@ -718,102 +917,224 @@
     effects = effects.filter(ele =>
       ele.lifetime === undefined || ele.lifetime > 0
     );
-    sleep.forEach((ele, i) => { 
-      ele.draw(); 
-      if(ele.lifetime <= 0) sleep.splice(i, 1)
-    })
-    bossEffects.forEach((ele, i) => { 
-      ele.draw(); 
-      if(ele.lifetime <= 0) bossEffects.splice(i, 1)
-    })
+    sleep.forEach(ele => ele.draw())
+    sleep = sleep.filter(ele => ele.lifetime > 0)
+    bossEffects.forEach(ele => ele.draw())
+    bossEffects = bossEffects.filter(ele => ele.lifetime > 0)
     if (enableHud) {
       UpdateUi(adjMeter);
     }
-    ctx.clearRect(0, 0, width, height);
     ctx.drawImage(hiddenCanvas, 0, 0);
     window.requestAnimationFrame(update);
   }
+  //#endregion
+
+  //#region Callbacks
+  // ═══════════════════════════════════════════════════════════════
+  // CALLBACKS
+  // Each callback is fired by one or more Meters when their signal
+  // stabilizes. Callbacks evaluate the current state of all related
+  // meters and flags, then push effects or flip state booleans.
+  // ═══════════════════════════════════════════════════════════════
 
   let proBack = [0, 0, 0]
     function onbackColorChanged(){
-      let proBack = hexToHSL(backColor)
+      proBack = hexToHSL(backColor)  // assign to outer scope — no `let` here
     }
 
-    let backgroundEaseHue = 0;
-    let backgroundEaseLit = 0;
-    let backgroundEaseSat = 0
-    let gCycle = 0
-    function backgroundHandler(){
-        switch(backgroundMode){
-            case "Color Cycle": 
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            break;
-            case "Color Cycle Ambience": 
-            copyScreen(ambienceAlpha / 100)
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            break;
-            case "Custom": 
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
-            break;
-            case "Ambience": 
-            copyScreen(ambienceAlpha / 100)
-            break;
-            case "Custom Ambience": 
-            copyScreen(ambienceAlpha / 100)
-            break;
-            case "Ambience Audio Visualizer": 
-            copyScreenAudio(ambienceAlpha / 100)
-            break;
-            case "Custom Audio Visualizer": 
-            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
-            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
-            break;
-            case "Color Cycle Audio Visualizer": 
-            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
-            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
-            break;
-        }
+  //#endregion
+
+  //#region Background System
+  // ═══════════════════════════════════════════════════════════════
+  // BACKGROUND SYSTEM
+  // Eight modes routed via string.includes() — see backgroundHandler.
+  // ═══════════════════════════════════════════════════════════════
+
+    // audioEase: exponentially smoothed audio density → saturation/lightness.
+    // Target = engine.audio.density * 100 (0–100). Smoothing factor 1/10
+    // gives ~90% of the way to target in ~22 frames at 60fps.
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0; // current hue offset for color cycle modes (0–360, wraps)
+
+    // Convenience wrapper — keeps draw calls readable
+    function getColorString(hue, sat, lit, alpha) {
+      return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
     }
 
-    let audioScreenSat = 0
-    let audioScreenLit = 0
+    function updateAudioEase() {
+      const target = engine.audio.density * 100;
+      audioEase.sat += (target - audioEase.sat) / 10;
+      audioEase.lit += (target - audioEase.lit) / 10;
+    }
+
+    // Advance the color cycle by 0.5° per frame (full cycle ≈ 12s at 60fps)
+    function updateColorCycle() {
+      gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Eight modes are routed via string.includes() so shared keywords act as
+    // feature flags — "Color Cycle", "Ambience", "Audio" each opt a mode in.
+    function backgroundHandler() {
+      const alpha = ambienceAlpha / 100;
+      if (backgroundMode.includes('Color Cycle')) updateColorCycle();
+      if (backgroundMode.includes('Audio'))       updateAudioEase();
+
+      if (backgroundMode.includes('Ambience')) {
+        backgroundMode === 'Ambience Audio Visualizer' ? copyScreenAudio(alpha) : copyScreen(alpha);
+        return;
+      }
+
+      const hue = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0);
+      const sat = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1];
+      const lit = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2];
+      DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone grid dimensions — must match the engine's zone layout (28×20 = 560 zones)
+    const ZONE_COLS  = 28;
+    const ZONE_ROWS  = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    // Per-zone ambience with audio-modulated saturation and lightness
     function copyScreenAudio(alpha) {
-      let lightness = new Int8Array(engine.zone.lightness);
-      let sat = new Int8Array(engine.zone.saturation);
-      let hue = new Int16Array(engine.zone.hue);
-      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
-      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
-      for (var iZone = 0; iZone < 560; iZone++) {
-        var iRow = Math.floor(iZone / 28);
-        var iCol = iZone % 28;
-        var iWidth = 320 / 28;
-        var iHeight = 200 / 20;
-        var iZx = iCol * iWidth;
-        var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+      const lightness = new Int8Array(engine.zone.lightness);
+      const sat       = new Int8Array(engine.zone.saturation);
+      const hue       = new Int16Array(engine.zone.hue);
+      const zoneW = 320 / ZONE_COLS;
+      const zoneH = 200 / ZONE_ROWS;
+      const satMul = audioEase.sat / 200 + 0.5;  // 0.5–1.0
+      const litMul = audioEase.lit / 100;         // 0–1.0
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const row = Math.floor(iZone / ZONE_COLS);
+        const col = iZone % ZONE_COLS;
+        hctx.fillStyle = getColorString(hue[iZone], sat[iZone] * satMul, lightness[iZone] * litMul, alpha);
+        hctx.fillRect(col * zoneW, row * zoneH, zoneW, zoneH);
       }
     }
-  
+
+    // Per-zone ambience with optional hue modification:
+    //   Custom Ambience      → replace all hues with backColor hue
+    //   Color Cycle Ambience → shift all hues by gCycle offset
+    //   Plain Ambience       → native zone hues unchanged
     function copyScreen(alpha) {
-      let lightness = new Int8Array(engine.zone.lightness);
-      let sat = new Int8Array(engine.zone.saturation);
-      let hue = new Int16Array(engine.zone.hue);
-      for (var iZone = 0; iZone < 560; iZone++) {
-        var iRow = Math.floor(iZone / 28);
-        var iCol = iZone % 28;
-        var iWidth = 320 / 28;
-        var iHeight = 200 / 20;
-        var iZx = iCol * iWidth;
-        var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+      const lightness = new Int8Array(engine.zone.lightness);
+      const sat       = new Int8Array(engine.zone.saturation);
+      const hue       = new Int16Array(engine.zone.hue);
+      const zoneW = 320 / ZONE_COLS;
+      const zoneH = 200 / ZONE_ROWS;
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const row = Math.floor(iZone / ZONE_COLS);
+        const col = iZone % ZONE_COLS;
+        const finalHue = backgroundMode === 'Custom Ambience'
+          ? proBack[0]
+          : hue[iZone] + (backgroundMode === 'Color Cycle Ambience' ? gCycle : 0);
+        hctx.fillStyle = getColorString(finalHue, sat[iZone], lightness[iZone], alpha);
+        hctx.fillRect(col * zoneW, row * zoneH, zoneW, zoneH);
       }
     }
+
+  //#endregion
+
+  //#region Helper Functions
+  // ─── DRAW PRIMITIVES ────────────────────────────────────────────
+
+  function DrawCircle(x, y, radius, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.fill();
+  }
+
+  function DrawRect(x, y, w, h, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.fillRect(x, y, w, h);
+  }
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    hctx.beginPath();
+    hctx.strokeStyle = color;
+    hctx.lineWidth = stroke;
+    hctx.arc(x, y, radius, 0, 2 * Math.PI)
+    hctx.stroke();
+  }
+
+  function DrawPath(x, y, scale, path, color) {
+    hctx.fillStyle = color;
+    hctx.save();
+    hctx.translate(x, y);
+    hctx.scale(scale, scale)
+    hctx.fill(new Path2D(path));
+    hctx.restore();
+  }
+
+  // ─── UTILITIES ──────────────────────────────────────────────────
+
+  function lerp(a, b, speed) {
+    return a + speed * (b - a)
+  }
+
+  function SetRange(num, min, max) {
+    return Math.min(Math.max(num, min), max)
+  }
+
+  function getTime() {
+    return Date.now()
+  }
+
+  // hexToHSL: converts a CSS hex string to [H(0–360), S(0–100), L(0–100)]
+  function hexToHSL(hex) {
+    const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+    const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+    const max = Math.max(...rgb), min = Math.min(...rgb);
+    const l = (max + min) / 2;
+    if (max === min) return [0, 0, Math.round(l * 100)];
+    const d = max - min;
+    const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    const [nr, ng, nb] = rgb;
+    let h;
+    if      (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+    else if (max === ng) h = (nb - nr) / d + 2;
+    else                 h = (nr - ng) / d + 4;
+    return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)];
+  }
+
+  // ─── METER CLASS ────────────────────────────────────────────────
+  // Meter(size, callback): frame-stabilizing debouncer for vision signals.
+  // setValue(v) only updates .value and fires the callback when the last
+  // `size` readings are all identical — filters single-frame noise.
+  function Meter(count, callback) {
+    this.size      = count;
+    this.value     = 0;
+    this.diff      = 0;
+    this.increased = false;
+    this.decreased = false;
+    let values = [];
+    this.setValue = function (updatedValue) {
+      values.push(updatedValue);
+      if (values.length > this.size) values.shift();
+      for (let i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return;
+      }
+      if (this.value !== values[0]) {
+        this.diff      = Math.abs(this.value - values[0]);
+        this.increased = this.value < values[0];
+        this.decreased = this.value > values[0];
+        this.value     = values[0];
+        callback();
+      }
+    };
+  }
+  //#endregion
+
+  //#region Effects
+  // ═══════════════════════════════════════════════════════════════
+  // EFFECTS
+  // Each effect is a constructor function. Instances are pushed into
+  // an effects pool and drawn every frame until lifetime reaches 0.
+  // lifetime === undefined → alive indefinitely (persistent HUD bars)
+  // lifetime <= 0          → removed after the current frame
+  // ═══════════════════════════════════════════════════════════════
 
   let heartSVG = "m0,0v84.57h84.57V0H0Zm80.09,43.61h-7.07v7.07h-6.71v7.24h-7.07v6.36h-6.36v6.89h-7.24v6.54h-7.24v-6.71h-6.36v-6.71h-6.89v-6.36h-6.89v-6.89h-7.07v-7.24h-6.71v-20.32h6.89v-7.07h7.07l-.18-6.54h13.78v6.89h7.24v6.71h6.71v-6.8h6.54v-6.8h13.78v6.8h6.54v6.8h7.24v20.14Z"
 function heartBar(){
@@ -829,7 +1150,7 @@ function heartBar(){
     hctx.save()
     hctx.translate(this.x, this.y)
     hctx.scale(healthWidth / 50, healthWidth / 50)
-    if(inGame || adjMeter){
+    if(gInGame || (adjMeter && !gInGame)){
       DrawRect(0, 0, 320, 318 / barNumber, "black")
       DrawRect(1, 0, adjMeter ? 319 : this.width, 318 / barNumber, healthColor)
       for(let i = 0; i < barNumber; i++){
@@ -838,7 +1159,7 @@ function heartBar(){
       }
     }
     hctx.restore()
-    if((!inGame && !adjMeter) || !twinklyBars){
+    if((!gInGame && !adjMeter) || !twinklyBars){
       this.lifetime = 0
       healthPushed = false
     }
@@ -859,7 +1180,7 @@ function hungerBar(){
     hctx.save()
     hctx.translate(this.x, this.y)
     hctx.scale(foodWidth / 50, foodWidth / 50)
-    if((inGame && !onMountGoing) || adjMeter){
+    if((gInGame && !onMountGoing) || (adjMeter && !gInGame)){
       DrawRect(0, 0, 320, 318 / barNumber, "black")
       DrawRect(1, 0, adjMeter ? 319 : this.width, 318 / barNumber, foodColor)
       for(let i = 0; i < barNumber; i++){
@@ -868,7 +1189,7 @@ function hungerBar(){
       }
     }
     hctx.restore()
-    if((!inGame && !adjMeter) || !twinklyBars){
+    if((!gInGame && !adjMeter) || !twinklyBars){
       this.lifetime = 0
       hungerPushed = false
     }
@@ -878,7 +1199,7 @@ function hungerBar(){
   let healthPushed = false;
   let hungerPushed = false;
   function UpdateUi(adj) {
-    if (!twinklyBars && adj && !inGame) {
+    if (!twinklyBars && adj && !gInGame) {
       hctx.fillStyle = healthColor;
       //HealthBar
       hctx.fillRect(healthX * 3.2, healthY * 2, ((0.745 * 1.3) + (1 / 10)) * healthWidth * 3.2, healthHeight)
@@ -893,7 +1214,7 @@ function hungerBar(){
       bossEffects.push(new hungerBar())
       hungerPushed = true
     } 
-    if (!twinklyBars && inGame) {
+    if (!twinklyBars && gInGame) {
       hctx.fillStyle = healthColor;
       //HealthBar
       hctx.fillRect(healthX * 3.2, healthY * 2, ((healthMeter.value * 1.3) + (lastHealthMeter.value / 10)) * healthWidth * 3.2, healthHeight)
@@ -905,24 +1226,24 @@ function hungerBar(){
   //Callbacks
   function onGameChanged() {
     if (inGameMeter.value >= .75 && engine.vision.inGame1Not < .1 && (healthMeter.value > .1 || freezeMeter.value > .1 || lowHpMeter.value > .1 || poisonMeter.value > .1 || lowFoodMeter.value > .1)) {
-      inGame = true;
+      gInGame = true;
       inChest = false
       menuGoing = false
     } else if (inGameMeter.value < .05){
-        inGame = false
+        gInGame = false
     } 
   }
 
   function inSleepChanged() {
-    if (sleepBlackMeter.value >= .95 && sleepWhiteMeter.value > .25 && healthMeter.value <.1 && !sleepGoing && enableSleep && !inGame) {
+    if (sleepBlackMeter.value >= .95 && sleepWhiteMeter.value > .24 && healthMeter.value <.1 && !sleepGoing && enableSleep && !gInGame) {
       sleep.push(new sleeping())
       sleepGoing = true;
     }
   }
 
-  recipeGoing = false
+  let recipeGoing = false
   function onRecipeChanged(){
-    if (newRecipePMeter.value >= .25 && newRecipeWMeter.value >= .95 && enableRecipe && inGame){
+    if (newRecipePMeter.value >= .25 && newRecipeWMeter.value >= .95 && enableRecipe && gInGame){
       if(!recipeGoing){
       effects.push(new recipeUnlocked())
       recipeGoing = true
@@ -932,11 +1253,11 @@ function hungerBar(){
 
   let horseXPDelay = false
   function onMountChanged (){
-    if (onMountBlackMeter.value >= .95 && onmountOrangeMeter.value >= .95 && inGame && !onMountGoing && enableMount){
+    if (onMountBlackMeter.value >= .95 && onMountOrangeMeter.value >= .95 && gInGame && !onMountGoing && enableMount){
       effects.push(new onMountEffect())
       onMountGoing = true;
       horseXPDelay = true
-    } else if ((onMountBlackMeter.value <.1 || onmountOrangeMeter.value <.1) && onMountGoing){
+    } else if ((onMountBlackMeter.value <.1 || onMountOrangeMeter.value <.1) && onMountGoing){
       onMountGoing = false;
       setTimeout(()=>{
         horseXPDelay = false
@@ -999,7 +1320,7 @@ function hungerBar(){
   function menuChanged() {
     if (inMenuBlackMeter.value >= .95 && inMenuWhiteMeter.value >= .95 && !menuGoing && enableMenu && lChestBlackMeter.value <.1 && sChestBlackMeter.value <.1) {
       effects.push(new genericEffectTimer())
-    } else if((inMenuBlackMeter.value <= .25 && inMenuWhiteMeter.value <= .25) || inGame) menuGoing = false
+    } else if((inMenuBlackMeter.value <= .25 && inMenuWhiteMeter.value <= .25) || gInGame) menuGoing = false
   }
 
   function genericEffectTimer(){
@@ -1011,7 +1332,7 @@ function hungerBar(){
         effects.push(new genericMenu())
         menuGoing = true;
       }
-      if(menuGoing || inGame) this.lifetime = 0
+      if(menuGoing || gInGame) this.lifetime = 0
     }
   }
 
@@ -1030,7 +1351,7 @@ function hungerBar(){
   }
 
   function onLowHpChanged() {
-    if (inGame && !lowHpGoing && lowHpMeter.value < 0.7 && lastHealthMeter.value >= .5 && enableHealth) {
+    if (gInGame && !lowHpGoing && lowHpMeter.value < 0.7 && lastHealthMeter.value >= .5 && enableHealth) {
       effects.push(new lowHealthState())
       lowHpGoing = true;
     }
@@ -1044,14 +1365,14 @@ function hungerBar(){
   }
 
   function onBubblechanged() {
-    if (bubbleMeter.value >= .95 && engine.vision.bubble2 >= .95 && engine.vision.bubble3 >= .95 && inGame && enableUnderwater) {
+    if (bubbleMeter.value >= .95 && engine.vision.bubble2 >= .95 && engine.vision.bubble3 >= .95 && gInGame && enableUnderwater && !bubblegoing) {
       effects.push(new bubbleEffect("hsla(222, 100%, 46%, 0.7)", "hsla(189, 100%, 46%, 1)", "hsla(243, 100%, 46%, 1)"))
       bubblegoing = true;
     }
   }
 
   function onHealthMeterChanged() {
-    if (enableHealth && inGame && freezeMeter.value <.1 && poisonMeter.value <.1 && lastHealthMeter.value >= .5 && !lowHpGoing) {
+    if (enableHealth && gInGame && freezeMeter.value <.1 && poisonMeter.value <.1 && lastHealthMeter.value >= .5 && !lowHpGoing) {
       if (healthMeter.decreased && healthMeter.diff > 0.1) {
         for (let index = 0; index < 20; index++) {
           setTimeout(() => {
@@ -1060,7 +1381,7 @@ function hungerBar(){
 
         }
 
-      } else if (healthMeter.increased && healthMeter.diff > 0.2 && inGame) {
+      } else if (healthMeter.increased && healthMeter.diff > 0.2 && gInGame) {
         effects.push(new HealState());
       }
     }
@@ -1078,21 +1399,15 @@ function hungerBar(){
   }
 
   function onFoodMeterChanged() {
-    if (enableHunger) {
-      if (lowFoodMeter.value < 0.3 && !onMountGoing && inGame) {
-        effects.push(new FoodState());
-      }
+    if (enableHunger && lowFoodMeter.value < 0.3 && !onMountGoing && gInGame && !foodStatePlaying) {
+      foodStatePlaying = true;
+      effects.push(new FoodState());
     }
   }
   
-  function onBossMeterChanged(Gamecheck) {
-    if (enableBoss) {
-      if (Gamecheck && bossGoing) {
-        bossEffects.push(new BossState());
-      }
-      if (bossMeter.increased != bossGoing) {
-        bossEffects.push(new BossState());
-      }
+  function onBossMeterChanged() {
+    if (enableBoss && bossMeter.increased && !bossGoing) {
+      bossEffects.push(new BossState());
     }
   }
 
@@ -1102,7 +1417,7 @@ function hungerBar(){
     this.draw = function () {
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
       this.alpha <= .99 ? this.alpha += .01 : this.lifetime--;
-      if(!inGame){
+      if(!gInGame ){
         this.lifetime = 0
         return;
       }
@@ -1148,7 +1463,7 @@ function hungerBar(){
       DrawRect(0, 150, 320, 50, `hsla(0, 100%, ${this.count / 20}%, ${this.alpha})`)
       this.rot += .005
       this.rot %= Math.PI * 2
-      if(!menuGoing || inGame) this.stop = true
+      if(!menuGoing || gInGame ) this.stop = true
       if(this.stop) this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
     }
   }
@@ -1164,10 +1479,6 @@ function hungerBar(){
       this.y > 0 ? this.y += this.vy : this.lifetime = 0
       this.vy -= .1
     }
-  }
-
-  function lerp(a, b, speed) {
-    return a + speed * (b - a)
   }
 
   function recipeUnlocked(){
@@ -1213,10 +1524,6 @@ function hungerBar(){
           this.lifetime = 0;
         }
       }
-    }
-
-    function SetRange(num, min, max) {
-      return Math.min(Math.max(num, min), max)
     }
 
     function openChestEffect(){
@@ -1293,14 +1600,6 @@ function hungerBar(){
       this.y > 250 ? this.lifetime = 0 : null;
     }
   }
-
-  function DrawStroke(x, y, radius, color, stroke) {
-    hctx.beginPath();
-    hctx.strokeStyle = color;
-    hctx.lineWidth = stroke;
-    hctx.arc(x, y, radius, 0, 2 * Math.PI)
-    hctx.stroke();
-  };
 
   function sleeping() {
     this.start = Date.now();
@@ -1386,7 +1685,7 @@ function hungerBar(){
         this.page4.draw(this.done)
       }
       hctx.restore()
-      if(!menuGoing || inGame) this.done = true
+      if(!menuGoing || gInGame ) this.done = true
       if(this.done) this.alpha >= .01 ? this.alpha -= .01 : this.alpha2 >= .01 ? this.alpha2 -= .01 : this.lifetime = 0
       else this.alpha2 <= .95 ? this.alpha2 += .05 : this.alpha = Math.abs(Math.sin(Date.now() / 500)) * .15 + .15
     };
@@ -1459,7 +1758,7 @@ function hungerBar(){
         }
         this.oldDir = this.dir
       }
-      if(!menuGoing || inGame) this.done = true
+      if(!menuGoing || gInGame ) this.done = true
       if (this.done) this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
       else {
         this.alpha2 = Math.abs(Math.sin(this.rotate)) * .1 + .1;
@@ -1501,7 +1800,7 @@ function hungerBar(){
         }
         this.oldDir = this.dir
       }
-      if(!menuGoing || inGame) this.done = true
+      if(!menuGoing || gInGame ) this.done = true
       if (this.done){
         this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0;
       } else {
@@ -1541,16 +1840,6 @@ function hungerBar(){
       if(!onMountGoing) this.lifetime = 0;
     }
   }
-
-  function DrawPath(x, y, scale, path, color) {
-    hctx.fillStyle = color;
-    hctx.save();
-    hctx.translate(x, y);
-    hctx.scale(scale, scale)
-    let ex = new Path2D(path);
-    hctx.fill(ex);
-    hctx.restore();
-  };
 
   function spark(x, y) {
     this.x = x;
@@ -1603,7 +1892,7 @@ function genericMenu() {
           this.redo = true;
         }, 500)
       }
-      if(!menuGoing || inGame || enchantmentTableBrownMeter.value >= .75) this.stop = true
+      if(!menuGoing || gInGame || enchantmentTableBrownMeter.value >= .75) this.stop = true
       if (this.stop) {
         this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
         if(enchantmentTableBrownMeter.value >= .75 && this.lifetime == 0) sleep.push(new inEnchanter())
@@ -1722,21 +2011,8 @@ function genericMenu() {
     }
   }
 
-  function DrawCircle(x, y, radius, color) {
-    hctx.beginPath();
-    hctx.fillStyle = color;
-    hctx.arc(x, y, radius, 0, 2 * Math.PI)
-    hctx.fill();
-  };
-
-  function DrawRect(x, y, width, height, color) {
-    hctx.beginPath();
-    hctx.fillStyle = color;
-    hctx.fillRect(x, y, width, height);
-  };
-
   function XpUpState() {
-    this.start = new Date().getTime();
+    this.start = getTime();
     this.lifetime = 60;
     this.draw = function () {
       this.lifetime--
@@ -1841,7 +2117,7 @@ function genericMenu() {
       for (let i = 0; i < removedCount; i++) {
         this.bubbles.push(new Bubble(this.bubbleColor, this.strokeColor, 30));
       }
-      if ((bubbleMeter.value <= .1 && engine.vision.bubble2 <= .1 && engine.vision.bubble3 <= .1) || !inGame) {
+      if ((bubbleMeter.value <= .1 && engine.vision.bubble2 <= .1 && engine.vision.bubble3 <= .1) || !gInGame ) {
         this.lifetime = 0;
         bubblegoing = false;
       }
@@ -1888,7 +2164,7 @@ function genericMenu() {
       this.duration = getTime() - this.start;
       hctx.fillStyle = `hsla(0, 100%, 50%, ${((Math.sin(this.duration / 600) + 1) / 3) + 0.1})`
       hctx.fillRect(0, 0, 320, 200);
-      if (lowHpMeter.value == 0 || lowHpMeter.value > 0.8 || !inGame || healthMeter.value >= .25) {
+      if (lowHpMeter.value == 0 || lowHpMeter.value > 0.8 || !gInGame || healthMeter.value >= .25) {
         this.lifetime = 0;
         lowHpGoing = false;
       }
@@ -1922,15 +2198,12 @@ function genericMenu() {
         this.arrow = new ArrowEffect("down", "orange", 1, 0.5, 3000)
       }
       this.arrow.draw();
-      if ((lowFoodMeter.value >= .95 && lowFoodMeter.increased) || onMountGoing || !inGame || inChest) {
+      if ((lowFoodMeter.value >= .95 && lowFoodMeter.increased) || onMountGoing || !gInGame || inChest) {
         this.lifetime = 0;
+        foodStatePlaying = false;
         if(!inChest) effects.push(new RippleEffect(160, 100, 10, 3000, 30, "orange", "out", "stroke", 10))
       }
     };
-  }
-
-  function getTime() {
-    return new Date().getTime();
   }
 
   function ArrowEffect(direction, color, amount, speed, duration) {
@@ -1970,8 +2243,7 @@ function genericMenu() {
           hctx.fill();
         }
       }
-      this.Ymin += this.speed;
-      this.elapsed = new Date().getTime() - this.start;
+      this.elapsed = getTime() - this.start;
       this.lifetime = this.duration - this.elapsed;
     }
   }
@@ -1993,11 +2265,6 @@ function genericMenu() {
       this.speed = -this.speed
     }
     this.draw = function () {
-      if (this.background) {
-        DrawBackground("black");
-      }
-
-
       hctx.lineWidth = this.width;
       hctx.beginPath();
       for (let i = 0; i < this.amount; i++) {
@@ -2014,9 +2281,6 @@ function genericMenu() {
       }
       this.radius += this.speed;
       this.lifetime = this.dur - (getTime() - this.start);
-      if (this.lifetime <= 0) {
-        utilityPlayed = false;
-      }
     }
   }
 
@@ -2046,87 +2310,7 @@ function genericMenu() {
     }
   }
 
-  function Meter(count, callback) {
-    this.size = count;
-    this.value = 0;
-    this.diff = 0;
-    this.increased = false;
-    this.decreased = false;
-    let values = [];
-
-    this.setValue = function (updatedValue) {
-      // Add and shift.
-      values.push(updatedValue);
-      if (values.length > this.size) {
-        values.shift();
-      }
-
-      // Exit early if we've got a long-term match.
-      for (let i = 0; i < values.length - 1; i++) {
-        if (values[i] !== values[i + 1]) return;
-      }
-
-      // We got here, so we've got a matching value collection.
-      if (this.value !== values[0]) {
-        //let fromZero = this.value === 0;
-        //let toZero = values[0] === 0;
-        this.diff = Math.abs(this.value - values[0]);
-        this.increased = this.value < values[0];
-        this.decreased = this.value > values[0];
-        this.value = values[0];
-
-        callback();
-      }
-    };
-  }
-
-  function hexToHSL(hex) {
-    // Remove the '#' if present
-    hex = hex.replace("#", "");
-
-    // Convert hex to RGB
-    let r = parseInt(hex.substring(0, 2), 16);
-    let g = parseInt(hex.substring(2, 4), 16);
-    let b = parseInt(hex.substring(4, 6), 16);
-
-    // Normalize RGB values
-    r /= 255;
-    g /= 255;
-    b /= 255;
-
-    // Calculate HSL values
-    let max = Math.max(r, g, b);
-    let min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
-
-    if (max === min) {
-      h = s = 0; // Achromatic
-    } else {
-      let d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-
-      switch (max) {
-        case r:
-          h = (g - b) / d + (g < b ? 6 : 0);
-          break;
-        case g:
-          h = (b - r) / d + 2;
-          break;
-        case b:
-          h = (r - g) / d + 4;
-          break;
-      }
-
-      h /= 6;
-    }
-
-    // Convert to percentages
-    h = Math.round(h * 360);
-    s = Math.round(s * 100);
-    l = Math.round(l * 100);
-
-    return [h, s, l];
-  }
+  //#endregion
 
     window.requestAnimationFrame(update);
 </script>
