@@ -1,24 +1,29 @@
 <head>
-  <title>Fortnite Dev</title>
-  <meta description="Ambience and metering for Fortnite. v3.03" />
+  <title>Fortnite Dev2</title>
+  <meta description="Ambience and metering for Fortnite. v1.1.0" />
   <meta publisher="SignalRGB" />
+
+  <!-- ═══════════════════════════════════════════ Background ═══════════════════════════════════════════ -->
   <meta property="ambienceAlpha" label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
-  <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
-  default="Ambience"/>
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer" default="Ambience"/>
   <meta property="backColor" label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+
+  <!-- ═══════════════════════════════════════════ HUD ═══════════════════════════════════════════ -->
   <meta property="enableHP" label="Health Bar effect" tooltip="Switches the health bar on or off." type="boolean" default="1" />
   <meta property="adjToggle" label="Bar Effect Adjust" tooltip="Turns on the health and shield bar effects so you can adjust them out of game." type="boolean" default="0" />
   <meta property="healthColor" label="Health HUD Color" tooltip="Controls the color of the health bar." type="color" default="#12ff00" min="0" max="360" />
   <meta property="HealthBarX" label="Health Bar X" tooltip="Moves the health bar left and right." type="number" min="0" max="100" default="0" />
   <meta property="HealthBarY" label="Health Bar Y" tooltip="Moves the health bar up and down." type="number" min="0" max="100" default="25" />
   <meta property="HealthBarWidth" label="Health Bar Width" tooltip="Change the maximum width of the health bar." type="number" min="0" max="100" default="100" />
-  <meta property="HealthBarHeight" label="Health Bar Height" tooltip="Change the maximum heght of the health bar." type="number" min="0" max="100" default="15" />
+  <meta property="HealthBarHeight" label="Health Bar Height" tooltip="Change the maximum height of the health bar." type="number" min="0" max="100" default="15" />
   <meta property="enableShield" label="Shield Bar effect" tooltip="Switches the shield bar on or off." type="boolean" default="1" />
   <meta property="ShieldColor" label="Shield HUD Color" tooltip="Controls the color of the shield bar." type="color" default="#00c3ff" min="0" max="360" />
   <meta property="ShieldBarX" label="Shield Bar X" tooltip="Moves the shield bar left and right." type="number" min="0" max="100" default="0" />
   <meta property="ShieldBarY" label="Shield Bar Y" tooltip="Moves the shield bar up and down." type="number" min="0" max="100" default="40" />
   <meta property="ShieldBarWidth" label="Shield Bar Width" tooltip="Change the maximum width of the shield bar." type="number" min="0" max="100" default="100" />
   <meta property="ShieldBarHeight" label="Shield Bar Height" tooltip="Change the maximum height of the shield bar." type="number" min="0" max="100" default="15" />
+
+  <!-- ═══════════════════════════════════════════ Effects ═══════════════════════════════════════════ -->
   <meta property="enableHealing" label="Healing effect" tooltip="Turns on the effect that plays when you heal." type="boolean" default="1" />
   <meta property="enableDamage" label="Damage effect" tooltip="Turns on the effect that plays when you are damaged." type="boolean" default="1" />
   <meta property="enableVehicle" label="Vehicle effect" tooltip="Turns on the effect that plays when you are in a vehicle." type="boolean" default="1" />
@@ -31,13 +36,15 @@
   <meta property="enableBuild" label="Build effect" tooltip="Turns on the effect that plays when you are building." type="boolean" default="1" />
   <meta property="enableWin" label="Win effect" tooltip="Turns on the effect that plays when you win." type="boolean" default="1" />
 
-  <!-- 26 Meters -->
-  <meta meter="inGame1" type="area" tags="vlc,fortnite" x="0.4934" y="0.0174" width="0.0137" height="0.0174" 
+  <!-- ═══════════════════════════════════════════ 28 Meters ═══════════════════════════════════════════ -->
+
+  <!-- ── In-Game Detection ── -->
+  <meta meter="inGame1" type="area" tags="vlc,fortnite" x="0.4934" y="0.0174" width="0.0137" height="0.0174"
     h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.4965" y="0.019" width="0.0076" height="0.0167" />
     <resolution aspect="24:10" x="0.4945" y="0.0187" width="0.0108" height="0.0160" />
     <resolution aspect="16:11" x="0.4930" y="0.0163" width="0.0133" height="0.0150" />
-  
+
     <resolution size="3840x2160" x="0.4932" y="0.0194" width="0.0133" height="0.0162" />
     <resolution size="2560x1080" x="0.4949" y="0.0194" width="0.0105" height="0.0148" />
   </meta>
@@ -52,7 +59,7 @@
     <resolution size="2560x1080" x="0.9809" y="0.0241" width="0.0031" height="0" />
   </meta>
 
-  <meta meter="notInGame2" type="area" tags="vlc,fortnite" x="0.9891" y="0.0229" width="-0.0004" height="0.0056" 
+  <meta meter="notInGame2" type="area" tags="vlc,fortnite" x="0.9891" y="0.0229" width="-0.0004" height="0.0056"
     h="0-360" s="0-20" l="80-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.9948" y="0.0176" width="0.0008" height="0.0013" />
     <resolution aspect="24:10" x="0.9916" y="0.0201" width="0.0014" height="0.002" />
@@ -62,132 +69,138 @@
     <resolution size="2560x1080" x="0.9918" y="0.025" width="-0.0004" height="0.0056" />
   </meta>
 
-  <meta meter="cloudClose" type="area" tags="vlc,fortnite" x="0.841" y="0.1126" width="0" height="0.0035" 
+  <!-- ── Storm ── -->
+  <meta meter="cloudClose" type="area" tags="vlc,fortnite" x="0.841" y="0.1126" width="0" height="0.0035"
     h="290-350" s="75-100" l="80-100" hdr-h="290-320" hdr-s="40-80" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.9208" y="0.1250" width="0.0003" height="0.0007" />
     <resolution aspect="24:10" x="0.8817" y="0.1292" width="0.0003" height="0.0007" />
     <resolution aspect="16:11" x="0.8425" y="0.1151" width="0" height="0.0025" />
-  
+
     <resolution size="3840x2160" x="0.8406" y="0.1116" width="0" height="0.0014"/>
     <resolution size="2560x1080" x="0.8816" y="0.1121" width="0" height="0.0019" />
   </meta>
 
-  <meta meter="Health" type="area" tags="vlc,fortnite" x="0.0363" y="0.9159" width="0.1630" height="0" 
+  <!-- ── Health & Shield ── -->
+  <meta meter="Health" type="area" tags="vlc,fortnite" x="0.0363" y="0.9159" width="0.1630" height="0"
     h="45-180" s="50-100" l="60-100" hdr-h="45-180" hdr-s="50-90" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.0174" y="0.9167" width="0.0870" height="0.0010" />
     <resolution aspect="24:10" x="0.0270" y="0.9153" width="0.1279" height="0.0005" />
     <resolution aspect="16:11" x="0.0367" y="0.925" width="0.1681" height="-0.0019" />
-  
+
     <resolution size="3840x2160" x="0.0375" y="0.9407" width="0.1751" height="0.0014" />
     <resolution size="2560x1080" x="0.0266" y="0.9184" width="0.1285" height="0.0019" />
   </meta>
 
-  <meta meter="HealthRed" type="area" tags="vlc,fortnite" x="0.0363" y="0.9159" width="0.1630" height="0" 
+  <meta meter="HealthRed" type="area" tags="vlc,fortnite" x="0.0363" y="0.9159" width="0.1630" height="0"
     h="-30-30" s="70-100" l="60-100" hdr-h="-30-30" hdr-s="70-100" hdr-l="60-100">
     <resolution aspect="3.55:1" x="0.0174" y="0.9167" width="0.0870" height="0.0010" />
     <resolution aspect="24:10" x="0.0270" y="0.9153" width="0.1279" height="0.0005" />
     <resolution aspect="16:11" x="0.0367" y="0.925" width="0.1681" height="-0.0019" />
-  
+
     <resolution size="3840x2160" x="0.0375" y="0.9407" width="0.1751" height="0.0014" />
     <resolution size="2560x1080" x="0.0266" y="0.9184" width="0.1285" height="0.0019" />
   </meta>
 
-  <meta meter="Shields" type="area" tags="vlc,fortnite" x="0.0348" y="0.8916" width="0.1739" height="-0.0007" 
+  <meta meter="Shields" type="area" tags="vlc,fortnite" x="0.0348" y="0.8916" width="0.1739" height="-0.0007"
     h="180-220" s="80-100" l="60-100" hdr-h="160-200" hdr-s="80-100" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.0174" y="0.8889" width="0.0846" height="0.0005" />
     <resolution aspect="24:10" x="0.0259" y="0.8896" width="0.1308" height="0.0005" />
     <resolution aspect="16:11" x="0.0356" y="0.9037" width="0.1723" height="0" />
-  
+
     <resolution size="3840x2160" x="0.0484" y="0.8939" width="0.1600" height="0.0005" />
     <resolution size="2560x1080" x="0.0262" y="0.8962" width="0.1297" height="0.0028" />
   </meta>
 
-  <meta meter="Shields2" type="area" tags="vlc,fortnite" x="0.0348" y="0.8916" width="0.1739" height="-0.0007" 
+  <meta meter="Shields2" type="area" tags="vlc,fortnite" x="0.0348" y="0.8916" width="0.1739" height="-0.0007"
     h="180-220" s="80-100" l="60-100" hdr-h="160-200" hdr-s="80-100" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.0174" y="0.8889" width="0.0846" height="0.0005" />
     <resolution aspect="24:10" x="0.0259" y="0.8896" width="0.1308" height="0.0005" />
     <resolution aspect="16:11" x="0.0356" y="0.9037" width="0.1723" height="0" />
-  
-    <resolution size="3840x2160" x="0.0484" y="0.8939" width="0.1600" height="0.0005"  />
-    <resolution size="2560x1080" x="0.0262" y="0.8962" width="0.1297" height="0.0028" /> 
+
+    <resolution size="3840x2160" x="0.0484" y="0.8939" width="0.1600" height="0.0005" />
+    <resolution size="2560x1080" x="0.0262" y="0.8962" width="0.1297" height="0.0028" />
   </meta>
 
+  <!-- ── Vehicle ── -->
   <meta meter="vehicleWhite" type="area" tags="vlc,fortnite" x="0.7991" y="0.8624" width="0.0016" height="0.0035"
     h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.8992" y="0.8630" width="0.0014" height="0.0005" />
     <resolution aspect="24:10" x="0.8497" y="0.8639" width="0.0012" height="0.0010" />
     <resolution aspect="16:11" x="0.7991" y="0.8774" width="0.0008" height="0.0013" />
-  
-    <resolution size="3840x2160" x="0.7986" y="0.8648" width="0.0027" height="0.0004"  />
+
+    <resolution size="3840x2160" x="0.7986" y="0.8648" width="0.0027" height="0.0004" />
     <resolution size="2560x1080" x="0.8496" y="0.8638" width="0.0011" height="0.0018" />
   </meta>
 
-  <meta meter="vehicleNotWhite" type="area" tags="vlc,fortnite" x="0.7972" y="0.8749" width="0.0031" height="0" 
+  <meta meter="vehicleNotWhite" type="area" tags="vlc,fortnite" x="0.7972" y="0.8749" width="0.0031" height="0"
     h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.8987" y="0.8722" width="0.0023" height="0.0003" />
     <resolution aspect="24:10" x="0.8491" y="0.8736" width="0.0023" height="0.0005" />
     <resolution aspect="16:11" x="0.7968" y="0.8868" width="0.0035" height="0" />
-  
-    <resolution size="3840x2160" x="0.7971" y="0.874" width="0.0044" height="0.0014"  />
+
+    <resolution size="3840x2160" x="0.7971" y="0.874" width="0.0044" height="0.0014" />
     <resolution size="2560x1080" x="0.8488" y="0.8749" width="0.0027" height="0" />
   </meta>
 
-  <meta meter="vehicleRed" type="area" tags="vlc,fortnite" x="0.9668" y="0.9521" width="0.0008" height="0.002" 
+  <meta meter="vehicleRed" type="area" tags="vlc,fortnite" x="0.9668" y="0.9521" width="0.0008" height="0.002"
     h="-30-30" s="50-100" l="75-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.9841" y="0.9463" width="0" height="0" />
     <resolution aspect="24:10" x="0.9746" y="0.9493" width="0.0009" height="0.0000" />
     <resolution aspect="16:11" x="0.9668" y="0.9537" width="0.0004" height="0.0006" />
-  
-    <resolution size="3840x2160" x="0.9667" y="0.95" width="0.0002" height="0.0004"  />
+
+    <resolution size="3840x2160" x="0.9667" y="0.95" width="0.0002" height="0.0004" />
     <resolution size="2560x1080" x="0.9758" y="0.9481" width="0.0004" height="0" />
   </meta>
 
+  <!-- ── XP ── -->
   <meta meter="xp" type="area" tags="vlc,fortnite" x="0.043" y="0.2662" width="0.0015" height="0.0041"
     h="-120-50" s="70-100" l="75-100" hdr-h="-120-50" hdr-s="50-100" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.0227" y="0.1130" width="0.0013" height="0.002" />
     <resolution aspect="24:10" x="0.0323" y="0.1083" width="0.0015" height="0.0005" />
     <resolution aspect="16:11" x="0.0434" y="0.0988" width="0.0015" height="0.0006" />
-  
-    <resolution size="3840x2160" x="0.0422" y="0.1075" width="0.0008" height="0"   />
+
+    <resolution size="3840x2160" x="0.0422" y="0.1075" width="0.0008" height="0" />
     <resolution size="2560x1080" x="0.0324" y="0.1094" width="0.0012" height="0.0009" />
   </meta>
 
-  <meta meter="xp2" type="area" tags="vlc,fortnite" x="0.0422" y="0.2794" width="0.0066" height="0.0007" 
+  <meta meter="xp2" type="area" tags="vlc,fortnite" x="0.0422" y="0.2794" width="0.0066" height="0.0007"
     h="230-300" s="40-100" l="0-50" hdr-h="230-300" hdr-s="80-100" hdr-l="30-50">
     <resolution aspect="3.55:1" x="0.0216" y="0.1241" width="0.0016" height="0.002" />
     <resolution aspect="24:10" x="0.0323" y="0.1187" width="0.0035" height="0.0010" />
     <resolution aspect="16:11" x="0.0434" y="0.1088" width="0.0094" height="0.0006" />
-  
-    <resolution size="3840x2160" x="0.0443" y="0.1214" width="0.007" height="0.0004"   />
+
+    <resolution size="3840x2160" x="0.0443" y="0.1214" width="0.007" height="0.0004" />
     <resolution size="2560x1080" x="0.032" y="0.1233" width="0.0059" height="0" />
   </meta>
 
-  <meta meter="sprintWhite" type="area" tags="vlc,fortnite" x="0.4463" y="0.9437" width="0.1059" height="-0.0007" 
+  <!-- ── Sprint ── -->
+  <meta meter="sprintWhite" type="area" tags="vlc,fortnite" x="0.4463" y="0.9437" width="0.1059" height="-0.0007"
     h="0-360" s="0-40" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.4737" y="0.9444" width="0.0526" height="0.0007" />
     <resolution aspect="24:10" x="0.4602" y="0.9424" width="0.0788" height="0.0007" />
     <resolution aspect="16:11" x="0.4463" y="0.95" width="0.107" height="0" />
-  
+
     <resolution size="3840x2160" x="0.4467" y="0.943" width="0.1021" height="0.001" />
     <resolution size="2560x1080" x="0.4603" y="0.9444" width="0.079" height="-0.0009" />
   </meta>
 
-  <meta meter="sprintNoWhite" type="area" tags="vlc,fortnite" x="0.449" y="0.9361" width="0.0371" height="0.0007" 
+  <meta meter="sprintNoWhite" type="area" tags="vlc,fortnite" x="0.449" y="0.9361" width="0.0371" height="0.0007"
     h="0-360" s="0-40" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.4750" y="0.9333" width="0.0091" height="0.0002" />
     <resolution aspect="24:10" x="0.4628" y="0.9354" width="0.0116" height="0.0005" />
     <resolution aspect="16:11" x="0.456" y="0.9437" width="0.0243" height="-0.0019" />
-  
+
     <resolution size="3840x2160" x="0.4475" y="0.9555" width="0.1003" height="0.001" />
     <resolution size="2560x1080" x="0.4627" y="0.9361" width="0.0215" height="-0.001" />
   </meta>
 
-  <meta meter="battlebus" type="area" tags="vlc,fortnite" x="0.6374" y="0.1445" width="0.005" height="0.0028" 
+  <!-- ── Battlebus ── -->
+  <meta meter="battlebus" type="area" tags="vlc,fortnite" x="0.6374" y="0.1445" width="0.005" height="0.0028"
     h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-25" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.5628" y="0.1444" width="0.0013" height="0.0005" />
     <resolution aspect="24:10" x="0.6073" y="0.1424" width="0.0023" height="0.0007" />
     <resolution aspect="16:11" x="0.6377" y="0.1282" width="0.0071" height="0.0019" />
-  
+
     <resolution size="3840x2160" x="0.3488" y="0.1436" width="0.0023" height="0.0028" />
     <resolution size="2560x1080" x="0.6069" y="0.1455" width="0.0027" height="0.0028" />
   </meta>
@@ -197,9 +210,9 @@
     <resolution aspect="3.55:1" x="0.4250" y="0.1444" width="0.0016" height="0.0005" />
     <resolution aspect="24:10" x="0.3878" y="0.1417" width="0.0020" height="0.0000" />
     <resolution aspect="16:11" x="0.347" y="0.127" width="0.0047" height="0.0037" />
-  
-    <resolution size="3840x2160" x="0.6387" y="0.1445" width="0.0057" height="0.0042"   />
-    <resolution size="2560x1080" x="0.3877" y="0.1437" width="0.0023" height="0.0027"  />
+
+    <resolution size="3840x2160" x="0.6387" y="0.1445" width="0.0057" height="0.0042" />
+    <resolution size="2560x1080" x="0.3877" y="0.1437" width="0.0023" height="0.0027" />
   </meta>
 
   <meta meter="battlebusNotWhite" type="area" tags="vlc,fortnite" x="0.6112" y="0.0764" width="0.0039" height="0"
@@ -207,18 +220,19 @@
     <resolution aspect="3.55:1" x="0.5563" y="0.0722" width="0.0016" height="0.0002" />
     <resolution aspect="24:10" x="0.5834" y="0.0736" width="0.0035" height="0.0000" />
     <resolution aspect="16:11" x="0.612" y="0.0675" width="0.0035" height="-0.0006" />
-  
-    <resolution size="3840x2160" x="0.5942" y="0.1403" width="0.0049" height="0.0014"  />
+
+    <resolution size="3840x2160" x="0.5942" y="0.1403" width="0.0049" height="0.0014" />
     <resolution size="2560x1080" x="0.5838" y="0.0704" width="0.0031" height="0.001" />
   </meta>
 
-  <meta meter="killRed" type="area" tags="vlc,fortnite" x="0.4986" y="0.7547" width="0.0012" height="0.0021" 
+  <!-- ── Kill ── -->
+  <meta meter="killRed" type="area" tags="vlc,fortnite" x="0.4986" y="0.7547" width="0.0012" height="0.0021"
     h="-30-30" s="75-100" l="90-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.4990" y="0.7528" width="0.0010" height="0.0002" />
     <resolution aspect="24:10" x="0.4988" y="0.7556" width="0.0020" height="0.0002" />
     <resolution aspect="16:11" x="0.4982" y="0.7761" width="0.002" height="0.0019" />
-  
-    <resolution size="3840x2160" x="0.4986" y="0.7513" width="0.0015" height="0.0014"  />
+
+    <resolution size="3840x2160" x="0.4986" y="0.7513" width="0.0015" height="0.0014" />
     <resolution size="2560x1080" x="0.499" y="0.7553" width="0.0008" height="0" />
   </meta>
 
@@ -237,17 +251,18 @@
     <resolution aspect="3.55:1" x="0.4846" y="0.7741" width="0.0318" height="0.0118" />
     <resolution aspect="24:10" x="0.4730" y="0.7730" width="0.0570" height="0.0130" />
     <resolution aspect="16:11" x="0.4705" y="0.7955" width="0.0649" height="0.0125"/>
-  
+
     <resolution size="3840x2160" x="0.4665" y="0.7766" width="0.0698" height="0.0080" />
     <resolution size="2560x1080" x="0.4904" y="0.7711" width="0.0176" height="0.0140" />
   </meta>
 
+  <!-- ── Win ── -->
   <meta meter="winYellow" type="area" tags="vlc,fortnite" x="0.3599" y="0.2182" width="0.0051" height="0.0042"
     h="45-90" s="75-100" l="75-100" hdr-h="45-90" hdr-s="40-70" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.4297" y="0.2278" width="0.0021" height="0.0005" />
     <resolution aspect="24:10" x="0.3953" y="0.2229" width="0.0044" height="0.0007" />
     <resolution aspect="16:11" x="0.3888" y="0.1895" width="0.0035" height="0.0006" />
-  
+
     <resolution size="3840x2160" x="0.3597" y="0.2177" width="0.0034" height="0.0018" />
     <resolution size="2560x1080" x="0.3955" y="0.2234" width="0.0035" height="0.0018" />
   </meta>
@@ -257,9 +272,9 @@
     <resolution aspect="3.55:1" x="0.5789" y="0.0843" width="0.0025" height="0.0028" />
     <resolution aspect="24:10" x="0.6203" y="0.0826" width="0.0020" height="0.0012" />
     <resolution aspect="16:11" x="0.6487" y="0.0775" width="0.0023" height="0.0026" />
-  
-    <resolution size="3840x2160" x="0.6569" y="0.0801" width="0.005" height="0"  />
-    <resolution size="2560x1080" x="0.6155" y="0.0825" width="0.0054" height="0.0046"  />
+
+    <resolution size="3840x2160" x="0.6569" y="0.0801" width="0.005" height="0" />
+    <resolution size="2560x1080" x="0.6155" y="0.0825" width="0.0054" height="0.0046" />
   </meta>
 
   <meta meter="winOrange" type="area" tags="vlc,fortnite" x="0.6585" y="0.132" width="0.0035" height="0.0014"
@@ -267,27 +282,28 @@
     <resolution aspect="3.55:1" x="0.5773" y="0.1333" width="0.0033" height="0.0014" />
     <resolution aspect="24:10" x="0.6145" y="0.1285" width="0.0023" height="0.0007" />
     <resolution aspect="16:11" x="0.6487" y="0.0775" width="0.0023" height="0.0026" />
-  
+
     <resolution size="3840x2160" x="0.6533" y="0.1274" width="0.0075" height="0.006" />
     <resolution size="2560x1080" x="0.6182" y="0.1316" width="0.0047" height="0.0019" />
   </meta>
 
-   <meta meter="buildRed" type="area" tags="vlc,fortnite" x="0.5003" y="0.4847" width="0" height="0.0102" 
+  <!-- ── Build ── -->
+  <meta meter="buildRed" type="area" tags="vlc,fortnite" x="0.5003" y="0.4847" width="0" height="0.0102"
     h="-30-30" s="75-100" l="50-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.4995" y="0.4981" width="0.0001" height="0.0001" />
     <resolution aspect="24:10" x="0.5000" y="0.4833" width="0.0006" height="0.0100" />
     <resolution aspect="16:11" x="0.4998" y="0.4866" width="0.0004" height="0.0087" />
-  
+
     <resolution size="3840x2160" x="0.5004" y="0.4836" width="0.0003" height="0.0134" />
     <resolution size="2560x1080" x="0.5006" y="0.493" width="0" height="0.0056" />
   </meta>
 
-  <meta meter="buildNotRed" type="area" tags="vlc,fortnite" x="0.5023" y="0.481" width="0" height="0.0046" 
+  <meta meter="buildNotRed" type="area" tags="vlc,fortnite" x="0.5023" y="0.481" width="0" height="0.0046"
     h="-30-30" s="75-100" l="50-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.5010" y="0.4833" width="0.0003" height="0.0020" />
     <resolution aspect="24:10" x="0.5023" y="0.4833" width="0.0006" height="0.0040"/>
     <resolution aspect="16:11" x="0.5025" y="0.4847" width="0.0004" height="0.005" />
-  
+
     <resolution size="3840x2160" x="0.502" y="0.4826" width="0" height="0.0047" />
     <resolution size="2560x1080" x="0.5018" y="0.4838" width="0" height="0.0018" />
   </meta>
@@ -297,17 +313,17 @@
     <resolution aspect="3.55:1" x="0.5000" y="0.4917" width="0.0001" height="0.0060" />
     <resolution aspect="24:10" x="0.5000" y="0.4826" width="0.0006" height="0.0020" />
     <resolution aspect="16:11" x="0.4998" y="0.4866" width="0.0004" height="0.0087" />
-  
+
     <resolution size="3840x2160" x="0.5004" y="0.4836" width="0.0003" height="0.0134" />
     <resolution size="2560x1080" x="0.5002" y="0.4829" width="0" height="0.0037" />
   </meta>
 
-    <meta meter="buildNotWhite" type="area" tags="vlc,fortnite" x="0.5023" y="0.481" width="0" height="0.0046"
+  <meta meter="buildNotWhite" type="area" tags="vlc,fortnite" x="0.5023" y="0.481" width="0" height="0.0046"
     h="0-360" s="0-10" l="60-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.5010" y="0.4833" width="0.0003" height="0.0020" />
     <resolution aspect="24:10" x="0.5017" y="0.4826" width="0.0006" height="0.0040" />
     <resolution aspect="16:11" x="0.5025" y="0.4847" width="0.0004" height="0.005" />
-  
+
     <resolution size="3840x2160" x="0.502" y="0.4826" width="0" height="0.0047" />
     <resolution size="2560x1080" x="0.5018" y="0.4829" width="0" height="0.0046" />
   </meta>
@@ -318,91 +334,88 @@
 </body>
 
 <script>
-  var canvas, ctx;
-  canvas = document.getElementById('exCanvas');
-  ctx = canvas.getContext('2d');
-  var width = 320;
-  var height = 200;
-  var hiddenCanvas = document.createElement("canvas");
-  hiddenCanvas.width = width;
-  hiddenCanvas.height = height;
-  var hctx = hiddenCanvas.getContext("2d");
-  let gAlpha = 1
-  var effects = [];
-  var hue = 200;
-  var sat = 100;
-  var latency = 6;
-  var gInGame = false;
-  var vehiclePhase = 0;
-  var BuildingAnim = false;
-  var lobbyAnim = false;
-  var cloudTimer = 0;
-  var xpAnim = false;
-  var move = 0;
-  var cloudDiff = 0;
-  var healthPrev = 0;
-  var shieldPrev = 0;
+  // #region Setup
+  const canvas      = document.getElementById('exCanvas')
+  const ctx         = canvas.getContext('2d')
+  const hiddenCanvas = document.createElement('canvas')
+  hiddenCanvas.width  = 320
+  hiddenCanvas.height = 200
+  const hiddenCtx = hiddenCanvas.getContext('2d')
 
-  var inGame1Meter = new Meter(5, onGameChanged)
-  var inGame2Meter = new Meter(5, onGameChanged)
+  let effects     = []
+  let gInGame     = false
+  let cloudTimer  = 0
+  let xpAnim      = false
+  let cloudDiff   = 0
+  let healthPrev  = 0
+  let shieldPrev  = 0
 
-  var healthM = new Meter(25, healthHelper);
-  var healthDamageM = new Meter(3, healthHelper);
+  // ── In-Game ──
+  const inGame1Meter = new Meter(5, onGameChanged)
+  const inGame2Meter = new Meter(5, onGameChanged)
 
-  var shieldsM = new Meter(20, shieldHelper);
-  var shields2M = new Meter(20, shieldHelper);
+  // ── Health & Shield ──
+  const healthM       = new Meter(25, healthHelper)
+  const healthDamageM = new Meter(3,  healthHelper)
+  const shieldsM      = new Meter(20, shieldHelper)
+  const shields2M     = new Meter(20, shieldHelper)
 
-  var xpM1 = new Meter(25, xpHelper);
-  var xpM2 = new Meter(25, xpHelper);
+  // ── XP ──
+  const xpM1 = new Meter(25, xpHelper)
+  const xpM2 = new Meter(25, xpHelper)
 
-  var cloudCloseM = new Meter(3, cloudHelper);
+  // ── Storm ──
+  const cloudCloseM = new Meter(3, cloudHelper)
 
-  var vehicleWhiteMeter = new Meter(5, () => "");
-  var vehicleRedMeter = new Meter(5, () => "");
+  // ── Vehicle ──
+  const vehicleWhiteMeter = new Meter(5, () => '')
+  const vehicleRedMeter   = new Meter(5, () => '')
 
-  let BattleBusMeter = new Meter(10, battlebusHelper)
-  let BattleBusConfirmMeter = new Meter(10, battlebusHelper)
+  // ── Battlebus ──
+  const BattleBusMeter       = new Meter(10, battlebusHelper)
+  const BattleBusConfirmMeter = new Meter(10, battlebusHelper)
 
-  let SprintMeter = new Meter(5, sprintHelper)
+  // ── Sprint ──
+  const SprintMeter = new Meter(5, sprintHelper)
 
-  let KillMeter = new Meter(5, killHelper)
-  let KillWhiteMeter = new Meter(5,killHelper)
+  // ── Kill ──
+  const KillMeter      = new Meter(5, killHelper)
+  const KillWhiteMeter = new Meter(5, killHelper)
 
-  let winDarkBlueMeter = new Meter(5,winHelper)
-  let winYellowMeter = new Meter(5,winHelper)
-  let winOrangeMeter = new Meter(5,winHelper)
-  let buildRedMeter = new Meter(5,buildHelper)
-  let buildWhiteMeter = new Meter(5,buildHelper)
+  // ── Win ──
+  const winDarkBlueMeter = new Meter(5, winHelper)
+  const winYellowMeter   = new Meter(5, winHelper)
+  const winOrangeMeter   = new Meter(5, winHelper)
 
+  // ── Build ──
+  const buildRedMeter   = new Meter(5, buildHelper)
+  const buildWhiteMeter = new Meter(5, buildHelper)
+  // #endregion
 
+  // #region Update
   function update() {
-
-    hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-    hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
-    hctx.fillRect(0, 0, 320, 200);
+    DrawRect(0, 0, 320, 200, 'black')
 
     backgroundHandler()
-
 
     inGame1Meter.setValue(engine.vision.inGame1)
     inGame2Meter.setValue(engine.vision.inGame2)
 
-    BattleBusMeter.setValue(engine.vision.battlebus);
-    BattleBusConfirmMeter.setValue(engine.vision.battlebusConfirm);
+    BattleBusMeter.setValue(engine.vision.battlebus)
+    BattleBusConfirmMeter.setValue(engine.vision.battlebusConfirm)
 
-    
     KillMeter.setValue(engine.vision.killRed)
     KillWhiteMeter.setValue(engine.vision.killWhite)
     SprintMeter.setValue(engine.vision.sprintWhite)
-    vehicleWhiteMeter.setValue(engine.vision.vehicleWhite);
-    vehicleRedMeter.setValue(engine.vision.vehicleRed);
-    healthM.setValue(engine.vision.Health);
-    healthDamageM.setValue(engine.vision.HealthRed);
-    shieldsM.setValue(engine.vision.Shields);
-    shields2M.setValue(engine.vision.Shields2);
-    xpM1.setValue(engine.vision.xp);
-    xpM2.setValue(engine.vision.xp2);
-    cloudCloseM.setValue(engine.vision.cloudClose);
+    vehicleWhiteMeter.setValue(engine.vision.vehicleWhite)
+    vehicleRedMeter.setValue(engine.vision.vehicleRed)
+    healthM.setValue(engine.vision.Health)
+    healthDamageM.setValue(engine.vision.HealthRed)
+    shieldsM.setValue(engine.vision.Shields)
+    shields2M.setValue(engine.vision.Shields2)
+    xpM1.setValue(engine.vision.xp)
+    xpM2.setValue(engine.vision.xp2)
+    cloudCloseM.setValue(engine.vision.cloudClose)
     winDarkBlueMeter.setValue(engine.vision.winDarkBlue)
     winYellowMeter.setValue(engine.vision.winYellow)
     winOrangeMeter.setValue(engine.vision.winOrange)
@@ -410,90 +423,70 @@
     buildWhiteMeter.setValue(engine.vision.buildWhite)
 
     if (engine.vision.battlebus || engine.vision.exit) {
-      enableVehicle = false;
+      enableVehicle = false
     }
 
-    
+    renderExtensions()
 
-    renderExtensions();
+    effects.forEach(ele => { ele.draw() })
+    effects = effects.filter(ele => !(ele.lifetime <= 0))
 
-    //Effect handler 
-    for (let i = 0; i < effects.length; i++) {
-      effects[i].draw(hctx);
-    } 
-    // Remove dead effects with filter
-    effects = effects.filter(effect => !(effect.lifetime <= 0));
+    DrawHUD()
+    ctx.drawImage(hiddenCanvas, 0, 0)
 
-    
-    DrawHUD();
-    ctx.clearRect(0, 0, width, height);
-    ctx.drawImage(hiddenCanvas, 0, 0);
-    
-    
-    window.requestAnimationFrame(update);
+    window.requestAnimationFrame(update)
+  }
+  // #endregion
+
+  // #region Background Modes
+  let proBack = [0, 0, 0]
+  function onbackColorChanged() {
+    proBack = hexToHSL(backColor)
   }
 
-  let proBack = []
-    function onbackColorChanged(){
-      proBack = hexToHSL(backColor)
+  let gCycle = 0
+  const audioEase = { sat: 0, lit: 0 }
+
+  function updateColorCycle() {
+    gCycle < 360 ? gCycle += .5 : gCycle = 0
+  }
+
+  function updateAudioEase() {
+    audioEase.sat += (engine.audio.density * 100 - audioEase.sat) / 10
+    audioEase.lit += (engine.audio.density * 100 - audioEase.lit) / 10
+  }
+
+  function backgroundHandler() {
+    const alpha = ambienceAlpha / 100
+    if (backgroundMode.includes('Color Cycle')) updateColorCycle()
+    if (backgroundMode.includes('Audio'))       updateAudioEase()
+    if (backgroundMode.includes('Ambience')) {
+      if (backgroundMode === 'Ambience Audio Visualizer') copyScreenAudio(alpha)
+      else copyScreen(alpha)
+      return
     }
+    const h = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0)
+    const s = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1]
+    const l = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2]
+    DrawRect(0, 0, 320, 200, getColorString(h, s, l, alpha))
+  }
+  // #endregion
 
-    let backgroundEaseHue = 0;
-    let backgroundEaseLit = 0;
-    let backgroundEaseSat = 0
-    let gCycle = 0
-    function backgroundHandler(){
-        switch(backgroundMode){
-            case "Color Cycle": 
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            break;
-            case "Color Cycle Ambience": 
-            copyScreen(ambienceAlpha / 100)
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            break;
-            case "Custom": 
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
-            break;
-            case "Ambience": 
-            copyScreen(ambienceAlpha / 100,hctx)
-            break;
-            case "Custom Ambience": 
-            copyScreen(ambienceAlpha / 100)
-            break;
-            case "Ambience Audio Visualizer": 
-            copyScreenAudio(ambienceAlpha / 100)
-            break;
-            case "Custom Audio Visualizer": 
-            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
-            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
-            break;
-            case "Color Cycle Audio Visualizer": 
-            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
-            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
-            gCycle < 360 ? gCycle += .5 : gCycle = 0
-            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${backgroundEaseLit * .9 + 10}%, ${ambienceAlpha / 100})`)
-            break;
-        }
-    }
-
-
+  // #region Callbacks
   let buildGoing = false
-  function buildHelper(){
-    if(enableBuild){
-      if((buildRedMeter.valeu >=.95 && engine.vision.buildNotRed <.1) || (buildWhiteMeter.value >=.95 && engine.vision.buildNotWhite <.1) && !buildGoing){
+  function buildHelper() {
+    if (enableBuild) {
+      if ((buildRedMeter.value >= .95 && engine.vision.buildNotRed < .1) || (buildWhiteMeter.value >= .95 && engine.vision.buildNotWhite < .1) && !buildGoing) {
         buildGoing = true
         effects.push(new buildOpen())
       }
-
     }
   }
 
   let winGoing = false
-  function winHelper(){
-    if(enableWin){
-      if((winDarkBlueMeter.value >= .95 || winOrangeMeter.value >=.95) && winYellowMeter.value >=.95 && !winGoing){
+  function winHelper() {
+    if (enableWin) {
+      if ((winDarkBlueMeter.value >= .95 || winOrangeMeter.value >= .95) && winYellowMeter.value >= .95 && !winGoing) {
         effects.push(new victoryEffect())
         winGoing = true
       }
@@ -501,144 +494,122 @@
   }
 
   let KillGoing = false
-  function killHelper(){
-    if(KillMeter.value >= .95 && engine.vision.killNotRed < .1 && KillWhiteMeter.value >=.1 && !KillGoing){
-      if(enableKill) effects.push(new kill())
+  function killHelper() {
+    if (KillMeter.value >= .95 && engine.vision.killNotRed < .1 && KillWhiteMeter.value >= .1 && !KillGoing) {
+      if (enableKill) effects.push(new kill())
       KillGoing = true
     }
   }
 
   let SprintGoing = false
-  function sprintHelper(){
-    if(SprintMeter.value >= .4 && engine.vision.sprintNoWhite < .1 && !SprintGoing){
-      if(enableSprinting) effects.push(new sprinting())
+  function sprintHelper() {
+    if (SprintMeter.value >= .4 && engine.vision.sprintNoWhite < .1 && !SprintGoing) {
+      if (enableSprinting) effects.push(new sprinting())
       SprintGoing = true
     }
   }
 
   let BBGoing = false
-  function battlebusHelper(){
-    if(BattleBusMeter.value >= .95 && BattleBusConfirmMeter.value >= .95 && engine.vision.battlebusNotWhite <.1 && engine.vision.Health < .05 && !BBGoing){
-      if(enableBattlebus){
+  function battlebusHelper() {
+    if (BattleBusMeter.value >= .95 && BattleBusConfirmMeter.value >= .95 && engine.vision.battlebusNotWhite < .1 && engine.vision.Health < .05 && !BBGoing) {
+      if (enableBattlebus) {
         effects.push(new battlebus())
         BBGoing = true
-
-      } 
-    } 
+      }
+    }
   }
 
   function onGameChanged() {
-    if (inGame1Meter.value >= 0.33 && inGame2Meter.value >= .6 && engine.vision.notInGame2 < .1 && engine.vision.Health >.2) {
-      //setTimeout(() => {
-        gInGame = true;
-      //}, 1000);
+    if (inGame1Meter.value >= 0.33 && inGame2Meter.value >= .6 && engine.vision.notInGame2 < .1 && engine.vision.Health > .2) {
+      gInGame = true
     }
-    if (engine.vision.Health < .05 && inGame1Meter.value <.1 && inGame2Meter.value <.1) gInGame = false;
+    if (engine.vision.Health < .05 && inGame1Meter.value < .1 && inGame2Meter.value < .1) gInGame = false
   }
 
   function DrawHUD() {
     if (gInGame) {
-      if(enableHP){
-        hctx.beginPath()
-        hctx.fillStyle = healthColor;
-        hctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), healthM.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
-      }
-      //shield
-      if(enableShield){
-        hctx.beginPath()
-        hctx.fillStyle = ShieldColor;
-        hctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), shieldsM.value * (ShieldBarWidth * 3.2), (ShieldBarHeight * 2))
-      }
+      if (enableHP)     DrawRect(HealthBarX * 3.2, HealthBarY * 2, healthM.value * (HealthBarWidth * 3.2), HealthBarHeight * 2, healthColor)
+      if (enableShield) DrawRect(ShieldBarX * 3.2, ShieldBarY * 2, shieldsM.value * (ShieldBarWidth * 3.2), ShieldBarHeight * 2, ShieldColor)
     } else if (adjToggle && !gInGame) {
-      if(enableHP){
-        hctx.beginPath()
-        hctx.fillStyle = healthColor;
-        hctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
-      }
-      //shield
-      if(enableShield){
-        hctx.beginPath()
-        hctx.fillStyle = ShieldColor;
-        hctx.fillRect((ShieldBarX * 3.2), (ShieldBarY * 2), (ShieldBarWidth * 3.2), (ShieldBarHeight*2))
-      }
+      if (enableHP)     DrawRect(HealthBarX * 3.2, HealthBarY * 2, HealthBarWidth * 3.2, HealthBarHeight * 2, healthColor)
+      if (enableShield) DrawRect(ShieldBarX * 3.2, ShieldBarY * 2, ShieldBarWidth * 3.2, ShieldBarHeight * 2, ShieldColor)
     }
-    //health
   }
-    
+
   function shieldHelper() {
     if (gInGame) {
       if (shieldsM.decreased && shieldsM.value != shieldPrev && healthM.value > .1 && Math.abs(shieldsM.value - shields2M.value) < .05 && shieldsM.diff > 0.05) {
         if (enableDamage) {
-          effects.push(new Wave('#ffffff', "down"));
-          setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 150);
-          setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 300);
-          shieldPrev = shieldsM.value;
+          effects.push(new Wave('#ffffff', 'down'))
+          setTimeout(() => { effects.push(new Wave('#ff0000', 'down')) }, 150)
+          setTimeout(() => { effects.push(new Wave('#ff0000', 'down')) }, 300)
+          shieldPrev = shieldsM.value
         }
       } else if (shieldsM.increased && shieldsM.value != shieldPrev && healthM.value > .1 && shieldsM.diff > 0.05) {
         if (enableHealing) {
-          effects.push(new Wave('#ffffff', "up"));
-          setTimeout(() => { effects.push(new Wave('#00ffff', "up")); }, 150);
-          setTimeout(() => { effects.push(new Wave('#00ffff', "up")); }, 300);
-          shieldPrev = shieldsM.value;
+          effects.push(new Wave('#ffffff', 'up'))
+          setTimeout(() => { effects.push(new Wave('#00ffff', 'up')) }, 150)
+          setTimeout(() => { effects.push(new Wave('#00ffff', 'up')) }, 300)
+          shieldPrev = shieldsM.value
         }
-      };
+      }
     }
-  };
+  }
 
   function healthHelper() {
     if (gInGame) {
       if (healthM.diff < 0.95) {
         if (healthM.decreased && healthM.value != healthPrev && healthM.value > .1 && !engine.vision.battlebus && healthM.diff > 0.08) {
           if (enableDamage) {
-            effects.push(new Wave('#ffffff', "down"));
-            setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 150);
-            setTimeout(() => { effects.push(new Wave('#ff0000', "down")); }, 300);
-            healthPrev = healthM.value;
+            effects.push(new Wave('#ffffff', 'down'))
+            setTimeout(() => { effects.push(new Wave('#ff0000', 'down')) }, 150)
+            setTimeout(() => { effects.push(new Wave('#ff0000', 'down')) }, 300)
+            healthPrev = healthM.value
           }
         } else if (healthM.increased && healthM.value != healthPrev && healthM.value > .1 && !engine.vision.battlebus && healthM.diff > 0.08) {
           if (enableHealing) {
-            effects.push(new Wave('#ffffff', "up"));
-            setTimeout(() => { effects.push(new Wave('#00ff00', "up")); }, 150);
-            setTimeout(() => { effects.push(new Wave('#00ff00', "up")); }, 300);
-            healthPrev = healthM.value;
+            effects.push(new Wave('#ffffff', 'up'))
+            setTimeout(() => { effects.push(new Wave('#00ff00', 'up')) }, 150)
+            setTimeout(() => { effects.push(new Wave('#00ff00', 'up')) }, 300)
+            healthPrev = healthM.value
           }
-        };
+        }
       }
     }
-  };
+  }
 
   function xpHelper() {
     if (gInGame) {
       if (xpM1.value >= 0.9 && xpM2.value >= 0.85 && !xpAnim) {
         if (enableXP) effects.push(new xpGain())
-        xpAnim = true;
+        xpAnim = true
       } else if (xpM1.value == 0 || !gInGame) {
-        xpAnim = false;
-      };
+        xpAnim = false
+      }
     }
-  };
+  }
 
   function cloudHelper() {
     if (enableCloud) {
-      cloudDiff = Date.now() - cloudTimer;
+      cloudDiff = Date.now() - cloudTimer
       if (cloudCloseM.value >= .6 && cloudDiff > 3500) {
-        cloudTimer = Date.now();
-        effects.push(new effectPulse(310));
-        setTimeout(() => { effects.push(new effectPulse(310)) }, 300);
-      };
+        cloudTimer = Date.now()
+        effects.push(new effectPulse(310))
+        setTimeout(() => { effects.push(new effectPulse(310)) }, 300)
+      }
     }
-  };
+  }
 
-  let vehicleGoing = false
+  let vehicleGoing   = false
   let lowHealthGoing = false
-  let knockedGoing = false
+  let knockedGoing   = false
   function renderExtensions() {
     if (enableVehicle) {
-      if (healthM.value > 0.1 && vehicleWhiteMeter.value >= .95 && vehicleRedMeter.value >=.95 && engine.vision.vehicleNotWhite <.1 && !vehicleGoing) {
+      if (healthM.value > 0.1 && vehicleWhiteMeter.value >= .95 && vehicleRedMeter.value >= .95 && engine.vision.vehicleNotWhite < .1 && !vehicleGoing) {
         effects.push(new vehicle())
         vehicleGoing = true
-      };
-    };
+      }
+    }
     if (healthM.value > .1 && healthM.value < .4 && !lowHealthGoing) {
       effects.push(new lowHealth())
       lowHealthGoing = true
@@ -647,69 +618,68 @@
         effects.push(new knocked())
         knockedGoing = true
       }
-    };
+    }
   }
+  // #endregion
 
+  // #region Effects
   function closePulse(hue) {
-      this.lifetime = 500;
-      this.hue = hue;
-      this.pulses = 0; 
-      this.active = true;
+    this.lifetime = 500
+    this.hue      = hue
+    this.pulses   = 0
+    this.active   = true
 
-      this.draw = function () {
-        if (!this.active) return;
+    this.draw = function () {
+      if (!this.active) return
 
-        hctx.strokeStyle = `hsl(${this.hue}, 100%, 50%)`;
-        hctx.lineWidth = 50;
-        hctx.beginPath();
-        hctx.arc(160, 100, this.lifetime, 0, Math.PI * 2);
-        hctx.stroke();
+      hiddenCtx.strokeStyle = `hsl(${this.hue}, 100%, 50%)`
+      hiddenCtx.lineWidth   = 50
+      hiddenCtx.beginPath()
+      hiddenCtx.arc(160, 100, this.lifetime, 0, Math.PI * 2)
+      hiddenCtx.stroke()
 
-        this.lifetime -= 10;
+      this.lifetime -= 10
 
-       
-        if (this.lifetime <= 0) {
-          this.pulses++;
-          if (this.pulses < 1) {
-            this.lifetime = 500; 
-          } else {
-            this.active = false; 
-          }
+      if (this.lifetime <= 0) {
+        this.pulses++
+        if (this.pulses < 1) {
+          this.lifetime = 500
+        } else {
+          this.active = false
         }
-      };
-  
+      }
+    }
   }
 
   function buildOpen() {
-    this.lifetime = 1;
-    this.done = false;
-    this.alpha = 0;
-    this.alpha2 = .1;
-    this.count = 0;
-    this.effects = [];
-    
+    this.lifetime = 1
+    this.done     = false
+    this.alpha    = 0
+    this.alpha2   = .1
+    this.count    = 0
+    this.effects  = []
+
     this.draw = function () {
       this.count++
-      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`);
-  
-      this.alpha2 = Math.abs(Math.sin(Date.now() / 500)) * .1 + .1;
-      this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
 
-      let count = 0;
+      this.alpha2 = Math.abs(Math.sin(Date.now() / 500)) * .1 + .1
+      this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1
+
+      let count = 0
       if (this.effects.length < 4) {
         this.effects.push(new menuRow(this.effects.length * 110))
       }
-      
+
       this.effects.forEach((ele, i) => {
-        ele.draw(this.done);
-        ele.done ? count++ : null;
+        ele.draw(this.done)
+        ele.done ? count++ : null
       })
-      
-      
+
       if (count == 8 && !this.done) {
         this.done = true
       }
-      if (buildRedMeter.value <.1 && buildWhiteMeter.value <.1 && !this.done) {
+      if (buildRedMeter.value < .1 && buildWhiteMeter.value < .1 && !this.done) {
         this.done = true
         buildGoing = false
         this.lifetime = 0
@@ -718,589 +688,548 @@
     }
   }
 
-  
   function menuRow(x) {
-    this.x = x;
-    this.start = Date.now();
-    this.speed = 100;
-    this.effects = [];
-    this.done = false;
-    this.lifetime = 1; 
-    
+    this.x       = x
+    this.start   = Date.now()
+    this.speed   = 100
+    this.effects = []
+    this.done    = false
+    this.lifetime = 1
+
     this.draw = function (donezo) {
-      let elapsed = Date.now() - this.start;
-      let count = 0;
+      let elapsed = Date.now() - this.start
+      let count   = 0
       if (elapsed > this.speed && this.effects.length < 5) {
         let check = this.effects.length % 2 == 0
         this.effects.push(new menuSquare(this.x + (check ? 0 : -55), 200 - (this.effects.length * 40 + 40), 5, 110, 40))
         this.start = Date.now()
       }
-      
+
       this.effects.forEach((ele, i) => {
-        ele.draw(donezo);
+        ele.draw(donezo)
         if (ele.done) {
-          count++;
+          count++
           if (this.effects[i - 1]) {
-            this.effects[i - 1].grass = false;
+            this.effects[i - 1].grass = false
           }
         }
       })
-      
-      count == 5 ? this.done = true : null;
+
+      count == 5 ? this.done = true : null
     }
   }
 
   function menuSquare(x, y2, speed, width, height) {
-    this.x = x;
-    this.y = 0;
-    this.alpha = 1;
-    this.width = width;
-    this.height = height;
-    this.y2 = y2;
-    this.speed = speed;
-    this.grass = true;
-    this.done = false;
-    this.lifetime = 1; 
-    
-    this.draw = function (donezo) {
-      hctx.globalAlpha = this.alpha;
-      DrawRect(this.x, this.y, this.width, this.height, `hsla(220, 100%, 50%, 0.9)`)
-      this.grass ? DrawRect(this.x, this.y, this.width, this.height * .75, `hsla(200, 100%, 50%, 0.3)`) : null;
-      StrokeRect(this.x, this.y, this.width, this.height, `hsla(190, 100%, 60%, 0.9)`, 10)
-      hctx.globalAlpha = 1;
-      let dy = 10
-      this.y < this.y2 ? this.y += dy : this.done = true;
-      donezo ? this.alpha >= .05 ? this.alpha -= .05 : this.alpha = 0 : null;
-    }
-  }
-
-  function kill(){
-        this.alpha = 1
-        this.alpha2 = 0
-        this.rad = 1
-        this.stroke = 10
-        this.lifetime = 1
-        this.width = 0
-        this.width2 = 0
-        this.draw = function(){
-          hctx.globalAlpha = this.alpha
-          DrawRect(0, 0, 320, 200, `hsla(0, 100%, 0%, ${this.alpha2})`)
-          DrawStroke(160, 100, this.rad, "red", this.stroke)
-          DrawLine([0, 0], [this.width * 1.6, this.width], "red", 40)
-          DrawLine([320, 0], [320 - this.width2 * 1.6, this.width2], "red", 40)
-          hctx.globalAlpha = 1
-          this.rad < 300 ? this.rad += 10 : this.width < 200 ? this.width += 10 : this.width2 < 200 ? this.width2 += 10 : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0;
-          if(this.stroke < 100) this.stroke+=5
-          if(this.alpha2 <= .95) this.alpha2 += .05
-          if(this.lifetime == 0) KillGoing = false
-        }
-    }
-
-    function DrawRect(x, y, width, height, color) {
-      hctx.beginPath();
-      hctx.fillStyle = color;
-      hctx.fillRect(x, y, width, height);
-    };
-
-  function DrawLine(start, end, color, stroke){
-    hctx.beginPath()
-    hctx.moveTo(start[0], start[1])
-    hctx.lineTo(end[0], end[1])
-    hctx.strokeStyle = color
-    hctx.lineWidth = stroke
-    hctx.stroke()
-  }
-
-  function sprinting(){
-        this.sprintValue = 1
-        this.count = 0
-        this.lifetime = 1
-        this.draw = function(){
-            if(Math.abs(this.sprintValue - SprintMeter.value) > .02 && this.count == 0) {
-              effects.push(new sprintHelp(this.sprintValue * 120))
-              this.count++
-            }
-            this.sprintValue = SprintMeter.value
-            if(this.count > 0) this.count < 20 ? this.count++ : this.count = 0
-            if(engine.vision.sprintNoWhite > .25 || SprintMeter.value < .05) {
-              this.lifetime = 0
-              SprintGoing = false
-            }
-        }
-    }
-
-    function DrawStroke(x, y, radius, color, stroke) {
-    hctx.beginPath();
-    hctx.strokeStyle = color;
-    hctx.lineWidth = stroke;
-    hctx.arc(x, y, radius, 0, 2 * Math.PI)
-    hctx.stroke();
-  };
-
-    function sprintHelp(hue){
-        this.rad = 1
-        this.vrad = 0
-        this.stroke = 1
-        this.lifetime = 1
-        this.hue = hue
-        this.draw = function(){
-            DrawStroke(160, 100, this.rad, `hsl(${this.hue}, 100%, 50%)`, this.stroke)
-            this.rad < 300 ? this.rad += this.vrad : this.lifetime = 0
-            this.vrad += .5
-            this.stroke += 3
-        }
-    }
-
-  function battlebus(){
-        this.alpha = 0
-        this.half = false
-        this.lifetime = 1
-        this.count = 0
-        this.draw = function(){
-            DrawRect(0, 0, 320, 200, `hsla(240, 100%, 30%, ${this.alpha})`)
-            effects.push(new battlebusHelp())
-            if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
-            if((BattleBusMeter.value <.1 && BattleBusConfirmMeter.value <.1) && engine.vision.Health > .75 || engine.vision.inGame1 <.1) this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
-            BBGoing = false
-            if(this.lifetime == 0 && gInGame){
-              effects.push(new parachute())
-            } 
-        }
-    }
-
-    function battlebusHelp(){
-        this.x = Math.random() * 320
-        this.lifetime = 1
-        this.y = 250
-        this.rad = 50
-        this.mod = Math.random() * 30
-        this.draw = function(){
-            DrawCircle(this.x, this.y, this.rad, `hsla(${240 - this.rad}, 100%, ${50 + this.mod}%, ${this.rad / 70})`)
-            this.y -= 10
-            this.rad >= 3 ? this.rad -= 1.5 : this.lifetime = 0
-        }
-    }
-
-    function parachute(){
-        this.effects = []
-        this.count = 0
-        this.alpha = 0
-        this.lifetime = 700
-        
-        this.draw = function(){
-            DrawRect(0, 0, 320, 200, `hsla(240, 100%, 1%, ${this.alpha})`)
-            if(engine.vision.Health > .75) this.alpha < 1 ? this.alpha += .025 : this.alpha = 1 
-            this.lifetime--
-            if(this.lifetime == 0 || engine.vision.inGame1 <.1) this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
-            if(Math.random() > .95) this.effects.push(new paraFront())
-            
-            this.effects.forEach((ele, i)=>{
-                ele.draw()
-            })
-            
-            
-            this.effects = this.effects.filter(ele => ele.lifetime > 0)
-        }
-    }
-
-    function paraFront(){
-      this.x = Math.random() * 100 + 110
-      this.vx = 1 - Math.random() * 2
-      this.y = -25
-      this.hue = Math.random() * 360
-      this.count = 0
-      this.lifetime = 1
-      this.effects = []
-      this.draw = function(){
-        DrawCircle(this.x, this.y, 30, `hsla(${this.hue}, 100%, 50%, 1)`)
-        if(this.count == 0) this.effects.unshift([this.x, this.y])
-        this.count < 1 ? this.count++ : this.count = 0
-        this.effects.forEach((ele, i)=>{
-          DrawCircle(ele[0], ele[1], 30 - i * 2, `hsla(${this.hue}, 100%, 50%, ${1 - i / 10})`)
-        })
-        if(this.effects.length > 10) this.effects.pop()
-        this.x += this.vx
-        this.y < 400 ? this.y += 10 : this.lifetime = 0
-      }
-    }
-
-    function victoryEffect() {
+    this.x        = x
+    this.y        = 0
+    this.alpha    = 1
+    this.width    = width
+    this.height   = height
+    this.y2       = y2
+    this.speed    = speed
+    this.grass    = true
+    this.done     = false
     this.lifetime = 1
-      this.draw = function() {
-        effects.push(new victoryBalls());
-        hctx.fillStyle = "hsl(200, 80%, 30%)"; 
-        hctx.fillRect(0, 0, 320, 200);
-        if(winDarkBlueMeter.value <.1 && winYellowMeter.value <.1 && winGoing){
-          winGoing = false
-          this.lifetime = 0
-        }
-      };
+
+    this.draw = function (donezo) {
+      hiddenCtx.globalAlpha = this.alpha
+      DrawRect(this.x, this.y, this.width, this.height, `hsla(220, 100%, 50%, 0.9)`)
+      this.grass ? DrawRect(this.x, this.y, this.width, this.height * .75, `hsla(200, 100%, 50%, 0.3)`) : null
+      StrokeRect(this.x, this.y, this.width, this.height, `hsla(190, 100%, 60%, 0.9)`, 10)
+      hiddenCtx.globalAlpha = 1
+      let dy = 10
+      this.y < this.y2 ? this.y += dy : this.done = true
+      donezo ? this.alpha >= .05 ? this.alpha -= .05 : this.alpha = 0 : null
     }
+  }
 
-    function victoryBalls(){
-        this.x = Math.random() * 320
-        this.y = Math.random() * 200
-        this.lifetime = 1
-        this.alpha = 0
-        this.half = false
-        this.draw = function(){
-            DrawCircle(this.x, this.y, 30, `hsla(50, 100%, 50%, ${this.alpha})`)
-            if(!this.half) this.alpha < 1 ? this.alpha += .1 : this.half = true
-            else this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
-            this.x += 5 - Math.random() * 10
-            this.y += 5 - Math.random() * 10
-        }
+  function kill() {
+    this.alpha    = 1
+    this.alpha2   = 0
+    this.rad      = 1
+    this.stroke   = 10
+    this.lifetime = 1
+    this.width    = 0
+    this.width2   = 0
+    this.draw = function () {
+      hiddenCtx.globalAlpha = this.alpha
+      DrawRect(0, 0, 320, 200, `hsla(0, 100%, 0%, ${this.alpha2})`)
+      DrawStroke(160, 100, this.rad, 'red', this.stroke)
+      DrawLine([0, 0], [this.width * 1.6, this.width], 'red', 40)
+      DrawLine([320, 0], [320 - this.width2 * 1.6, this.width2], 'red', 40)
+      hiddenCtx.globalAlpha = 1
+      this.rad < 300 ? this.rad += 10 : this.width < 200 ? this.width += 10 : this.width2 < 200 ? this.width2 += 10 : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+      if (this.stroke < 100) this.stroke += 5
+      if (this.alpha2 <= .95) this.alpha2 += .05
+      if (this.lifetime == 0) KillGoing = false
     }
+  }
 
-    function knocked() {
-      this.timer = 0;
-      this.active = true;
-      this.fadeAlpha = 1;
-      this.lifetime = 1
-      this.fading = false; 
-      
-
-      this.draw = function() {
-        if (!this.active) return;
-
-
-        if (healthDamageM.value <.1) {
-          this.lifetime = 0;
-          this.fading = true
-          knockedGoing = false
-        }
-
-        this.timer += 0.05;
-
-        if (this.fading) {
-          this.fadeAlpha -= 0.02;  
-          if (this.fadeAlpha <= 0) {
-            this.active = false;   
-            return;
-          }
-        }
-
-        hctx.globalAlpha = 0.9 * this.fadeAlpha;
-        hctx.fillStyle = "hsl(0, 100%, 10%)";
-        hctx.fillRect(0, 0, 320, 200);
-        hctx.globalAlpha = 1;
-
-        let bigPulse = (Math.sin(this.timer) + 1) / 2;
-        let bigRadius = 100 + bigPulse * 110;
-        hctx.beginPath();
-        hctx.fillStyle = "hsl(0, 100%, 30%)";
-        hctx.globalAlpha = 0.6 * this.fadeAlpha;
-        hctx.arc(160, 100, bigRadius, 0, Math.PI * 2);
-        hctx.fill();
-
-        let mediumPulse = Math.max(0, (bigPulse - 0.3) / 0.7);
-        hctx.beginPath();
-        hctx.fillStyle = "hsl(0, 100%, 45%)";
-        hctx.globalAlpha = mediumPulse * this.fadeAlpha;
-        hctx.arc(160, 100, 120 * mediumPulse, 0, Math.PI * 2);
-        hctx.fill();
-
-        let smallPulse = Math.max(0, (bigPulse - 0.6) / 0.4);
-        hctx.beginPath();
-        hctx.fillStyle = "hsl(0, 100%, 60%)";
-        hctx.globalAlpha = smallPulse * this.fadeAlpha;
-        hctx.arc(160, 100, 80 * smallPulse, 0, Math.PI * 2);
-        hctx.fill();
-
-        hctx.globalAlpha = 1;
-      };
-    }
-
-
-
-  function lowHealth(){
-  this.lifetime = 1
-        this.draw = function(){
-            effects.push(new lowHealthHelp())
-            if(healthM.value < .1 || healthM.value > .4 || !gInGame){
-              this.lifetime = 0
-              lowHealthGoing = false
-            }
-        }
-    }
-
-    function lowHealthHelp(){
-        this.x = Math.random() * 320
-        this.y = Math.random() * 200
-        this.lifetime = 1
-        this.alpha = 0
-        this.half = false
-        this.draw = function(){
-            DrawCircle(this.x, this.y, 30, `hsla(0, 100%, 50%, ${this.alpha})`)
-            if(!this.half) this.alpha < 1 ? this.alpha += .1 : this.half = true
-            else this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
-            this.x += 5 - Math.random() * 10
-            this.y += 5 - Math.random() * 10
-        }
-    }
-
-  let carSVG = "m221.34,32h-1.21v-8.04c-3.85-5.61-71.89-7.6-71.89-7.6L127.66,1.28c-6.39-1.76-47.34,0-47.34,0l-28.73,8.15C40.68,15.48,2.81,19.12,2.81,19.12c-1.54.88-1.54,8.48-1.54,8.48-2.75,1.87,2.75,5.83,2.75,5.83l3.52,4.51s36,4.4,58.57,6.72c22.57,2.31,127.6-1.32,127.6-1.32,11.78-.33,21.91-5.94,21.91-5.94,7.16.44,5.72-5.39,5.72-5.39ZM84.5,14.05l14.64-6.39h20.92l7.71,7.72s-39.41.64-43.27-1.34Z"
-    function vehicle(){
-      this.x = 0
-      this.y = 60
-      this.rad = 1
-      this.alpha = 0
-      this.half = false
-      this.lifetime = 1
-      this.rot = 0
-      this.draw = function(){
-          DrawRect(0, 0, 320, 200, `hsla(20, 100%, 50%, ${this.alpha})`)
-          if(!this.half) this.alpha < .75 ? this.alpha += .025 : this.half = true
-          DrawPath(this.x, this.y, carSVG, "black", 1.2, 1.5)
-          DrawCircle(this.x, this.y + 35, 10, "red")
-          wheel(this.x + 60, this.y + 60, `hsla(20, 100%, 50%, ${this.alpha})`, this.rot)
-          wheel(this.x + 200, this.y + 60, `hsla(20, 100%, 50%, ${this.alpha})`, this.rot + Math.PI)
-          this.rot+=.2
-          this.rot%=Math.PI*2
-          this.x < 330 ? this.x += 5 : this.x = -320
-          if(healthM.value < 0.1 || (vehicleWhiteMeter.value < .1 && vehicleRedMeter.value < .1) || !gInGame){
-            this.lifetime = 0
-            vehicleGoing = false
-          }
+  function sprinting() {
+    this.sprintValue = 1
+    this.count       = 0
+    this.lifetime    = 1
+    this.draw = function () {
+      if (Math.abs(this.sprintValue - SprintMeter.value) > .02 && this.count == 0) {
+        effects.push(new sprintHelp(this.sprintValue * 120))
+        this.count++
+      }
+      this.sprintValue = SprintMeter.value
+      if (this.count > 0) this.count < 20 ? this.count++ : this.count = 0
+      if (engine.vision.sprintNoWhite > .25 || SprintMeter.value < .05) {
+        this.lifetime = 0
+        SprintGoing = false
       }
     }
+  }
 
-    function DrawPath(x, y, path, color, scaleX, scaleY) {
-      hctx.fillStyle = color;
-      hctx.save();
-      hctx.translate(x, y);
-      hctx.scale(scaleX, scaleY)
-      let ex = new Path2D(path);
-      hctx.fill(ex);
-      hctx.restore();
-    };
-
-    function wheel(x, y, color, rot){
-      hctx.save()
-      hctx.translate(x, y)
-      hctx.rotate(rot)
-      hctx.translate(-x, -y)
-      DrawCircle(x, y, 30, "black")
-      hctx.beginPath()
-      hctx.arc(x, y, 20, 0, Math.PI)
-      hctx.fillStyle = color
-      hctx.fill()
-      hctx.restore()
+  function sprintHelp(hue) {
+    this.rad      = 1
+    this.vrad     = 0
+    this.stroke   = 1
+    this.lifetime = 1
+    this.hue      = hue
+    this.draw = function () {
+      DrawStroke(160, 100, this.rad, `hsl(${this.hue}, 100%, 50%)`, this.stroke)
+      this.rad < 300 ? this.rad += this.vrad : this.lifetime = 0
+      this.vrad   += .5
+      this.stroke += 3
     }
+  }
 
-  function xpGain(){
-      this.count = 0
-      this.lifetime = 1
-      this.draw = function(){
-        effects.push(new xpHelp())
-        this.count < 150 ? this.count++ : this.lifetime = 0
+  function battlebus() {
+    this.alpha    = 0
+    this.half     = false
+    this.lifetime = 1
+    this.count    = 0
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(240, 100%, 30%, ${this.alpha})`)
+      effects.push(new battlebusHelp())
+      if (!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
+      if ((BattleBusMeter.value < .1 && BattleBusConfirmMeter.value < .1) && engine.vision.Health > .75 || engine.vision.inGame1 < .1) this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
+      BBGoing = false
+      if (this.lifetime == 0 && gInGame) {
+        effects.push(new parachute())
       }
     }
+  }
 
-    function xpHelp(){
-      this.x = Math.random() * 320
-      this.y = 230
-      this.vy = 0
-      this.lifetime = 1
-      this.ay = -.1
-      this.rad = 30
-      this.draw = function(){
-        DrawCircle(this.x, this.y, this.rad, "yellow")
-        this.y += this.vy
-        this.vy += this.ay
-        this.rad > 1 ? this.rad-=.25 : this.lifetime = 0
+  function battlebusHelp() {
+    this.x        = Math.random() * 320
+    this.lifetime = 1
+    this.y        = 250
+    this.rad      = 50
+    this.mod      = Math.random() * 30
+    this.draw = function () {
+      DrawCircle(this.x, this.y, this.rad, `hsla(${240 - this.rad}, 100%, ${50 + this.mod}%, ${this.rad / 70})`)
+      this.y -= 10
+      this.rad >= 3 ? this.rad -= 1.5 : this.lifetime = 0
+    }
+  }
+
+  function parachute() {
+    this.effects  = []
+    this.count    = 0
+    this.alpha    = 0
+    this.lifetime = 700
+
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(240, 100%, 1%, ${this.alpha})`)
+      if (engine.vision.Health > .75) this.alpha < 1 ? this.alpha += .025 : this.alpha = 1
+      this.lifetime--
+      if (this.lifetime == 0 || engine.vision.inGame1 < .1) this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
+      if (Math.random() > .95) this.effects.push(new paraFront())
+
+      this.effects.forEach((ele, i) => { ele.draw() })
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
+    }
+  }
+
+  function paraFront() {
+    this.x        = Math.random() * 100 + 110
+    this.vx       = 1 - Math.random() * 2
+    this.y        = -25
+    this.hue      = Math.random() * 360
+    this.count    = 0
+    this.lifetime = 1
+    this.effects  = []
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 30, `hsla(${this.hue}, 100%, 50%, 1)`)
+      if (this.count == 0) this.effects.unshift([this.x, this.y])
+      this.count < 1 ? this.count++ : this.count = 0
+      this.effects.forEach((ele, i) => {
+        DrawCircle(ele[0], ele[1], 30 - i * 2, `hsla(${this.hue}, 100%, 50%, ${1 - i / 10})`)
+      })
+      if (this.effects.length > 10) this.effects.pop()
+      this.x += this.vx
+      this.y < 400 ? this.y += 10 : this.lifetime = 0
+    }
+  }
+
+  function victoryEffect() {
+    this.lifetime = 1
+    this.draw = function () {
+      effects.push(new victoryBalls())
+      DrawRect(0, 0, 320, 200, 'hsl(200, 80%, 30%)')
+      if (winDarkBlueMeter.value < .1 && winYellowMeter.value < .1 && winGoing) {
+        winGoing = false
+        this.lifetime = 0
       }
     }
+  }
 
-    function DrawCircle(x, y, radius, color) {
-    hctx.beginPath();
-    hctx.fillStyle = color;
-    hctx.arc(x, y, radius, 0, 2 * Math.PI)
-    hctx.fill();
-  };
+  function victoryBalls() {
+    this.x        = Math.random() * 320
+    this.y        = Math.random() * 200
+    this.lifetime = 1
+    this.alpha    = 0
+    this.half     = false
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 30, `hsla(50, 100%, 50%, ${this.alpha})`)
+      if (!this.half) this.alpha < 1 ? this.alpha += .1 : this.half = true
+      else this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
+      this.x += 5 - Math.random() * 10
+      this.y += 5 - Math.random() * 10
+    }
+  }
+
+  function knocked() {
+    this.timer     = 0
+    this.active    = true
+    this.fadeAlpha = 1
+    this.lifetime  = 1
+    this.fading    = false
+
+    this.draw = function () {
+      if (!this.active) return
+
+      if (healthDamageM.value < .1) {
+        this.lifetime = 0
+        this.fading   = true
+        knockedGoing  = false
+      }
+
+      this.timer += 0.05
+
+      if (this.fading) {
+        this.fadeAlpha -= 0.02
+        if (this.fadeAlpha <= 0) {
+          this.active = false
+          return
+        }
+      }
+
+      hiddenCtx.globalAlpha = 0.9 * this.fadeAlpha
+      DrawRect(0, 0, 320, 200, 'hsl(0, 100%, 10%)')
+      hiddenCtx.globalAlpha = 1
+
+      const bigPulse  = (Math.sin(this.timer) + 1) / 2
+      const bigRadius = 100 + bigPulse * 110
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle   = 'hsl(0, 100%, 30%)'
+      hiddenCtx.globalAlpha = 0.6 * this.fadeAlpha
+      hiddenCtx.arc(160, 100, bigRadius, 0, Math.PI * 2)
+      hiddenCtx.fill()
+
+      const mediumPulse = Math.max(0, (bigPulse - 0.3) / 0.7)
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle   = 'hsl(0, 100%, 45%)'
+      hiddenCtx.globalAlpha = mediumPulse * this.fadeAlpha
+      hiddenCtx.arc(160, 100, 120 * mediumPulse, 0, Math.PI * 2)
+      hiddenCtx.fill()
+
+      const smallPulse = Math.max(0, (bigPulse - 0.6) / 0.4)
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle   = 'hsl(0, 100%, 60%)'
+      hiddenCtx.globalAlpha = smallPulse * this.fadeAlpha
+      hiddenCtx.arc(160, 100, 80 * smallPulse, 0, Math.PI * 2)
+      hiddenCtx.fill()
+
+      hiddenCtx.globalAlpha = 1
+    }
+  }
+
+  function lowHealth() {
+    this.lifetime = 1
+    this.draw = function () {
+      effects.push(new lowHealthHelp())
+      if (healthM.value < .1 || healthM.value > .4 || !gInGame) {
+        this.lifetime = 0
+        lowHealthGoing = false
+      }
+    }
+  }
+
+  function lowHealthHelp() {
+    this.x        = Math.random() * 320
+    this.y        = Math.random() * 200
+    this.lifetime = 1
+    this.alpha    = 0
+    this.half     = false
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 30, `hsla(0, 100%, 50%, ${this.alpha})`)
+      if (!this.half) this.alpha < 1 ? this.alpha += .1 : this.half = true
+      else this.alpha >= .1 ? this.alpha -= .1 : this.lifetime = 0
+      this.x += 5 - Math.random() * 10
+      this.y += 5 - Math.random() * 10
+    }
+  }
+
+  const carSVG = 'm221.34,32h-1.21v-8.04c-3.85-5.61-71.89-7.6-71.89-7.6L127.66,1.28c-6.39-1.76-47.34,0-47.34,0l-28.73,8.15C40.68,15.48,2.81,19.12,2.81,19.12c-1.54.88-1.54,8.48-1.54,8.48-2.75,1.87,2.75,5.83,2.75,5.83l3.52,4.51s36,4.4,58.57,6.72c22.57,2.31,127.6-1.32,127.6-1.32,11.78-.33,21.91-5.94,21.91-5.94,7.16.44,5.72-5.39,5.72-5.39ZM84.5,14.05l14.64-6.39h20.92l7.71,7.72s-39.41.64-43.27-1.34Z'
+
+  function vehicle() {
+    this.x        = 0
+    this.y        = 60
+    this.rad      = 1
+    this.alpha    = 0
+    this.half     = false
+    this.lifetime = 1
+    this.rot      = 0
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(20, 100%, 50%, ${this.alpha})`)
+      if (!this.half) this.alpha < .75 ? this.alpha += .025 : this.half = true
+      DrawPath(this.x, this.y, carSVG, 'black', 1.2, 1.5)
+      DrawCircle(this.x, this.y + 35, 10, 'red')
+      wheel(this.x + 60,  this.y + 60, `hsla(20, 100%, 50%, ${this.alpha})`, this.rot)
+      wheel(this.x + 200, this.y + 60, `hsla(20, 100%, 50%, ${this.alpha})`, this.rot + Math.PI)
+      this.rot += .2
+      this.rot %= Math.PI * 2
+      this.x < 330 ? this.x += 5 : this.x = -320
+      if (healthM.value < 0.1 || (vehicleWhiteMeter.value < .1 && vehicleRedMeter.value < .1) || !gInGame) {
+        this.lifetime = 0
+        vehicleGoing  = false
+      }
+    }
+  }
+
+  function xpGain() {
+    this.count    = 0
+    this.lifetime = 1
+    this.draw = function () {
+      effects.push(new xpHelp())
+      this.count < 150 ? this.count++ : this.lifetime = 0
+    }
+  }
+
+  function xpHelp() {
+    this.x        = Math.random() * 320
+    this.y        = 230
+    this.vy       = 0
+    this.lifetime = 1
+    this.ay       = -.1
+    this.rad      = 30
+    this.draw = function () {
+      DrawCircle(this.x, this.y, this.rad, 'yellow')
+      this.y  += this.vy
+      this.vy += this.ay
+      this.rad > 1 ? this.rad -= .25 : this.lifetime = 0
+    }
+  }
 
   function Wave(color, direction) {
-    this.color = color;
-    this.direction = direction;
-    this.lifetime = 300;
+    this.color     = color
+    this.direction = direction
+    this.lifetime  = 300
     this.draw = function () {
-      if (this.direction == "up") {
-        hctx.fillStyle = this.color;
-        hctx.beginPath();
-        hctx.moveTo(160, this.lifetime - 100);
-        hctx.lineTo(320, this.lifetime);
-        hctx.lineTo(320, this.lifetime + 50);
-        hctx.lineTo(160, this.lifetime - 50);
-        hctx.lineTo(0, this.lifetime + 50);
-        hctx.lineTo(0, this.lifetime);
-        hctx.lineTo(160, this.lifetime - 100);
-        hctx.fill();
-      } else if (this.direction = "down") {
-        hctx.fillStyle = this.color;
-        hctx.beginPath();
-        hctx.moveTo(160, 300 - this.lifetime);
-        hctx.lineTo(320, 200 - this.lifetime);
-        hctx.lineTo(320, 100 - this.lifetime);
-        hctx.lineTo(160, 200 - this.lifetime);
-        hctx.lineTo(0, 100 - this.lifetime);
-        hctx.lineTo(0, 200 - this.lifetime);
-        hctx.lineTo(160, 300 - this.lifetime);
-        hctx.fill();
+      if (this.direction == 'up') {
+        hiddenCtx.fillStyle = this.color
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(160, this.lifetime - 100)
+        hiddenCtx.lineTo(320, this.lifetime)
+        hiddenCtx.lineTo(320, this.lifetime + 50)
+        hiddenCtx.lineTo(160, this.lifetime - 50)
+        hiddenCtx.lineTo(0,   this.lifetime + 50)
+        hiddenCtx.lineTo(0,   this.lifetime)
+        hiddenCtx.lineTo(160, this.lifetime - 100)
+        hiddenCtx.fill()
+      } else if (this.direction = 'down') {
+        hiddenCtx.fillStyle = this.color
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(160, 300 - this.lifetime)
+        hiddenCtx.lineTo(320, 200 - this.lifetime)
+        hiddenCtx.lineTo(320, 100 - this.lifetime)
+        hiddenCtx.lineTo(160, 200 - this.lifetime)
+        hiddenCtx.lineTo(0,   100 - this.lifetime)
+        hiddenCtx.lineTo(0,   200 - this.lifetime)
+        hiddenCtx.lineTo(160, 300 - this.lifetime)
+        hiddenCtx.fill()
       }
-      this.lifetime -= 10;
-    };
-  };
-
+      this.lifetime -= 10
+    }
+  }
 
   function tookHit(hue) {
-    this.lifetime = 25;
-    this.start = new Date().getTime();
-    this.elapsed = 0;
-
+    this.lifetime = 25
+    this.start    = new Date().getTime()
+    this.elapsed  = 0
     this.draw = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      hctx.fillStyle = `hsl(${hue}, 100%, ${Math.sin(this.elapsed / 10) * 25 + 50}%`;
-      hctx.beginPath();
-      hctx.fillRect(0, 0, 320, 200);
-      hctx.stroke();
-      this.lifetime--;
+      this.elapsed = new Date().getTime() - this.start
+      DrawRect(0, 0, 320, 200, `hsl(${hue}, 100%, ${Math.sin(this.elapsed / 10) * 25 + 50}%`)
+      this.lifetime--
     }
-  };
+  }
 
   function effectPulse(hue) {
-    this.lifetime = 500;
-    this.hue = hue;
-
+    this.lifetime = 500
+    this.hue      = hue
     this.draw = function () {
-      hctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-      hctx.lineWidth = 50;
-      hctx.beginPath();
-      hctx.arc(160, 100, this.lifetime, 0, Math.PI * 2);
-      hctx.stroke();
-      this.lifetime -= 10;
+      hiddenCtx.strokeStyle = `hsl(${hue}, 100%, 50%)`
+      hiddenCtx.lineWidth   = 50
+      hiddenCtx.beginPath()
+      hiddenCtx.arc(160, 100, this.lifetime, 0, Math.PI * 2)
+      hiddenCtx.stroke()
+      this.lifetime -= 10
+    }
+  }
+  // #endregion
+
+  // #region Helper Functions
+  function DrawRect(x, y, width, height, color) {
+    hiddenCtx.beginPath()
+    hiddenCtx.fillStyle = color
+    hiddenCtx.fillRect(x, y, width, height)
+  }
+
+  function DrawLine(start, end, color, stroke) {
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(start[0], start[1])
+    hiddenCtx.lineTo(end[0], end[1])
+    hiddenCtx.strokeStyle = color
+    hiddenCtx.lineWidth   = stroke
+    hiddenCtx.stroke()
+  }
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    hiddenCtx.beginPath()
+    hiddenCtx.strokeStyle = color
+    hiddenCtx.lineWidth   = stroke
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.stroke()
+  }
+
+  function DrawCircle(x, y, radius, color) {
+    hiddenCtx.beginPath()
+    hiddenCtx.fillStyle = color
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill()
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    hiddenCtx.fillStyle = color
+    hiddenCtx.save()
+    hiddenCtx.translate(x, y)
+    hiddenCtx.scale(scaleX, scaleY)
+    hiddenCtx.fill(new Path2D(path))
+    hiddenCtx.restore()
+  }
+
+  function StrokeRect(x, y, width, height, color, stroke) {
+    hiddenCtx.beginPath()
+    hiddenCtx.strokeStyle = color
+    hiddenCtx.lineWidth   = stroke
+    hiddenCtx.rect(x, y, width, height)
+    hiddenCtx.stroke()
+  }
+
+  function wheel(x, y, color, rot) {
+    hiddenCtx.save()
+    hiddenCtx.translate(x, y)
+    hiddenCtx.rotate(rot)
+    hiddenCtx.translate(-x, -y)
+    DrawCircle(x, y, 30, 'black')
+    hiddenCtx.beginPath()
+    hiddenCtx.arc(x, y, 20, 0, Math.PI)
+    hiddenCtx.fillStyle = color
+    hiddenCtx.fill()
+    hiddenCtx.restore()
+  }
+
+  function getColorString(h, s, l, a = 1) {
+    return `hsla(${h}, ${s}%, ${l}%, ${a})`
+  }
+
+  function hexToHSL(hex) {
+    let [r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex).slice(1).map(x => parseInt(x, 16) / 255)
+    const max = Math.max(r, g, b), min = Math.min(r, g, b)
+    let h, s
+    const l = (max + min) / 2
+    if (max === min) {
+      h = s = 0
+    } else {
+      const d = max - min
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+      h = max === r ? (g - b) / d + (g < b ? 6 : 0)
+        : max === g ? (b - r) / d + 2
+        :             (r - g) / d + 4
+      h /= 6
+    }
+    return [Math.round(360 * h), Math.round(s * 100), Math.round(l * 100)]
+  }
+
+  const ZONE_COLS   = 28
+  const ZONE_ROWS   = 20
+  const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS
+
+  function copyScreenAudio(alpha) {
+    const lightness = new Int8Array(engine.zone.lightness)
+    const sat       = new Int8Array(engine.zone.saturation)
+    const hue       = new Int16Array(engine.zone.hue)
+    for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+      const iCol = iZone % ZONE_COLS
+      const iRow = Math.floor(iZone / ZONE_COLS)
+      const iZx  = iCol * (320 / ZONE_COLS)
+      const iZy  = iRow * (200 / ZONE_ROWS)
+      hiddenCtx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioEase.sat / 200 + .5)}%, ${lightness[iZone] * (audioEase.lit / 100)}%, ${alpha})`
+      hiddenCtx.fillRect(iZx, iZy, 320 / ZONE_COLS, 200 / ZONE_ROWS)
     }
   }
 
- 
+  function copyScreen(alpha) {
+    const lightness = new Int8Array(engine.zone.lightness)
+    const sat       = new Int8Array(engine.zone.saturation)
+    const hue       = new Int16Array(engine.zone.hue)
+    const customHue = backgroundMode.includes('Custom Ambience')
+    const cycleOff  = backgroundMode.includes('Color Cycle') ? gCycle : 0
+    for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+      const iCol = iZone % ZONE_COLS
+      const iRow = Math.floor(iZone / ZONE_COLS)
+      const iZx  = iCol * (320 / ZONE_COLS)
+      const iZy  = iRow * (200 / ZONE_ROWS)
+      const h    = customHue ? proBack[0] : hue[iZone] + cycleOff
+      hiddenCtx.fillStyle = `hsla(${h}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`
+      hiddenCtx.fillRect(iZx, iZy, 320 / ZONE_COLS, 200 / ZONE_ROWS)
+    }
+  }
 
   function Meter(count, callback) {
-    this.size = count;
-    this.value = 0;
-    this.diff = 0;
-    this.increased = false;
-    this.decreased = false;
-    var values = [];
+    this.size      = count
+    this.value     = 0
+    this.diff      = 0
+    this.increased = false
+    this.decreased = false
+    const values   = []
 
     this.setValue = function (updatedValue) {
-      // Add and shift.
-      values.push(updatedValue);
+      values.push(updatedValue)
       if (values.length > this.size) {
-        values.shift();
+        values.shift()
       }
 
-      // Exit early if we've got a long-term match.
-      for (var i = 0; i < values.length - 1; i++) {
-        if (values[i] !== values[i + 1]) return;
+      for (let i = 0; i < values.length - 1; i++) {
+        if (values[i] !== values[i + 1]) return
       }
 
-      // We got here, so we've got a matching value collection.
       if (this.value !== values[0]) {
-        this.diff = Math.abs(this.value - values[0]);
-        this.increased = this.value < values[0];
-        this.decreased = this.value > values[0];
-        this.value = values[0];
-        callback();
+        this.diff      = Math.abs(this.value - values[0])
+        this.increased = this.value < values[0]
+        this.decreased = this.value > values[0]
+        this.value     = values[0]
+        callback()
       }
-    };
+    }
   }
+  // #endregion
 
-    function StrokeRect(x, y, width, height, color, stroke){
-      hctx.beginPath();
-      hctx.strokeStyle = color;
-      hctx.lineWidth = stroke
-      hctx.rect(x, y, width, height);
-      hctx.stroke()
-    }
+  window.requestAnimationFrame(update)
 
-    function hexToHSL(hex) {
-      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  
-      var r = parseInt(result[1], 16);
-      var g = parseInt(result[2], 16);
-      var b = parseInt(result[3], 16);
-  
-      (r /= 255), (g /= 255), (b /= 255);
-      var max = Math.max(r, g, b),
-        min = Math.min(r, g, b);
-      var h,
-        s,
-        l = (max + min) / 2;
-  
-      if (max === min) {
-        h = s = 0; // achromatic
-      } else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch (max) {
-          case r:
-            h = (g - b) / d + (g < b ? 6 : 0);
-            break;
-          case g:
-            h = (b - r) / d + 2;
-            break;
-          case b:
-            h = (r - g) / d + 4;
-            break;
-        }
-        h /= 6;
-      }
-  
-      s = s * 100;
-      s = Math.round(s);
-      l = l * 100;
-      l = Math.round(l);
-      h = Math.round(360 * h);
-  
-      return [h, s, l];
-    }
-
-    let audioScreenSat = 0
-    let audioScreenLit = 0
-    function copyScreenAudio(alpha) {
-      let lightness = new Int8Array(engine.zone.lightness);
-      let sat = new Int8Array(engine.zone.saturation);
-      let hue = new Int16Array(engine.zone.hue);
-      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
-      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
-      for (var iZone = 0; iZone < 560; iZone++) {
-        var iRow = Math.floor(iZone / 28);
-        var iCol = iZone % 28;
-        var iWidth = 320 / 28;
-        var iHeight = 200 / 20;
-        var iZx = iCol * iWidth;
-        var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
-      }
-    }
-  
-    function copyScreen(alpha) {
-      let lightness = new Int8Array(engine.zone.lightness);
-      let sat = new Int8Array(engine.zone.saturation);
-      let hue = new Int16Array(engine.zone.hue);
-      for (var iZone = 0; iZone < 560; iZone++) {
-        var iRow = Math.floor(iZone / 28);
-        var iCol = iZone % 28;
-        var iWidth = 320 / 28;
-        var iHeight = 200 / 20;
-        var iZx = iCol * iWidth;
-        var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
-      }
-    }
-
-  
-    window.requestAnimationFrame(update);
-  
 </script>
