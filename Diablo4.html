@@ -79,7 +79,7 @@
      ──────────────────────────────────────────────────────────── -->
 
 <meta meter="health" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"
-  h="0-20" s="35-100" l="0-100" hdr-h="0-20" hdr-s="35-100" hdr-l="0-100" >
+  h="-120-20" s="35-100" l="0-100" hdr-h="0-20" hdr-s="35-100" hdr-l="0-100" >
   <resolution aspect="3.55:1" x="0.4081" y="0.862" width="0.0003" height="0.0542" />
   <resolution aspect="24:10" x="0.3631" y="0.8618" width="0.0009" height="0.1118" />
   <resolution aspect="16:11" x="0.3169" y="0.8666" width="0.0008" height="0.1049" />
@@ -88,25 +88,18 @@
   <resolution size="2560x1080" x="0.3619" y="0.8628" width="0.0011" height="0.1085" />
 </meta>
 
-<meta meter="health2" type="area" tags="VLC,Game,Diablo" x="0.3169" y="0.8666" width="0.0008" height="0.1049"
-  h="240-360" s="35-100" l="0-100" hdr-h="240-360" hdr-s="35-100" hdr-l="0-100" >
-  <resolution aspect="3.55:1" x="0.4081" y="0.862" width="0.0003" height="0.0542" />
-  <resolution aspect="24:10" x="0.3631" y="0.8618" width="0.0009" height="0.1118" />
-  <resolution aspect="16:11" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  />
+  <!-- Last edited: 2026-05-01T19:41:49Z | 2026-05-01 12:41:49 MST -->
+  <meta meter="inGame" tags="VLC,Game,Diablo" x="0.3767" y="0.9187" width="0.0000" height="0.0000"
+    h="150-250" s="0-60" l="0-80" hdr-h="176-216" hdr-s="5-52" hdr-l="10-79" type="area">
+    <resolution aspect="3.55:1" x="0.4391" y="0.9208" width="0.0010" height="0.0069" />
+    <resolution aspect="24:10" x="0.4078" y="0.9174" width="0.0003" height="0.0014" />
+    <resolution aspect="16:11" x="0.3638" y="0.9243" width="0.0000" height="0.0000" />
 
-  <resolution size="3840x2160" x="0.3169" y="0.8666" width="0.0008" height="0.1049"  />
-  <resolution size="2560x1080" x="0.3619" y="0.8628" width="0.0011" height="0.1085"  />
-</meta>
-
-<meta meter="inGame" type="area" tags="VLC,Game,Diablo" x="0.3767" y="0.9187" width="0" height="0"
-  h="150-250" s="0-60" l="0-80" hdr-h="176-216" hdr-s="5-52" hdr-l="10-79" >
-  <resolution aspect="3.55:1" x="0.4380" y="0.9176" width="0.0005" height="0.0005" />
-  <resolution aspect="24:10" x="0.4078" y="0.9174" width="0.0003" height="0.0014" />
-  <resolution aspect="16:11" x="0.3638" y="0.9243" width="0" height="0"  />
-
-  <resolution size="3840x2160" x="0.3777" y="0.9254" width="0" height="0" />
-  <resolution size="2560x1080" x="0.4084" y="0.9249" width="0" height="0"  />
-</meta>
+    <resolution size="3840x2160" x="0.3777" y="0.9254" width="0.0000" height="0.0000" />
+    <!-- <resolution size="3840x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+    <resolution size="2560x1080" x="0.4084" y="0.9249" width="0.0000" height="0.0000" />
+    <!-- <resolution size="1920x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+  </meta>
 
 <meta meter="inGame2" type="area" tags="VLC,Game,Diablo" x="0.7085" y="0.8707" width="0" height="0"
   h="155-215" s="10-65" l="9-50" hdr-h="155-215" hdr-s="10-65" hdr-l="9-50" >
@@ -189,40 +182,31 @@
   <resolution size="2560x1080" x="0.5229" y="0.2178" width="0" height="0"   />
 </meta>
 
-<!-- ── MANA DETECTION ─────────────────────────────────────────
-     mana samples the orb fill; manaBright catches bright/near-full
-     states; manaCol is a colormean for reading the current mana hue.
-     Feed manaCallback → mana bar fill and low-mana warning.
-     ──────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-05-01T19:46:30Z | 2026-05-01 12:46:30 MST -->
+  <meta meter="mana1" tags="VLC,Game,Diablo" x="0.6723" y="0.8632" width="0.0023" height="0.1146"
+    h="0-360" s="20-100" l="10-100" hdr-h="0-360" hdr-s="20-100" hdr-l="10-100" type="area">
+    <resolution aspect="3.55:1" x="0.5861" y="0.8604" width="0.0008" height="0.1174" />
+    <resolution aspect="24:10" x="0.6279" y="0.8618" width="0.0015" height="0.1181" />
+    <resolution aspect="16:11" x="0.6831" y="0.8631" width="0.0019" height="0.1098" />
 
-<meta meter="mana" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098"
-  h="0-360" s="10-100" l="10-100" hdr-h="0-360" hdr-s="20-100" hdr-l="10-100" >
-  <resolution aspect="3.55:1" x="0.5898" y="0.862" width="0.0008" height="0.0556" />
-  <resolution aspect="24:10" x="0.6346" y="0.8618" width="0.0003" height="0.1111" />
-  <resolution aspect="16:11" x="0.6831" y="0.8631" width="0.0019" height="0.1098"  />
+    <resolution size="3840x2160" x="0.6745" y="0.8611" width="0.0010" height="0.1176" />
+    <!-- <resolution size="3840x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+    <resolution size="2560x1080" x="0.6358" y="0.8610" width="0.0008" height="0.1121" />
+    <!-- <resolution size="1920x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+  </meta>
 
-  <resolution size="3840x2160" x="0.6831" y="0.8631" width="0.0019" height="0.1098"  />
-  <resolution size="2560x1080" x="0.6358" y="0.861" width="0.0008" height="0.1121"  />
-</meta>
+  <!-- Last edited: 2026-05-01T19:47:00Z | 2026-05-01 12:47:00 MST -->
+  <meta meter="mana2" tags="VLC,Game,Diablo" x="0.6879" y="0.8590" width="0.0020" height="0.1181"
+    h="0-360" s="20-100" l="10-100" hdr-h="0-360" hdr-s="20-100" hdr-l="10-100" type="area">
+    <resolution aspect="3.55:1" x="0.5949" y="0.8590" width="0.0008" height="0.1167" />
+    <resolution aspect="24:10" x="0.6416" y="0.8625" width="0.0015" height="0.1139" />
+    <resolution aspect="16:11" x="0.6831" y="0.8631" width="0.0019" height="0.1098" />
 
-<meta meter="manaBright" type="area" tags="VLC,Game,Diablo" x="0.6831" y="0.8631" width="0.0019" height="0.1098"
-  h="0-360" s="00-20" l="60-100" hdr-h="0-360" hdr-s="00-20" hdr-l="60-100" >
-  <resolution aspect="3.55:1" x="0.5898" y="0.862" width="0.0008" height="0.0556" />
-  <resolution aspect="24:10" x="0.6346" y="0.8618" width="0.0003" height="0.1111" />
-  <resolution aspect="16:11" x="0.6831" y="0.8631" width="0.0019" height="0.1098"  />
-
-  <resolution size="3840x2160" x="0.6831" y="0.8631" width="0.0019" height="0.1098" />
-  <resolution size="2560x1080" x="0.6381" y="0.8684" width="0.002" height="0.0955" />
-</meta>
-
-<meta meter="manaCol" type="colormean" tags="VLC,Game,Diablo" x="0.6827" y="0.9687" width="0" height="0" >
-  <resolution aspect="3.55:1" x="0.5904" y="0.9722" width="0" height="0" />
-  <resolution aspect="24:10" x="0.6346" y="0.9701" width="0.001" height="0.0005" />
-  <resolution aspect="16:11" x="0.6827" y="0.9687" width="0" height="0" />
-
-  <resolution size="3840x2160" x="0.6827" y="0.9687" width="0" height="0" />
-  <resolution size="2560x1080" x="0.6377" y="0.9639" width="0" height="0" />
-</meta>
+    <resolution size="3840x2160" x="0.6872" y="0.8569" width="0.0010" height="0.1227" />
+    <!-- <resolution size="3840x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+    <resolution size="2560x1080" x="0.6358" y="0.8610" width="0.0008" height="0.1121" />
+    <!-- <resolution size="1920x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+  </meta>
 
 <!-- ── ABILITY SLOT DETECTION ────────────────────────────────
      Six ability slots, each as a colormean. Index [2] is lightness
@@ -495,9 +479,8 @@
     let DeadRed_Meter   = new Meter(8, DeadCallback);
     let DeadBlack_Meter = new Meter(8, DeadCallback);
 
-    let mana_Meter       = new Meter(5, manaCallback);
-    let manaBright_Meter = new Meter(5, () => "");  // value-only; no callback needed
-    let manaCol_Meter    = new Meter(5, () => "");  // value-only; color read directly
+    let mana1_Meter      = new Meter(5, manaCallback);
+    let mana2_Meter      = new Meter(5, manaCallback);
 
     // Ability brightness meters (lightness drop fires the callback)
     let ability1_Meter = new Meter(3, ability1Callback);
@@ -547,10 +530,9 @@
         inGame2_Meter.setValue(engine.vision.inGame2);
 
         // Health and mana bars
-        health_Meter.setValue(engine.vision.health + engine.vision.health2);
-        mana_Meter.setValue(engine.vision.mana);
-        manaBright_Meter.setValue(engine.vision.manaBright);
-        manaCol_Meter.setValue(engine.vision.manaCol);
+        health_Meter.setValue(engine.vision.health);
+        mana1_Meter.setValue(engine.vision.mana1);
+        mana2_Meter.setValue(engine.vision.mana2);
 
         // One-shot action effects
         flaskWhite_Meter.setValue(engine.vision.flaskWhite);
@@ -615,9 +597,7 @@
 
         if (gInGame) {
             designatedHealthSize = health_Meter.value;
-            if (engine.vision.mana > 0.3) {
-                designatedManaSize = mana_Meter.value + manaBright_Meter.value;
-            }
+            designatedManaSize = (mana1_Meter.value + mana2_Meter.value) / 2;
         } else {
             designatedHealthSize = 0;
             designatedManaSize   = 0;
@@ -785,10 +765,10 @@
 
     function manaCallback() {
         if (gInGame && enableMana && engine.vision.inGame >= 0.95) {
-            if (mana_Meter.value < 0.2 && !lowManaPlaying) {
+            if (mana1_Meter.value < 0.2 && !lowManaPlaying) {
                 effects.push(new lowMana());
                 lowManaPlaying = true;
-            } else if ((lowManaPlaying && mana_Meter.value > 0.25) || !gInGame || menuGoing) {
+            } else if ((lowManaPlaying && mana1_Meter.value > 0.25) || !gInGame || menuGoing) {
                 lowManaPlaying = false;
             }
         }
@@ -807,7 +787,7 @@
 
     function skillAvailableCallback() {
         if (hasSkillGreyMeter.value >= 0.95 && hasSkillYellowMeter.value >= 0.95 &&
-            gInGame && engine.vision.inGame >= 0.95) {
+            gInGame && engine.vision.inGame >= 0.95 && !skillPointGoing) {
             if (enableLevelUp) effects.push(new hasSkillPoint());
             skillPointGoing = true
         } else if (gInGame && hasSkillGreyMeter.value <= .1 && hasSkillYellowMeter.value <= .1) skillPointGoing = false
