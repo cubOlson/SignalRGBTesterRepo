@@ -3,59 +3,60 @@
   <meta description="Rush B with ambience and RGB effects. v.1.05" />
   <meta publisher="SignalRGB" />
 
-  <meta property="ambienceAlpha" label="Background Brightness" type="number" min="0" max="100" default="100" />
-  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
-  default="Ambience"/>
-  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
-  <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)" tooltip="When this is enabled you will be able to see the healthbar, with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game" type="boolean" default="0" />
-  <meta property="healthColor" label="Health Bar Color" type="color" default="#ff0000" min="0" max="360" />
-  <meta property="HealthBarX" label="HealthBarX" type="number" min="0" max="100" default="0" />
-  <meta property="HealthBarY" label="HealthBarY" type="number" min="0" max="100" default="25" />
-  <meta property="HealthBarWidth" label="HealthBarWidth" type="number" min="0" max="100" default="100" />
-  <meta property="HealthBarHeight" label="HealthBarHeight" type="number" min="0" max="100" default="15" />
-  <meta property="hudToggle" label="Health Bar effects" type="boolean" default="1" />
-  <meta property="healthToggle" label="Health effects" type="boolean" default="1" />
-  <meta property="WinToggle" label="Win effects" type="boolean" default="1" />
-  <meta property="ShopToggle" label="Shop effects" type="boolean" default="1" />
-  <meta property="SpectatingToggle" label="Spectating effects" type="boolean" default="1" />
-  <meta property="KillToggle" label="Kill effects" type="boolean" default="1" />
-  <meta property="BombToggle" label="Bomb effects" type="boolean" default="1" />
-  <meta property="TeaToggle" label="Teabag effect" type="boolean" default="1" />
-  <meta property="TeaReset" label="Reset Teabag Key" type="boolean" default="1" />
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" min="0" max="100" default="100" tooltip="Changes the brightness of the background effect." />
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes the background mode." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer" 
+  default="Ambience" />
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" tooltip="Sets the background color when Custom or Custom Ambience mode is selected." />
+  <meta property="adjToggle" label="Adjustment Toggle (turn off in-game)" tooltip="When this is enabled you will be able to see the healthbar. with the sliders below you can place the hud bars where they are visible on you keyboard, dont forget to turn off when playing the game" type="boolean" default="0" />
+  <meta property="healthColor" label="Health Bar Color" tooltip="Sets the color of the health bar overlay." type="color" default="#ff0000" min="0" max="360" />
+  <meta property="HealthBarX" label="HealthBarX" tooltip="Adjusts the horizontal position of the health bar on your devices." type="number" min="0" max="100" default="0" />
+  <meta property="HealthBarY" label="HealthBarY" tooltip="Adjusts the vertical position of the health bar on your devices." type="number" min="0" max="100" default="25" />
+  <meta property="HealthBarWidth" label="HealthBarWidth" tooltip="Adjusts the width of the health bar on your devices." type="number" min="0" max="100" default="100" />
+  <meta property="HealthBarHeight" label="HealthBarHeight" tooltip="Adjusts the height of the health bar on your devices." type="number" min="0" max="100" default="15" />
+  <meta property="enableHudToggle" label="Health Bar effects" tooltip="Enables the health bar effects." type="boolean" default="1" />
+  <meta property="enableHealthToggle" label="Health effects" tooltip="Enables the health effects." type="boolean" default="1" />
+  <meta property="enableWinToggle" label="Win effects" tooltip="Enables the Win effect." type="boolean" default="1" />
+  <meta property="enableShopToggle" label="Shop effect" tooltip="Enables the Shop effect." type="boolean" default="1" />
+  <meta property="enableSpectatingToggle" label="Spectating effects" tooltip="Enables the Spectating effects." type="boolean" default="1" />
+  <meta property="enableKillToggle" label="Kill effect" tooltip="Enables the Kill effect." type="boolean" default="1" />
+  <meta property="enableBombToggle" label="Bomb effect" tooltip="Enables the Bomb effect." type="boolean" default="1" />
+  <meta property="enableTeaToggle" label="Teabag effect" tooltip="Enables the Teabag effect." type="boolean" default="1" />
+  <meta property="enableTeaReset" label="Reset Teabag Key" tooltip="Reset the Teabag effect." type="boolean" default="1" />
 
-  <meta meter="healthBlue" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go" x="0.3255" y="0.9736" width="0.031" height="0.0001" 
+  
+  <meta meter="healthBlue" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.3454" y="0.9722" width="0.0313" height="0.0007" 
     h="180-225" s="10-50" l="75-100" hdr-h="0-45" hdr-s="0-50" hdr-l="70-100">
-    <resolution aspect="3.55:1" x="0.4126" y="0.9741" width="0.0148" height="0"/>
-    <resolution aspect="24:10" x="0.369" y="0.9736" width="0.0236" height="0"/>
-    <resolution aspect="16:11" x="0.3048" y="0.9731" width="0.0348" height="0.0019"/>
+    <resolution aspect="3.55:1" x="0.4141" y="0.9704" width="0.0160" height="0"/>
+    <resolution aspect="24:10" x="0.3849" y="0.9708" width="0.0224" height="0.0019"/>
+    <resolution aspect="16:11" x="0.3283" y="0.9706" width="0.0351" height="0.0025"/>
 
-    <resolution size="3840x2160" x="0.3238" y="0.9722" width="0.0318" height="0.0023"/>
-    <resolution size="2560x1080" x="0.3689" y="0.9722" width="0.0227" height="0.0019"/>
+    <resolution size="3840x2160" x="0.3457" y="0.9708" width="0.0297" height="0.0014"/>
+    <resolution size="2560x1080" x="0.3841" y="0.9722" width="0.0231" height="0.0019"/>
   </meta>
 
-  <meta meter="healthOrange" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go" x="0.3255" y="0.9736" width="0.031" height="0.0001" 
+  <meta meter="healthOrange" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.3454" y="0.9722" width="0.0313" height="0.0007" 
     h="35-90" s="10-75" l="75-100" hdr-h="40-90" hdr-s="10-75" hdr-l="75-100">
-    <resolution aspect="3.55:1" x="0.4126" y="0.9741" width="0.0148" height="0"/>
-    <resolution aspect="24:10" x="0.369" y="0.9736" width="0.0236" height="0"/>
-    <resolution aspect="16:11" x="0.3048" y="0.9731" width="0.0348" height="0.0019"/>
+    <resolution aspect="3.55:1" x="0.4141" y="0.9704" width="0.0160" height="0"/>
+    <resolution aspect="24:10" x="0.3849" y="0.9708" width="0.0224" height="0.0019"/>
+    <resolution aspect="16:11" x="0.3283" y="0.9706" width="0.0351" height="0.0025"/>
 
-    <resolution size="3840x2160" x="0.3238" y="0.9722" width="0.0318" height="0.0023"/>
-    <resolution size="2560x1080" x="0.3689" y="0.9722" width="0.0227" height="0.0019"/>
+    <resolution size="3840x2160" x="0.3457" y="0.9708" width="0.0297" height="0.0014"/>
+    <resolution size="2560x1080" x="0.3841" y="0.9722" width="0.0231" height="0.0019"/>
   </meta>
 
-  <meta meter="lowHealth" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.3255" y="0.9736" width="0.031" height="0.0001" 
+  <meta meter="lowHealth" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.3454" y="0.9722" width="0.0313" height="0.0007" 
     h="-30-30" s="20-100" l="50-100" hdr-h="-30-30" hdr-s="20-100" hdr-l="50-100">
-    <resolution aspect="3.55:1" x="0.4126" y="0.9741" width="0.0148" height="0"/>
-    <resolution aspect="24:10" x="0.369" y="0.9736" width="0.0236" height="0"/>
-    <resolution aspect="16:11" x="0.3048" y="0.9731" width="0.0348" height="0.0019"/>
+    <resolution aspect="3.55:1" x="0.4141" y="0.9704" width="0.0160" height="0"/>
+    <resolution aspect="24:10" x="0.3849" y="0.9708" width="0.0224" height="0.0019"/>
+    <resolution aspect="16:11" x="0.3283" y="0.9706" width="0.0351" height="0.0025"/>
 
-    <resolution size="3840x2160" x="0.3255" y="0.9736" width="0.031" height="0.0001"/>
-    <resolution size="2560x1080" x="0.3689" y="0.9722" width="0.0227" height="0.0019"/>
+    <resolution size="3840x2160" x="0.3457" y="0.9708" width="0.0297" height="0.0014"/>
+    <resolution size="2560x1080" x="0.3841" y="0.9722" width="0.0231" height="0.0019"/>
   </meta>
 
-  <meta meter="roundLoss" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.603" y="0.1779" width="0.0004" height="0.0653" 
-    h="-30-30" s="60-100" l="25-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="25-100">
-    <resolution aspect="3.55:1" x="0.5515" y="0.1793" width="0.0004" height="0.0646"/>
+  <meta meter="roundLoss" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.603" y="0.1779" width="0.0004" height="0.0653" 
+    h="-30-30" s="60-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="25-100">
+    <resolution aspect="3.55:1" x="0.5573" y="0.1981" width="0.0004" height="0.0300"/>
     <resolution aspect="24:10" x="0.5766" y="0.1779" width="0.0003" height="0.066"/>
     <resolution aspect="16:11" x="0.6147" y="0.1801" width="0.0008" height="0.0651"/>
 
@@ -63,9 +64,9 @@
     <resolution size="2560x1080" x="0.5772" y="0.1798" width="0.0008" height="0.0639"/>
   </meta>
 
-  <meta meter="roundNotLoss" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.6073" y="0.1772" width="0.0008" height="0.0667" 
-    h="-30-30" s="60-100" l="25-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="25-100">
-    <resolution aspect="3.55:1" x="0.553" y="0.1793" width="0.0004" height="0.0646"/>
+  <meta meter="roundNotLoss" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.6073" y="0.1772" width="0.0008" height="0.0667" 
+    h="-30-30" s="60-100" l="50-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="25-100">
+    <resolution aspect="3.55:1" x="0.5594" y="0.1787" width="0.0004" height="0.0300"/>
     <resolution aspect="24:10" x="0.475" y="0.1772" width="0.05" height="0.0005"/>
     <resolution aspect="16:11" x="0.6182" y="0.1776" width="0.0012" height="0.0732"/>
 
@@ -73,9 +74,9 @@
     <resolution size="2560x1080" x="0.5811" y="0.177" width="0.0015" height="0.0677"/>
   </meta>
 
-  <meta meter="roundWinT" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.603" y="0.1779" width="0.0004" height="0.0653" 
+  <meta meter="roundWinT" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.603" y="0.1779" width="0.0004" height="0.0653" 
     h="35-90" s="10-80" l="75-100" hdr-h="40-90" hdr-s="10-80" hdr-l="75-100">
-    <resolution aspect="3.55:1" x="0.5515" y="0.1793" width="0.0004" height="0.0646"/>
+    <resolution aspect="3.55:1" x="0.5573" y="0.1981" width="0.0004" height="0.0300"/>
     <resolution aspect="24:10" x="0.5766" y="0.1779" width="0.0003" height="0.066"/>
     <resolution aspect="16:11" x="0.6147" y="0.1801" width="0.0008" height="0.0651"/>
 
@@ -83,9 +84,9 @@
     <resolution size="2560x1080" x="0.5772" y="0.1798" width="0.0008" height="0.0639"/>
   </meta>
 
-  <meta meter="roundWinNotT" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.6061" y="0.1779" width="0.0004" height="0.0653" 
+  <meta meter="roundWinNotT" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.6061" y="0.1779" width="0.0004" height="0.0653" 
     h="35-90" s="10-80" l="75-100" hdr-h="40-90" hdr-s="10-80" hdr-l="75-100">
-    <resolution aspect="3.55:1" x="0.553" y="0.1793" width="0.0004" height="0.0646"/>
+    <resolution aspect="3.55:1" x="0.5594" y="0.1787" width="0.0004" height="0.0300"/>
     <resolution aspect="24:10" x="0.475" y="0.1772" width="0.05" height="0.0005"/>
     <resolution aspect="16:11" x="0.6182" y="0.1776" width="0.0012" height="0.0732"/>
 
@@ -93,9 +94,9 @@
     <resolution size="2560x1080" x="0.5811" y="0.177" width="0.0015" height="0.0677"/>
   </meta>
 
-  <meta meter="roundWinCT" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.603" y="0.1779" width="0.0004" height="0.0653" 
+  <meta meter="roundWinCT" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.603" y="0.1779" width="0.0004" height="0.0653" 
     h="200-225" s="10-50" l="90-100" hdr-h="100-180" hdr-s="0-50" hdr-l="75-100">
-    <resolution aspect="3.55:1" x="0.5515" y="0.1793" width="0.0004" height="0.0646"/>
+    <resolution aspect="3.55:1" x="0.5573" y="0.1981" width="0.0004" height="0.0300"/>
     <resolution aspect="24:10" x="0.5766" y="0.1779" width="0.0003" height="0.066"/>
     <resolution aspect="16:11" x="0.6147" y="0.1801" width="0.0008" height="0.0651"/>
 
@@ -103,9 +104,9 @@
     <resolution size="2560x1080" x="0.5772" y="0.1798" width="0.0008" height="0.0639"/>
   </meta>
 
-  <meta meter="roundWinNotCT" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.6061" y="0.1779" width="0.0004" height="0.0653" 
+  <meta meter="roundWinNotCT" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.6061" y="0.1779" width="0.0004" height="0.0653" 
     h="200-225" s="10-50" l="90-100" hdr-h="100-180" hdr-s="0-50" hdr-l="75-100">
-    <resolution aspect="3.55:1" x="0.553" y="0.1793" width="0.0004" height="0.0646"/>
+    <resolution aspect="3.55:1" x="0.5594" y="0.1787" width="0.0004" height="0.0300"/>
     <resolution aspect="24:10" x="0.475" y="0.1772" width="0.05" height="0.0005"/>
     <resolution aspect="16:11" x="0.6182" y="0.1776" width="0.0012" height="0.0732"/>
 
@@ -113,7 +114,7 @@
     <resolution size="2560x1080" x="0.5811" y="0.177" width="0.0015" height="0.0677"/>
   </meta>
 
-  <meta meter="roundWhite" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.4412" y="0.2363" width="0.1000" height="0.0041" 
+  <meta meter="roundWhite" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4500" y="0.2363" width="0.0600" height="0.0041" 
     h="0-360" s="0-20" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.4765" y="0.2377" width="0.0463" height="0.0034"/>
     <resolution aspect="24:10" x="0.4734" y="0.2377" width="0.0529" height="0.0027"/>
@@ -123,7 +124,7 @@
     <resolution size="2560x1080" x="0.4627" y="0.2373" width="0.0734" height="0.0027"/>
   </meta>
 
-  <meta meter="roundNotWhite" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.4998" y="0.2453" width="0" height="0" 
+  <meta meter="roundNotWhite" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4998" y="0.2453" width="0" height="0" 
     h="0-360" s="0-20" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.49" y="0.2446" width="0" height="0"/>
     <resolution aspect="24:10" x="0.4734" y="0.2447" width="0" height="0"/>
@@ -133,7 +134,7 @@
     <resolution size="2560x1080" x="0.5006" y="0.2465" width="0" height="0"/>
   </meta>
 
-  <meta meter="inShopBlack" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.3576" y="0.1953" width="0.0343" height="0.0014" 
+  <meta meter="inShopBlack" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.3576" y="0.1953" width="0.0343" height="0.0014" 
     h="0-360" s="0-100" l="0-20" hdr-h="0-360" hdr-s="0-100" hdr-l="0-30">
     <resolution aspect="3.55:1" x="0.4272" y="0.1939" width="0.0123" height="0.0014"/>
     <resolution aspect="24:10" x="0.3952" y="0.1946" width="0.0317" height="0.0014"/>
@@ -143,9 +144,9 @@
     <resolution size="2560x1080" x="0.4002" y="0.1956" width="0.0281" height="0.0009"/>
   </meta>
 
-  <meta meter="inShopWhite" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.1555" y="0.2175" width="0.0395" height="0.009" 
+  <meta meter="inShopWhite" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.1555" y="0.2175" width="0.0395" height="0.009" 
     h="0-360" s="0-5" l="60-100" hdr-h="0-360" hdr-s="0-5" hdr-l="70-100">
-    <resolution aspect="3.55:1" x="0.328" y="0.217" width="0.0203" height="0.0111"/>
+    <resolution aspect="3.55:1" x="0.3078" y="0.2150" width="0.0232" height="0.0141"/>
     <resolution aspect="24:10" x="0.2443" y="0.2168" width="0.0285" height="0.0104"/>
     <resolution aspect="16:11" x="0.118" y="0.2183" width="0.0446" height="0.0087"/>
 
@@ -153,7 +154,7 @@
     <resolution size="2560x1080" x="0.2419" y="0.2178" width="0.0293" height="0.0093"/>
   </meta>
 
-  <meta meter="inGameBlue1" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.4924" y="0.9521" width="0" height="0.0034" 
+  <meta meter="inGameBlue1" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4924" y="0.9521" width="0" height="0.0034" 
     h="180-225" s="10-50" l="75-100" hdr-h="0-45" hdr-s="0-50" hdr-l="70-100">
     <resolution aspect="3.55:1" x="0.4999" y="0.9503" width="0.0005" height="0.0021"/>
     <resolution aspect="24:10" x="0.4996" y="0.9486" width="0.0005" height="0.0021"/>
@@ -161,12 +162,12 @@
 
     <resolution size="3840x2160" x="0.4978" y="0.9606" width="-0.0003" height="0.0023"/>
     <resolution size="2560x1080" x="0.4996" y="0.9486" width="0.0005" height="0.0021"/>
-  </meta>
+  </meta> 
 
   
 
-<!-- Last edited: 2026-02-24T18:42:40Z | 2026-02-24 11:42:40 MST -->
-<meta meter="inGameBlue2" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.5018" y="0.9618" width="0.0007000" height="0.0007000"
+
+<meta meter="inGameBlue2" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.5018" y="0.9618" width="0.0007000" height="0.0007000"
   h="180-230" s="0-47" l="60-100" hdr-h="0-45" hdr-s="0-50" hdr-l="70-100" type="area">
   <resolution aspect="3.55:1" x="0.4997" y="0.9493" width="0.0004000" height="0.001400" />
   <resolution aspect="24:10" x="0.4940" y="0.9493" width="0.0003000" height="0.005500" />
@@ -174,10 +175,10 @@
 
   <resolution size="3840x2160" x="0.4996" y="0.9491" width="0.0000" height="0.001800" />
   <resolution size="2560x1080" x="0.4940" y="0.9493" width="0.0003000" height="0.005500" />
-  <!-- <resolution size="1920x1080" x="0.0000" y="0.0000" width="0.0000" height="0.0000" /> -->
+  
 </meta>
 
-  <meta meter="inGameOrange1" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.4979" y="0.9423" width="0.0035" height="0.0056" 
+  <meta meter="inGameOrange1" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4979" y="0.9423" width="0.0035" height="0.0056" 
     h="35-90" s="10-80" l="75-100" hdr-h="40-90" hdr-s="0-80" hdr-l="75-100" >
     <resolution aspect="3.55:1" x="0.4999" y="0.9412" width="-0.0003" height="0.0018"/>
     <resolution aspect="24:10" x="0.4984" y="0.943" width="0.0023" height="0.0042"/>
@@ -187,7 +188,7 @@
     <resolution size="2560x1080" x="0.4984" y="0.943" width="0.0023" height="0.0042"/>
   </meta>
 
-  <meta meter="inGameOrange2" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.499" y="0.9646" width="0.0024" height="0.0041" 
+  <meta meter="inGameOrange2" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.499" y="0.9646" width="0.0024" height="0.0041" 
     h="35-90" s="10-80" l="75-100" hdr-h="40-90" hdr-s="0-80" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.5001" y="0.9679" width="0.0006" height="0"/>
     <resolution aspect="24:10" x="0.4993" y="0.9653" width="0.0011" height="0.0034"/>
@@ -197,7 +198,7 @@
     <resolution size="2560x1080" x="0.4993" y="0.9653" width="0.0011" height="0.0034"/>
   </meta>
 
-  <meta meter="inGameNot" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.4982" y="0.9729" width="0.0036" height="0.0049" 
+  <meta meter="inGameNot" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4982" y="0.9729" width="0.0036" height="0.0049" 
     h="35-225" s="10-80" l="75-100" hdr-h="40-225" hdr-s="0-80" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.4999" y="0.9752" width="0.0005" height="0.001"/>
     <resolution aspect="24:10" x="0.4987" y="0.9729" width="0.002" height="0.0028"/>
@@ -207,9 +208,9 @@
     <resolution size="2560x1080" x="0.4987" y="0.9729" width="0.002" height="0.0028"/>
   </meta>
 
-  <meta meter="spectateConfirmOrange" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.6194" y="0.9249" width="0" height="0.0063"  
+  <meta meter="spectateConfirmOrange" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.6194" y="0.9249" width="0" height="0.0063"  
     h="35-90" s="10-80" l="75-100" hdr-h="40-90" hdr-s="0-80" hdr-l="75-100">
-    <resolution aspect="3.55:1" x="0.5596" y="0.9229" width="0.0000" height="0.0300"/>
+    <resolution aspect="3.55:1" x="0.5666" y="0.9389" width="0.0000" height="0.0100"/>
     <resolution aspect="24:10" x="0.5885" y="0.927" width="0" height="0.0030"/>
     <resolution aspect="16:11" x="0.6327" y="0.9243" width="0" height="0.0038"/>
 
@@ -217,9 +218,9 @@
     <resolution size="2560x1080" x="0.5897" y="0.9222" width="-0.0004" height="0.0055"/>
   </meta>
 
-  <meta meter="spectateConfirmBlue" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.381" y="0.9256" width="-0.0004" height="0.0035" 
-    h="180-225" s="10-50" l="75-100" hdr-h="0-45" hdr-s="0-50" hdr-l="50-100">
-    <resolution aspect="3.55:1" x="0.5596" y="0.9229" width="0.0000" height="0.0556"/>
+  <meta meter="spectateConfirmBlue" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.381" y="0.9256" width="-0.0004" height="0.0035" 
+    h="180-360" s="10-50" l="60-100" hdr-h="0-45" hdr-s="0-50" hdr-l="50-100">
+    <resolution aspect="3.55:1" x="0.5666" y="0.9389" width="0.0000" height="0.0100"/>
     <resolution aspect="24:10" x="0.4111" y="0.927" width="0" height="0.0030"/>
     <resolution aspect="16:11" x="0.3673" y="0.9256" width="0" height="0.0031"/>
 
@@ -227,18 +228,18 @@
     <resolution size="2560x1080" x="0.5897" y="0.9222" width="-0.0004" height="0.0055" />
   </meta>
 
-  <meta meter="kill" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.9941" y="0.0695" width="0.0008" height="0.2000" 
-    h="-30-30" s="60-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100">
-    <resolution aspect="3.55:1" x="0.9971" y="0.0722" width="0.0002" height="0.1000"/>
+  <meta meter="kill" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.9945" y="0.0723" width="0" height="0.2000" 
+    h="-30-30" s="75-100" l="50-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
+    <resolution aspect="3.55:1" x="0.9961" y="0.0670" width="0.0002" height="0.1000"/>
     <resolution aspect="24:10" x="0.9951" y="0.0688" width="0.0005" height="0.1300"/>
     <resolution aspect="16:11" x=".9932" y="0.0688" width=".0001" height=".2000"/>
 
-    <resolution size="3840x2160" x="0.9940" y="0.0708" width="-0.0003" height="0.2500"/>
+    <resolution size="3840x2160" x="0.9943" y="0.0713" width="0" height="0.2500"/>
     <resolution size="2560x1080" x="0.9957" y="0.0686" width="0.0004" height="0.2000"/>
   </meta>
 
-  <meta meter="killNot" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.9977" y="0.0695" width="0.0008" height="0.2000" 
-    h="-30-30" s="60-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100">
+  <meta meter="killNot" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.9977" y="0.0695" width="0.0008" height="0.2000" 
+    h="-30-30" s="75-100" l="50-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-75">
     <resolution aspect="3.55:1" x="0.9992" y="0.0694" width="0.0006" height="0.1108"/>
     <resolution aspect="24:10" x="0.9980" y="0.0688" width="0.0005" height="0.091"/>
     <resolution aspect="16:11" x="0.9965" y=".0713" width=".0001" height=".2000"/>
@@ -247,17 +248,17 @@
     <resolution size="2560x1080" x="0.9984" y="0.0686" width="0.0004" height="0.2000"/>
   </meta>
 
-  <meta meter="killConfirmation" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.3255" y="0.9736" width="0.0005" height="0.0001" 
+  <meta meter="killConfirmation" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.3458" y="0.9722" width="0.002" height="0.0007" 
     h="0-360" s="0-30" l="75-100" hdr-h="0-360" hdr-s="0-30" hdr-l="75-100">
-    <resolution aspect="3.55:1" x="0.4126" y="0.9741" width="0.0005" height="0"/>
-    <resolution aspect="24:10" x="0.369" y="0.9736" width="0.001" height="0"/>
-    <resolution aspect="16:11" x="0.3255" y="0.9736" width="0.0005" height="0.0001"/>
+    <resolution aspect="3.55:1" x="0.4141" y="0.9704" width="0.0050" height="0"/>
+    <resolution aspect="24:10" x="0.3849" y="0.9708" width="0.0050" height="0.0019"/>
+    <resolution aspect="16:11" x="0.3294" y="0.9719" width="0.0016" height="0.0025"/>
 
-    <resolution size="3840x2160" x="0.3255" y="0.9736" width="0.0005" height="0.0001"/>
-    <resolution size="2560x1080" x="0.369" y="0.9736" width="0.001" height="0"/>
+    <resolution size="3840x2160" x="0.3457" y="0.9717" width="0.001" height="0"/>
+    <resolution size="2560x1080" x="0.3841" y="0.9722" width="0.0050" height="0.0019"/>
   </meta>
 
-  <meta meter="bombPlanted" type="area" tags="counter-strike, counter-strike:global offensive, cs:go" x="0.4955" y="0.0167" width="0" height="0" 
+  <meta meter="bombPlanted" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4955" y="0.0167" width="0" height="0" 
     h="-30-30" s="60-100" l="35-100" hdr-h="-30-30" hdr-s="60-100" hdr-l="35-100">
     <resolution aspect="3.55:1" x="0.4981" y="0.0124" width="0.0006" height="0"/>
     <resolution aspect="24:10" x="0.4972" y="0.0167" width="0.0018" height="0.0014"/>
@@ -267,9 +268,9 @@
     <resolution size="2560x1080" x="0.4955" y="0.0139" width="0.002" height="0.0009"/>
   </meta>
 
-  <meta meter="bombPlantedConfirmation" type="area" tags="counter-strike,counter-strike:global offensive,cs:go" x="0.4228" y="0.745" width="0.0004" height="0.0507" 
+  <meta meter="bombPlantedConfirmation" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4228" y="0.745" width="0.0004" height="0.0507" 
     h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="35-100" hdr-l="35-100">
-    <resolution aspect="3.55:1" x="0.5390" y="0.7463" width="0.0001" height="0.0100"/>
+    <resolution aspect="3.55:1" x="0.5430" y="0.7481" width="0.0001" height="0.0020"/>
     <resolution aspect="24:10" x="0.4426" y="0.7477" width="0" height="0.0445"/>
     <resolution aspect="16:11" x="0.5866" y="0.7473" width="-0.0004" height="0.0463"/>
 
@@ -283,16 +284,17 @@
 </body>
 
 <script>
-  var canvas, ctx;
-  canvas = document.getElementById("exCanvas");
-  ctx = canvas.getContext("2d");
-  var effects = [];
-  var height = 200;
-  var width = 320;
-  var hiddenCanvas = document.createElement("canvas");
-  hiddenCanvas.width = width;
-  hiddenCanvas.height = height;
-  var hctx = hiddenCanvas.getContext("2d");
+  const canvas = document.getElementById('exCanvas')
+  const ctx    = canvas.getContext('2d')
+  const width  = 320
+  const height = 200
+  
+  const hiddenCanvas = document.createElement('canvas')
+  hiddenCanvas.width  = width
+  hiddenCanvas.height = height
+  const hiddenCtx = hiddenCanvas.getContext('2d')
+
+  let effects = []
   let gAlpha = 1
   var healthMeter = new Meter(10, onHealthChanged);
   var lowHealthMeter = new Meter(5, onLowHealthChanged)
@@ -326,28 +328,21 @@
   var gInShop = false;
   var gBombPlantedPlaying = false;
   var gPlayerIsTerrorist = false
-  var gTerroristPlaying = false;
+  var gRoundEndEffectPlaying  = false;
 
   let crouchButton = ["none", 0]
 
   function update() {
-
-    hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-    hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
-    hctx.fillRect(0, 0, 320, 200);
-
+    DrawRect(0, 0, 320, 200, 'black')
     backgroundHandler()
-
     checkTeaBag()
     
-    
-
-    if(gInGame && crouchButton[0] == "none" && TeaToggle){
+    if(gInGame && crouchButton[0] == "none" && enableTeaToggle){
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, .75)`)
-      hctx.font = "30px Arial";
-      hctx.fillStyle = "red"
-      hctx.fillText("Press Crouch Key", 40, 50);
-      hctx.fillText("For Teabag Effect", 40, 100);
+      hiddenCtx.font = "30px Arial";
+      hiddenCtx.fillStyle = "red"
+      hiddenCtx.fillText("Press Crouch Key", 40, 50);
+      hiddenCtx.fillText("For Teabag Effect", 40, 100);
     }
 
     RoundWinTMeter.setValue(engine.vision.roundWinT)
@@ -373,23 +368,17 @@
     KillConfirmMeter.setValue(engine.vision.killConfirmation)
     healthMeter.setValue(engine.vision.healthBlue + engine.vision.healthOrange) 
     if (gInGame) {
-      if(InGameOrange1Meter.value > InGameBlue1Meter.value && InGameOrange2Meter.value > InGameBlue2Meter.value){
+      if(InGameOrange1Meter.value > .2 && InGameOrange2Meter.value > .2){
           gPlayerIsTerrorist = true
       }
       
     }
     
-    for (let i = 0; i < effects.length; i++) {
-      effects[i].draw();
-      if (effects[i].lifetime <= 0) {
-        effects.splice(i, 1);
-      }
-    }
+    effects.forEach(ele => { ele.draw() })
+    effects = effects.filter(ele => !(ele.lifetime <= 0))
 
     DrawHud()
-    ctx.clearRect(0, 0, width, height);
     ctx.drawImage(hiddenCanvas, 0, 0);
-
     window.requestAnimationFrame(update);
   }
 
@@ -416,7 +405,7 @@
             DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
             break;
             case "Ambience": 
-            copyScreen(ambienceAlpha / 100,hctx)
+            copyScreen(ambienceAlpha / 100,hiddenCtx)
             break;
             case "Custom Ambience": 
             copyScreen(ambienceAlpha / 100)
@@ -453,8 +442,8 @@
         var iHeight = 200 / 20;
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
   
@@ -469,46 +458,47 @@
         var iHeight = 200 / 20;
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
-        hctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
-        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
 
-  function onTeaResetChanged(){
+  function onenableTeaResetChanged(){
     crouchButton = ["none", 0]
   }
 
   function DrawHud() {
-    hctx.beginPath();
-    hctx.fillStyle = healthColor;
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = healthColor;
     if (gInGame && !gIsSpectating) {
-      hctx.fillRect((HealthBarX * 3.2),(HealthBarY * 2), healthMeter.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      hiddenCtx.fillRect((HealthBarX * 3.2),(HealthBarY * 2), healthMeter.value * (HealthBarWidth * 3.2), (HealthBarHeight * 2))
     }
     if(adjToggle) {
-      hctx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
+      hiddenCtx.fillRect((HealthBarX * 3.2), (HealthBarY * 2), (HealthBarWidth * 3.2), (HealthBarHeight * 2))
     }
   }
 
   function roundEndChanged(){
-    if(WinToggle){
-      if (!gTerroristPlaying && RoundWhiteMeter.value > .2 && engine.vision.roundNotWhite < .1) {
+    if(enableWinToggle){
+      if (!gRoundEndEffectPlaying  && RoundWhiteMeter.value > .2 && engine.vision.roundNotWhite < .1) {
           if(RoundWinTMeter.value >= .95 && engine.vision.roundWinNotT <= .2) {
             effects.push(new TerroristWinsEffect()) 
-            gTerroristPlaying = true;
+            gRoundEndEffectPlaying  = true;
           }
           else if (RoundWinCTMeter.value >= .95 && engine.vision.roundWinNotCT <= .2) {
             effects.push(new CounterTerroristWinsEffect())
-            gTerroristPlaying = true;
+            gRoundEndEffectPlaying  = true;
           }
       }
-      if (RoundLossMeter.value >= .95 && engine.vision.roundNotLoss <= .1 && !gTerroristPlaying && RoundWhiteMeter.value > .28 && engine.vision.roundNotWhite < .1) {
+      if (RoundLossMeter.value >= .95 && engine.vision.roundNotLoss <= .1 && !gRoundEndEffectPlaying  && RoundWhiteMeter.value > .2 && engine.vision.roundNotWhite < .1) {
           if(gPlayerIsTerrorist) {
-            effects.push(new CounterTerroristWinsEffect())
-            gTerroristPlaying = true;
+            effects.push(new TerroristWinsEffect())
+            
+            gRoundEndEffectPlaying  = true;
           }
           else {
-            effects.push(new TerroristWinsEffect())
-            gTerroristPlaying = true;
+            effects.push(new CounterTerroristWinsEffect())
+            gRoundEndEffectPlaying  = true;
           }
       }
     }
@@ -516,7 +506,7 @@
   }
 
   function onSpectatingChanged() {
-    if(SpectatingToggle){
+    if(enableSpectatingToggle){
       if (!gInGame && (SpectateConfirmBlueMeter.value > .9 || SpectateConfirmOrangeMeter.value > .9)) {
         if (!gPlayerIsTerrorist && !gIsSpectating) {
           effects.push(new SpectatingEffect(201, 98, 41))
@@ -524,8 +514,6 @@
           effects.push(new SpectatingEffect(19, 98, 41))
         }
         gIsSpectating = true
-      } else if (gInGame || (SpectateConfirmBlueMeter.value <= .25 && SpectateConfirmOrangeMeter.value <= .25)) {
-          gIsSpectating = false;
       }  
     }
 
@@ -534,8 +522,8 @@
 
   let killGoing = false
   function onKillChanged() {
-    if(KillToggle){
-      if (KillMeter.value >= .05 && engine.vision.killNot <= .05 && KillConfirmMeter.value >= .75 && KillMeter.diff > 0.05 && !killGoing) {
+    if(enableKillToggle){
+      if (KillMeter.value >= .05 && engine.vision.killNot <= .1 && KillConfirmMeter.value >= .75 && KillMeter.diff > 0.05 && !killGoing) {
         effects.push(new killEffect())
         killGoing = true
       }
@@ -545,7 +533,7 @@
   }
 
   function onBombPlanted() {
-    if(BombToggle){
+    if(enableBombToggle){
       if((gInGame || gIsSpectating) && BombPlantedMeter.value > 0.9 && BombPlantedConfirmationMeter.value > .9 && !gBombPlantedPlaying) {
         effects.push(new BombPlantedEffect());
         gBombPlantedPlaying = true;
@@ -555,8 +543,8 @@
   }
 
   function onShopChanged() {
-    if (ShopToggle) {
-      if (gInGame && InShopBlackMeter.value >= 0.8 && InShopWhiteMeter.value >= 0.25) {
+    if (enableShopToggle) {
+      if (!gInGame && InShopBlackMeter.value >= 0.8 && InShopWhiteMeter.value >= 0.25) {
         if (!gInShop) {
           effects.push(new ShopEffect())
         }
@@ -576,7 +564,7 @@
   }
 
   function onHealthChanged() {
-    if (healthToggle) {
+    if (enableHealthToggle) {
       if (gInGame && healthMeter.decreased && !gIsSpectating && healthMeter.diff > .15 && InShopBlackMeter.value < 0.8 && InShopWhiteMeter.value < 0.25) {
         effects.push(new damaged());
       }
@@ -585,7 +573,7 @@
   }
 
   function onLowHealthChanged() {
-    if(healthToggle){
+    if(enableHealthToggle){
       if (lowHealthMeter.value >= .25 && !gLowHpGoing && !gIsSpectating && gInGame) {
         effects.push(new lowHpState())
         gLowHpGoing = true;
@@ -617,9 +605,9 @@
     this.alpha = 0
     this.draw = function () {
       this.duration = GetTime() - this.start;
-      hctx.fillStyle = `hsla(0, 100%, 5%,${this.alpha})`
+      hiddenCtx.fillStyle = `hsla(0, 100%, 5%,${this.alpha})`
       if(this.alpha < .5) this.alpha += .05
-      hctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillRect(0, 0, 320, 200);
       for (let i = -1; i < 7; i++) {
         let temp = Math.cos(this.duration / 100 + i) * 50 + 100
         DrawCircle(i * 50 + 30, temp, 50, `hsla(0, 100%, ${temp * .4}%, ${this.alpha})`)
@@ -642,7 +630,7 @@
           }, 500)
         }
         this.count2 < 200 ? this.count2++ : this.lifetime = 0
-        if(this.lifetime == 0) gTerroristPlaying = false
+        if(this.lifetime == 0) gRoundEndEffectPlaying  = false
     }
   }
 
@@ -656,17 +644,17 @@
   }
 
   function DrawRect(x, y, width, height, color) {
-    hctx.beginPath();
-    hctx.fillStyle = color;
-    hctx.fillRect(x, y, width, height);
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, width, height);
   };
 
   function DrawStroke(x, y, radius, color, stroke) {
-      hctx.beginPath();
-      hctx.strokeStyle = color;
-      hctx.lineWidth = stroke;
-      hctx.arc(x, y, radius, 0, 2 * Math.PI)
-      hctx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.strokeStyle = color;
+      hiddenCtx.lineWidth = stroke;
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.stroke();
     };
 
   function CounterTerroristWinsEffect() {
@@ -677,18 +665,18 @@
     this.draw = function () {
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
       DrawPlier(-this.rot, 160, this.y, 1)
-      hctx.save()
-      hctx.translate(0, 100)
-      hctx.rotate(this.half ? -this.rot2 : 0)
-      hctx.translate(-0, -100)
+      hiddenCtx.save()
+      hiddenCtx.translate(0, 100)
+      hiddenCtx.rotate(this.half ? -this.rot2 : 0)
+      hiddenCtx.translate(-0, -100)
       DrawRect(0, 90, 160, 20, `hsla(${this.half ? 60 : 0}, 100%, ${this.half ? 50 : Math.sin(Date.now() / 100) * 10 + 55}%, ${this.alpha})`)
-      hctx.restore()
-      hctx.save()
-      hctx.translate(320, 100)
-      hctx.rotate(this.half ? this.rot2 : 0)
-      hctx.translate(-320, -100)
+      hiddenCtx.restore()
+      hiddenCtx.save()
+      hiddenCtx.translate(320, 100)
+      hiddenCtx.rotate(this.half ? this.rot2 : 0)
+      hiddenCtx.translate(-320, -100)
       DrawRect(160, 90, 200, 20, `hsla(${this.half ? 60 : 0}, 100%, ${this.half ? 50 : Math.sin(Date.now() / 100) * 10 + 55}%, ${this.alpha})`)
-      hctx.restore()
+      hiddenCtx.restore()
       DrawPlier(this.rot, 160, this.y, 0)
       this.y > 120 ? this.y -= 2 : this.rot < .35 ? this.rot += .025 : this.half = true;
       if(this.half) {
@@ -696,7 +684,7 @@
         if(Math.random() > .75) effects.push(new CTWinPart())
         this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
       } else this.alpha < 1 ? this.alpha += .025 : this.alpha = 1
-      if(this.lifetime == 0) gTerroristPlaying = false
+      if(this.lifetime == 0) gRoundEndEffectPlaying  = false
     }
   }
 
@@ -716,22 +704,22 @@
   }
 
   function DrawPlier(rot, x, y, flip){
-    hctx.save()
-    hctx.translate(x, y)
-    hctx.rotate(rot)
-    if(flip) hctx.scale(-1, 1)
-    hctx.translate(-x, -y)
-    hctx.beginPath()
-    hctx.moveTo(x, y)
-    hctx.lineTo(x + 100, y + 75)
-    hctx.lineTo(x + 150, y + 150)
-    hctx.lineTo(x + 90, y + 150)
-    hctx.lineTo(x - 50, y + 10)
-    hctx.lineTo(x - 50, y - 125)
-    hctx.lineTo(x, y)
-    hctx.fillStyle = "blue"
-    hctx.fill()
-    hctx.restore()
+    hiddenCtx.save()
+    hiddenCtx.translate(x, y)
+    hiddenCtx.rotate(rot)
+    if(flip) hiddenCtx.scale(-1, 1)
+    hiddenCtx.translate(-x, -y)
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(x, y)
+    hiddenCtx.lineTo(x + 100, y + 75)
+    hiddenCtx.lineTo(x + 150, y + 150)
+    hiddenCtx.lineTo(x + 90, y + 150)
+    hiddenCtx.lineTo(x - 50, y + 10)
+    hiddenCtx.lineTo(x - 50, y - 125)
+    hiddenCtx.lineTo(x, y)
+    hiddenCtx.fillStyle = "blue"
+    hiddenCtx.fill()
+    hiddenCtx.restore()
   }
 
   function ShopEffect() {
@@ -747,12 +735,11 @@
   function killEffect() {
     this.start = GetTime();
     this.effects = []
+    this.lifetime = 1 
     this.draw = function () {
       this.duration = GetTime() - this.start;
-      this.effects.forEach((ele, i)=>{
-        ele.draw()
-        if(ele.lifetime <= 0) this.effects.splice(i, 1)
-      })
+      for (let i = 0; i < this.effects.length; i++) this.effects[i].draw()
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
       DrawSkull(160, 250 - this.duration / 8, 80, "white")
       if(this.duration < 3000) this.effects.push(new DamageState(160, 200, Math.random() * 10 + 5, "red"));
       if (this.duration > 4000) {
@@ -760,7 +747,7 @@
         killGoing = false
       }
     }
-  }
+}
 
   function DamageState(x, y, radius, color) {
     this.radius = radius;
@@ -773,10 +760,10 @@
     this.ay = 1;
     this.lifetime = 10;
     this.draw = function () {
-      hctx.beginPath();
-      hctx.fillStyle = this.color;
-      hctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      hctx.fill();
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      hiddenCtx.fill();
       this.x += this.vx;
       this.y += this.vy;
       this.vy += this.ay;
@@ -799,21 +786,21 @@
       this.size = (Math.sin(this.duration / 350) + 1) * 150;
       if(this.size > 145) this.out = 140
       this.out += 20
-      hctx.beginPath();
-      hctx.moveTo(160 - this.size / 2, 100 + this.size / 2);
-      hctx.lineTo(160 + this.size / 2, 100 + this.size / 2);
-      hctx.lineTo(160, 100 - this.size / 2.5);
-      hctx.lineTo(160 - this.size / 2, 100 + this.size / 2);
-      hctx.fillStyle = "red";
-      hctx.fill();
-      hctx.beginPath();
-      hctx.moveTo(160 - this.out / 2, 100 + this.out / 2);
-      hctx.lineTo(160 + this.out / 2, 100 + this.out / 2);
-      hctx.lineTo(160, 100 - this.out / 2.5);
-      hctx.lineTo(160 - this.out / 2, 100 + this.out / 2);
-      hctx.strokeStyle = "red";
-      hctx.lineWidth = 20
-      hctx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.moveTo(160 - this.size / 2, 100 + this.size / 2);
+      hiddenCtx.lineTo(160 + this.size / 2, 100 + this.size / 2);
+      hiddenCtx.lineTo(160, 100 - this.size / 2.5);
+      hiddenCtx.lineTo(160 - this.size / 2, 100 + this.size / 2);
+      hiddenCtx.fillStyle = "red";
+      hiddenCtx.fill();
+      hiddenCtx.beginPath();
+      hiddenCtx.moveTo(160 - this.out / 2, 100 + this.out / 2);
+      hiddenCtx.lineTo(160 + this.out / 2, 100 + this.out / 2);
+      hiddenCtx.lineTo(160, 100 - this.out / 2.5);
+      hiddenCtx.lineTo(160 - this.out / 2, 100 + this.out / 2);
+      hiddenCtx.strokeStyle = "red";
+      hiddenCtx.lineWidth = 20
+      hiddenCtx.stroke();
     }
   }
 
@@ -825,49 +812,49 @@
     }
     this.draw = function () {
       DrawRect(0, 0, 320, 200, `hsla(${this.color.h}, ${this.color.s}%, ${this.color.l}%, ${Math.sin(Date.now() / 1000) * .2 + .25})`)
-      if ((this.color.h > 100 && gInGame) || (this.color.h < 100 && gInGame) || !SpectatingToggle || gInShop) {
-        this.lifetime = 0;
+      if (gInGame ||( SpectateConfirmBlueMeter.value <= .25 && SpectateConfirmOrangeMeter.value <= .25) || !enableSpectatingToggle || gInShop) {
+          this.lifetime = 0;
+          gIsSpectating = false
       }
     }
   }
 
   function ParticleExplosion(x, y, color, speed, duration, particleAmount, particleSize, fadeSpeed, notrandomY, useHearts, hasPhysics) {
-    this.start = GetTime();
-    this.col = color;
-    this.speed = speed;
-    this.duration = duration;
-    this.lifetime = 2000;
-    this.amount = particleAmount;
-    this.size = particleSize
-    this.x = x;
-    this.y = y;
-    this.fadeSpeed = fadeSpeed;
-    this.particles = [];
-    this.useHearts = useHearts;
-    this.hasPhysics = hasPhysics;
+        this.start = GetTime();
+        this.col = color;
+        this.speed = speed;
+        this.duration = duration;
+        this.lifetime = 2000;
+        this.amount = particleAmount;
+        this.size = particleSize
+        this.x = x;
+        this.y = y;
+        this.fadeSpeed = fadeSpeed;
+        this.particles = [];
+        this.useHearts = useHearts;
+        this.hasPhysics = hasPhysics;
 
-    while (this.particles.length < this.amount) {
-      if (notrandomY) {
-        this.yspeed = -this.speed / 1.5;
-      } else {
-        this.yspeed = ((Math.random() - 0.5) * this.speed);
-      }
-      if (this.useHearts == null || this.useHearts == false) {
-        this.particles.push(new ExplosionParticle(this.x, this.y, this.size, this.col, this.fadeSpeed,
-          {
-            x: ((Math.random() - 0.5) * this.speed),
-            y: this.yspeed
-          }, this.hasPhysics))
-      }
+        while (this.particles.length < this.amount) {
+          if (notrandomY) {
+            this.yspeed = -this.speed / 1.5;
+          } else {
+            this.yspeed = ((Math.random() - 0.5) * this.speed);
+          }
+          if (this.useHearts == null || this.useHearts == false) {
+            this.particles.push(new ExplosionParticle(this.x, this.y, this.size, this.col, this.fadeSpeed,
+              {
+                x: ((Math.random() - 0.5) * this.speed),
+                y: this.yspeed
+              }, this.hasPhysics))
+          }
+        }  
 
-      this.draw = function () {
-        this.lifetime = this.duration - (GetTime() - this.start)
-        this.particles.forEach((Particle, index) => {
-          Particle.draw()
-        })
-      }
+        this.draw = function () {  
+            this.lifetime = this.duration - (GetTime() - this.start)
+            for (let i = 0; i < this.particles.length; i++) this.particles[i].draw()
+            this.particles = this.particles.filter(ele => ele.lifetime > 0)
+        }
     }
-  };
 
   //helper functions
   function GetTime() {
@@ -875,97 +862,55 @@
   }
 
   function DrawCircle(x, y, radius, color) {
-    hctx.beginPath();
-    hctx.fillStyle = color;
-    hctx.arc(x, y, radius, 0, 2 * Math.PI)
-    hctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill();
   };
 
 
   function DrawSkull(x, y, radius, color) {
-    hctx.beginPath();
-    hctx.ellipse(x, y, radius, radius / 4, 0, Math.PI / 2, true)
-    hctx.fillStyle = color;
-    hctx.fill();
-    hctx.beginPath();
-    hctx.moveTo(x - radius, y)
-    hctx.lineTo(x - radius * 1.1, y + radius / 1.2)
-    hctx.lineTo(x - radius / 1.8, y + radius / 1.2)
-    hctx.lineTo(x - radius / 1.8, y + radius * 1.3)
-    hctx.lineTo(x + radius / 1.8, y + radius * 1.3)
-    hctx.lineTo(x + radius / 1.8, y + radius / 1.2)
-    hctx.lineTo(x + radius * 1.1, y + radius / 1.2)
-    hctx.lineTo(x + radius, y)
-    hctx.strokeStyle = "white"
-    hctx.stroke()
-    // hctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.ellipse(x, y, radius, radius / 4, 0, Math.PI / 2, true)
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.moveTo(x - radius, y)
+    hiddenCtx.lineTo(x - radius * 1.1, y + radius / 1.2)
+    hiddenCtx.lineTo(x - radius / 1.8, y + radius / 1.2)
+    hiddenCtx.lineTo(x - radius / 1.8, y + radius * 1.3)
+    hiddenCtx.lineTo(x + radius / 1.8, y + radius * 1.3)
+    hiddenCtx.lineTo(x + radius / 1.8, y + radius / 1.2)
+    hiddenCtx.lineTo(x + radius * 1.1, y + radius / 1.2)
+    hiddenCtx.lineTo(x + radius, y)
+    hiddenCtx.strokeStyle = "white"
+    hiddenCtx.stroke()
+    // hiddenCtx.fill();
     DrawCircle(x - radius / 2, y + radius / 4, 20, "black")
     DrawCircle(x + radius / 2, y + radius / 4, 20, "black")
   };
 
 
 
-  class ExplosionParticle {
-    constructor(x, y, radius, color, fadeSpeed, velocity) {
-      this.x = x;
-      this.y = y;
-      this.color = color;
-      this.radius = radius;
-      this.velocity = velocity;
-      this.alpha = 1 * fadeSpeed;
-    }
-    draw() {
-      hctx.globalAlpha = this.alpha;
-      hctx.beginPath()
-      hctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-      hctx.fillStyle = this.color
-      hctx.fill()
+  function ExplosionParticle(x, y, radius, color, fadeSpeed, velocity) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.radius = radius;
+    this.velocity = velocity;
+    this.alpha = 1 * fadeSpeed;
+    this.lifetime = 1
+    this.draw = function() {
+      hiddenCtx.globalAlpha = this.alpha;
+      hiddenCtx.beginPath()
+      hiddenCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+      hiddenCtx.fillStyle = this.color
+      hiddenCtx.fill()
       this.x += this.velocity.x
       this.y += this.velocity.y
       this.alpha -= 0.01
-      hctx.globalAlpha = 1;
-    }
-  }
-
-  class
-    CounterTerroristWinsParticle {
-    constructor(x, y, radius, color, fade) {
-      this.x = x;
-      this.y = y;
-      this.radius = radius;
-      this.color = color;
-      this.fade = fade;
-      this.speed = (Math.random() + 0.1) * 4
-    }
-    Draw() {
-      hctx.beginPath();
-      hctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
-      hctx.fillStyle = this.color
-      hctx.fill();
-      this.y += this.speed * Math.random();
-      this.x += (Math.random() - 0.5) * 20;
-    }
-  }
-
-  class fallingMoney {
-    constructor(x, speed, color) {
-      this.speed = speed / 5;
-      this.x = x;
-      this.y = 0 - (Math.random() * 250);
-      this.startVal = (Math.random() * 50);
-      this.start = GetTime();
-      this.color = color;
-    }
-    draw() {
-      this.elapsed = GetTime() - this.start;
-      this.moveVal = (this.elapsed / 1000);
-      hctx.fillStyle = this.color;
-      hctx.save();
-      hctx.translate(this.x + Math.sin(this.startVal + this.moveVal) * 100, this.y);
-      hctx.rotate(-Math.sin(this.moveVal + this.startVal) / 5);
-      hctx.fillRect(this.x, this.y, 100, 35);
-      hctx.restore();
-      this.y += this.speed;
+      if(this.alpha <= 0) this.lifetime = 0
+      hiddenCtx.globalAlpha = 1;
     }
   }
 
@@ -1020,7 +965,7 @@
   }
 
   function checkTeaBag(){
-    if(teaInput && TeaToggle){
+    if(teaInput && enableTeaToggle){
       if(Date.now() - teaStart < teaTimer && teaBagCount >= 3) {
         effects.push(new teabag())
         teaInput = false
@@ -1034,12 +979,12 @@
   }
 
   function DrawLine(start, end, color, stroke){
-    hctx.beginPath()
-    hctx.moveTo(start[0], start[1])
-    hctx.lineTo(end[0], end[1])
-    hctx.strokeStyle = color
-    hctx.lineWidth = stroke
-    hctx.stroke()
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(start[0], start[1])
+    hiddenCtx.lineTo(end[0], end[1])
+    hiddenCtx.strokeStyle = color
+    hiddenCtx.lineWidth = stroke
+    hiddenCtx.stroke()
   }
 
   function teabag(){
@@ -1052,37 +997,37 @@
       if(!this.half) this.alpha < 1 ? this.alpha += .025 : this.count++
       else this.alpha >= .0035 ? this.alpha -= .0035 : this.lifetime = 0
       if(this.count > 100) this.half = true
-      hctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       DrawRect(0, 0, 320, 200, "black")
-      hctx.save()
-      hctx.translate(this.x, 120)
-      hctx.scale(.6, .6)
-      hctx.translate(-this.x, -120)
+      hiddenCtx.save()
+      hiddenCtx.translate(this.x, 120)
+      hiddenCtx.scale(.6, .6)
+      hiddenCtx.translate(-this.x, -120)
       DrawCircle(this.x, this.y - 110, 30, "white")
       DrawLine([this.x, this.y - 100], [this.x, this.y + 20], "white", 20)
-      hctx.beginPath()
-      hctx.moveTo(this.x - (50 + this.y / 2), 60)
-      hctx.lineTo(this.x, this.y - 90)
-      hctx.lineTo(this.x + (50 + this.y / 2), 60)
-      hctx.lineWidth = 20
-      hctx.strokeStyle = 20
-      hctx.stroke()
-      hctx.beginPath()
-      hctx.moveTo(this.x, this.y + 20)
-      hctx.lineTo(this.x - (30 + this.y / 2), 130)
-      hctx.lineTo(this.x - 70, 200)
-      hctx.stroke()
-      hctx.beginPath()
-      hctx.moveTo(this.x, this.y + 20)
-      hctx.lineTo(this.x + (30 + this.y / 2), 130)
-      hctx.lineTo(this.x + 70, 200)
-      hctx.stroke()
-      hctx.restore()
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(this.x - (50 + this.y / 2), 60)
+      hiddenCtx.lineTo(this.x, this.y - 90)
+      hiddenCtx.lineTo(this.x + (50 + this.y / 2), 60)
+      hiddenCtx.lineWidth = 20
+      hiddenCtx.strokeStyle = 20
+      hiddenCtx.stroke()
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(this.x, this.y + 20)
+      hiddenCtx.lineTo(this.x - (30 + this.y / 2), 130)
+      hiddenCtx.lineTo(this.x - 70, 200)
+      hiddenCtx.stroke()
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(this.x, this.y + 20)
+      hiddenCtx.lineTo(this.x + (30 + this.y / 2), 130)
+      hiddenCtx.lineTo(this.x + 70, 200)
+      hiddenCtx.stroke()
+      hiddenCtx.restore()
 
 
       this.y = Math.sin(Date.now() / 100) * 40 + 90
 
-      hctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
     }
   }
 
