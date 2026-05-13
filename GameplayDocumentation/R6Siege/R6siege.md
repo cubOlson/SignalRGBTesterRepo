@@ -1,4 +1,3 @@
-![][image1]  
 **Resolutions**
 
 - [ ] 1920x1080  
@@ -46,5 +45,5 @@ Observation: Since there is no game mode against bots, avoid submitting reports 
 8.Use grenades to see the grenade effect.  
 ![granade](images/granade.png)  
 9\. Fire repeatedly until you're almost out of ammo to activate the redammo effect.  
-![][lowAmmo](images/lowAmmo.png)  
+![lowAmmo](images/lowAmmo.png)  
 10\. At the end of 2 turns you switch sides, from attacker to defender, check the Defendingblue meter in the Signal software.
