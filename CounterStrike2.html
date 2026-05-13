@@ -229,7 +229,7 @@
   </meta>
 
   <meta meter="kill" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.9945" y="0.0723" width="0" height="0.2000" 
-    h="-30-30" s="75-100" l="50-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
+    h="-30-30" s="65-100" l="40-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.9961" y="0.0670" width="0.0002" height="0.1000"/>
     <resolution aspect="24:10" x="0.9951" y="0.0688" width="0.0005" height="0.1300"/>
     <resolution aspect="16:11" x=".9932" y="0.0688" width=".0001" height=".2000"/>
@@ -239,7 +239,7 @@
   </meta>
 
   <meta meter="killNot" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.9977" y="0.0695" width="0.0008" height="0.2000" 
-    h="-30-30" s="75-100" l="50-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-75">
+    h="-30-30" s="65-100" l="40-75" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-75">
     <resolution aspect="3.55:1" x="0.9992" y="0.0694" width="0.0006" height="0.1108"/>
     <resolution aspect="24:10" x="0.9980" y="0.0688" width="0.0005" height="0.091"/>
     <resolution aspect="16:11" x="0.9965" y=".0713" width=".0001" height=".2000"/>
@@ -268,8 +268,8 @@
     <resolution size="2560x1080" x="0.4955" y="0.0139" width="0.002" height="0.0009"/>
   </meta>
 
-  <meta meter="bombPlantedConfirmation" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.4228" y="0.745" width="0.0004" height="0.0507" 
-    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="35-100" hdr-l="35-100">
+  <meta meter="bombPlantedConfirmation" type="area" tags="vlc,counter-strike, counter-strike:global offensive, cs:go,counter-strike 2,cs2" x="0.578" y="0.7519" width="0" height="0.0056" 
+    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="75-100">
     <resolution aspect="3.55:1" x="0.5430" y="0.7481" width="0.0001" height="0.0020"/>
     <resolution aspect="24:10" x="0.4426" y="0.7477" width="0" height="0.0445"/>
     <resolution aspect="16:11" x="0.5866" y="0.7473" width="-0.0004" height="0.0463"/>
@@ -544,13 +544,9 @@
 
   function onShopChanged() {
     if (enableShopToggle) {
-      if (!gInGame && InShopBlackMeter.value >= 0.8 && InShopWhiteMeter.value >= 0.25) {
-        if (!gInShop) {
+      if (!gInGame && InShopBlackMeter.value >= 0.8 && InShopWhiteMeter.value >= 0.25 && !gInShop) {
+          gInShop = true;
           effects.push(new ShopEffect())
-        }
-        gInShop = true;
-      } else {
-        gInShop = false;
       }
     }
   }
@@ -574,7 +570,7 @@
 
   function onLowHealthChanged() {
     if(enableHealthToggle){
-      if (lowHealthMeter.value >= .25 && !gLowHpGoing && !gIsSpectating && gInGame) {
+      if (lowHealthMeter.value >= .5 && !gLowHpGoing && !gIsSpectating && gInGame) {
         effects.push(new lowHpState())
         gLowHpGoing = true;
       }
@@ -612,7 +608,7 @@
         let temp = Math.cos(this.duration / 100 + i) * 50 + 100
         DrawCircle(i * 50 + 30, temp, 50, `hsla(0, 100%, ${temp * .4}%, ${this.alpha})`)
       }
-      if (healthMeter.value >= 0.25 || !gInGame || gIsSpectating) {
+      if (healthMeter.value >= 0.5 || !gInGame || gIsSpectating) {
         this.lifetime = 0;
         gLowHpGoing = false;
       }
@@ -725,8 +721,9 @@
   function ShopEffect() {
     this.draw = function () {
       DrawRect(0, 0, 320, 200, `hsla(60, 100%, 40%, ${Math.sin(Date.now() / 1000) * .25 + .5})`)
-      if (!gInShop) {
+      if ((InShopBlackMeter.value <.1 || InShopWhiteMeter.value <.1) || gInGame) {
         this.lifetime = 0;
+        gInShop = false;
         effects.push(new ShopExit())
       }
     }
