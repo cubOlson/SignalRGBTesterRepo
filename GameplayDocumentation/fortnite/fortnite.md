@@ -77,6 +77,22 @@ This is required in order to validate the Sprint meters during gameplay.
 13. Survive until the end of the match and win the game to trigger the Victory meters.
 ![Victory Meter](images/victory-meter.png)
 
+14. To trigger the final Victory meter (**Win Orange**), you must achieve a **Crowned Victory Royale**.
+    
+    You can obtain a Crown by:
+    
+    - Finishing among the top players in a previous match
+    - Eliminating another player who already has a Crown
+
+    Crowned Victory Royales are currently available in:
+    
+    - Solo
+    - Duos
+    - Trios
+    - Squads
+
+![Crowned Victory Meter](images/crowned-victory-meter.png)
+
 ---
 
 ## Notes
