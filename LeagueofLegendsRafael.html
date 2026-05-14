@@ -1,0 +1,4249 @@
+<head>
+  <title>League of Legends Devv</title>
+  <meta description="Metering and ambience for League of Legends. v1.10" />
+  <meta publisher="SignalRGB" />
+
+  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" tooltip="Adjust the brightness of the background effects." />
+  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer" default="Ambience" tooltip="Select the background lighting mode." />
+  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" tooltip="Select a custom color for the background." />
+
+  <meta property="enableChampions" label="Champion effects" type="boolean" default="1" tooltip="Enable or disable champion-specific effects." />
+  <meta property="character" label="Champions" type="list" values="Ahri,Akali,Annie,Ashe,Aurelion Sol,Caitlyn,Cassiopeia,Darius,Diana,Ekko,Ezreal,Fiddlesticks,Fizz,Gangplank,Garen,Gragas,Graves,Karthus,Katarina,Janna,Jax,Jhin,Kha'Zix,Kog'Maw,Lee Sin,Leona,Lucian,Lux,Malphite,Master Yi,Miss Fortune,Morgana,Mundo,Nami,Nasus,Nautilus,Nilah,Nocturne,Olaf,Pantheon,Poppy,Pyke,Quinn,Rakan,Rek'Sai,Senna,Sett,Singed,Smolder,Soraka,Swain,Sylas,Tahm Kench,Taliyah,Taric,Teemo,Thresh,Tristana,Tryndamere,Twitch,Urgot,Veigar,Vel'Koz,Vladimir,Xerath,Yone,Yuumi,Zac,Zed,Zeri" default="Morgana" tooltip="Select your champion to apply their specific effects." />
+  <meta property="enableHealth" label="Health effect" type="boolean" default="1" tooltip="Enable or disable health-related effects." />
+  <meta property="enableTower" label="Tower effect" type="boolean" default="1" tooltip="Enable or disable tower destruction effects." />
+  <meta property="enableDragon" label="Dragon and Baron effects" type="boolean" default="1" tooltip="Enable or disable epic monster effects." />
+  <meta property="enableAllies" label="Ally death effect" type="boolean" default="1" tooltip="Enable or disable ally death effects." />
+  <meta property="enableLevel" label="Level-up effect" type="boolean" default="1" tooltip="Enable or disable level-up effects." />
+  <meta property="enableUtility" label="Utility skill effects" type="boolean" default="1" tooltip="Enable or disable summoner spell effects." />
+  <meta property="enableGold" label="Gold effect" type="boolean" default="1" tooltip="Enable or disable the gold threshold effect." />
+  <meta property="goldLimit" label="Gold Effect Threshold" type="number" min="0" max="3000" default="1000" tooltip="Amount of gold required to trigger the gold effect." />
+
+  <meta meter="lowHealth" tags="league" type="area" x="0.356" y="0.959" width="0.0449" height="0.0021" h="100-140" s="60-100" l="20-70" hdr-h="100-140" hdr-s="70-100" hdr-l="40-80">
+    <resolution aspect="3.55:1" x="0.4281" y="0.9584" width="0.0219" height="0.0001" />
+    <resolution aspect="24:10" x=".3927" y=".9602" width=".04" height=".0001" />
+    <resolution aspect="16:11" x=".3396" y=".9602" width=".0526" height=".0001" />
+    <resolution size="3840x2160" x=".356" y=".9593" width=".0526" height=".0001" />
+    <resolution size="2560x1080" x=".3927" y=".9602" width=".04" height=".0001" />
+  </meta>
+
+  <meta meter="allyDeath1" tags="league" type="area" x="0.8703" y="0.7213" width="0.005" height="0.0028" h="120-160" s="60-100" l="5-85" hdr-h="120-160" hdr-s="50-100" hdr-l="40-100">
+    <resolution aspect="3.55:1" x="0.935" y="0.7212" width="0.0013" height="0.0001" />
+    <resolution aspect="24:10" x=".9038" y=".7208" width=".0017" height="0.0021" />
+    <resolution aspect="16:11" x="0.8558" y="0.7217" width="0.0023" height="0.0025" />
+    <resolution size="3840x2160" x=".8697" y=".725" width=".01" height="0.0001" />
+    <resolution size="2560x1080" x="0.9027" y="0.7229" width="0.0039" height="0.0009"  />
+  </meta>
+
+  <meta meter="allyDeath2" tags="league" type="area" x="0.9039" y="0.722" width="0.0027" height="0.0028" h="120-160" s="60-100" l="5-85" hdr-h="120-160" hdr-s="50-100" hdr-l="40-100" >
+    <resolution aspect="3.55:1" x="0.9518" y="0.7212" width="0.0013" height="0.0001" />
+    <resolution aspect="24:10" x=".9278" y=".7241" width=".01" height="0.0001" />
+    <resolution aspect="16:11" x="0.8937" y="0.7217" width="0.0035" height="0.0019" />
+    <resolution size="3840x2160" x=".9036" y=".725" width=".01" height="0.0001" />
+    <resolution size="2560x1080" x="0.9277" y="0.722" width="0.0035" height="0.0018"  />
+  </meta>
+
+  <meta meter="allyDeath3" tags="league" type="area" x="0.9379" y="0.7213" width="0.0039" height="0.0021" h="120-160" s="60-100" l="5-85" hdr-h="120-160" hdr-s="50-100" hdr-l="40-100" >
+    <resolution aspect="3.55:1" x="0.9690" y="0.7212" width="0.0013" height="0.0001" />
+    <resolution aspect="24:10" x=".9532" y=".7241" width=".01" height="0.0001" />
+    <resolution aspect="16:11" x="0.9308" y="0.7205" width="0.0043" height="0.0037" />
+    <resolution size="3840x2160" x=".9379" y=".725" width=".01" height="0.0001" />
+    <resolution size="2560x1080" x="0.9535" y="0.721" width="0.0027" height="0.0028"  />
+  </meta>
+
+  <meta meter="allyDeath4" tags="league" type="area" x="0.9715" y="0.722" width="0.0039" height="0.0014" h="120-160" s="60-100" l="5-85" hdr-h="120-160" hdr-s="50-100" hdr-l="40-100" >
+    <resolution aspect="3.55:1" x="0.9857" y="0.7212" width="0.0013" height="0.0001" />
+    <resolution aspect="24:10" x=".9787" y=".7241" width=".01" height="0.0001" />
+    <resolution aspect="16:11" x="0.9687" y="0.7223" width="0.0028" height="0.0007" />
+    <resolution size="3840x2160" x=".9713" y=".725" width=".01" height="0.0001" />
+    <resolution size="2560x1080" x="0.9789" y="0.721" width="0.0035" height="0.0019"  />
+  </meta>
+
+  <meta meter="itemHover" tags="league" x="0.8478" y="0.7785" width="0.0016" height="0.0028" h="0-360" s="0-50" l="0-30" hdr-h="0-360" hdr-s="0-50" hdr-l="0-25" type="area">
+    <resolution aspect="3.55:1" x="0.6021" y="0.7954" width="0.001" height="0.001" />
+    <resolution aspect="24:10" x="0.7535" y="0.7937" width="0.0020" height="0.001" />
+    <resolution aspect="16:11" x=".8391" y=".7694" width=".001" height="0.001" />
+    <resolution size="3840x2160" x="0.8388" y="0.793" width="0.0028" height="0" />
+    <resolution size="2560x1080" x="0.7565" y="0.7915" width="0.0032" height="0.0009" />
+  </meta>
+
+  <meta meter="qButton" tags="league" type="area" x=".3807" y=".8787" width=".001" height="0.0001" h="20-60" s="20-60" l="70-100" hdr-h="30-70" hdr-s="0-30" hdr-l="60-100" >
+    <resolution aspect="3.55:1" x="0.4411" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x="0.4125" y="0.8794" width="0.0083" height="0.0000" />
+    <resolution aspect="16:11" x="0.3693" y="0.8800" width="0.0089" height="-0.0008" />
+    <resolution size="3840x2160" x="0.3813" y="0.8796" width="0.0115" height="0" />
+    <resolution size="2560x1080" x=".4126" y=".8796" width=".001" height=".0001" />
+  </meta>
+
+  <meta meter="wButton" tags="league" type="area" x=".4156" y=".8787" width=".001" height="0.0001" h="20-60" s="20-60" l="70-100" hdr-h="30-70" hdr-s="30-70" hdr-l="60-100" >
+    <resolution aspect="3.55:1" x="0.4589" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".4396" y=".8792" width=".001" height=".0001" />
+    <resolution aspect="16:11" x=".4063" y=".8796" width=".001" height="0.0001" />
+    <resolution size="3840x2160" x=".4156" y=".8787" width=".001" height="0.0001" />
+    <resolution size="2560x1080" x=".437" y=".8796" width=".001" height=".0001" />
+  </meta>
+
+  <meta meter="eButton" tags="league" type="area" x=".4500" y=".8787" width="0.0001" height="0.0001" h="20-60" s="20-60" l="55-100" hdr-h="30-70" hdr-s="0-30" hdr-l="60-100" >
+    <resolution aspect="3.55:1" x="0.4766" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x="0.4646" y="0.8794" width="0.0091" height="0.0000" />
+    <resolution aspect="16:11" x=".4626" y=".8796" width=".001" height=".0001" />
+    <resolution size="3840x2160" x="0.4517" y="0.8796" width="0.0161" height="0" />
+    <resolution size="2560x1080" x=".4626" y=".8796" width="0.001" height=".0001" />
+  </meta>
+
+  <meta meter="rButton" tags="league" type="area" x=".4849" y=".8787" width="0.001" height="0.0001" h="20-60" s="20-60" l="70-100" hdr-h="30-70" hdr-s="30-70" hdr-l="60-100" >
+    <resolution aspect="3.55:1" x="0.4935" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".4891" y=".8796" width="0.001" height=".0001" />
+    <resolution aspect="16:11" x="0.4854" y="0.8792" width="0.0083" height="0.0000" />
+    <resolution size="3840x2160" x=".4849" y=".8787" width="0.001" height="0.0001" />
+    <resolution size="2560x1080" x=".4891" y=".8796" width="0.001" height=".0001" />
+  </meta>
+
+  <meta meter="ExtendedqButton" tags="league" type="area" x="0.3809" y="0.8804" width="0.0282" height="-0.0018" h="20-170" s="0-100" l="40-65" hdr-h="20-170" hdr-s="0-100" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.4411" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".4127" y=".8796" width="0.0220" height=".0001" />
+    <resolution aspect="16:11" x="0.3673" y="0.8793" width="0.0317" height="0.0019" />
+    <resolution size="3840x2160" x="0.3939" y="0.8722" width="0.0013" height="-0.0005" />
+    <resolution size="2560x1080" x="0.4107" y="0.8804" width="0.0207" height="-0.0018" />
+  </meta>
+
+  <meta meter="ExtendedwButton" tags="league" type="area" x="0.4158" y="0.8795" width="0.0282" height="0" h="20-170" s="0-100" l="40-65" hdr-h="20-170" hdr-s="0-100" hdr-l="70-100" >
+    <resolution aspect="3.55:1" x="0.4589" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".4369" y=".8778" width="0.0203" height=".0020" />
+    <resolution aspect="16:11" x="0.406" y="0.8793" width="0.0305" height="0.0000" />
+    <resolution size="3840x2160" x="0.4277" y="0.8712" width="0.0005" height="0"/>
+    <resolution size="2560x1080" x="0.4369" y="0.8786" width="0.0211" height="0.0009" />
+  </meta>
+
+  <meta meter="ExtendedeButton" tags="league" type="area" x=".45" y=".8787" width=".03" height="0.0001" h="20-170" s="0-100" l="40-80" hdr-h="20-170" hdr-s="0-100" hdr-l="70-100" >
+    <resolution aspect="3.55:1" x="0.4766" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".4631" y=".8792" width=".001" height=".0001" />
+    <resolution aspect="16:11" x="0.4451" y="0.8799" width="0.0309" height="0" />
+    <resolution size="3840x2160" x="0.4631" y="0.8722" width="0.0021" height="-0.0005" />
+    <resolution size="2560x1080" x=".4625" y=".8796" width=".0219" height=".0001" />
+  </meta>
+
+  <meta meter="ExtendedrButton" tags="league" type="area" x=".4849" y=".8787" width=".03" height="0.0001" h="20-170" s="0-100" l="40-80" hdr-h="20-170" hdr-s="0-100" hdr-l="70-100" >
+    <resolution aspect="3.55:1" x="0.4935" y="0.8778" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".4881" y=".8778" width="0.0215" height=".0020" />
+    <resolution aspect="16:11" x="0.4839" y="0.8792" width="0.0302" height="0.0000" />
+    <resolution size="3840x2160" x="0.4975" y="0.8717" width="0.0003" height="0" />
+    <resolution size="2560x1080" x=".4887" y=".8796" width="0.0219" height=".0001" />
+  </meta>
+
+  <meta meter="ManaQ" tags="league" type="area" x="0.3935" y="0.9034" width="0.0027" height="0.0063" h="170-200" s="50-100" l="30-100" hdr-h="160-200" hdr-s="30-70" hdr-l="30-100" >
+    <resolution aspect="3.55:1" x="0.4462" y="0.8833" width="0.0033" height="0.0013" />
+    <resolution aspect="24:10" x=".4206" y=".9042" width="0.0020" height=".0040" />
+    <resolution aspect="16:11" x="0.381" y="0.9037" width="0.0031" height="0.0037" />
+    <resolution size="3840x2160" x="0.3926" y="0.9032" width="0.0041" height="0.0042" />
+    <resolution size="2560x1080" x="0.4123" y="0.8851" width="0.0183" height="0.0009"  />
+  </meta>
+
+  <meta meter="ManaW" tags="league" type="area" x="0.4279" y="0.9041" width="0.0031" height="0.0049" h="170-200" s="50-100" l="30-100" hdr-h="160-200" hdr-s="30-70" hdr-l="30-100" >
+    <resolution aspect="3.55:1" x="0.4636" y="0.8812" width="0.0031" height="0.0014" />
+    <resolution aspect="24:10" x=".4462" y=".9049" width=".0017" height=".0050" />
+    <resolution aspect="16:11" x="0.4201" y="0.9049" width="0.0035" height="0.0032" />
+    <resolution size="3840x2160" x="0.4282" y="0.9018" width="0.0026" height="0.0051" />
+    <resolution size="2560x1080" x="0.4459" y="0.9045" width="0.0023" height="0.0047"  />
+  </meta>
+
+  <meta meter="ManaE" tags="league" type="area" x="0.4623" y="0.9027" width="0.0035" height="0.0056" h="170-200" s="50-100" l="30-100" hdr-h="160-200" hdr-s="30-70" hdr-l="30-100" >
+    <resolution aspect="3.55:1" x="0.4808" y="0.8833" width="0.0037" height="0.0027" />
+    <resolution aspect="24:10" x=".4724" y=".9028" width=".0023" height=".0020" />
+    <resolution aspect="16:11" x=".446" y=".8898" width=".03" height=".01" />
+    <resolution size="3840x2160" x="0.4621" y="0.9046" width="0.0031" height="0.0028" />
+    <resolution size="2560x1080" x="0.4639" y="0.8842" width="0.0187" height="0.0037"  />
+  </meta>
+
+  <meta meter="ManaR" tags="league" type="area" x="0.4975" y="0.9048" width="0.0035" height="0.0049" h="170-200" s="50-100" l="30-100" hdr-h="160-200" hdr-s="30-70" hdr-l="30-100" >
+    <resolution aspect="3.55:1" x="0.4981" y="0.8826" width="0.0038" height="0.0013" />
+    <resolution aspect="24:10" x=".4980" y=".9042" width=".0020" height=".0010" />
+    <resolution aspect="16:11" x=".4854" y=".8898" width=".03" height=".01" />
+    <resolution size="3840x2160" x="0.4973" y="0.9032" width="0.0031" height="0.0037" />
+    <resolution size="2560x1080" x="0.4908" y="0.8851" width="0.018" height="0.0009"  />
+  </meta>
+
+  <meta meter="dButton" tags="league" type="area" x=".524" y=".8787" width=".001" height=".0001" h="20-170" s="30-100" l="20-100" hdr-h="30-70" hdr-s="30-70" hdr-l="60-100" >
+    <resolution aspect="3.55:1" x="0.5130" y="0.8788" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".5185" y=".8796" width=".001" height=".0001" />
+    <resolution aspect="16:11" x=".526" y=".8796" width=".001" height=".0001" />
+    <resolution size="3840x2160" x=".524" y=".8787" width=".001" height=".0001" />
+    <resolution size="2560x1080" x=".5185" y=".8796" width=".001" height=".0001" />
+  </meta>
+
+  <meta meter="fButton" tags="league" type="area" x=".55" y=".8787" width=".001" height=".0001" h="20-170" s="30-100" l="20-100" hdr-h="30-70" hdr-s="30-70" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.5266" y="0.8788" width="0.001" height="0.0001" />
+    <resolution aspect="24:10" x=".5396" y=".8792" width=".001" height=".0001" />
+    <resolution aspect="16:11" x=".5557" y=".8796" width=".001" height=".0001" />
+    <resolution size="3840x2160" x=".55" y=".8787" width=".001" height=".0001" />
+    <resolution size="2560x1080" x=".5375" y=".8796" width=".001" height=".0001" />
+  </meta>
+
+  <meta meter="greyDragon" tags="league" type="area" x=".9490" y=".9140" width=".004" height=".01" h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100" >
+    <resolution aspect="3.55:1" x="0.9740" y="0.9135" width="0.0029" height="0.0111" />
+    <resolution aspect="24:10" x=".9613" y=".9150" width=".0035" height=".0090" />
+    <resolution aspect="16:11" x="0.9432" y="0.9150" width="0.0062" height="0.0092" />
+    <resolution size="3840x2160" x="0.9487" y="0.9155" width="0.0042" height="0.0074" />
+    <resolution size="2560x1080" x="0.9621" y="0.9147" width="0.0035" height="0.0093"  />
+  </meta>
+
+  <meta meter="yellowDragon" tags="league" type="area" x=".9490" y=".9140" width=".004" height=".01" h="40-70" s="50-100" l="50-100" hdr-h="30-70" hdr-s="40-80" hdr-l="60-100" >
+    <resolution aspect="3.55:1" x="0.9740" y="0.9135" width="0.0029" height="0.0111" />
+    <resolution aspect="24:10" x=".9613" y=".9150" width=".0035" height=".0090" />
+    <resolution aspect="16:11" x="0.9432" y="0.9150" width="0.0062" height="0.0092" />
+    <resolution size="3840x2160" x="0.9487" y="0.9155" width="0.0042" height="0.0074" />
+    <resolution size="2560x1080" x="0.9621" y="0.9147" width="0.0035" height="0.0093"  />
+  </meta>
+
+  <meta meter="greyBaron" tags="league" type="area" x=".9038" y=".8175" width=".0035" height=".01" h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-30" hdr-l="50-100" >
+    <resolution aspect="3.55:1" x="0.9526" y="0.8185" width="0.0010" height="0.0065" />
+    <resolution aspect="24:10" x="0.9275" y="0.8172" width="0.0039" height="0.0084" />
+    <resolution aspect="16:11" x="0.8929" y="0.8168" width="0.0040" height="0.0112" />
+    <resolution size="3840x2160" x="0.9028" y="0.817" width="0.0047" height="0.0116" />
+    <resolution size="2560x1080" x="0.9273" y="0.8184" width="0.0035" height="0.0083" />
+  </meta>
+
+  <meta meter="yellowBaron" tags="league" type="area" x=".9038" y=".8175" width=".0035" height=".01" h="40-70" s="50-100" l="50-100" hdr-h="30-70" hdr-s="40-100" hdr-l="40-100">
+    <resolution aspect="3.55:1" x="0.9526" y="0.8185" width="0.0010" height="0.0065" />
+    <resolution aspect="24:10" x="0.9275" y="0.8172" width="0.0039" height="0.0084" />
+    <resolution aspect="16:11" x="0.8929" y="0.8168" width="0.0040" height="0.0112" />
+    <resolution size="3840x2160" x="0.9028" y="0.817" width="0.0047" height="0.0116" />
+    <resolution size="2560x1080" x="0.9273" y="0.8184" width="0.0035" height="0.0083" />
+  </meta>
+
+  <meta meter="gold" tags="league" x="0.612" y="0.9708" width="0.0100" height="0.0202" type="ocr_numeric" confidence="20">
+    <resolution aspect="3.55:1" x="0.5560" y="0.9694" width="0.0044" height="0.0220" />
+    <resolution aspect="24:10" x="0.5830" y="0.9681" width="0.0060" height="0.0250" />
+    <resolution aspect="16:11" x="0.6252" y="0.9719" width="0.009" height="0.0181" />
+    <resolution size="3840x2160" x="0.6132" y="0.9717" width="0.0080" height="0.0186"  />
+    <resolution size="2560x1080" x="0.5855" y="0.9713" width="0.0051" height="0.0176"  />
+  </meta>
+
+  <meta meter="goldHundred" tags="league" type="area" x="0.6290" y="0.9708" width="0.0074" height="0.0195"  h="45-90" s="25-50" l="25-100" hdr-h="0-80" hdr-s="0-60" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.5642" y="0.9715" width="0.0031" height="0.0174" />
+    <resolution aspect="24:10" x="0.5951" y="0.9706" width="0.0057" height="0.0181" />
+    <resolution aspect="16:11" x="0.6427" y="0.9717" width="0.0099" height="0.0175" />
+    <resolution size="3840x2160" x="0.6287" y="0.9713" width="0.008" height="0.0171" />
+    <resolution size="2560x1080" x="0.5967" y="0.9722" width="0.0051" height="0.0158"  />
+  </meta>
+
+  <meta meter="goldThousand" tags="league" type="area" x="0.6380" y="0.9708" width="0.007" height="0.0202" h="45-90" s="25-50" l="25-100" hdr-h="0-80" hdr-s="0-60" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.5673" y="0.9715" width="0.0035" height="0.0167" />
+    <resolution aspect="24:10" x="0.5992" y="0.9706" width="0.0068" height="0.0194" />
+    <resolution aspect="16:11" x="0.6510" y="0.9725" width="0.0083" height="0.0158" />
+    <resolution size="3840x2160" x="0.6365" y="0.9708" width="0.0073" height="0.0181" />
+    <resolution size="2560x1080" x="0.6022" y="0.9722" width="0.0051" height="0.0176"  />
+  </meta>
+
+  <meta meter="levelUp" tags="league" type="area" x=".3406" y=".9454" width=".001" height=".001" h="270-290" s="50-100" l="25-75" hdr-h="250-290" hdr-s="50-100" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.419" y="0.9583" width="0.0004" height="0.0028" />
+    <resolution aspect="24:10" x=".3831" y=".9215" width=".0003" height=".0030" />
+    <resolution aspect="16:11" x=".3234" y=".9435" width=".001" height=".001" />
+    <resolution size="3840x2160" x=".3406" y=".9454" width=".001" height=".001" />
+    <resolution size="2560x1080" x=".3808" y=".9435" width=".001" height=".001" />
+  </meta>
+
+  <meta meter="tookDamage" tags="league" type="area" x=".3557" y=".9593" width=".2125" height=".0001" h="0-25" s="50-100" l="50-100" hdr-h="-20-20" hdr-s="80-100" hdr-l="60-100">
+    <resolution aspect="3.55:1" x="0.4279" y="0.9658" width="0.1063" height="0.0001" />
+    <resolution aspect="24:10" x=".3927" y=".9576" width=".1625" height=".0001" />
+    <resolution aspect="16:11" x=".3557" y=".9611" width=".2125" height=".0001" />
+    <resolution size="3840x2160" x="0.3563" y="0.9551" width="0.2125" height="-0.0005" />
+    <resolution size="2560x1080" x=".3927" y=".9611" width=".1600" height=".0001" />
+  </meta>
+
+  <meta meter="firstAlliedTurret" tags="league" x="0.6602" y="0.1344" width="0.0026" height="0.0046" h="190-210" s="50-100" l="75-100" hdr-h="180-210" hdr-s="50-75" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.5802" y="0.1361" width="0.0005" height="0.0010" />
+    <resolution aspect="24:10" x="0.6180" y="0.1368" width="0.0013" height="0.0037" />
+    <resolution aspect="16:11" x="0.6741" y="0.1388" width="0.0023" height="0.0007" />
+    <resolution size="3840x2160" x="0.6603" y="0.1366" width="0.0024" height="0.0014" />
+    <resolution size="2560x1080" x="0.6206" y="0.1335" width="0.0011" height="0.0046"  />
+  </meta>
+
+  <meta meter="alliedTurret" tags="league" x="0.6062" y="0.1326" width="0.0043" height="0.0063" h="190-210" s="50-100" l="75-100" hdr-h="180-210" hdr-s="50-75" hdr-l="90-100" type="area">
+    <resolution aspect="3.55:1" x="0.5531" y="0.1333" width="0.0021" height="0.0037" />
+    <resolution aspect="24:10" x="0.5747" y="0.1396" width="0.0010" height="0.0030" /> 
+    <resolution aspect="16:11" x="0.6180" y="0.1325" width="0.0036" height="0.0050" />
+    <resolution size="3840x2160"  x="0.6004" y="0.1357" width="0.0021" height="0.0014" />
+    <resolution size="2560x1080" x="0.5752" y="0.1362" width="0.0016" height="0.0037"    />
+  </meta>
+
+  <meta meter="blueConfirmation" tags="league" type="area" x=".4869" y=".1701" width=".0093" height=".0001" h="190-250 " s="50-100" l="75-100" hdr-h="170-250" hdr-s="40-95" hdr-l="70-100">
+    <resolution aspect="3.55:1" x="0.4915" y="0.1696" width="0.0162" height="0" />
+    <resolution aspect="24:10" x=".4855" y=".1701" width=".0073" height=".0001" /> 
+    <resolution aspect="16:11" x=".4869" y=".1701" width=".0093" height=".0001" />
+    <resolution size="3840x2160" x="0.4913" y="0.1709" width="0.0101" height="-0.0005" />
+    <resolution size="2560x1080" x="0.4916" y="0.1705" width="0.016" height="0.001"  />
+  </meta>
+
+  <meta meter="enemyTurret" tags="league" type="area" x="0.6107" y="0.1399" width="0.0011" height="0.0028"  h="-20-20" s="50-75" l="75-100" hdr-h="-20-20" hdr-s="0-70" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.5531" y="0.1333" width="0.0021" height="0.0037" />
+    <resolution aspect="24:10" x=".5817" y=".1368" width=".0020" height=".0020" /> 
+    <resolution aspect="16:11" x="0.6202" y="0.1376" width="0.0015" height="0.0012" />
+    <resolution size="3840x2160" x="0.6108" y="0.139" width="0.0013" height="0.0013" />
+    <resolution size="2560x1080" x="0.5826" y="0.1372" width="0.0016" height="0.0018" />
+  </meta>
+
+  <meta meter="firstEnemyTurret" tags="league" type="area" x="0.6589" y="0.1369" width="0.0031" height="0.0028" h="-20-20" s="50-75" l="75-100" hdr-h="-20-20" hdr-s="0-50" hdr-l="75-100">
+    <resolution aspect="3.55:1" x="0.5802" y="0.1361" width="0.0005" height="0.0010" />
+    <resolution aspect="24:10" x="0.6180" y="0.1368" width="0.0013" height="0.0037" />
+    <resolution aspect="16:11" x="0.6741" y="0.1388" width="0.0023" height="0.0007" />
+    <resolution size="3840x2160" x="0.6603" y="0.1366" width="0.0024" height="0.0014" />
+    <resolution size="2560x1080" x="0.6151" y="0.1381" width="0.0012" height="0.0018"  />
+  </meta>
+
+  <meta meter="1colorTest" tags="vlc,league,SignalRGB,screen" x="0.4044" y="0.8712" width="0.0010" height="0.0046" h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="colormean">
+  </meta>
+
+  <meta meter="inGame1" tags="VLC,process" type="area" x="0.3087" y="0.8714" width="0.002" height="0.0021" h="20-60" s="40-80" l="30-70" hdr-h="20-60" hdr-s="45-85" hdr-l="65-100" >
+    <resolution aspect="3.55:1" x="0.4044" y="0.8712" width="0.0010" height="0.0046" />
+    <resolution aspect="24:10" x=".3567" y=".8706" width=".001" height=".002" /> 
+    <resolution aspect="16:11" x="0.2868" y="0.8705" width="0.0016" height="0.0038" />
+    <resolution size="3840x2160" x="0.3074" y="0.8717" width="0.0028" height="0.0023" />
+    <resolution size="2560x1080" x=".3565" y=".8713" width=".001" height=".002" />
+  </meta>
+
+  <meta meter="inGame2" tags="league" type="area" x=".5214" y=".9352" width=".0542" height=".0056" h="155-195" s="20-60" l="0-35" hdr-h="155-195" hdr-s="20-60" hdr-l="0-35" >
+    <resolution aspect="3.55:1" x="0.5167" y="0.9324" width="0.0018" height="0.005" />
+    <resolution aspect="24:10" x=".5259" y=".9306" width=".0151" height=".0056" /> 
+    <resolution aspect="16:11" x=".523" y=".9296" width=".0542" height=".0056" />
+    <resolution size="3840x2160" x=".5214" y=".9352" width=".0542" height=".0056" />
+    <resolution size="2560x1080" x=".523" y=".9276" width=".008" height=".0056" />
+  </meta>
+
+  <meta meter="RecallMeter" tags="league" type="area" x="0.6698" y="0.9296" width="0.0115" height="0.0167" h="150-250" s="50-100" l="59-100" hdr-h="150-250" hdr-s="50-100" hdr-l="59-100" >
+    <resolution aspect="3.55:1" x="0.5880" y="0.93" width="0.0008" height="0.004" />
+    <resolution aspect="24:10" x="0.6267" y=".9354" width=".0045" height="0.005" /> 
+    <resolution aspect="16:11" x="0.6901" y="0.9325" width="0.0068" height="0.0108" />
+    <resolution size="3840x2160"  x="0.6697" y="0.9301" width="0.0109" height="0.0166" />
+    <resolution size="2560x1080" x="0.6299" y=".9354" width=".0045" height="0.005" />
+  </meta>
+
+  <meta meter="BlueBar" tags="VLC,process" type="area" x="0.3951" y="0.7500" width="0.213" height="0.0030" h="120-196" s="65-100" l="25-75" hdr-h="120-196" hdr-s="65-100" hdr-l="25-100" >
+    <resolution aspect="3.55:1" x="0.449" y="0.7475" width="0.1057" height="0.0001" />
+    <resolution aspect="24:10" x="0.4229" y="0.7500" width="0.1560" height="0.0000" /> 
+    <resolution aspect="16:11" x="0.3837" y="0.7480" width="0.2369" height="0.0030" />
+    <resolution size="3840x2160" x="0.3954" y="0.7397" width="0.2113" height="-0.0005"/>
+    <resolution size="2560x1080" x="0.4209" y="0.7513" width="0.1598" height="0" />
+  </meta>
+
+  <meta meter="loadBar" tags="league" type="area" x="0.3951" y="0.7500" width="0.213" height="0.0030" h="90-180" s="65-100" l="25-100" hdr-h="120-196" hdr-s="65-100" hdr-l="25-100" >
+    <resolution aspect="3.55:1" x="0.449" y="0.7475" width="0.1057" height="0.0001" />
+    <resolution aspect="24:10" x="0.4229" y="0.7500" width="0.1560" height="0.0000" /> 
+    <resolution aspect="16:11" x="0.3837" y="0.7480" width="0.2369" height="0.0030" />
+    <resolution size="3840x2160" x="0.3962" y="0.7485" width="0.2107" height="0" />
+    <resolution size="2560x1080" x="0.4209" y="0.7513" width="0.1598" height="0" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000">
+  <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+  var canvas, ctx, champion;
+  canvas = document.getElementById("exCanvas");
+  ctx = canvas.getContext("2d");
+  var effects = [];
+  var height = 200;
+  var width = 320;
+  var hiddenCanvas = document.createElement("canvas");
+  hiddenCanvas.width = width;
+  hiddenCanvas.height = height;
+  var hctx = hiddenCanvas.getContext("2d");
+  let gAlpha = 1
+  var ActiveExtendedE = false;
+  var ActiveExtendedQ = false;
+  var ActiveExtendedW = false;
+  var ActiveExtendedR = false;
+  var freezeCount = 0;
+  var StopEffects = false;
+  var inShop;
+  var noR = false;
+  var noW = false;
+  var noE = false;
+  var noQ = false;
+  var play1 = false;
+  var play2 = false;
+  var goldAnimPushed = false;
+  var utilityPlayed = false;
+  var deadAllies = 0;
+  var levelUpAnim = false;
+  var deathAnim = false;
+  var Stunned = false;
+  var shark = "M256.683,160.779c-4.758-14.251-27.335-40.694-34.065-40.694c-6.729,0-8.82,43.295-23.759,47.036 c-14.345,3.585-84.357,20.197-84.357,20.197s-11.525-9.384-15.046-8.717c-2.96,0.563-4.395,13.707-13.446,14.395 c-9.04,0.685-20.964,0.146-20.964,0.146C44.049,151.152,0,148.893,0,148.893c22.624,33.66,44.4,55.834,13.513,102.573 c21.385,0,48.714-32.472,50.694-39.601c7.574-2.002,16.29-1.928,20.991,3.563c3.563,4.162,3.66,6.077,6.437,6.869 c2.771,0.791,5.838-6.073,10.593-6.073c4.752,0,27.786,7.29,33.663,9.105c5.872,1.812,11.88,22.567,19.404,23.362 c7.522,0.796,24.553-13.86,28.513-13.86c3.961,0,33.266,4.354,65.743,3.161c5.544,5.944,12.682,17.945-1.805,40.407 c-2.767,4.357-1.979,11.487,7.134,4.357c9.106-7.134,25.918-17.127,42.948-48.015c17.424-1.587,108.042-23.669,108.042-39.904 C405.871,178.601,306.186,159.194,256.683,160.779z"
+  var batPath = "M.5,67.48,35.14,55.37,66.65,23.54,78.71.23,68.9,23.7l51.93,8.84L159.57,85S102.43,53,80,98.62c0,0-31.24-47.1-35.1-3.21,0,0-9.3-32.8-44.44-19.46Z"
+  var all = "Ahri,Annie,Ashe,Aurelion Sol,Caitlyn,Cassiopeia,Diana,Ekko,Ezreal,Fiddlesticks,Fizz,Gangplank,Garen,Gragas,Graves,Karthus,Janna,Jax,Jhin,Kha'Zix,Kog'Maw,Leona,Lucian,Lux,Malphite,Miss Fortune,Mundo,Nami,Nasus,Nautilus,Nilah,Nocturne,Olaf,Pantheon,Poppy,Quinn,Rakan,Rek'Sai,Senna,Sett,Singed,Smolder,Soraka,Swain,Sylas,Tahm Kench,Taliyah,Taric,Teemo,Thresh,Tristana,Tryndamere,Twitch,Urgot,Veigar,Vel'Koz,Vladimir,Xerath,Yone,Zac,Zeri"
+  let NautilusReturnHolder = false;
+  let respawnDelay = 0
+
+  var recallMeter = new Meter(1, RecallBlock)
+  var allyMeter1 = new Meter(8, allyEffects);
+  var allyMeter2 = new Meter(8, allyEffects);
+  var allyMeter3 = new Meter(8, allyEffects);
+  var allyMeter4 = new Meter(8, allyEffects);
+  var q_Meter = new Meter(10, Q_Effects);
+  var w_Meter = new Meter(10, W_Effects);
+  var e_Meter = new Meter(10, E_Effects);
+  var r_Meter = new Meter(4, R_Effects);
+  var Extendedq_Meter = new Meter(5, ExtendedQ_Effects);
+  var Extendedw_Meter = new Meter(5, ExtendedW_Effects);
+  var Extendede_Meter = new Meter(2, ExtendedE_Effects);
+  var Extendedr_Meter = new Meter(5, ExtendedR_Effects);
+  var d_Meter = new Meter(5, Utility_Effects);
+  var f_Meter = new Meter(5, Utility_Effects);
+  var levelUpMeter = new Meter(3, levelUpEffect);
+  var alliedTurretMeter = new Meter(7, turretEffects);
+  var enemyTurretMeter = new Meter(7, turretEffects);
+  var firstAlliedTurretMeter = new Meter(7, turretEffects);
+  var firstEnemyTurretMeter = new Meter(7, turretEffects);
+  let settBarMeter = new Meter(15, ()=>{});
+
+  var manaRMeter = new Meter(3, manaR);
+  var manaQMeter = new Meter(3, manaQ);
+  var manaEMeter = new Meter(3, manaE);
+  var manaWMeter = new Meter(3, manaW);
+  var playingMeter1 = new Meter(3, playingGame1);
+  var playingMeter2 = new Meter(15, playingGame2);
+  var lowHealthMeter = new Meter(2, () => "");
+  var greyDragonMeter = new Meter(25, dragonEffects);
+  var yellowDragonMeter = new Meter(25, dragonEffects);
+  var greyBaronMeter = new Meter(25, baronEffects);
+  var yellowBaronMeter = new Meter(25, baronEffects);
+  var goldMeter = new Meter(10, goldLimitCalculator);
+
+  function update() {
+    hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
+    hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
+    hctx.fillRect(0, 0, 320, 200);
+
+    backgroundHandler()
+
+    if (freezeCount === 0) {
+      copyScreen(gAlpha);
+    }
+
+    if(play1 && play2)
+      if(respawnDelay < 50) respawnDelay++
+    else respawnDelay = 0
+    recallMeter.setValue(engine.vision.RecallMeter);
+    allyMeter1.setValue(engine.vision.allyDeath1);
+    allyMeter2.setValue(engine.vision.allyDeath2);
+    allyMeter3.setValue(engine.vision.allyDeath3);
+    allyMeter4.setValue(engine.vision.allyDeath4);
+    if (play1) {
+      alliedTurretMeter.setValue(engine.vision.alliedTurret);
+      enemyTurretMeter.setValue(engine.vision.enemyTurret);
+      firstAlliedTurretMeter.setValue(engine.vision.firstAlliedTurret);
+      firstEnemyTurretMeter.setValue(engine.vision.firstEnemyTurret);
+    }
+    if (play1 && play2 && !Stunned) {
+      lowHealthMeter.setValue(engine.vision.lowHealth);
+      levelUpMeter.setValue(engine.vision.levelUp);
+      manaWMeter.setValue(engine.vision.ManaW);
+      manaQMeter.setValue(engine.vision.ManaQ);
+      manaEMeter.setValue(engine.vision.ManaE);
+      manaRMeter.setValue(engine.vision.ManaR);
+      if (!StopEffects) {
+        if (!noQ && enableChampions) {
+          q_Meter.setValue(engine.vision.qButton);
+        }
+        if (!noW && enableChampions) {
+          w_Meter.setValue(engine.vision.wButton);
+        }
+        if (!noE && enableChampions) {
+          e_Meter.setValue(engine.vision.eButton);
+        }
+        if (!noR && enableChampions) {
+          r_Meter.setValue(engine.vision.rButton);
+        }
+        d_Meter.setValue(engine.vision.dButton);
+        f_Meter.setValue(engine.vision.fButton);
+        greyDragonMeter.setValue(engine.vision.greyDragon);
+        yellowDragonMeter.setValue(engine.vision.yellowDragon);
+        greyBaronMeter.setValue(engine.vision.greyBaron);
+        yellowBaronMeter.setValue(engine.vision.yellowBaron);
+        goldMeter.setValue(engine.vision.gold)
+        settBarMeter.setValue(engine.vision.BlueBar);
+        if (enableChampions) {
+          Extendedq_Meter.setValue(engine.vision.ExtendedqButton)
+          if (!ActiveExtendedW) {
+            Extendedw_Meter.setValue(engine.vision.ExtendedwButton);
+          }
+          if (!ActiveExtendedE) {
+            Extendede_Meter.setValue(engine.vision.ExtendedeButton);
+          }
+          Extendedr_Meter.setValue(engine.vision.ExtendedrButton);
+        }
+      }
+    }
+
+    playingMeter1.setValue(engine.vision.inGame1);
+    playingMeter2.setValue(engine.vision.inGame2);
+
+    champion = character;
+    if (champion == "Karthus") checkKarthusQ()
+
+    if (enableGold && play1 && play2) {
+      if (currentNum >= goldLimit && !goldAnimPushed) {
+        goldAnimPushed = true;
+        effects.push(new goldEffect());
+      }
+    }
+
+    var damage = engine.vision.tookDamage;
+    if (damage > .001 && play1 && play2 && enableHealth && recallMeter.value != 0) {
+      for (let i = 0; i < 2; i++) {
+        effects.push(new ballPhysics(160, 200, Math.random() * 10 + 15, "red"))
+      }
+    }
+
+    if (lowHealthMeter.value < .9 && lowHealthMeter.value > .05 && recallMeter.value != 0 && play1 && play2 && enableHealth) {
+      for (let i = 0; i < 2; i++) {
+        effects.push(new ballPhysics(160, 200, Math.random() * 10 + 15, "red"))
+      }
+    }
+
+    for (let i = 0; i < effects.length; i++) {
+      effects[i].draw(hctx);
+    }
+    effects = effects.filter(ele =>
+      ele.lifetime === undefined || ele.lifetime > 0
+    );
+    ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(hiddenCanvas, 0, 0);
+
+    window.requestAnimationFrame(update);
+  }
+
+  let proBack = [0, 0, 0]
+    function onbackColorChanged(){
+      proBack = hexToHSL(backColor)
+    }
+
+    let backgroundEaseHue = 0;
+    let backgroundEaseLit = 0;
+    let backgroundEaseSat = 0
+    let gCycle = 0
+    function backgroundHandler(){
+        switch(backgroundMode){
+            case "Color Cycle": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Color Cycle Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            break;
+            case "Custom": 
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${proBack[1]}%, ${proBack[2]}%, ${ambienceAlpha / 100})`)
+            break;
+            case "Ambience": 
+            copyScreen(ambienceAlpha / 100,hctx)
+            break;
+            case "Custom Ambience": 
+            copyScreen(ambienceAlpha / 100)
+            break;
+            case "Ambience Audio Visualizer": 
+            copyScreenAudio(ambienceAlpha / 100)
+            break;
+            case "Custom Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0]}, ${backgroundEaseSat * .33 + 66}%, ${(backgroundEaseLit * .9 + 10) * (ambienceAlpha / 100)}%, 1)`)
+            break;
+            case "Color Cycle Audio Visualizer": 
+            backgroundEaseSat += (engine.audio.density * 100 - backgroundEaseSat) / 10
+            backgroundEaseLit += (engine.audio.density * 100 - backgroundEaseLit) / 10
+            gCycle < 360 ? gCycle += .5 : gCycle = 0
+            DrawRect(0, 0, 320, 200, `hsla(${proBack[0] + gCycle}, ${backgroundEaseSat * .33 + 66}%, ${(backgroundEaseLit * .9 + 10) * (ambienceAlpha / 100)}%, 1)`)
+            break;
+        }
+    }
+
+    let audioScreenSat = 0
+    let audioScreenLit = 0
+    function copyScreenAudio(alpha) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      audioScreenSat += (engine.audio.density * 100 - audioScreenSat) / 10
+      audioScreenLit += (engine.audio.density * 100 - audioScreenLit) / 10
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        hctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        hctx.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+  
+    function copyScreen(alpha, ctxTarget = hctx) {
+      let lightness = new Int8Array(engine.zone.lightness);
+      let sat = new Int8Array(engine.zone.saturation);
+      let hue = new Int16Array(engine.zone.hue);
+      for (var iZone = 0; iZone < 560; iZone++) {
+        var iRow = Math.floor(iZone / 28);
+        var iCol = iZone % 28;
+        var iWidth = 320 / 28;
+        var iHeight = 200 / 20;
+        var iZx = iCol * iWidth;
+        var iZy = iRow * iHeight;
+        if (backgroundMode === "Custom Ambience") {
+            ctxTarget.fillStyle = `hsla(${proBack[0]}, ${proBack[1]}%, ${lightness[iZone] * (proBack[2]/100)}%, ${alpha})`;
+        } else {
+            let h = hue[iZone] + (backgroundMode == "Color Cycle Ambience" ? gCycle : 0);
+            ctxTarget.fillStyle = `hsla(${h}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        }
+        ctxTarget.fillRect(iZx, iZy, iWidth, iHeight);
+      }
+    }
+
+    function hexToHSL(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    (r /= 255), (g /= 255), (b /= 255);
+    var max = Math.max(r, g, b),
+      min = Math.min(r, g, b);
+    var h,
+      s,
+      l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; 
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    s = s * 100;
+    s = Math.round(s);
+    l = l * 100;
+    l = Math.round(l);
+    h = Math.round(360 * h);
+
+    return [h, s, l];
+  }
+
+  var currentNum = 0;
+  function goldLimitCalculator() {
+    if (goldMeter.value >= 0) {
+      currentNum = goldMeter.value * 10;
+      if (engine.vision.goldHundred > .25) currentNum *= 10;
+      if (engine.vision.goldThousand > .25) currentNum *= 10;
+    }
+  }
+
+  let gragasTimer = Date.now();
+  function Q_Effects() {
+    if (q_Meter.value == 0) {
+      switch (champion) {
+        case "Ahri":
+          effects.push(new ahriQ()); 
+          break;
+        case "Akali":
+          effects.push(new AkaliQ()); 
+          break;
+        case "Annie":
+          effects.push(new AnnieQ()); 
+          break;
+        case "Ashe":
+          effects.push(new RippleEffect(160, 100, 10, 1000, 30, "blue", "in", "Stroke", 1))
+          for (let index = 0; index < 12; index++) {
+            setTimeout(() => {
+              effects.push(new SimpleMoveEffect(100 + (30 * (index % 4)), 200 + (Math.random() * 50), { x: 0, y: -10 }, 20, 60, DrawRect, "hsl(184, 100%, 50%)", 2000))
+            }, Math.floor(index / 4) * 700);
+          }
+          break;
+        case "Aurelion Sol":
+          break;
+        case "Caitlyn":
+          effects.push(new SimpleMoveEffect(0, 100, { x: 15, y: 0 }, 40, 30, FillCircle, "yellow", 1000))
+          setTimeout(() => {
+            effects.push(new ParticleExplosion(160, 100, "red", 10, 500, 20, 10, 1, false));
+          }, 300);
+          break;
+        case "Cassiopeia":
+          effects.push(new RippleEffect(160, 100, 10, 1000, 30, "yellow", "out", "stroke", 2, false));
+          effects.push(new ParticleExplosion(160, 100, "green", 5, 2000, 40, 30, 1, false));
+          break;
+        case "Darius":
+          effects.push(new DariusQ())
+          break;
+        case "Diana":
+          effects.push(new DianaQ())
+          break;
+        case "Ekko":
+          effects.push(new EkkoQ())
+          break;
+        case "Ezreal":
+          effects.push(new SimpleMoveEffect(-30, 75, { x: 25, y: 0 }, 75, 70, DrawRect, "cyan", 2000))
+          setTimeout(() => {
+            effects.push(new RippleEffect(320, 100, 20, 1000, 40, "blue", "out", "stroke", 5))
+          }, 300);
+          break;
+        case "Fiddlesticks":
+          effects.push(new SimpleMoveEffect(0, 0, { x: 0, y: 0 }, 320, 200, DrawRect, "hsla(0,100%,50%,0.6)", 3000, 1.3))
+          for (let index = 0; index < 20; index++) {
+            setTimeout(() => {
+              let dir = Math.random() > 0.5;
+              effects.push(new PathStreak([{ x: dir ? 320 : 0, y: Math.random() * 200 }, { x: dir ? 0 : 320, y: Math.random() * 200 }], 1000, 20, 2, "black", 10))
+            }, 100 * index);
+          }
+          break;
+        case "Fizz":
+          effects.push(new RippleEffect(160, 100, 10, 1000, 30, "blue", "in", "Stroke", 1))
+          break;
+        case "Gangplank":
+          effects.push(new ParticleExplosion(160, 100, "orange", 10, 2000, 30, 10, 10, false, false))
+          effects.push(new ParticleExplosion(160, 100, "yellow", 10, 2000, 30, 10, 10, false, false))
+          break;
+        case "Gragas":
+          if (Date.now() - gragasTimer > 6000 && engine.vision.loadBar <0.1) {
+            gragasTimer = Date.now();
+            effects.push(new GragasQ())
+          }
+          break
+          case "Graves":
+            effects.push(new GravesQ())
+            break;
+        case "Jax":
+          for (let index = 0; index < 100; index++) {
+            let col = "white"
+            setTimeout(() => {
+              switch (index % 5) { case 1: col = "grey"; break; case 2: col = "red"; break; case 3: col = "orange"; break; case 4: col = "yellow"; break; }
+              effects.push(new SimpleMoveEffect(Math.random() * 320, -50, { x: 0, y: 10 }, 20, 50, DrawRect, col, 1500))
+            }, index * 5);
+          }
+          break;
+        case "Jhin":
+          effects.push(new JhinQ());
+          break;
+        case "Katarina":
+          effects.push(new KatarinaQ())
+          break;
+        case "Kha'Zix":
+          effects.push(new KhaZixQ())
+          break;
+        case "Kog'Maw":
+          effects.push(new KogMawQ())
+          break;
+        case "Lee Sin":
+          effects.push(new LeeSinQ());
+          break;
+        case "Leona":
+          effects.push(new LeonaQ());
+          break;
+        case "Lucian":
+          effects.push(new LucianQ());
+          break;
+        case "Lux":
+          effects.push(new LuxQ());
+          break;
+        case "Master Yi":
+          effects.push(new MasterYiQ())
+          break;
+        case "Malphite":
+          effects.push(new MalphiteQ())
+          break;
+        case "Miss Fortune":
+          effects.push(new FortuneQ());
+          break;
+        case "Morgana":
+          effects.push(new MorganaQ());
+          break;
+        case "Mundo":
+          effects.push(new MundoQ())
+          break;
+        case "Nami":
+          effects.push(new NamiQ());
+          break;
+        case "Nasus":
+          effects.push(new NasusQ())
+          break;
+        case "Nautilus":
+          effects.push(new NautilusQ())
+          break;
+        case "Nilah":
+          effects.push(new NilahQ())
+          break;
+        case "Nocturne":
+          effects.push(new NocturneQ());
+          break;
+        case "Olaf":
+          effects.push(new OlafQ())
+          break;
+        case "Pantheon":
+          if (!panthE) effects.push(new PantheonQ())
+          break;
+        case "Poppy":
+          effects.push(new PoppyQ())
+          break;
+        case "Pyke":
+          effects.push(new PykeQ())
+          break;
+        case "Quinn":
+          effects.push(new QuinnQ());
+          break;
+          case "Rakan":
+            if (Date.now() - gragasTimer>6000){
+              effects.push(new RakanQ());
+              gragasTimer = Date.now();
+            }
+    
+          break;
+        case "Rek'Sai":
+          effects.push(new ReksaiQ(rekBurrowed))
+          break;
+        case "Sona":
+          SonaEffect();
+          break;
+        case "Soraka":
+          effects.push(new SorakaQ())
+          break;
+        case "Swain":
+          effects.push(new SwainQ())
+          break;
+        case "Senna":
+          effects.push(new SennaQ())
+          break;
+        case "Smolder":
+          effects.push(new SmolderQ())
+          break;
+        case "Sylas":
+          effects.push(new SylasQ())
+          break;
+        case "Tahm Kench":
+          effects.push(new TahmKenchQ())
+          break;
+        case "Taliyah":
+          effects.push(new TaliyahQ())
+          break;
+        case "Taric":
+          effects.push(new TaricQ())
+          break;
+        case "Teemo":
+          effects.push(new SimpleMoveEffect(0, 0, { x: 0, y: 0 }, 320, 200, DrawRect, "black", 2000))
+          effects.push(new SimpleMoveEffect(0, 80, { x: 10, y: 0 }, 40, 40, DrawRect, "purple", 2000))
+          setTimeout(() => {
+            effects.push(new RippleEffect(320, 100, 9, 1500, 30, "purple", "out", "stroke", 3, true))
+          }, 700);
+          break;
+        case "Thresh":
+          effects.push(new ThreshQ());
+          break;
+        case "Tristana":
+          effects.push(new TristanaQ());
+          break;
+        case "Tryndamere":
+          effects.push(new TryndamereQ());
+          break;
+        case "Urgot":
+          effects.push(new UrgotQ());
+          break;
+        case "Veigar":
+          effects.push(new VeigarQ())
+          break;
+        case "Vel'Koz":
+          if (!velR && !engine.vision.loadBar) effects.push(new VelKozQ())
+          break;
+        case "Viktor":
+          effects.push(new ViktorQ())
+          break;
+        case "Vladimir":
+          effects.push(new VladimirQ())
+          break;
+        case "Xerath":
+          effects.push(new XerathQ())
+          break;
+        case "Yasuo":
+          break;
+        case "Yone":
+          effects.push(new YoneQeffect())
+          break;
+        case "Yuumi":
+          effects.push(new YuumiQ())
+          break;
+        case "Zac":
+          if (!ActiveExtendedQ) {
+            effects.push(new ZacQ())
+          }
+          break;
+        case "Zed":
+          effects.push(new ZedQ());
+          break;
+        case "Zeri":
+          effects.push(new ZeriQ());
+          break;
+      }
+    }
+  };
+
+  function ExtendedQ_Effects() {
+    if (!ActiveExtendedQ) {
+      if (Extendedq_Meter.value > 0) {
+        switch (champion) {
+          case "Aurelion Sol":
+            effects.push(new SimpleMoveEffect(-50, 100, { x: 10, y: 0 }, 60, 40, DrawSun, "purple", 2000, 100, 0.1))
+            effects.push(new SimpleMoveEffect(-50, 100, { x: 10, y: 0 }, 40, 40, DrawSun, "yellow", 2000, 100, 0.1))
+            ActiveExtendedQ = true;
+            break;
+          case "Garen":
+            effects.push(new GarenQ())
+            ActiveExtendedQ = true;
+            break;
+          case "Janna":
+            effects.push(new jannaQ());
+            ActiveExtendedQ = true;
+            break;
+          case "Sett":
+            effects.push(new SettQ())
+            break;  
+          case "Singed":
+            effects.push(new SingedQ())
+            ActiveExtendedQ = true;
+            break;  
+          case "Yone":
+            effects.push(new ExtendedQYoneEffect());
+            ActiveExtendedQ = true;
+            break;
+            case "Twitch":
+          effects.push(new TwitchQ());
+          break;
+          case "Zac":
+            effects.push(new ZacQ());
+            ActiveExtendedQ = true;
+            break;
+        }
+      }
+    } else {
+      if (Extendedq_Meter.value == 0 && champion != "Zac") {
+        ActiveExtendedQ = false;
+      }
+    }
+  };
+
+  function W_Effects() {
+    if (w_Meter.value == 0) {
+      switch (champion) {
+        case "Akali":
+          effects.push(new AkaliW())
+          break;
+        case "Annie":
+          effects.push(new AnnieW());
+          break;
+        case "Ashe":
+          effects.push(new asheW())
+          break;
+        case "Aurelion Sol":
+          break;
+        case "Caitlyn":
+          effects.push(new CaitlynW());
+          break;
+        case "Cassiopeia":
+          setTimeout(() => {
+            effects.push(new ParticleExplosion(160, 200, "purple", 5, 2000, 5, 30, 1, false));
+          }, 200);
+          effects.push(new SimpleMoveEffect(160, 0, { x: 0, y: 15 }, 30, 30, FillCircle, "plum", 1000))
+          break;
+        case "Darius":
+          effects.push(new DariusW())
+          break;
+        case "Diana":
+          for (let index = 0; index < 3; index++) {
+            effects.push(new SimpleMoveEffect(160, 100, { x: 0, y: 0 }, 20, 20, FillCircle, "cyan", 4000, 100, -0.08, { x: -80 + (index * 80), y: index == 1 ? -80 : 40 }))
+          }
+          effects.push(new SimpleMoveEffect(130, 70, { x: 0, y: 0 }, 60, 60, DrawRect, "cyan", 4000))
+          break;
+        case "Ekko":
+          effects.push(new EkkoW())
+          break;
+        case "Ezreal":
+          effects.push(new SimpleMoveEffect(160, 250, { x: 0, y: -10 }, 35, 35, StrokeCircle, "gold", 370))
+          setTimeout(() => {
+            effects.push(new SimpleMoveEffect(160, 100, { x: 0, y: 0 }, 35, 35, StrokeCircle, "gold", 370))
+            effects.push(new RippleEffect(160, 100, 20, 1000, 10, "white", "out", "stroke", 10));
+          }, 370);
+          break;
+        case "Fiddlesticks":
+          if (engine.vision.loadBar > .5) effects.push(new FiddleW());
+          break;
+        case "Fizz":
+          effects.push(new FizzW())
+          break;
+        case "Gangplank":
+          effects.push(new GangplankW())
+          break;
+          case "Gragas":
+          effects.push(new GragasW())
+          break
+          case "Graves":
+            effects.push(new GravesW())
+            break;
+        case "Garen":
+          for (let index = 0; index < 3; index++) {
+            effects.push(new SimpleMoveEffect(20 + 110 * index, 70, { x: 0, y: 0 }, 60, 60, DrawRect, "yellow", 2000 - 500 * index))
+          }
+          break;
+        case "Irelia":
+          break;
+        case "Janna":
+          effects.push(new ArrowEffect("down", "white", 3, 5, 2000));
+          break;
+        case "Jax":
+          effects.push(new RippleEffect(160, 100, 10, 1500, 30, "red", "out", "stroke", 5));
+          setTimeout(() => { effects.push(new RippleEffect(160, 100, 10, 1500, 30, "red", "out", "stroke", 5)) }, 300);
+          setTimeout(() => { effects.push(new RippleEffect(160, 100, 10, 1500, 30, "red", "out", "stroke", 5)) }, 600);
+          break;
+        case "Jhin":
+          effects.push(new JhinW())
+          break;
+        case "Karthus":
+          effects = []
+          effects.push(new KarthusW())
+          break;
+        case "Katarina":
+          effects.push(new KatarinaW())
+          break;
+        case "Kha'Zix":
+          effects.push(new KhaZixW())
+          break;
+        case "Kog'Maw":
+          effects.push(new KogMawW())
+          break;
+        case "Lee Sin":
+          effects.push(new LeeSinW());
+          break;
+        case "Leona":
+          effects.push(new LeonaW());
+          break;
+        case "Lucian":
+          effects.push(new LucianW());
+          break;
+        case "Lulu":
+          break;
+        case "Lux":
+          effects.push(new LuxW());
+          break;
+        case "Master Yi":
+          effects.push(new MasterYiW())
+          break;
+        case "Malphite":
+          effects.push(new MalphiteW())
+          break;
+        case "Miss Fortune":
+          effects.push(new FortuneW());
+          break;
+        case "Morgana":
+          effects.push(new MorganaW());
+          break;
+        case "Mundo":
+          effects.push(new MundoW())
+          break;
+        case "Nami":
+          effects.push(new NamiW());
+          break;
+        case "Nasus":
+          effects.push(new NasusW())
+          break;
+        case "Nautilus":
+          effects.push(new NautilusW())
+          break;
+        case "Nilah":
+          effects.push(new NilahW())
+          break;
+        case "Nocturne":
+          for (let index = 0; index < 20; index++) {
+            setTimeout(() => {
+              effects.push(new RippleEffect(160, 100, 5, 1000, 5, index < 5 ? "hsla(176, 100%, 15%,1)" : "hsla(228, 100%, 15%,1)", "in", "stroke", 1))
+            }, index * 20);
+          }
+          setTimeout(() => {
+            effects.push(new ParticleExplosion(160, 100, "hsla(187, 100%, 64%, 1)", 5, 2200, 50, 20, 1))
+          }, 1600);
+          break;
+        case "Olaf":
+          effects.push(new OlafW())
+          break;
+        case "Pantheon":
+          if (!panthE) effects.push(new PantheonW())
+          break;
+        case "Poppy":
+          effects.push(new PoppyW())
+          break;
+        case "Pyke":
+          effects.push(new PykeW())
+          break;
+        case "Quinn":
+          effects.push(new QuinnW())
+          break;
+          case "Rakan":
+          effects.push(new RakanW());
+          break;
+        case "Rek'Sai":
+          rekBurrowed = !rekBurrowed;
+          effects.push(new ReksaiW(rekBurrowed))
+          break;
+        case "Ryze":
+          break;
+        case "Singed":
+          effects.push(new SingedW())
+          break; 
+        case "Sona":
+          SonaEffect();
+          break;
+        case "Soraka":
+          effects.push(new SorakaW())
+          break;
+        case "Swain":
+          effects.push(new SwainW())
+          break;
+        case "Tahm Kench":
+          effects.push(new TahmKenchW())
+          break;
+        case "Senna":
+          effects.push(new SennaW())
+          break;
+        case "Sett":
+          effects.push(new SettW())
+          break; 
+        case "Smolder":
+          effects.push(new SmolderW())
+          break;
+        case "Sylas":
+          effects.push(new SylasW())
+          break;
+        case "Taliyah":
+          effects.push(new TaliyahW())
+          break;
+        case "Taric":
+          effects.push(new TaricW())
+          break; 
+        case "Thresh":
+          effects.push(new ThreshW());
+          break;
+          case "Tristana":
+          effects.push(new TristanaW());
+          break;
+        case "Tryndamere":
+          effects.push(new TryndamereW());
+          break;
+          case "Twitch":
+          effects.push(new TwitchW());
+          break;
+        case "Vayne":
+          break;
+        case "Veigar":
+          effects.push(new VeigarW())
+          break;
+        case "Vel'Koz":
+          if (!velR && !engine.vision.loadBar) effects.push(new VelKozW())
+          break;
+        case "Viktor":
+          effects.push(new ViktorW())
+          break;
+        case "Vladimir":
+          effects.push(new VladimirW())
+          break;
+        case "Xerath":
+          effects.push(new XerathW())
+          break;
+        case "Yasuo":
+          break;
+        case "Yone":
+          effects.push(new SimpleMoveEffect(320, 0, { x: -15, y: 0 }, 600, 200, DrawRect, "black", 1000))
+          effects.push(new SimpleMoveEffect(320, 0, { x: -15, y: 0 }, 70, 200, DrawRect, "red", 1000))
+          break;
+        case "Yuumi":
+          effects.push(new YuumiW())
+          break;
+        case "Zac":
+          effects.push(new ParticleExplosion(160, 100, "hsla(128, 100%, 67%, 1)", 7, 4000, 20, Math.random() * 10 + 20, 2, false, false))
+          effects.push(new ParticleExplosion(160, 100, "hsla(128, 100%, 33%, 1)", 7, 4000, 20, Math.random() * 20 + 10, 2, false, false))
+          break;
+        case "Zed":
+          effects.push(new ZedW());
+          break;
+        case "Zeri":
+          effects.push(new ZeriW())
+          break;
+      }
+    }
+  };
+
+  function ExtendedW_Effects() {
+    if (Extendedw_Meter.value > .25 && !StopEffects) {
+      ActiveExtendedW = true;
+      switch (champion) {
+        case "Ahri":
+          for (let index = 0; index < 3; index++) {
+            effects.push(new SimpleMoveEffect(100 + (30 * index), 200 + (Math.random() * 50), { x: 0, y: -Math.random() * 5 - 2 }, 30, 30, DrawRect, "hsl(190, 100%, 49%)", 2000))
+          }
+          effects.push(new RippleEffect(160, 100, 10, 1000, 30, "hsl(190, 100%, 49%)", "in", "Stroke", 1))
+          break;
+        case "Aurelion Sol":
+          for (let index = 0; index < 4; index++) {
+            setTimeout(() => {
+              effects.push(new RippleEffect(160, 100, 10, 1000, 30, index % 2 == 0 ? "yellow" : "purple", "out", "stroke", 3, false));
+            }, index * 100);
+            setTimeout(() => {
+              effects.push(new RippleEffect(160, 100, 10, 1000, 30, index % 2 == 0 ? "yellow" : "purple", "in", "stroke", 3, false));
+              ActiveExtendedW = false;
+            }, 2000 + index * 100);
+          }
+          break;
+        case "Teemo":
+          effects.push(new ArrowEffect("up", "blue", 2, 7, 1000));
+          ActiveExtendedW = false;
+          break;
+        case "Urgot":
+          effects.push(new UrgotW());
+          ActiveExtendedW = false;
+          break;
+      }
+    }
+  };
+
+  function E_Effects() {
+    if (e_Meter.value == 0) {
+      switch (champion) {
+        case "Ahri":
+          effects.push(new ahriE())
+          break;
+        case "Akali":
+          effects.push(new AkaliE())
+          break;
+        case "Annie" :
+        effects.push(new AnnieE())
+        break;
+        case "Ashe":
+          effects.push(new ArrowEffect("up", "hsl(184, 100%, 50%)", 1, 7, 1000))
+          break;
+        case "Aurelion Sol":
+          ActiveExtendedE = false;
+          break;
+        case "Caitlyn":
+          effects.push(new CaitlynE());
+          break;
+        case "Cassiopeia":
+          effects.push(new CassE());
+          break;
+        case "Darius":
+          effects.push(new DariusE())
+          break;
+        case "Diana":
+          effects.push(new SimpleMoveEffect(-80, 60, { x: 20, y: 0 }, 80, 80, DrawRect, "hsla(193, 100%, 56%, 1)", 1000))
+          break;
+        case "Ekko":
+          effects.push(new EkkoE())
+          break;
+        case "Ezreal":
+          for (let index = 0; index < 10; index++) {
+            setTimeout(() => {
+              effects.push(new SimpleMoveEffect((70 * Math.floor(index / 2)), 0, { x: 0, y: 0 }, 30, 200, DrawRect, index % 2 == 0 ? "white" : "yellow", 500))
+            }, index % 2 == 0 ? 50 * index : 400 + index * 50);
+          }
+          break;
+        case "Fiddlesticks":
+          effects.push(new SimpleMoveEffect(0 - 500, 0, { x: 15, y: 0 }, 530, 200, DrawRect, "black", 1500))
+          effects.push(new SimpleMoveEffect(0 - 70, 0, { x: 15, y: 0 }, 70, 200, DrawRect, "red", 1000))
+          break;
+        case "Fizz":
+          for (let i = 0; i < 15; i++) {
+            setTimeout(() => {
+              effects.push(new SimpleMoveEffect(Math.random() * 320, 200, { x: 0, y: -5 }, 40, 40, FillCircle, `hsla(${180 + Math.random() * 50}, 100%, ${Math.random() * 20 + 40}%, ${1})`, 2000))
+            }, i * 50)
+            effects.push(new RippleEffect(20, 160, 10, 1500, 20, "hsla(182, 100%, 48%, 1)", "out", "stroke", 1))
+          }
+          break;
+        case "Gangplank":
+          effects.push(new GangplankE())
+          break;
+          case "Gragas":
+            if ( engine.vision.loadBar <0.1)
+          effects.push(new GragasE())
+          break
+          case "Graves":
+            effects.push(new GravesE())
+            break;
+        case "Garen":
+          ActiveExtendedE = false;
+          break;
+        case "Irelia":
+          break;
+        case "Janna":
+          effects.push(new jannaE());
+          break;
+        case "Jax":
+          ActiveExtendedE = false;
+          break;
+        case "Jhin":
+          effects.push(new RippleEffect(160, 100, 8, 1500, 30, "purple", "out", "stroke", 5))
+          break;
+        case "Jinx":
+          break;
+        case "Karthus":
+          ActiveExtendedE = false;
+          break;
+        case "Katarina":
+          effects.push(new KatarinaE())
+          break;
+        case "Kha'Zix":
+          effects.push(new KhaZixE)
+          break;
+        case "Kog'Maw":
+          effects.push(new KogMawE())
+          break;
+          case "Lee Sin":
+          effects.push(new LeeSinE());
+          break;
+        case "Leona":
+          effects.push(new LeonaE());
+          break;
+        case "Lucian":
+          if (q_Meter.value != 0) {
+            effects.push(new LucianE());
+          };
+          break;
+        case "Lux":
+          ActiveExtendedE = false;
+          break;
+        case "Master Yi":
+          effects.push(new MasterYiE())
+          break;
+        case "Malphite":
+          let colVal = 0;
+          for (let index = 0; index < 5; index++) {
+            setTimeout(() => {
+              colVal += index * 6;
+              effects.push(new RippleEffect(160, 100, 5, 1000, 20, `hsla(${colVal},100%,50%)`, "out", "stroke", 1))
+            }, 100 * index);
+          }
+          break;
+        case "Miss Fortune":
+          effects.push(new FortuneE());
+          break;
+        case "Morgana":
+          effects.push(new MorganaE());
+          break;
+        case "Mundo":
+          effects.push(new MundoE())
+          break;
+        case "Nami":
+          effects.push(new NamiE());
+          break;
+        case "Nasus":
+          effects.push(new NasusE())
+          break;
+        case "Nautilus":
+          effects.push(new NautilusE())
+          break;
+        case "Nilah":
+          effects.push(new NilahE())
+          break;
+        case "Nocturne":
+          effects.push(new NocturneE());
+          break;
+        case "Olaf":
+          effects.push(new OlafE())
+          break;
+        case "Poppy":
+          effects.push(new PoppyE())
+          break;
+        case "Pyke":
+          effects.push(new PykeE())
+          break;
+        case "Quinn":
+          StopEffects = true;
+          effects.length = 0;
+          goldAnimPushed = false;
+          freezeCount--;;
+          effects.push(new QuinnE())
+          setTimeout(() => {
+            StopEffects = false;
+          }, 500);
+          break;
+          case "Rakan":
+          effects.push(new RakanE());
+          break;
+        case "Rek'Sai":
+          effects.push(new ReksaiE(rekBurrowed))
+          break;
+        case "Ryze":
+          break;
+        case "Sett":
+          effects.push(new SettE())
+          break;  
+        case "Singed":
+          effects.push(new SingedE())
+          break; 
+        case "Smolder":
+          effects.push(new SmolderE())
+          break;
+        case "Sona":
+          SonaEffect();
+          break;
+        case "Soraka":
+          effects.push(new SorakaE())
+          break;
+        case "Swain":
+          effects.push(new SwainE())
+          break;
+        case "Sylas":
+          if(engine.vision.RecallMeter > .5) effects.push(new SylasE())
+          break;
+        case "Tahm Kench":
+          effects.push(new TahmKenchE())
+          break;
+        case "Taliyah":
+          effects.push(new TaliyahE())
+          break;
+        case "Taric":
+          effects.push(new TaricE())
+          break;
+        case "Thresh":
+          effects.push(new ThreshE());
+          break;
+          case "Tristana":
+          effects.push(new TristanaE());
+          break;
+        case "Tryndamere":
+          effects.push(new TryndamereE());
+          break;
+        case "Twitch":
+          effects.push(new TwitchE());
+          break;
+        case "Urgot":
+          effects.push(new UrgotE());
+          break;
+        case "Vayne":
+          break;
+        case "Veigar":
+          effects.push(new VeigarE())
+          break;
+        case "Vel'Koz":
+          if (!velR && !engine.vision.loadBar) effects.push(new VelKozE())
+          break;
+        case "Viktor":
+          effects.push(new ViktorE())
+          break;
+        case "Vladimir":
+          effects.push(new VladimirE())
+          break;
+        case "Xerath":
+          effects.push(new XerathE())
+          break;
+        case "Yasuo":
+          break;
+        case "Yone":
+          ActiveExtendedE = false;
+          break;
+        case "Yuumi":
+          effects.push(new YuumiE())
+          break;
+        case "Zac":
+          effects.push(new ZacE())
+          break;
+        case "Zed":
+          effects.push(new ZedE())
+          break;
+        case "Zeri":
+          break;
+      }
+    }
+  };
+
+  function ExtendedE_Effects() {
+    if (Extendede_Meter.value > 0) {
+      ActiveExtendedE = true;
+      switch (champion) {
+        case "Aurelion Sol":
+          if (!auEPushed) {
+            effects.push(new AurelionE());
+            auEPushed = true;
+          };
+          break;
+        case "Garen":
+          effects.push(new GarenE());
+          break;
+        case "Jax":
+          effects.push(new JaxE());
+          ActiveExtendedE = false;
+          break;
+        case "Karthus":
+          effects.push(new KarthusE())
+          break;
+        case "Lux":
+          effects.push(new LuxE());
+          ActiveExtendedE = false;
+          break;
+        case "Pantheon":
+          PanthEPush()
+          break;
+        case "Senna":
+          effects.push(new SennaE())
+          break;
+        case "Yone":
+          effects.push(new ExtendedEYoneEffect("grey"));
+          break;
+      }
+    }
+  };
+
+  function R_Effects() {
+    if (r_Meter.value == 0) {
+      switch (champion) {
+        case "Akali":
+          effects.push(new AkaliR())
+          break;
+        case "Annie":
+          effects.push(new AnnieR());
+          break;
+        case "Ashe":
+          effects.push(new asheR());
+          break;
+        case "Aurelion Sol":
+          setTimeout(() => {
+            if (!auEPushed) {
+              effects.push(new AurelionR())
+            }
+          }, 500)
+          break;
+        case "Caitlyn":
+          effects.push(new CaitlynR());
+          break;
+        case "Cassiopeia":
+          effects.push(new CassR());
+          break;
+        case "Darius":
+          effects.push(new DariusR());
+          break;
+        case "Diana":
+          effects.push(new DianaR());
+          break;
+        case "Ekko":
+          effects.push(new EkkoR())
+          break;
+        case "Ezreal":
+          effects.push(new EzrealR())
+          break;
+        case "Fiddlesticks":
+          effects.push(new FiddleR())
+          break;
+        case "Fizz":
+          effects.push(new FizzR())
+          break;
+        case "Gangplank":
+          effects.push(new GangplankR())
+          break;
+        case "Garen":
+          effects.push(new GarenR())
+          break;
+          case "Gragas":
+            if(engine.vision.loadBar <0.1)
+          effects.push(new GragasR())
+          break
+          case "Graves":
+            effects.push(new GravesR())
+            break;
+        case "Irelia":
+          break;
+        case "Janna":
+          effects.push(new jannaR());
+          break;
+        case "Jax":
+          effects.push(new JaxR());
+          break;
+        case "Jhin":
+          JhinR();
+          break;
+        case "Karthus":
+          effects.push(new KarthusR())
+          break;
+        case "Katarina":
+          effects.push(new KatarinaR())
+          break;
+        case "Lee Sin":
+          effects.push(new LeeSinR());
+          break;
+        case "Leona":
+          effects.push(new LeonaR());
+          break;
+        case "Lucian":
+          LucianR()
+          break;
+        case "Lux":
+          effects.push(new LuxR());
+          break;
+        case "Master Yi":
+          effects.push(new MasterYiR())
+          break;
+        case "Malphite":
+          effects.push(new MalphiteR())
+          break;
+        case "Miss Fortune":
+          for (let index = 0; index < 30; index++) {
+            setTimeout(() => {
+              effects.push(new ParticleExplosion(160, 200, index % 2 == 1 ? "orange" : "yellow", 10, 1000, 20, 7, 1.5, true))
+            }, index * 100);
+          }
+          break;
+        case "Morgana":
+          effects.push(new MorganaR());
+          break;
+        case "Mundo":
+          effects.push(new MundoR())
+          break;
+        case "Nami":
+          effects.push(new NamiR());
+          break;
+        case "Nasus":
+          effects.push(new NasusR())
+          break;
+        case "Nautilus":
+          if(settBarMeter.value > 0.8)
+          effects.push(new NautilusR())
+          break;
+        case "Nilah":
+          effects.push(new NilahR())
+          break;
+        case "Olaf":
+          effects.push(new OlafR())
+          break;
+        case "Pantheon":
+          if (!panthE) effects.push(new PantheonR())
+          break;
+        case "Poppy":
+          effects.push(new PoppyR())
+          break;
+        case "Pyke":
+          effects.push(new PykeR())
+          break;
+        case "Quinn":
+          if (!ActiveExtendedR) {
+            ActiveExtendedR = true;
+            effects.push(new QuinnR());
+          }
+          break;
+        case "Rek'Sai":
+          effects.push(new RekSaiRListen())
+          break;
+        case "Ryze":
+          break;
+        case "Sona":
+          effects.push(new SonaR());
+          break;
+        case "Soraka":
+          effects.push(new SorakaR())
+          break;
+        case "Smolder":
+          effects.push(new SmolderR())
+          break;
+        case "Swain":
+          effects.push(new SwainR())
+          break;
+        case "Senna":
+          effects.push(new SennaR())
+          break;
+        case "Sett":
+          if(engine.vision.SettBar<0.4)
+          effects.push(new SettR())
+          break;  
+        case "Singed":
+          effects.push(new SingedR())
+          break; 
+        case "Sylas":
+          effects.push(new SylasR())
+          break; 
+        case "Taliyah":
+          effects.push(new TaliyahR())
+          break;
+        case "Taric":
+          effects.push(new TaricR())
+          break;
+        case "Teemo":
+          effects.push(new TeemoR);
+          break;
+        case "Thresh":
+          effects.push(new ThreshR());
+          break;
+          case "Tristana":
+          effects.push(new TristanaR());
+          break;
+        case "Tryndamere":
+          effects.push(new TryndamereR());
+          break;
+        case "Twitch":
+          effects.push(new TwitchR());
+          break;
+        case "Urgot":
+          effects.push(new UrgotR());
+          break;
+        case "Vayne":
+          break;
+        case "Veigar":
+          effects.push(new VeigarR())
+          break;
+        case "Vladimir":
+          effects.push(new VladimirR())
+          break;
+        case "Xerath":
+          effects.push(new XerathR())
+          break;
+        case "Yasuo":
+          break;
+        case "Yone":
+          effects.push(new RYoneEffect());
+          break;
+        case "Yuumi":
+          effects.push(new YuumiR())
+          break;
+        case "Zac":
+          if (engine.vision.BlueBar < 0.1) {
+            effects.push(new ZacR())
+          }
+          break;
+        case "Zed":
+          effects.push(new ZedR());
+          break;
+        case "Zeri":
+          break;
+      }
+    }
+  };
+
+  function ExtendedR_Effects() {
+    if (!ActiveExtendedR) {
+      if (Extendedr_Meter.value > 0 && !ActiveExtendedR) {
+        ActiveExtendedR = true;
+        switch (champion) {
+          case "Ahri":
+            effects.push(new ahriR());
+            break;
+          case "Kha'Zix":
+            effects.push(new KhaZixR())
+            break;
+          case "Kog'Maw":
+            effects.push(new KogMawR())
+            break;
+          case "Nocturne":
+            effects.push(new NocturneR());
+            break;
+          case "Tahm Kench":
+            effects.push(new TahmKenchR())
+            break;
+          case "Vel'Koz":
+            if (!velR) VelRPush()
+            break;
+          case "Viktor":
+            effects.push(new ViktorR());
+            break;
+          case "Rakan":
+            if(Extendedr_Meter.value > 0.2)
+          effects.push(new RakanR());
+          break;
+          case "Zeri":
+            ActiveExtendedR = true;
+            effects.push(new ZeriR())
+            break;
+        }
+      }
+    } else if (Extendedr_Meter.value == 0) {
+      ActiveExtendedR = false;
+    }
+  };
+
+  function RecallBlock() {
+    if (recallMeter.value > 0) {
+      Stunned = false;
+    } else {
+      Stunned = true;
+    }
+  };
+
+  function Utility_Effects() {
+    if (enableUtility && engine.vision.BlueBar<0.1) {
+      if (d_Meter.decreased && d_Meter.value <= .05 && checkAll() && !utilityPlayed) {
+        utilityPlayed = true;
+        effects.push(new RippleEffect(160, 200, 10, 2000, 10, "yellow", "in", "stroke", 5, false))
+      }
+      if (f_Meter.decreased && f_Meter.value == 0 && checkAll() && !utilityPlayed) {
+        utilityPlayed = true;
+        effects.push(new RippleEffect(160, 200, 10, 2000, 10, "yellow", "in", "stroke", 5, false))
+      }
+    }
+  };
+
+  function allyEffects() {
+    let count = 0;
+    if(allyMeter1.value == 0) count++
+    if(allyMeter2.value == 0) count++
+    if(allyMeter3.value == 0) count++
+    if(allyMeter4.value == 0) count++
+    if (count > deadAllies && !deathAnim && play1 && play2 && engine.vision.itemHover != 1 && enableAllies) {
+      deathAnim = true;
+      effects.push(new deathEffect());
+    };
+    deadAllies = count;
+  };
+
+  function manaR() {
+    if (manaRMeter.value > 0.5) {
+      noR = true;
+    } else {
+      noR = false
+    }
+  }
+  function manaQ() {
+    if (manaQMeter.value > 0.5) {
+      noQ = true;
+    } else {
+      noQ = false
+    }
+  }
+  function manaE() {
+    if (manaEMeter.value > 0.5) {
+      noE = true;
+    } else {
+      noE = false
+    }
+  }
+  function manaW() {
+    if (manaWMeter.value > 0.5) {
+      noW = true;
+    } else {
+      noW = false
+    }
+  }
+
+  var greyDPlayed = false;
+  function dragonEffects() {
+    if (greyDragonMeter.value > .3 && greyDragonMeter.value < .9 && !greyDPlayed && enableDragon) {
+      greyDPlayed = true;
+      effects.push(new dragonEffect("grey", "blue"));
+    }
+    if (yellowDragonMeter.value > .2 && yellowDragonMeter.value < .9 && greyDPlayed && enableDragon) {
+      greyDPlayed = false;
+      effects.push(new dragonEffect("yellow", "red"))
+    }
+  };
+
+  var greyBPlayed = false;
+  function baronEffects() {
+    if (greyBaronMeter.value >= .3 && greyBaronMeter.value <= .9 && !greyBPlayed && enableDragon) {
+      greyBPlayed = true;
+      effects.push(new baronEffect("grey", "blue"));
+    }
+    if (yellowBaronMeter.value >= .3 && yellowBaronMeter.value <= .9 && greyBPlayed && enableDragon) {
+      greyBPlayed = false;
+      effects.push(new baronEffect("yellow", "red"));
+    }
+  };
+
+  function levelUpEffect() {
+    if (levelUpMeter.decreased && !levelUpAnim && play1 && play2 && enableLevel) {
+      levelUpAnim = true;
+      effects.push(new SimpleMoveEffect(0, 200, { x: 0, y: -8 }, 320, 300, DrawRect, "yellow", 1000));
+    } else if (levelUpMeter.value > .5) {
+      levelUpAnim = false;
+    }
+  };
+
+  function checkAll() {
+    if (!inShop && !StopEffects && play1 && play2) {
+      return true
+    }
+    return false;
+  };
+
+  function playingGame1() {
+    if (playingMeter1.value > 0.8) {
+      play1 = true
+      StopEffects = false;
+      ActiveExtendedE = false;
+      ActiveExtendedQ = false;
+      ActiveExtendedR = false;
+      ActiveExtendedW = false;
+    } else {
+      play1 = false;
+      ActiveExtendedR = false
+      effects.length = 0;
+      goldAnimPushed = false;
+      freezeCount = 0;
+    }
+  };
+
+  function playingGame2() {
+    if (playingMeter2.value > 0.8) {
+      play2 = true
+    } else {
+      ActiveExtendedQ = false;
+      play2 = false;
+      ActiveExtendedR = false
+      effects.length = 0;
+      goldAnimPushed = false;
+      freezeCount = 0;
+    }
+  };
+
+  function DrawBackground(color) {
+    hctx.fillStyle = color;
+    hctx.fillRect(0, 0, canvas.width, canvas.height)
+  };
+
+  var turretTimer = GetTime();
+  function turretEffects() {
+    var turretElapsed = GetTime() - turretTimer;
+    if ((alliedTurretMeter.value > .90 || firstAlliedTurretMeter.value > .90) && enableTower && engine.vision.blueConfirmation <.1 && turretElapsed >= 5000) {
+      effects.push(new fallingTurret("blue"));
+      turretTimer = GetTime();
+    }
+    if ((enemyTurretMeter.value > .90 || firstEnemyTurretMeter.value > .90) && enableTower && engine.vision.blueConfirmation >= .95 && turretElapsed >= 5000) {
+      effects.push(new fallingTurret("red"));
+      turretTimer = GetTime();
+    }
+  };
+
+  var karthusQ = true;
+  function checkKarthusQ() {
+    if (engine.vision.BlueBar > .1) {
+      setTimeout(() => {
+        if (engine.vision.BlueBar < .05 && karthusQ) effects.push(new KarthusQ())
+      }, 500)
+    }
+  }
+
+  function ahriE() {
+    this.elapsed;
+    this.start = GetTime();
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      DrawHeart(160, 100 - this.elapsed / 16, this.elapsed / 2, this.elapsed / 4, "hsl(305, 100%, 49%)")
+      if (this.elapsed > 2000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function ahriR() {
+    this.start = GetTime();
+    this.elapsed;
+    this.cubes = [];
+    for (let index = 0; index < 3; index++) {
+      effects.push(new SimpleMoveEffect(100 + (30 * index), 200 + (Math.random() * 80), { x: 0, y: -8 }, 30, 30, DrawRect, "hsl(190, 100%, 49%)", 2000))
+    }
+    effects.push(new RippleEffect(160, 100, 10, 1000, 30, "hsl(190, 100%, 49%)", "in", "Stroke", 1))
+    this.draw = function () {
+      DrawBackground("hsla(190, 100%, 49%, 0.2)");
+      this.elapsed = (GetTime() - this.start)
+      for (let i = 0; i < 5; i++) {
+        DrawCircle(40 + i * 60, 100 + Math.cos(this.elapsed / 200 + (i * 100)) * 100, 40, "hsl(190, 100%, 49%)")
+      }
+      if (!ActiveExtendedR) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function ahriQ() {
+    this.elapsed;
+    this.start = GetTime();
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      DrawCircle(0 + (Math.sin(this.elapsed / 500) * 280), 100, 40, "hsl(190, 100%, 49%)");
+      if (Math.sin(this.elapsed / 500) < -0.1) {
+        this.lifetime = 0
+      }
+    }
+  };
+
+  function AkaliR(){
+    this.count = 0
+    this.draw = function(){
+      if(this.count % 10 == 0) effects.push(new akaliRHelp(this.count * 3))
+      this.count < 100 ? this.count++ : this.lifetime = 0
+    }
+  }
+
+  function akaliRHelp(rad){
+    this.rad = rad
+    this.sat = 100
+    this.a = 0
+    this.half = false
+    this.draw = function(){
+      if(!this.half) this.a <= .95 ? this.a += .025 : this.half = true
+      else this.a >= .01 ? this.a -= .01 : this.lifetime = 0
+      DrawStroke(160, 100, this.rad, getColorString(140, this.sat, 50, this.a), 30)
+      this.sat-=2
+    }
+  }
+
+  function AkaliE(){
+    this.rot = 0
+    this.x = -50
+    this.rad = 20
+    this.a = 0
+    this.half = false
+    this.draw = function(){
+      if(!this.half) this.a <= .45 ? this.a += .025 : this.half = true
+      else this.a >= .01 ? this.a -= .01 : this.a = 0
+      DrawRect(0, 0, 320, 200, getColorString(140, 100, 40, this.a))
+      DrawStroke(this.x, 100, this.rad, "grey", 5)
+      hctx.save()
+      hctx.translate(this.x, 100)
+      hctx.rotate(this.rot)
+      hctx.translate(-this.x, -100)
+      DrawTriangle(this.x, 100 - this.rad * 3, this.x + this.rad, 100 - this.rad, this.x - this.rad, 100 - this.rad, "grey")
+      hctx.translate(this.x, 100)
+      hctx.rotate(Math.PI / 2)
+      hctx.translate(-this.x, -100)
+      DrawTriangle(this.x, 100 - this.rad * 3, this.x + this.rad, 100 - this.rad, this.x - this.rad, 100 - this.rad, "grey")
+      hctx.translate(this.x, 100)
+      hctx.rotate(Math.PI / 2)
+      hctx.translate(-this.x, -100)
+      DrawTriangle(this.x, 100 - this.rad * 3, this.x + this.rad, 100 - this.rad, this.x - this.rad, 100 - this.rad, "grey")
+      hctx.translate(this.x, 100)
+      hctx.rotate(Math.PI / 2)
+      hctx.translate(-this.x, -100)
+      DrawTriangle(this.x, 100 - this.rad * 3, this.x + this.rad, 100 - this.rad, this.x - this.rad, 100 - this.rad, "grey")
+      hctx.restore()
+      this.rot += .075
+      this.x < 420 ? this.x += 5 : this.lifetime = 0
+    }
+  }
+
+  function AkaliW(){
+    this.lifetime = 400
+    this.draw = function(){
+      if(!this.count) effects.push(new akaliWHelp())
+      this.count < 3 ? this.count++ : this.count = 0
+    this.lifetime--
+    }
+  }
+
+  function akaliWHelp(){
+    this.x = 160
+    this.y = 100
+    this.vx = Math.random() * 6 - 3
+    this.vy = Math.random() * 6 - 3
+    this.mod = Math.random() * 50
+    this.lifetime = 100
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.lifetime / 1.5 + 20, getColorString(0, 0, this.mod, 1 - Math.abs(50 - this.lifetime) / 50))
+      this.x += this.vx
+      this.y += this.vy
+      this.lifetime--
+    }
+  }
+
+  function AkaliQ(){
+    this.a = 0
+    this.half = false
+    this.count = 0
+    this.draw = function(){
+      if(!this.count) effects.push(new akaliQHelp())
+      this.count < 5 ? this.count++ : this.count = 0
+      DrawRect(0, 0, 320, 200, getColorString(140, 100, 40, this.a))
+      if(!this.half) this.a <= .95 ? this.a += .05 : this.half = true
+      else this.a >= .025 ? this.a -= .025 : this.lifetime = 0
+    }
+  }
+
+  function akaliQHelp(){
+    this.x = 160
+    this.y = 220
+    this.vy = -10
+    this.vx = Math.random() * 4 - 2
+    this.draw = function(){
+      DrawCircle(this.x - this.vx * 15, this.y - this.vy * 15, 10, getColorString(60, 100, 50, 1))
+      DrawCircle(this.x - this.vx * 10, this.y - this.vy * 10, 20, getColorString(60, 100, 50, 1))
+      DrawCircle(this.x - this.vx * 5, this.y - this.vy * 5, 20, getColorString(60, 100, 50, 1))
+      DrawCircle(this.x, this.y, 8, getColorString(60, 100, 50, 1))
+      this.x += this.vx
+      this.y > -50 ? this.y += this.vy : this.lifetime = 0
+    }
+  }
+
+  function AnnieQ(){
+    this.start = Date.now();
+    this.alpha = 0;
+    this.trails = [];
+    this.lifetime = 1
+    this.draw = function(){
+      this.elapsed = (Date.now() - this.start);
+      if (this.elapsed < 2000) {
+        this.alpha += 0.01;
+        this.alpha = SetRange(this.alpha, 0, 1);
+      } else {
+        this.alpha -= 0.01;
+        if (this.alpha <= 0) {
+          this.alpha = 0;
+          this.lifetime = 0;
+        }
+      }
+ 
+      DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`)
+      this.trails.push(new trailParticle(this.elapsed/5,120+Math.sin(this.elapsed/600 +Math.PI)*40 + Math.sin(this.elapsed/100)*5,30,{h:60,s:100,l:50},800,2))
+      this.trails.push(new movingBall(this.elapsed/5,120+Math.sin(this.elapsed/600 +Math.PI)*40 + Math.sin(this.elapsed/100)*5,5,{x:-2,y:Math.random()-0.5},`hsl(${60-Math.random()*100},100%,50%)`))
+      
+      this.trails.forEach(trail => {
+        trail.draw();
+      });
+      
+      this.trails = this.trails.filter(trail => trail.lifetime > 0);
+    }
+  }
+
+  function AnnieW(){
+    this.start = Date.now();
+    this.particles = [];
+    this.trailParticles = [];
+    this.lifetime = 1
+    for (let index = 0; index < 20; index++) {
+      for (let i = 0; i < index; i++) {
+        setTimeout(() => {
+          this.trailParticles.push(new trailParticle(160 + (Math.random()-0.5)*(index *30), 200-index*10,10,{h:Math.random()*70,s:100,l:50},2000 + Math.random() *2000,0.5))
+        }, index *15);
+      }
+    }
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+      
+      this.trailParticles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.trailParticles = this.trailParticles.filter(particle => particle.lifetime > 0);
+      
+      if (this.elapsed > 3000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function AnnieE(){
+    this.start = Date.now();
+    this.particles = [];
+    this.size = 0;
+    this.lifetime = 1
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+ 
+      if (this.elapsed < 3000) {
+        this.size += 0.5;
+        if (this.size >= 90) {
+          this.size = 90;
+        }
+        if (this.elapsed %3 == 0) {
+          this.particles.push(new movingBall(160,100,5,{x:(Math.random()-0.5)*3,y:(Math.random()-0.5)*3},`hsl(${Math.random()*50},100%,50%)`,2000))
+        }
+      } else {
+        this.size -= 0.5;
+        if (this.size <= 0) {
+          this.size = 0;
+          this.lifetime = 0;
+        }
+      }
+      
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+      
+      hctx.beginPath();
+      hctx.arc(160,100,this.size,0,Math.PI*2);
+      hctx.fillStyle = `hsla(30,100%,50%,0.7)`;
+      hctx.fill();
+      hctx.strokeStyle = `hsla(10,100%,50%,1)`;
+      hctx.lineWidth = 10;
+      hctx.stroke();
+
+      if (this.elapsed > 5000) {
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function AnnieR(){
+    this.particles = [];
+    this.eyeparicles = [];
+    this.check = 0
+    this.done = false
+    this.counter = 1;
+    this.lifetime = 1;
+    this.draw = function(){
+      if(this.done) this.counter++;
+      else {
+        if(this.check == 0) for(let i = 0; i < 3; i++) effects.push(new annieHelpR(70 * i + 30, -10, 1))
+        this.check < 25 ? this.check++ : this.done = true;
+      }
+      if (this.counter % 3 == 0 && this.counter < 500) {
+        this.particles.push(new movingBall(Math.random()*320,240,Math.random()*50,{x:(Math.random()-0.5)*3,y:-Math.random()*3 -1},`hsl(${Math.random()*50},100%,50%)`,3000))
+      }
+      
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+      
+      this.alpha = this.counter <500 ? SetRange(this.counter/100,0,1) : SetRange(1-(this.counter-500)/100,0,1); 
+      hctx.globalAlpha =1;
+      
+      if (this.counter >=700){
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function annieHelpR(x, y, rot){
+    this.x = x
+    this.y = y
+    this.rot = rot
+    this.lifetime = 100
+    this.draw = function(){
+      hctx.save()
+      hctx.translate(this.x, this.y)
+      hctx.rotate(this.rot)
+      hctx.translate(-this.x, -this.y)
+      DrawRect(this.x, this.y, 1000 - (this.lifetime * 10), 40, `hsla(0, 100%, ${this.lifetime * .8}%, ${this.lifetime / 100})`)
+      hctx.restore()
+      this.lifetime--
+    }
+  }
+
+  function asheW() {
+    this.start = GetTime();
+    this.state = 0;
+    this.lifetime = 2000;
+    this.background = new SmoothBackgroundToBlack(16);
+    this.explosion = new ParticleExplosion(160, 200, "hsl(184, 100%, 50%)", 10, 1000, 15, 7, 1.5, true);
+    freezeCount++;;
+
+    this.draw = function () {
+      this.lifetime = 2500 - (GetTime() - this.start)
+      if (this.lifetime <= 0) {
+        freezeCount--;
+        return
+      }
+      DrawBackground("hsla(0,0%,0%, 0.07)")
+      this.explosion.draw()
+    }
+  };
+
+  function asheR() {
+    this.start = GetTime();
+    this.state = 0;
+    this.lifetime = 4500;
+    this.background = new SmoothBackgroundToBlack(20);
+    this.cube = new SimpleMoveEffect(0 - 100, 85, { x: 8, y: 0 }, 100, 30, DrawRect, "hsl(184, 100%, 50%)", 2500)
+    this.bloodRain = [];
+    for (let index = 0; index < 50; index++) {
+      this.bloodRain.push(new blood(Math.random() * 320, 0, 5, "cyan"))
+    }
+    freezeCount++;;
+    StopEffects = true;
+
+    this.draw = function () {
+      this.lifetime = 5000 - (GetTime() - this.start);
+
+      if (this.lifetime <= 0) {
+        StopEffects = false;
+        freezeCount--;;
+        return
+      }
+
+      if (this.state == 0) {
+        this.background.draw();
+        if (this.background.y >= 0) {
+          this.state = 1;
+        }
+      } else if (this.state == 1) {
+        DrawBackground("black");
+        this.cube.draw();
+        this.cubex = this.cube.x + this.cube.xSize;
+        DrawTriangle(this.cubex, 60, this.cubex + 80, 100, this.cubex, 140, "hsl(184, 100%, 50%)")
+        if (this.cubex - 100 > 320) {
+          this.state = 2;
+        }
+      } else if (this.state == 2) {
+        DrawBackground("hsla(0,0%,0%, 0.1)");
+        this.bloodRain.forEach(element => {
+          element.Draw();
+        });
+      }
+    }
+  };
+
+  var auEPushed = false;
+
+
+  function AurelionE() {
+    this.lifetime = 20;
+    this.x = 160;
+    this.y = 100;
+    this.now = GetTime();
+
+    this.draw = function () {
+      this.now = GetTime();
+      var headY = Math.sin(this.now / 100) * 20 + this.y;
+      hctx.fillStyle = "black";
+      hctx.fillRect(0, 0, 320, 200);
+      effects.push(new ParticleExplosion(320, 100, "blue", 20, 3000, 1, 10, 5, false));
+      DrawCircle(this.x + 10, headY - 10, 35, "yellow");
+      for (let i = 1; i <= 6; i++) {
+        var indexY = Math.sin((this.now - (i * 100)) / 100) * 20 + this.y;
+        DrawCircle(this.x - (i * 25), indexY, 20, `rgb(${255 - (i * 40)}, 0, 255)`);
+      }
+      DrawCircle(this.x, headY, 35, "rgb(255, 0, 255)");
+      if (e_Meter.value == 0) {
+        this.lifetime = 0;
+        auEPushed = false;
+      }
+    }
+  };
+
+  function AurelionR() {
+    this.lifetime = 20;
+    this.x = 0;
+    this.y = 100;
+    this.start = GetTime();
+    this.elapsed = 0;
+
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      if (this.elapsed > 200) {
+        effects.push(new ParticleExplosion(this.x, this.y, "rgb(255, 25, 255)", 15, 1000, 50, 10, 1, false));
+        this.start = GetTime();
+      }
+
+      DrawTriangle(this.x, this.y, this.x - 80, this.y + 60, this.x - 80, this.y - 60, "blue");
+      DrawTriangle(this.x, this.y, this.x - 50, this.y + 30, this.x - 50, this.y - 30, "white");
+      this.x += 15;
+      if (this.x > 650) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function CaitlynW() {
+    this.lifetime = 20;
+    this.y = 220;
+    this.cupCakeY = -30;
+    this.draw = function () {
+
+      DrawCircle(160, this.cupCakeY, 30, "white");
+      DrawCircle(160, this.cupCakeY - 30, 10, "red");
+      hctx.fillStyle = "brown";
+      hctx.fillRect(120, this.cupCakeY, 80, 30);
+      hctx.fillStyle = "blue";
+      hctx.fillRect(0, this.y, 320, 20);
+      for (let index = 0; index < 5; index++) {
+        DrawTriangle(index * 80, this.y, 40 + index * 80, this.y - 40, 80 + index * 80, this.y);
+      }
+      if (this.y > 130) {
+        this.y -= 5;
+      } else if (this.cupCakeY < 100) {
+        this.cupCakeY += 5;
+      } else {
+        this.lifetime--;
+      }
+    }
+  };
+
+  function CaitlynE() {
+    this.lifetime = 20;
+    this.index = 0;
+
+    this.draw = function () {
+      for (let i = 0; i < this.index; i++) {
+        hctx.beginPath();
+        hctx.strokeStyle = "yellow";
+        hctx.lineWidth = 20;
+        hctx.moveTo(60 * i - 80, 0);
+        hctx.lineTo(60 * i + 80, 200);
+        hctx.stroke();
+
+        hctx.beginPath();
+        hctx.strokeStyle = "yellow";
+        hctx.lineWidth = 20;
+        hctx.moveTo(320 - (60 * i - 80), 0);
+        hctx.lineTo(320 - (60 * i + 80), 200);
+        hctx.stroke();
+      }
+      this.index += .25;
+      if (this.index > 20) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+
+  function CaitlynR() {
+    this.lifetime = 20;
+    this.x = 0;
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.stroke = 0;
+    this.fired = false;
+
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      hctx.fillStyle = "black";
+      hctx.fillRect(0, 0, 320, 200)
+
+      if (this.elapsed < 1200) {
+        hctx.beginPath();
+        hctx.strokeStyle = "blue";
+        hctx.lineWidth = 3 * this.stroke;
+        hctx.moveTo(0, 100);
+        hctx.lineTo(320, 100);
+        hctx.stroke();
+
+        hctx.beginPath();
+        hctx.strokeStyle = "white";
+        hctx.lineWidth = this.stroke;
+        hctx.moveTo(0, 100);
+        hctx.lineTo(320, 100);
+        hctx.stroke();
+
+        this.stroke += .5;
+      } else {
+        if (!this.fired) {
+          effects.push(new ParticleExplosion(50, 100, "yellow", 60, 500, 30, 10, 1.5, false));
+          this.fired = true;
+        }
+        DrawCircle(this.x, 100, 30, "red");
+        this.x += 25;
+
+        if (this.x > 340) {
+          this.lifetime = 0;
+        }
+      }
+    }
+  };
+
+  function CassE() {
+    this.lifetime = 10;
+    this.x = 0;
+    this.width = 50
+    this.draw = function () {
+      for (let index = 0; index < 5; index++) {
+        hctx.strokeStyle = index < 3 ? "green" : "yellow";
+        hctx.lineWidth = index < 2 ? this.width : this.width / 3;
+        hctx.beginPath();
+        hctx.moveTo(50 + (index % 2) * 100, 0);
+        hctx.lineTo(this.x + 100 + (index % 2) * 100, 2 * this.x);
+        hctx.stroke();
+      }
+      this.x += 10;
+      if (this.x > 150) {
+        this.width--;
+        if (this.width <= 0) {
+          this.lifetime = 0;
+        }
+      }
+    }
+  };
+
+  function CassR() {
+    this.lifetime = 200;
+    this.draw = function () {
+      var x = Math.cos(Date.now() / 100) * 10;
+      if (x < -5) {
+        effects.push(new RippleEffect(100, 100, 20, 1000, 10, "yellow", "out", "stroke", 1, false));
+        effects.push(new RippleEffect(200, 100, 20, 1000, 10, "green", "out", "stroke", 1, false));
+      }
+      DrawCircle(100, 100, 40, "white");
+      DrawCircle(200, 100, 40, "white");
+      DrawCircle(100 + x, 100, 20, "red");
+      DrawCircle(200 + x, 100, 20, "red");
+      this.lifetime -= 3;
+    }
+  };
+
+  function DariusR(){
+    this.width = 1
+    this.a = 1
+    this.draw = function(){
+      DrawRect(160 - this.width * 3, 0, this.width * 6, 200, getColorString(40, 100, 50, this.a))
+      DrawRect(160 - this.width * 2, 0, this.width * 4, 200, getColorString(20, 100, 50, this.a))
+      DrawRect(160 - this.width, 0, this.width * 2, 200, getColorString(0, 100, 50, this.a))
+      DrawRect(160 - this.width / 4, 0, this.width / 2, 200, getColorString(0, 100, 100, this.a))
+      this.width += (60 - this.width) / 20
+      if(this.width > 50 || r_Meter.value >= .5) this.a >= .01 ? this.a -= .01 : this.lifetime = 0
+    }
+  }
+
+  function DariusE(){
+    this.y = 350
+    this.rot = 0
+    this.half = false
+    this.draw = function(){
+      hctx.save()
+      hctx.translate(160, this.y)
+      hctx.rotate(this.rot)
+      hctx.translate(-160, -this.y)
+      DrawRect(160, this.y - 120, 20, 200, "brown")
+      DrawRect(160, this.y - 110, 90, 50, "grey")
+      DrawTriangle(160, this.y - 110, 160, this.y - 80, 100, this.y - 110, "grey")
+      hctx.restore()
+      if(e_Meter.value >= .5) this.lifetime = 0
+      if(this.half) {
+        this.y < 350 ? this.y += (345 - this.y) / 30 : this.lifetime = 0
+        if(this.rot < .5) this.rot += .03
+        effects.push(new dariusEHelp(120 + Math.random() * 80, this.y - 100))
+      }
+      else {
+        this.y > 50 ? this.y += (45 - this.y) / 10 : this.half = true
+        if(this.rot > -.5) this.rot -= .03
+      }
+    }
+  }
+
+  function dariusEHelp(x, y){
+    this.x = x
+    this.y = y
+    this.rad = 30
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, getColorString(0, 100, 50, this.rad / 10))
+      this.rad > 0 ? this.rad -= .5 : this.lifetime = 0
+    }
+  }
+
+  function DariusW(){
+    this.a1 = 0
+    this.a2 = 0
+    this.lit1 = 100
+    this.lit2 = 100
+    this.stroke = 30
+    this.draw = function(){
+      DrawLine([0, 0], [320, 200], getColorString(0, 100, this.lit1, this.a1), this.stroke)
+      DrawLine([320, 0], [0, 200], getColorString(0, 100, this.lit2, this.a2), this.stroke)
+      if(this.half){
+        this.stroke++
+        this.a1 >= .01 ? this.a1 -= .01 : this.lifetime = 0
+        this.a2 = this.a1
+      } else {
+        this.a1 <= .95 ? this.a1 += .05 : this.lit1 >= 50 ? this.lit1 -= 10 : this.stroke++
+        if(this.a1 > .75) this.a2 <= .95 ? this.a2 += .05 : this.lit2 >= 50 ? this.lit2 -= 10 : this.half = true
+      }
+    }
+  }
+
+  let WIDTH = 320
+  let HEIGHT = 200
+
+  function DariusQ(){
+    this.half = false
+    this.rot = -.1
+    this.rotv = 0
+    this.alpha = 0
+    this.draw = function(){
+      DrawStroke(WIDTH / 2, HEIGHT / 2, 100, getColorString(0, 100, 50, this.alpha), 100)
+      hctx.save()
+      hctx.translate(WIDTH / 2, HEIGHT / 2)
+      hctx.rotate(this.rot)
+      hctx.translate(-WIDTH / 2, -HEIGHT / 2)
+      DrawRect(WIDTH / 2 - 10, HEIGHT / 2, 20, -135, getColorString(0, 0, 50, this.alpha))
+      DrawRect(WIDTH / 2 - 10, HEIGHT / 2, 20, 70, getColorString(5, 100, 40, this.alpha))
+      DrawRect(WIDTH / 2 - 60, -35, 120, 60, getColorString(5, 100, 40, this.alpha))
+      DrawRect(WIDTH / 2 - 50, -35, 100, 60, getColorString(0, 0, 50, this.alpha))
+      hctx.restore()
+      this.rotv += .0015
+      if(q_Meter.value >= .5) this.lifetime = 0
+      if(!this.half) this.alpha <= .9 ? this.alpha += .1 : this.half = true
+      else this.rot < Math.PI * 4 ? this.rot += this.rotv : this.alpha >= .025 ? this.alpha -= .025 : this.lifetime = 0
+    }
+  }
+
+  function DianaQ() {
+    this.start = GetTime();
+    this.ripple = new RippleEffect(300, 0, 15, 1000, 40, "hsla(193, 100%, 56%, 1)", "out", "stroke", 1)
+    this.ripple2 = new RippleEffect(300, 0, 8, 1000, 40, "white", "out", "stroke", 1)
+    freezeCount++;;
+    this.draw = function () {
+      DrawBackground("hsla(0,0%,0%, 0.2)")
+      this.elapsed = GetTime() - this.start;
+      DrawCircle(this.elapsed / 3, 100 + Math.sin(this.elapsed / 200) * 80, 20, "white")
+      DrawCircle(this.elapsed / 3, Math.sin(this.elapsed / 275) * 100, 20, "hsla(193, 100%, 56%, 1)")
+      if (this.elapsed >= 700) {
+        this.ripple.draw();
+        this.ripple2.draw();
+      }
+      if (this.elapsed > 2000) {
+        this.lifetime = 0;
+        freezeCount--;;
+      }
+    }
+  }
+
+  function DianaR() {
+    this.start = GetTime();
+    this.ripple = new RippleEffect(160, 100, 5, 1000, 50, "blue", "out", "stroke", 2)
+    StopEffects = true;
+    freezeCount++;;
+    DrawBackground("hsla(0,0%,0%, 1)")
+    for (let i = 0; i < 40; i++) {
+      DrawCircle(Math.random() * 320, Math.random() * 200, 5, "yellow")
+    }
+    
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      if (this.elapsed > 4000) {
+        this.lifetime = 0
+        freezeCount--;;
+        StopEffects = false;
+      }
+      if (this.elapsed < 1500) {
+        hctx.beginPath();
+        hctx.fillStyle = "hsl(0,0%,100%,0.04)"
+        hctx.moveTo(160, 20);
+        hctx.bezierCurveTo(160, 20, -30, 100, 160, 180)
+        hctx.bezierCurveTo(160, 180, 60, 100, 160, 20)
+        hctx.fill();
+      } else if (this.elapsed < 2500) {
+        DrawCircle(160, 100, 80, "hsl(0,0%,100%,0.04)")
+      } else if (this.elapsed < 4000) {
+        DrawBackground("hsla(0,0%,0%, 0.2)")
+        this.ripple.draw();
+      }
+    }
+  };
+
+
+
+  function EkkoR() {
+    this.radius = 200;
+    this.go = false;
+    this.hue = 180
+    this.alpha = 1;
+    this.lifetime = 10;
+    this.draw = function () {
+      if (!this.go) {
+        DrawStroke(160, 100, this.radius, "cyan", 20)
+        DrawStroke(160, 100, this.radius + 40, "cyan", 20)
+        this.radius > 10 ? this.radius -= 10 : this.go = true
+      } else {
+        DrawCircle(160, 100, this.radius, `hsla(${this.hue}, 100%, 50%, ${this.alpha})`)
+        this.radius < 300 ? this.radius += 4 : this.lifetime = 0;
+        this.alpha -= .013
+        this.hue += 1
+      }
+    }
+  }
+
+  function EkkoE() {
+    this.lifetime = 10;
+    this.draw = function () {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          effects.push(new ekkoEHelp(32 * i, 32))
+        }, 25 * i)
+      }
+      this.lifetime = 0;
+    }
+  }
+
+  function ekkoEHelp(x, width) {
+    this.x = x
+    this.hue = 180
+    this.width = width
+    this.alpha = 1
+    this.lifetime = 10
+    this.draw = function () {
+      DrawRect(this.x, 0, this.width, 200, `hsla(${this.hue}, 100%, 30%, ${this.alpha})`)
+      this.hue += 2
+      this.alpha > .015 ? this.alpha -= .015 : this.lifetime = 0;
+    }
+  }
+
+  function EkkoW() {
+    this.alpha = 0;
+    this.radius = 120;
+    this.start = Date.now()
+    this.go = false
+    this.lifetime = 10;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start
+      hctx.globalAlpha = this.alpha;
+      DrawStroke(160, 100, 150, "cyan", 20)
+      for (let i = 0; i < 10; i++) {
+        DrawCircle(Math.cos((Date.now() + 310 * i) / 500) * this.radius + 160, Math.sin((Date.now() + 310 * i) / 500) * this.radius + 100, 15, "cyan")
+      }
+      hctx.globalAlpha = 1;
+      this.radius -= 1
+      if (elapsed > 2000 && !this.go) {
+        effects.push(new ekkoWHelp())
+        this.go = true
+        setTimeout(() => {
+          this.lifetime = 0;
+        }, 1000)
+      }
+      if (this.go) this.alpha >= .05 ? this.alpha -= .05 : this.alpha = 0;
+      else this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+    }
+  }
+
+  function ekkoWHelp() {
+    this.radius = 1;
+    this.draw = function () {
+      DrawCircle(160, 100, this.radius, `hsla(${240 + this.radius / 7}, 100%, 50%, ${1 - this.radius / 250})`)
+      this.radius < 250 ? this.radius += 5 : this.lifetime = 0;
+    }
+  }
+
+  function EkkoQ() {
+    this.x = 320;
+    this.y = 100;
+    this.radius = 20;
+    this.go1 = false;
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawCircle(this.x, this.y, this.radius + 5, "cyan")
+      DrawCircle(this.x, this.y, 20, "hsl(180, 100%, 5%)")
+      if (!this.go1) {
+        this.x > 220 ? this.x -= 10 : this.go1 = true;
+        if (this.go1) this.radius = 50
+      } else if (!this.go2) this.x > 50 ? this.x -= (this.x / 40) : this.go2 = true;
+      if (this.go2) this.x < 350 ? this.x += 5 + (this.x / 20) : this.lifetime = 0;
+    }
+  }
+  function EzrealR() {
+    this.lifetime = 20;
+    this.radius = 0;
+    this.effects = [];
+    this.draw = function () {
+      var jitter = Math.sin(GetTime() / 40) * 3;
+      hctx.fillStyle = "black";
+      hctx.fillRect(0, 0, 320, 200);
+      for (let index = 0; index < 2; index++) {
+        this.effects.push(new SimpleMoveEffect(Math.random() * 320, -50, { x: 0, y: 10 }, 10, 50, DrawRect, index == 0 ? "white" : " grey", 1500));
+      }
+      this.effects.forEach(ele => {
+        ele.draw()
+      });
+      DrawCircle(160, 200 + jitter, 6 * this.radius + 1, "yellow");
+      DrawCircle(160, 300 + jitter, 7 * this.radius + 1, "black");
+      this.radius += .3;
+      if (this.radius >= 60) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+
+  function FiddleW() {
+    this.start = GetTime();
+    this.orbHolder = [];
+    for (let index = 0; index < 100; index++) {
+      setTimeout(() => {
+        this.orbHolder.push(new MovingOrb())
+      }, 50 * index);
+    }
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      let gradient = hctx.createRadialGradient(160, 200, 0, 160, 200, 300);
+      this.gradientElapsed = SetRange(this.elapsed, 0, 4000)
+
+
+      if (this.elapsed > 3000) {
+        let gradient = hctx.createRadialGradient(160, 200, 0, 160, 200, 300)
+        this.calculateVal = -1660 * Math.floor(((this.elapsed - 3000) / 1660) / 1) + (((this.elapsed - 3000) / 1660) * (1660 / 1));
+        gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 100%, 50%,0.7)");
+        gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,1)");
+        gradient.addColorStop(SetRange((-400 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+        DrawBackground(gradient)
+        if (this.elapsed > 3600) {
+          this.lifetime = 0;
+        }
+      } else {
+        this.calculateVal = -1440 * Math.floor((this.gradientElapsed / 1440) / 4) + ((this.gradientElapsed / 1440) * (1440 / 4));
+        gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+        gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 100%, 50%,0.7)");
+        DrawBackground(gradient)
+        this.orbHolder.forEach(orb => {
+          orb.draw();
+        });
+      }
+    }
+  }
+
+
+  function FiddleR() {
+    this.start = GetTime();
+    this.particles = [];
+    for (let index = 0; index < 20; index++) {
+      this.particles.push(new rotatingFiddleParticle())
+    }
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      this.gradientElapsed = SetRange(this.elapsed < 8000 ? this.elapsed - 1000 : 900 - (this.elapsed - 8000), 10, 900);
+      let gradient = hctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+      this.calculateVal = -1660 * Math.floor((this.gradientElapsed / 1660) / 1) + ((this.gradientElapsed / 1660) * (1660 / 1));
+      gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
+      gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 100%, 50%,1)");
+      gradient.addColorStop(SetRange((-400 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0.7)");
+      DrawBackground(gradient);
+      if (this.elapsed < 8500) {
+        if (this.elapsed < 2000) {
+          for (let index = 0; index < 2; index++) {
+            hctx.beginPath();
+            hctx.moveTo((Math.random() * 100) + 110, Math.random() * 60 + 70)
+            hctx.lineTo((Math.random() * 60) + 130, Math.random() * 60 + 70)
+            hctx.strokeStyle = index == 0 ? "black" : "red";
+            hctx.lineWidth = 20;
+            hctx.stroke();
+          }
+          hctx.lineWidth = 1;
+        } else {
+          this.particles.forEach(particle => {
+            particle.draw();
+          });
+          for (let index = 0; index < 3; index++) {
+            hctx.beginPath();
+            hctx.fillStyle = "grey";
+            hctx.fillRect(Math.random() * 140 + 90, Math.random() * 140 + 30, 10, 10)
+          }
+        }
+      } else {
+        setTimeout(() => {
+          this.lifetime = 0;
+        }, 1000);
+      }
+    }
+  }
+
+
+
+
+  function FizzW() {
+    this.elapsed;
+    this.start = GetTime();
+    this.hit = false;
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start
+      if (this.elapsed < 300) {
+        this.y = this.elapsed;
+      } else if (!this.hit) {
+        this.hit = true;
+        effects.push(new RippleEffect(160, 100, 7, 1500, 30, "hsla(182, 100%, 48%, 1)", "out", "stroke", 3))
+        this.lifetime = 0;
+      }
+      DrawTrident(160, 220 - this.y / 3.3, 120, 0);
+    }
+  }
+
+  function FizzR() {
+    this.elapsed;
+    this.bubbles = [];
+    this.brightness;
+    this.a = 0.4
+    freezeCount++;;
+    this.lifetime = 1
+    this.start = GetTime();
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      if (engine.vision.rButton) {
+        this.lifetime = 0;
+        freezeCount--;;
+      }
+      if (this.elapsed < 1100) {
+        copyScreen((1 - this.elapsed / 1000))
+        this.brightness = 50 - this.elapsed / 30
+      } else if (this.elapsed > 4000) {
+        copyScreen((0 + (this.elapsed - 4000) / 1000))
+        this.brightness = 0 + (this.elapsed - 4000) / 30
+        this.a -= 0.01;
+        if (this.elapsed > 5500) {
+          this.lifetime = 0;
+          freezeCount--;;
+        }
+      }
+
+      this.bubbles.push(new SimpleMoveEffect(Math.random() * 320, 200, { x: 0, y: -5 }, 40, 40, FillCircle, `hsla(${180 + Math.random() * 50}, 100%, ${this.brightness}%, ${this.a})`, 2000))
+      this.bubbles.forEach((element, i) => {
+        element.draw();
+      });
+      
+      this.bubbles = this.bubbles.filter(element => element.y >= -10);
+      if (this.elapsed > 1000) {
+        DrawShark((this.elapsed - 1500) / 4, 100)
+      }
+    }
+  }
+
+  function GarenQ() {
+    this.start = GetTime();
+    this.elapsed = 0;
+    this.lifetime = 25
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      DrawCircle(160, 100, this.elapsed / 5, "hsla(58, 100%, 50%, 0.6)");
+      if (!ActiveExtendedQ) {
+        effects.push(new ArrowEffect("down", "hsla(58, 100%, 50%, 1)", 1, 8, 1000))
+        this.lifetime = 0;
+      }
+    }
+  }
+
+  function GarenE() {
+  freezeCount++;
+  this.start = GetTime();
+  this.elapsed;
+  this.rotation = 0;
+  this.lifetime = 25;
+  DrawBackground("hsla(0,0%,0%,1)");
+  this.rotating = new SimpleMoveEffect(160, 100, { x: 0, y: 0 }, 150, 10, DrawRect, "yellow", 20000, 1000, 0.2);
+
+  this.draw = function () {
+    this.elapsed = GetTime() - this.start;
+    DrawBackground("hsla(0,0%,0%,0.15)");
+    this.rotating.draw();
+    this.rotation = this.elapsed / 300 * Math.PI;
+    if (!ActiveExtendedE) {
+      freezeCount--;
+      this.lifetime = 0;
+    }
+  }
+}
+
+  function GarenR() {
+    freezeCount++;;
+    this.start = GetTime();
+    StopEffects = true;
+    this.cubeY = -200;
+    this.explosion = new ParticleExplosion(160, 200, "yellow", 10, 1500, 150, 10)
+    DrawBackground("hsl(0,0%,0%)")
+    
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      if (this.elapsed > 3000) {
+        this.lifetime = 0
+        freezeCount--;;
+        StopEffects = false;
+      }
+      DrawRect(130, this.cubeY, 60, 150, "yellow")
+      DrawTriangle(130, this.cubeY + 150, 190, this.cubeY + 150, 160, this.cubeY + 200, "yellow")
+      if (this.cubeY < 0) {
+        this.cubeY += 10;
+      } else {
+        DrawBackground("hsla(0,0%,0%, 0.2)")
+        this.explosion.draw();
+      }
+    }
+  }
+
+
+
+  function GangplankR() {
+    this.start = Date.now()
+    this.lifetime = 100;
+    this.alpha = 0;
+    this.count = 0;
+    this.draw = function () {
+      var elapsed = Date.now() - this.start;
+      DrawRect(0, 0, 320, 200, `hsla(0, 100%, 50%, ${this.alpha})`)
+      if (elapsed > 400 && this.count < 16) {
+        let x = Math.random() * 300 + 10;
+        let y = Math.random() * 180 + 10;
+        for (let index = 0; index < 2; index++) {
+          setTimeout(() => {
+            effects.push(new RippleEffect(x, y, 5, 1000, 20, index % 2 == 1 ? "orange" : "red", "out", "stroke", 1))
+          }, index * 100);
+        }
+
+        this.alpha += .25
+        this.start = Date.now()
+        this.count++
+      }
+      this.alpha >= .01 ? this.alpha -= .01 : this.lifetime -= 1;
+    }
+  }
+
+  function GangplankE() {
+    this.x = 110;
+    this.y = -100;
+    this.radius = 1;
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawRect(this.x, this.y, 100, 100, "brown")
+      this.y < 100 ? this.y += 10 : this.y = 100;
+      if (this.y == 100) {
+        DrawStroke(160, 200, this.radius * .9, "red", 20)
+        DrawStroke(160, 200, this.radius, "orange", 20)
+        this.radius < 300 ? this.radius += 10 : this.lifetime = 0;
+      }
+    }
+  }
+
+  function GangplankW() {
+    this.x = 160;
+    this.y = 100;
+    this.radius = 10;
+    this.lifetime = 10;
+    this.draw = function () {
+      if (Date.now() % 5 == 0) effects.push(new gangPlus())
+      hctx.globalAlpha = 1 - (this.radius / 400)
+      DrawCircle(this.x, this.y, this.radius, "orange")
+      hctx.globalAlpha = 1;
+      this.radius < 300 ? this.radius += 3 : this.lifetime = 0;
+    }
+  }
+
+  function gangPlus() {
+    this.y = 200;
+    this.x = Math.random() * 300 + 10;
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawRect(this.x, this.y, 20, 40, "green")
+      DrawRect(this.x - 10, this.y + 10, 40, 20, "green")
+      this.y > -20 ? this.y -= 5 : this.lifetime = 0;
+    }
+  }
+
+  
+  function GragasQ(){
+    this.start = Date.now();
+    this.particles = [];
+    this.start = Date.now();
+    this.ParticleExplosion = false;
+    this.lifetime = 1
+    this.draw = function(){
+     this.elapsed = (Date.now() - this.start);
+     this.x = SetRange(this.elapsed/10-30,-30,160);
+     if (this.elapsed<3000){
+     this.alpha = SetRange(this.elapsed/1000,0,0.9);
+     if (this.elapsed%10 == 0) {
+       this.particles.push(new gravityParticle(this.x,100,10,{x:(Math.random()-0.5)*3,y:-3},`hsl(${Math.random()*50 +250},100%,50%)`,0.2,1000))
+     }
+     DrawRect(0,0,320,200,`hsla(0,0%,${0}%, ${this.alpha})`)
+     hctx.save();
+     hctx.translate(this.x,80+35);
+     hctx.rotate(Math.sin(this.elapsed/100)/2);
+     hctx.fillStyle = "hsl(30,100%,30%)"
+     hctx.fillRect(0-40,0-25,80,120)
+     hctx.restore();
+     
+       this.particles.forEach(particle => {
+         particle.draw();
+       });
+       
+       this.particles = this.particles.filter(particle => particle.lifetime > 0);
+     } else {
+      this.alpha -=0.0025;
+      DrawRect(0,0,320,200,`hsla(0,0%,${0}%, ${this.alpha})`)
+      if (!this.ParticleExplosion){
+        this.ParticleExplosion = true;
+        for (let i = 0; i < 80; i++) {
+          this.particles.push(new movingBall(160,100,Math.random()*20,{x:(Math.random()-0.5)*3,y:(Math.random()-0.5)*3},`hsl(${Math.random()*50 +250},100%,50%)`,5000))
+        }
+      }
+      hctx.globalAlpha = this.alpha+0.1;
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+      hctx.globalAlpha = 1;
+      if (this.alpha <= 0){
+        this.lifetime = 0;
+      }
+     }
+    }
+  }
+
+  function GragasW(){
+    this.start = Date.now();
+    this.particles = [];
+    this.start = Date.now();
+    this.lifetime = 1
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+      if (this.elapsed <3000){
+        this.alpha = SetRange(this.elapsed/1000,0,0.9);
+      } else{
+        this.alpha -=0.01;
+        if (this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+        }
+      }
+    
+      hctx.globalAlpha = this.alpha;
+      DrawRect(0,0,320,200,`hsla(260,100%,${this.elapsed/80 -20}%, ${this.alpha})`)
+      this.particles.push(new gravityParticle(200,70,10,{x:(Math.random())*-3,y:(Math.random()-0.5) *5},`hsl(${Math.random()*50 +250},100%,50%)`,0.1,1000))
+      
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+      DrawRect(0, 200 - this.elapsed / 15, 320, 500, `hsl(${this.elapsed / 50 + 300}, 100%, 50%)`)
+      hctx.globalAlpha = 1;
+    }
+  }
+
+  function GragasE(){
+    this.x = -20;
+    this.y = 100;
+    this.start = Date.now();
+    this.trailParticles = [];
+    this.ripple  = null;
+    this.lifetime = 1
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+      this.x +=5 ;
+      if (this.elapsed <1000){
+        this.alpha = SetRange(this.elapsed/500,0,0.9);
+      } else{
+        this.alpha -=0.01;
+        if (this.alpha <= 0){
+          this.lifetime = 0;
+        }
+      }
+      hctx.globalAlpha = this.alpha;
+      DrawRect(0,0,320,200,`hsla(260,100%,0%, ${this.alpha})`)
+      this.trailParticles.push(new trailParticle(this.x,100,40,`hsl(30, 70%, 30%)`,600))
+      if (this.x == 160){
+        this.ripple = new RippleEffect(160,100,2,3000,20,`hsl(260, 70%, 30%)`,"out","stroke",1);
+        setTimeout(()=>{
+          this.ripple2 = new RippleEffect(160,100,2,3000,20,`hsl(260, 70%, 30%)`,"out","stroke",1);
+        }, 300)
+        setTimeout(()=>{
+          this.ripple3 = new RippleEffect(160,100,2,3000,20,`hsl(260, 70%, 30%)`,"out","stroke",1);
+        }, 600)
+      } 
+
+      this.trailParticles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.trailParticles = this.trailParticles.filter(particle => particle.lifetime > 0);
+      
+      if (this.ripple != null){
+        this.ripple.draw();
+      }
+      if (this.ripple2 != null){
+        this.ripple2.draw();
+      }
+      if (this.ripple3 != null){
+        this.ripple3.draw();
+      }
+      hctx.globalAlpha = 1;
+    }
+  }
+
+  function GragasR(){
+    this.pos = {x:320,y:160};
+    this.start = Date.now();
+    this.particles = [];
+    this.lifetime = 1
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+      if (this.elapsed <2500){
+        this.alpha = SetRange(this.elapsed/500,0,0.9);
+      } else{
+        this.alpha -=0.04;
+        if (this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+        }
+      }
+      hctx.globalAlpha = this.alpha;
+      DrawRect(0,0,320,200,`hsla(260,100%,0%, ${this.alpha})`)
+      if (this.elapsed<1000){
+        this.pos.x = 320-this.elapsed/6;
+      this.pos.y = 160 + Math.sin(this.elapsed/350+ Math.PI)*120;
+        DrawRect(this.pos.x-20,this.pos.y-35,40,70,`hsl(30, 70%, 30%)`)
+      } else {
+        this.particles.push(new gravityParticle(this.pos.x,this.pos.y,10,{x:(Math.random()-0.5)*3,y:(Math.random())*-6},`hsl(${Math.random()*50 +250},100%,50%)`,0.1,1000))
+        for (let i = 0; i < 2; i++) {
+          let startX = 160;
+          let startY = 100;
+          hctx.beginPath();
+          hctx.moveTo(startX,startY);
+          for (let index = 0; index < 160; index++) { 
+            if (i ==0){
+              startX += 2;
+            } else {
+              startX -= 2;
+            }
+            hctx.lineTo(startX,startY + Math.sin( startX/100 + (i==0? -this.elapsed/400 + Math.PI/2:this.elapsed/400- Math.PI/2) )*100 );
+          }
+          if (i ==0){
+            hctx.lineTo(320,200);
+            hctx.lineTo(160,200);
+          } else {
+            hctx.lineTo(0,200);
+            hctx.lineTo(160,200);
+          }
+          const fillGrad = hctx.createLinearGradient(0, 0, 0, 200);
+          fillGrad.addColorStop(0, `hsla(250,100%,60%,1)`);
+          fillGrad.addColorStop(1, `hsla(280,100%,30%,1)`);
+          hctx.fillStyle = fillGrad;
+          hctx.fill();   
+        }
+      }
+
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+      hctx.globalAlpha = 1;
+    }
+  }
+  function GravesQ(){
+    this.start = Date.now();
+    this.particles = [];
+    this.lifetime = 1
+    this.x = 0;
+    this.y = 0;
+    this.alpha = 0;
+    this.stage = 0;
+    this.FSL = 1000;
+    this.SSL = 600;
+    this.TSL = 500;
+    this.FOSL = 1000;
+    this.CSL = this.FSL + this.SSL + this.TSL + this.FOSL;
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+      
+      if (this.elapsed <this.FSL){
+        this.alpha = SetRange(this.elapsed/500,0,0.9);
+      } else if (this.elapsed > this.CSL ){
+        this.alpha -=0.01;
+        if (this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+        }
+      }
+      DrawRect(0,0,320,200,`hsla(260,100%,0%, ${this.alpha})`)
+      if (this.elapsed < this.FSL + this.SSL){
+        this.x = (this.elapsed-(this.FSL))/3;
+        if (Math.random()>0.1)
+        this.particles.push(new movingBall(this.x,100,5,{x:(Math.random()-0.5)*4,y:(Math.random()-0.5)*10},`hsl(${Math.random()*50}, 100%,50%)`,1000))
+        DrawRect(0,80,this.x,40,`hsl(0, 100%,10%)`)
+
+        DrawCircle(this.x,100,20,`hsl(20, 100%,50%)`)
+      } else if (this.elapsed < this.FSL + this.SSL + this.TSL){
+        this.y = (this.elapsed-(this.FSL+this.SSL))/3;
+        DrawRect(0,80,200,40,`hsl(0, 100%,10%)`)
+        for (let i = 0; i < 2; i++) {
+        DrawRect(this.x,80,40,i==0? this.y:-this.y,`hsl(0, 100%,10%)`)
+        DrawCircle(this.x +20,100 + (i==0? this.y:-this.y),20,`hsl(20, 100%,50%)`)
+        if(Math.random()>0.1)
+        this.particles.push(new movingBall(this.x+20,100+(i==0?this.y:-this.y),5,{x:(Math.random()-0.5)*4,y:(Math.random()-0.5)*10},`hsl(${Math.random()*50}, 100%,50%)`,1000))
+        }
+      }else if (this.elapsed < this.CSL){
+        DrawRect(0,80,200,40,`hsl(0, 100%,10%)`)
+        for (let i = 0; i < 2; i++) {
+        DrawRect(this.x,80,40,i==0? this.y:-this.y,`hsl(0, 100%,10%)`)
+        DrawCircle(this.x +20,100 + (i==0? this.y:-this.y),20,`hsl(20, 100%,50%)`)
+        }
+        if(Math.random() >0){
+        let dir = Math.random()>0.5  
+        if (dir){
+          this.particles.push(new movingBall(200,Math.random()*200,Math.random()*20,{x:(Math.random()-0.5)*4,y:(Math.random()-0.5)*10},`hsl(${Math.random()*50}, 100%,50%)`,1000))
+        } else {
+        this.particles.push(new movingBall(Math.random() *200,100,Math.random()*20,{x:(Math.random()-0.5)*4,y:(Math.random()-0.5)*10},`hsl(${Math.random()*50}, 100%,50%)`,1000))
+        }
+      }
+      } 
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+    }
+  }
+
+  function gravesRHelp(hue){
+    this.rad = 1
+    this.hue = hue
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, `hsla(${this.hue}, 100%, ${(300 - this.rad / 2) / 4}%)`, this.rad / 1.5)
+      this.rad < 300 ? this.rad+=5 : this.lifetime = 0;
+    }
+  }
+
+  function GravesW(){
+    this.particles = [];
+    this.start = Date.now();
+    this.lifetime = 1
+
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+      if (this.elapsed < 3000){
+      this.particles.push(new trailParticle(Math.random()*320,Math.random()*200,Math.random() *80,`hsla(${Math.random()*40 + 170}, 50%,${20+ Math.random()*30}%,0.4)`,1000))
+      } else if (this.particles.length ==0){
+        this.lifetime = 0;
+      }     
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+    }
+  }
+
+function GravesE(){
+    this.x = -20;
+    this.y = 100;
+    this.start = Date.now();
+    this.trailParticles = [];
+    this.ripple  = null;
+    this.smokeParticles = [];
+    this.lifetime = 1
+    this.draw = function (){
+      this.elapsed = (Date.now() - this.start);
+      this.x +=6 ;
+      if (this.elapsed <1000){
+        this.alpha = SetRange(this.elapsed/500,0,0.9);
+      } else{
+        this.alpha -=0.01;
+        if (this.alpha <= 0){
+          this.lifetime = 0;
+        }
+      }
+      hctx.globalAlpha = this.alpha;
+      DrawRect(0,0,320,200,`hsla(260,100%,0%, ${this.alpha})`)
+      this.trailParticles.push(new trailParticle(this.x,100,40,`hsl(160, 70%, 80%)`,400))
+      this.smokeParticles.push(new trailParticle(this.x + (Math.random()-0.5)*100,(Math.random()-0.5)*100 +100,Math.random()*40,`hsla(${Math.random()*50}, 100%,${Math.random()*70 + 30}%,0.6)`,Math.random()*3000 + 200))
+      this.trailParticles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.trailParticles = this.trailParticles.filter(particle => particle.lifetime > 0);
+      
+      this.smokeParticles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.smokeParticles = this.smokeParticles.filter(particle => particle.lifetime > 0);
+      hctx.globalAlpha = 1;
+    }
+  }
+
+  function GravesR(){
+   this.start = Date.now();
+    this.x = 0;
+    this.y = 100;
+    this.alpha = 0;
+    this.particles = [];
+    this.lifetime = 1
+    this.STAGELENGTH = 500;
+    this.draw = function (){
+      if (this.elapsed <1000){
+      this.alpha = SetRange(this.elapsed/500,0,0.9);
+      } else if (this.elapsed >1500){
+        this.alpha -=0.01;
+        if (this.alpha <= 0){
+          this.lifetime = 0;
+        }
+      }
+      this.elapsed = (Date.now() - this.start);
+      this.x = this.elapsed/6
+      
+      DrawRect(0,0,320,200,`hsla(0,0%,0%, ${this.alpha})`)
+      if (this.elapsed < this.STAGELENGTH){
+      DrawCircle(this.x,this.y,20,`hsl(30, 100%,50%)`)
+      this.particles.push(new movingBall(this.x,this.y,Math.random()*8,{x:(Math.random()-0.5)*2,y:(Math.random()-0.5)*5},`hsl(${Math.random()*50}, 100%,80%)`,1000))
+      } else if (this.elapsed < this.STAGELENGTH*2){
+        if(this.elapsed < 530) effects.push(new gravesRHelp(0))
+        this.particles.push(new movingBall(this.x,this.y,Math.random()*20,{x:Math.random()*5,y:(Math.random()-0.5)*5},`hsl(${Math.random()*50}, 100%,50%)`,1000)) 
+      }
+      this.particles.forEach(particle => {
+        particle.draw();
+      });
+      
+      this.particles = this.particles.filter(particle => particle.lifetime > 0);
+    } 
+  }
+  function jannaQ() {
+    this.lifetime = 10;
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.x = 160;
+    this.y = 100;
+    this.index = 0;
+    effects.push(new RippleEffect(160, 100, 9, 1500, 20, "white", "out", "stroke", 2, false))
+
+    this.draw = function () {
+      if (Extendedq_Meter.value != 0) {
+        this.elapsed = Date.now() - this.start;
+        this.index = Math.floor(this.elapsed / 500);
+
+        for (let i = 0; i < this.index; i++) {
+          DrawCircle(this.x + Math.cos(Date.now() / i) * i, this.y + Math.sin(Date.now() / i) * i, i * 25, `rgba(${150 + i * 8}, ${150 + i * 10}, 150, .7)`);
+        }
+      } else {
+        this.y -= 10;
+        for (let i = 0; i < this.index; i++) {
+          DrawCircle(this.x + Math.cos(Date.now() / i) * i, this.y + Math.sin(Date.now() / i) * i, i * 25, `rgba(${150 + i * 10}, ${150 + i * 10}, 150, .7)`);
+        }
+      }
+      if (this.y <= 0) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function jannaE() {
+    this.lifetime = 10;
+    this.start = Date.now();
+    this.elapsed = 0;
+    this.index = 0;
+
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+      var remaining = 4000 - this.elapsed;
+      this.index = Math.ceil(remaining / 1000);
+
+      for (let i = 0; i < this.index; i++) {
+        DrawCircle(80 * i + 40, 100, 30, `rgba(80,120,255,${.25 * this.index}`);
+      }
+
+      if (this.elapsed > 4000) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function jannaR() {
+    this.lifetime = 10;
+    this.start = Date.now();
+    this.elapsed = 0;
+
+    this.draw = function () {
+      this.elapsed = Date.now() - this.start;
+
+      DrawCircle(160, 100, this.elapsed / 10, "rgba(0, 255, 0, .6)");
+      if (this.elapsed % 5 == 0) {
+        effects.push(new RippleEffect(160, 100, 10, 400, 20, "white", "out", "stroke", 1, false));
+      }
+
+      if (this.elapsed > 3000) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+
+  function JaxE() {
+    this.start = GetTime();
+    this.rotation = 0;
+    this.lifetime = 20;
+    DrawBackground("hsla(0,0%,0%,1)")
+
+    this.draw = function () {
+      DrawBackground("hsla(0,0%,0%,0.15)")
+      this.elapsed = GetTime() - this.start;
+      hctx.save();
+      hctx.translate(160, 100);
+      hctx.rotate(this.rotation);
+      hctx.fillStyle = "cyan";
+      hctx.fillRect(0, 0, 150, 20)
+      hctx.fillRect(0, 0, -150, 20)
+      hctx.restore()
+      this.rotation = this.elapsed / 200 * Math.PI;
+      if (Extendede_Meter.value == 0) {
+        this.lifetime = 0;
+        effects.push(new RippleEffect(160, 100, 8, 2000, 20, "orange", "out", "stroke", 3));
+      }
+    }
+  };
+
+  function JaxR() {
+    this.start = GetTime();
+    this.elapsed = 0;
+    this.count = 1;
+    this.lifetime = 20;
+    this.effects = [];
+
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      if (this.elapsed > 500) {
+        for (let index = 0; index < 3; index++) {
+          setTimeout(() => { this.effects.push(new SimpleMoveEffect(360, 0, { x: -20, y: 0 }, 50, 200, DrawRect, "gold", 1600)) }, 0 + index * 100);
+        }
+        this.start = GetTime();
+        this.count++;
+      }
+      if (this.count == 16) {
+        this.lifetime = 0;
+      }
+      this.effects.forEach(ele => {
+        ele.draw();
+      })
+    }
+  };
+  function JhinQ() {
+    this.x = 0;
+    this.y = 80;
+    this.ySpeed = 5;
+    this.start = GetTime();
+    this.explosion;
+    this.lifetime = 2000;
+
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 20, "purple");
+      this.ySpeed += 0.5;
+      this.x += 3;
+      if (this.y > 180) {
+        this.ySpeed = -this.ySpeed + 0.9;
+        this.explosion = new ParticleExplosion(this.x, this.y, "orange", 10, 0.5, 50, 8, 2)
+      }
+      if (this.explosion != null) {
+        this.explosion.draw();
+      }
+      this.lifetime = 3300 - (GetTime() - this.start);
+      this.y += this.ySpeed;
+    }
+  }
+
+  function JhinW() {
+    this.start = GetTime();
+    this.state = 0;
+    this.lifetime = 1500;
+    this.cube = new SimpleMoveEffect(145, 200, { x: 0, y: -10 }, 30, 40, DrawRect, "orange", 8000)
+    this.satVal = 0;
+    this.width = 200;
+    this.background = new SmoothBackgroundToBlack(30);
+    freezeCount++;;
+    
+    this.draw = function () {
+      this.x = 140;
+      this.lifetime = 3000 - (GetTime() - this.start)
+
+      if (this.lifetime <= 0) {
+        freezeCount--;;
+        return
+      }
+
+      if (this.state == 0) {
+        this.background.draw();
+        if (this.background.y >= 0) {
+          this.state = 1;
+        }
+      } else if (this.state == 1) {
+        DrawBackground("hsla(0,0%,0%, 1)")
+        DrawRect(160 - (this.width) / 2, 0, this.width, 200, this.color)
+        this.satVal += 5;
+        this.color = `hsl(0, ${this.satVal}%, 46%)`;
+        if (this.width < 0) {
+          this.state = 2
+          DrawBackground("hsla(0,0%,0%, 1)")
+        }
+        this.width -= 5;
+      } else if (this.state == 2) {
+        DrawBackground("hsla(0,0%,0%, 0.07)")
+        this.cube.draw();
+      }
+    }
+  }
+
+
+
+  function JhinR() {
+    freezeCount++;;
+    StopEffects = true;
+    effects.push(new SimpleMoveEffect(0, 0, { x: 0, y: 0 }, 320, 200, DrawRect, "hsla(0,0%,0%,0.1)", 5000))
+    for (let index = 0; index < 4; index++) {
+      setTimeout(() => {
+        effects.push(new SimpleMoveEffect(Math.floor(index / 2) == 0 ? 160 : 0, 0, { x: Math.floor(index / 2) == 0 ? -5 : 0, y: 0 }, 30, 200, DrawRect, "red", 4000))
+        effects.push(new SimpleMoveEffect(Math.floor(index / 2) == 0 ? 130 : 290, 0, { x: Math.floor(index / 2) == 0 ? 5 : 0, y: 0 }, 30, 200, DrawRect, "red", 4000))
+      }, Math.floor(index / 2) * 700);
+    }
+    for (let index = 0; index < 4; index++) {
+      setTimeout(() => {
+        effects.push(new SimpleMoveEffect(Math.random() * 250 + 30, 200, { x: 0, y: -10 }, 30, 40, DrawRect, "orange", 8000))
+      }, index * 1000 + 800);
+    }
+
+    setTimeout(() => {
+      freezeCount--;;
+      StopEffects = false;
+    }, 5000);
+  }
+
+
+
+  function KarthusR() {
+    this.start = Date.now()
+    this.width = 10
+    this.count = 0;
+    this.radius = 1;
+    this.lifetime = 10;
+    karthusQ = false;
+    this.draw = function () {
+      let elapsed = Date.now() - this.start;
+      if (elapsed < 3000) {
+        for (let i = 0; i < 2; i++) {
+          effects.push(new karthusRHelp(Math.random() * this.width + 160 - this.width / 2, `hsla(190, ${Math.random() * 50 + 50}%, ${Math.random() * 60 + 40}%, ${Math.random()})`))
+        }
+        this.width += .75
+      } else {
+        DrawCircle(160, 200, this.radius, `hsla(190, 100%, 75%, ${1 - this.radius / 250})`)
+        DrawCircle(160, 200, this.radius + 20, `hsla(190, 100%, 75%, ${1 - this.radius / 250})`)
+        this.radius < 250 ? this.radius += 10 : this.lifetime = 0;
+        if (!this.lifetime) karthusQ = true
+      }
+    }
+  }
+
+  function karthusRHelp(x, color) {
+    this.x = x
+    this.y = -100
+    this.color = color
+    this.lifetime = 10
+    this.draw = function () {
+      DrawRect(this.x, this.y, 20, 100, this.color)
+      this.y < 300 ? this.y += 10 : this.lifetime = 0;
+    }
+  }
+
+  function KarthusE() {
+    this.lifetime = 10;
+    this.count = 0;
+    this.grad = hctx.createRadialGradient(160, 100, 10, 160, 100, 100)
+    this.grad.addColorStop(.3, "black")
+    this.grad.addColorStop(1, "hsla(0, 0%, 0%, 0)")
+    this.effects = []
+    karthusQ = false;
+    this.draw = function () {
+      if (this.count % 8 == 0 && ActiveExtendedE) this.effects.push(new karthusEHelp())
+      this.count++
+      if (!ActiveExtendedE && this.effects.length == 0) this.lifetime = 0;
+      if (!this.lifetime) karthusQ = true
+
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+      })
+      
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
+      DrawCircle(160, 100, 100, this.grad)
+    }
+  }
+
+  function karthusEHelp() {
+    this.radius = 1;
+    this.lifetime = 1;
+    this.hue = 200
+    this.draw = function () {
+      DrawCircle(160, 100, this.radius, `hsla(${this.hue - this.radius / 4}, 100%, 50%, ${1 - this.radius / 200})`)
+      this.radius < 200 ? this.radius += 5 : this.lifetime = 0;
+    }
+  }
+
+  function KarthusW() {
+    this.lifetime = 10;
+    this.count = 0;
+    karthusQ = false;
+    this.draw = function () {
+      if (this.count % 2 == 0) effects.push(new karthusWHelp())
+      this.count < 100 ? this.count++ : this.lifetime = 0;
+      if (!this.lifetime) karthusQ = true
+    }
+  }
+
+  function karthusWHelp() {
+    this.x = Math.random() * 320
+    this.y = 250
+    this.mod = Math.random() * 30 + 20
+    this.lifetime = 10;
+    this.draw = function () {
+      DrawCircle(this.x, this.y, 80, `hsla(${180}, 100%, ${this.mod}%, .2)`)
+      this.y > -50 ? this.y -= Math.random() * 10 : this.lifetime = 0;
+    }
+  }
+
+  function KarthusQ() {
+    this.lifetime = 10;
+    this.radius = 1;
+    this.alpha = .5;
+    this.draw = function () {
+      DrawRect(0, 0, 320, 200, `hsla(240, 100%, 50%, ${this.alpha})`)
+      DrawStroke(160, 100, this.radius, "cyan", 50)
+      this.radius += 7
+      this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0;
+    }
+  }
+  function KatarinaR(){
+    this.count = 0
+    this.a = 0
+    this.half = false
+    this.draw = function(){
+      if(!this.half) this.a <= .49 ? this.a += .01 : this.half = true
+      else this.a >= .001 ? this.a -= .001 : this.lifetime = 0
+      DrawRect(0, 0, 320, 200, getColorString(0, 100, 50, this.a))
+      this.count < 15 ? this.count++ : this.count = 0
+      if(!this.count) effects.push(new katarinaRHelp())
+    }
+  }
+
+  function katarinaRHelp(){
+    this.x = -50
+    this.y = Math.random() * 100 + 50
+    this.rot = 0
+    this.draw = function(){
+      katarinaDagger(this.x, this.y, this.rot, 1)
+      this.x < 400 ? this.x += 5 : this.lifetime = 0
+      this.rot += .1
+    }
+  }
+
+  function KatarinaE(){
+    this.x = -30
+    this.draw = function(){
+      DrawCircle(this.x, 100, 30, "red")
+      this.x < 350 ? this.x += 10 : this.lifetime = 0
+      effects.push(new katarinaEHelp(this.x - 30))
+    }
+  }
+
+  function katarinaEHelp(x){
+    this.x = x
+    this.y = Math.random() * 40 + 80
+    this.rad = 20
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, getColorString(0, 100, this.rad, 1))
+      this.rad > 0 ? this.rad -= .5 : this.lifetime = 0
+    }
+  }
+
+  function KatarinaW(){
+    this.a = 0
+    this.rad = 1
+    this.rot = 0
+    this.speed = 0
+    this.draw = function(){
+      hctx.save()
+      hctx.translate(160, 100)
+      hctx.rotate(this.rot)
+      hctx.translate(-160, -100)
+      katarinaDagger(230, 100, Math.PI / 2, this.a)
+      katarinaDagger(90, 100, Math.PI * 3 / 2, this.a)
+      if(this.rad < 150) {
+          if(this.a <= .975) this.a += .025
+          this.rad += 2
+        }
+        else {
+          this.rot += this.speed
+          this.speed += .0025
+          this.a >= .01 ? this.a -= .01 : this.lifetime = 0
+        }
+        DrawStroke(160, 100, 150, getColorString(240, 100, 50, this.a), 30)
+        DrawStroke(160, 100, this.rad, getColorString(0, 100, 50, this.a), 30)
+        hctx.restore()
+    }
+  }
+
+  function KatarinaQ(){
+    this.a = 0
+    this.a2 = 0
+    this.rad = 1
+    this.x = -50
+    this.rot = 0
+    this.draw = function(){
+      katarinaDagger(this.x, 100, this.rot, this.a)
+      if(this.x < 160){
+        this.x += 5
+        this.rot += .15
+        if(this.a <= .95) this.a += .05
+      } else {
+        if(this.rad < 150) {
+          if(this.a2 <= .975) this.a2 += .025
+          this.rad += 3
+        }
+        else {
+          this.a >= .01 ? this.a -= .01 : this.lifetime = 0
+          this.a2 = this.a
+        }
+        DrawStroke(160, 100, 150, getColorString(240, 100, 50, this.a2), 30)
+        DrawStroke(160, 100, this.rad, getColorString(0, 100, 50, this.a), 30)
+      }
+    }
+  }
+
+  function katarinaDagger(x, y, rot, alpha){
+    hctx.save()
+    hctx.translate(x, y)
+    hctx.rotate(rot)
+    hctx.translate(-x, -y)
+    DrawRect(x - 10, y - 50, 20, 70, getColorString(0, 0, 50, alpha))
+    DrawTriangle(x - 10, y - 50, x + 10, y - 50, x, y - 70, getColorString(0, 0, 50, alpha))
+    DrawRect(x - 10, y + 20, 20, 30, getColorString(15, 60, 30, alpha))
+    DrawRect(x - 25, y + 10, 50, 10, getColorString(0, 0, 30, alpha))
+    hctx.restore()
+  }
+  function KhaZixQ() {
+    this.lifetime = 10;
+    this.dir = Math.random() > .5
+    this.x = this.dir ? 170 : 50
+    this.height = 0;
+    this.there = false;
+    this.alpha = 1;
+    this.draw = function () {
+      hctx.save()
+      hctx.globalAlpha = this.alpha
+      hctx.translate(this.x, -10)
+      hctx.rotate(this.dir ? .5 : -.5)
+      hctx.translate(-this.x, 10)
+      DrawRect(this.x, -10, 100, this.height, "purple")
+      hctx.restore()
+      this.height < 250 ? this.height += 25 : this.there = true;
+      this.there ? this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0 : null;
+    }
+  }
+
+  function KhaZixW() {
+    this.lifetime = 10;
+    this.draw = function () {
+      effects.push(new KhaWHelp(0))
+      effects.push(new KhaWHelp(-.75))
+      effects.push(new KhaWHelp(.75))
+      this.lifetime = 0;
+    }
+  }
+
+  function KhaWHelp(rotate) {
+    this.lifetime = 10;
+    this.rotate = rotate;
+    this.there = false;
+    this.switch = false;
+    this.y = 200;
+    this.x = 130;
+    this.x2 = 130;
+    this.alpha = 1;
+    this.draw = function () {
+      hctx.globalAlpha = this.alpha;
+      hctx.save()
+      hctx.translate(160, 200)
+      hctx.rotate(this.rotate)
+      hctx.translate(-160, -200)
+      for (i = 0; i < 200 - this.y; i += 20) {
+        DrawRect(this.switch ? this.x : this.x2, 200 - i, 60, -20, "purple")
+        this.switch = !this.switch;
+      }
+      DrawCircle(160, this.y, 30, "white")
+      hctx.globalAlpha = 1;
+      hctx.restore()
+      this.y > -40 ? this.y -= 15 : this.there = true;
+      if (this.there) {
+        this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0;
+        this.x += .5;
+        this.x2 -= .5;
+      }
+    }
+  }
+
+  function KhaZixE() {
+    this.radius = 1;
+    this.lifetime = 10;
+    this.alpha = 1;
+    this.draw = function () {
+      hctx.globalAlpha = this.alpha
+      DrawCircle(160, 100, this.radius, "yellow")
+      DrawCircle(160, 100, this.radius + 50, `hsla(285, 100%, 50%, ${1 - (this.radius / 200)})`)
+      hctx.globalAlpha = 1;
+      this.radius < 200 ? this.radius += 10 : null;
+      this.alpha >= .03 ? this.alpha -= .03 : this.lifetime = 0;
+    }
+  }
+
+  function KhaZixR() {
+    this.radius = 200;
+    this.radius2 = 300;
+    this.lifetime = 10;
+    this.alpha = 0;
+    this.draw = function () {
+      hctx.globalAlpha = this.alpha
+      DrawRect(0, 0, 320, 200, "hsl(285, 100%, 6%)")
+      DrawStroke(160, 100, this.radius, "hsl(350, 100%, 6%)", 20)
+      DrawStroke(160, 100, this.radius2, "hsl(350, 100%, 8%)", 20)
+      DrawCircle(100, 100 + Math.sin(Date.now() / 200) * 10, 20, "lime")
+      DrawCircle(220, 100 + Math.sin(Date.now() / 200) * 10, 20, "lime")
+      hctx.globalAlpha = 1;
+      this.radius >= 6 ? this.radius -= 5 : this.radius = 200;
+      this.radius2 >= 6 ? this.radius -= 5 : this.radius = 200;
+      this.alpha <= .95 ? this.alpha += .05 : this.alpha = 1;
+      if (ActiveExtendedR == false) this.lifetime = 0
+    }
+  }
+
+  function KogMawR(){
+    this.x = 0
+    this.count = 0
+    this.lifetime = 1000
+    this.draw = function(){
+      DrawRect(0, 0, this.x, 200, `hsla(100, 100%, 0%, ${this.lifetime / 100})`)
+      if(this.count == 0) effects.push(new KogRHelp())
+      this.count < 15 ? this.count++ : this.count = 0
+      this.lifetime--
+    }
+  }
+
+  function KogRHelp(){
+    this.x = Math.random() * 320
+    this.y = Math.random() * 200
+    this.rad = 1
+    this.lifetime = 100
+    for(let i = 0; i < 10; i++) effects.push(new expHelp(this.x, this.y, .25, "green"))
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad, `hsla(110, 100%, 50%, ${this.lifetime / 50})`)
+      this.rad++
+      this.lifetime--
+    }
+  }
+
+  function KogMawE(){
+    this.x = 0
+    this.lifetime = 50
+    this.draw = function(){
+      DrawRect(0, 0, this.x, 200, `hsla(100, 100%, 50%, ${this.lifetime / 100})`)
+      effects.push(new expHelp(this.x, 100, .5, `hsl(${Math.random() * 40 + 80}, 100%, 50%)`))
+      this.x < 400 ? this.x += 3 : this.lifetime--
+    }
+  }
+
+  function KogMawW(){
+    this.lifetime = 500
+    this.draw = function(){
+      if(this.lifetime % 15 == 0) effects.push(new kogWHelp())
+      this.lifetime--
+    }
+  }
+
+  function kogWHelp(){
+    this.rad = 1
+    this.alpha = Math.sin(Date.now() / 100) * .3 + .4
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, `hsla(300, 100%, 50%, ${this.alpha})`, 30)
+      this.rad < 300 ? this.rad += 2 : this.lifetime = 0
+    }
+  }
+
+  function KogMawQ(){
+    this.x = -50
+    for(let i = 0; i < 30; i++) effects.push(new expHelp(0, 100, 1, "green"))
+    this.draw = function(){
+      let grad = hctx.createRadialGradient(this.x, 100, 10, this.x, 100, 90)
+      grad.addColorStop(0, `hsla(100, 100%, 50%, 1)`)
+      grad.addColorStop(1, `hsla(120, 100%, 10%, 1)`)
+      DrawCircle(this.x - 150, 100, 30, grad)
+      DrawCircle(this.x - 100, 100, 40, grad)
+      DrawCircle(this.x - 50, 100, 50, grad)
+      DrawCircle(this.x, 100, 60, grad)
+      this.x < 400 ? this.x += 8 : this.lifetime = 0
+    }
+  }
+  function LeeSinR(){
+    this.rad = 1
+    this.count = 0
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad, getColorString(0, 0, 50, 1), 40)
+      if(this.rad < 300) this.rad += 5
+      if(this.count < 75){
+        this.count++
+        effects.push(new leeSinRHelp())
+      }
+    }
+  }
+
+  function leeSinRHelp(){
+    this.x = 160
+    this.y = 100
+    this.rad = 1
+    this.hue = Math.random() * 60
+    this.count = 0
+    this.draw = function(){
+      DrawCircle(this.x, this.y, this.rad / 2, getColorString(this.hue, 100, 50, .5))
+      this.x = Math.cos(this.count) * this.rad + 160
+      this.y = Math.sin(this.count) * this.rad + 100
+      if(this.rad < 200) this.rad += 2
+      else this.lifetime = 0
+      this.count += Math.PI / 20
+    }
+  }
+
+  function LeeSinE(){
+    this.count = 0
+    this.rad = 1
+    this.lifetime = 1
+    this.effects = []
+    this.draw = function(){
+      if(!this.count && this.rad < 15){
+        this.effects.push(new leeSinEHelp(this.rad))
+        this.rad++
+      } else if(this.effects.length < 1) this.lifetime = 0
+      this.count < 3 ? this.count++ : this.count = 0
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+      })
+      
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
+    }
+  }
+
+  function leeSinEHelp(rad){
+    this.rad = rad
+    this.a = 1
+    this.hue = 0
+    this.sat = 100
+    this.lit = 50
+    this.lifetime = 1
+    this.draw = function(){
+      DrawStroke(160, 100, this.rad * 20, getColorString(this.hue, this.sat, this.lit, this.a), 20)
+      if(this.hue < 60) this.hue+=2
+      if(this.sat > 25) this.sat -= .5
+      if(this.lit > 25) this.lit--
+      else this.a >= .05 ? this.a -= .05 : this.lifetime = 0
+    }
+  }
+
+  function LeeSinW(){
+    this.h = 1
+    this.a = 1
+    this.draw = function(){
+      DrawRect(0, 100 - this.h, 320, this.h * 2, getColorString(180, 100, 50, this.a))
+      DrawRect(0, 100 - this.h / 2, 320, this.h, getColorString(60, 100, 50, this.a))
+      this.h < 100 ? this.h += 2 : this.a >= .01 ? this.a -= .01 : this.lifetime = 0
+    }
+  }
+
+  function LeeSinQ(){
+    this.x = -20
+    this.effects = []
+    this.lifetime = 1
+    this.draw = function(){
+      this.effects.forEach((ele, i) => {
+        ele.draw()
+      })
+      
+      this.effects = this.effects.filter(ele => ele.lifetime > 0)
+      DrawCircle(this.x, 100, 40, "cyan")
+      DrawCircle(this.x, 100, 20, "yellow")
+      DrawCircle(this.x, 100, 5, "white")
+      this.x < 400 ? this.x += 7 : this.effects.length == 1 ? this.lifetime = 0 : null;
+      if(this.x < 320) this.effects.push(new leeSinQHelp(this.x, Math.random() * 40 + 80))
+    }
+  }
+
+  function leeSinQHelp(x, y){
+    this.x = x
+    this.y = y
+    this.a = 1
+    this.lifetime = 1
+    this.draw = function(){
+      DrawCircle(this.x, this.y, 20 * this.a, getColorString(180, 100, 50, this.a))
+      this.a >= .01 ? this.a -= .01 : this.lifetime = 0
+    }
+  }
+  function LeonaQ() {
+    StopEffects = true;
+    this.start = GetTime();
+    this.rotation = 0;
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      hctx.save();
+      hctx.translate(160, 100);
+      hctx.rotate(this.rotation);
+      DrawSun(0, 0, this.elapsed / 25, 1, "Yellow")
+      hctx.restore()
+      this.rotation = this.elapsed / 2000 * Math.PI;
+      if (this.elapsed > 3500) {
+        this.lifetime = 0;
+        effects.push(new RippleEffect(160, 100, 8, 2000, 20, "orange", "out", "stroke", 3))
+        StopEffects = false;
+      }
+    }
+  }
+
+  function LeonaE() {
+    freezeCount++;;
+    this.start = GetTime();
+    this.cube = new SimpleMoveEffect(0, 80, { x: 10, y: 0 }, 60, 30, DrawRect, "orange", 2000)
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      copyScreen(0.1);
+      this.cube.draw();
+      if (this.elapsed > 1000) {
+        DrawCircle((this.elapsed - 1000) / 1.8, 100, 50, "hsla(39, 100%, 51%, 1)")
+      }
+
+      if (this.elapsed > 2000) {
+        this.lifetime = 0;
+        StopEffects = false;
+        freezeCount--;;
+      }
+    }
+  };
+
+  function LeonaW() {
+    this.start = GetTime();
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      hctx.beginPath();
+      hctx.strokeStyle = "yellow";
+      hctx.lineWidth = 15;
+      hctx.arc(160, 100, 60 - this.elapsed / 50, 0, 2 * Math.PI)
+      hctx.stroke();
+      hctx.lineWidth = 1;
+      if (this.elapsed > 2000) {
+        this.lifetime = 0;
+        effects.push(new RippleEffect(160, 100, 6, 1000, 30, "orange", "out", "fill", 1))
+      }
+    }
+  };
+
+
+  function LeonaR() {
+    this.start = GetTime();
+    StopEffects = true;
+    freezeCount++;;
+    
+    this.draw = function () {
+       this.elapsed = GetTime() - this.start;
+      if (this.elapsed > 4000) {
+        this.lifetime = 0
+        StopEffects = false;
+        freezeCount--;;
+        effects.push(new ParticleExplosion(160, 60, "orange", 8, 2000, 500, 5, 1, false))
+      }
+      DrawBackground(`hsl(189,100%,${this.elapsed / 50}%)`)
+      DrawCircle(160, 160 - this.elapsed / 40, 40, "yellow")
+      hctx.fillStyle = `hsl(125,100%,${this.elapsed / 50}%)`
+      hctx.fillRect(0, 120, 320, 100)
+    }
+  };
+
+  function LucianQ() {
+    this.start = GetTime()
+    freezeCount++;;
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      if (this.elapsed < 200) {
+        hctx.fillStyle = "yellow"
+        hctx.fillRect(0, 80, 320, 40);
+      } else if (this.elapsed < 700) {
+        DrawBackground("hsla(0,0%,0%,0.1)")
+      } else if (this.elapsed < 1000) {
+        hctx.fillStyle = "blue"
+        hctx.fillRect(0, 100 - ((this.elapsed - 700) / 10), 320, ((this.elapsed - 700) / 5));
+      } else if (this.elapsed < 1500) {
+        hctx.fillStyle = "hsl(193, 100%, 56%)"
+        hctx.fillRect(0, 75, 320, 50);
+      } else {
+        this.lifetime = 0
+        freezeCount--;;
+      }
+    }
+  };
+
+  function LucianW() {
+    this.start = GetTime()
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      if (this.elapsed / 1.5 <= 160) {
+        DrawCircle(this.elapsed / 1.5, 100, 30, "blue")
+        DrawCircle(this.elapsed / 1.5, 100, 10, "yellow")
+      } else if (this.elapsed < 2000) {
+        DrawCircle(160, 100, 10, "yellow")
+        DrawRect(145, 90, 30, (-this.elapsed + 300) / 6, "blue")
+        DrawRect(145, 110, 30, (this.elapsed - 300) / 6, "blue")
+        DrawRect(180, 85, (this.elapsed - 300) / 6, 30, "blue")
+        DrawRect(140, 85, (-this.elapsed + 300) / 6, 30, "blue")
+      } else {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function LucianE() {
+    freezeCount++;;
+    this.start = GetTime();
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      copyScreen(0.1);
+      DrawCircle(this.elapsed / 1.8, 100, 50, "hsl(193, 100%, 56%)")
+      if (this.elapsed > 2000) {
+        this.lifetime = 0;
+        StopEffects = false;
+        freezeCount--;;
+      }
+    }
+  };
+
+
+
+  function LucianR() {
+    StopEffects = true;
+    freezeCount++;;
+    effects.push(new SimpleMoveEffect(0, 0, { x: 0, y: 0 }, 320, 200, DrawRect, "black", 4000))
+
+    for (let index = 0; index < 70; index++) {
+      setTimeout(() => {
+        effects.push(new SimpleMoveEffect(Math.random() * 320, 200, { x: 0, y: -10 }, 10, 10, DrawRect, Math.random() > 0.5 ? "yellow" : "cyan", 1000))
+      }, index * 50);
+    }
+    setTimeout(() => {
+      StopEffects = false;
+      freezeCount--;;
+    }, 4000);
+  };
+  function LuxQ() {
+    this.lifetime = 20;
+    this.x = 360;
+
+    this.draw = function () {
+      DrawCircle(Math.cos(GetTime() / 80) * 10 + this.x, Math.sin(GetTime() / 100) * 10 + 100, 40, "rgb(255, 0, 255)")
+      DrawCircle(Math.cos(GetTime() / 90) * 10 + this.x, Math.sin(GetTime() / 90) * 10 + 100, 40, "rgb(255, 255, 0)")
+      DrawCircle(Math.cos(GetTime() / 100) * 10 + this.x, Math.sin(GetTime() / 80) * 10 + 100, 40, "rgb(0, 255, 255)")
+      DrawCircle(this.x, 100, 35, "white");
+
+      this.x -= 15;
+      if (this.x <= -20) {
+        this.lifetime = 0;
+      }
+    }
+  };
+
+  function LuxW() {
+    this.start = GetTime();
+    this.rotation = 0;
+    this.lifetime = 20;
+    this.x = -100;
+    this.end = false;
+
+    this.draw = function () {
+      this.elapsed = GetTime() - this.start;
+      hctx.save();
+      hctx.translate(this.x, 100);
+      hctx.rotate(this.rotation);
+      hctx.fillStyle = "white";
+      hctx.fillRect(0, 0, 100, 30)
+      hctx.fillRect(0, 0, -100, 30)
+      hctx.fillStyle = "cyan";
+      hctx.fillRect(0, 0, 100, 20)
+      hctx.fillRect(0, 0, -100, 20)
+      hctx.restore
