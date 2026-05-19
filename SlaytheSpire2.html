@@ -1,0 +1,2125 @@
+<head>
+    <title>Slay the Spire 2 Dev</title>
+    <meta description="Slay the Spire 2 integration — detects action menus, combat, loot, map, shop, rest, and more. v1.0.1" />
+    <meta publisher="SignalRGB" />
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACTIVE USER-FACING CONTROLS
+         All properties below appear as controls in the SignalRGB UI.
+         Values are injected into the JS scope by name at runtime.
+         ═══════════════════════════════════════════════════════════ -->
+
+    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Changes the brightness of the background effect."                                          type="number"  default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode"        tooltip="Changes the background mode."                                                              type="list"
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor"      label="Custom Color"           tooltip="Sets the background color when Custom or Custom Ambience mode is selected."                type="color"   default="#010101" min="0" max="360" />
+
+    <!-- Adjustment overlay -->
+    <meta property="adjBars" label="Adjust Bar Positions" tooltip="Enable to see live bar overlays for position tuning. Disable before playing." type="boolean" default="0" />
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VISION METERS
+       Each meter captures a small region of the game screen and
+       measures what percentage of its pixels match the given HSL
+       range. The JS Meter class smooths readings over N frames
+       before firing a callback.
+
+       Detection strategy: every game state uses a POSITIVE meter
+       (confirms the expected color IS present) paired with a
+       NEGATIVE "Not" meter (confirms the region does NOT show that
+       color during baseline/off state). A state is considered active
+       only when positive is high AND negative is low, preventing
+       false positives from ambient lighting or UI transitions.
+
+       TESTER NOTE: If an effect never fires, first check the QA Tool
+       — load a screenshot from the target resolution and verify the
+       meter region actually captures the right pixels at the right
+       color. Then adjust HSL ranges or region coordinates as needed.
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- ── ACTION MENU ─────────────────────────────────────────────
+       actionRed (POSITIVE): bright red icon in the action wheel — confirms the wheel is open.
+       actionWhite (POSITIVE): white icon alongside red — second confirmation.
+       actionBlue (POSITIVE): blue icon on the opposite side — third confirmation.
+       All three must reach ≥ .95 simultaneously to fire actionCallback.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="actionRed" tags="vlc,Slay the Spire 2" x="0.0405" y="0.7037" width="0.0042" height="0.0053"
+    h="-30-30" s="70-100" l="10-65" hdr-h="-30-30" hdr-s="70-100" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.1835" y="0.7037" width="0.0042" height="0.0053" />
+    <resolution aspect="24:10" x="0.0297" y="0.7045" width="0.0042" height="0.0053" />
+    <resolution aspect="16:11" x="0.0448" y="0.7028" width="0.0042" height="0.0053" />
+
+    <resolution size="3840x2160" x="0.0405" y="0.7037" width="0.0042" height="0.0053" />
+    <resolution size="3840x1080" x="0.1826" y="0.7028" width="0.0042" height="0.0053" />
+    <resolution size="2560x1080" x="0.0309" y="0.6988" width="0.0031" height="0.0093" /> 
+    
+  </meta>
+
+  
+  <meta meter="actionWhite" tags="vlc,Slay the Spire 2" x="0.0241" y="0.7172" width="0.0046" height="0.0067"
+    h="0-360" s="0-40" l="50-100" hdr-h="0-360" hdr-s="0-40" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.1743" y="0.7173" width="0.0046" height="0.0067" />
+    <resolution aspect="24:10" x="0.0168" y="0.7173" width="0.0046" height="0.0067" />
+    <resolution aspect="16:11" x="0.0267" y="0.7190" width="0.0046" height="0.0067" />
+
+    <resolution size="3840x2160" x="0.0233" y="0.7165" width="0.0046" height="0.0067" />
+    <resolution size="3840x1080" x="0.1741" y="0.7156" width="0.0046" height="0.0067" />
+    <resolution size="2560x1080" x="0.0172" y="0.7201" width="0.0019" height="0.0019" /> 
+    
+  </meta>
+
+  
+  <meta meter="actionBlue" tags="vlc,Slay the Spire 2" x="0.9696" y="0.7299" width="0.0042" height="0.0075"
+    h="180-220" s="25-60" l="15-45" hdr-h="180-220" hdr-s="25-60" hdr-l="50-75" type="area">
+    <resolution aspect="3.55:1" x="0.8180" y="0.7338" width="0.0042" height="0.0075" />
+    <resolution aspect="24:10" x="0.9746" y="0.7330" width="0.0042" height="0.0075" />
+    <resolution aspect="16:11" x="0.9631" y="0.7313" width="0.0042" height="0.0075" />
+
+    <resolution size="3840x2160" x="0.9661" y="0.7330" width="0.0042" height="0.0075" />
+    <resolution size="3840x1080" x="0.8175" y="0.7313" width="0.0042" height="0.0075" />
+    <resolution size="2560x1080" x="0.95" y="0.696" width="0.0023" height="0.0046" /> 
+    
+  </meta>
+
+  <!-- ── COMBAT ──────────────────────────────────────────────────
+       battleYellow (POSITIVE): yellow health/energy bar across center — visible during
+       an active battle. Paired with manaRed direct-read in battleCallback.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="battleYellow" tags="vlc,Slay the Spire 2" x="0.3960" y="0.4539" width="0.2068" height="0.0045"
+    h="44-76" s="43-80" l="56-100" hdr-h="44-76" hdr-s="43-80" hdr-l="56-100" type="area">
+    <resolution aspect="3.55:1" x="0.4485" y="0.4539" width="0.1027" height="0.0045" />
+    <resolution aspect="24:10" x="0.4255" y="0.4539" width="0.1576" height="0.0045" />
+    <resolution aspect="16:11" x="0.3960" y="0.4539" width="0.2068" height="0.0045" />
+
+    <resolution size="3840x2160" x="0.3960" y="0.4539" width="0.2068" height="0.0045" />
+    <resolution size="3840x1080" x="0.4436" y="0.4539" width="0.1136" height="0.0045" />
+    <resolution size="2560x1080" x="0.3994" y="0.4171" width="0.2028" height="0.0194" /> 
+    
+  </meta>
+
+  <!-- ── IN-GAME HUD ──────────────────────────────────────────────
+       gearGrey (POSITIVE): settings gear icon top-right — confirms main HUD visible.
+       coinYellow (POSITIVE): gold coin icon top-left — second confirmation.
+       Both high sets gInGame = true; both low clears it.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="gearGrey" tags="vlc,Slay the Spire 2" x="0.9776" y="0.0323" width="0.0021" height="0.0075"
+    h="121-156" s="0-28" l="28-92" hdr-h="0-100" hdr-s="0-28" hdr-l="28-100" type="area">
+    <resolution aspect="3.55:1" x="0.8243" y="0.0308" width="0.0021" height="0.0075" />
+    <resolution aspect="24:10" x="0.9827" y="0.0334" width="0.0021" height="0.0075" />
+    <resolution aspect="16:11" x="0.9758" y="0.0334" width="0.0021" height="0.0075" />
+
+    <resolution size="3840x2160" x="0.9776" y="0.0323" width="0.0021" height="0.0075" />
+    <resolution size="3840x1080" x="0.8240" y="0.0325" width="0.0021" height="0.0075" />
+    <resolution size="2560x1080" x="0.9773" y="0.0185" width="0.0008" height="0.0028" /> 
+    
+  </meta>
+
+  
+  <meta meter="coinYellow" tags="vlc,Slay the Spire 2" x="0.1794" y="0.0300" width="0.0072" height="0.0075"
+    h="1-62" s="26-100" l="26-100" hdr-h="1-62" hdr-s="26-100" hdr-l="26-100" type="area">
+    <resolution aspect="3.55:1" x="0.2516" y="0.0325" width="0.0072" height="0.0075" />
+    <resolution aspect="24:10" x="0.1321" y="0.0308" width="0.0072" height="0.0075" />
+    <resolution aspect="16:11" x="0.2002" y="0.0334" width="0.0072" height="0.0075" />
+
+    <resolution size="3840x2160" x="0.1787" y="0.0317" width="0.0072" height="0.0075" />
+    <resolution size="3840x1080" x="0.2518" y="0.0325" width="0.0072" height="0.0075" />
+    <resolution size="2560x1080" x="0.1336" y="0.0278" width="0.0071" height="0.0111" /> 
+    
+  </meta>
+
+  <!-- ── BANNER / REWARD SCREENS ─────────────────────────────────
+       bannerBrown (POSITIVE): brown header banner common to all reward screens.
+       bannerNotBrown (NEGATIVE): detects non-brown content during baseline — must be
+         < .1 to confirm a real reward screen.
+       skipBlue (POSITIVE) / skipNotBlue (NEGATIVE): blue "Skip" button pair —
+         confirms a card-choose reward.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="bannerBrown" tags="vlc,Slay the Spire 2" x="0.4922" y="0.2190" width="0.0236" height="0.0030"
+    h="13-47" s="10-49" l="17-82" hdr-h="0-50" hdr-s="0-49" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4922" y="0.2190" width="0.0236" height="0.0030" />
+    <resolution aspect="24:10" x="0.4922" y="0.2190" width="0.0236" height="0.0030" />
+    <resolution aspect="16:11" x="0.4922" y="0.2190" width="0.0236" height="0.0030" />
+
+    <resolution size="3840x2160" x="0.4922" y="0.2190" width="0.0236" height="0.0030" />
+    <resolution size="2560x1080" x="0.4861" y="0.2206" width="0.0235" height="0.0018"  /> 
+    
+  </meta>
+
+  
+  <meta meter="bannerNotBrown" tags="vlc,Slay the Spire 2" x="0.4930" y="0.2048" width="0.0266" height="0.0022"
+    h="13-47" s="10-49" l="17-82" hdr-h="0-50" hdr-s="0-49" hdr-l="75-100" type="area">
+    <resolution aspect="3.55:1" x="0.4930" y="0.2048" width="0.0266" height="0.0022" />
+    <resolution aspect="24:10" x="0.4930" y="0.2048" width="0.0266" height="0.0022" />
+    <resolution aspect="16:11" x="0.4930" y="0.2048" width="0.0266" height="0.0022" />
+
+    <resolution size="3840x2160" x="0.4930" y="0.2048" width="0.0266" height="0.0022" />
+    <resolution size="2560x1080" x="0.4904" y="0.2085" width="0.0180" height="0.0019"  /> 
+    
+  </meta>
+
+  
+  <meta meter="skipBlue" tags="vlc,Slay the Spire 2" x="0.5534" y="0.8627" width="0.0042" height="0.0075"
+    h="170-200" s="33-63" l="23-53" hdr-h="170-200" hdr-s="0-63" hdr-l="50-75" type="area">
+    <resolution aspect="3.55:1" x="0.5267" y="0.8089" width="0.0042" height="0.0075" />
+    <resolution aspect="24:10" x="0.5401" y="0.8342" width="0.0042" height="0.0075" />
+    <resolution aspect="16:11" x="0.5609" y="0.8295" width="0.0042" height="0.0075" />
+
+    <resolution size="3840x2160" x="0.5568" y="0.8334" width="0.0042" height="0.0075" />
+    <resolution size="3840x1080" x="0.5274" y="0.8376" width="0.0042" height="0.0075" />
+    <resolution size="2560x1080" x="0.5084" y="0.8276" width="0.0035" height="0.0028" /> 
+    
+  </meta>
+
+  
+  <meta meter="skipNotBlue" tags="vlc,Slay the Spire 2" x="0.5564" y="0.8860" width="0.0042" height="0.0053"
+    h="170-200" s="33-63" l="23-53" hdr-h="170-200" hdr-s="0-63" hdr-l="50-75" type="area">
+    <resolution aspect="3.55:1" x="0.5353" y="0.8033" width="0.0042" height="0.0053" />
+    <resolution aspect="24:10" x="0.5525" y="0.8286" width="0.0042" height="0.0053" />
+    <resolution aspect="16:11" x="0.5782" y="0.8260" width="0.0042" height="0.0053" />
+
+    <resolution size="3840x2160" x="0.5705" y="0.8277" width="0.0042" height="0.0053" />
+    <resolution size="3840x1080" x="0.5343" y="0.8286" width="0.0042" height="0.0053" />
+    <resolution size="2560x1080" x="0.5115" y="0.8165" width="0.0086" height="0.0019" /> 
+    
+  </meta>
+
+  <!-- ── SHOP ─────────────────────────────────────────────────────
+       shopGreen (POSITIVE): green merchant banner — confirms the shop screen.
+       shopNotGreen (NEGATIVE): baseline check; must be < .1 to avoid false positives.
+       shopYellow (POSITIVE): yellow price tag — second shop confirmation.
+       cutRed (POSITIVE): red sold-out cross — fires when a purchase is made.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="shopGreen" tags="vlc,Slay the Spire 2" x="0.4078" y="0.8935" width="0.0215" height="0.0060"
+    h="141-171" s="18-49" l="32-62" hdr-h="141-171" hdr-s="0-44" hdr-l="50-75" type="area">
+    <resolution aspect="3.55:1" x="0.4431" y="0.9008" width="0.0215" height="0.0060" />
+    <resolution aspect="24:10" x="0.4226" y="0.8952" width="0.0215" height="0.0060" />
+    <resolution aspect="16:11" x="0.3941" y="0.8994" width="0.0215" height="0.0060" />
+
+    <resolution size="3840x2160" x="0.8747" y="0.1487" width="0.0031" height="0.0102" />
+    <resolution size="2560x1080" x="0.7769" y="0.1715" width="0.0023" height="0.0083" /> 
+    
+  </meta>
+
+  
+  <meta meter="shopNotGreen" tags="vlc,Slay the Spire 2" x="0.4090" y="0.9745" width="0.0215" height="0.0045"
+    h="141-171" s="18-49" l="32-62" hdr-h="141-171" hdr-s="0-44" hdr-l="50-75" type="area">
+    <resolution aspect="3.55:1" x="0.4090" y="0.9745" width="0.0215" height="0.0045" />
+    <resolution aspect="24:10" x="0.4090" y="0.9745" width="0.0215" height="0.0045" />
+    <resolution aspect="16:11" x="0.4090" y="0.9745" width="0.0215" height="0.0045" />
+
+    <resolution size="3840x2160" x="0.912" y="0.1427" width="0" height="0.0097" />
+    <resolution size="2560x1080" x="0.8085" y="0.1483" width="0" height="0.0083" /> 
+    
+  </meta>
+
+  
+  <meta meter="shopYellow" tags="vlc,Slay the Spire 2" x="0.7742" y="0.7652" width="0.0042" height="0.0060"
+    h="30-61" s="23-91" l="27-94" hdr-h="30-61" hdr-s="23-100" hdr-l="27-100" type="area">
+    <resolution aspect="3.55:1" x="0.6350" y="0.7649" width="0.0042" height="0.0060" />
+    <resolution aspect="24:10" x="0.7024" y="0.7641" width="0.0042" height="0.0060" />
+    <resolution aspect="16:11" x="0.8025" y="0.7641" width="0.0042" height="0.0060" />
+
+    <resolution size="3840x2160" x="0.8007" y="0.6962" width="0.0032" height="0.0101" />
+    <resolution size="2560x1080" x="0.7257" y="0.6997" width="0.0023" height="0.0047" /> 
+    
+  </meta>
+
+  
+  <meta meter="cutRed" tags="vlc,Slay the Spire 2" x="0.7712" y="0.7134" width="0.0080" height="0.0075"
+    h="-30-30" s="60-90" l="41-100" hdr-h="-30-30" hdr-s="60-90" hdr-l="41-100" type="area">
+    <resolution aspect="3.55:1" x="0.6338" y="0.7127" width="0.0080" height="0.0075" />
+    <resolution aspect="24:10" x="0.7008" y="0.7119" width="0.0080" height="0.0075" />
+    <resolution aspect="16:11" x="0.8001" y="0.7102" width="0.0080" height="0.0075" />
+
+    <resolution size="3840x2160" x="0.7726" y="0.7101" width="0.0026" height="0.0037" />
+    <resolution size="2560x1080" x="0.7042" y="0.709" width="0.0027" height="0.0046" /> 
+    
+  </meta>
+
+  <!-- ── BANNER / REWARD SCREENS (continued) ─────────────────────
+       deadRed1 / deadRed2 (POSITIVE): two red regions visible only on the death screen —
+         both must be ≥ .95 to fire the death branch in bannerCallback.
+       lootBlue (POSITIVE) / lootNotBlue (NEGATIVE): blue loot icon pair —
+         confirms the loot pickup screen specifically.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="deadRed1" tags="vlc,Slay the Spire 2" x="0.4973" y="0.2858" width="0.0190" height="0.0045"
+    h="-30-30" s="80-100" l="0-25" hdr-h="-30-30" hdr-s="70-100" hdr-l="0-25" type="area">
+    <resolution aspect="3.55:1" x="0.4958" y="0.2636" width="0.0190" height="0.0045" />
+    <resolution aspect="24:10" x="0.4892" y="0.2986" width="0.0190" height="0.0045" />
+    <resolution aspect="16:11" x="0.4857" y="0.2971" width="0.0141" height="0.0062" />
+
+    <resolution size="3840x2160" x="0.4777" y="0.3066" width="0.0118" height="0.0051" />
+    <resolution size="3840x1080" x="0.4924" y="0.2972" width="0.0190" height="0.0045" />
+    <resolution size="2560x1080" x="0.4885" y="0.2984" width="0.0113" height="0.0102" /> 
+    
+  </meta>
+
+  
+  <meta meter="deadRed2" tags="vlc,Slay the Spire 2" x="0.9819" y="0.9760" width="0.0059" height="0.0037"
+    h="-30-30" s="85-100" l="0-25" hdr-h="-30-30" hdr-s="80-100" hdr-l="0-25" type="area">
+    <resolution aspect="3.55:1" x="0.8259" y="0.9762" width="0.0059" height="0.0037" />
+    <resolution aspect="24:10" x="0.9819" y="0.9760" width="0.0059" height="0.0037" />
+    <resolution aspect="16:11" x="0.9819" y="0.9760" width="0.0059" height="0.0037" />
+
+    <resolution size="3840x2160" x="0.9819" y="0.9760" width="0.0059" height="0.0037" />
+    <resolution size="3840x1080" x="0.8238" y="0.9754" width="0.0059" height="0.0037" />
+    <resolution size="2560x1080" x="0.9547" y="0.9351" width="0.0039" height="0.0093" /> 
+    
+  </meta>
+
+  
+  <meta meter="lootBlue" tags="vlc,Slay the Spire 2" x="0.5154" y="0.7802" width="0.0059" height="0.0045"
+    h="180-213" s="23-56" l="12-44" hdr-h="180-213" hdr-s="23-56" hdr-l="0-50" type="area">
+    <resolution aspect="3.55:1" x="0.5154" y="0.7802" width="0.0059" height="0.0045" />
+    <resolution aspect="24:10" x="0.5154" y="0.7802" width="0.0059" height="0.0045" />
+    <resolution aspect="16:11" x="0.5154" y="0.7802" width="0.0059" height="0.0045" />
+
+    <resolution size="3840x2160" x="0.5154" y="0.7802" width="0.0059" height="0.0045" />
+    <resolution size="3840x1080" x="0.5154" y="0.7802" width="0.0059" height="0.0045" />
+    <resolution size="2560x1080" x="0.4975" y="0.7785" width="0.0105" height="0.0056"   /> 
+    
+  </meta>
+
+  
+  <meta meter="lootNotBlue" tags="vlc,Slay the Spire 2" x="0.5171" y="0.8004" width="0.0051" height="0.0067"
+    h="180-213" s="23-56" l="12-44" hdr-h="180-213" hdr-s="23-56" hdr-l="0-50" type="area">
+    <resolution aspect="3.55:1" x="0.5171" y="0.8004" width="0.0051" height="0.0067" />
+    <resolution aspect="24:10" x="0.5171" y="0.8004" width="0.0051" height="0.0067" />
+    <resolution aspect="16:11" x="0.5362" y="0.8076" width="0.0051" height="0.0067" />
+
+    <resolution size="3840x2160" x="0.5156" y="0.8000" width="0.0051" height="0.0067" />
+    <resolution size="3840x1080" x="0.5171" y="0.8004" width="0.0051" height="0.0067" />
+    <resolution size="2560x1080" x="0.5107" y="0.7989" width="0.0086" height="0.0028"  /> 
+    
+  </meta>
+
+  <!-- ── MANA ──────────────────────────────────────────────────────
+       manaRed (POSITIVE): red mana orb going bright — signals zero energy in combat.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="manaRed" tags="vlc,Slay the Spire 2" x="0.0840" y="0.8215" width="0.0034" height="0.0037"
+    h="-30-30" s="17-100" l="14-100" hdr-h="-30-30" hdr-s="17-100" hdr-l="14-100" type="area">
+    <resolution aspect="3.55:1" x="0.2055" y="0.8243" width="0.0013" height="0.0037" />
+    <resolution aspect="24:10" x="0.0629" y="0.8209" width="0.0013" height="0.0037" />
+    <resolution aspect="16:11" x="0.0934" y="0.8199" width="0.0027" height="0.0044" />
+
+    <resolution size="3840x2160" x="0.0840" y="0.8215" width="0.0034" height="0.0037" />
+    <resolution size="3840x1080" x="0.2055" y="0.8209" width="0.0025" height="0.0037" />
+    <resolution size="2560x1080" x="0.0625" y="0.8202" width="0.002" height="0.0065" /> 
+    
+  </meta>
+
+  <!-- ── MAP ───────────────────────────────────────────────────────
+       unknownYellow (POSITIVE): yellow "?" node — confirms the map screen is visible.
+       elitePurple (POSITIVE): purple elite node — second map confirmation.
+       Both must reach ≥ .95 to fire mapCallback.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="unknownYellow" tags="vlc,Slay the Spire 2" x="0.8464" y="0.3743" width="0.0076" height="0.0127"
+    h="25-63" s="18-100" l="10-97" hdr-h="25-63" hdr-s="18-100" hdr-l="10-100" type="area">
+    <resolution aspect="3.55:1" x="0.7253" y="0.3750" width="0.0038" height="0.0127" />
+    <resolution aspect="24:10" x="0.8332" y="0.3759" width="0.0076" height="0.0127" />
+    <resolution aspect="16:11" x="0.8523" y="0.3742" width="0.0076" height="0.0127" />
+
+    <resolution size="3840x2160" x="0.8469" y="0.3743" width="0.0076" height="0.0127" />
+    <resolution size="3840x1080" x="0.7240" y="0.3751" width="0.0038" height="0.0127" />
+    <resolution size="2560x1080" x="0.8327" y="0.3735" width="0.0086" height="0.0148" /> 
+    
+  </meta>
+
+  
+  <meta meter="elitePurple" tags="vlc,Slay the Spire 2" x="0.8476" y="0.6017" width="0.0042" height="0.0097"
+    h="292-352" s="20-93" l="10-96" hdr-h="280-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.7262" y="0.6036" width="0.0013" height="0.0097" />
+    <resolution aspect="24:10" x="0.8352" y="0.6031" width="0.0042" height="0.0097" />
+    <resolution aspect="16:11" x="0.8526" y="0.6036" width="0.0042" height="0.0097" />
+
+    <resolution size="3840x2160" x="0.8487" y="0.6020" width="0.0042" height="0.0097" />
+    <resolution size="3840x1080" x="0.7247" y="0.6019" width="0.0025" height="0.0097" />
+    <resolution size="2560x1080" x="0.8339" y="0.6006" width="0.0074" height="0.0092" /> 
+    
+  </meta>
+
+  <!-- ── NPC DIALOGUE ──────────────────────────────────────────────
+       npcYellow (POSITIVE): yellow NPC name bar — visible during any dialogue.
+       npcBlue (POSITIVE): blue NPC portrait / dialog area — second confirmation.
+       npcDark (POSITIVE): dark overlay behind dialogue box — confirms modal dialogue.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="npcYellow" tags="vlc,Slay the Spire 2" x="0.4500" y="0.3916" width="0.1013" height="0.0045"
+    h="43-56" s="26-82" l="33-100" hdr-h="0-150" hdr-s="26-82" hdr-l="33-100" type="area">
+    <resolution aspect="3.55:1" x="0.4678" y="0.3977" width="0.0660" height="0.0045" />
+    <resolution aspect="24:10" x="0.4500" y="0.3916" width="0.1013" height="0.0045" />
+    <resolution aspect="16:11" x="0.4500" y="0.3916" width="0.1013" height="0.0045" />
+
+    <resolution size="3840x2160" x="0.4500" y="0.3916" width="0.1013" height="0.0045" />
+    <resolution size="3840x1080" x="0.4690" y="0.3916" width="0.0575" height="0.0045" />
+    <resolution size="2560x1080" x="0.4553" y="0.3874" width="0.0898" height="0.013" /> 
+    
+  </meta>
+
+  
+  <meta meter="npcBlue" tags="vlc,Slay the Spire 2" x="0.4550" y="0.4366" width="0.0882" height="0.0030"
+    h="178-253" s="0-87" l="27-100" hdr-h="178-253" hdr-s="0-87" hdr-l="27-100" type="area">
+    <resolution aspect="3.55:1" x="0.4738" y="0.4424" width="0.0599" height="0.0030" />
+    <resolution aspect="24:10" x="0.4550" y="0.4448" width="0.0882" height="0.0030" />
+    <resolution aspect="16:11" x="0.4550" y="0.4366" width="0.0882" height="0.0030" />
+
+    <resolution size="3840x2160" x="0.4550" y="0.4366" width="0.0882" height="0.0030" />
+    <resolution size="3840x1080" x="0.4678" y="0.4366" width="0.0648" height="0.0030" />
+    <resolution size="2560x1080" x="0.4603" y="0.5209" width="0.02" height="0.0064" /> 
+    
+  </meta>
+
+  
+  <meta meter="npcDark" tags="vlc,Slay the Spire 2" x="0.6636" y="0.7074" width="0.0055" height="0.0053"
+    h="0-360" s="0-100" l="0-65" hdr-h="0-360" hdr-s="0-100" hdr-l="0-65" type="area">
+    <resolution aspect="3.55:1" x="0.5816" y="0.7079" width="0.0055" height="0.0053" />
+    <resolution aspect="24:10" x="0.6636" y="0.7074" width="0.0055" height="0.0053" />
+    <resolution aspect="16:11" x="0.6636" y="0.7074" width="0.0055" height="0.0053" />
+
+    <resolution size="3840x2160" x="0.6192" y="0.6248" width="0.0052" height="0.0042" />
+    <resolution size="3840x1080" x="0.5804" y="0.7087" width="0.0055" height="0.0053" />
+    <resolution size="2560x1080" x="0.6041" y="0.6413" width="0.0051" height="0.0037" /> 
+    
+  </meta>
+
+  <!-- ── RANDOM EVENT ──────────────────────────────────────────────
+       randomYellow (POSITIVE): yellow event-description banner — confirms random event.
+       randomNotYellow (NEGATIVE): must be < .1 to avoid map/battle false positives.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="randomYellow" tags="vlc,Slay the Spire 2" x="0.6024" y="0.2273" width="0.1739" height="0.0037"
+    h="21-117" s="39-100" l="39-100" hdr-h="21-117" hdr-s="39-100" hdr-l="39-100" type="area">
+    <resolution aspect="3.55:1" x="0.5778" y="0.2285" width="0.0331" height="0.0037" />
+    <resolution aspect="24:10" x="0.6024" y="0.2285" width="0.0734" height="0.0037" />
+    <resolution aspect="16:11" x="0.6393" y="0.2276" width="0.1337" height="0.0113" />
+
+    <resolution size="3840x2160" x="0.6213" y="0.2309" width="0.1295" height="0.0037" />
+    <resolution size="3840x1080" x="0.5669" y="0.2321" width="0.0563" height="0.0037" />
+    <resolution size="2560x1080" x="0.5948" y="0.2243" width="0.093" height="0.0092" /> 
+    
+  </meta>
+
+  
+  <meta meter="randomNotYellow" tags="vlc,Slay the Spire 2" x="0.6657" y="0.1973" width="0.0439" height="0.0030"
+    h="21-117" s="39-100" l="39-100" hdr-h="21-117" hdr-s="39-100" hdr-l="39-100" type="area">
+    <resolution aspect="3.55:1" x="0.5719" y="0.1960" width="0.0439" height="0.0030" />
+    <resolution aspect="24:10" x="0.6171" y="0.1985" width="0.0439" height="0.0030" />
+    <resolution aspect="16:11" x="0.6839" y="0.2064" width="0.0383" height="-0.0013" /> 
+
+    <resolution size="3840x2160" x="0.6674" y="0.2015" width="0.0205" height="0" />
+    <resolution size="3840x1080" x="0.5712" y="0.1943" width="0.0439" height="0.0030" />
+    <resolution size="2560x1080" x="0.6088" y="0.2057" width="0.0352" height="0.0028" /> 
+    
+  </meta>
+
+  <!-- ── REST SITE ─────────────────────────────────────────────────
+       restGreen (POSITIVE): green campfire icon — visible on the rest screen.
+       restRed (POSITIVE): red potion icon — second rest confirmation.
+       Both must reach ≥ .95 to fire restCallback.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="restGreen" tags="vlc,Slay the Spire 2" x="0.3575" y="0.3256" width="0.0029" height="0.0097"
+    h="99-129" s="33-63" l="32-98" hdr-h="99-129" hdr-s="33-63" hdr-l="32-100" type="area">
+    <resolution aspect="3.55:1" x="0.4282" y="0.3234" width="0.0029" height="0.0097" />
+    <resolution aspect="24:10" x="0.3944" y="0.3234" width="0.0029" height="0.0097" />
+    <resolution aspect="16:11" x="0.3398" y="0.3260" width="0.0029" height="0.0097" />
+
+    <resolution size="3840x2160" x="0.3575" y="0.3256" width="0.0029" height="0.0097" />
+    <resolution size="2560x1080" x="0.3927" y="0.3225" width="0.0032" height="0.0065" /> 
+    
+  </meta>
+
+  
+  <meta meter="restRed" tags="vlc,Slay the Spire 2" x="0.5547" y="0.2843" width="0.0051" height="0.0067"
+    h="324-355" s="56-91" l="38-100" hdr-h="324-355" hdr-s="40-100" hdr-l="38-100" type="area">
+    <resolution aspect="3.55:1" x="0.5227" y="0.2810" width="0.0051" height="0.0067" />
+    <resolution aspect="24:10" x="0.5372" y="0.2836" width="0.0051" height="0.0067" />
+    <resolution aspect="16:11" x="0.5562" y="0.2819" width="0.0051" height="0.0067" />
+
+    <resolution size="3840x2160" x="0.5502" y="0.2827" width="0.0051" height="0.0067" />
+    <resolution size="2560x1080" x="0.5998" y="0.3021" width="0.002" height="0.0065" /> 
+    
+  </meta>
+
+  <!-- ── MAP ENTRY ─────────────────────────────────────────────────
+       entryRed (POSITIVE): red entry arrow — visible on the node selection screen.
+       entryGreen (POSITIVE): green left-panel indicator — second entry confirmation.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="entryRed" tags="vlc,Slay the Spire 2" x="0.9401" y="0.7554" width="0.0042" height="0.0053"
+    h="-30-30" s="62-92" l="4-71" hdr-h="-30-30" hdr-s="50-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.7748" y="0.7568" width="0.0042" height="0.0053" />
+    <resolution aspect="24:10" x="0.9095" y="0.7568" width="0.0042" height="0.0053" />
+    <resolution aspect="16:11" x="0.9453" y="0.7523" width="0.0039" height="0.0063" />
+
+    <resolution size="3840x2160" x="0.9357" y="0.7536" width="0.0013" height="0.0037" />
+    <resolution size="2560x1080" x="0.9047" y="0.7507" width="0.0019" height="0.0056" /> 
+    
+  </meta>
+
+  
+  <meta meter="entryGreen" tags="vlc,Slay the Spire 2" x="0.5504" y="0.6669" width="0.0025" height="0.0345"
+    h="121-162" s="10-44" l="20-51" hdr-h="121-162" hdr-s="0-44" hdr-l="50-75" type="area">
+    <resolution aspect="3.55:1" x="0.5259" y="0.6562" width="0.0025" height="0.0345" />
+    <resolution aspect="24:10" x="0.5389" y="0.6595" width="0.0025" height="0.0345" />
+    <resolution aspect="16:11" x="0.5585" y="0.6570" width="0.0025" height="0.0345" />
+
+    <resolution size="3840x2160" x="0.5504" y="0.6855" width="0.0029" height="0.0056" />
+    <resolution size="2560x1080" x="0.5385" y="0.683" width="0.0031" height="0.0056" /> 
+    
+  </meta>
+
+  <!-- ── TURN END ───────────────────────────────────────────────────
+       turnBlue (POSITIVE): blue end-turn button active — fires during turn transitions.
+       ──────────────────────────────────────────────────────────── -->
+
+  
+  <meta meter="turnBlue" tags="vlc,Slay the Spire 2" x="0.4766" y="0.4944" width="0.0485" height="0.0060"
+    h="154-250" s="12-81" l="45-100" hdr-h="154-250" hdr-s="12-81" hdr-l="45-100" type="area">
+    <resolution aspect="3.55:1" x="0.4860" y="0.4901" width="0.0270" height="0.0060" />
+    <resolution aspect="24:10" x="0.4763" y="0.4983" width="0.0485" height="0.0060" />
+    <resolution aspect="16:11" x="0.4715" y="0.4974" width="0.0575" height="0.0060" />
+
+    <resolution size="3840x2160" x="0.4769" y="0.4972" width="0.0485" height="0.0060" />
+    <resolution size="3840x1080" x="0.4842" y="0.4995" width="0.0318" height="0.0060" />
+    <resolution size="2560x1080" x="0.4783" y="0.4958" width="0.0422" height="0.0074" /> 
+    
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+    // ═══════════════════════════════════════════════════════════════
+    // CANVAS SETUP
+    // SignalRGB renders this 320×200 canvas onto the device layout.
+    // All draw coordinates are in canvas pixels; user-facing position
+    // values (0–100) are scaled to canvas pixels in JS (x * 3.2, y * 2.0).
+    // ═══════════════════════════════════════════════════════════════
+    const canvas = document.getElementById('exCanvas');
+    const ctx    = canvas.getContext('2d');
+    const width  = 320;
+    const height = 200;
+
+    // Hidden canvas — all effects are drawn here each frame, then
+    // composited onto ctx in a single drawImage call.
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width  = width;
+    hiddenCanvas.height = height;
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    // Active effects pool. Each entry has a draw() method and a lifetime
+    // property. Objects with lifetime <= 0 are filtered out after drawing.
+    // Objects with lifetime === undefined live until self-terminated.
+    let effects = [];
+
+    // ═══════════════════════════════════════════════════════════════
+    // METER DECLARATIONS
+    // Each Meter(size, callback) smooths the vision signal over `size`
+    // consecutive identical frames before updating its .value and firing
+    // the callback. Larger size = more stable but slower to react.
+    // ═══════════════════════════════════════════════════════════════
+
+    // Action menu — all three zones must be high simultaneously
+    let actionRed_Meter       = new Meter(5, actionCallback)
+    let actionWhite_Meter     = new Meter(5, actionCallback)
+    let actionBlue_Meter      = new Meter(5, actionCallback)
+
+    // Combat — yellow bar confirms an active battle
+    let battleYellow_Meter    = new Meter(5, battleCallback)
+
+    // In-game HUD — fast size 3 to quickly detect entering/leaving gameplay
+    let gearGrey_Meter        = new Meter(3, inGameCallback)
+    let coinYellow_Meter      = new Meter(3, inGameCallback)
+
+    // Banner / reward screens
+    let bannerBrown_Meter     = new Meter(5, bannerCallback)
+    let bannerNotBrown_Meter  = new Meter(5, bannerCallback)
+    let skipBlue_Meter        = new Meter(6, bannerCallback)
+    let skipNotBlue_Meter     = new Meter(6, bannerCallback)
+    let lootBlue_Meter        = new Meter(6, bannerCallback)
+    let lootNotBlue_Meter     = new Meter(6, bannerCallback)
+
+    // Shop
+    let shopGreen_Meter       = new Meter(5, shopCallback)
+    let shopNotGreen_Meter    = new Meter(5, shopCallback)
+    let shopYellow_Meter      = new Meter(5, shopCallback)
+    let cutRed_Meter          = new Meter(5, shopCallback)
+
+    // Death — larger size 6 avoids false death triggers from brief flashes
+    let deadRed1_Meter        = new Meter(6, bannerCallback)
+    let deadRed2_Meter        = new Meter(6, bannerCallback)
+
+    // Mana / energy
+    let manaRed_Meter         = new Meter(5, manaCallback)
+
+    // Map
+    let unknownYellow_Meter   = new Meter(5, mapCallback)
+    let elitePurple_Meter     = new Meter(5, mapCallback)
+
+    // NPC dialogue
+    let npcYellow_Meter       = new Meter(5, npcCallback)
+    let npcBlue_Meter         = new Meter(5, npcCallback)
+    let npcDark_Meter         = new Meter(5, npcCallback)
+
+    // Random event
+    let randomYellow_Meter    = new Meter(5, randomCallback)
+    let randomNotYellow_Meter = new Meter(5, randomCallback)
+
+    // Rest site
+    let restGreen_Meter       = new Meter(5, restCallback)
+    let restRed_Meter         = new Meter(5, restCallback)
+
+    // Map entry
+    let entryRed_Meter        = new Meter(5, entryCallback)
+    let entryGreen_Meter      = new Meter(5, entryCallback)
+
+    // Turn end
+    let turnBlue_Meter        = new Meter(5, turnCallback)
+
+    //#region Update
+    // ═══════════════════════════════════════════════════════════════
+    // MAIN UPDATE LOOP — called every animation frame (~60fps).
+    // Order of operations:
+    //   1. Clear hidden canvas to black
+    //   2. Draw background (ambience / color cycle / custom)
+    //   3. Feed current vision readings into each Meter — may trigger callbacks
+    //   4. Draw all active effects; filter out expired ones
+    //   5. Draw any persistent overlay (e.g. HUD adjust)
+    //   6. Composite hidden canvas onto the main canvas
+    // ═══════════════════════════════════════════════════════════════
+    function update() {
+      DrawRect(0, 0, 320, 200, 'black')
+      backgroundHandler()
+
+      actionRed_Meter.setValue(engine.vision.actionRed)
+      actionWhite_Meter.setValue(engine.vision.actionWhite)
+      actionBlue_Meter.setValue(engine.vision.actionBlue)
+      battleYellow_Meter.setValue(engine.vision.battleYellow)
+      gearGrey_Meter.setValue(engine.vision.gearGrey)
+      coinYellow_Meter.setValue(engine.vision.coinYellow)
+      bannerBrown_Meter.setValue(engine.vision.bannerBrown)
+      bannerNotBrown_Meter.setValue(engine.vision.bannerNotBrown)
+      skipBlue_Meter.setValue(engine.vision.skipBlue)
+      skipNotBlue_Meter.setValue(engine.vision.skipNotBlue)
+      shopGreen_Meter.setValue(engine.vision.shopGreen)
+      shopNotGreen_Meter.setValue(engine.vision.shopNotGreen)
+      shopYellow_Meter.setValue(engine.vision.shopYellow)
+      cutRed_Meter.setValue(engine.vision.cutRed)
+      deadRed1_Meter.setValue(engine.vision.deadRed1)
+      deadRed2_Meter.setValue(engine.vision.deadRed2)
+      lootBlue_Meter.setValue(engine.vision.lootBlue)
+      lootNotBlue_Meter.setValue(engine.vision.lootNotBlue)
+      manaRed_Meter.setValue(engine.vision.manaRed)
+      unknownYellow_Meter.setValue(engine.vision.unknownYellow)
+      elitePurple_Meter.setValue(engine.vision.elitePurple)
+      npcYellow_Meter.setValue(engine.vision.npcYellow)
+      npcBlue_Meter.setValue(engine.vision.npcBlue)
+      npcDark_Meter.setValue(engine.vision.npcDark)
+      randomYellow_Meter.setValue(engine.vision.randomYellow)
+      randomNotYellow_Meter.setValue(engine.vision.randomNotYellow)
+      restGreen_Meter.setValue(engine.vision.restGreen)
+      restRed_Meter.setValue(engine.vision.restRed)
+      entryRed_Meter.setValue(engine.vision.entryRed)
+      entryGreen_Meter.setValue(engine.vision.entryGreen)
+      turnBlue_Meter.setValue(engine.vision.turnBlue)
+
+      effects.forEach(ele => { ele.draw() })
+      effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+      if (adjBars) {
+        //place bar effect adjustment here
+      }
+
+      ctx.drawImage(hiddenCanvas, 0, 0)
+      window.requestAnimationFrame(update)
+    }
+    //#endregion
+
+    //#region Callbacks
+    // ═══════════════════════════════════════════════════════════════
+    // CALLBACKS
+    // Each callback is fired by one or more Meters when their signal
+    // stabilizes. Callbacks evaluate the CURRENT state of all related
+    // meters and flags, then push effects or flip state booleans.
+    //
+    // "Going" flags prevent duplicate effect spawns: once an effect is
+    // active, its flag is true and the spawn condition is short-circuited.
+    // The flag is cleared inside the effect's draw() when it expires.
+    // ═══════════════════════════════════════════════════════════════
+
+    // ── actionCallback ──────────────────────────────────────────────
+    // Fires when all three action-menu zones go high simultaneously.
+    let actionGoing = false
+    function actionCallback() {
+      if (actionRed_Meter.value >= .95 && actionBlue_Meter.value >= .95 && actionWhite_Meter.value >= .95 && !actionGoing) {
+        actionGoing = true
+        effects.push(new ActionMenuEffect())
+      } else if (actionBlue_Meter.value <= .1 && actionRed_Meter.value <= .1) actionGoing = false
+    }
+
+    // ── battleCallback ───────────────────────────────────────────────
+    // Fires when HUD is visible and the yellow combat bar is present with mana at zero.
+    let battleGoing = false
+    function battleCallback() {
+      if (gInGame && battleYellow_Meter.value >= .25 && engine.vision.manaRed > .95 && !battleGoing) {
+        battleGoing = true
+        effects.push(new StartCombatEffect())
+      } else if (!gInGame) battleGoing = false
+    }
+
+    // ── inGameCallback ───────────────────────────────────────────────
+    // Sets/clears gInGame based on both HUD icons being present or absent.
+    let gInGame     = false
+    let inGameGoing = false
+    function inGameCallback() {
+      if (gearGrey_Meter.value >= .95 && coinYellow_Meter.value >= .95) gInGame = true
+      // coinYellow_Meter.value < .1 fixes original bug: comma operator instead of comparison
+      else if (gearGrey_Meter.value < .1 && coinYellow_Meter.value < .1) gInGame = false
+    }
+
+    // ── bannerCallback ───────────────────────────────────────────────
+    // Routes banner state to loot, choose-card, death, or generic chest effect.
+    let lootGoing   = false
+    let chooseGoing = false
+    let chestGoing  = false
+    let deadGoing   = false
+    function bannerCallback() {
+      if (gInGame && bannerBrown_Meter.value >= .95 && engine.vision.bannerNotBrown < .1) {
+        // Loot screen: blue icon confirmed, negative zone clear
+        if (lootBlue_Meter.value >= .95 && engine.vision.lootNotBlue < .1 && !lootGoing) {
+          lootGoing = true
+          effects.push(new LootEffect())
+          
+        }
+
+        // Card-choose reward: blue Skip button confirmed, negative zone clear
+        if (skipBlue_Meter.value >= .95 && engine.vision.skipNotBlue < .1 && !chooseGoing) {
+          chooseGoing = true
+          effects.push(new ChooseEffect())
+          return
+        } else if (!gInGame || bannerBrown_Meter.value < .1) chooseGoing = false
+
+        // Death screen: both red corner zones simultaneously high
+        if (deadRed1_Meter.value >= .95 && deadRed2_Meter.value >= .95 && !deadGoing) {
+          deadGoing = true
+          effects.push(new PlayerDeathEffect())
+          return
+        } else if (!gInGame || bannerBrown_Meter.value < .1) deadGoing = false
+
+        if (!chestGoing) { chestGoing = true; effects.push(new ChestEffect()) }
+
+      } else chestGoing = false
+    }
+
+    // ── shopCallback ─────────────────────────────────────────────────
+    // Detects shop entry; fires cut effect when a red sold-out marker appears.
+    let shopGoing = false
+    let cutGoing  = false
+    function shopCallback() {
+      if (gInGame && shopGreen_Meter.value >= .95 && shopYellow_Meter.value >= .95 && engine.vision.shopNotGreen < .1 && !shopGoing) {
+        shopGoing = true
+        effects.push(new InShopEffect())
+      } else if (!gInGame || shopGreen_Meter.value <= .1) shopGoing = false
+
+      // Cut fires only while inside the shop
+      if (shopGoing && cutRed_Meter.value >= .95 && !cutGoing) {
+        cutGoing = true
+        effects.push(new CutEffect())
+      } else if (!gInGame || !shopGoing) cutGoing = false
+    }
+
+    // ── manaCallback ─────────────────────────────────────────────────
+    // Fires the out-of-resource pulse when energy hits zero during combat.
+    let manaGoing = false
+    function manaCallback() {
+      if (gInGame && manaRed_Meter.value >= .95 && !manaGoing) {
+        manaGoing = true
+        effects.push(new OutOfResourceEffect())
+      } else if (!gInGame || manaRed_Meter.value < .1) manaGoing = false
+    }
+
+    // ── mapCallback ──────────────────────────────────────────────────
+    // Fires when both map node types are visible simultaneously.
+    let mapGoing = false
+    function mapCallback() {
+      if (gInGame && unknownYellow_Meter.value >= .95 && elitePurple_Meter.value >= .95 && !mapGoing) {
+        mapGoing = true
+        effects.push(new InMapEffect())
+      } else if (!gInGame || unknownYellow_Meter.value <= .1) mapGoing = false
+    }
+
+    // ── npcCallback ──────────────────────────────────────────────────
+    // Fires when the dialogue modal overlay is detected with yellow name bar and blue portrait.
+    let npcGoing = false
+    function npcCallback() {
+      if (gInGame && npcBlue_Meter.value >= .25 && npcYellow_Meter.value >= .25 && npcDark_Meter.value >= .95 && !npcGoing) {
+        npcGoing = true
+        effects.push(new NpcEffect())
+      } else if (!gInGame || mapGoing) npcGoing = false
+    }
+
+    // ── randomCallback ───────────────────────────────────────────────
+    // Fires when the yellow event banner is present and the negative zone is clear.
+    let randomGoing = false
+    function randomCallback() {
+      if (gInGame && randomYellow_Meter.value >= .25 && engine.vision.randomNotYellow < .1 && !randomGoing) {
+        randomGoing = true
+        effects.push(new RandomEffect())
+      } else if (!gInGame || randomYellow_Meter.value < .1) randomGoing = false
+    }
+
+    // ── restCallback ─────────────────────────────────────────────────
+    // Fires when both campfire icons are simultaneously visible.
+    let restGoing = false
+    function restCallback() {
+      if (gInGame && restGreen_Meter.value >= .95 && restRed_Meter.value >= .95 && !restGoing) {
+        restGoing = true
+        effects.push(new RestEffect())
+      } else if (!gInGame || restGreen_Meter.value <= .1) restGoing = false
+    }
+
+    // ── entryCallback ────────────────────────────────────────────────
+    // Fires when the node-entry arrow and panel indicator are both visible.
+    let entryGoing = false
+    function entryCallback() {
+      if (gInGame && entryGreen_Meter.value >= .95 && entryRed_Meter.value >= .95 && !entryGoing) {
+        entryGoing = true
+        effects.push(new EntryEffect())
+      } else if (!gInGame || shopGoing) entryGoing = false
+    }
+
+    // ── turnCallback ─────────────────────────────────────────────────
+    // Fires during turn transitions when the end-turn button is active.
+    let turnGoing = false
+    function turnCallback() {
+      if (gInGame && battleGoing && turnBlue_Meter.value >= .25 && !turnGoing) {
+        turnGoing = true
+        effects.push(new TurnEndEffect())
+      } else if (!gInGame || turnBlue_Meter.value < .1) turnGoing = false
+    }
+    //#endregion
+
+    //#region Background Modes
+    // ═══════════════════════════════════════════════════════════════
+    // BACKGROUND SYSTEM
+    // Eight modes supported (see backgroundMode meta property).
+    // Mode routing uses string.includes() so shared keywords act as
+    // feature flags.
+    //
+    // Mode map:
+    //   Color Cycle              → flat color, rotating hue
+    //   Color Cycle Ambience     → per-zone screen capture, rotating hue offset
+    //   Color Cycle Audio Viz    → flat color, rotating hue, audio-driven sat/lit
+    //   Custom                   → flat solid color (backColor)
+    //   Ambience                 → per-zone screen capture, native hue
+    //   Custom Ambience          → per-zone screen capture, hue locked to backColor
+    //   Ambience Audio Viz       → per-zone screen capture, audio-modulated sat/lit
+    //   Custom Audio Viz         → flat color (backColor), audio-driven sat/lit
+    // ═══════════════════════════════════════════════════════════════
+
+    let proBack = [0, 0, 0]
+    function onbackColorChanged() {
+      proBack = hexToHSL(backColor)
+    }
+
+    let audioEase = { sat: 0, lit: 0 }
+    let gCycle = 0
+
+    function updateAudioEase() {
+      const targetDensity = engine.audio.density * 100
+      audioEase.sat += (targetDensity - audioEase.sat) / 10
+      audioEase.lit += (targetDensity - audioEase.lit) / 10
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+      return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`
+    }
+
+    function updateColorCycle() {
+      gCycle = (gCycle + 0.5) % 360
+    }
+
+    function backgroundHandler() {
+      const alpha = ambienceAlpha / 100
+
+      if (backgroundMode.includes('Color Cycle')) updateColorCycle()
+      if (backgroundMode.includes('Audio'))       updateAudioEase()
+
+      if (backgroundMode.includes('Ambience')) {
+        if (backgroundMode === 'Ambience Audio Visualizer') {
+          copyScreenAudio(alpha)
+        } else {
+          copyScreen(alpha)
+        }
+        return
+      }
+
+      const hue = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0)
+      const sat = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1]
+      const lit = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2]
+      DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha))
+    }
+
+    const ZONE_COLS   = 28
+    const ZONE_ROWS   = 20
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS
+
+    function copyScreenAudio(alpha) {
+      const lightness = new Int8Array(engine.zone.lightness)
+      const sat       = new Int8Array(engine.zone.saturation)
+      const hue       = new Int16Array(engine.zone.hue)
+      const w = 320 / ZONE_COLS
+      const h = 200 / ZONE_ROWS
+      const satMultiplier = audioEase.sat / 200 + 0.5
+      const litMultiplier = audioEase.lit / 100
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const row = Math.floor(iZone / ZONE_COLS)
+        const col = iZone % ZONE_COLS
+        hiddenCtx.fillStyle = getColorString(
+          hue[iZone],
+          sat[iZone] * satMultiplier,
+          lightness[iZone] * litMultiplier,
+          alpha
+        )
+        hiddenCtx.fillRect(col * w, row * h, w, h)
+      }
+    }
+
+    function copyScreen(alpha) {
+      const lightness = new Int8Array(engine.zone.lightness)
+      const sat       = new Int8Array(engine.zone.saturation)
+      const hue       = new Int16Array(engine.zone.hue)
+      const w = 320 / ZONE_COLS
+      const h = 200 / ZONE_ROWS
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const row = Math.floor(iZone / ZONE_COLS)
+        const col = iZone % ZONE_COLS
+        const finalHue = backgroundMode === 'Custom Ambience'
+          ? proBack[0]
+          : hue[iZone] + (backgroundMode === 'Color Cycle Ambience' ? gCycle : 0)
+        hiddenCtx.fillStyle = getColorString(finalHue, sat[iZone], lightness[iZone], alpha)
+        hiddenCtx.fillRect(col * w, row * h, w, h)
+      }
+    }
+    //#endregion
+
+    //#region Helper Functions
+    // ─── DRAW PRIMITIVES ────────────────────────────────────────────
+
+    // DrawLine: stroke a straight line between two [x,y] points
+    function DrawLine(start, end, color, stroke) {
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(start[0], start[1])
+      hiddenCtx.lineTo(end[0], end[1])
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth   = stroke
+      hiddenCtx.stroke()
+    }
+
+    // DrawEllipse: filled ellipse
+    function DrawEllipse(x, y, w, h, rotation, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.ellipse(x, y, w, h, rotation, 0, Math.PI * 2)
+      hiddenCtx.fillStyle = color
+      hiddenCtx.fill()
+    }
+
+    // DrawCircle: filled circle
+    function DrawCircle(x, y, radius, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = color
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.fill()
+    }
+
+    // DrawStroke: outlined circle (no fill)
+    function DrawStroke(x, y, radius, color, stroke) {
+      hiddenCtx.beginPath()
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth   = stroke
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.stroke()
+    }
+
+    // DrawRect: filled rectangle — also accepts canvas gradient objects as color
+    function DrawRect(x, y, w, h, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = color
+      hiddenCtx.fillRect(x, y, w, h)
+    }
+
+    // ─── UTILITIES ──────────────────────────────────────────────────
+
+    // hexToHSL: converts a CSS hex string to [H(0–360), S(0–100), L(0–100)]
+    function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || []
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255)
+      const max = Math.max(...rgb)
+      const min = Math.min(...rgb)
+      const l   = (max + min) / 2
+      if (max === min) return [0, 0, Math.round(l * 100)]
+      const d = max - min
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+      let h
+      const [nr, ng, nb] = rgb
+      if      (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0)
+      else if (max === ng) h = (nb - nr) / d + 2
+      else                 h = (nr - ng) / d + 4
+      return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)]
+    }
+
+    // ─── METER CLASS ────────────────────────────────────────────────
+    // Meter(size, callback): frame-stabilizing debouncer for vision signals.
+    // setValue(v) only updates .value and fires callback when the last `size`
+    // readings are ALL identical — filters single-frame noise.
+    function Meter(size, callback) {
+      this.size      = size
+      this.value     = 0
+      this.diff      = 0
+      this.increased = false
+      this.decreased = false
+      let values = []
+
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue)
+        if (values.length > this.size) values.shift()
+
+        for (let i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return
+        }
+        if (this.value !== values[0]) {
+          this.diff      = Math.abs(this.value - values[0])
+          this.increased = this.value < values[0]
+          this.decreased = this.value > values[0]
+          this.value     = values[0]
+          callback()
+        }
+      }
+    }
+    //#endregion
+
+    //#region Effects
+    // ═══════════════════════════════════════════════════════════════
+    // EFFECTS
+    // Each effect is a constructor function. Instances are pushed into
+    // the effects[] array and drawn every frame until lifetime is set
+    // to 0 (or the object self-terminates).
+    //
+    // Coordinate system:
+    //   User-facing X/Y/W/H properties are 0–100 (% of canvas).
+    //   Canvas pixels: x * 3.2  (320 / 100),  y * 2.0  (200 / 100)
+    // ═══════════════════════════════════════════════════════════════
+
+    // ── ActionMenuEffect ─────────────────────────────────────────────
+    // Serpentine snake segments flow through 16×10 grid. Loops until actionGoing goes false.
+    function ActionMenuEffect() {
+        const COLS = 16, ROWS = 10
+        const CW = 320 / COLS, CH = 200 / ROWS
+        const meterHSL = [220, 65, 55]
+        const path = []
+        for (let r = 0; r < ROWS; r++)
+            for (let c = 0; c < COLS; c++)
+                path.push([r % 2 === 0 ? c : COLS - 1 - c, r])
+        const SEG = 12, GAP = 4, PERIOD = SEG + GAP
+        let offset = 0, frameTog = false, bgA = 0
+
+        function drawPass(hue, sat, lit, offShift, alphaScale) {
+            for (let i = 0; i < path.length - 1; i++) {
+                const pos  = ((i + offset + offShift) % PERIOD + PERIOD) % PERIOD
+                if (pos >= SEG) continue
+                const fade = Math.min(pos, SEG - pos, 2) / 2 * alphaScale
+                const [c1, r1] = path[i], [c2, r2] = path[i + 1]
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(c1 * CW + CW / 2, r1 * CH + CH / 2)
+                hiddenCtx.lineTo(c2 * CW + CW / 2, r2 * CH + CH / 2)
+                hiddenCtx.strokeStyle = `hsla(${hue},${sat}%,${lit}%,${fade})`
+                hiddenCtx.stroke()
+            }
+        }
+
+        this.draw = function () {
+            if (!actionGoing) { this.lifetime = 0; return }
+            bgA = Math.min(0.5, bgA + 0.5 / 30)
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`
+            hiddenCtx.fillRect(0, 0, 320, 200)
+            frameTog = !frameTog
+            const steps = frameTog ? 1 : 2
+            for (let k = 0; k < steps; k++) offset = (offset + 0.0625) % PERIOD
+            const [h, s, l] = meterHSL
+            hiddenCtx.lineCap = 'round'; hiddenCtx.lineJoin = 'round'
+            hiddenCtx.lineWidth = CW * 0.9
+            drawPass(h + 30, s, l, -PERIOD * 0.4, 0.75)
+            drawPass(h,      s, l, 0,              1.0)
+        }
+    }
+
+    // ── NpcEffect ────────────────────────────────────────────────────
+    // Serpentine snake segments flow through 8×5 grid, slower and thicker. Loops until npcGoing goes false.
+    function NpcEffect() {
+        const COLS = 8, ROWS = 5
+        const CW = 320 / COLS, CH = 200 / ROWS
+        const meterHSL = [0, 80, 45]
+        const path = []
+        for (let r = 0; r < ROWS; r++)
+            for (let c = 0; c < COLS; c++)
+                path.push([r % 2 === 0 ? c : COLS - 1 - c, r])
+        const SEG = 5, GAP = 2, PERIOD = SEG + GAP
+        let offset = 0, frameTog = false, bgA = 0
+
+        function drawPass(hue, sat, lit, offShift, alphaScale) {
+            for (let i = 0; i < path.length - 1; i++) {
+                const pos  = ((i + offset + offShift) % PERIOD + PERIOD) % PERIOD
+                if (pos >= SEG) continue
+                const fade = Math.min(pos, SEG - pos, 1.5) / 1.5 * alphaScale
+                const [c1, r1] = path[i], [c2, r2] = path[i + 1]
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(c1 * CW + CW / 2, r1 * CH + CH / 2)
+                hiddenCtx.lineTo(c2 * CW + CW / 2, r2 * CH + CH / 2)
+                hiddenCtx.strokeStyle = `hsla(${hue},${sat}%,${lit}%,${fade})`
+                hiddenCtx.stroke()
+            }
+        }
+
+        this.draw = function () {
+            if (!npcGoing) { this.lifetime = 0; return }
+            bgA = Math.min(0.5, bgA + 0.5 / 30)
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`
+            hiddenCtx.fillRect(0, 0, 320, 200)
+            frameTog = !frameTog
+            const steps = frameTog ? 1 : 2
+            for (let k = 0; k < steps; k++) offset = (offset + 0.0175) % PERIOD
+            const [h, s, l] = meterHSL
+            hiddenCtx.lineCap = 'round'; hiddenCtx.lineJoin = 'round'
+            hiddenCtx.lineWidth = CW * 1.1
+            drawPass(h + 30, s, l, -PERIOD * 0.4, 0.75)
+            drawPass(h,      s, l, 0,              1.0)
+        }
+    }
+
+    // ── InMapEffect ──────────────────────────────────────────────────
+    // Parchment map unfurls with wandering trail; furls when mapGoing goes false.
+    function InMapEffect() {
+        const MAP_W = 262, MAP_H = 300, MAP_X = (320 - MAP_W) / 2
+        const L = MAP_X + 16, R = MAP_X + MAP_W - 16, T = 10, B = 190
+        let progress = 0, furling = false
+
+        const pt = { x: 160, y: 100, vx: 0.6, vy: 0.4 }
+        const trail = []
+        const TRAIL = 140
+
+        function stepPoint() {
+            pt.vx += (Math.random() - 0.5) * 0.5
+            pt.vy += (Math.random() - 0.5) * 0.5
+            const spd = Math.sqrt(pt.vx * pt.vx + pt.vy * pt.vy)
+            if (spd > 2.2) { pt.vx = pt.vx / spd * 2.2; pt.vy = pt.vy / spd * 2.2 }
+            if (pt.x < L) pt.vx += 0.35; if (pt.x > R) pt.vx -= 0.35
+            if (pt.y < T) pt.vy += 0.35; if (pt.y > B) pt.vy -= 0.35
+            pt.x += pt.vx; pt.y += pt.vy
+            trail.push({ x: pt.x, y: pt.y })
+            if (trail.length > TRAIL) trail.shift()
+        }
+
+        const smudges = [
+            { x:  88, y:  62, rx: 104, ry:  60, rot:  0.4, fill: 'rgba(85,115,65,0.16)'  },
+            { x: 205, y: 128, rx: 116, ry:  72, rot: -0.3, fill: 'rgba(145,115,72,0.14)' },
+            { x: 125, y: 168, rx:  92, ry:  52, rot:  0.6, fill: 'rgba(65,90,130,0.16)'  },
+            { x: 240, y:  42, rx:  76, ry:  44, rot: -0.5, fill: 'rgba(100,85,60,0.15)'  },
+        ]
+        const peaks = [
+            [222, 38, 20, 32], [234, 44, 18, 28], [214, 46, 16, 26], [244, 52, 14, 22],
+            [ 68,140, 18, 28], [ 80,133, 20, 32], [ 91,141, 16, 24],
+        ]
+        const forestDots = [
+            [58,76],[66,70],[74,76],[68,84],[76,82],[62,83],[70,90],
+            [228,152],[236,146],[244,154],[232,160],[240,160],[250,152],
+        ]
+        const river = [
+            [158, 8],[152, 32],[164, 55],[156, 78],
+            [162,102],[153,126],[160,150],[154,174],[158,195],
+        ]
+        const lakes = [
+            { x: 132, y: 158, rx: 44, ry: 22, rot: 0.25 },
+            { x: 210, y:  70, rx: 26, ry: 14, rot: -0.3 },
+        ]
+
+        function drawDeco() {
+            smudges.forEach(s => {
+                hiddenCtx.beginPath(); hiddenCtx.ellipse(s.x, s.y, s.rx, s.ry, s.rot, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = s.fill; hiddenCtx.fill()
+            })
+            hiddenCtx.strokeStyle = 'rgba(62,82,115,1.0)'; hiddenCtx.lineWidth = 12.5; hiddenCtx.lineCap = 'round'
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(river[0][0], river[0][1])
+            for (let i = 1; i < river.length; i++) {
+                const p = river[i - 1], c = river[i]
+                hiddenCtx.quadraticCurveTo(p[0], p[1], (p[0] + c[0]) / 2, (p[1] + c[1]) / 2)
+            }
+            hiddenCtx.lineTo(river[river.length-1][0], river[river.length-1][1]); hiddenCtx.stroke()
+            lakes.forEach(l => {
+                hiddenCtx.beginPath(); hiddenCtx.ellipse(l.x, l.y, l.rx, l.ry, l.rot, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = 'rgba(68,88,122,1.0)'; hiddenCtx.fill()
+                hiddenCtx.strokeStyle = 'rgba(50,68,100,1.0)'; hiddenCtx.lineWidth = 3; hiddenCtx.stroke()
+            })
+            forestDots.forEach(([x, y]) => {
+                hiddenCtx.beginPath(); hiddenCtx.arc(x, y, 13.5, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = 'rgba(62,88,48,1.0)'; hiddenCtx.fill()
+            })
+            hiddenCtx.fillStyle = 'rgba(82,58,30,1.0)'; hiddenCtx.strokeStyle = 'rgba(55,38,15,1.0)'; hiddenCtx.lineWidth = 2.4
+            peaks.forEach(([tx, ty, hw, h]) => {
+                hiddenCtx.beginPath(); hiddenCtx.moveTo(tx, ty - h); hiddenCtx.lineTo(tx - hw, ty); hiddenCtx.lineTo(tx + hw, ty); hiddenCtx.closePath()
+                hiddenCtx.fill(); hiddenCtx.stroke()
+                if (h >= 14) {
+                    hiddenCtx.beginPath(); hiddenCtx.moveTo(tx, ty - h); hiddenCtx.lineTo(tx - hw * 0.35, ty - h * 0.55); hiddenCtx.lineTo(tx + hw * 0.35, ty - h * 0.55); hiddenCtx.closePath()
+                    hiddenCtx.fillStyle = 'rgba(230,225,215,1.0)'; hiddenCtx.fill()
+                    hiddenCtx.fillStyle = 'rgba(82,58,30,1.0)'
+                }
+            })
+        }
+
+        this.draw = function () {
+            if (!furling) {
+                if (progress < 1) {
+                    progress += 0.006
+                } else {
+                    if (!mapGoing) furling = true
+                }
+            } else {
+                progress -= 0.006
+                if (progress <= 0) { progress = 0; this.lifetime = 0 }
+            }
+            stepPoint()
+
+            const bgA = Math.min(0.5, progress * 2.5)
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`
+            hiddenCtx.fillRect(0, 0, 320, 200)
+
+            const p    = Math.min(progress, 1)
+            const curH = MAP_H * p
+            const top  = 100 - curH / 2
+
+            hiddenCtx.save()
+            hiddenCtx.beginPath(); hiddenCtx.rect(MAP_X, top, MAP_W, curH); hiddenCtx.clip()
+            hiddenCtx.fillStyle = '#d4b890'; hiddenCtx.fillRect(MAP_X, top, MAP_W, curH)
+            drawDeco()
+            hiddenCtx.strokeStyle = 'rgba(175,148,95,1.0)'; hiddenCtx.lineWidth = 1
+            for (let y = top + 10; y < top + curH - 8; y += 13) {
+                hiddenCtx.beginPath(); hiddenCtx.moveTo(MAP_X + 6, y); hiddenCtx.lineTo(MAP_X + MAP_W - 6, y); hiddenCtx.stroke()
+            }
+            hiddenCtx.restore()
+
+            hiddenCtx.strokeStyle = '#7a5c18'; hiddenCtx.lineWidth = 3
+            hiddenCtx.strokeRect(MAP_X, top, MAP_W, curH)
+
+            if (trail.length > 1 && p > 0.3) {
+                const fadeIn = Math.min(1, (p - 0.3) / 0.3)
+                hiddenCtx.save()
+                hiddenCtx.beginPath(); hiddenCtx.rect(MAP_X, top, MAP_W, curH); hiddenCtx.clip()
+                hiddenCtx.setLineDash([12, 24]); hiddenCtx.lineWidth = 6; hiddenCtx.lineCap = 'round'
+                const BANDS = 10
+                const band  = Math.max(1, Math.ceil(trail.length / BANDS))
+                for (let b = 0; b < BANDS; b++) {
+                    const s = b * band
+                    if (s >= trail.length) break
+                    const e = Math.min(s + band + 1, trail.length)
+                    const alpha = ((b + 1) / BANDS) * fadeIn * 0.85
+                    hiddenCtx.strokeStyle = `rgba(74,42,8,${alpha})`
+                    hiddenCtx.beginPath(); hiddenCtx.moveTo(trail[s].x, trail[s].y)
+                    for (let i = s + 1; i < e; i++) hiddenCtx.lineTo(trail[i].x, trail[i].y)
+                    hiddenCtx.stroke()
+                }
+                hiddenCtx.setLineDash([])
+                hiddenCtx.beginPath(); hiddenCtx.arc(pt.x, pt.y, 9, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `rgba(74,42,8,${fadeIn})`; hiddenCtx.fill()
+                hiddenCtx.restore()
+            }
+        }
+    }
+
+    // ── StartCombatEffect ────────────────────────────────────────────
+    // Two swords swing in from off-screen, clash at center with sparks, then fade out.
+    function StartCombatEffect() {
+        const h1 = Math.random() * 360
+        const h2 = (h1 + 150 + Math.random() * 60) % 360
+        const col1 = `hsl(${h1},60%,72%)`, col2 = `hsl(${h2},60%,72%)`
+        const D = Math.PI / 180
+        let frame = 0, sparked = false
+        const sparks = []
+
+        const s1 = [{ x: -80, y: 188, a: 0 },      { x: 60,  y: 162, a: -45*D  }]
+        const s2 = [{ x: 400, y: 188, a: Math.PI }, { x: 260, y: 162, a: 225*D  }]
+
+        const TRAVEL = 55, HOLD = 20, FADE = 45
+        const easeOut = t => 1 - Math.pow(1 - t, 2.8)
+        const lerp    = (a, b, t) => a + (b - a) * t
+        let bgA = 0
+
+        function drawSword(x, y, ang, bladeCol, alpha) {
+            hiddenCtx.save()
+            hiddenCtx.translate(x, y); hiddenCtx.rotate(ang); hiddenCtx.globalAlpha = alpha
+            const BL = 285, BB = 15, BT = 3
+
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(0, -BB); hiddenCtx.lineTo(BL, -BT)
+            hiddenCtx.lineTo(BL + 12, 0); hiddenCtx.lineTo(BL, BT); hiddenCtx.lineTo(0, BB)
+            hiddenCtx.closePath()
+            hiddenCtx.fillStyle = bladeCol; hiddenCtx.fill()
+
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(2, -BB + 1); hiddenCtx.lineTo(BL, -BT); hiddenCtx.lineTo(BL + 12, 0)
+            hiddenCtx.strokeStyle = 'rgba(255,255,255,0.55)'; hiddenCtx.lineWidth = 2; hiddenCtx.stroke()
+
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(18, 0); hiddenCtx.lineTo(BL - 14, 0)
+            hiddenCtx.strokeStyle = 'rgba(255,255,255,0.28)'; hiddenCtx.lineWidth = 3.5; hiddenCtx.stroke()
+
+            hiddenCtx.fillStyle = 'rgb(135,115,95)'; hiddenCtx.fillRect(0, -BB, 18, BB * 2)
+
+            hiddenCtx.fillStyle = 'rgb(198,160,52)'; hiddenCtx.fillRect(-12, -28, 24, 56)
+            hiddenCtx.strokeStyle = 'rgb(128,98,28)'; hiddenCtx.lineWidth = 2; hiddenCtx.strokeRect(-12, -28, 24, 56)
+            hiddenCtx.strokeStyle = 'rgb(230,195,90)'; hiddenCtx.lineWidth = 1
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(-10, -20); hiddenCtx.lineTo(-10, 20); hiddenCtx.stroke()
+            hiddenCtx.beginPath(); hiddenCtx.moveTo( 10, -20); hiddenCtx.lineTo( 10, 20); hiddenCtx.stroke()
+
+            hiddenCtx.fillStyle = 'rgb(80,45,18)'; hiddenCtx.fillRect(-42, -9, 30, 18)
+            hiddenCtx.strokeStyle = 'rgba(45,25,8,0.9)'; hiddenCtx.lineWidth = 2.5
+            for (let i = -38; i < -12; i += 6) {
+                hiddenCtx.beginPath(); hiddenCtx.moveTo(i, -9); hiddenCtx.lineTo(i + 2, 9); hiddenCtx.stroke()
+            }
+            hiddenCtx.strokeStyle = 'rgba(140,90,45,0.4)'; hiddenCtx.lineWidth = 1
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(-41, -4); hiddenCtx.lineTo(-13, -4); hiddenCtx.stroke()
+
+            hiddenCtx.beginPath(); hiddenCtx.arc(-42, 0, 11, 0, Math.PI * 2)
+            hiddenCtx.fillStyle = 'rgb(208,170,52)'; hiddenCtx.fill()
+            hiddenCtx.strokeStyle = 'rgb(128,98,28)'; hiddenCtx.lineWidth = 2; hiddenCtx.stroke()
+            hiddenCtx.beginPath(); hiddenCtx.arc(-42, 0, 5, 0, Math.PI * 2)
+            hiddenCtx.fillStyle = 'rgb(240,210,100)'; hiddenCtx.fill()
+
+            hiddenCtx.restore(); hiddenCtx.globalAlpha = 1
+        }
+
+        function spawnSparks() {
+            for (let i = 0; i < 60; i++) {
+                const a = Math.random() * Math.PI * 2
+                const sp = 2 + Math.random() * 7
+                sparks.push({ x: 160, y: 62, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp - 2,
+                               life: 1, size: 1.5 + Math.random()*3.5, hue: 18 + Math.random()*42 })
+            }
+        }
+
+        this.draw = function () {
+            frame++
+
+            if (frame <= TRAVEL)           bgA = frame / TRAVEL * 0.5
+            else if (frame <= TRAVEL+HOLD) bgA = 0.5
+            else                           bgA = Math.max(0, 0.5 * (1 - (frame - TRAVEL - HOLD) / FADE))
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            if (frame <= TRAVEL) {
+                const t = easeOut(frame / TRAVEL)
+                drawSword(lerp(s1[0].x, s1[1].x, t), lerp(s1[0].y, s1[1].y, t), lerp(s1[0].a, s1[1].a, t), col1, 1)
+                drawSword(lerp(s2[0].x, s2[1].x, t), lerp(s2[0].y, s2[1].y, t), lerp(s2[0].a, s2[1].a, t), col2, 1)
+            } else {
+                if (!sparked) { sparked = true; spawnSparks() }
+                if (frame <= TRAVEL + HOLD) {
+                    const flashA = Math.sin((frame - TRAVEL) / HOLD * Math.PI) * 0.75
+                    hiddenCtx.fillStyle = `rgba(255,240,180,${flashA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+                    drawSword(s1[1].x, s1[1].y, s1[1].a, col1, 1)
+                    drawSword(s2[1].x, s2[1].y, s2[1].a, col2, 1)
+                } else {
+                    const ft = (frame - TRAVEL - HOLD) / FADE
+                    const a  = Math.max(0, 1 - ft)
+                    drawSword(s1[1].x - ft*20, s1[1].y - ft*15, s1[1].a - ft*0.45, col1, a)
+                    drawSword(s2[1].x + ft*20, s2[1].y - ft*15, s2[1].a + ft*0.45, col2, a)
+                }
+            }
+
+            for (let i = sparks.length - 1; i >= 0; i--) {
+                const sp = sparks[i]
+                sp.x += sp.vx; sp.y += sp.vy; sp.vy += 0.2; sp.life -= 0.016
+                if (sp.life <= 0) { sparks.splice(i, 1); continue }
+                hiddenCtx.beginPath(); hiddenCtx.arc(sp.x, sp.y, sp.size, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `hsla(${sp.hue},100%,72%,${sp.life})`; hiddenCtx.fill()
+            }
+
+            if (frame >= TRAVEL + HOLD + FADE && sparks.length === 0) { this.lifetime = 0; battleGoing = false }
+        }
+    }
+
+    // ── OutOfResourceEffect ──────────────────────────────────────────
+    // Red overlay pulses three times then expires.
+    function OutOfResourceEffect() {
+        let frame = 0
+        const CYCLE = 48, BLINKS = 3
+
+        this.draw = function () {
+            frame++
+            const bgA = Math.min(frame / 20, 1, Math.max(0, (CYCLE * BLINKS - frame) / 20)) * 0.5
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+            const alpha = Math.sin((frame % CYCLE) / CYCLE * Math.PI) * 0.52
+            hiddenCtx.fillStyle = `rgba(200,20,20,${alpha})`; hiddenCtx.fillRect(0, 0, 320, 200)
+            if (frame >= CYCLE * BLINKS) { this.lifetime = 0; manaGoing = false }
+        }
+    }
+
+    // ── LootEffect ───────────────────────────────────────────────────
+    // 3D tumbling gold coins fall from top to bottom. Loops until lootGoing goes false.
+    function LootEffect() {
+        const coins = []
+        let frame = 0
+
+        function newCoin(x, y) {
+            return { x, y, speed: 0.9 + Math.random() * 1.3, phase: Math.random() * Math.PI * 2, r: 21 + Math.random() * 15, hue: 38 + Math.random() * 14 }
+        }
+        for (let i = 0; i < 16; i++) coins.push(newCoin(Math.random() * 300 + 10, -Math.random() * 210))
+
+        function drawCoin(c) {
+            const cosP        = Math.cos(c.phase)
+            const w           = Math.abs(cosP) * c.r
+            const facing      = cosP > 0
+            const edgeFraction = 1 - Math.abs(cosP)
+            hiddenCtx.beginPath(); hiddenCtx.ellipse(c.x, c.y, Math.max(4.5, w), c.r, 0, 0, Math.PI * 2)
+            hiddenCtx.fillStyle = facing ? `hsl(${c.hue},90%,56%)` : `hsl(${c.hue},65%,35%)`; hiddenCtx.fill()
+            hiddenCtx.strokeStyle = `hsl(${c.hue - 8},75%,28%)`
+            hiddenCtx.lineWidth = 1 + edgeFraction * 6; hiddenCtx.stroke()
+        }
+
+        this.draw = function () {
+            if (!gInGame || bannerBrown_Meter.value < .1) { this.lifetime = 0; lootGoing = false}
+            frame++
+            const bgA = Math.min(0.5, frame / 60 * 0.5)
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+            if (frame % 9 === 0 && coins.length < 22) coins.push(newCoin(Math.random() * 300 + 10, -10))
+            for (let i = coins.length - 1; i >= 0; i--) {
+                const c = coins[i]; c.y += c.speed; c.phase += 0.075
+                if (c.y - c.r > 200) { coins.splice(i, 1); continue }
+                drawCoin(c)
+            }
+        }
+    }
+
+    // ── ChooseEffect ─────────────────────────────────────────────────
+    // Three spinning cards descend; one chosen card brightens as others fade; all exit.
+    function ChooseEffect() {
+        const CW = 54, CH = 84
+        const FADE_IN = 50, SPIN = 70, SELECT = 55, EXIT = 35
+        const TOTAL   = FADE_IN + SPIN + SELECT + EXIT
+        const xs      = [80, 160, 240]
+        const targetY = 95, startY = -CH - 10
+        const chosen  = Math.floor(Math.random() * 3)
+        const angles  = [0, Math.PI * 0.4, Math.PI * 0.8]
+        let frame = 0
+
+        function drawCard(cx, cy, angle, alpha, glow) {
+            const cosA = Math.cos(angle)
+            const w    = CW * Math.abs(cosA)
+            if (w < 1) return
+            const front = cosA >= 0
+
+            hiddenCtx.save()
+            hiddenCtx.globalAlpha = alpha
+
+            if (glow > 0) {
+                const g = hiddenCtx.createRadialGradient(cx, cy, 0, cx, cy, CW * 1.8)
+                g.addColorStop(0, `rgba(220,190,100,${glow * 0.45})`)
+                g.addColorStop(1, 'rgba(220,190,100,0)')
+                hiddenCtx.fillStyle = g
+                const gr = CW * 1.8
+                hiddenCtx.fillRect(cx - gr, cy - gr, gr * 2, gr * 2)
+            }
+
+            const baseLit = front ? 32 + glow * 38 : 14
+            hiddenCtx.fillStyle = `hsl(225,30%,${baseLit}%)`
+            hiddenCtx.fillRect(cx - w / 2, cy - CH / 2, w, CH)
+
+            if (front && w > CW * 0.35) {
+                const r = w * 0.27
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(cx, cy - 10, r, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `hsl(42,80%,${50 + glow * 30}%)`
+                hiddenCtx.fill()
+
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(cx - r * 0.3, cy - 10 - r * 0.3, r * 0.32, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `rgba(255,255,255,${0.28 + glow * 0.22})`
+                hiddenCtx.fill()
+
+                const tx = cx - w * 0.36, tw = w * 0.72
+                hiddenCtx.fillStyle = `hsl(225,25%,${24 + glow * 18}%)`
+                hiddenCtx.fillRect(tx,            cy + 16, tw,        6)
+                hiddenCtx.fillRect(tx + tw * 0.1, cy + 25, tw * 0.8, 5)
+            }
+
+            hiddenCtx.restore()
+        }
+
+        this.draw = function () {
+            frame++
+
+            const bgAlpha = frame <= FADE_IN
+                ? frame / FADE_IN * 0.5
+                : frame <= FADE_IN + SPIN + SELECT
+                    ? 0.5
+                    : Math.max(0, 0.5 * (1 - (frame - FADE_IN - SPIN - SELECT) / EXIT))
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgAlpha})`; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            const ease  = 1 - Math.pow(1 - Math.min(1, frame / FADE_IN), 3)
+            const cardY = startY + (targetY - startY) * ease
+            const selT  = Math.max(0, Math.min(1, (frame - FADE_IN - SPIN) / SELECT))
+            const exitT = Math.max(0, Math.min(1, (frame - FADE_IN - SPIN - SELECT) / EXIT))
+
+            for (let i = 0; i < 3; i++) {
+                angles[i] += 0.04
+                const alpha = selT > 0 && i !== chosen
+                    ? Math.max(0, 1 - selT)
+                    : exitT > 0 && i === chosen
+                        ? Math.max(0, 1 - exitT)
+                        : 1
+                const glow = i === chosen ? selT : 0
+                drawCard(xs[i], cardY, angles[i], alpha, glow)
+            }
+
+            if (frame >= TOTAL) { this.lifetime = 0; chooseGoing = false }
+        }
+    }
+
+    // ── ChestEffect ──────────────────────────────────────────────────
+    // Chest zooms in, lock falls off, lid opens, glowing orb rises with sparkles, fades out.
+    function ChestEffect() {
+        const CX = 160
+        const BODY_TOP = 108, BODY_W = 310, BODY_X = CX - BODY_W / 2
+        const LID_H = 90,  LID_W = 330,  LID_X = CX - LID_W / 2
+        const LOCK_W = 60, LOCK_H = 44,  SHACKLE_R = 22, LOCK_CY = BODY_TOP
+
+        const T_SHAKE = 8,  T_FALL = 32, T_OPEN = 48, T_EMERGE = 100, T_FADE = 148
+        const DUR_SHAKE = T_FALL - T_SHAKE
+        const DUR_OPEN  = 62, DUR_EMERGE = 55, DUR_FADE = 42
+        const TOTAL = T_FADE + DUR_FADE
+
+        const hue = Math.random() * 360
+        let frame = 0, openAngle = 0
+        let lockY = LOCK_CY, lockVY = 0, lockRot = 0, lockVRot = 0, lockFalling = false
+        let orbY = BODY_TOP
+        const sparkles = []
+
+        function drawBody(alpha) {
+            hiddenCtx.save(); hiddenCtx.globalAlpha = alpha
+            hiddenCtx.fillStyle = 'hsl(25,55%,18%)'; hiddenCtx.fillRect(BODY_X, BODY_TOP, BODY_W, 200)
+            hiddenCtx.fillStyle = 'hsl(215,12%,20%)'
+            hiddenCtx.fillRect(BODY_X, BODY_TOP + 20, BODY_W, 13)
+            hiddenCtx.fillRect(BODY_X, BODY_TOP + 60, BODY_W, 13)
+            hiddenCtx.fillStyle = 'hsl(35,38%,34%)'
+            hiddenCtx.fillRect(BODY_X, BODY_TOP, 28, 40)
+            hiddenCtx.fillRect(BODY_X + BODY_W - 28, BODY_TOP, 28, 40)
+            hiddenCtx.restore()
+        }
+
+        function drawLid(alpha) {
+            const visH = LID_H * Math.max(0, Math.cos(openAngle))
+            if (visH < 1) return
+            const top = BODY_TOP - visH
+            hiddenCtx.save(); hiddenCtx.globalAlpha = alpha
+            hiddenCtx.fillStyle = 'hsl(28,50%,30%)'; hiddenCtx.fillRect(LID_X, top, LID_W, visH)
+            hiddenCtx.fillStyle = 'hsl(30,52%,44%)'; hiddenCtx.fillRect(LID_X, top, LID_W, Math.min(8, visH))
+            if (visH > 28) {
+                hiddenCtx.fillStyle = 'hsl(25,35%,20%)'
+                hiddenCtx.fillRect(LID_X, top + visH * 0.44, LID_W, 12)
+            }
+            hiddenCtx.fillStyle = 'hsl(35,38%,34%)'
+            hiddenCtx.fillRect(LID_X, top, 28, Math.min(32, visH))
+            hiddenCtx.fillRect(LID_X + LID_W - 28, top, 28, Math.min(32, visH))
+            hiddenCtx.restore()
+        }
+
+        function drawLock(cx, cy, rot, alpha) {
+            hiddenCtx.save()
+            hiddenCtx.translate(cx, cy); hiddenCtx.rotate(rot); hiddenCtx.globalAlpha = alpha
+            const sy = -LOCK_H / 2
+            hiddenCtx.strokeStyle = 'hsl(38,42%,40%)'; hiddenCtx.lineWidth = 11; hiddenCtx.lineCap = 'round'
+            hiddenCtx.beginPath(); hiddenCtx.arc(0, sy - SHACKLE_R, SHACKLE_R, Math.PI, 0); hiddenCtx.stroke()
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(-SHACKLE_R, sy - SHACKLE_R); hiddenCtx.lineTo(-SHACKLE_R, sy + 2); hiddenCtx.stroke()
+            hiddenCtx.beginPath(); hiddenCtx.moveTo( SHACKLE_R, sy - SHACKLE_R); hiddenCtx.lineTo( SHACKLE_R, sy + 2); hiddenCtx.stroke()
+            hiddenCtx.fillStyle = 'hsl(36,45%,32%)'; hiddenCtx.fillRect(-LOCK_W / 2, sy, LOCK_W, LOCK_H)
+            hiddenCtx.strokeStyle = 'hsl(36,28%,18%)'; hiddenCtx.lineWidth = 2.5; hiddenCtx.lineCap = 'butt'
+            hiddenCtx.strokeRect(-LOCK_W / 2, sy, LOCK_W, LOCK_H)
+            hiddenCtx.fillStyle = 'hsl(36,18%,14%)'
+            hiddenCtx.beginPath(); hiddenCtx.arc(0, sy + LOCK_H * 0.35, 9, 0, Math.PI * 2); hiddenCtx.fill()
+            hiddenCtx.fillRect(-5, sy + LOCK_H * 0.35, 10, 16)
+            hiddenCtx.restore()
+        }
+
+        this.draw = function () {
+            frame++
+            const fadeAlpha = frame > T_FADE ? Math.max(0, 1 - (frame - T_FADE) / DUR_FADE) : 1
+            const bgA = Math.min(1, frame / 20) * 0.5 * fadeAlpha
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            drawBody(fadeAlpha)
+
+            if (frame > T_OPEN) {
+                const t = Math.min(1, (frame - T_OPEN) / DUR_OPEN)
+                openAngle = (1 - Math.pow(1 - t, 2.2)) * Math.PI / 2 * 1.04
+            }
+            drawLid(fadeAlpha)
+
+            let offX = 0
+            if (frame >= T_SHAKE && frame < T_FALL) {
+                offX = Math.sin(frame * 1.8) * 5 * (1 - (frame - T_SHAKE) / DUR_SHAKE * 0.4)
+            } else if (frame >= T_FALL) {
+                if (!lockFalling) {
+                    lockFalling = true; lockVY = 0.5
+                    lockVRot = (Math.random() > 0.5 ? 1 : -1) * (0.04 + Math.random() * 0.07)
+                }
+                lockVY += 0.55; lockY += lockVY; lockRot += lockVRot
+            }
+            if (lockY < 250) drawLock(CX + offX, lockY, lockRot, fadeAlpha)
+
+            if (frame > T_EMERGE) {
+                const t = Math.min(1, (frame - T_EMERGE) / DUR_EMERGE)
+                orbY = BODY_TOP - t * 88
+                const orbAlpha = Math.min(1, t * 3.5) * fadeAlpha
+                const orbR = 16 + t * 7
+
+                if (frame % 3 === 0) {
+                    const a = Math.random() * Math.PI * 2, sp = 0.6 + Math.random() * 2.8
+                    sparkles.push({ x: CX, y: orbY, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp - 0.8,
+                        life: 1, size: 1.5 + Math.random() * 3, hue: hue + (Math.random()-0.5)*45 })
+                }
+
+                hiddenCtx.save()
+                const g = hiddenCtx.createRadialGradient(CX, orbY, 0, CX, orbY, orbR * 2.8)
+                g.addColorStop(0, `hsla(${hue},100%,82%,${0.55 * orbAlpha})`)
+                g.addColorStop(1, `hsla(${hue},100%,55%,0)`)
+                hiddenCtx.globalAlpha = orbAlpha
+                hiddenCtx.fillStyle = g; hiddenCtx.fillRect(CX - orbR*3, orbY - orbR*3, orbR*6, orbR*6)
+                hiddenCtx.beginPath(); hiddenCtx.arc(CX, orbY, orbR, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `hsl(${hue},88%,66%)`; hiddenCtx.fill()
+                hiddenCtx.beginPath(); hiddenCtx.arc(CX - orbR*0.28, orbY - orbR*0.3, orbR*0.33, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = 'rgba(255,255,255,0.55)'; hiddenCtx.fill()
+                hiddenCtx.restore()
+            }
+
+            for (let i = sparkles.length - 1; i >= 0; i--) {
+                const s = sparkles[i]
+                s.x += s.vx; s.y += s.vy; s.vy += 0.05; s.life -= 0.02
+                if (s.life <= 0) { sparkles.splice(i, 1); continue }
+                hiddenCtx.beginPath(); hiddenCtx.arc(s.x, s.y, s.size, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `hsla(${s.hue},100%,72%,${s.life * fadeAlpha})`; hiddenCtx.fill()
+            }
+
+            if (frame >= TOTAL && sparkles.length === 0) { this.lifetime = 0; chestGoing = false }
+        }
+    }
+
+    // ── InShopEffect ─────────────────────────────────────────────────
+    // Warm shop glow with dark gold coins drifting upward. Loops until shopGoing goes false.
+    function InShopEffect() {
+        const coins = []
+        let frame = 0
+
+        function newCoin(x, y) {
+            return { x, y, speed: 0.7 + Math.random() * 1.1, phase: Math.random() * Math.PI * 2, r: 21 + Math.random() * 15, hue: 38 + Math.random() * 14 }
+        }
+        for (let i = 0; i < 14; i++) coins.push(newCoin(Math.random() * 300 + 10, 200 + Math.random() * 200))
+
+        function drawCoin(c) {
+            const cosP        = Math.cos(c.phase)
+            const w           = Math.abs(cosP) * c.r
+            const facing      = cosP > 0
+            const edgeFraction = 1 - Math.abs(cosP)
+            hiddenCtx.beginPath(); hiddenCtx.ellipse(c.x, c.y, Math.max(4.5, w), c.r, 0, 0, Math.PI * 2)
+            hiddenCtx.fillStyle = facing ? `hsl(${c.hue},78%,34%)` : `hsl(${c.hue},52%,20%)`; hiddenCtx.fill()
+            hiddenCtx.strokeStyle = `hsl(${c.hue - 8},60%,14%)`
+            hiddenCtx.lineWidth = 1 + edgeFraction * 6; hiddenCtx.stroke()
+        }
+
+        this.draw = function () {
+            if (!shopGoing) { this.lifetime = 0; return }
+            frame++
+            const bgA = Math.min(0.5, frame / 60 * 0.5)
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+            const glowAlpha = Math.min(1, frame / 45)
+            const g = hiddenCtx.createRadialGradient(160, 100, 0, 160, 100, 200)
+            g.addColorStop(0,    `rgba(255,255,220,${glowAlpha})`)
+            g.addColorStop(0.25, `rgba(255,240,100,${glowAlpha * 0.9})`)
+            g.addColorStop(0.6,  `rgba(220,150,10,${glowAlpha * 0.45})`)
+            g.addColorStop(1,    'rgba(160,80,0,0)')
+            hiddenCtx.fillStyle = g; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            if (frame % 12 === 0 && coins.length < 20) coins.push(newCoin(Math.random() * 300 + 10, 212))
+            for (let i = coins.length - 1; i >= 0; i--) {
+                const c = coins[i]; c.y -= c.speed; c.phase += 0.075
+                if (c.y + c.r < 0) { coins.splice(i, 1); continue }
+                drawCoin(c)
+            }
+        }
+    }
+
+    // ── RandomEffect ─────────────────────────────────────────────────
+    // Large gold question mark rises spinning from below, holds, then fades out.
+    function RandomEffect() {
+        const CX = 160
+        const TARGET_Y = 95, START_Y = 280
+        const DUR_RISE = 65, DUR_HOLD = 20, DUR_FADE = 30
+        const T_FADE   = DUR_RISE + DUR_HOLD
+        const TOTAL    = T_FADE + DUR_FADE
+
+        let frame = 0, qY = START_Y, angle = 0
+
+        this.draw = function () {
+            frame++
+            angle += 0.06
+
+            const riseT = Math.min(1, frame / DUR_RISE)
+            qY = START_Y + (TARGET_Y - START_Y) * (1 - Math.pow(1 - riseT, 2.5))
+
+            const alpha = frame > T_FADE ? Math.max(0, 1 - (frame - T_FADE) / DUR_FADE) : 1
+            const bgA   = frame > T_FADE ? alpha * 0.5 : Math.min(0.5, frame / DUR_RISE * 0.5)
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            hiddenCtx.save()
+            hiddenCtx.translate(CX, qY); hiddenCtx.rotate(angle)
+
+            const gr = hiddenCtx.createRadialGradient(0, 0, 0, 0, 0, 85)
+            gr.addColorStop(0, `hsla(44,100%,65%,${0.45 * alpha})`)
+            gr.addColorStop(1, 'hsla(44,100%,50%,0)')
+            hiddenCtx.fillStyle = gr; hiddenCtx.fillRect(-85, -85, 170, 170)
+
+            hiddenCtx.globalAlpha = alpha
+            hiddenCtx.font = 'bold 140px serif'
+            hiddenCtx.textAlign = 'center'; hiddenCtx.textBaseline = 'middle'
+            hiddenCtx.fillStyle = 'hsl(44,88%,52%)'; hiddenCtx.fillText('?', 0, 0)
+            hiddenCtx.strokeStyle = 'hsl(40,80%,28%)'; hiddenCtx.lineWidth = 4
+            hiddenCtx.strokeText('?', 0, 0)
+
+            hiddenCtx.restore()
+
+            if (frame >= TOTAL) { this.lifetime = 0; randomGoing = false }
+        }
+    }
+
+    // ── CutEffect ────────────────────────────────────────────────────
+    // Large coin rises spinning, freezes face-on, then splits into four quarters that fall off screen.
+    function CutEffect() {
+        const CX = 160, R = 62
+        const TARGET_Y = 95, START_Y = 265
+        const DUR_RISE   = 70, DUR_FREEZE = 18
+        const T_CUT      = DUR_RISE + DUR_FREEZE
+        const SPIN_SPEED = Math.PI * 2 / DUR_RISE
+        const GRAV       = 0.35
+
+        let frame = 0, coinY = START_Y, angle = 0, cutting = false, flashA = 0
+
+        const quarters = [
+            { sa: -Math.PI / 2, ea: 0,               vx:  1.8, vy: -1.0, x: 0, y: 0 },
+            { sa:  Math.PI,     ea: 3 * Math.PI / 2, vx: -1.8, vy: -1.0, x: 0, y: 0 },
+            { sa:  0,           ea: Math.PI / 2,     vx:  1.8, vy:  0.6, x: 0, y: 0 },
+            { sa:  Math.PI / 2, ea: Math.PI,         vx: -1.8, vy:  0.6, x: 0, y: 0 },
+        ]
+
+        function drawCoin(cx, cy, cosA) {
+            const w = R * Math.abs(cosA)
+            if (w < 1) return
+            const front = cosA >= 0
+            hiddenCtx.beginPath(); hiddenCtx.ellipse(cx, cy, w, R, 0, 0, Math.PI * 2)
+            hiddenCtx.fillStyle = front ? 'hsl(44,88%,50%)' : 'hsl(38,72%,32%)'; hiddenCtx.fill()
+            hiddenCtx.strokeStyle = front ? 'hsl(46,100%,68%)' : 'hsl(38,60%,20%)'
+            hiddenCtx.lineWidth = 3; hiddenCtx.stroke()
+            if (front && w > R * 0.4) {
+                hiddenCtx.beginPath(); hiddenCtx.ellipse(cx, cy, w * 0.72, R * 0.72, 0, 0, Math.PI * 2)
+                hiddenCtx.strokeStyle = 'hsl(40,80%,34%)'; hiddenCtx.lineWidth = 2; hiddenCtx.stroke()
+            }
+            if (front && w > R * 0.6) {
+                hiddenCtx.fillStyle = 'hsl(40,80%,34%)'
+                hiddenCtx.fillRect(cx - w * 0.07, cy - R * 0.32, w * 0.14, R * 0.64)
+                hiddenCtx.fillRect(cx - w * 0.28, cy - R * 0.07, w * 0.56, R * 0.14)
+            }
+        }
+
+        function drawQuarter(q) {
+            hiddenCtx.save(); hiddenCtx.translate(q.x, q.y)
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(0, 0); hiddenCtx.arc(0, 0, R, q.sa, q.ea); hiddenCtx.closePath()
+            hiddenCtx.fillStyle = 'hsl(44,88%,50%)'; hiddenCtx.fill()
+            hiddenCtx.strokeStyle = 'hsl(46,100%,68%)'; hiddenCtx.lineWidth = 3; hiddenCtx.stroke()
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(0, 0); hiddenCtx.arc(0, 0, R * 0.72, q.sa, q.ea); hiddenCtx.closePath()
+            hiddenCtx.strokeStyle = 'hsl(40,80%,34%)'; hiddenCtx.lineWidth = 2; hiddenCtx.stroke()
+            hiddenCtx.restore()
+        }
+
+        this.draw = function () {
+            frame++
+
+            const bgA = cutting
+                ? Math.max(0, 0.5 - (frame - T_CUT) / 40 * 0.5)
+                : Math.min(0.5, frame / DUR_RISE * 0.5)
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            if (frame <= DUR_RISE) {
+                const ease = 1 - Math.pow(1 - frame / DUR_RISE, 2.5)
+                coinY = START_Y + (TARGET_Y - START_Y) * ease
+                angle += SPIN_SPEED
+                drawCoin(CX, coinY, Math.cos(angle))
+            } else if (frame <= T_CUT) {
+                drawCoin(CX, coinY, 1)
+            } else {
+                if (!cutting) {
+                    cutting = true; flashA = 0.85
+                    quarters.forEach(q => { q.x = CX; q.y = coinY })
+                }
+
+                if (flashA > 0) {
+                    hiddenCtx.save(); hiddenCtx.globalAlpha = flashA
+                    hiddenCtx.strokeStyle = 'white'; hiddenCtx.lineWidth = 5
+                    hiddenCtx.beginPath(); hiddenCtx.moveTo(CX - R, coinY); hiddenCtx.lineTo(CX + R, coinY); hiddenCtx.stroke()
+                    hiddenCtx.beginPath(); hiddenCtx.moveTo(CX, coinY - R); hiddenCtx.lineTo(CX, coinY + R); hiddenCtx.stroke()
+                    hiddenCtx.restore()
+                    flashA -= 0.14
+                }
+
+                quarters.forEach(q => { q.vy += GRAV; q.x += q.vx; q.y += q.vy; drawQuarter(q) })
+
+                if (quarters.every(q => q.y - R > 200)) { this.lifetime = 0; cutGoing = false }
+            }
+        }
+    }
+
+    // ── RestEffect ───────────────────────────────────────────────────
+    // Campfire logs and fire particles across full canvas width; fades out after ~5 seconds.
+    function RestEffect() {
+        const CX = 160, BASE_Y = 182
+        const DUR_BURN = 300, DUR_FADE = 40, DUR_IN = 30
+        const T_FADE = DUR_BURN, TOTAL = DUR_BURN + DUR_FADE
+
+        let frame = 0
+        const particles = []
+
+        function fireHue() {
+            const r = Math.random()
+            if (r < 0.60) return 15 + Math.random() * 30
+            if (r < 0.85) return Math.random() * 15
+            return 108 + Math.random() * 25
+        }
+
+        function spawnParticle() {
+            return {
+                x:     4 + Math.random() * 312,
+                y:     BASE_Y - Math.random() * 12,
+                vy:    -(0.7 + Math.random() * 1.8),
+                size:  6 + Math.random() * 12,
+                life:  1,
+                decay: 0.011 + Math.random() * 0.013,
+                hue:   fireHue(),
+                phase: Math.random() * Math.PI * 2,
+                swirl: (Math.random() - 0.5) * 0.16,
+                hard:  Math.random() < 0.5
+            }
+        }
+
+        function drawLogs(alpha) {
+            hiddenCtx.save()
+            hiddenCtx.globalAlpha = alpha
+            hiddenCtx.lineCap = 'round'; hiddenCtx.lineWidth = 26
+            hiddenCtx.strokeStyle = 'hsl(25,58%,20%)'
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(-8, BASE_Y - 10); hiddenCtx.lineTo(328, BASE_Y + 10); hiddenCtx.stroke()
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(-8, BASE_Y + 10); hiddenCtx.lineTo(328, BASE_Y - 10); hiddenCtx.stroke()
+            hiddenCtx.lineWidth = 3; hiddenCtx.strokeStyle = 'hsl(22,45%,14%)'
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(20, BASE_Y - 4); hiddenCtx.lineTo(290, BASE_Y + 6); hiddenCtx.stroke()
+            hiddenCtx.beginPath(); hiddenCtx.moveTo(20, BASE_Y + 6); hiddenCtx.lineTo(290, BASE_Y - 4); hiddenCtx.stroke()
+            hiddenCtx.restore()
+        }
+
+        function drawEmbers(alpha) {
+            hiddenCtx.save()
+            const g = hiddenCtx.createRadialGradient(CX, BASE_Y, 0, CX, BASE_Y, 90)
+            g.addColorStop(0,   `hsla(25,100%,72%,${0.72 * alpha})`)
+            g.addColorStop(0.5, `hsla(18,100%,55%,${0.35 * alpha})`)
+            g.addColorStop(1,   'hsla(15,100%,40%,0)')
+            hiddenCtx.fillStyle = g; hiddenCtx.fillRect(CX - 92, BASE_Y - 92, 184, 110)
+            hiddenCtx.restore()
+        }
+
+        this.draw = function () {
+            frame++
+            const fadeAlpha = frame > T_FADE ? Math.max(0, 1 - (frame - T_FADE) / DUR_FADE) : 1
+            const bgA = frame <= DUR_IN ? frame / DUR_IN * 0.5 : fadeAlpha * 0.5
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            if (frame < T_FADE) particles.push(spawnParticle())
+
+            drawLogs(fadeAlpha)
+            drawEmbers(fadeAlpha)
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i]
+                p.x    += Math.sin(p.phase) * 0.75
+                p.phase += p.swirl
+                p.y    += p.vy
+                p.life -= p.decay
+                if (p.life <= 0) { particles.splice(i, 1); continue }
+                const a   = p.life * fadeAlpha
+                const lit = 45 + p.life * 30
+                const g   = hiddenCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2)
+                g.addColorStop(0, `hsla(${p.hue},100%,${lit}%,${a})`)
+                if (p.hard) g.addColorStop(0.5, `hsla(${p.hue},100%,${lit}%,${a})`)
+                g.addColorStop(1, `hsla(${p.hue},100%,${Math.max(0, lit - 20)}%,0)`)
+                hiddenCtx.fillStyle = g
+                hiddenCtx.fillRect(p.x - p.size * 2, p.y - p.size * 2, p.size * 4, p.size * 4)
+            }
+
+            if (frame >= TOTAL && particles.length === 0) { this.lifetime = 0; restGoing = false }
+        }
+    }
+
+    // ── TurnEndEffect ────────────────────────────────────────────────
+    // Diagonal slash sweeps left to right, bleeding yellow to red, then expires.
+    function TurnEndEffect() {
+        let progress = -0.15
+        const SW = 165, skew = 25
+
+        this.draw = function () {
+            progress += 0.016
+            const bgA = Math.max(0, Math.min(progress / 0.1, 1, (1.3 - progress) / 0.3)) * 0.5
+            hiddenCtx.fillStyle = `rgba(0,0,0,${bgA})`; hiddenCtx.fillRect(0, 0, 320, 200)
+
+            const cx  = progress * (320 + SW * 3) - SW
+            const hue = 55 * (1 - Math.max(0, Math.min(1, progress)))
+
+            hiddenCtx.save(); hiddenCtx.globalAlpha = 0.38
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(cx - skew,      0)
+            hiddenCtx.lineTo(cx + SW - skew, 0)
+            hiddenCtx.lineTo(cx + SW + skew, 200)
+            hiddenCtx.lineTo(cx + skew,      200)
+            hiddenCtx.closePath()
+
+            const grad = hiddenCtx.createLinearGradient(cx, 0, cx + SW, 0)
+            grad.addColorStop(0,   `hsla(${hue},100%,60%,0)`)
+            grad.addColorStop(0.5, `hsla(${hue},100%,60%,1)`)
+            grad.addColorStop(1,   `hsla(${hue},100%,60%,0)`)
+            hiddenCtx.fillStyle = grad; hiddenCtx.fill()
+            hiddenCtx.restore()
+
+            if (progress > 1.3) { this.lifetime = 0; turnGoing = false }
+        }
+    }
+
+    // ── PlayerDeathEffect ────────────────────────────────────────────
+    // Upper-body silhouette holds, then explodes into red particles that fade.
+    function PlayerDeathEffect() {
+        let frame = 0
+        const HOLD       = 35
+        const BG_IN_END  = HOLD
+        const BG_COL_END = HOLD + 90
+        const BG_OUT_STA = HOLD + 110
+        const BG_OUT_END = HOLD + 160
+        const particles  = []
+        let exploded = false
+
+        const CX      = 160
+        const HEAD_R  = 47,  HEAD_CY = 47
+        const NECK_W  = 18,  NECK_Y  = 86
+        const SHLDR_Y = 117, SHLDR_W = 88
+        const WAIST_Y = 200, WAIST_W = 46
+        const CR      = 14
+
+        function drawSilhouette(alpha) {
+            hiddenCtx.save(); hiddenCtx.globalAlpha = alpha; hiddenCtx.fillStyle = '#0a0a0a'
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(CX - NECK_W, NECK_Y)
+            hiddenCtx.arcTo(CX - SHLDR_W, SHLDR_Y, CX - WAIST_W, WAIST_Y, CR)
+            hiddenCtx.arcTo(CX - WAIST_W, WAIST_Y, CX + WAIST_W, WAIST_Y, CR)
+            hiddenCtx.arcTo(CX + WAIST_W, WAIST_Y, CX + SHLDR_W, SHLDR_Y, CR)
+            hiddenCtx.arcTo(CX + SHLDR_W, SHLDR_Y, CX + NECK_W,  NECK_Y,  CR)
+            hiddenCtx.lineTo(CX + NECK_W, NECK_Y)
+            hiddenCtx.closePath(); hiddenCtx.fill()
+            hiddenCtx.beginPath(); hiddenCtx.arc(CX, HEAD_CY, HEAD_R, 0, Math.PI * 2); hiddenCtx.fill()
+            hiddenCtx.restore()
+        }
+
+        function isInSilhouette(x, y) {
+            if ((x-CX)*(x-CX) + (y-HEAD_CY)*(y-HEAD_CY) <= HEAD_R*HEAD_R) return true
+            if (y >= NECK_Y && y < SHLDR_Y) {
+                const t = (y - NECK_Y) / (SHLDR_Y - NECK_Y)
+                return Math.abs(x - CX) <= NECK_W + (SHLDR_W - NECK_W) * t
+            }
+            if (y >= SHLDR_Y && y <= WAIST_Y) {
+                const t = (y - SHLDR_Y) / (WAIST_Y - SHLDR_Y)
+                return Math.abs(x - CX) <= SHLDR_W + (WAIST_W - SHLDR_W) * t
+            }
+            return false
+        }
+
+        function spawnParticles() {
+            const GRID = 14
+            const midY = (HEAD_CY + WAIST_Y) * 0.5
+            for (let gy = 0; gy <= 200; gy += GRID) {
+                for (let gx = 0; gx <= 320; gx += GRID) {
+                    if (!isInSilhouette(gx, gy)) continue
+                    const px = gx + (Math.random() - 0.5) * GRID * 0.5
+                    const py = gy + (Math.random() - 0.5) * GRID * 0.5
+                    const dx = px - CX, dy = py - midY
+                    const dist = Math.sqrt(dx*dx + dy*dy) || 1
+                    const speed = 0.25 + Math.random() * 0.55
+                    particles.push({
+                        x: px, y: py,
+                        vx: dx / dist * speed + (Math.random() - 0.5) * 0.2,
+                        vy: dy / dist * speed + (Math.random() - 0.5) * 0.2,
+                        size: GRID * (0.72 + Math.random() * 0.22),
+                        age: 0, decay: 0.004 + Math.random() * 0.005
+                    })
+                }
+            }
+        }
+
+        this.draw = function () {
+            frame++
+
+            let bgSat = 0, bgLit = 0, bgAlpha = 0
+            if (frame <= BG_IN_END) {
+                bgAlpha = (frame / BG_IN_END) * 0.5; bgSat = 80; bgLit = 12
+            } else if (frame <= BG_COL_END) {
+                const t = (frame - BG_IN_END) / (BG_COL_END - BG_IN_END)
+                bgAlpha = 0.5; bgSat = 80 * (1 - t); bgLit = 12 * (1 - t)
+            } else if (frame <= BG_OUT_STA) {
+                bgAlpha = 0.5
+            } else {
+                const t = (frame - BG_OUT_STA) / (BG_OUT_END - BG_OUT_STA)
+                bgAlpha = Math.max(0, 0.5 * (1 - t))
+            }
+            if (bgAlpha > 0) {
+                hiddenCtx.fillStyle = `hsla(0,${bgSat}%,${bgLit}%,${bgAlpha})`
+                hiddenCtx.fillRect(0, 0, 320, 200)
+            }
+
+            if (frame <= HOLD) {
+                drawSilhouette(Math.min(1, frame / 18))
+            } else {
+                if (!exploded) { exploded = true; spawnParticles() }
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const p = particles[i]
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.018
+                    p.age += p.decay
+                    if (p.age >= 1) { particles.splice(i, 1); continue }
+                    const colorT = Math.min(1, p.age / 0.55)
+                    const sat    = colorT * 100
+                    const lit    = colorT * 50
+                    const alpha  = p.age < 0.68 ? 1 : Math.max(0, 1 - (p.age - 0.68) / 0.32)
+                    hiddenCtx.beginPath(); hiddenCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+                    hiddenCtx.fillStyle = `hsla(0,${sat}%,${lit}%,${alpha})`; hiddenCtx.fill()
+                }
+                if (particles.length === 0) { this.lifetime = 0; deadGoing = false }
+            }
+        }
+    }
+
+    // ── EntryEffect ──────────────────────────────────────────────────
+    // Yellow/white glow blooms behind dark blue curtains; curtains ease back; glow fades.
+    function EntryEffect() {
+        const DUR_GLOW_IN = 20, DUR_HOLD = 12, DUR_OPEN = 75, DUR_FADE = 50
+        const T_OPEN = DUR_GLOW_IN + DUR_HOLD
+        const T_FADE = T_OPEN + DUR_OPEN
+        const TOTAL  = T_FADE + DUR_FADE
+
+        let frame = 0
+        const easeOut = t => 1 - Math.pow(1 - t, 2.5)
+
+        function drawGlow(alpha) {
+            const g = hiddenCtx.createRadialGradient(160, 100, 0, 160, 100, 200)
+            g.addColorStop(0,    `rgba(255,255,220,${alpha})`)
+            g.addColorStop(0.25, `rgba(255,240,100,${alpha * 0.9})`)
+            g.addColorStop(0.6,  `rgba(220,150,10,${alpha * 0.45})`)
+            g.addColorStop(1,    'rgba(160,80,0,0)')
+            hiddenCtx.fillStyle = g; hiddenCtx.fillRect(0, 0, 320, 200)
+        }
+
+        function drawCurtain(isLeft, slide) {
+            hiddenCtx.save()
+            hiddenCtx.translate(isLeft ? -slide : slide, 0)
+
+            const x0     = isLeft ? 0   : 155
+            const x1     = isLeft ? 165 : 320
+            const innerX = isLeft ? 165 : 155
+            const bulge  = isLeft ? 1   : -1
+            const outerX = isLeft ? x0  : x1
+
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(outerX, 0)
+            hiddenCtx.lineTo(innerX, 0)
+            hiddenCtx.bezierCurveTo(
+                innerX + bulge * 20, 65,
+                innerX - bulge * 14, 140,
+                innerX, 200
+            )
+            hiddenCtx.lineTo(outerX, 200)
+            hiddenCtx.closePath()
+            hiddenCtx.fillStyle = 'hsl(222,52%,15%)'; hiddenCtx.fill()
+
+            const grad = hiddenCtx.createLinearGradient(x0, 0, x1, 0)
+            if (isLeft) {
+                grad.addColorStop(0,    'rgba(10,20,80,0.55)')
+                grad.addColorStop(0.65, 'rgba(10,20,80,0)')
+            } else {
+                grad.addColorStop(0.35, 'rgba(10,20,80,0)')
+                grad.addColorStop(1,    'rgba(10,20,80,0.55)')
+            }
+            hiddenCtx.fillStyle = grad; hiddenCtx.fill()
+
+            const FOLDS = 5, panelW = x1 - x0, step = panelW / (FOLDS + 1)
+            hiddenCtx.lineWidth = 1.5
+            for (let i = 1; i <= FOLDS; i++) {
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(x0 + step * i, 0); hiddenCtx.lineTo(x0 + step * i, 200)
+                hiddenCtx.strokeStyle = `rgba(80,110,200,${i % 2 === 0 ? 0.26 : 0.12})`
+                hiddenCtx.stroke()
+            }
+
+            hiddenCtx.restore()
+        }
+
+        this.draw = function () {
+            frame++
+
+            const glowAlpha = frame <= DUR_GLOW_IN
+                ? frame / DUR_GLOW_IN
+                : frame <= T_FADE ? 1
+                : Math.max(0, 1 - (frame - T_FADE) / DUR_FADE)
+
+            hiddenCtx.fillStyle = `rgba(0,0,0,${glowAlpha * 0.5})`
+            hiddenCtx.fillRect(0, 0, 320, 200)
+            drawGlow(glowAlpha)
+
+            const slide = easeOut(Math.max(0, Math.min(1, (frame - T_OPEN) / DUR_OPEN))) * 175
+            drawCurtain(true,  slide)
+            drawCurtain(false, slide)
+
+            if (frame >= TOTAL) { this.lifetime = 0; entryGoing = false }
+        }
+    }
+    //#endregion
+
+    window.requestAnimationFrame(update);
+</script>
