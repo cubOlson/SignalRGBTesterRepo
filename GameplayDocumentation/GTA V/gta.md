@@ -38,7 +38,7 @@ This allows the integration to properly adapt to all supported resolutions.
    - **Blue Bar**
 ![BlueBar Meter](images/bluebar-meter.png)
 
-3. As Michael, go into his room, or any other place you know that has a bong, and use the bong to trigger:
+3. As Michael, go into his son's room, or any other place you know that has a bong, and use the bong to trigger:
    - **Bong**
 ![Bong Meter](images/bong-meter.png)
 
