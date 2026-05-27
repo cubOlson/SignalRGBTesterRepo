@@ -1,6 +1,6 @@
 <head>
-  <title>GTA V</title>
-  <meta description="Go on an adventure in GTA V with metering and ambience effects. v2.03"/>
+  <title>GTA V dev</title>
+  <meta description="Go on an adventure in GTA V with metering and ambience effects. v2.04"/>
   <meta publisher="SignalRGB" />
   <meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background effect." type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" tooltip="Changes the kind of background effect you see." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -9,6 +9,8 @@
   <meta property="enableMoney" label="Money effect" type="boolean" default="1" />
   <meta property="enableWasted" label="Wasted effect" type="boolean" default="1" />
   <meta property="enableWanted" label="Wanted effect" type="boolean" default="1" />
+  <meta property="enableBong" label="Bong effect" type="boolean" default="1" />
+
  
 
   <meta meter="wastedW" tags="GTA, Grand Theft Auto" type="area" x="0.387" y="0.5037" width="0.04" height=".001"
@@ -118,6 +120,7 @@
 
     <resolution size="3840x2160" x="0.9729" y="0.0241" width="0.0016" height="0" />
     <resolution size="2560x1080" x="0.8546" y="0.025" width="0.002" height="-0.0009" />
+    <resolution size="1920x1080" x="0.9818" y="0.0241" width="0" height="0" />
 
   </meta>
 
@@ -129,6 +132,7 @@
 
     <resolution size="3840x2160" x="0.981" y="0.0241" width="0.0008" height="0" />
     <resolution size="2560x1080" x="0.8613" y="0.0241" width="0.0008" height="0.0009" />
+    <resolution size="1920x1080" x="0.9739" y="0.0241" width="0" height="0" />
 
   </meta>
 
@@ -172,7 +176,7 @@
     <resolution aspect="16:11" x="0.9443" y="0.0583" width="0.041" height=".0259" />
 
     <resolution size="3840x2160" x="0.9485" y="0.0550" width="0.037" height=".0259"/>
-    <resolution size="2560x1080" x="0.8437" y="0.0565" width="0.0203" height="0.0278" />
+    <resolution size="2560x1080" x="0.8437" y="0.0599" width="0.0203" height="0.0278" />
 
   </meta>
 
@@ -241,7 +245,7 @@
   </meta>
 
   <meta meter="BongWhiteE" type="area" tags="VLC,Game" x="0.0614" y="0.0285" width="0" height="0" 
-    h="0-360" s="0-40" l="80-90" hdr-h="0-360" hdr-s="0-40" hdr-l="80-90">
+    h="0-360" s="0-40" l="80-90" hdr-h="0-360" hdr-s="0-40" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.0614" y="0.0285" width="0" height="0"/>
     <resolution aspect="24:10" x="0.0614" y="0.0285" width="0" height="0"/>
     <resolution aspect="16:11" x="0.0614" y="0.0285" width="0" height="0"/>
@@ -256,18 +260,20 @@
     <resolution aspect="24:10" x="0.0602" y="0.0313" width="0" height="0"/>
     <resolution aspect="16:11" x="0.0602" y="0.0313" width="0" height="0"/>
 
-    <resolution size="3840x2160" x="0.0602" y="0.0313" width="0" height="0"/>
+    <resolution size="3840x2160" x="0.0594" y="0.0204" width="0.0023" height="0.0004"/>
     <resolution size="2560x1080" x="0.0602" y="0.0313" width="0" height="0"/>
+    <resolution size="1920x1080" x="0.0448" y="0.0222" width="0.0037" height="0"/>
   </meta>
 
-  <meta meter="BongText" type="ocr_textmatch" tags="VLC,Game" x="0.1188" y="0.0236" width="0.0148" height="0.0202" 
+  <meta meter="BongText" type="ocr_textmatch" tags="VLC,Game" x="0.1188" y="0.0244" width="0.0148" height="0.0202" 
     string="hit" confidence="70" >
     <resolution aspect="3.55:1" x="0.1188" y="0.0236" width="0.0148" height="0.0202"/>
     <resolution aspect="24:10" x="0.1188" y="0.0236" width="0.0148" height="0.0202"/>
     <resolution aspect="16:11" x="0.1188" y="0.0236" width="0.0148" height="0.0202"/>
 
-    <resolution size="3840x2160" x="0.1188" y="0.0236" width="0.0148" height="0.0202"/>
+    <resolution size="3840x2160" x="0.1188" y="0.0244" width="0.0148" height="0.0202"/>
     <resolution size="2560x1080" x="0.1188" y="0.0236" width="0.0148" height="0.0202"/>
+    <resolution size="1920x1080" x="0.1188" y="0.0256" width="0.0148" height="0.0202"/>
   </meta>
 
 
@@ -295,8 +301,10 @@
   var copTimer = 0;
   var lowHealthGoing = false;
   var playingGame = false;
-  let bongTimer = 0;
-  let canSetBongTimer = false;
+  let bongReady = false;
+  let bongActive = false;
+  let bongCooldown = false;
+  let bongStartTime = 0;
   var lowHpMeter = new Meter(5, lowHpHandler);
   var lowHpNotRedMeter = new Meter(5,lowHpHandler);
   var redMoneyMeter = new Meter(25, moneyHandler);
@@ -310,18 +318,20 @@
   var inGameMeter = new Meter(10, inGame);
   var topLeftBlackMeter = new Meter(10, wastedEffect);
   var bottomRightBlackMeter = new Meter(10, wastedEffect);
-  var bongMeter = new Meter(10, bongCallback);
+  var bongWhiteMeter = new Meter(10, bongHandler);
+  var bongTextMeter = new Meter(10, bongHandler);
+  var bongBlackMeter = new Meter(10, bongHandler);
 
   function update() {
-    hctx.clearRect(0, 0, hiddenCanvas.width, hiddenCanvas.height);
-    hctx.fillStyle = `hsla(0, 0%, 0%, ${gAlpha})`;
-    hctx.fillRect(0, 0, 320, 200);
+    DrawRect(0, 0, 320, 200, 'black')
 
     backgroundHandler()
-   
+    bongHandler();
 
     inGameMeter.setValue(engine.vision.blueBar);
-    bongMeter.setValue(engine.vision.BongWhiteE + engine.vision.BongBlackE + engine.vision.BongText);
+    bongWhiteMeter.setValue(engine.vision.BongWhiteE);
+    bongTextMeter.setValue(engine.vision.BongText);
+    bongBlackMeter.setValue(engine.vision.BongBlackE);
     lowHpMeter.setValue(engine.vision.lowHp);
     lowHpNotRedMeter.setValue(engine.vision.lowHpNotRed);
     green1MoneyMeter.setValue(engine.vision.moneyGreen);
@@ -338,15 +348,9 @@
       copyScreen(gAlpha);
     }
     //Effect handler 
-    for (let i = 0; i < effects.length; i++) {
-      effects[i].draw(hctx);
-    } 
-    // Remove dead effects with filter
-    effects = effects.filter(effect => !(effect.lifetime <= 0));
+    effects.forEach(ele => { ele.draw() })
+    effects = effects.filter(ele => !(ele.lifetime <= 0))
 
-    
-
-    ctx.clearRect(0, 0, width, height);
     ctx.drawImage(hiddenCanvas, 0, 0);
     
     window.requestAnimationFrame(update);
@@ -427,17 +431,48 @@
         hctx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
+  
+  function bongVisible(){
+    return (bongBlackMeter.value >= .95 && bongWhiteMeter.value >=.95 && bongTextMeter.value == 1);
+  }
 
-  function bongCallback (){
-    if (bongMeter.value <=0 && bongMeter.decreased && bongMeter.diff >=3 && canSetBongTimer){
-      bongTimer = Date.now();
-    } else if(bongMeter.value ==3){
-      canSetBongTimer = true;
+  function hudVisible(){
+    return engine.vision.blueBar > .1;
+  }
+
+  function bongHandler(){
+    if(enableBong){
+      const bongUI = bongVisible();
+      const hud = hudVisible();
+
+      // player is near bong
+      if (hud && bongUI && !bongActive && !bongCooldown ){
+        bongReady = true;
+      }
+
+      // start animation
+      if (bongReady && !bongActive && !hud && !bongUI){
+        bongActive = true;
+        bongReady = false;
+        bongStartTime = Date.now();
+        effects.push(new simpleBong());
+      }
+
+      // finish animation
+      if (bongActive && hud && bongUI && Date.now() - bongStartTime > 5000){
+        bongActive = false;
+        bongCooldown = true;
+      }
+
+      // cooldown over when leave bong 
+      if (bongCooldown && !bongUI){
+        bongCooldown = false;
+      }
     }
   }
 
   function lowHpHandler() {
-    if (lowHpMeter.value > .2 && lowHpNotRedMeter.value < 0.1 && !lowHealthGoing && enableHealth) {
+    if (lowHpMeter.value >= .2 && lowHpNotRedMeter.value < 0.1 && !lowHealthGoing && enableHealth && !bongActive) {
       effects.push(new LowHpEffect());
       lowHealthGoing = true;
     } else if (lowHpMeter.value < .1) {
@@ -449,18 +484,13 @@
     if (inGameMeter.value > 0.1) {
       playingGame = true
     } else {
-      playingGame = true
-      if (Date.now() - bongTimer < 4000 && canSetBongTimer){
-        bongTimer = 0;
-        effects.push(new simpleBong());
-        canSetBongTimer = false;
-      }
+      playingGame = false
     }
   }
 
   function moneyHandler() {
     if (enableMoney) {
-      if (redMoneyMeter.value >= .2 && black1MoneyMeter.value > .05) {
+      if (redMoneyMeter.value >= .2 && black1MoneyMeter.value > .05&& !bongActive) {
         effects.push(new MoneyEffect("red"));
       } else if ((green1MoneyMeter.value >= .2 || green2MoneyMeter.value >= .15) && (black1MoneyMeter.value >= .05 || black2MoneyMeter.value >= .05)) {
         effects.push(new MoneyEffect("green"));
@@ -518,15 +548,9 @@
       this.money.push(new fallingMoney(Math.random() * 320, Math.random() + 5, this.color))
     }
     this.draw = function () {
-      this.money.forEach(money => {
-        money.draw();
-      });
-      
-      this.money = this.money.filter(money => money.y < 250);
-      
-      if (GetTime() - this.start > 8000) {
-        this.lifetime = 0;
-      }
+      for (let i = 0; i < this.money.length; i++) this.money[i].draw()
+      this.money = this.money.filter(money => money.lifetime > 0)  
+      if (GetTime() - this.start > 8000) this.lifetime = 0;
     }
   }
 
@@ -537,34 +561,41 @@
     this.bloodDrip = [];
     this.bloodHeight = 0;
     this.elapsed = 0;
-    
-    this.draw = function (hctx) {
+
+    this.draw = function () {
+
       if (Math.random() > 0.8) {
-        this.bloodDrip.push(new blood(Math.random() * 320, 0, "red", 0.01));
+        this.bloodDrip.push(new blood(Math.random() * 320, 0,"red",0.01));
       }
 
       this.elapsed = GetTime() - this.start;
-      
+
       if (this.bloodHeight < -200) {
         this.lifetime = 0;
         Freezbackground = false;
         wastedGoing = false;
       }
-    
+
       copyScreen(0.1, hctx);
-    
-      this.bloodDrip.forEach((blood, index) => {
-        blood.draw(hctx);
-        if (blood.y > 200 - this.bloodHeight) {
-          this.bloodHeight -= blood.size;
-          this.bloodDrip.splice(index, 1);
+
+      for (let i = 0; i < this.bloodDrip.length; i++) {
+        this.bloodDrip[i].draw();
+      }
+
+      this.bloodDrip = this.bloodDrip.filter(b => {
+
+        if (b.y > 200 - this.bloodHeight) {
+          this.bloodHeight -= b.size;
+          return false;
         }
+
+        return true;
       });
-      
+
       hctx.fillStyle = "red";
-      hctx.fillRect(0, 200 + this.bloodHeight, 320, -this.bloodHeight);
+      hctx.fillRect(0,200 + this.bloodHeight,320,-this.bloodHeight);
     }
-}
+  }
 
   function ParticleExplosion(x, y, color, speed, duration, particleAmount, particleSize, fadeSpeed, notrandomY, useHearts, hasPhysics) {
     this.start = GetTime();
@@ -640,7 +671,7 @@
         this.timing = 110;
       }
       hctx.globalAlpha = 1;
-      if (engine.vision.firstStarBlack1 < .5 && engine.vision.firstStarBlack1 < .5 && firstStarMeter.value <.1) {
+      if (engine.vision.firstStarBlack1 < .5 && engine.vision.firstStarBlack1 < .5 && firstStarMeter.value <.1 && engine.vision.blueBar <.1) {
         activePolice = false;
         this.lifetime = 0;
       }
@@ -650,20 +681,35 @@
   function simpleBong(){
     this.alpha = 0;
     this.alpha2 = .5;
-    this.effects = []
-    this.lifetime = 1000;
+    this.effects = [];
+    this.lifetime = 1;
+
     this.draw = function(){
-      h.globalAlpha = this.alpha;
-      DrawRect(0, 0, 320, 200, `hsla(110, 100%, 30%, ${this.alpha2})`)
-      this.effects.forEach((ele, i)=>{
-        ele.draw()
-        if(ele.lifetime <= 0) this.effects.splice(i, 1)
-      })
-      hctx.globalAlpha = 1
-      this.effects.push(new simpleSquare())
-      if(this.lifetime > 250) this.alpha < 1 ? this.alpha += .1 : this.alpha2 = Math.sin(Date.now() / 500) * .25 + .5
-      else this.alpha > 0 ? this.alpha = this.lifetime / 250 : null
-      this.lifetime--
+      if (!bongActive){
+        this.lifetime = 0;
+        return;
+      }
+
+      hctx.globalAlpha = this.alpha;
+
+      DrawRect(0,0,320,200,`hsla(110, 100%, 30%, ${this.alpha2})`);
+
+      for (let i = 0; i < this.effects.length; i++){
+        this.effects[i].draw();
+      }
+
+      this.effects = this.effects.filter(ele => ele.lifetime > 0);
+
+      hctx.globalAlpha = 1;
+
+      this.effects.push(new simpleSquare());
+
+      if (this.alpha < 1){
+        this.alpha += .1;
+      } else {
+        this.alpha2 =
+          Math.sin(Date.now() / 500) * .25 + .5;
+      }
     }
   }
 
@@ -688,56 +734,6 @@
     hctx.fillRect(x, y, width, height);
   };
 
-// function BongEffect() {
-//   this.start = new Date().getTime();
-//   this.duration = 10000;
-//   this.radius = 0;
-//   this.maxRadius = 400;
-//   this.color = [130,100,50];
-//   this.rotation = 0;
-
-//   this.draw = function () {
- 
-//   try {
-//         this.elapsed = new Date().getTime() - this.start;
-//         if (this.elapsed <this.duration){
-//           this.radius = (this.elapsed / 2000) * this.maxRadius;
-//         this.radius = Math.min(this.radius, this.maxRadius);
-//         } else {
-//           this.radius -=3;
-//         }
-//         if (this.radius <=0){
-//           this.lifetime = 0;
-//         }
-    
-//         var gradient = hctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, this.radius);
-//         gradient.addColorStop(0.5, constructString([this.color[0],this.color[1],this.color[2], ((Math.sin(this.elapsed/400) +1)/4)+0.4]));
-//         gradient.addColorStop(1, "transparent");
-//         hctx.fillStyle = gradient;
-//         hctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-//         for (var i = 0; i < 3; i++) {
-//           hctx.beginPath();
-//           hctx.moveTo(canvas.width / 2, canvas.height / 2);
-//           var angle = 0;
-//           var radius = 0;
-//           var maxRadius = this.radius/2; // Modified line
-//           while (radius < maxRadius) {
-//             angle += 0.1;
-//             radius += 4; 
-//             var x = canvas.width / 2 + radius * Math.cos(angle + this.rotation + i * Math.PI * 2 / 3);
-//             var y = canvas.height / 2 + radius * Math.sin(angle + this.rotation + i * Math.PI * 2 / 3);
-//             hctx.lineTo(x, y);
-//           }
-//           hctx.lineWidth = 15; 
-//           hctx.strokeStyle = constructString([this.color[0],this.color[1],this.color[2]+50]);
-//           hctx.stroke();
-//         }
-//         this.rotation -= 0.03;
-//   } catch (error) {
-//   }
-//   };
-// }
 
 function constructString(hslArr){
   if (hslArr.length == 3){
@@ -794,8 +790,6 @@ function hexToHSL(hex) {
     return [h, s, l];
   }
 
-
-// effects.push(new BongEffect());
 
   //Helper effects
 
@@ -875,16 +869,15 @@ function hexToHSL(hex) {
     }
   }
 
-  class fallingMoney {
-    constructor(x, speed, color) {
-      this.speed = speed / 5;
-      this.x = x;
-      this.y = 0 - (Math.random() * 250);
-      this.startVal = (Math.random() * 50);
-      this.start = GetTime();
-      this.color = color;
-    }
-    draw() {
+  function fallingMoney(x, speed, color) {
+    this.speed = speed / 5;
+    this.x = x;
+    this.y = 0 - (Math.random() * 250);
+    this.startVal = (Math.random() * 50);
+    this.start = GetTime();
+    this.color = color;
+    this.lifetime = 1
+    this.draw = function() {
       this.elapsed = GetTime() - this.start;
       this.moveVal = (this.elapsed / 1000);
       hctx.fillStyle = this.color;
@@ -894,19 +887,19 @@ function hexToHSL(hex) {
       hctx.fillRect(this.x, this.y, 100, 35);
       hctx.restore();
       this.y += this.speed;
+      if(this.y > 300) this.lifetime = 0
     }
   }
 
-  class blood {
-    constructor(x, y, color, fade) {
-      this.x = x;
-      this.y = y;
-      this.color = color;
-      this.fade = fade;
-      this.speed = (Math.random() + 0.1) * 6
-      this.size = (Math.random() * 5) + 5;
-    }
-    draw() {
+  function blood(x, y, color, fade) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.fade = fade;
+    this.speed = (Math.random() + 0.1) * 6
+    this.size = (Math.random() * 5) + 5;
+    this.lifetime = 1 
+    this.draw = function() {
       hctx.beginPath();
       hctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
       hctx.fillStyle = this.color;
@@ -914,7 +907,6 @@ function hexToHSL(hex) {
       this.y += this.speed * Math.random();
       this.x += (Math.random() - 0.5) * 8;
     }
-
   }
 
   function Meter(size, callback) {
