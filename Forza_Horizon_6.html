@@ -1,0 +1,592 @@
+<head>
+    <title>Forza Horizon 6 Dev</title>
+    <meta description="Become a racing Legend in Forza Horizon's with ambience and RGB effects. v.1.0.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <!-- ═══════════════════════════════════════════ Background ═══════════════════════════════════════════ -->
+    <meta property="ambienceAlpha" label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer" default="Ambience"/>
+    <meta property="backColor" label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+
+    <!-- ═══════════════════════════════════════════ Effects ═══════════════════════════════════════════ -->
+    <meta property="enableSpeed" label="Speed effect" tooltip="Turns on the effect that plays when you are at more than 100KM." type="boolean" default="1" />
+    <meta property="enableRace" label="Race effect" tooltip="Turns on the effect that plays when you start a race." type="boolean" default="1" />
+    <meta property="enableStar" label="XP effect" tooltip="Turns on the effect that plays when you get xp." type="boolean" default="1" />
+    <meta property="enableMessage" label="Message effect" tooltip="Turns on the effect that plays when you get message." type="boolean" default="1" />
+    <meta property="enableAuto" label="Auto Drive effect" tooltip="Turns on the effect that plays when you are in auto drive." type="boolean" default="1" />
+    <meta property="enablePodium" label="Podium effect" tooltip="Turns on the effect that plays when you are in the podium." type="boolean" default="1" />
+    <meta property="enableWrongDir" label="Wrong Direction effect" type="boolean" tooltip="Turns on the effect that plays when you are in the wrong direction." default="1" />
+    
+
+    <!--in-game-->
+
+    <meta meter="inGameWhiteC" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.0567" y="0.9409" width="0" height="0.0091"
+      h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0411" y="0.9407" width="0.0000" height="0.0040" />
+      <resolution aspect="24:10" x="0.0494" y="0.9403" width="-0.0003" height="0.0100" />
+      <resolution aspect="16:11" x="0.0571" y="0.9437" width="0" height="0.0069" />
+
+      <resolution size="3840x2160" x="0.0565" y="0.9407" width="-0.0005" height="0.0107" />
+      <resolution size="2560x1080" x="0.0488" y="0.9407" width="-0.0007" height="0.0083" />
+    </meta>
+
+    <meta meter="inGameWhiteV" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.1368" y="0.9423" width="0.0004" height="0.0077" 
+      h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0815" y="0.9407" width="0.0000" height="0.0060" />
+      <resolution aspect="24:10" x="0.1087" y="0.9403" width="0.0003" height="0.0070" />
+      <resolution aspect="16:11" x="0.136" y="0.945" width="0" height="0.0037" />
+
+      <resolution size="3840x2160" x="0.1365" y="0.9435" width="0.0003" height="0.0065" />
+      <resolution size="2560x1080" x="0.109" y="0.9398" width="-0.0004" height="0.0064" />
+    </meta>
+
+    <meta meter="inGameNotWhite" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.1059" y="0.9395" width="0.0008" height="0.0098" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0661" y="0.9361" width="0.0000" height="0.0120" />
+      <resolution aspect="24:10" x="0.0872" y="0.9382" width="0.0000" height="0.0110" />
+      <resolution aspect="16:11" x="0.109" y="0.9381" width="-0.0015" height="0.0137" />
+
+      <resolution size="3840x2160" x="0.1071" y="0.9403" width="-0.0003" height="0.0101" />
+      <resolution size="2560x1080" x="0.0871" y="0.9388" width="-0.0003" height="0.0074" />
+    </meta>
+
+    <meta meter="velocityWhite" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.8796" y="0.8645" width="0.0856" height="0.0931" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="ocr_numeric">
+      <resolution aspect="3.55:1" x="0.9255" y="0.8667" width="0.0448" height="0.0890" />
+      <resolution aspect="24:10" x="0.9032" y="0.8667" width="0.0660" height="0.0930" />
+      <resolution aspect="16:11" x="0.8796" y="0.8749" width="0.0852" height="0.0863" />
+
+      <resolution size="3840x2160" x="0.8765" y="0.8670" width="0.0909" height="0.0936" />
+      <resolution size="2560x1080" x="0.9031" y="0.8638" width="0.0617" height="0.0917" />
+    </meta>
+
+    <!--Race GO!-->
+
+    <meta meter="raceGoWhite1" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.6061" y="0.5413" width="0.0039" height="0.023" 
+      h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5531" y="0.4028" width="0.0005" height="0.0230" />
+      <resolution aspect="24:10" x="0.5797" y="0.4083" width="0.0017" height="0.0200" />
+      <resolution aspect="16:11" x="0.6084" y="0.3571" width="0.0004" height="0.0131" />
+
+      <resolution size="3840x2160" x="0.6056" y="0.327" width="0.0042" height="0.1056" />
+      <resolution size="2560x1080" x="0.5799" y="0.544" width="0.002" height="0.0176" />
+    </meta>
+
+    <meta meter="raceGoWhite2" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.6022" y="0.6046" width="0.0082" height="0.0097"
+      h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5526" y="0.4694" width="0.0031" height="0.0120" />
+      <resolution aspect="24:10" x="0.5767" y="0.4708" width="0.0064" height="0.0140" />
+      <resolution aspect="16:11" x="0.6041" y="0.4109" width="0.0086" height="0.0094" />
+
+      <resolution size="3840x2160" x="0.6033" y="0.472" width="0.0086" height="0.0106" />
+      <resolution size="2560x1080" x="0.5776" y="0.608" width="0.0109" height="0.0167" />
+    </meta>
+
+    <meta meter="raceGoNotWhite" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.6237" y="0.4614" width="0.0015" height="0.0174" 
+      h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.5604" y="0.4072" width="-0.0003" height="0.0100" />
+      <resolution aspect="24:10" x="0.5892" y="0.4076" width="0.0006" height="0.0110" />
+      <resolution aspect="16:11" x="0.6233" y="0.2852" width="-0.0004" height="0.0137" />
+
+      <resolution size="3840x2160" x="0.6226" y="0.3242" width="0.001" height="0.0167" />
+      <resolution size="2560x1080" x="0.5909" y="0.5301" width="0.0003" height="0.0167" />
+    </meta>
+
+
+    <!--star xp-->
+
+    <meta meter="starWhite" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.4986" y="0.1508" width="0.0032" height="0.0035" 
+      h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4995" y="0.1509" width="0.0010" height="0.0030" />
+      <resolution aspect="24:10" x="0.4985" y="0.1500" width="0.0026" height="0.0010" />
+      <resolution aspect="16:11" x="0.4986" y="0.1395" width="0.0024" height="0.0031" />
+
+      <resolution size="3840x2160" x="0.4986" y="0.1501" width="0.0018" height="0.0023" />
+      <resolution size="2560x1080" x="0.499" y="0.1511" width="0.002" height="0.0027" />
+    </meta>
+
+    <meta meter="starNotWhite" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.4975" y="0.1362" width="0.0027" height="0.0035" 
+      h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.4992" y="0.1380" width="0.0013" height="0.0040" />
+      <resolution aspect="24:10" x="0.4994" y="0.1340" width="0.0017" height="0.0050" />
+      <resolution aspect="16:11" x="0.499" y="0.127" width="0.0008" height="0.0018" />
+
+      <resolution size="3840x2160" x="0.4988" y="0.1394" width="0.0016" height="0.0019" />
+      <resolution size="2560x1080" x="0.499" y="0.1372" width="0.0012" height="0.0009" />
+    </meta>
+
+    <meta meter="starYellow" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.4791" y="0.1591" width="0.0027" height="0.0028" 
+      h="50-80" s="75-100" l="75-100" hdr-h="50-80" hdr-s="75-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.4904" y="0.1583" width="0.0003" height="0.0020" />
+      <resolution aspect="24:10" x="0.4852" y="0.1583" width="0.0012" height="0.0010" />
+      <resolution aspect="16:11" x="0.4803" y="0.1476" width="0.0019" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.4798" y="0.1575" width="0.0013" height="0.0028" />
+      <resolution size="2560x1080" x="0.4857" y="0.1603" width="0.0012" height="0.0019" />
+    </meta>
+
+    <!--message-->
+
+    <meta meter="messagePink" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.1563" y="0.9319" width="0.0043" height="0.0014" 
+      h="300-360" s="75-100" l="90-100" hdr-h="300-360" hdr-s="75-100" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0909" y="0.9315" width="0.0016" height="0.0001" />
+      <resolution aspect="24:10" x="0.1221" y="0.9319" width="0.0029" height="0.0003" />
+      <resolution aspect="16:11" x="0.1555" y="0.935" width="0.0043" height="0" />
+
+      <resolution size="3840x2160" x="0.1558" y="0.9314" width="0.0044" height="0.0019" />
+      <resolution size="2560x1080" x="0.1227" y="0.9323" width="0.0027" height="0" />
+    </meta>
+
+    <meta meter="messageNotPink" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.1723" y="0.9319" width="0.0008" height="0.0083" 
+      h="300-360" s="75-100" l="90-100" hdr-h="300-360" hdr-s="75-100" hdr-l="90-100" type="area">
+      <resolution aspect="3.55:1" x="0.0997" y="0.9343" width="0.0000" height="0.0070" />
+      <resolution aspect="24:10" x="0.1355" y="0.9340" width="0.012" height="0.0001" />
+      <resolution aspect="16:11" x="0.1727" y="0.9337" width="0" height="0.0081" />
+
+      <resolution size="3840x2160" x="0.1584" y="0.924" width="0.0041" height="0"/>
+      <resolution size="2560x1080" x="0.1356" y="0.9342" width="0.0004" height="0.0102" />
+    </meta>
+
+    <!--auto drive-->
+
+    <meta meter="autoBlueRight" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.1755" y="0.827" width="0.0003" height="0.0062" 
+      h="150-220" s="20-100" l="50-100" hdr-h="150-220" hdr-s="20-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.1010" y="0.8241" width="0.0000" height="0.0010" />
+      <resolution aspect="24:10" x="0.1372" y="0.8257" width="0.0006" height="0.0040" />
+      <resolution aspect="16:11" x="0.1758" y="0.8374" width="-0.0003" height="0.0044" />
+
+      <resolution size="3840x2160" x="0.1756" y="0.8226" width="0" height="0.0032"  />
+      <resolution size="2560x1080" x="0.1383" y="0.823" width="0.0004" height="0.0083" />
+    </meta>
+
+    <meta meter="autoBlueLeft" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.0274" y="0.8318" width="0.0003" height="0.0056" 
+      h="150-220" s="20-100" l="50-100" hdr-h="150-220" hdr-s="20-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0268" y="0.8278" width="0.0000" height="0.0010" />
+      <resolution aspect="24:10" x="0.0276" y="0.8306" width="0.0000" height="0.0070" />
+      <resolution aspect="16:11" x="0.0281" y="0.8449" width="0" height="0.0056" />
+
+      <resolution size="3840x2160" x="0.0276" y="0.8323" width="0" height="0.0028" />
+      <resolution size="2560x1080" x="0.0274" y="0.8267" width="0" height="0.0074" />
+    </meta>
+
+    <meta meter="autoNotBlue" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.1774" y="0.8061" width="0.0024" height="0.0146" 
+      h="150-220" s="20-100" l="50-100" hdr-h="150-220" hdr-s="20-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.1029" y="0.8083" width="0.0005" height="0.0180" />
+      <resolution aspect="24:10" x="0.1398" y="0.8125" width="0.0009" height="0.0160" />
+      <resolution aspect="16:11" x="0.1786" y="0.8324" width="0.0015" height="0.0125" />
+
+      <resolution size="3840x2160" x="0.1795" y="0.8129" width="-0.0003" height="0.012" />
+      <resolution size="2560x1080" x="0.1403" y="0.8044" width="0.0012" height="0.0279" />
+    </meta>
+
+    <!--Podium-->
+
+    <meta meter="podiumYellow" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.1235" y="0.8193" width="0.0961" height="0.0174" 
+      h="50-80" s="75-100" l="75-100" hdr-h="50-80" hdr-s="75-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.3122" y="0.8185" width="0.0289" height="0.0170" />
+      <resolution aspect="24:10" x="0.2198" y="0.8181" width="0.0718" height="0.0180" />
+      <resolution aspect="16:11" x="0.1231" y="0.7861" width="0.0973" height="0.0188" />
+
+      <resolution size="3840x2160" x="0.124" y="0.818" width="0.0961" height="0.0213" />
+      <resolution size="2560x1080" x="0.2173" y="0.8184" width="0.073" height="0.0194" />
+    </meta>
+
+    <meta meter="podiumWhite" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.0875" y="0.8214" width="-0.0004" height="0.0125" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.2943" y="0.8250" width="0.0005" height="0.0060" />
+      <resolution aspect="24:10" x="0.1933" y="0.8215" width="0.0015" height="0.0090" />
+      <resolution aspect="16:11" x="0.0891" y="0.7924" width="0.0012" height="0.0056" />
+
+      <resolution size="3840x2160" x="0.0862" y="0.8231" width="0.0011" height="0.0069" />
+      <resolution size="2560x1080" x="0.1919" y="0.8211" width="0.0004" height="0.0121" />
+    </meta>
+
+    <meta meter="podiumBlack" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.0766" y="0.8833" width="0.007" height="0.0048" 
+      h="0-360" s="0-30" l="0-10" hdr-h="0-360" hdr-s="0-30" hdr-l="0-10" type="area">
+      <resolution aspect="3.55:1" x="0.2768" y="0.8898" width="0.0055" height="0.0001" />
+      <resolution aspect="24:10" x="0.1648" y="0.8847" width="0.0040" height="0.0030" />
+      <resolution aspect="16:11" x="0.0637" y="0.8837" width="0.0125" height="0.0075" />
+
+      <resolution size="3840x2160" x="0.0711" y="0.8805" width="0.0104" height="0.0042" />
+      <resolution size="2560x1080" x="0.1657" y="0.8906" width="0.0043" height="0.001" />
+    </meta>
+
+    <!--Wrong direction-->
+
+    <meta meter="wrongDirYellow" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.4982" y="0.3356" width="0.0024" height="0.0028" 
+      h="50-80" s="75-100" l="75-100" hdr-h="50-80" hdr-s="75-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.4984" y="0.3370" width="0.0018" height="0.0020" />
+      <resolution aspect="24:10" x="0.4994" y="0.3361" width="0.0023" height="0.0020" />
+      <resolution aspect="16:11" x="0.4979" y="0.3077" width="0.0031" height="0.0056" />
+
+      <resolution size="3840x2160" x="0.4983" y="0.3307" width="0.0016" height="0.006" />
+      <resolution size="2560x1080" x="0.499" y="0.3392" width="0.0024" height="0.0019" />
+    </meta>
+
+    <meta meter="wrongDirNotYellow" tags="vlc,Forza Horizon 6,Forza Horizon" x="0.5045" y="0.3301" width="0.0012" height="0.0021" 
+      h="50-80" s="75-100" l="75-100" hdr-h="50-80" hdr-s="75-100" hdr-l="75-100" type="area">
+      <resolution aspect="3.55:1" x="0.5023" y="0.3269" width="0.0005" height="0.0030" />
+      <resolution aspect="24:10" x="0.5029" y="0.3278" width="0.0006" height="0.0020" />
+      <resolution aspect="16:11" x="0.5045" y="0.3008" width="0.0012" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.5035" y="0.3289" width="0.0016" height="0.0009" />
+      <resolution size="2560x1080" x="0.5037" y="0.3299" width="0.0008" height="0.0028" />
+    </meta>
+
+
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const canvas = document.getElementById('exCanvas')
+    const ctx = canvas.getContext('2d')
+    const hiddenCanvas = document.createElement('canvas')
+    hiddenCanvas.width = 320
+    hiddenCanvas.height = 200
+    const hiddenCtx = hiddenCanvas.getContext('2d')
+    let effects = [];
+    let gAlpha = 1
+    let gInGame = false
+
+
+    // ── In-Game ──
+    var inGameWhiteCMeter = new Meter(5,inGameCallback)
+    var inGameWhiteVMeter = new Meter(5,inGameCallback)
+
+    // ── Velocity ──
+    var velocityWhiteMeter = new Meter(5,velocityCallback)
+
+    // ── Race GO! ──
+    var raceGoWhite1Meter = new Meter(5,raceCallback)
+    var raceGoWhite2Meter = new Meter(5,raceCallback)
+
+    // ── Star Xp ──
+    var starWhiteMeter = new Meter(5,starCallback)
+    var starYellowMeter = new Meter(5,starCallback)
+    // ── Message ──
+    var messagePinkMeter = new Meter(5,messageCallback)
+
+    // ── Auto Drive ──
+    var autoBlueRightMeter = new Meter(5,autoDriveCallback)
+    var autoBlueLeftMeter = new Meter(5,autoDriveCallback)
+
+    // ── Podium──
+    var podiumYellowMeter = new Meter(5,podiumCallback)
+    var podiumWhiteMeter = new Meter(5,podiumCallback)
+    var podiumBlackMeter = new Meter(5,podiumCallback)
+
+    // ── Wrong direction ──
+    var wrongDirYellowMeter = new Meter(5,wrongDirCallback)
+
+
+
+
+
+
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+  
+      inGameWhiteCMeter.setValue(engine.vision.inGameWhiteC)
+      inGameWhiteVMeter.setValue(engine.vision.inGameWhiteV)
+      velocityWhiteMeter.setValue(engine.vision.velocityWhite)
+      raceGoWhite1Meter.setValue(engine.vision.raceGoWhite1)
+      raceGoWhite2Meter.setValue(engine.vision.raceGoWhite2)
+      starWhiteMeter.setValue(engine.vision.starWhite)
+      starYellowMeter.setValue(engine.vision.starYellow)
+      messagePinkMeter.setValue(engine.vision.messagePink)
+      autoBlueRightMeter.setValue(engine.vision.autoBlueRight)
+      autoBlueLeftMeter.setValue(engine.vision.autoBlueLeft)
+      podiumYellowMeter.setValue(engine.vision.podiumYellow)
+      podiumWhiteMeter.setValue(engine.vision.podiumWhite)
+      podiumBlackMeter.setValue(engine.vision.podiumBlack)
+      wrongDirYellowMeter.setValue(engine.vision.wrongDirYellow)
+  
+
+
+      effects.forEach(ele => { ele.draw() })
+      effects = effects.filter(ele => !(ele.lifetime <= 0))
+      ctx.drawImage(hiddenCanvas, 0, 0)
+      window.requestAnimationFrame(update);
+    };
+    //#endregion
+
+
+    // #region Background Modes
+    let proBack = [0, 0, 0]
+    function onbackColorChanged() {
+      proBack = hexToHSL(backColor)
+    }
+
+    let gCycle = 0
+    const audioEase = { sat: 0, lit: 0 }
+
+    function updateColorCycle() {
+      gCycle < 360 ? gCycle += .5 : gCycle = 0
+    }
+
+    function updateAudioEase() {
+      audioEase.sat += (engine.audio.density * 100 - audioEase.sat) / 10
+      audioEase.lit += (engine.audio.density * 100 - audioEase.lit) / 10
+    }
+
+    function backgroundHandler() {
+      const alpha = ambienceAlpha / 100
+      if (backgroundMode.includes('Color Cycle')) updateColorCycle()
+      if (backgroundMode.includes('Audio'))       updateAudioEase()
+      if (backgroundMode.includes('Ambience')) {
+        if (backgroundMode === 'Ambience Audio Visualizer') copyScreenAudio(alpha)
+        else copyScreen(alpha)
+        return
+      }
+      const h = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0)
+      const s = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1]
+      const l = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2]
+      DrawRect(0, 0, 320, 200, getColorString(h, s, l, alpha))
+    }
+    // #endregion
+    
+    //#region callbacks
+
+    function inGameCallback(){
+      if((inGameWhiteCMeter.value >= 0.95 || inGameWhiteVMeter.value >= 0.95) && engine.vision.inGameNotWhite <.1){
+        gInGame = true
+      }else{
+        gInGame = false
+
+      }
+    }
+
+    var velocityGoing = false
+    function velocityCallback(){
+      if (gInGame && velocityWhiteMeter.value > 100 && !velocityGoing && enableSpeed) {
+        velocityGoing = true;
+
+      }else{
+        velocityGoing = false
+      }
+    }   
+
+    var raceGoing = false
+    function raceCallback(){
+      if (!gInGame && raceGoWhite1Meter.value >= .95 && raceGoWhite2Meter.value >=.95 && engine.vision.raceGoNotWhite <.1 && !raceGoing && enableRace) {
+        raceGoing = true;
+
+      }else{
+        raceGoing = false
+      }
+    }   
+
+    var starGoing = false
+    function starCallback(){
+      if (gInGame && starWhiteMeter.value >= .95 && starYellowMeter.value >=.95 && engine.vision.starNotWhite <.1 && !starGoing && enableStar) {
+        starGoing = true;
+
+      }else{
+        starGoing = false
+      }
+    }
+
+    var messageGoing = false
+    function messageCallback(){
+      if(gInGame && messagePinkMeter.value >= 0.95 && engine.vision.messageNotPink <.1 && !messageGoing && enableMessage){
+        messageGoing = true
+
+      }else{
+        messageGoing = false
+      }
+   
+    }
+
+    var autoGoing = false
+    function autoDriveCallback(){
+      if(gInGame && autoBlueRightMeter.value >= 0.95 && autoBlueLeftMeter.value >= .95 && engine.vision.autoNotBlue && !autoGoing && enableAuto){
+        autoGoing = true
+ 
+      }else{
+        autoGoing = false
+      }
+      
+    }
+
+    var podiumGoing = false
+    function podiumCallback(){
+      if(!gInGame && podiumYellowMeter.value >= .2 && podiumWhiteMeter.value >= .95 && podiumBlackMeter.value >= .95 && !podiumGoing && enablePodium){
+        podiumGoing = true
+ 
+      }else{
+        podiumGoing = false
+      }
+
+    }
+
+    var wrongDirGoing = false
+    function wrongDirCallback(){
+      if(gInGame && wrongDirYellowMeter.value >= .95 && engine.vision.wrongDirNotYellow <.1 && !wrongDirGoing && enableWrongDir){
+        wrongDirGoing = true
+ 
+      }else{
+        wrongDirGoing = false
+      }
+      
+    }
+
+    //#endregion
+    
+  // #region Helper Functions
+    function DrawRect(x, y, width, height, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = color
+      hiddenCtx.fillRect(x, y, width, height)
+    }
+
+    function DrawLine(start, end, color, stroke) {
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(start[0], start[1])
+      hiddenCtx.lineTo(end[0], end[1])
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth   = stroke
+      hiddenCtx.stroke()
+    }
+
+    function DrawStroke(x, y, radius, color, stroke) {
+      hiddenCtx.beginPath()
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth   = stroke
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.stroke()
+    }
+
+    function DrawCircle(x, y, radius, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = color
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.fill()
+    }
+
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+      hiddenCtx.fillStyle = color
+      hiddenCtx.save()
+      hiddenCtx.translate(x, y)
+      hiddenCtx.scale(scaleX, scaleY)
+      hiddenCtx.fill(new Path2D(path))
+      hiddenCtx.restore()
+    }
+
+    function StrokeRect(x, y, width, height, color, stroke) {
+      hiddenCtx.beginPath()
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth   = stroke
+      hiddenCtx.rect(x, y, width, height)
+      hiddenCtx.stroke()
+    }
+
+    function wheel(x, y, color, rot) {
+      hiddenCtx.save()
+      hiddenCtx.translate(x, y)
+      hiddenCtx.rotate(rot)
+      hiddenCtx.translate(-x, -y)
+      DrawCircle(x, y, 30, 'black')
+      hiddenCtx.beginPath()
+      hiddenCtx.arc(x, y, 20, 0, Math.PI)
+      hiddenCtx.fillStyle = color
+      hiddenCtx.fill()
+      hiddenCtx.restore()
+    }
+
+    function getColorString(h, s, l, a = 1) {
+      return `hsla(${h}, ${s}%, ${l}%, ${a})`
+    }
+
+    function hexToHSL(hex) {
+      let [r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex).slice(1).map(x => parseInt(x, 16) / 255)
+      const max = Math.max(r, g, b), min = Math.min(r, g, b)
+      let h, s
+      const l = (max + min) / 2
+      if (max === min) {
+        h = s = 0
+      } else {
+        const d = max - min
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+        h = max === r ? (g - b) / d + (g < b ? 6 : 0)
+          : max === g ? (b - r) / d + 2
+          :             (r - g) / d + 4
+        h /= 6
+      }
+      return [Math.round(360 * h), Math.round(s * 100), Math.round(l * 100)]
+    }
+
+    const ZONE_COLS   = 28
+    const ZONE_ROWS   = 20
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS
+
+    function copyScreenAudio(alpha) {
+      const lightness = new Int8Array(engine.zone.lightness)
+      const sat       = new Int8Array(engine.zone.saturation)
+      const hue       = new Int16Array(engine.zone.hue)
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const iCol = iZone % ZONE_COLS
+        const iRow = Math.floor(iZone / ZONE_COLS)
+        const iZx  = iCol * (320 / ZONE_COLS)
+        const iZy  = iRow * (200 / ZONE_ROWS)
+        hiddenCtx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioEase.sat / 200 + .5)}%, ${lightness[iZone] * (audioEase.lit / 100)}%, ${alpha})`
+        hiddenCtx.fillRect(iZx, iZy, 320 / ZONE_COLS, 200 / ZONE_ROWS)
+      }
+    }
+
+    function copyScreen(alpha) {
+      const lightness = new Int8Array(engine.zone.lightness)
+      const sat       = new Int8Array(engine.zone.saturation)
+      const hue       = new Int16Array(engine.zone.hue)
+      const customHue = backgroundMode.includes('Custom Ambience')
+      const cycleOff  = backgroundMode.includes('Color Cycle') ? gCycle : 0
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const iCol = iZone % ZONE_COLS
+        const iRow = Math.floor(iZone / ZONE_COLS)
+        const iZx  = iCol * (320 / ZONE_COLS)
+        const iZy  = iRow * (200 / ZONE_ROWS)
+        const h    = customHue ? proBack[0] : hue[iZone] + cycleOff
+        hiddenCtx.fillStyle = `hsla(${h}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`
+        hiddenCtx.fillRect(iZx, iZy, 320 / ZONE_COLS, 200 / ZONE_ROWS)
+      }
+    }
+
+    function Meter(count, callback) {
+      this.size      = count
+      this.value     = 0
+      this.diff      = 0
+      this.increased = false
+      this.decreased = false
+      const values   = []
+
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue)
+        if (values.length > this.size) {
+          values.shift()
+        }
+
+        for (let i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return
+        }
+
+        if (this.value !== values[0]) {
+          this.diff      = Math.abs(this.value - values[0])
+          this.increased = this.value < values[0]
+          this.decreased = this.value > values[0]
+          this.value     = values[0]
+          callback()
+        }
+      }
+    }
+    
+    //#endregion
+
+
+  window.requestAnimationFrame(update);
+</script>
