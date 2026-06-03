@@ -4,7 +4,7 @@
   <meta publisher="SignalRGB" />
 
   <meta property="character" label="Legends" type="list"
-    values="Alter,Ash,Ballistic,Bangalore,Bloodhound,Catalyst,Caustic,Conduit,Crypto,Fuse,Gibraltar,Horizon,Lifeline,Loba,Mad Maggie,Mirage,NewCastle,Octane,Pathfinder,Rampart,Revenant,Seer,Sparrow,Valkyrie,Vantage,Wattson,Wraith"
+    values="Alter,Ash,Ballistic,Bangalore,Bloodhound,Catalyst,Caustic,Conduit,Crypto,Fuse,Gibraltar,Horizon,Lifeline,Loba,Mad Maggie,Mirage,Newcastle,Octane,Pathfinder,Rampart,Revenant,Seer,Sparrow,Valkyrie,Vantage,Wattson,Wraith"
     default="Sparrow" />
   <meta property="ambienceAlpha" label="Background Brightness" tooltip="Changes the brightness of the background effect." type="number" default="100" min="0" max="100" />
   <meta property="backgroundMode" label="Background Mode" tooltip="Changes the background mode." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
@@ -15,7 +15,7 @@
     type="boolean" default="0" />
   <meta property="HPHUDOn" label="Health Bar Effect." tooltip="Enables the health bar effect." type="boolean" default="1" />
   <meta property="HealthBarX" label="Health Bar X" tooltip="Moves the health bar left and right." type="number" min="0" max="100" default="0" />
-  <meta property="HealthBarY" label="Health Bar Y" tooltip="Moves the health bar up and down." type="number" min="0" max="100" default="25" />
+  <meta property="HealthBarY" label="Health Bar Y" tooltip="Moves the health bar up and down." type="number" min="0" max="100" default="35" />
   <meta property="HealthBarWidth" label="HealthBarWidth" tooltip="Changes the maximum width of the health bar." type="number" min="0" max="100" default="100" />
   <meta property="HealthBarHeight" label="HealthBarHeight" tooltip="Changes the maximum height of the health bar." type="number" min="0" max="100" default="15" />
   <meta property="ShieldHUDOn" label="Shield Bar Effect" tooltip="Enables the shield bar effect." type="boolean" default="1" />
@@ -854,6 +854,7 @@
   function LossCallback() {
     if (LossRedMeter.value >= .95 && engine.vision.lossNoRed < .1 && enableVD && WinLossConfirmMeter.value >= .95 && !gInGame && osdEsc_Meter.value <= 0 && !defeatPushed) {
       effects.push(new LossEffect())
+      gLossPlaying = true;
       gStormObj = false;
       defeatPushed = true;
     }
@@ -941,7 +942,7 @@
           case "Mirage":
             effects.push(new BurstRippleState("#0004ff", "#63ffef", "#0004ff"));
             break;
-          case "NewCastle":
+          case "Newcastle":
             effects.push(new newCastleQ())
             break;
           case "Octane":
@@ -1141,7 +1142,7 @@
         case "Mirage":
           effects.push(new MirageZ())
           break;
-        case "NewCastle":
+        case "Newcastle":
           effects.push(new newCastleUlt())
           break;
         case "Octane":
@@ -1232,7 +1233,7 @@
       case "Mirage":
         return checkYellow();
         break;
-      case "NewCastle":
+      case "Newcastle":
         return checkLightBlue();
         break;
       case "Octane":
@@ -1996,7 +1997,7 @@
     this.start = Date.now();
     this.elapsed = 0;
     this.orbs = [];
-    gLossPlaying = true;
+    
 
     this.draw = function () {
       DrawRect(0, 0, 320, this.elapsed / 5, "black")
@@ -2547,50 +2548,50 @@
 
 
   function causticZ() {
-this.size = 0;
-this.start = new Date().getTime();
-this.duration = 3000;
-var split = 0;
-this.alpha = 1
+    this.size = 0;
+    this.start = new Date().getTime();
+    this.duration = 3000;
+    var split = 0;
+    this.alpha = 1
 
-  
+      
 
-this.draw = function () {
-  hiddenCtx.globalAlpha = this.alpha
-  hiddenCtx.fillStyle = "black";
-  hiddenCtx.fillRect(0, 0, 320, 200);
-  if (this.elapsed <= 1500) {
-    hiddenCtx.fillStyle = "yellow";
-    hiddenCtx.beginPath();
-    hiddenCtx.arc(- 100 + split, 100, 45, 0, 2 * Math.PI);
-    hiddenCtx.fill();
-    split += 8;
-  }
-  if (this.elapsed > 1500) {
-    hiddenCtx.fillStyle = "#ebae34";
-    hiddenCtx.beginPath();
-    hiddenCtx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
-    hiddenCtx.fill();
-    hiddenCtx.fillStyle = "yellow";
-    hiddenCtx.beginPath();
-    hiddenCtx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
-    hiddenCtx.fill();
+    this.draw = function () {
+      hiddenCtx.globalAlpha = this.alpha
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      if (this.elapsed <= 1500) {
+        hiddenCtx.fillStyle = "yellow";
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(- 100 + split, 100, 45, 0, 2 * Math.PI);
+        hiddenCtx.fill();
+        split += 8;
+      }
+      if (this.elapsed > 1500) {
+        hiddenCtx.fillStyle = "#ebae34";
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, this.size + (this.size / 2), 0, 2 * Math.PI);
+        hiddenCtx.fill();
+        hiddenCtx.fillStyle = "yellow";
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, this.size + (this.size / 3), 0, 2 * Math.PI);
+        hiddenCtx.fill();
 
-    hiddenCtx.fillStyle = "#ebae34";
-    hiddenCtx.beginPath();
-    hiddenCtx.arc(160, 100, this.size, 0, 2 * Math.PI);
-    hiddenCtx.fill();
-    this.size += 3;
+        hiddenCtx.fillStyle = "#ebae34";
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, this.size, 0, 2 * Math.PI);
+        hiddenCtx.fill();
+        this.size += 3;
+      }
+      hiddenCtx.globalAlpha = 1
+      this.elapsed = new Date().getTime() - this.start;
+      if (this.elapsed > this.duration) {
+        this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0 ;
+        gZGoing = false;
+      }
+      
+    };
   }
-  hiddenCtx.globalAlpha = 1
-  this.elapsed = new Date().getTime() - this.start;
-  if (this.elapsed > this.duration) {
-    this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0 ;
-    gZGoing = false;
-  }
-  
-};
-}
 
   function ConduitQ(){
     this.alpha = 0
