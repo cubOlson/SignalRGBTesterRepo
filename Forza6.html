@@ -1,0 +1,1837 @@
+<head>
+    <title>Forza 6</title>
+    <meta description="[AI-GENERATED 2026-06-02 14:54] Forza 6 integration — review before publishing." />
+    <meta publisher="SignalRGB" />
+
+    <!-- Commented out properties -->
+    <!-- <meta property="enableMeter"  label="Enable Meter Effect" type="boolean"   default="1" />
+    <meta property="theText"      label="Text Field"       type="textfield" default="yourText" />
+    <meta property="frontRange"   label="Numeric Range"    type="number"    default="50" min="0" max="100" />
+    <meta property="myComboBox"   label="Combo Box"        type="combobox"  values="Option1,Option2,Option3" default="Option1" />
+    <meta property="userSensor1"  label="Sensor Square 1"  type="sensor"    default="CPU Load" />
+    <meta property="meterX"       label="Meter X"          type="number"    default="0"  min="0" max="100" />
+    <meta property="meterY"       label="Meter Y"          type="number"    default="0"  min="0" max="100" />
+    <meta property="meterWidth"   label="Meter Width"      type="number"    default="10" min="1" max="100" />
+    <meta property="meterHeight"  label="Meter Height"     type="number"    default="5"  min="1" max="50"  /> -->
+    <!-- <meta property="ColorMode" label="Color Mode" type="combobox"
+         values="Beach,Contemporary,Cottagecore,Custom,Kawaii,Mondrian,Ocean,Outrun,Rainbow,Rainbow Gradient,Retro,Space,Summer,Tetris,Vaporwave"
+         default="Rainbow Gradient" /> -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACTIVE USER-FACING CONTROLS
+         All properties below appear as controls in the SignalRGB UI.
+         Values are injected into the JS scope by name at runtime.
+         ═══════════════════════════════════════════════════════════ -->
+
+    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Controls how bright the background appears on your devices — lower values let effects stand out more."          type="number"  default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode"       tooltip="Sets the background style — Ambience mirrors your screen, Color Cycle sweeps hue, Custom uses a solid color." type="list"
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor"      label="Custom Color"          tooltip="Sets the solid background color on your devices when any Custom mode is active."                                  type="color"   default="#010101" min="0" max="360" />
+    <!-- Effect toggles -->
+    <meta property="speedOn"     label="Speed Effects"       tooltip="Shows a speed-tier vignette on your devices at low, medium, and high speeds."                    type="boolean" default="1" />
+    <meta property="reverseOn"   label="Reverse Gear"        tooltip="Animates left-scrolling chevrons across your devices when you drive in reverse."                  type="boolean" default="1" />
+    <meta property="absOn"       label="ABS Warning"         tooltip="Pulses a cyan sweep across your devices when ABS engages."                                         type="boolean" default="1" />
+    <meta property="mapPinOn"    label="Map Pin"             tooltip="Drops a GPS pin animation on your devices when a destination is set on the mini-map."              type="boolean" default="1" />
+    <meta property="raceStartOn" label="Race Countdown"      tooltip="Shows a sweeping stopwatch animation on your devices as the race countdown begins."                type="boolean" default="1" />
+    <meta property="upshiftOn"   label="Upshift Warning"     tooltip="Shows a tachometer arc that sweeps to redline on your devices when it is time to shift gears."    type="boolean" default="1" />
+    <meta property="winnerOn"    label="Victory Celebration" tooltip="Sweeps a checkered flag across your devices when you win a race."                                  type="boolean" default="1" />
+    <meta property="wrongWayOn"  label="Wrong Way Warning"   tooltip="Pulses a yellow recycling-arrow symbol on your devices when you are driving the wrong direction."  type="boolean" default="1" />
+    <meta property="xpGainOn"    label="XP Gain"             tooltip="Shows a star burst on your devices when you earn XP after a race."                                 type="boolean" default="1" />
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VISION METERS
+       Each meter captures a small region of the game screen and
+       measures what percentage of its pixels match the given HSL
+       range. The JS Meter class smooths readings over N frames
+       before firing a callback.
+
+       Detection strategy: every game state uses a POSITIVE meter
+       (confirms the expected color IS present) paired with a
+       NEGATIVE "Not" meter (confirms the region does NOT show that
+       color during baseline/off state). A state is considered active
+       only when positive is high AND negative is low, preventing
+       false positives from ambient lighting or UI transitions.
+
+       TESTER NOTE: If an effect never fires, first check the QA Tool
+       — load a screenshot from the target resolution and verify the
+       meter region actually captures the right pixels at the right
+       color. Then adjust HSL ranges or region coordinates as needed.
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- ── IN-GAME DETECTION ───────────────────────────────────────────────────────
+       inGameWhite: samples the bottom-left HUD corner for white pixels — present when the race HUD is on screen.
+       inGameRed / inGameNotRed: confirm the red tachometer pip; NotRed is the negative guard.
+       Together they set gInGame, which gates every driving effect.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="inGameWhite" tags="vlc,Forza 6" x="0.1002" y="0.8615" width="0.0039" height="0.0084"
+    h="0-360" s="0-15" l="60-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.0623" y="0.8623" width="0.0039" height="0.0084" />
+    <resolution aspect="24:10" x="0.0806" y="0.8616" width="0.0039" height="0.0084" />
+    <resolution aspect="16:11" x="0.1003" y="0.8702" width="0.0039" height="0.0084" />
+
+    <resolution size="3840x2160" x="0.1002" y="0.8615" width="0.0039" height="0.0084" />
+    <resolution size="3840x1080" x="0.0623" y="0.8623" width="0.0039" height="0.0084" />
+    <resolution size="2560x1080" x="0.0812" y="0.8616" width="0.0039" height="0.0084" />
+    <resolution size="1920x1080" x="0.1002" y="0.8615" width="0.0039" height="0.0084" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="inGameRed" tags="vlc,Forza 6" x="0.9694" y="0.8181" width="0.0013" height="0.0068"
+    h="308-342" s="85-100" l="40-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9719" y="0.8171" width="0.0010" height="0.0068" />
+    <resolution aspect="24:10" x="0.9706" y="0.8191" width="0.0013" height="0.0068" />
+    <resolution aspect="16:11" x="0.9695" y="0.8311" width="0.0013" height="0.0068" />
+
+    <resolution size="3840x2160" x="0.9694" y="0.8181" width="0.0013" height="0.0068" />
+    <resolution size="3840x1080" x="0.9719" y="0.8171" width="0.0010" height="0.0068" />
+    <resolution size="2560x1080" x="0.9706" y="0.8183" width="0.0013" height="0.0068" />
+    <resolution size="1920x1080" x="0.9694" y="0.8181" width="0.0013" height="0.0068" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="inGameNotRed" tags="vlc,Forza 6" x="0.9722" y="0.8204" width="0.0026" height="0.0053"
+    h="308-342" s="85-100" l="40-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9734" y="0.8207" width="0.0026" height="0.0053" />
+    <resolution aspect="24:10" x="0.9723" y="0.8206" width="0.0026" height="0.0053" />
+    <resolution aspect="16:11" x="0.9726" y="0.8336" width="0.0026" height="0.0053" />
+
+    <resolution size="3840x2160" x="0.9722" y="0.8204" width="0.0026" height="0.0053" />
+    <resolution size="3840x1080" x="0.9734" y="0.8207" width="0.0026" height="0.0053" />
+    <resolution size="2560x1080" x="0.9733" y="0.8207" width="0.0026" height="0.0053" />
+    <resolution size="1920x1080" x="0.9722" y="0.8204" width="0.0026" height="0.0053" />
+  </meta>
+
+  <!-- ── SPEED INDICATOR ─────────────────────────────────────────────────────────
+       speedWhite1/2/3: each captures a column of the speedometer; the number of white-filled
+       columns indicates the current speed tier (1 = low, 2 = medium, 3 = high).
+       speedNotWhite: negative guard — confirms the region is blank when the HUD is hidden.
+       All four feed speedCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="speedWhite1" tags="vlc,Forza 6" x="0.9516" y="0.8721" width="0.0128" height="0.0837"
+    h="0-360" s="0-15" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9619" y="0.8721" width="0.0058" height="0.0837" />
+    <resolution aspect="24:10" x="0.9570" y="0.8728" width="0.0088" height="0.0807" />
+    <resolution aspect="16:11" x="0.9503" y="0.8832" width="0.0128" height="0.0707" />
+
+    <resolution size="3840x2160" x="0.9516" y="0.8721" width="0.0128" height="0.0837" />
+    <resolution size="3840x1080" x="0.9619" y="0.8721" width="0.0058" height="0.0837" />
+    <resolution size="2560x1080" x="0.9589" y="0.8735" width="0.0068" height="0.0797" />
+    <resolution size="1920x1080" x="0.9516" y="0.8721" width="0.0128" height="0.0837" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="speedWhite2" tags="vlc,Forza 6" x="0.9229" y="0.8714" width="0.0094" height="0.0845"
+    h="0-360" s="0-15" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9464" y="0.8736" width="0.0064" height="0.0815" />
+    <resolution aspect="24:10" x="0.9351" y="0.8721" width="0.0084" height="0.0825" />
+    <resolution aspect="16:11" x="0.9220" y="0.8816" width="0.0104" height="0.0735" />
+
+    <resolution size="3840x2160" x="0.9229" y="0.8714" width="0.0094" height="0.0845" />
+    <resolution size="3840x1080" x="0.9464" y="0.8736" width="0.0064" height="0.0815" />
+    <resolution size="2560x1080" x="0.9357" y="0.8729" width="0.0094" height="0.0815" />
+    <resolution size="1920x1080" x="0.9229" y="0.8714" width="0.0094" height="0.0845" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="speedWhite3" tags="vlc,Forza 6" x="0.8934" y="0.8744" width="0.0103" height="0.0822"
+    h="0-360" s="0-15" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9332" y="0.8723" width="0.0053" height="0.0822" />
+    <resolution aspect="24:10" x="0.9122" y="0.8744" width="0.0063" height="0.0802" />
+    <resolution aspect="16:11" x="0.8935" y="0.8823" width="0.0103" height="0.0732" />
+
+    <resolution size="3840x2160" x="0.8934" y="0.8744" width="0.0103" height="0.0822" />
+    <resolution size="3840x1080" x="0.9332" y="0.8723" width="0.0053" height="0.0822" />
+    <resolution size="2560x1080" x="0.9118" y="0.8723" width="0.0103" height="0.0822" />
+    <resolution size="1920x1080" x="0.8934" y="0.8744" width="0.0103" height="0.0822" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="speedNotWhite" tags="vlc,Forza 6" x="0.8878" y="0.9597" width="0.0762" height="0.0023"
+    h="0-360" s="0-15" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9256" y="0.9595" width="0.0462" height="0.0023" />
+    <resolution aspect="24:10" x="0.9069" y="0.9584" width="0.0612" height="0.0023" />
+    <resolution aspect="16:11" x="0.8791" y="0.9594" width="0.0762" height="0.0023" />
+
+    <resolution size="3840x2160" x="0.8878" y="0.9597" width="0.0762" height="0.0023" />
+    <resolution size="3840x1080" x="0.9256" y="0.9595" width="0.0462" height="0.0023" />
+    <resolution size="2560x1080" x="0.9033" y="0.9620" width="0.0662" height="0.0023" />
+    <resolution size="1920x1080" x="0.8878" y="0.9597" width="0.0762" height="0.0023" />
+  </meta>
+
+  <!-- ── REVERSE GEAR ─────────────────────────────────────────────────────────────
+       reverseOCR: OCR region over the gear indicator; returns 1.0 when the letter "R" is detected.
+       Feeds reverseCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="reverseOCR" tags="vlc,Forza 6" x="0.8891" y="0.8059" width="0.0154" height="0.0381"
+    h="0-360" s="0-15" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="ocr_textmatch" string="R" confidence="50">
+    <resolution aspect="3.55:1" x="0.9308" y="0.8062" width="0.0093" height="0.0391" />
+    <resolution aspect="24:10" x="0.9103" y="0.8072" width="0.0124" height="0.0371" />
+    <resolution aspect="16:11" x="0.8887" y="0.8215" width="0.0160" height="0.0341" />
+
+    <resolution size="3840x2160" x="0.8891" y="0.8059" width="0.0154" height="0.0381" />
+    <resolution size="3840x1080" x="0.9308" y="0.8062" width="0.0093" height="0.0391" />
+    <resolution size="2560x1080" x="0.9099" y="0.8072" width="0.0124" height="0.0381" />
+    <resolution size="1920x1080" x="0.8891" y="0.8059" width="0.0154" height="0.0381" />
+  </meta>
+
+  <!-- ── ABS SYSTEM ───────────────────────────────────────────────────────────────
+       absCyan: samples the cyan ABS indicator light in the instrument cluster.
+       High value = ABS actively engaged. Feeds absCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="absCyan" tags="vlc,Forza 6" x="0.9285" y="0.7808" width="0.0021" height="0.0068"
+    h="150-211" s="10-100" l="25-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9504" y="0.7813" width="0.0021" height="0.0068" />
+    <resolution aspect="24:10" x="0.9396" y="0.7812" width="0.0021" height="0.0068" />
+    <resolution aspect="16:11" x="0.9283" y="0.7977" width="0.0021" height="0.0068" />
+
+    <resolution size="3840x2160" x="0.9285" y="0.7808" width="0.0021" height="0.0068" />
+    <resolution size="3840x1080" x="0.9504" y="0.7813" width="0.0021" height="0.0068" />
+    <resolution size="2560x1080" x="0.9393" y="0.7809" width="0.0021" height="0.0068" />
+    <resolution size="1920x1080" x="0.9285" y="0.7808" width="0.0021" height="0.0068" />
+  </meta>
+
+  <!-- ── MINI-MAP ─────────────────────────────────────────────────────────────────
+       mapWhite: samples the white frame border of the mini-map; present when the map is visible.
+       mapNotWhite: negative guard — confirms map is not visible during racing.
+       mapYellow: samples the yellow destination pin on the map; high = a waypoint is set.
+       All three feed mapCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="mapWhite" tags="vlc,Forza 6" x="0.7915" y="0.0518" width="0.0017" height="0.0114"
+    h="0-360" s="0-15" l="79-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.6455" y="0.0518" width="0.0017" height="0.0114" />
+    <resolution aspect="24:10" x="0.7178" y="0.0519" width="0.0017" height="0.0114" />
+    <resolution aspect="16:11" x="0.7934" y="0.0461" width="0.0017" height="0.0114" />
+
+    <resolution size="3840x2160" x="0.7915" y="0.0518" width="0.0017" height="0.0114" />
+    <resolution size="3840x1080" x="0.6455" y="0.0518" width="0.0017" height="0.0114" />
+    <resolution size="2560x1080" x="0.7212" y="0.0519" width="0.0017" height="0.0114" />
+    <resolution size="1920x1080" x="0.7915" y="0.0518" width="0.0017" height="0.0114" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="mapNotWhite" tags="vlc,Forza 6" x="0.7971" y="0.0518" width="0.0017" height="0.0137"
+    h="0-360" s="0-15" l="79-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.6486" y="0.0513" width="0.0017" height="0.0137" />
+    <resolution aspect="24:10" x="0.7212" y="0.0513" width="0.0017" height="0.0137" />
+    <resolution aspect="16:11" x="0.7974" y="0.0458" width="0.0017" height="0.0137" />
+
+    <resolution size="3840x2160" x="0.7971" y="0.0518" width="0.0017" height="0.0137" />
+    <resolution size="3840x1080" x="0.6486" y="0.0513" width="0.0017" height="0.0137" />
+    <resolution size="2560x1080" x="0.7248" y="0.0511" width="0.0017" height="0.0137" />
+    <resolution size="1920x1080" x="0.7971" y="0.0518" width="0.0017" height="0.0137" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="mapYellow" tags="vlc,Forza 6" x="0.9165" y="0.0464" width="0.0107" height="0.0190"
+    h="45-70" s="50-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.7087" y="0.0471" width="0.0051" height="0.0190" />
+    <resolution aspect="24:10" x="0.8105" y="0.0471" width="0.0077" height="0.0190" />
+    <resolution aspect="16:11" x="0.9176" y="0.0413" width="0.0107" height="0.0190" />
+
+    <resolution size="3840x2160" x="0.9165" y="0.0464" width="0.0107" height="0.0190" />
+    <resolution size="3840x1080" x="0.7087" y="0.0471" width="0.0051" height="0.0190" />
+    <resolution size="2560x1080" x="0.8148" y="0.0475" width="0.0077" height="0.0190" />
+    <resolution size="1920x1080" x="0.9165" y="0.0464" width="0.0107" height="0.0190" />
+  </meta>
+
+  <!-- ── RACE START SCREEN ────────────────────────────────────────────────────────
+       raceDark1 / raceDark2: sample two dark letterbox corners; both high = the pre-race
+       loading/countdown screen is showing (not in active driving).
+       raceNotDark1 / raceNotDark2: negative guards for each corner.
+       raceWhite / raceNotWhite: additional white-region pair for disambiguation.
+       All six feed raceCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="raceDark1" tags="vlc,Forza 6" x="0.0017" y="0.8790" width="0.0064" height="0.0076"
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.2203" y="0.8789" width="0.0064" height="0.0076" />
+    <resolution aspect="24:10" x="0.0824" y="0.8787" width="0.0064" height="0.0076" />
+    <resolution aspect="16:11" x="0.0010" y="0.8774" width="0.0064" height="0.0076" />
+
+    <resolution size="3840x2160" x="0.0017" y="0.8790" width="0.0064" height="0.0076" />
+    <resolution size="3840x1080" x="0.2203" y="0.8789" width="0.0064" height="0.0076" />
+    <resolution size="2560x1080" x="0.0790" y="0.8785" width="0.0064" height="0.0076" />
+    <resolution size="1920x1080" x="0.0017" y="0.8790" width="0.0064" height="0.0076" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="raceNotDark1" tags="vlc,Forza 6" x="0.0026" y="0.8638" width="0.0056" height="0.0076"
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.2197" y="0.8652" width="0.0056" height="0.0076" />
+    <resolution aspect="24:10" x="0.0827" y="0.8659" width="0.0056" height="0.0076" />
+    <resolution aspect="16:11" x="0.0011" y="0.8662" width="0.0056" height="0.0076" />
+
+    <resolution size="3840x2160" x="0.0026" y="0.8638" width="0.0056" height="0.0076" />
+    <resolution size="3840x1080" x="0.2197" y="0.8652" width="0.0056" height="0.0076" />
+    <resolution size="2560x1080" x="0.0790" y="0.8658" width="0.0056" height="0.0076" />
+    <resolution size="1920x1080" x="0.0026" y="0.8638" width="0.0056" height="0.0076" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="raceDark2" tags="vlc,Forza 6" x="0.0034" y="0.1149" width="0.0064" height="0.0068"
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.2195" y="0.1148" width="0.0064" height="0.0068" />
+    <resolution aspect="24:10" x="0.0819" y="0.1158" width="0.0064" height="0.0068" />
+    <resolution aspect="16:11" x="0.0010" y="0.1159" width="0.0064" height="0.0068" />
+
+    <resolution size="3840x2160" x="0.0034" y="0.1149" width="0.0064" height="0.0068" />
+    <resolution size="3840x1080" x="0.2195" y="0.1148" width="0.0064" height="0.0068" />
+    <resolution size="2560x1080" x="0.0788" y="0.1163" width="0.0064" height="0.0068" />
+    <resolution size="1920x1080" x="0.0034" y="0.1149" width="0.0064" height="0.0068" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="raceNotDark2" tags="vlc,Forza 6" x="0.0043" y="0.1271" width="0.0056" height="0.0068"
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.2199" y="0.1287" width="0.0056" height="0.0068" />
+    <resolution aspect="24:10" x="0.0821" y="0.1267" width="0.0056" height="0.0068" />
+    <resolution aspect="16:11" x="0.0007" y="0.1271" width="0.0056" height="0.0068" />
+
+    <resolution size="3840x2160" x="0.0043" y="0.1271" width="0.0056" height="0.0068" />
+    <resolution size="3840x1080" x="0.2199" y="0.1287" width="0.0056" height="0.0068" />
+    <resolution size="2560x1080" x="0.0794" y="0.1271" width="0.0056" height="0.0068" />
+    <resolution size="1920x1080" x="0.0043" y="0.1271" width="0.0056" height="0.0068" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="raceWhite" tags="vlc,Forza 6" x="0.4658" y="0.4779" width="0.0711" height="0.0046"
+    h="0-360" s="0-15" l="75-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4819" y="0.4784" width="0.0381" height="0.0046" />
+    <resolution aspect="24:10" x="0.4715" y="0.4793" width="0.0571" height="0.0046" />
+    <resolution aspect="16:11" x="0.4655" y="0.4552" width="0.0711" height="0.0016" />
+
+    <resolution size="3840x2160" x="0.4658" y="0.4779" width="0.0711" height="0.0046" />
+    <resolution size="3840x1080" x="0.4819" y="0.4784" width="0.0381" height="0.0046" />
+    <resolution size="2560x1080" x="0.4671" y="0.6149" width="0.0701" height="0.0046" />
+    <resolution size="1920x1080" x="0.4658" y="0.4779" width="0.0711" height="0.0046" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="raceNotWhite" tags="vlc,Forza 6" x="0.4906" y="0.5259" width="0.0231" height="0.0038"
+    h="0-360" s="0-15" l="75-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4900" y="0.5210" width="0.0231" height="0.0038" />
+    <resolution aspect="24:10" x="0.4906" y="0.5259" width="0.0231" height="0.0038" />
+    <resolution aspect="16:11" x="0.4897" y="0.4596" width="0.0231" height="0.0038" />
+
+    <resolution size="3840x2160" x="0.4906" y="0.5259" width="0.0231" height="0.0038" />
+    <resolution size="3840x1080" x="0.4900" y="0.5210" width="0.0231" height="0.0038" />
+    <resolution size="2560x1080" x="0.4897" y="0.6533" width="0.0231" height="0.0038" />
+    <resolution size="1920x1080" x="0.4906" y="0.5259" width="0.0231" height="0.0038" />
+  </meta>
+
+  <!-- ── UPSHIFT INDICATOR ────────────────────────────────────────────────────────
+       upshiftPink: samples the pink/magenta shift light beside the gear display; lights up at redline.
+       upshiftNotPink: negative guard — confirms the light is off between shift events.
+       Both feed upshiftCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="upshiftPink" tags="vlc,Forza 6" x="0.8896" y="0.8059" width="0.0146" height="0.0381"
+    h="244-346" s="50-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9316" y="0.8061" width="0.0076" height="0.0381" />
+    <resolution aspect="24:10" x="0.9105" y="0.8066" width="0.0126" height="0.0381" />
+    <resolution aspect="16:11" x="0.8898" y="0.8216" width="0.0126" height="0.0331" />
+
+    <resolution size="3840x2160" x="0.8896" y="0.8059" width="0.0146" height="0.0381" />
+    <resolution size="3840x1080" x="0.9316" y="0.8061" width="0.0076" height="0.0381" />
+    <resolution size="2560x1080" x="0.9106" y="0.8067" width="0.0116" height="0.0381" />
+    <resolution size="1920x1080" x="0.8896" y="0.8059" width="0.0146" height="0.0381" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="upshiftNotPink" tags="vlc,Forza 6" x="0.8926" y="0.8014" width="0.0081" height="0.0023"
+    h="244-346" s="50-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.9335" y="0.8028" width="0.0041" height="0.0023" />
+    <resolution aspect="24:10" x="0.9126" y="0.8025" width="0.0081" height="0.0023" />
+    <resolution aspect="16:11" x="0.8927" y="0.8181" width="0.0081" height="0.0023" />
+
+    <resolution size="3840x2160" x="0.8926" y="0.8014" width="0.0081" height="0.0023" />
+    <resolution size="3840x1080" x="0.9335" y="0.8028" width="0.0041" height="0.0023" />
+    <resolution size="2560x1080" x="0.9123" y="0.8032" width="0.0081" height="0.0023" />
+    <resolution size="1920x1080" x="0.8926" y="0.8014" width="0.0081" height="0.0023" />
+  </meta>
+
+  <!-- ── WIN SCREEN ───────────────────────────────────────────────────────────────
+       winWhite: samples the white trophy/results banner; present on the post-race win screen.
+       winNotWhite: negative guard — confirms no white banner during normal racing.
+       winYellow: samples the yellow accent on the win banner; distinguishes win from other white screens.
+       All three feed winCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="winWhite" tags="vlc,Forza 6" x="0.1152" y="0.8242" width="0.0021" height="0.0099"
+    h="0-360" s="0-17" l="79-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.3063" y="0.8259" width="0.0021" height="0.0099" />
+    <resolution aspect="24:10" x="0.2131" y="0.8258" width="0.0021" height="0.0099" />
+    <resolution aspect="16:11" x="0.1151" y="0.7927" width="0.0021" height="0.0099" />
+
+    <resolution size="3840x2160" x="0.1152" y="0.8242" width="0.0021" height="0.0099" />
+    <resolution size="3840x1080" x="0.3063" y="0.8259" width="0.0021" height="0.0099" />
+    <resolution size="2560x1080" x="0.2106" y="0.8249" width="0.0021" height="0.0099" />
+    <resolution size="1920x1080" x="0.1152" y="0.8242" width="0.0021" height="0.0099" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="winNotWhite" tags="vlc,Forza 6" x="0.1199" y="0.8257" width="0.0021" height="0.0091"
+    h="0-360" s="0-17" l="79-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.3098" y="0.8261" width="0.0011" height="0.0091" />
+    <resolution aspect="24:10" x="0.2170" y="0.8264" width="0.0021" height="0.0091" />
+    <resolution aspect="16:11" x="0.1199" y="0.7936" width="0.0021" height="0.0091" />
+
+    <resolution size="3840x2160" x="0.1199" y="0.8257" width="0.0021" height="0.0091" />
+    <resolution size="3840x1080" x="0.3098" y="0.8261" width="0.0011" height="0.0091" />
+    <resolution size="2560x1080" x="0.2151" y="0.8260" width="0.0021" height="0.0091" />
+    <resolution size="1920x1080" x="0.1199" y="0.8257" width="0.0021" height="0.0091" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="winYellow" tags="vlc,Forza 6" x="0.1246" y="0.8288" width="0.0501" height="0.0076"
+    h="45-70" s="50-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.3125" y="0.8291" width="0.0251" height="0.0076" />
+    <resolution aspect="24:10" x="0.2209" y="0.8295" width="0.0371" height="0.0076" />
+    <resolution aspect="16:11" x="0.1252" y="0.7956" width="0.0501" height="0.0076" />
+
+    <resolution size="3840x2160" x="0.1246" y="0.8288" width="0.0501" height="0.0076" />
+    <resolution size="3840x1080" x="0.3125" y="0.8291" width="0.0251" height="0.0076" />
+    <resolution size="2560x1080" x="0.2188" y="0.8295" width="0.0371" height="0.0076" />
+    <resolution size="1920x1080" x="0.1246" y="0.8288" width="0.0501" height="0.0076" />
+  </meta>
+
+  <!-- ── WRONG WAY ────────────────────────────────────────────────────────────────
+       wrongYellow: samples the yellow background of the wrong-way banner.
+       wrongNotYellow: negative guard — confirms no yellow banner during normal driving.
+       wrongBlack: samples the black arrow region inside the banner for extra confirmation.
+       All three feed wrongWayCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="wrongYellow" tags="vlc,Forza 6" x="0.4974" y="0.3364" width="0.0051" height="0.0107"
+    h="45-76" s="51-100" l="54-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5014" y="0.3401" width="0.0021" height="0.0097" />
+    <resolution aspect="24:10" x="0.4986" y="0.3377" width="0.0031" height="0.0087" />
+    <resolution aspect="16:11" x="0.4990" y="0.3104" width="0.0031" height="0.0077" />
+
+    <resolution size="3840x2160" x="0.4974" y="0.3364" width="0.0051" height="0.0107" />
+    <resolution size="3840x1080" x="0.5014" y="0.3401" width="0.0021" height="0.0097" />
+    <resolution size="2560x1080" x="0.4992" y="0.3412" width="0.0021" height="0.0067" />
+    <resolution size="1920x1080" x="0.4974" y="0.3364" width="0.0051" height="0.0107" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="wrongNotYellow" tags="vlc,Forza 6" x="0.5068" y="0.3546" width="0.0039" height="0.0076"
+    h="45-76" s="51-100" l="54-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5051" y="0.3472" width="0.0019" height="0.0076" />
+    <resolution aspect="24:10" x="0.5065" y="0.3494" width="0.0039" height="0.0076" />
+    <resolution aspect="16:11" x="0.5090" y="0.3182" width="0.0039" height="0.0076" />
+
+    <resolution size="3840x2160" x="0.5068" y="0.3546" width="0.0039" height="0.0076" />
+    <resolution size="3840x1080" x="0.5051" y="0.3472" width="0.0019" height="0.0076" />
+    <resolution size="2560x1080" x="0.5083" y="0.3465" width="0.0039" height="0.0076" />
+    <resolution size="1920x1080" x="0.5068" y="0.3546" width="0.0039" height="0.0076" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="wrongBlack" tags="vlc,Forza 6" x="0.5047" y="0.3273" width="0.0017" height="0.0046"
+    h="0-360" s="0-100" l="0-15" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5020" y="0.3282" width="0.0017" height="0.0046" />
+    <resolution aspect="24:10" x="0.5034" y="0.3282" width="0.0017" height="0.0046" />
+    <resolution aspect="16:11" x="0.5045" y="0.2998" width="0.0017" height="0.0046" />
+
+    <resolution size="3840x2160" x="0.5047" y="0.3273" width="0.0017" height="0.0046" />
+    <resolution size="3840x1080" x="0.5020" y="0.3282" width="0.0017" height="0.0046" />
+    <resolution size="2560x1080" x="0.5032" y="0.3283" width="0.0017" height="0.0046" />
+    <resolution size="1920x1080" x="0.5047" y="0.3273" width="0.0017" height="0.0046" />
+  </meta>
+
+  <!-- ── XP GAIN ──────────────────────────────────────────────────────────────────
+       xpWhite: samples the white text/icon of the XP reward popup; present after earning XP.
+       xpNotWhite: negative guard — confirms the region is clear during racing.
+       xpYellow: samples the yellow accent of the popup; distinguishes XP from other white overlays.
+       All three feed xpCallback.
+       ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="xpWhite" tags="vlc,Forza 6" x="0.4991" y="0.1499" width="0.0021" height="0.0053"
+    h="0-360" s="0-20" l="55-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4992" y="0.1504" width="0.0021" height="0.0053" />
+    <resolution aspect="24:10" x="0.4995" y="0.1501" width="0.0021" height="0.0053" />
+    <resolution aspect="16:11" x="0.4990" y="0.1394" width="0.0021" height="0.0053" />
+
+    <resolution size="3840x2160" x="0.4991" y="0.1499" width="0.0021" height="0.0053" />
+    <resolution size="3840x1080" x="0.4992" y="0.1504" width="0.0021" height="0.0053" />
+    <resolution size="2560x1080" x="0.4995" y="0.1508" width="0.0021" height="0.0053" />
+    <resolution size="1920x1080" x="0.4991" y="0.1499" width="0.0021" height="0.0053" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="xpNotWhite" tags="vlc,Forza 6" x="0.4983" y="0.1362" width="0.0039" height="0.0053"
+    h="0-360" s="0-20" l="55-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4993" y="0.1359" width="0.0019" height="0.0053" />
+    <resolution aspect="24:10" x="0.4983" y="0.1384" width="0.0039" height="0.0053" />
+    <resolution aspect="16:11" x="0.4982" y="0.1268" width="0.0039" height="0.0053" />
+
+    <resolution size="3840x2160" x="0.4983" y="0.1362" width="0.0039" height="0.0053" />
+    <resolution size="3840x1080" x="0.4993" y="0.1359" width="0.0019" height="0.0053" />
+    <resolution size="2560x1080" x="0.4996" y="0.1374" width="0.0019" height="0.0053" />
+    <resolution size="1920x1080" x="0.4983" y="0.1362" width="0.0039" height="0.0053" />
+  </meta>
+
+  <!-- Last edited: 2026-06-02T20:54:27Z | 2026-06-02 14:54:27 MST -->
+  <meta meter="xpYellow" tags="vlc,Forza 6" x="0.4809" y="0.1626" width="0.0011" height="0.0026"
+    h="48-79" s="50-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4902" y="0.1609" width="0.0011" height="0.0026" />
+    <resolution aspect="24:10" x="0.4858" y="0.1610" width="0.0011" height="0.0026" />
+    <resolution aspect="16:11" x="0.4808" y="0.1501" width="0.0011" height="0.0026" />
+
+    <resolution size="3840x2160" x="0.4809" y="0.1626" width="0.0011" height="0.0026" />
+    <resolution size="3840x1080" x="0.4902" y="0.1609" width="0.0011" height="0.0026" />
+    <resolution size="2560x1080" x="0.4856" y="0.1606" width="0.0011" height="0.0026" />
+    <resolution size="1920x1080" x="0.4809" y="0.1626" width="0.0011" height="0.0026" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+    // ═══════════════════════════════════════════════════════════════
+    // CANVAS SETUP
+    // SignalRGB renders this 320×200 canvas onto the device layout.
+    // All draw coordinates are in canvas pixels; user-facing position
+    // values (0–100) are scaled to canvas pixels in JS (x * 3.2, y * 2.0).
+    // ═══════════════════════════════════════════════════════════════
+    const canvas = document.getElementById('exCanvas');
+    const ctx    = canvas.getContext('2d');
+    const width  = 320;
+    const height = 200;
+
+    // Hidden canvas — all effects are drawn here each frame, then
+    // composited onto ctx in a single drawImage call.
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width  = width;
+    hiddenCanvas.height = height;
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    // Active effects pool. Objects with lifetime <= 0 are filtered out after drawing.
+    let effects = [];
+
+    // ═══════════════════════════════════════════════════════════════
+    // METER DECLARATIONS
+    // Each Meter(size, callback) smooths the vision signal over `size`
+    // consecutive identical frames before updating its .value and firing
+    // the callback. Larger size = more stable but slower to react.
+    // ═══════════════════════════════════════════════════════════════
+
+    // ── In-game detection — confirms race HUD is visible; gates all driving effects ──
+    const inGameWhite_Meter  = new Meter(3, inGameDetect)
+    const inGameRed_Meter    = new Meter(3, inGameDetect)
+    const inGameNotRed_Meter = new Meter(3, inGameDetect)
+
+    // ── Speed indicator — 3 digit-column regions of the speedometer ─────────────────
+    const speedWhite1_Meter   = new Meter(5, speedCallback)
+    const speedWhite2_Meter   = new Meter(5, speedCallback)
+    const speedWhite3_Meter   = new Meter(5, speedCallback)
+    const speedNotWhite_Meter = new Meter(5, speedCallback)
+
+    // ── Reverse gear — OCR region detects the "R" gear character ────────────────────
+    const reverseOCR_Meter = new Meter(5, reverseCallback)
+
+    // ── ABS system — cyan ABS indicator light ────────────────────────────────────────
+    const absCyan_Meter = new Meter(5, absCallback)
+
+    // ── Mini-map — white frame and yellow destination pin ────────────────────────────
+    const mapWhite_Meter    = new Meter(5, mapCallback)
+    const mapNotWhite_Meter = new Meter(5, mapCallback)
+    const mapYellow_Meter   = new Meter(5, mapCallback)
+
+    // ── Race start screen — dark letterbox corners identify pre-race loading ─────────
+    const raceDark1_Meter    = new Meter(5, raceCallback)
+    const raceNotDark1_Meter = new Meter(5, raceCallback)
+    const raceDark2_Meter    = new Meter(5, raceCallback)
+    const raceNotDark2_Meter = new Meter(5, raceCallback)
+    // ── Upshift indicator — pink/magenta shift light beside the gear display ─────────
+    const upshiftPink_Meter    = new Meter(5, upshiftCallback)
+    const upshiftNotPink_Meter = new Meter(5, upshiftCallback)
+
+    // ── Win screen — white + yellow trophy/banner region post-race ───────────────────
+    const winWhite_Meter    = new Meter(5, winCallback)
+    const winNotWhite_Meter = new Meter(5, winCallback)
+    const winYellow_Meter   = new Meter(5, winCallback)
+
+    // ── Wrong-way indicator — yellow/black wrong-way banner ──────────────────────────
+    const wrongYellow_Meter    = new Meter(5, wrongWayCallback)
+    const wrongNotYellow_Meter = new Meter(5, wrongWayCallback)
+    const wrongBlack_Meter     = new Meter(5, wrongWayCallback)
+
+    // ── XP gain — white/yellow XP reward popup ───────────────────────────────────────
+    const xpWhite_Meter    = new Meter(5, xpCallback)
+    const xpNotWhite_Meter = new Meter(5, xpCallback)
+    const xpYellow_Meter   = new Meter(5, xpCallback)
+
+    //#region Update
+    // ═══════════════════════════════════════════════════════════════
+    // MAIN UPDATE LOOP — called every animation frame (~60fps).
+    // Order of operations:
+    //   1. Clear hidden canvas to black
+    //   2. Draw background (ambience / color cycle / custom)
+    //   3. Feed current vision readings into each Meter — may trigger callbacks
+    //   4. Draw all active effects; filter out expired ones
+    //   5. Draw any persistent overlay (e.g. HUD adjust)
+    //   6. Composite hidden canvas onto the main canvas
+    // ═══════════════════════════════════════════════════════════════
+    function update() {
+      DrawRect(0, 0, 320, 200, 'black')
+      backgroundHandler()
+
+      inGameWhite_Meter.setValue(engine.vision.inGameWhite)
+      inGameRed_Meter.setValue(engine.vision.inGameRed)
+      inGameNotRed_Meter.setValue(engine.vision.inGameNotRed)
+      speedWhite1_Meter.setValue(engine.vision.speedWhite1)
+      speedWhite2_Meter.setValue(engine.vision.speedWhite2)
+      speedWhite3_Meter.setValue(engine.vision.speedWhite3)
+      speedNotWhite_Meter.setValue(engine.vision.speedNotWhite)
+      reverseOCR_Meter.setValue(engine.vision.reverseOCR)
+      absCyan_Meter.setValue(engine.vision.absCyan)
+      mapWhite_Meter.setValue(engine.vision.mapWhite)
+      mapNotWhite_Meter.setValue(engine.vision.mapNotWhite)
+      mapYellow_Meter.setValue(engine.vision.mapYellow)
+      raceDark1_Meter.setValue(engine.vision.raceDark1)
+      raceNotDark1_Meter.setValue(engine.vision.raceNotDark1)
+      raceDark2_Meter.setValue(engine.vision.raceDark2)
+      raceNotDark2_Meter.setValue(engine.vision.raceNotDark2)
+      upshiftPink_Meter.setValue(engine.vision.upshiftPink)
+      upshiftNotPink_Meter.setValue(engine.vision.upshiftNotPink)
+      winWhite_Meter.setValue(engine.vision.winWhite)
+      winNotWhite_Meter.setValue(engine.vision.winNotWhite)
+      winYellow_Meter.setValue(engine.vision.winYellow)
+      wrongYellow_Meter.setValue(engine.vision.wrongYellow)
+      wrongNotYellow_Meter.setValue(engine.vision.wrongNotYellow)
+      wrongBlack_Meter.setValue(engine.vision.wrongBlack)
+      xpWhite_Meter.setValue(engine.vision.xpWhite)
+      xpNotWhite_Meter.setValue(engine.vision.xpNotWhite)
+      xpYellow_Meter.setValue(engine.vision.xpYellow)
+
+      effects.forEach(ele => { ele.draw() })
+      effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+      ctx.drawImage(hiddenCanvas, 0, 0)
+      window.requestAnimationFrame(update)
+    }
+    //#endregion
+
+
+    //#region Callbacks
+    // ═══════════════════════════════════════════════════════════════
+    // CALLBACKS
+    // Each callback is fired by one or more Meters when their signal
+    // stabilizes. Callbacks evaluate the CURRENT state of all related
+    // meters and flags, then push effects or flip state booleans.
+    //
+    // "Going" flags prevent duplicate effect spawns: once an effect is
+    // active, its flag is true and the spawn condition is short-circuited.
+    // The flag is cleared inside the effect's draw() when it expires.
+    // ═══════════════════════════════════════════════════════════════
+
+    // ── State flags — true while the named effect is live in effects[] ──────────
+    let gInGame       = false
+    let lowGoing      = false
+    let mediumGoing   = false
+    let highGoing     = false
+    let reverseGoing  = false
+    let absGoing      = false
+    let mapGoing      = false
+    let raceGoing     = false
+    let upshiftGoing  = false
+    let winGoing      = false
+    let wrongWayGoing = false
+    let xpGoing       = false
+
+
+    // ── In-game detection ───────────────────────────────────────────────────────
+    // gInGame true = race HUD is on screen. All driving effects check this first.
+    // Test: HUD visible → white ≥ .5, red ≥ .95, notRed < .1 → gInGame true.
+    //       Return to menu → white + red both < .1 → gInGame false.
+    function inGameDetect() {
+      if (inGameWhite_Meter.value >= .5 && inGameRed_Meter.value >= .95 && engine.vision.inGameNotRed < .1) {
+        gInGame = true
+      } else if (inGameWhite_Meter.value < .1 && inGameRed_Meter.value < .1) {
+        gInGame = false
+      }
+    }
+
+
+    // ── Speed indicator ─────────────────────────────────────────────────────────
+    // Each tier is mutually exclusive: only one going flag is true at a time.
+    // The other two are explicitly cleared when a tier fires, which triggers
+    // the active effect's fade-out branch.
+    // Test: 1 white digit column → LowSpeed. 2 → MediumSpeed. 3 → HighSpeed.
+    function speedCallback() {
+      if (speedOn && gInGame && speedWhite1_Meter.value >= .2 && speedWhite2_Meter.value < .05 && speedWhite3_Meter.value < .05 && engine.vision.speedNotWhite < .05 && !lowGoing) {
+        lowGoing = true
+        mediumGoing = false
+        highGoing = false
+        effects.push(new LowSpeed())
+      } else if (speedOn && gInGame && speedWhite1_Meter.value >= .2 && speedWhite2_Meter.value >= .2 && speedWhite3_Meter.value < .05 && engine.vision.speedNotWhite < .05 && !mediumGoing) {
+        lowGoing = false
+        mediumGoing = true
+        highGoing = false
+        effects.push(new MediumSpeed())
+      } else if (speedOn && gInGame && speedWhite1_Meter.value >= .2 && speedWhite2_Meter.value >= .2 && speedWhite3_Meter.value >= .2 && engine.vision.speedNotWhite < .05 && !highGoing) {
+        lowGoing = false
+        mediumGoing = false
+        highGoing = true
+        effects.push(new HighSpeed())
+      }
+    }
+
+
+    // ── Reverse gear ────────────────────────────────────────────────────────────
+    // OCR fires when the gear indicator reads "R". Effect loops until gear changes.
+    // Test: shift to reverse → Reverse effect starts. Shift out → effect fades.
+    function reverseCallback() {
+      if (reverseOn && gInGame && reverseOCR_Meter.value == 1 && !reverseGoing) {
+        effects.push(new Reverse())
+        reverseGoing = true
+      } else if (!gInGame || reverseOCR_Meter.value != 1) {
+        reverseGoing = false
+      }
+    }
+
+
+    // ── ABS system ──────────────────────────────────────────────────────────────
+    // Cyan indicator high = ABS actively engaged. Effect loops until light drops.
+    // Test: lock brakes → ABS sweep fires. Release → sweep stops on next frame.
+    function absCallback() {
+      if (absOn && gInGame && absCyan_Meter.value >= .95 && !absGoing) {
+        effects.push(new ABS())
+        absGoing = true
+      } else if (absCyan_Meter.value < .1 || !gInGame) {
+        absGoing = false
+      }
+    }
+
+
+    // ── Mini-map / navigation ───────────────────────────────────────────────────
+    // White frame + yellow pin must both be high AND mapNotWhite low.
+    // mapGoing resets when gInGame is true (map closes during active racing).
+    // Test: open map with a waypoint set → MapPin drops. Start race → clears.
+    function mapCallback() {
+      if (mapPinOn && mapWhite_Meter.value >= .95 && mapYellow_Meter.value >= .33 && engine.vision.mapNotWhite < .1 && !mapGoing) {
+        effects.push(new MapPin())
+        mapGoing = true
+      } else if (gInGame || (mapWhite_Meter.value < .1 && mapYellow_Meter.value < .1)) {
+        mapGoing = false
+      }
+    }
+
+
+    // ── Race start countdown ─────────────────────────────────────────────────────
+    // Dark letterbox corners identify the pre-race loading screen (!gInGame gate).
+    // raceGoing clears the moment gInGame flips true when the race begins.
+    // Test: enter a race event → RaceStart fires on loading screen → clears at go.
+    function raceCallback() {
+      if (raceStartOn && !gInGame && raceDark1_Meter.value >= .95 && raceDark2_Meter.value >= .95 && engine.vision.raceNotDark1 < .1 && engine.vision.raceNotDark2 < .1 && !raceGoing) {
+        effects.push(new RaceStart())
+        raceGoing = true
+      } else if (gInGame) {
+        raceGoing = false
+      }
+    }
+
+
+    // ── Upshift indicator ────────────────────────────────────────────────────────
+    // Pink shift light flashes briefly at redline; threshold .15 catches the onset.
+    // upshiftGoing clears when the light drops below .1 or gInGame becomes false.
+    // Test: rev to redline → Upshift tach sweeps. Shift or lift off → clears.
+    function upshiftCallback() {
+      if (upshiftOn && gInGame && upshiftPink_Meter.value >= .15 && engine.vision.upshiftNotPink < .1 && !upshiftGoing) {
+        effects.push(new Upshift())
+        upshiftGoing = true
+      } else if (upshiftPink_Meter.value < .1 || !gInGame) {
+        upshiftGoing = false
+      }
+    }
+
+
+    // ── Win screen ───────────────────────────────────────────────────────────────
+    // White + yellow banner only shows post-race (!gInGame). winGoing clears on
+    // next race start. NOTE: engine.vision.winNotWHite has a capital H — intentional
+    // match to the meter name; do not "fix" this without also renaming the meter.
+    // Test: finish 1st → Winner checkered flag plays. Start new race → clears.
+    function winCallback() {
+      if (winnerOn && !gInGame && winWhite_Meter.value >= .95 && winYellow_Meter.value >= .35 && engine.vision.winNotWhite < .1 && !winGoing) {
+        effects.push(new Winner())
+        winGoing = true
+      } else if (gInGame) {
+        winGoing = false
+      }
+    }
+
+
+    // ── Wrong-way indicator ──────────────────────────────────────────────────────
+    // Both yellow and black must read high to avoid false positives from other
+    // yellow UI elements. Both must drop below .1 to clear.
+    // Test: drive wrong direction → WrongWay symbol spins. Correct → fades out.
+    function wrongWayCallback() {
+      if (wrongWayOn && gInGame && wrongYellow_Meter.value >= .95 && wrongBlack_Meter.value >= .95 && engine.vision.wrongNotYellow < .1 && !wrongWayGoing) {
+        effects.push(new WrongWay())
+        wrongWayGoing = true
+      } else if (!gInGame || (wrongYellow_Meter.value < .1 && wrongBlack_Meter.value < .1)) {
+        wrongWayGoing = false
+      }
+    }
+
+
+    // ── XP gain ─────────────────────────────────────────────────────────────────
+    // White + yellow popup appears briefly after earning XP; both meters must drop
+    // to <= .1 to clear — prevents re-fire if only one flickers first.
+    // Test: complete race / objective → XPGain star fires and self-expires at 2s.
+    function xpCallback() {
+      if (xpGainOn && gInGame && xpWhite_Meter.value >= .95 && xpYellow_Meter.value >= .95 && engine.vision.xpNotWhite < .1 && !xpGoing) {
+        effects.push(new XPGain())
+        xpGoing = true
+      } else if (!gInGame || (xpWhite_Meter.value <= .1 && xpYellow_Meter.value <= .1)) {
+        xpGoing = false
+      }
+    }
+
+    //#endregion
+
+
+    //#region Background Modes
+    // ═══════════════════════════════════════════════════════════════
+    // BACKGROUND SYSTEM
+    // Eight modes supported (see backgroundMode meta property).
+    // Mode routing uses string.includes() so shared keywords act as
+    // feature flags.
+    //
+    // Mode map:
+    //   Color Cycle              → flat color, rotating hue
+    //   Color Cycle Ambience     → per-zone screen capture, rotating hue offset
+    //   Color Cycle Audio Viz    → flat color, rotating hue, audio-driven sat/lit
+    //   Custom                   → flat solid color (backColor)
+    //   Ambience                 → per-zone screen capture, native hue
+    //   Custom Ambience          → per-zone screen capture, hue locked to backColor
+    //   Ambience Audio Viz       → per-zone screen capture, audio-modulated sat/lit
+    //   Custom Audio Viz         → flat color (backColor), audio-driven sat/lit
+    // ═══════════════════════════════════════════════════════════════
+
+    let proBack = [0, 0, 0]
+    function onbackColorChanged() { proBack = hexToHSL(backColor) }
+
+    let audioEase = { sat: 0, lit: 0 }
+    let gCycle    = 0
+
+    function updateAudioEase() {
+      const targetDensity = engine.audio.density * 100
+      audioEase.sat += (targetDensity - audioEase.sat) / 10
+      audioEase.lit += (targetDensity - audioEase.lit) / 10
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+      return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`
+    }
+
+    function updateColorCycle() {
+      gCycle = (gCycle + 0.5) % 360
+    }
+
+    function backgroundHandler() {
+      const alpha = ambienceAlpha / 100
+
+      if (backgroundMode.includes('Color Cycle')) updateColorCycle()
+      if (backgroundMode.includes('Audio'))       updateAudioEase()
+
+      if (backgroundMode.includes('Ambience')) {
+        backgroundMode === 'Ambience Audio Visualizer'
+          ? copyScreenAudio(alpha)
+          : copyScreen(alpha)
+        return
+      }
+
+      const hue = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0)
+      const sat = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1]
+      const lit = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2]
+      DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha))
+    }
+
+    const ZONE_COLS   = 28
+    const ZONE_ROWS   = 20
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS
+
+    function copyScreenAudio(alpha) {
+      const lightness = new Int8Array(engine.zone.lightness)
+      const sat       = new Int8Array(engine.zone.saturation)
+      const hue       = new Int16Array(engine.zone.hue)
+      const w = 320 / ZONE_COLS
+      const h = 200 / ZONE_ROWS
+      const satMultiplier = audioEase.sat / 200 + 0.5
+      const litMultiplier = audioEase.lit / 100
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const row = Math.floor(iZone / ZONE_COLS)
+        const col = iZone % ZONE_COLS
+        hiddenCtx.fillStyle = getColorString(hue[iZone], sat[iZone] * satMultiplier, lightness[iZone] * litMultiplier, alpha)
+        hiddenCtx.fillRect(col * w, row * h, w, h)
+      }
+    }
+
+    function copyScreen(alpha) {
+      const lightness = new Int8Array(engine.zone.lightness)
+      const sat       = new Int8Array(engine.zone.saturation)
+      const hue       = new Int16Array(engine.zone.hue)
+      const w = 320 / ZONE_COLS
+      const h = 200 / ZONE_ROWS
+      for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+        const row      = Math.floor(iZone / ZONE_COLS)
+        const col      = iZone % ZONE_COLS
+        const finalHue = backgroundMode === 'Custom Ambience'
+          ? proBack[0]
+          : hue[iZone] + (backgroundMode === 'Color Cycle Ambience' ? gCycle : 0)
+        hiddenCtx.fillStyle = getColorString(finalHue, sat[iZone], lightness[iZone], alpha)
+        hiddenCtx.fillRect(col * w, row * h, w, h)
+      }
+    }
+    //#endregion
+
+
+    //#region Helper Functions
+    // ═══════════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS
+    // ─── Draw primitives — all target hiddenCtx ─────────────────────
+    // ═══════════════════════════════════════════════════════════════
+
+    // DrawLine: stroke a straight line between two [x, y] points
+    function DrawLine(start, end, color, stroke) {
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(start[0], start[1])
+      hiddenCtx.lineTo(end[0], end[1])
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth   = stroke
+      hiddenCtx.stroke()
+    }
+
+    // DrawEllipse: filled ellipse
+    function DrawEllipse(x, y, width, height, rotation, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+      hiddenCtx.fillStyle = color
+      hiddenCtx.fill()
+    }
+
+    // DrawCircle: filled circle
+    function DrawCircle(x, y, radius, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = color
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.fill()
+    }
+
+    // DrawStroke: outlined circle (no fill)
+    function DrawStroke(x, y, radius, color, stroke) {
+      hiddenCtx.beginPath()
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth   = stroke
+      hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+      hiddenCtx.stroke()
+    }
+
+    // DrawRect: filled rectangle — also accepts canvas gradient objects as color
+    function DrawRect(x, y, w, h, color) {
+      hiddenCtx.beginPath()
+      hiddenCtx.fillStyle = color
+      hiddenCtx.fillRect(x, y, w, h)
+    }
+
+
+    // ─── Utilities ──────────────────────────────────────────────────
+
+    // hexToHSL: converts a CSS hex string to [H(0–360), S(0–100), L(0–100)]
+    function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || []
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255)
+      const max = Math.max(...rgb)
+      const min = Math.min(...rgb)
+      const l   = (max + min) / 2
+      if (max === min) return [0, 0, Math.round(l * 100)]
+      const d = max - min
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+      let h
+      const [nr, ng, nb] = rgb
+      if      (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0)
+      else if (max === ng) h = (nb - nr) / d + 2
+      else                 h = (nr - ng) / d + 4
+      return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)]
+    }
+
+    // ─── Meter class ────────────────────────────────────────────────
+    // Meter(size, callback): setValue() fires callback only when the last
+    // `size` readings are ALL identical — filters single-frame noise.
+    function Meter(size, callback) {
+      this.size      = size
+      this.value     = 0
+      this.diff      = 0
+      this.increased = false
+      this.decreased = false
+      let values = []
+
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue)
+        if (values.length > this.size) values.shift()
+
+        for (let i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return
+        }
+        if (this.value !== values[0]) {
+          this.diff      = Math.abs(this.value - values[0])
+          this.increased = this.value < values[0]
+          this.decreased = this.value > values[0]
+          this.value     = values[0]
+          callback()
+        }
+      }
+    }
+
+    //#endregion
+
+
+    //#region Effects
+    // ═══════════════════════════════════════════════════════════════
+    // EFFECTS
+    // Each effect is a constructor function. Instances are pushed into
+    // the effects[] array and drawn every frame until lifetime is set
+    // to 0 (or the object self-terminates).
+    //
+    // Coordinate system:
+    //   Canvas pixels: x * 3.2 (320 / 100),  y * 2.0 (200 / 100)
+    // ═══════════════════════════════════════════════════════════════
+
+    // LowSpeed: red vignette fades in then out over 2s; a spinning wheel is cut out of the
+    // center via destination-out compositing on an offscreen canvas. Expires after one fade cycle.
+    function LowSpeed() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const TOTAL = 120  // 2s at 60fps
+
+        // Offscreen canvas so we can cut out the wheel without affecting the background
+        const oc   = document.createElement('canvas')
+        oc.width   = 320
+        oc.height  = 200
+        const octx = oc.getContext('2d')
+
+        this.draw = function () {
+            if (!lowGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.08)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            // Single sine arc: 0 → peak at frame 60 → 0 at frame 120
+            const t     = this.frame / TOTAL
+            const alpha = Math.sin(t * Math.PI) * 0.75 * this.fadeAlpha
+
+            if (alpha > 0.001) {
+                octx.clearRect(0, 0, 320, 200)
+
+                // Draw red vignette onto the offscreen canvas
+                octx.globalCompositeOperation = 'source-over'
+                const grad = octx.createRadialGradient(160, 100, 20, 160, 100, 200)
+                grad.addColorStop(0,    `rgba(0, 0, 0, 0)`)
+                grad.addColorStop(0.25, `rgba(180, 0, 0, ${alpha * 0.4})`)
+                grad.addColorStop(1,    `rgba(220, 0, 0, ${alpha})`)
+                octx.fillStyle = grad
+                octx.fillRect(0, 0, 320, 200)
+
+                // Cut out the spinning wheel shape
+                octx.globalCompositeOperation = 'destination-out'
+                const a    = this.frame * 0.02  // ~0.19 rev/s (halved from 0.04)
+                const cx   = 160, cy = 100
+                const hubR = 14, rimR = 200
+
+                // Rim ring
+                octx.beginPath()
+                octx.arc(cx, cy, rimR, 0, Math.PI * 2)
+                octx.lineWidth   = 21
+                octx.strokeStyle = 'rgba(0,0,0,1)'
+                octx.stroke()
+
+                // Hub
+                octx.beginPath()
+                octx.arc(cx, cy, hubR, 0, Math.PI * 2)
+                octx.fillStyle = 'rgba(0,0,0,1)'
+                octx.fill()
+
+                // 5 spokes — tapered trapezoids: half-width 9px at hub, 21px at rim
+                octx.fillStyle = 'rgba(0,0,0,1)'
+                for (let i = 0; i < 5; i++) {
+                    const sa  = a + (i / 5) * Math.PI * 2
+                    const cos = Math.cos(sa),      sin = Math.sin(sa)
+                    const pc  = Math.cos(sa + Math.PI / 2), ps = Math.sin(sa + Math.PI / 2)
+                    const x1  = cx + cos * hubR,        y1 = cy + sin * hubR
+                    const x2  = cx + cos * (rimR - 7),  y2 = cy + sin * (rimR - 7)
+                    octx.beginPath()
+                    octx.moveTo(x1 + pc *  9, y1 + ps *  9)
+                    octx.lineTo(x1 - pc *  9, y1 - ps *  9)
+                    octx.lineTo(x2 - pc * 21, y2 - ps * 21)
+                    octx.lineTo(x2 + pc * 21, y2 + ps * 21)
+                    octx.closePath()
+                    octx.fill()
+                }
+
+                octx.globalCompositeOperation = 'source-over'
+                hiddenCtx.drawImage(oc, 0, 0)
+
+                // Expanding white ring — grows from center to canvas edge over the full duration
+                const ringR = t * 200
+                const ringA = (1 - t) * alpha * 0.7
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(160, 100, ringR, 0, Math.PI * 2)
+                hiddenCtx.strokeStyle = `rgba(255, 255, 255, ${ringA})`
+                hiddenCtx.lineWidth   = 22
+                hiddenCtx.stroke()
+            }
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    // MediumSpeed: same as LowSpeed but orange-red vignette and wheel rotates 33% faster.
+    function MediumSpeed() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const TOTAL = 120  // 2s at 60fps
+
+        const oc   = document.createElement('canvas')
+        oc.width   = 320
+        oc.height  = 200
+        const octx = oc.getContext('2d')
+
+        this.draw = function () {
+            if (!mediumGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.08)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            const t     = this.frame / TOTAL
+            const alpha = Math.sin(t * Math.PI) * 0.75 * this.fadeAlpha
+
+            if (alpha > 0.001) {
+                octx.clearRect(0, 0, 320, 200)
+
+                octx.globalCompositeOperation = 'source-over'
+                const grad = octx.createRadialGradient(160, 100, 20, 160, 100, 200)
+                grad.addColorStop(0,    `rgba(0, 0, 0, 0)`)
+                grad.addColorStop(0.25, `rgba(220, 60, 0, ${alpha * 0.4})`)
+                grad.addColorStop(1,    `rgba(255, 80, 0, ${alpha})`)
+                octx.fillStyle = grad
+                octx.fillRect(0, 0, 320, 200)
+
+                octx.globalCompositeOperation = 'destination-out'
+                const a    = this.frame * 0.0355  // LowSpeed 0.02 × 1.33 × 1.33
+                const cx   = 160, cy = 100
+                const hubR = 14, rimR = 200
+
+                octx.beginPath()
+                octx.arc(cx, cy, rimR, 0, Math.PI * 2)
+                octx.lineWidth   = 21
+                octx.strokeStyle = 'rgba(0,0,0,1)'
+                octx.stroke()
+
+                octx.beginPath()
+                octx.arc(cx, cy, hubR, 0, Math.PI * 2)
+                octx.fillStyle = 'rgba(0,0,0,1)'
+                octx.fill()
+
+                octx.fillStyle = 'rgba(0,0,0,1)'
+                for (let i = 0; i < 5; i++) {
+                    const sa  = a + (i / 5) * Math.PI * 2
+                    const cos = Math.cos(sa),      sin = Math.sin(sa)
+                    const pc  = Math.cos(sa + Math.PI / 2), ps = Math.sin(sa + Math.PI / 2)
+                    const x1  = cx + cos * hubR,        y1 = cy + sin * hubR
+                    const x2  = cx + cos * (rimR - 7),  y2 = cy + sin * (rimR - 7)
+                    octx.beginPath()
+                    octx.moveTo(x1 + pc *  9, y1 + ps *  9)
+                    octx.lineTo(x1 - pc *  9, y1 - ps *  9)
+                    octx.lineTo(x2 - pc * 21, y2 - ps * 21)
+                    octx.lineTo(x2 + pc * 21, y2 + ps * 21)
+                    octx.closePath()
+                    octx.fill()
+                }
+
+                octx.globalCompositeOperation = 'source-over'
+                hiddenCtx.drawImage(oc, 0, 0)
+            }
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    // HighSpeed: gold/orange vignette with expanding white ring; rotates 100% faster than MediumSpeed.
+    function HighSpeed() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const TOTAL = 120  // 2s at 60fps
+
+        const oc   = document.createElement('canvas')
+        oc.width   = 320
+        oc.height  = 200
+        const octx = oc.getContext('2d')
+
+        this.draw = function () {
+            if (!highGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.08)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            const t     = this.frame / TOTAL
+            const alpha = Math.sin(t * Math.PI) * 0.75 * this.fadeAlpha
+
+            if (alpha > 0.001) {
+                octx.clearRect(0, 0, 320, 200)
+
+                octx.globalCompositeOperation = 'source-over'
+                const grad = octx.createRadialGradient(160, 100, 20, 160, 100, 200)
+                grad.addColorStop(0,    `rgba(0, 0, 0, 0)`)
+                grad.addColorStop(0.25, `rgba(255, 175, 0, ${alpha * 0.4})`)
+                grad.addColorStop(1,    `rgba(230, 100, 0, ${alpha})`)
+                octx.fillStyle = grad
+                octx.fillRect(0, 0, 320, 200)
+
+                octx.globalCompositeOperation = 'destination-out'
+                const a    = this.frame * 0.071  // MediumSpeed 0.0355 × 2
+                const cx   = 160, cy = 100
+                const hubR = 14, rimR = 200
+
+                octx.beginPath()
+                octx.arc(cx, cy, rimR, 0, Math.PI * 2)
+                octx.lineWidth   = 21
+                octx.strokeStyle = 'rgba(0,0,0,1)'
+                octx.stroke()
+
+                octx.beginPath()
+                octx.arc(cx, cy, hubR, 0, Math.PI * 2)
+                octx.fillStyle = 'rgba(0,0,0,1)'
+                octx.fill()
+
+                octx.fillStyle = 'rgba(0,0,0,1)'
+                for (let i = 0; i < 5; i++) {
+                    const sa  = a + (i / 5) * Math.PI * 2
+                    const cos = Math.cos(sa),      sin = Math.sin(sa)
+                    const pc  = Math.cos(sa + Math.PI / 2), ps = Math.sin(sa + Math.PI / 2)
+                    const x1  = cx + cos * hubR,        y1 = cy + sin * hubR
+                    const x2  = cx + cos * (rimR - 7),  y2 = cy + sin * (rimR - 7)
+                    octx.beginPath()
+                    octx.moveTo(x1 + pc *  9, y1 + ps *  9)
+                    octx.lineTo(x1 - pc *  9, y1 - ps *  9)
+                    octx.lineTo(x2 - pc * 21, y2 - ps * 21)
+                    octx.lineTo(x2 + pc * 21, y2 + ps * 21)
+                    octx.closePath()
+                    octx.fill()
+                }
+
+                octx.globalCompositeOperation = 'source-over'
+                hiddenCtx.drawImage(oc, 0, 0)
+            }
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    // Reverse: left-scrolling chevrons across 4 rows; hue oscillates yellow→red→yellow with a
+    // spatial phase shift per column so a color wave travels across the field. Fades out when
+    // reverseGoing is cleared; loops indefinitely while active.
+    function Reverse() {
+        this.frame     = 0
+        this.offset    = 0
+        this.fadeAlpha = 1
+        const SPEED   = 2
+        const SPACING = 65
+        const W = 24, H = 20
+        const ROW_YS  = [32, 78, 122, 168]
+
+        // Persistent trail canvas — holds fading ghost of previous frames
+        const trail = document.createElement('canvas')
+        trail.width  = 320
+        trail.height = 200
+        const tctx  = trail.getContext('2d')
+
+        this.draw = function () {
+            // Fade out when reverse is no longer detected
+            if (!reverseGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.05)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+
+            // Erode previous frame's chevrons on the trail canvas — creates the trail
+            tctx.globalCompositeOperation = 'destination-out'
+            tctx.fillStyle = 'rgba(0, 0, 0, 0.3)'
+            tctx.fillRect(0, 0, 320, 200)
+            tctx.globalCompositeOperation = 'source-over'
+
+            // Draw current chevrons onto the trail canvas
+            tctx.lineCap   = 'round'
+            tctx.lineJoin  = 'round'
+            tctx.lineWidth = 12
+            ROW_YS.forEach((y, ri) => {
+                // Alternate rows offset by half a spacing for a brick pattern
+                const rowShift = ri % 2 === 0 ? 0 : SPACING * 0.5
+                const count    = Math.ceil(320 / SPACING) + 2
+                for (let i = 0; i < count; i++) {
+                    const x = -this.offset + i * SPACING + rowShift - SPACING
+                    // Spatial phase shift: color wave travels left with the chevrons
+                    const hue = 27.5 * (1 + Math.sin(this.frame * 0.05 + i * 0.35 + ri * 0.7))
+                    tctx.strokeStyle = `hsl(${hue}, 100%, 55%)`
+                    tctx.beginPath()
+                    tctx.moveTo(x + W, y - H)
+                    tctx.lineTo(x,     y)
+                    tctx.lineTo(x + W, y + H)
+                    tctx.stroke()
+                }
+            })
+
+            // Dark wash then composite trail at current fade level
+            DrawRect(0, 0, 320, 200, 'rgba(0, 0, 0, 0.28)')
+            hiddenCtx.save()
+            hiddenCtx.globalAlpha = this.fadeAlpha
+            hiddenCtx.drawImage(trail, 0, 0)
+            hiddenCtx.restore()
+
+            this.offset = (this.offset + SPEED) % SPACING
+            this.frame++
+        }
+    }
+
+    // ABS: blue/cyan glow band sweeps from bottom to top over 1s; leading edge is brightest,
+    // soft wake trails below it. Loops indefinitely until effect is replaced.
+    function ABS() {
+        this.frame = 0
+        const PERIOD = 60  // 1s per sweep at 60fps
+
+        this.draw = function () {
+            // cy: leading edge sweeps from y=200 (bottom) to y=-30 (off top)
+            const cy   = 200 - (this.frame % PERIOD) / PERIOD * 230
+
+            // Gradient anchored just below cy (trailing wake) to just above cy (forward fade)
+            const grad = hiddenCtx.createLinearGradient(0, cy + 90, 0, cy - 35)
+            grad.addColorStop(0,    'rgba(0, 160, 255, 0)')
+            grad.addColorStop(0.5,  'rgba(0, 200, 255, 0.18)')
+            grad.addColorStop(0.85, 'rgba(0, 235, 255, 0.42)')
+            grad.addColorStop(1,    'rgba(140, 255, 255, 0)')
+            DrawRect(0, 0, 320, 200, grad)
+
+            this.frame++
+            if (this.frame >= PERIOD) this.lifetime = 0
+        }
+    }
+
+    // MapPin: a cyan GPS pin drops from above with cubic ease-out, lands at canvas center, then
+    // three teal ripple rings expand from the tip. Everything fades out over ~2.2s then expires.
+    function MapPin() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const TOTAL  = 130
+        const LAND_F = 22   // frame pin tip reaches ground
+        const TIP_X  = 160, TIP_Y = 112  // where the pin tip lands
+
+        function drawPin(offY, alpha) {
+            const x      = TIP_X
+            const tipY   = TIP_Y  + offY
+            const circCY = TIP_Y  - 42 + offY  // circle center 42px above tip
+            const circR  = 22
+
+            // Outer glow around the circle head
+            const grd = hiddenCtx.createRadialGradient(x, circCY, circR, x, circCY, circR + 20)
+            grd.addColorStop(0, `rgba(0, 210, 255, ${alpha * 0.4})`)
+            grd.addColorStop(1, 'rgba(0, 210, 255, 0)')
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(x, circCY, circR + 20, 0, Math.PI * 2)
+            hiddenCtx.fillStyle = grd
+            hiddenCtx.fill()
+
+            // Pin body: circle head + downward triangle — drawn as one filled shape
+            hiddenCtx.fillStyle = `rgba(0, 195, 255, ${alpha})`
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(x, circCY, circR, 0, Math.PI * 2)
+            hiddenCtx.fill()
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(x - 18, circCY + 10)
+            hiddenCtx.lineTo(x + 18, circCY + 10)
+            hiddenCtx.lineTo(x, tipY)
+            hiddenCtx.closePath()
+            hiddenCtx.fill()
+
+            // White inner dot
+            hiddenCtx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.88})`
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(x, circCY, circR * 0.4, 0, Math.PI * 2)
+            hiddenCtx.fill()
+        }
+
+        this.draw = function () {
+            if (!mapGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.08)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            const fadeOut = (this.frame > 90 ? Math.max(0, 1 - (this.frame - 90) / 40) : 1) * this.fadeAlpha
+
+            DrawRect(0, 0, 320, 200, `rgba(0, 5, 20, ${fadeOut * 0.38})`)
+
+            // 3 ripple rings expanding from the tip landing point, staggered by 20 frames each
+            for (let i = 0; i < 3; i++) {
+                const rs = LAND_F + i * 20
+                if (this.frame < rs) continue
+                const rt = (this.frame - rs) / 72
+                if (rt >= 1) continue
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(TIP_X, TIP_Y, rt * 145, 0, Math.PI * 2)
+                hiddenCtx.strokeStyle = `rgba(0, 225, 255, ${(1 - rt) * fadeOut * 0.65})`
+                hiddenCtx.lineWidth   = 8
+                hiddenCtx.stroke()
+            }
+
+            // Brief impact flash at tip on landing frame
+            if (this.frame >= LAND_F && this.frame < LAND_F + 8) {
+                const fa = 1 - (this.frame - LAND_F) / 8
+                DrawCircle(TIP_X, TIP_Y, fa * 14, `rgba(255, 255, 255, ${fa * 0.8})`)
+            }
+
+            // Pin drop: cubic ease-out from 120px above canvas
+            const ease  = 1 - Math.pow(1 - Math.min(1, this.frame / LAND_F), 3)
+            const offY  = (1 - ease) * -120
+
+            drawPin(offY, fadeOut)
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    // RaceStart: stopwatch face sweeps clockwise over 3s; hue travels red→orange→yellow→green
+    // matching the progress. Sweep hand, tick marks, crown, and glow arc included. Expires at 3s.
+    function RaceStart() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const TOTAL = 200  // 3s sweep + ~0.33s green ring
+        const CX = 160, CY = 105
+        const R  = 70
+
+        this.draw = function () {
+            if (!raceGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.08)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            const t       = this.frame / TOTAL
+            const fadeIn  = Math.min(1, this.frame / 12)
+            const fadeOut = this.frame > 155 ? Math.max(0, 1 - (this.frame - 155) / 25) : 1
+            const alpha   = fadeIn * fadeOut * this.fadeAlpha
+
+            // Hue sweeps red (0) → orange → yellow → green (120)
+            const hue = t * 120
+
+            DrawRect(0, 0, 320, 200, `rgba(0, 0, 0, ${alpha * 0.5})`)
+
+            // Crown / button at top
+            hiddenCtx.fillStyle = `hsla(${hue}, 100%, 58%, ${alpha})`
+            hiddenCtx.fillRect(CX - 7, CY - R - 14, 14, 10)
+
+            // Outer rim ring
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R + 6, 0, Math.PI * 2)
+            hiddenCtx.strokeStyle = `hsla(${hue}, 90%, 58%, ${alpha * 0.45})`
+            hiddenCtx.lineWidth   = 10
+            hiddenCtx.stroke()
+
+            // Track circle — faint background ring
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R, 0, Math.PI * 2)
+            hiddenCtx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.1})`
+            hiddenCtx.lineWidth   = 24
+            hiddenCtx.stroke()
+
+            // Progress arc glow (wider, soft)
+            hiddenCtx.save()
+            hiddenCtx.lineCap = 'round'
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R, -Math.PI / 2, -Math.PI / 2 + t * Math.PI * 2)
+            hiddenCtx.strokeStyle = `hsla(${hue}, 100%, 72%, ${alpha * 0.28})`
+            hiddenCtx.lineWidth   = 52
+            hiddenCtx.stroke()
+
+            // Progress arc — solid, on top of glow
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R, -Math.PI / 2, -Math.PI / 2 + t * Math.PI * 2)
+            hiddenCtx.strokeStyle = `hsla(${hue}, 100%, 58%, ${alpha})`
+            hiddenCtx.lineWidth   = 22
+            hiddenCtx.stroke()
+            hiddenCtx.restore()
+
+            // 4 tick marks at 12 / 3 / 6 / 9 o'clock
+            for (let i = 0; i < 4; i++) {
+                const a = (i / 4) * Math.PI * 2 - Math.PI / 2
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(CX + Math.cos(a) * (R - 11), CY + Math.sin(a) * (R - 11))
+                hiddenCtx.lineTo(CX + Math.cos(a) * (R +  3), CY + Math.sin(a) * (R +  3))
+                hiddenCtx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.65})`
+                hiddenCtx.lineWidth   = 6
+                hiddenCtx.lineCap     = 'round'
+                hiddenCtx.stroke()
+            }
+
+            // Sweep hand from center to arc edge
+            const ha = -Math.PI / 2 + t * Math.PI * 2
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(CX, CY)
+            hiddenCtx.lineTo(CX + Math.cos(ha) * (R - 6), CY + Math.sin(ha) * (R - 6))
+            hiddenCtx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.9})`
+            hiddenCtx.lineWidth   = 5
+            hiddenCtx.lineCap     = 'round'
+            hiddenCtx.stroke()
+
+            // Center hub
+            DrawCircle(CX, CY, 12, `hsla(${hue}, 100%, 58%, ${alpha})`)
+            DrawCircle(CX, CY,  6, `rgba(255, 255, 255, ${alpha})`)
+
+            // Completion flash — quick white burst as arc closes
+            if (this.frame >= 174 && this.frame < 180) {
+                const fa  = 1 - (this.frame - 174) / 6
+                const grd = hiddenCtx.createRadialGradient(CX, CY, 0, CX, CY, R * 1.8)
+                grd.addColorStop(0,   `rgba(255, 255, 255, ${fa * 0.75})`)
+                grd.addColorStop(0.4, `hsla(120, 100%, 65%, ${fa * 0.4})`)
+                grd.addColorStop(1,   'rgba(0, 0, 0, 0)')
+                DrawRect(0, 0, 320, 200, grd)
+            }
+
+            // Expanding green ring — fires the moment the sweep completes, races to canvas edge
+            if (this.frame >= 180) {
+                const rt = (this.frame - 180) / 20
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(CX, CY, rt * 220, 0, Math.PI * 2)
+                hiddenCtx.strokeStyle = `rgba(0, 255, 80, ${(1 - rt) * 0.9})`
+                hiddenCtx.lineWidth   = 16
+                hiddenCtx.stroke()
+            }
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    // Upshift: tachometer arc at bottom of canvas; needle smooth-steps to redline in 0.67s,
+    // bounces, flashes red, then fades. Total 1.5s.
+    function Upshift() {
+        this.frame = 0
+        const TOTAL   = 90
+        const CX      = 160, CY = 210  // center below canvas so arc spans the bottom half
+        const R       = 150
+        const START_A = 200 * Math.PI / 180
+        const END_A   = 340 * Math.PI / 180
+        const SPAN    = END_A - START_A
+        const HIT_F   = 40  // frame needle reaches redline
+
+        this.draw = function () {
+            const fadeIn  = Math.min(1, this.frame / 8)
+            const fadeOut = this.frame > 70 ? Math.max(0, 1 - (this.frame - 70) / 20) : 1
+            const alpha   = fadeIn * fadeOut
+
+            // Smooth-step sweep to redline, then a single sine bounce
+            const sweepT  = Math.min(1, this.frame / HIT_F)
+            const ease    = sweepT * sweepT * (3 - 2 * sweepT)
+            const bounce  = this.frame > HIT_F
+                ? Math.sin((this.frame - HIT_F) / 14 * Math.PI) * 0.05
+                : 0
+            const needleA = START_A + ease * SPAN + bounce
+
+            // Hue green (110) → red (0) as needle sweeps
+            const hue = Math.max(0, 110 - ease * 110)
+
+            DrawRect(0, 0, 320, 200, `rgba(0, 0, 0, ${alpha * 0.5})`)
+
+            hiddenCtx.save()
+            hiddenCtx.lineCap = 'round'
+
+            // Background track
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R, START_A, END_A)
+            hiddenCtx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.1})`
+            hiddenCtx.lineWidth   = 18
+            hiddenCtx.stroke()
+
+            // Redline zone — last 20% of arc, always visible as a faint red band
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R, START_A + SPAN * 0.8, END_A)
+            hiddenCtx.strokeStyle = `rgba(255, 40, 0, ${alpha * 0.35})`
+            hiddenCtx.lineWidth   = 18
+            hiddenCtx.stroke()
+
+            // Glow behind progress arc
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R, START_A, needleA)
+            hiddenCtx.strokeStyle = `hsla(${hue}, 100%, 65%, ${alpha * 0.28})`
+            hiddenCtx.lineWidth   = 38
+            hiddenCtx.stroke()
+
+            // Progress arc
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, R, START_A, needleA)
+            hiddenCtx.strokeStyle = `hsla(${hue}, 100%, 55%, ${alpha})`
+            hiddenCtx.lineWidth   = 18
+            hiddenCtx.stroke()
+
+            // 8 tick marks evenly spaced along the full arc
+            for (let i = 0; i <= 8; i++) {
+                const ta = START_A + (i / 8) * SPAN
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(CX + Math.cos(ta) * (R - 14), CY + Math.sin(ta) * (R - 14))
+                hiddenCtx.lineTo(CX + Math.cos(ta) * (R +  6), CY + Math.sin(ta) * (R +  6))
+                hiddenCtx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.5})`
+                hiddenCtx.lineWidth   = 3
+                hiddenCtx.stroke()
+            }
+
+            // Needle
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(CX, CY)
+            hiddenCtx.lineTo(CX + Math.cos(needleA) * (R - 12), CY + Math.sin(needleA) * (R - 12))
+            hiddenCtx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.95})`
+            hiddenCtx.lineWidth   = 15
+            hiddenCtx.stroke()
+
+            hiddenCtx.restore()
+
+            // Redline flash — single sine pulse when needle hits
+            if (this.frame >= HIT_F && this.frame < HIT_F + 18) {
+                const ft = (this.frame - HIT_F) / 18
+                DrawRect(0, 0, 320, 200, `rgba(255, 40, 0, ${Math.sin(ft * Math.PI) * alpha * 0.55})`)
+            }
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    // Winner: checkered flag sweeps left-to-right with a sine wave ripple; gold wash behind,
+    // bright white leading edge flash. ~6.7s total, then expires.
+    function Winner() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const TOTAL       = 400
+        const SZ          = 40   // square size in px
+        const COLS        = Math.ceil(320 / SZ) + 2
+        const ROWS        = Math.ceil(200 / SZ) + 2
+        const SWEEP_SPEED = 1.4  // px per frame — full canvas in ~228 frames
+
+        this.draw = function () {
+            if (!winGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.08)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            const fadeIn  = Math.min(1, this.frame / 12)
+            const fadeOut = this.frame > 336 ? Math.max(0, 1 - (this.frame - 336) / 64) : 1
+            const alpha   = fadeIn * fadeOut * this.fadeAlpha
+
+            // How far the sweep front has traveled (px)
+            const sweepX = Math.min(360, this.frame * SWEEP_SPEED)
+
+            // Warm gold wash behind the sweep
+            DrawRect(0, 0, 320, 200, `rgba(180, 130, 0, ${alpha * 0.25})`)
+
+            // Checkered squares — each column draws behind the sweep front
+            for (let c = 0; c < COLS; c++) {
+                const sx = c * SZ
+                if (sx >= sweepX) continue
+
+                // progress 0→1 over 3 column widths behind the front; controls alpha + wave amplitude
+                const progress = Math.min(1, (sweepX - sx) / (SZ * 3))
+                // Sine wave ripple traveling left to right
+                const wave = Math.sin(c * 0.55 - this.frame * 0.14) * 11 * progress
+
+                for (let r = 0; r < ROWS; r++) {
+                    const sy      = (r - 1) * SZ + wave  // -1 so top row wraps in from above canvas
+                    const isWhite = (r + c) % 2 === 0
+                    // Hue drifts slowly across columns — desaturated so it reads as near-white
+                    const hue = (c * 22 + this.frame * 0.4) % 360
+                    hiddenCtx.fillStyle = isWhite
+                        ? `hsla(${hue}, 30%, 88%, ${alpha * 0.88 * progress})`
+                        : `rgba(0, 0, 0,          ${alpha * 0.80 * progress})`
+                    hiddenCtx.fillRect(sx, sy, SZ, SZ)
+                }
+            }
+
+            // Bright leading-edge flash — fades in from left as sweep approaches
+            if (sweepX < 340) {
+                const eg = hiddenCtx.createLinearGradient(Math.max(0, sweepX - 35), 0, Math.min(320, sweepX), 0)
+                eg.addColorStop(0, 'rgba(255, 255, 255, 0)')
+                eg.addColorStop(1, `rgba(255, 255, 255, ${alpha * 0.85})`)
+                DrawRect(0, 0, 320, 200, eg)
+            }
+
+            // Initial white bloom erupting from left edge, fades over first 25 frames
+            if (this.frame < 50) {
+                const bloomA = (1 - this.frame / 50) * alpha * 0.65
+                const bg = hiddenCtx.createLinearGradient(0, 0, 170, 0)
+                bg.addColorStop(0, `rgba(255, 255, 255, ${bloomA})`)
+                bg.addColorStop(1, 'rgba(255, 255, 255, 0)')
+                DrawRect(0, 0, 320, 200, bg)
+            }
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    // WrongWay: three-arrow recycling symbol — black arrows over a yellow ring gradient that
+    // fades at inner and outer edges. Spins slowly. Loops indefinitely until effect is replaced.
+    function WrongWay() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const CX    = 160, CY = 100
+        const R_OUT = 92, R_IN = 52
+        const SPAN  = 85 * Math.PI / 180  // arc body: 85° per arrow — 35° gap between each
+        const MID_R = (R_OUT + R_IN) / 2
+
+        this.draw = function () {
+            if (!wrongWayGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.07)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            const rot = this.frame * 0.025  // ~0.24 rev/s
+
+            hiddenCtx.save()
+            hiddenCtx.globalAlpha = this.fadeAlpha
+            DrawRect(0, 0, 320, 200, 'rgba(0, 0, 0, 0.62)')
+
+            // Yellow radial gradient — 100% at canvas center, 50% at half canvas height
+            // (r=100), fading to transparent beyond
+            const ringGrd = hiddenCtx.createRadialGradient(CX, CY, 0, CX, CY, 200)
+            ringGrd.addColorStop(0,    'rgba(255, 210, 0, 1.0)')
+            ringGrd.addColorStop(0.5,  'rgba(255, 210, 0, 0.5)')
+            ringGrd.addColorStop(1,    'rgba(255, 210, 0, 0)')
+            DrawRect(0, 0, 320, 200, ringGrd)
+
+            hiddenCtx.save()
+            hiddenCtx.translate(CX, CY)
+            hiddenCtx.rotate(rot)
+            hiddenCtx.fillStyle = 'rgba(0, 0, 0, 0.88)'  // black arrows
+
+            for (let i = 0; i < 3; i++) {
+                const sa = (i / 3) * Math.PI * 2
+                const ea = sa + SPAN
+
+                // Ring-slice arc body
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(0, 0, R_OUT, sa, ea)
+                hiddenCtx.arc(0, 0, R_IN,  ea, sa, true)
+                hiddenCtx.closePath()
+                hiddenCtx.fill()
+
+                // Arrowhead — longer tip (0.40 rad past ea), base wider than arc body
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(Math.cos(ea + 0.40) * MID_R,  Math.sin(ea + 0.40) * MID_R)
+                hiddenCtx.lineTo(Math.cos(ea) * (R_OUT + 18),  Math.sin(ea) * (R_OUT + 18))
+                hiddenCtx.lineTo(Math.cos(ea) * (R_IN  - 18),  Math.sin(ea) * (R_IN  - 18))
+                hiddenCtx.closePath()
+                hiddenCtx.fill()
+            }
+
+            hiddenCtx.restore()  // rotation transform
+            hiddenCtx.restore()  // globalAlpha
+            this.frame++
+            // loops indefinitely until wrongWayGoing clears
+        }
+    }
+
+    // XPGain: white 5-point star with yellow circle scales in with ease-out-back overshoot,
+    // rotates slowly, pulses gently, and fades in/out over 2s.
+    function XPGain() {
+        this.frame     = 0
+        this.fadeAlpha = 1
+        const TOTAL = 120  // 2s at 60fps
+        const CX = 160, CY = 100
+
+        this.draw = function () {
+            if (!xpGoing) {
+                this.fadeAlpha = Math.max(0, this.fadeAlpha - 0.08)
+                if (this.fadeAlpha <= 0) { this.lifetime = 0; return }
+            }
+            const fadeIn  = Math.min(1, this.frame / 18)
+            const fadeOut = this.frame > 92 ? Math.max(0, 1 - (this.frame - 92) / 28) : 1
+            const alpha   = fadeIn * fadeOut * this.fadeAlpha
+
+            // Scale: ease-out-back during first 28 frames (slight overshoot), then gentle pulse
+            const scaleT  = Math.min(1, this.frame / 28)
+            const c1 = 1.70158, c3 = c1 + 1
+            const eob     = 1 + c3 * Math.pow(scaleT - 1, 3) + c1 * Math.pow(scaleT - 1, 2)
+            const scale   = this.frame < 28 ? eob : 1 + Math.sin(this.frame * 0.12) * 0.04
+
+            // Slow star rotation
+            const rot = this.frame * 0.016
+
+            DrawRect(0, 0, 320, 200, `rgba(0, 0, 0, ${alpha * 0.42})`)
+
+            // Initial burst ring — shoots outward during first 36 frames
+            if (this.frame < 36) {
+                const rt = this.frame / 36
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(CX, CY, rt * 130, 0, Math.PI * 2)
+                hiddenCtx.strokeStyle = `rgba(255, 215, 0, ${(1 - rt) * alpha * 0.75})`
+                hiddenCtx.lineWidth   = 10
+                hiddenCtx.stroke()
+            }
+
+            // Yellow glow behind circle
+            const circGlow = hiddenCtx.createRadialGradient(CX, CY, 50 * scale, CX, CY, 115 * scale)
+            circGlow.addColorStop(0, `rgba(255, 200, 0, ${alpha * 0.32})`)
+            circGlow.addColorStop(1, 'rgba(255, 200, 0, 0)')
+            DrawRect(0, 0, 320, 200, circGlow)
+
+            // Yellow thick circle
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(CX, CY, 68 * scale, 0, Math.PI * 2)
+            hiddenCtx.strokeStyle = `rgba(255, 210, 0, ${alpha})`
+            hiddenCtx.lineWidth   = 16
+            hiddenCtx.stroke()
+
+            // 8 short rays just outside the circle, rotating with the star
+            hiddenCtx.lineCap = 'round'
+            for (let i = 0; i < 8; i++) {
+                const a = (i / 8) * Math.PI * 2 + rot * 0.6
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(CX + Math.cos(a) * 78 * scale, CY + Math.sin(a) * 78 * scale)
+                hiddenCtx.lineTo(CX + Math.cos(a) * 90 * scale, CY + Math.sin(a) * 90 * scale)
+                hiddenCtx.strokeStyle = `rgba(255, 210, 0, ${alpha * 0.7})`
+                hiddenCtx.lineWidth   = 4
+                hiddenCtx.stroke()
+            }
+
+            // White glow behind star
+            const starGlow = hiddenCtx.createRadialGradient(CX, CY, 0, CX, CY, 52 * scale)
+            starGlow.addColorStop(0,   `rgba(255, 255, 255, ${alpha * 0.65})`)
+            starGlow.addColorStop(0.5, `rgba(255, 255, 220, ${alpha * 0.2})`)
+            starGlow.addColorStop(1,   'rgba(255, 255, 200, 0)')
+            DrawRect(0, 0, 320, 200, starGlow)
+
+            // White 5-point star
+            const outerR = 40 * scale
+            const innerR = 17 * scale
+            hiddenCtx.beginPath()
+            for (let i = 0; i < 10; i++) {
+                const a  = (i / 10) * Math.PI * 2 - Math.PI / 2 + rot
+                const r  = i % 2 === 0 ? outerR : innerR
+                const px = CX + Math.cos(a) * r
+                const py = CY + Math.sin(a) * r
+                i === 0 ? hiddenCtx.moveTo(px, py) : hiddenCtx.lineTo(px, py)
+            }
+            hiddenCtx.closePath()
+            hiddenCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`
+            hiddenCtx.fill()
+
+            this.frame++
+            if (this.frame >= TOTAL) this.lifetime = 0
+        }
+    }
+
+    //#endregion
+
+    window.requestAnimationFrame(update);
+</script>
