@@ -1,3 +1,29 @@
+# MInecraft
+
+## Supported Resolutions
+
+- 1920x1080
+- 1920x1200
+- 2560x1080
+- 2560x1440
+- 2560x1600
+- 3440x1440
+- 3840x1080
+- 3840x2160
+- 5120x1440
+- 3840x2160 (HDR)
+
+---
+
+## Resolution Setup
+
+Open the video settings.
+
+Verify that the selected resolution is correct.
+
+The game should be configured to use the desired test resolution before entering a match.
+
+---
 ## Testing Guidelines
 
 1. Launch the game and load the Minecraft test world.
