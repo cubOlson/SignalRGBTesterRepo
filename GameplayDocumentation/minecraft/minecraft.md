@@ -1,4 +1,4 @@
-# MInecraft
+# Minecraft
 
 ## Supported Resolutions
 
