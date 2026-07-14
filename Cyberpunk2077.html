@@ -1,6 +1,6 @@
 <head>
     <title>Cyberpunk 2077 Dev</title>
-    <meta description="Do it for Jackie (in full RGB). v1.3.2" />
+    <meta description="Do it for Jackie (in full RGB). v1.3.3" />
     <meta publisher="SignalRGB" />
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -11,23 +11,23 @@
 
     <!-- Background controls -->
     <meta property="backgroundMode" label="Background Mode"       tooltip="Changes the background mode."                                                              type="list"    values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer" default="Ambience"/>
-    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Changes the brightness of the background effect."                                         type="number"  default="100" min="0" max="100" />
+    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Changes the brightness of the background effect."                                          type="number"  default="100" min="0" max="100" />
     <meta property="backColor"      label="Custom Color"          tooltip="Sets the background color when Custom or Custom Ambience mode is selected."                type="color"   default="#010101" min="0" max="360" />
 
     <!-- Health HUD — position/size values are 0–100 (%) mapped to canvas 320×200 in JS.
          adjToggle draws the bar at its configured position so you can line it up in-game;
          disable it before actual play. -->
-    <meta property="enableHealthHUD" label="Health HUD Effect"                       tooltip="Enables the health bar overlay on your devices."                                       type="boolean" default="1" />
+    <meta property="enableHealthHUD" label="Health HUD Effect"                       tooltip="Enables the health bar overlay on your devices."                                      type="boolean" default="1" />
     <meta property="adjToggle"       label="HUD Adjust Toggle (turn off in-game)"    tooltip="Shows the HUD bar position for adjustment — disable this during gameplay."            type="boolean" default="0" />
     <meta property="blackToggle"     label="HUD Background Black"                    tooltip="Draws a black background behind the health bar so it is visible against bright keys." type="boolean" default="1" />
-    <meta property="healthColor"     label="Health Bar Color"                        tooltip="Sets the color of the health bar overlay."                                             type="color"   default="#ff0000" min="0" max="360" />
+    <meta property="healthColor"     label="Health Bar Color"                        tooltip="Sets the color of the health bar overlay."                                            type="color"   default="#ff0000" min="0" max="360" />
     <meta property="healthX"         label="HUD Horizontal"                          tooltip="Adjusts the horizontal position of the health bar on your devices."                   type="number"  default="0"   min="0" max="100" />
     <meta property="healthY"         label="HUD Vertical"                            tooltip="Adjusts the vertical position of the health bar on your devices."                     type="number"  default="30"  min="0" max="100" />
     <meta property="healthWidth"     label="HUD Width"                               tooltip="Adjusts the width of the health bar on your devices."                                 type="number"  default="100" min="0" max="100" />
     <meta property="healthHeight"    label="HUD Height"                              tooltip="Adjusts the height of the health bar on your devices."                                type="number"  default="20"  min="0" max="100" />
 
     <!-- Effect toggles -->
-    <meta property="deathOn"      label="Player Death Effect"       tooltip="Enables the death effect on your devices."                                    type="boolean" default="1" />
+    <meta property="deathOn"      label="Player Death Effect"        tooltip="Enables the death effect on your devices."                                   type="boolean" default="1" />
     <meta property="zoneOn"       label="Hostile / Safe Zone Effect" tooltip="Enables the hostile and safe zone warning effects on your devices."          type="boolean" default="1" />
     <meta property="sneakOn"      label="Sneaking Effects"           tooltip="Enables the crouch, sneak, and sneak-kill effects on your devices."          type="boolean" default="1" />
     <meta property="wantedOn"     label="NCPD Effects"               tooltip="Enables the NCPD wanted level flashing effect on your devices."              type="boolean" default="1" />
@@ -37,7 +37,7 @@
     <meta property="progressOn"   label="Progress Bar Effect"        tooltip="Enables the progress bar highlight effect on your devices."                  type="boolean" default="1" />
     <meta property="joytoyOn"     label="Joytoy Effect"              tooltip="Enables the joytoy scene heart effect on your devices."                      type="boolean" default="1" />
     <meta property="vehicleOn"    label="In Vehicle Effect"          tooltip="Enables the driving speed effect on your devices."                           type="boolean" default="1" />
-    <meta property="encryptionOn" label="Encryption Break Effects"   tooltip="Enables the quickhack encryption mini-game effects on your devices."        type="boolean" default="1" />
+    <meta property="encryptionOn" label="Encryption Break Effects"   tooltip="Enables the quickhack encryption mini-game effects on your devices."         type="boolean" default="1" />
 
   <!-- ═══════════════════════════════════════════════════════════
        VISION METERS
@@ -89,7 +89,7 @@
   </meta>
 
   <meta meter="inGameMapGreen" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.8519" y="0.2669" width="0" height="0"
-    h="100-180" s="50-80" l="20-50" hdr-h="120-180" hdr-s="50-80" hdr-l="20-50" type="area">
+    h="130-180" s="60-90" l="30-80" hdr-h="120-180" hdr-s="50-80" hdr-l="20-50" type="area">
     <resolution aspect="3.55:1" x="0.9151" y="0.2204" width="0" height="0" />
     <resolution aspect="24:10" x="0.8846" y="0.0473" width="0" height="0" />
     <resolution aspect="16:11" x="0.8527" y="0.2433" width="0" height="0" />
@@ -194,13 +194,23 @@
   </meta>
 
   <meta meter="safeGreen" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.8484" y="0.2495" width="0" height="0.0028"
-    h="120-180" s="50-90" l="20-80" hdr-h="120-180" hdr-s="50-80" hdr-l="60-80" type="area">
+    h="130-180" s="60-90" l="40-80" hdr-h="120-180" hdr-s="50-80" hdr-l="60-80" type="area">
     <resolution aspect="3.55:1" x="0.9168" y="0.2592" width="0.0021" height="0.0028" />
     <resolution aspect="24:10" x="0.8846" y="0.2516" width="0.002" height="0.0076" />
-    <resolution aspect="16:11" x="0.9168" y="0.2592" width="0.0021" height="0.0028" />
+    <resolution aspect="16:11" x="0.8527" y="0.2326" width="0.0019" height="0.0038" />
 
     <resolution size="3840x2160" x="0.9168" y="0.2592" width="0.0021" height="0.0028" />
     <resolution size="2560x1080" x="0.8846" y="0.2516" width="0.002" height="0.0076"/>
+  </meta>
+
+  <meta meter="safeNotGreen" tags="vlc,Cyberpunk 2077 (C) 2020 by CD Projekt RED,Cyberpunk,game" x="0.8484" y="0.2495" width="0" height="0.0028"
+    h="130-180" s="60-90" l="40-80" hdr-h="120-180" hdr-s="50-80" hdr-l="60-80" type="area">
+    <resolution aspect="3.55:1" x="0.9594" y="0.2667" width="0.0021" height="0.0028" />
+    <resolution aspect="24:10" x="0.9476" y="0.2641" width="0.0098" height="-0.0009" />
+    <resolution aspect="16:11" x="0.9289" y="0.2414" width="0.0152" height="0" />
+
+    <resolution size="3840x2160" x="0.9168" y="0.2592" width="0.0021" height="0.0028" />
+    <resolution size="2560x1080" x="0.9476" y="0.2641" width="0.0098" height="-0.0009"/>
   </meta>
 
   <!-- ── CROUCH / SNEAK DETECTION ──────────────────────────────────
@@ -759,7 +769,7 @@
     // standing or out-of-game.
     let gCrouched = false
     function crouchCallback() {
-      if ((CrouchMeter.value >= .95 && engine.vision.crouchNotRed < .1 && gInGame) || !gInGame) {
+      if ((CrouchMeter.value >= .95 && engine.vision.crouchNotRed < .1 && gInGame) || !gInGame || CrouchMeter.value <.1 ) {
         gCrouched = false
       } else if (CrouchMeter.value >= .25 && CrouchMeter.value <= .7 && engine.vision.crouchNotRed < .1 && gInGame && sneakOn && !gCrouched) {
         gCrouched = true
@@ -786,7 +796,7 @@
     let gSafeZone = false
     let gCombat   = false
     function zoneCallback() {
-      if (SafeMeter.value >= .95 && gInGame && zoneOn && !gSafeZone && InGameGreen1.value >= .95) {
+      if (SafeMeter.value >= .95 && engine.vision.safeNotGreen <.1 && gInGame && zoneOn && !gSafeZone && InGameGreen1.value >= .95) {
         gSafeZone = true
         effects.push(new safeZone())
       } else if ((SafeMeter.value < .1 && gInGame) || !gInGame) {
