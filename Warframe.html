@@ -1,0 +1,2225 @@
+<head>
+    <title>Warframe Dev</title>
+    <meta description="Ambience and metering for Warframe. v1.0.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Active properties -->
+    <meta property="ambienceAlpha" label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list" 
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience"/>
+    <meta property="backColor" label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+    <meta property="mapOn" label="Map Effect" tooltip="Turns on the effect that plays when you open the map." type="boolean" default="1" />
+    <meta property="healingOn" label="Healing Effect" tooltip="Turns on the effect that plays when you heal." type="boolean" default="1" />
+    <meta property="poisonOn" label="Poison Effect" tooltip="Turns on the effect that plays when you are poisoned." type="boolean" default="1" />
+    <meta property="lowhealthOn" label="Low Health Effect" tooltip="Turns on the effect that plays when your health is low." type="boolean" default="1" />
+    <meta property="killOn" label="Kill Effect" tooltip="Turns on the effect that plays when you kill." type="boolean" default="1" />
+    <meta property="bossOn" label="Boss Effect" tooltip="Turns on the effect that plays when you are fighting the boss." type="boolean" default="1" />
+    <meta property="deathOn" label="Death Effect" tooltip="Turns on the effect that plays when you heal." type="boolean" default="1" />
+    <meta property="extractionOn" label="Extraction Effect" tooltip="Turns on the effect that plays when you can go to extraction." type="boolean" default="1" />
+    <meta property="taskOn" label="Task Effect" tooltip="Turns on the effect that plays when your task is complete." type="boolean" default="1" />
+    <meta property="missionOn" label="Mission Effect" tooltip="Turns on the effect that plays when your mission is complete." type="boolean" default="1" />
+    <meta property="cipherOn" label="Cipher Effects" tooltip="Turns on the effect that plays when you are using cipher." type="boolean" default="1" />
+   
+
+
+    <meta meter="healthBlue" tags="vlc,Warframe" x="0.882" y="0.0930" width="0.0434" height="0.0155" 
+      h="180-240" s="70-100" l="70-100" hdr-h="180-240" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9339" y="0.0697" width="0.0253" height="0.0120" />
+      <resolution aspect="24:10" x="0.9030" y="0.0729" width="0.0422" height="0.0160" />
+      <resolution aspect="16:11" x="0.8894" y="0.0744" width="0.0465" height="0.0132"  />
+
+      <resolution size="3840x2160" x="0.8773" y="0.0926" width="0.0459" height="0.0139" />
+      <resolution size="2560x1080" x="0.9140" y="0.0700" width="0.0352" height="0.0150" />
+    </meta>
+
+    <meta meter="inGameRed" tags="vlc,Warframe" x="0.9316" y="0.0521" width="0.0399" height="0.0313" 
+      h="-30-30" s="50-90" l="60-90" hdr-h="-30-30" hdr-s="50-90" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.9638" y="0.0269" width="0.0211" height="0.0300" />
+      <resolution aspect="24:10" x="0.9439" y="0.0396" width="0.0297" height="0.0289" />
+      <resolution aspect="16:11" x="0.9394" y="0.0413" width="0.0403" height="0.0269"  />
+
+      <resolution size="3840x2160" x="0.9383" y="0.057" width="0.0364" height="0.0301" />
+      <resolution size="2560x1080" x="0.9543" y="0.0278" width="0.0305" height="0.0289" />
+    </meta>
+
+    <meta meter="inGameNotRed" tags="vlc,Warframe" x="0.9777" y="0.0563" width="0" height="0.0188"  
+      h="-30-30" s="50-90" l="60-90" hdr-h="-30-30" hdr-s="50-90" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.9930" y="0.0306" width="0.0015" height="0.0050" />
+      <resolution aspect="24:10" x="0.9891" y="0.0259" width="-0.0012" height="0.0186" />
+      <resolution aspect="16:11" x="0.9867" y="0.0444" width="0" height="0.0113"  />
+
+      <resolution size="3840x2160" x="0.9596" y="0.1056" width="0.0008" height="0.0042" />
+      <resolution size="2560x1080" x="0.9891" y="0.0259" width="-0.0012" height="0.0186" />
+    </meta>
+
+    <!--shield-->
+    <meta meter="enemyDeadYellow" tags="vlc,Warframe" x="0.4932" y="0.4892" width="0.0004" height="0"  
+      h="20-80" s="60-100" l="40-80" hdr-h="20-80" hdr-s="60-100" hdr-l="40-100" type="area">
+      <resolution aspect="3.55:1" x="0.4964" y="0.4861" width="0" height="0" />
+      <resolution aspect="24:10" x="0.4951" y="0.4889" width="0" height="0" />
+      <resolution aspect="16:11" x="0.4936" y="0.4897" width="0" height="0"   />
+
+      <resolution size="3840x2160" x="0.4941" y="0.5118" width="0" height="0" />
+      <resolution size="2560x1080" x="0.4955" y="0.4884" width="0" height="0" />
+    </meta>
+
+    <meta meter="enemyDeadNotYellow" tags="vlc,Warframe" x="0.4932" y="0.4837" width="0.0015" height="0.0007" 
+      h="40-80" s="70-100" l="50-80" hdr-h="20-80" hdr-s="60-100" hdr-l="40-100" type="area">
+      <resolution aspect="3.55:1" x="0.4966" y="0.4769" width="0.0005" height="0.0001" />
+      <resolution aspect="24:10" x="0.4962" y="0.4799" width="0.0009" height="0.0001" />
+      <resolution aspect="16:11" x="0.4936" y="0.4834" width="0.0015" height="0.0007"  />
+
+      <resolution size="3840x2160" x="0.5105" y="0.4947" width="0.0016" height="0.0028" />
+      <resolution size="2560x1080" x="0.4963" y="0.4801" width="0.0012" height="0.0037" />
+    </meta>
+
+    <meta meter="enemyDeadRed" tags="vlc,Warframe" x="0.4932" y="0.4892" width="0.0004" height="0" 
+      h="-30-30" s="50-100" l="60-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.4964" y="0.4861" width="0" height="0" />
+      <resolution aspect="24:10" x="0.4951" y="0.4889" width="0" height="0" />
+      <resolution aspect="16:11" x="0.4936" y="0.4897" width="0" height="0"   />
+
+      <resolution size="3840x2160" x="0.4941" y="0.5118" width="0" height="0" />
+      <resolution size="2560x1080" x="0.4955" y="0.4884" width="0" height="0" />
+    </meta>
+
+    <meta meter="enemyDeadNotRed" tags="vlc,Warframe" x="0.4932" y="0.4837" width="0.0015" height="0.0007" 
+      h="-30-30" s="50-100" l="60-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.4966" y="0.4769" width="0.0005" height="0.0001" />
+      <resolution aspect="24:10" x="0.4962" y="0.4799" width="0.0009" height="0.0001" />
+      <resolution aspect="16:11" x="0.4936" y="0.4834" width="0.0015" height="0.0007"  />
+
+      <resolution size="3840x2160" x="0.5105" y="0.4947" width="0.0016" height="0.0028" />
+      <resolution size="2560x1080" x="0.4963" y="0.4801" width="0.0012" height="0.0037" />
+    </meta>
+
+    <!--health-->
+
+    <meta meter="taskBlue" tags="vlc,Warframe" x="0.4924" y="0.7255" width="0.0074" height="0"  
+      h="180-240" s="0-50" l="50-100" hdr-h="180-240" hdr-s="0-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4964" y="0.7491" width="0.0036" height="0.0001" />
+      <resolution aspect="24:10" x="0.4967" y="0.7498" width="0.0043" height="0.0009" />
+      <resolution aspect="16:11" x="0.4943" y="0.763" width="0.0075" height="0.0019"  />
+
+      <resolution size="3840x2160" x="0.4941" y="0.7253" width="0.0136" height="0.001" />
+      <resolution size="2560x1080" x="0.4967" y="0.7498" width="0.0043" height="0.0009" />
+    </meta>
+
+    <meta meter="taskWhite" tags="vlc,Warframe" x="0.4685" y="0.788" width="0.063" height="0.0153" 
+      h="0-360" s="0-30" l="70-100" hdr-h="0-360" hdr-s="0-30" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4831" y="0.8363" width="0.0318" height="0.0150" />
+      <resolution aspect="24:10" x="0.4764" y="0.8137" width="0.0472" height="0.013" />
+      <resolution aspect="16:11" x="0.467" y="0.8193" width="0.0648" height="0.0151"  />
+
+      <resolution size="3840x2160" x="0.4676" y="0.7879" width="0.0625" height="0.0148"/>
+      <resolution size="2560x1080" x="0.4764" y="0.8137" width="0.0472" height="0.013" />
+    </meta>
+
+
+    <meta meter="missionCompleteBege1" tags="vlc,Warframe" x="0.3397" y="0.4044" width="0.1276" height="0.0097" 
+      h="40-80" s="20-50" l="80-100" hdr-h="0-80" hdr-s="0-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4208" y="0.4722" width="0.0617" height="0.0080" />
+      <resolution aspect="24:10" x="0.3802" y="0.4736" width="0.095" height="0.0111" />
+      <resolution aspect="16:11" x="0.3408" y="0.4271" width="0.1266" height="0.0069"  />
+
+      <resolution size="3840x2160" x="0.3397" y="0.4044" width="0.1276" height="0.0097" />
+      <resolution size="2560x1080" x="0.3802" y="0.4736" width="0.095" height="0.0111" />
+    </meta>
+
+    <meta meter="missionCompleteBege2" tags="vlc,Warframe" x="0.4926" y="0.4071" width="0.162" height="0.0051" 
+      h="40-80" s="20-50" l="80-100" hdr-h="0-80" hdr-s="0-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4956" y="0.4694" width="0.0826" height="0.0100" />
+      <resolution aspect="24:10" x="0.4947" y="0.4717" width="0.1227" height="0.0102" />
+      <resolution aspect="16:11" x="0.4928" y="0.424" width="0.1637" height="0.0106"  />
+
+      <resolution size="3840x2160" x="0.4926" y="0.4071" width="0.162" height="0.0051" />
+      <resolution size="2560x1080" x="0.4947" y="0.4717" width="0.1227" height="0.0102" />
+    </meta>
+
+    <meta meter="missionCompleteNotBege" tags="vlc,Warframe" x="0.4191" y="0.4924" width="0.0141" height="0.0009"
+      h="40-80" s="20-50" l="80-100" hdr-h="0-80" hdr-s="0-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.4221" y="0.4917" width="0.0050" height="0.0001" />
+      <resolution aspect="24:10" x="0.5033" y="0.4949" width="0.0172" height="-0.0019" />
+      <resolution aspect="16:11" x="0.3427" y="0.444" width="0.0324" height="0.0007"  />
+
+      <resolution size="3840x2160" x="0.4191" y="0.4924" width="0.0141" height="0.0009" />
+      <resolution size="2560x1080" x="0.5033" y="0.4949" width="0.0172" height="-0.0019" />
+    </meta>
+
+    <!--armor-->
+
+    <meta meter="mapBege1" tags="vlc,Warframe" x="0.052" y="0.0799" width="0.0074" height="0.0007"  
+      h="40-80" s="20-50" l="50-80" hdr-h="40-80" hdr-s="20-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0281" y="0.0806" width="0.0039" height="0.0001" />
+      <resolution aspect="24:10" x="0.0391" y="0.0788" width="0.0035" height="0" />
+      <resolution aspect="16:11" x="0.0528" y="0.0713" width="0.0031" height="0"  />
+
+      <resolution size="3840x2160" x="0.0555" y="0.0797" width="0.0081" height="0.0014" />
+      <resolution size="2560x1080" x="0.0391" y="0.0788" width="0.0035" height="0" />
+    </meta>
+
+    <meta meter="mapBege2" tags="vlc,Warframe" x="0.0774" y="0.0792" width="0.0035" height="0.0007"  
+      h="40-80" s="20-50" l="50-80" hdr-h="40-80" hdr-s="20-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0391" y="0.0806" width="0.0031" height="0.0001" />
+      <resolution aspect="24:10" x="0.0593" y="0.0792" width="0.0020" height="0.0005" />
+      <resolution aspect="16:11" x="0.0789" y="0.0713" width="0.0032" height="0"  />
+
+      <resolution size="3840x2160" x="0.0808" y="0.0792" width="0.0033" height="0" />
+      <resolution size="2560x1080" x="0.0598" y="0.0797" width="0.0031" height="0" />
+    </meta>
+
+    <meta meter="mapNotBege" tags="vlc,Warframe" x="0.0528" y="0.0848" width="0.0031" height="0" 
+      h="40-80" s="20-50" l="50-80" hdr-h="40-80" hdr-s="20-50" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0263" y="0.0843" width="0.0005" height="0.0001" />
+      <resolution aspect="24:10" x="0.0391" y="0.0843" width="0.0054" height="0.001" />
+      <resolution aspect="16:11" x="0.0543" y="0.0757" width="0.0098" height="0.0012"  />
+
+      <resolution size="3840x2160" x="0.0875" y="0.0852" width="0.0045" height="0.0014" />
+      <resolution size="2560x1080" x="0.0391" y="0.0843" width="0.0054" height="0.001" />
+    </meta>
+
+
+    <!--gold-->
+
+    <meta meter="extractionGreen" tags="vlc,Warframe" x="0.0231" y="0.2286" width="0.0238" height="0.0341" 
+      h="60-200" s="70-100" l="50-70" hdr-h="90-200" hdr-s="70-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.0109" y="0.2060" width="0.0115" height="0.0240" />
+      <resolution aspect="24:10" x="0.0171" y="0.2159" width="0.0136" height="0.0241" />
+      <resolution aspect="16:11" x="0.016" y="0.2050" width="0.0235" height="0.0306"  />
+
+      <resolution size="3840x2160" x="0.0232" y="0.2246" width="0.02" height="0.0366" />
+      <resolution size="2560x1080" x="0.0141" y="0.2159" width="0.0136" height="0.0241" />
+    </meta>
+
+    <meta meter="extractionNotGreen" tags="vlc,Warframe" x="0.037" y="0.258" width="0.0018" height="0.0023"
+      h="60-200" s="70-100" l="50-70" hdr-h="60-200" hdr-s="70-100" hdr-l="50-100"  type="area">
+      <resolution aspect="3.55:1" x="0.0466" y="0.2157" width="0.0005" height="0.0001" />
+      <resolution aspect="24:10" x="0.0582" y="0.2215" width="0" height="0.0111" />
+      <resolution aspect="16:11" x="0.0574" y="0.2051" width="0.0008" height="0.0094"  />
+
+      <resolution size="3840x2160" x="0.037" y="0.258" width="0.0018" height="0.0023" />
+      <resolution size="2560x1080" x="0.0582" y="0.2215" width="0" height="0.0111" />
+    </meta>
+
+
+    <meta meter="poisonPurple" tags="vlc,Warframe" x="0.8941" y="0.0577" width="0.0367" height="0.0313" 
+      h="240-300" s="70-100" l="70-100" hdr-h="240-300" hdr-s="70-100" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.9419" y="0.0333" width="0.0216" height="0.0260" />
+      <resolution aspect="24:10" x="0.9160" y="0.0424" width="0.0274" height="0.0315" />
+      <resolution aspect="16:11" x="0.9023" y="0.0438" width="0.0379" height="0.0256"  />
+
+      <resolution size="3840x2160" x="0.9018" y="0.0616" width="0.0344" height="0.0278" />
+      <resolution size="2560x1080" x="0.9261" y="0.0371" width="0.0274" height="0.0315" />
+    </meta>
+
+
+    <meta meter="bossYellow" tags="vlc,Warframe" x="0.5401" y="0.0744" width="0.0007" height="0.0041" 
+      h="20-80" s="60-100" l="50-100" hdr-h="20-80" hdr-s="60-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.5195" y="0.0563" width="0.0015" height="0.0030" />
+      <resolution aspect="24:10" x="0.5195" y="0.0563" width="0.0015" height="0.0030" />
+      <resolution aspect="16:11" x="0.5404" y="0.0538" width="0.0008" height="0.0025" />
+
+      <resolution size="3840x2160" x="0.5395" y="0.0732" width="0.0015" height="0.0035" />
+      <resolution size="2560x1080" x="0.5195" y="0.0563" width="0.0015" height="0.0030" />
+    </meta>
+
+    <meta meter="bossNotYellow" tags="vlc,Warframe" x="0.5463" y="0.0702" width="-0.0004" height="0.0083"  
+      h="20-80" s="60-100" l="50-100" hdr-h="20-80" hdr-s="60-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.5250" y="0.0528" width="0.0006" height="0.0010" />
+      <resolution aspect="24:10" x="0.5250" y="0.0528" width="0.0006" height="0.0010" />
+      <resolution aspect="16:11" x="0.5467" y="0.05" width="0" height="0.0063"  />
+
+      <resolution size="3840x2160" x="0.546" y="0.0704" width="0.0015" height="0.0093" />
+      <resolution size="2560x1080" x="0.5" y="0.1222" width=".0001" height=".0001" />
+    </meta>
+
+    <meta meter="deathYellow" tags="vlc,Warframe" x="0.4924" y="0.745" width="0.0164" height="0.0382"  
+      h="0-80" s="0-50" l="70-100" hdr-h="0-80" hdr-s="0-50" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.4953" y="0.7417" width="0.0104" height="0.0380" />
+      <resolution aspect="24:10" x="0.4939" y="0.7442" width="0.0125" height="0.0371" />
+      <resolution aspect="16:11" x="0.492" y="0.7705" width="0.0176" height="0.035"  />
+
+      <resolution size="3840x2160" x="0.4926" y="0.7466" width="0.0166" height="0.0343" />
+      <resolution size="2560x1080" x="0.4939" y="0.7442" width="0.0125" height="0.0371" />
+    </meta>
+
+
+    <meta meter="deathNotYellow" tags="vlc,Warframe" x="0.5092" y="0.7554" width="0.0004" height="0.0083" 
+      h="0-80" s="0-50" l="70-100" hdr-h="0-80" hdr-s="0-50" hdr-l="70-100" type="area">
+      <resolution aspect="3.55:1" x="0.5036" y="0.7481" width="0.0005" height="0.0090" />
+      <resolution aspect="24:10" x="0.5064" y="0.7535" width="0.0004" height="0.0046" />
+      <resolution aspect="16:11" x="0.5084" y="0.778" width="0.0008" height="0.0062"  />
+
+      <resolution size="3840x2160" x="0.5074" y="0.7536" width="-0.0002" height="0.006" />
+      <resolution size="2560x1080" x="0.5064" y="0.7535" width="0.0004" height="0.0046" />
+    </meta>
+
+    <meta meter="cipherBlue1" tags="vlc,Warframe" x="0.821" y="0.2163" width="0.0016" height="0.0088" 
+      h="180-240" s="50-70" l="0-50" hdr-h="180-240" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8215" y="0.1972" width="0.0017" height="0.0040" />
+      <resolution aspect="24:10" x="0.8215" y="0.1972" width="0.0017" height="0.0040" />
+      <resolution aspect="16:11" x="0.821" y="0.2163" width="0.0016" height="0.0088" />
+
+      <resolution size="3840x2160" x="0.821" y="0.2163" width="0.0016" height="0.0088" />
+      <resolution size="2560x1080" x="0.8215" y="0.1972" width=".0001" height=".0001" />
+    </meta>
+
+    <meta meter="cipherBlue2" tags="vlc,Warframe" x="0.8867" y="0.4442" width="0.0018" height="0.012"
+      h="180-240" s="50-70" l="0-50" hdr-h="180-240" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.8884" y="0.4174" width="0.0009" height="0.0080" />
+      <resolution aspect="24:10" x="0.8884" y="0.4174" width="0.0009" height="0.0080" />
+      <resolution aspect="16:11" x="0.8867" y="0.4442" width="0.0018" height="0.012" />
+
+      <resolution size="3840x2160" x="0.8867" y="0.4442" width="0.0018" height="0.012" />
+      <resolution size="2560x1080" x="0.8884" y="0.4174" width="0.0009" height="0.0080" />
+    </meta>
+
+    <meta meter="cipherNotBlue" tags="vlc,Warframe" x="0.7098" y="0.1144" width="-0.0005" height="0.0116" 
+      h="180-240" s="50-70" l="0-50" hdr-h="180-240" hdr-s="50-100" hdr-l="50-100" type="area">
+      <resolution aspect="3.55:1" x="0.7145" y="0.1153" width="0.0000" height="0.0010"/>
+      <resolution aspect="24:10" x="0.7145" y="0.1153" width="0.0000" height="0.0010" />
+      <resolution aspect="16:11" x="0.7098" y="0.1144" width="-0.0005" height="0.0116" />
+
+      <resolution size="3840x2160" x="0.7098" y="0.1144" width="-0.0005" height="0.0116" />
+      <resolution size="2560x1080" x="0.7145" y="0.1153" width="0.0000" height="0.0010" />
+    </meta>
+
+    <meta meter="cipherYellow1" tags="vlc,Warframe" x="0.6768" y="0.3808" width="0.002" height="0.0014"  
+      h="20-80" s="50-90" l="60-100" hdr-h="20-80" hdr-s="40-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.6930" y="0.3824" width="0.0005" height="0.0010" />
+      <resolution aspect="24:10" x="0.6717" y="0.3846" width="0.002" height="0.0009" />
+      <resolution aspect="16:11" x="0.676" y="0.3815" width="0.0012" height="0.0006"  />
+
+      <resolution size="3840x2160" x="0.6882" y="0.378" width="0.0023" height="0.005" />
+      <resolution size="2560x1080" x="0.6717" y="0.3846" width="0.002" height="0.0009" />
+    </meta>
+
+    <meta meter="cipherYellow2" tags="vlc,Warframe" x="0.6909" y="0.3815" width="0.0027" height="0.0021" 
+      h="20-80" s="50-90" l="60-100" hdr-h="20-80" hdr-s="40-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.6742" y="0.3852" width="0.0018" height="0.0001" />
+      <resolution aspect="24:10" x="0.6933" y="0.3850" width="0.0015" height="0.0037" />
+      <resolution aspect="16:11" x="0.6913" y="0.3809" width="0.0019" height="0.0025"  />
+
+      <resolution size="3840x2160" x="0.6848" y="0.4752" width="0.0013" height="0.0028" />
+      <resolution size="2560x1080" x="0.6921" y="0.3818" width="0.0015" height="0.0037" />
+    </meta>
+
+    <meta meter="cipherNotYellow" tags="vlc,Warframe" x="0.6956" y="0.3725" width="0.0012" height="0.0062"  
+      h="20-80" s="50-90" l="60-100" hdr-h="20-80" hdr-s="40-100" hdr-l="60-100" type="area">
+      <resolution aspect="3.55:1" x="0.6940" y="0.3685" width="0.0005" height="0.0001" />
+      <resolution aspect="24:10" x="0.6952" y="0.3707" width="0.0016" height="0.0046" />
+      <resolution aspect="16:11" xx="0.6952" y="0.3709" width="0.0019" height="0.0075" />
+
+      <resolution size="3840x2160" x="0.6965" y="0.3692" width="0.0011" height="0.0074" />
+      <resolution size="2560x1080" x="0.6952" y="0.3707" width="0.0016" height="0.0046" />
+    </meta>
+
+
+</head>
+  
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+  
+<script>
+    // Canvas initialization
+    const canvas      = document.getElementById('exCanvas')
+    const ctx         = canvas.getContext('2d')
+    const hiddenCanvas = document.createElement('canvas')
+    hiddenCanvas.width  = 320
+    hiddenCanvas.height = 200
+    const hiddenCtx = hiddenCanvas.getContext('2d')
+    let effects = [];
+    let gAlpha = 1
+
+
+    var inGame = false
+    var extractionGoing = false
+    var poisonGoing = false
+    var cipherGoing = false
+    var mapGoing = false
+    var bossGoing = false
+    var taskGoing = false
+    var lowHealthGoing = false
+    var healGoing = false
+    var deathGoing = false
+    var missionGoing = false
+
+    var healthBlueMeter = new Meter(5, healthCalback);
+    var inGameRedMeter = new Meter(5, inGameCallback);
+
+    var enemyDeadYellowMeter = new Meter(5, enemyCallback);
+    var enemyDeadRedMeter = new Meter(5, enemyCallback);
+
+    var taskBlueMeter = new Meter(10, taskCallback);
+    var taskWhiteMeter = new Meter(10, taskCallback);
+
+    var missionCompleteBege1Meter = new Meter(5,missionCallback);
+    var missionCompleteBege2Meter = new Meter(5,missionCallback);
+
+    var mapBege1Meter = new Meter(10,mapCallback);
+    var mapBege2Meter = new Meter(10,mapCallback);
+
+    var cipherYellow1Meter = new Meter(10, cipherCallback);
+    var cipherYellow2Meter = new Meter(10, cipherCallback);
+
+    var cipherBlue1Meter = new Meter(10, cipherCallback);
+    var cipherBlue2Meter = new Meter(10, cipherCallback);
+
+    var extractionGreenMeter = new Meter(10, extractionCallback);
+
+    var poisonPurpleMeter = new Meter(5, poisonCallback);
+
+    var bossYellowMeter = new Meter(10,bossCalback)
+
+
+    var deathYellowMeter = new Meter(10,deathCalback)
+
+    //#region Update
+    function update() {
+      DrawRect(0, 0, 320, 200, "black")
+      backgroundHandler()
+
+  
+      healthBlueMeter.setValue(engine.vision.healthBlue)
+      inGameRedMeter.setValue(engine.vision.inGameRed)
+
+      enemyDeadYellowMeter.setValue(engine.vision.enemyDeadYellow)
+      enemyDeadRedMeter.setValue(engine.vision.enemyDeadRed)
+      
+      taskBlueMeter.setValue(engine.vision.taskBlue)
+      taskWhiteMeter.setValue(engine.vision.taskWhite)
+
+      missionCompleteBege1Meter.setValue(engine.vision.missionCompleteBege1)
+      missionCompleteBege2Meter.setValue(engine.vision.missionCompleteBege2)
+
+      mapBege1Meter.setValue(engine.vision.mapBege1)
+      mapBege2Meter.setValue(engine.vision.mapBege2)
+
+      cipherYellow1Meter.setValue(engine.vision.cipherYellow1)
+      cipherYellow2Meter.setValue(engine.vision.cipherYellow2)
+      cipherBlue1Meter.setValue(engine.vision.cipherBlue1)
+      cipherBlue2Meter.setValue(engine.vision.cipherBlue2)
+ 
+
+      extractionGreenMeter.setValue(engine.vision.extractionGreen)
+
+      poisonPurpleMeter.setValue(engine.vision.poisonPurple)
+
+      bossYellowMeter.setValue(engine.vision.bossYellow)
+
+      deathYellowMeter.setValue(engine.vision.deathYellow)
+
+
+      effects.forEach(ele => { ele.draw() })
+      effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+      ctx.drawImage(hiddenCanvas, 0, 0)
+
+      window.requestAnimationFrame(update);
+    };
+    //#endregion
+    //#region Background Modes
+    // Background Configuration
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor);
+    }
+
+    // Audio and Color Cycle State
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+    
+    // Background Utility Functions
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`;
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360;
+    }
+
+    // Main Background Handler
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+
+        // Handle color cycling first if needed
+        if (backgroundMode.includes("Color Cycle")) {
+            updateColorCycle();
+        }
+
+        // Handle audio processing if needed
+        if (backgroundMode.includes("Audio")) {
+            updateAudioEase();
+        }
+
+        // Render background based on mode
+        if (backgroundMode.includes("Ambience")) {
+            if (backgroundMode === "Ambience Audio Visualizer") {
+                copyScreenAudio(alpha);
+            } else {
+                copyScreen(alpha);
+            }
+            return;
+        }
+
+        // Handle custom and cycle modes
+        const hue = proBack[0] + (backgroundMode.includes("Color Cycle") ? gCycle : 0);
+        const sat = backgroundMode.includes("Audio") ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes("Audio") ? audioEase.lit * 0.9 + 10 : proBack[2];
+        
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha));
+    }
+
+    // Zone Configuration Constants
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        // Use the global audioEase values we already calculated
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            ctx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+  
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat = new Int8Array(engine.zone.saturation)
+        const hue = new Int16Array(engine.zone.hue)
+        
+        const width = 320 / ZONE_COLS
+        const height = 200 / ZONE_ROWS
+        
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const x = col * width
+            const y = row * height
+            
+            const finalHue = backgroundMode === "Custom Ambience" 
+                ? proBack[0] 
+                : hue[iZone] + (backgroundMode === "Color Cycle Ambience" ? gCycle : 0)
+            
+            ctx.fillStyle = getColorString(
+                finalHue,
+                sat[iZone],
+                lightness[iZone],
+                alpha
+            )
+            ctx.fillRect(x, y, width, height)
+        }
+    }
+    //#endregion
+    //#region Pro Color Modes
+    var beachColor = [[203, 68, 84], [186, 94, 44], [180, 81, 73], [45, 47, 44], [28, 67, 85], [151, 94, 75]];
+    var retroColor = [[349, 100, 46], [41, 100, 55], [58, 100, 30], [199, 36, 46], [221, 100, 19], [3, 100, 36]];
+    var rainbowColor = [[0, 100, 50], [35, 100, 50], [60, 100, 50], [120, 100, 50], [220, 100, 50], [270, 100, 50]];
+    var spaceColor = [[293, 84, 90], [271, 71, 36], [280, 81, 18], [269, 70, 26], [230, 42, 41], [218, 100, 47]];
+    var mondrianColor = [[60, 100, 50], [60, 100, 50], [270, 100, 100], [220, 100, 50], [0, 100, 50], [35, 100, 100]];
+    var vaporwaveColor = [[271, 89, 64], [242, 80, 75], [185, 41, 57], [298, 100, 71], [299, 93, 78], [49, 85, 65]]
+    var outrunColor = [[286, 46, 22], [340, 67, 59], [49, 78, 62], [30, 78, 56], [227, 51, 56], [224, 77, 70]];
+    var kawaiiColor = [[183, 100, 87], [171, 100, 94], [316, 100, 93], [203, 100, 85], [274, 100, 89], [0, 100, 100]];
+    var oceanColor = [[193, 44, 17], [195, 31, 52], [194, 42, 30], [197, 45, 45], [193, 40, 70], [190, 50, 90]];
+    var cottagecoreColor = [[276, 16, 37], [35, 54, 56], [61, 35, 37], [105, 11, 37],[28, 40, 49], [40, 92, 85]];
+    var summerColor = [[280, 16, 25], [10, 79, 64], [19, 84, 75], [60, 75, 68], [350, 38, 64], [265, 19, 44]];
+    var contemporaryColor = [[210, 76, 23], [43, 100, 50], [195, 57, 53], [9, 82, 57], [22, 81, 78], [178, 45, 53]]
+    var tetrisColor = [[218, 97, 35], [218, 97, 35], [97, 58, 51], [50, 100, 50], [33, 100, 55], [8, 100, 54]];
+    let colors = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+    function onColorModeChanged(){
+        switch(ColorMode){
+          case "Custom":
+            onfrontColorChanged()
+            colors = [[proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]]]
+            break;
+          case "Color Cycle":
+            onfrontColorChanged()
+            colors = [[proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]], [proFront[0], proFront[1], proFront[2]]]
+            break;
+          case "Rainbow Gradient":
+
+            break;
+          case "Beach":
+            colors = beachColor
+            break;
+          case "Retro":
+            colors = retroColor
+            break;
+          case "Rainbow":
+            colors = rainbowColor
+            break;
+          case "Space":
+            colors = spaceColor
+            break;
+          case "Mondrian":
+            colors = mondrianColor
+            break;
+          case "Vaporwave":
+            colors = vaporwaveColor
+            break;
+          case "Outrun":
+            colors = outrunColor
+            break;
+          case "Kawaii":
+            colors = kawaiiColor
+            break;
+          case "Ocean":
+            colors = oceanColor
+            break;
+          case "Cottagecore":
+            colors = cottagecoreColor
+            break;
+          case "Summer":
+            colors = summerColor
+            break;
+          case "Tetris":
+            colors = tetrisColor
+            break;
+          case "Contemporary":
+            colors = contemporaryColor
+            break;
+        }
+    }
+    //#endregion
+    //#region callbacks
+
+    function inGameCallback(){
+      if(inGameRedMeter.value >= 0.2 && engine.vision.inGameNotRed < .1){
+        inGame = true
+      }else{
+        inGame = false
+      }
+    }
+
+    function enemyCallback(){
+      if(killOn){
+        if (inGame && ((enemyDeadRedMeter.value >= .75 && engine.vision.enemyDeadNotRed <.1) || (enemyDeadYellowMeter.value >= .75 && engine.vision.enemyDeadNotYellow <.1))) {
+        effects.push(new warframeEnemyKill())
+        }
+      }
+    }
+
+    function taskCallback(){
+      if(taskOn){
+        if(inGame && taskBlueMeter.value >= 0.95 && taskWhiteMeter.value >= 0.4 && !taskGoing){
+          taskGoing = true
+          effects.push(new warframeTaskComplete())
+          }
+      }
+      
+    }
+
+    function missionCallback(){
+      if(missionOn){
+        if(!inGame && missionCompleteBege1Meter.value >= 0.2 && missionCompleteBege2Meter.value >= 0.2 && engine.vision.missionCompleteNotBege < .1 && !missionGoing ){
+          missionGoing = true
+          effects.push(new warframeMissionComplete())
+        }
+      }
+    }
+
+    function mapCallback(){
+      if(mapOn){
+        if(!inGame && mapBege1Meter.value >= .95 && mapBege2Meter.value >= .95 && engine.vision.mapNotBege <.1 && !mapGoing){
+          mapGoing = true
+          effects.push(new warframeMap())
+        }
+      }
+    }
+
+    function cipherCallback(){
+      if(cipherOn){
+        if(!inGame && cipherYellow1Meter.value >= 0.95 && cipherYellow2Meter.value >= 0.95 && engine.vision.cipherNotYellow <.1 && !cipherGoing){
+          cipherGoing = true
+          effects.push(new warframeCipherYellow())
+        }
+
+        if(!inGame && cipherBlue1Meter.value >= 0.95 && cipherBlue2Meter.value >= 0.95 && engine.vision.cipherNotBlue <.1 && !cipherGoing){
+          cipherGoing = true
+          effects.push(new warframeCipherBlue())
+        }
+      }
+    }
+
+    function extractionCallback(){
+      if(extractionOn){
+        if(inGame && extractionGreenMeter.value >= 0.02 && engine.vision.extractionNotGreen <.1 && !extractionGoing){
+          extractionGoing = true
+          effects.push(new extractionSymbol())
+        }else if(extractionGreenMeter.value == 0 || !inGame){
+          extractionGoing = false
+        }
+      }
+    }
+
+    function poisonCallback(){
+      if(poisonOn){
+        if(inGame && poisonPurpleMeter.value >= 0.2 && !poisonGoing){
+          poisonGoing = true
+          effects.push(new warframePoison())
+        }
+      }
+    }
+
+    function bossCalback(){
+      if(bossOn){
+        if(inGame && bossYellowMeter.value >= 0.95 && engine.vision.bossNotYellow <.1 && !bossGoing){
+          bossGoing = true
+          effects.push(new warframeBoss())
+        }else if(bossYellowMeter.value <.1 || !inGame){
+          bossGoing = false
+        } 
+      }
+    }
+
+    function healthCalback(){
+      if(lowhealthOn){
+        if(inGame && healthBlueMeter.value <.1  && !lowHealthGoing){
+          lowHealthGoing = true
+          effects.push(new warframeLowHealth())
+        }
+      }
+      if(healingOn){
+        if(inGame && healthBlueMeter.increased && healthBlueMeter.diff > .05 && !healGoing){
+          healGoing = true
+          effects.push(new warframeHeal())
+        }
+      }
+    }
+
+    function deathCalback(){
+      if(deathOn){
+        if(deathYellowMeter.value >=.15 && engine.vision.deathNotYellow <.1 && !deathGoing){
+          deathGoing = true
+          effects.push(new warframeDeath())
+        }
+      }
+
+    }
+
+  function warframeEnemyKill(){
+
+    this.start=Date.now();
+    this.alpha=0;
+    this.fadeOut=false;
+
+    this.delay=80;
+    this.speed=5;
+    this.lineWidth=30;
+    this.arrowSize=45;
+    this.lifetime=1;
+
+    this.arrows=[
+      new killArrow(-1,-1,-Math.PI*.75),
+      new killArrow(1,-1,-Math.PI*.25),
+      new killArrow(-1,1,Math.PI*.75),
+      new killArrow(1,1,Math.PI*.25)
+    ];
+
+    this.draw = () => {
+
+      if(!this.fadeOut){
+        this.alpha<.65?this.alpha+=.04:this.alpha=.65;
+      }else{
+        this.alpha>.04?this.alpha-=.04:this.lifetime=0;
+      }
+
+      ctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      let elapsed=Date.now()-this.start;
+
+      if(elapsed>this.delay)
+        this.arrows.forEach(ele=>ele.draw(this.speed,this.lineWidth,this.arrowSize,this.alpha));
+      else
+        this.arrows.forEach(ele=>ele.drawStatic(this.arrowSize,this.alpha));
+
+      if(elapsed>900)
+        this.fadeOut=true;
+    }
+  }
+
+  function killArrow(dx,dy,rot){
+
+    this.x=160;
+    this.y=100;
+    this.dx=dx;
+    this.dy=dy;
+    this.rot=rot;
+
+    this.draw=function(speed,width,size,alpha){
+
+      this.x+=this.dx*speed;
+      this.y+=this.dy*speed;
+
+      ctx.beginPath();
+      ctx.moveTo(160,100);
+      ctx.lineTo(this.x,this.y);
+      ctx.strokeStyle=`hsla(0,100%,30%,${alpha})`;
+      ctx.lineWidth=width;
+      ctx.lineCap="round";
+      ctx.stroke();
+
+      this.drawArrow(size,alpha);
+    }
+
+    this.drawStatic=function(size,alpha){
+      this.drawArrow(size,alpha);
+    }
+
+    this.drawArrow=function(size,alpha){
+
+      ctx.save();
+      ctx.translate(this.x,this.y);
+      ctx.rotate(this.rot);
+
+      ctx.beginPath();
+      ctx.moveTo(size,0);
+      ctx.lineTo(-size*.6,-size*.5);
+      ctx.lineTo(-size*.6,size*.5);
+      ctx.closePath();
+
+      ctx.fillStyle=`hsla(0,100%,50%,${alpha})`;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(size*.45,0);
+      ctx.lineTo(-size*.25,-size*.2);
+      ctx.lineTo(-size*.25,size*.2);
+      ctx.closePath();
+
+      ctx.fillStyle=`hsla(0,0%,100%,${alpha})`;
+      ctx.fill();
+
+      ctx.restore();
+    }
+  }
+
+  function warframeHeal(){
+
+    this.start=Date.now();
+    this.alpha=0;
+    this.fadeOut=false;
+    this.lines=[];
+    this.orbs=[];
+    this.lifetime=1;
+
+    for(let i=0;i<30;i++)this.lines.push(new healLine());
+    for(let i=0;i<25;i++)this.orbs.push(new healOrb());
+
+    this.draw = () => {
+
+      if(!this.fadeOut){
+        this.alpha<.65?this.alpha+=.04:this.alpha=.65;
+      }else{
+        this.alpha>.04?this.alpha-=.04:this.alpha=0;
+        if(this.alpha<=0)this.lifetime=0;
+        healGoing = false
+      }
+
+      ctx.fillStyle=`hsla(195,100%,10%,${this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      this.lines.forEach(ele=>ele.draw(this.alpha));
+      this.orbs.forEach(ele=>ele.draw(this.alpha));
+
+      this.lines=this.lines.filter(ele=>ele.lifetime);
+      this.orbs=this.orbs.filter(ele=>ele.lifetime);
+
+      if((this.lines.length==0&&this.orbs.length==0&&!this.fadeOut) || !inGame){
+        this.fadeOut=true;
+      }
+    }
+  }
+
+  function healLine(){
+
+    this.x=Math.random()*320;
+    this.y=220+Math.random()*120;
+    this.speed=2+Math.random()*3;
+    this.size=100;
+    this.lifetime=1;
+
+    this.draw=function(alpha){
+
+      this.y-=this.speed;
+
+      ctx.beginPath();
+      ctx.moveTo(this.x,this.y);
+      ctx.lineTo(this.x,this.y+this.size);
+      ctx.strokeStyle=`hsla(190,100%,70%,${alpha})`;
+      ctx.lineWidth=20;
+      ctx.lineCap="round";
+      ctx.stroke();
+
+      DrawCircle(this.x,this.y,10,`hsla(0,0%,100%,${alpha})`);
+
+      if(this.y<-this.size)this.lifetime=0;
+    }
+  }
+
+  function healOrb(){
+
+    this.x=Math.random()*320;
+    this.y=220+Math.random()*120;
+    this.speed=3+Math.random()*3;
+    this.size=3+Math.random()*4;
+    this.lifetime=1;
+
+    this.draw=function(alpha){
+
+      DrawCircle(this.x,this.y,this.size,`hsla(0,0%,100%,${alpha})`);
+
+      this.y-=this.speed;
+
+      if(this.y<-10)this.lifetime=0;
+    }
+  }
+
+  function warframePoison(){
+
+    this.start=Date.now();
+    this.alpha=0;
+    this.fadeOut=false;
+    this.particles=[];
+    this.lifetime=1;
+
+    for(let i=0;i<80;i++)this.particles.push(new poisonParticle());
+
+    this.draw = () => {
+
+      if(!this.fadeOut){
+        this.alpha<.65?this.alpha+=.04:this.alpha=.65;
+      }else{
+        this.alpha>.04?this.alpha-=.04:this.alpha=0;
+        if(this.alpha<=0)this.lifetime=0;
+        poisonGoing = false
+      }
+
+      ctx.fillStyle=`hsla(0,0%,10%,${this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      this.particles.forEach(ele=>ele.draw(this.alpha));
+
+      if((poisonPurpleMeter.value <.1 && healthBlueMeter.value >.1) &&!this.fadeOut){
+        this.fadeOut=true;
+      }
+    }
+  }
+
+  function poisonParticle(){
+
+    this.reset=function(){
+      this.x=Math.random()*320;
+      this.y=Math.random()*200;
+      this.size=16+Math.random()*10;
+      this.alpha=0;
+      this.maxAlpha=.3+Math.random()*.5;
+      this.fadeIn=true;
+      this.speed=.01+Math.random()*.02;
+    }
+
+    this.reset();
+
+    this.draw=function(effectAlpha){
+
+      if(this.fadeIn){
+        this.alpha+=this.speed;
+        if(this.alpha>=this.maxAlpha)this.fadeIn=false;
+      }else{
+        this.alpha-=this.speed;
+        if(this.alpha<=0)this.reset();
+      }
+
+      let a=this.alpha*effectAlpha;
+
+      DrawCircle(this.x,this.y,this.size,`hsla(290,100%,55%,${a})`);
+      DrawCircle(this.x,this.y,this.size+4,`hsla(290,100%,80%,${a*.1})`);
+    }
+  }
+
+  function warframeLowHealth(){
+
+    this.alpha=0;
+    this.bgAlpha=0;
+    this.dir=.03;
+    this.fadeOut=false;
+    this.cracks=[];
+    this.lifetime=1;
+
+    for(let i=0;i<25;i++)this.cracks.push(new lowHealthCrack());
+
+    this.draw = () => {
+
+      if(!this.fadeOut){
+        this.bgAlpha<.65?this.bgAlpha+=.04:this.bgAlpha=.65;
+      }else{
+        this.bgAlpha>.04?this.bgAlpha-=.04:this.bgAlpha=0;
+        if(this.bgAlpha<=0)this.lifetime=0;
+        lowHealthGoing = false
+      }
+
+      this.alpha+=this.dir;
+
+      if(this.alpha>.35)this.dir=-.02;
+      if(this.alpha<.12)this.dir=.02;
+
+      ctx.fillStyle=`hsla(0,100%,50%,${this.alpha*this.bgAlpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      drawHealthEdge(this.alpha*this.bgAlpha);
+
+      this.cracks.forEach(ele=>ele.draw(this.bgAlpha));
+
+     
+       if((healthBlueMeter.value>.2 && !this.fadeOut) || !inGame)
+         this.fadeOut=true;
+    }
+  }
+  function lowHealthCrack(){
+
+    this.reset=function(){
+
+      switch(Math.floor(Math.random()*4)){
+
+        case 0:
+          this.x=Math.random()*320;
+          this.y=-20;
+          this.dx=0;
+          this.dy=1;
+        break;
+
+        case 1:
+          this.x=Math.random()*320;
+          this.y=220;
+          this.dx=0;
+          this.dy=-1;
+        break;
+
+        case 2:
+          this.x=-20;
+          this.y=Math.random()*200;
+          this.dx=1;
+          this.dy=0;
+        break;
+
+        default:
+          this.x=340;
+          this.y=Math.random()*200;
+          this.dx=-1;
+          this.dy=0;
+      }
+
+      this.size=24+Math.random()*18;
+      this.speed=1+Math.random()*2;
+    }
+
+    this.reset();
+
+    this.draw=function(alpha){
+
+      ctx.beginPath();
+      ctx.moveTo(this.x,this.y);
+      ctx.lineTo(this.x+this.dx*this.size,this.y+this.dy*this.size);
+      ctx.strokeStyle=`hsla(0,100%,50%,${.8*alpha})`;
+      ctx.lineWidth=24;
+      ctx.lineCap="round";
+      ctx.stroke();
+
+      this.x+=this.dx*this.speed;
+      this.y+=this.dy*this.speed;
+
+      if(this.x<-40||this.x>360||this.y<-40||this.y>240)
+        this.reset();
+    }
+  }
+
+  function drawHealthEdge(alpha){
+
+    let g=ctx.createRadialGradient(160,100,40,160,100,180);
+    g.addColorStop(0,"hsla(0,100%,20%,0)");
+    g.addColorStop(1,`hsla(0,100%,50%,${alpha})`);
+
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,320,200);
+  }
+
+  function extractionSymbol(){
+    this.leftX=-140;
+    this.leftY=20;
+
+    this.rightX=370;
+    this.rightY=20;
+
+    this.bottomX=110;
+    this.bottomY=260;
+
+    this.leftTarget=90;
+    this.rightTarget=170;
+    this.bottomTargetY=80;
+
+    this.size=100;
+    this.flash=0;
+    this.done=false;
+    this.alpha=0;
+    this.fadeOut=false;
+    this.start=Date.now();
+    this.lifetime=1;
+    this.beams=[];
+
+
+    this.draw = () => {
+      if(!this.fadeOut){
+          this.alpha<1 ? this.alpha+=.04 : this.alpha=1;
+      }
+      else{
+          this.alpha>.04 ? this.alpha-=.04 : this.lifetime=0;
+       
+      }
+
+
+      this.flash=(Math.sin(Date.now()/120)+1)/2;
+
+      ctx.fillStyle = `hsla(120,100%,18%,${(.12+this.flash*.18)*this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      this.beams.forEach(ele=>ele.draw());
+
+      if(!this.done){
+
+          this.leftX+=(this.leftTarget-this.leftX)*.14;
+          this.rightX+=(this.rightTarget-this.rightX)*.14;
+          this.bottomY+=(this.bottomTargetY-this.bottomY)*.14;
+
+          if(Math.abs(this.leftTarget-this.leftX)<.5){
+
+              this.leftX=this.leftTarget;
+              this.rightX=this.rightTarget;
+              this.bottomY=this.bottomTargetY;
+
+              this.done=true;
+          }
+      }
+
+
+      drawExtractionLeft(this.leftX,this.leftY,this.size+20,`hsla(120,100%,40%,${(.6+this.flash*.4)*this.alpha})`);
+
+
+      drawExtractionRight(
+          this.rightX,
+          this.rightY,
+          this.size+20,
+          `hsla(120,100%,40%,${(.6+this.flash*.4)*this.alpha})`
+      );
+
+
+      drawExtractionBottom(
+          this.bottomX,
+          this.bottomY,
+          this.size,
+          `hsla(120,100%,40%,${(.6+this.flash*.4)*this.alpha})`
+      );
+
+
+      if(Date.now()-this.start>2000)
+        this.fadeOut=true;
+    }
+  }
+
+
+  function drawExtractionLeft(x,y,size,color){
+
+    let s=size/100;
+
+    ctx.beginPath();
+    ctx.moveTo(x+0*s,y+52*s);
+    ctx.lineTo(x+52*s,y+0*s);
+    ctx.lineTo(x+52*s,y+32*s);
+    ctx.lineTo(x+2*s,y+82*s);
+    ctx.closePath();
+
+    ctx.fillStyle=color;
+    ctx.fill();
+  }
+
+  function drawExtractionRight(x,y,size,color){
+
+    let s=size/100;
+
+    ctx.beginPath();
+    ctx.moveTo(x+0*s,y+0*s);
+    ctx.lineTo(x+52*s,y+52*s);
+    ctx.lineTo(x+52*s,y+82*s);
+    ctx.lineTo(x+0*s,y+32*s);
+    ctx.closePath();
+
+    ctx.fillStyle=color;
+    ctx.fill();
+  }
+
+  function drawExtractionBottom(x,y,size,color){
+
+    let s=size/100;
+
+    ctx.beginPath();
+    ctx.moveTo(x+50*s,y+0*s);
+    ctx.lineTo(x+100*s,y+50*s);
+    ctx.lineTo(x+50*s,y+100*s);
+    ctx.lineTo(x+0*s,y+50*s);
+    ctx.closePath();
+
+    ctx.fillStyle=color;
+    ctx.fill();
+  }
+
+  function warframeCipherBlue(){
+
+    this.hexes=[];
+
+    this.start=Date.now();
+    this.lifetime=1;
+
+    this.alpha=0;
+    this.fadeOut=false;
+
+
+    let positions=[
+      {x:160,y:30},
+      {x:120,y:65},
+      {x:200,y:65},
+      {x:160,y:100},
+      {x:120,y:135},
+      {x:200,y:135},
+      {x:160,y:170}
+    ];
+
+
+    positions.forEach((pos,i)=>{
+      this.hexes.push(new cipherHex(pos.x,pos.y,i*300));
+    });
+
+
+    this.draw=()=>{
+
+      let elapsed=Date.now()-this.start;
+
+
+      // Fade In
+      if(!this.fadeOut){
+        this.alpha<1?this.alpha+=.02:this.alpha=1;
+      }
+      // Fade Out
+      else{
+        this.alpha>.04?this.alpha-=.02:this.lifetime=0;
+        cipherGoing = false
+      }
+
+
+
+      ctx.fillStyle=`hsla(0,0%,0%,${.4*this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+
+
+      ctx.beginPath();
+
+      for(let i=0;i<this.hexes.length-1;i++){
+
+        let a=this.hexes[i];
+        let b=this.hexes[i+1];
+
+        ctx.moveTo(a.x,a.y);
+        ctx.lineTo(b.x,b.y);
+      }
+
+
+      ctx.strokeStyle=`hsla(190,100%,60%,${.5*this.alpha})`;
+      ctx.lineWidth=3;
+
+      ctx.stroke();
+
+
+
+      this.hexes.forEach(ele=>ele.draw(this.alpha));
+
+
+
+      if((cipherBlue1Meter.value <.1 && cipherBlue2Meter.value <.1)  || inGame)
+        this.fadeOut=true;
+
+    }
+
+  }
+
+
+
+  function cipherHex(x,y,delay){
+
+    this.x=x;
+    this.y=y;
+    this.delay=delay;
+    this.start=Date.now();
+    this.size=18;
+
+
+    this.draw=function(alpha){
+
+      let elapsed=Date.now()-this.start;
+
+
+      if(elapsed<this.delay)
+        return;
+
+
+      let pulse=(Math.sin(Date.now()/120)+1)/2;
+
+
+      ctx.beginPath();
+
+
+      for(let i=0;i<6;i++){
+
+        let angle=Math.PI/3*i;
+
+        let px=this.x+Math.cos(angle)*this.size;
+        let py=this.y+Math.sin(angle)*this.size;
+
+        i==0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+      }
+
+
+      ctx.closePath();
+
+
+      ctx.strokeStyle=
+      `hsla(190,100%,70%,${alpha*(.6+pulse*.5)})`;
+
+      ctx.lineWidth=15;
+
+      ctx.stroke();
+
+
+      DrawCircle(
+        this.x,
+        this.y,
+        6,
+        `hsla(200,100%,100%,${alpha})`
+      );
+
+    }
+
+  }
+
+  function warframeCipherYellow(){
+
+    this.start=Date.now();
+    this.lifetime=1;
+
+    this.alpha=0;
+    this.fadeOut=false;
+
+    this.orbs=[
+      new cipherYellowOrb(0),
+      new cipherYellowOrb(Math.PI)
+    ];
+
+
+    this.draw=()=>{
+
+      let elapsed=Date.now()-this.start;
+
+
+      if(!this.fadeOut){
+        this.alpha<1?this.alpha+=.03:this.alpha=1;
+      }
+      else{
+        this.alpha>.04?this.alpha-=.015:this.lifetime=0;
+        cipherGoing = false
+      }
+      ctx.fillStyle=`hsla(0,0%,0%,${.3*this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+
+      let flash=(Math.sin(Date.now()/120)+1)/2;
+
+
+      ctx.save();
+
+      ctx.translate(160,100);
+
+      ctx.beginPath();
+      ctx.arc(0,0,80,Math.PI*.2,Math.PI*1.8);
+
+      ctx.strokeStyle=`hsla(50,100%,55%,${this.alpha*.9})`;
+
+      ctx.lineWidth=30;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0,0,50,-Math.PI*.8,Math.PI*.8);
+
+      ctx.strokeStyle=`hsla(45,100%,70%,${this.alpha*.9})`;
+
+      ctx.lineWidth=12;
+      ctx.stroke();
+
+      ctx.restore();
+
+      this.orbs.forEach(ele=>ele.draw(this.alpha));
+
+      DrawCircle(160,100,8,`hsla(50,100%,90%,${this.alpha})`);
+
+      if((cipherYellow1Meter.value <.1 && cipherYellow2Meter.value <.1) || inGame){
+        this.fadeOut=true;
+      }
+        
+
+    }
+  }
+
+  function cipherYellowOrb(offset){
+
+    this.angle=offset;
+    this.radius=55;
+    this.speed=.04;
+
+
+    this.draw=function(alpha){
+
+      this.angle+=this.speed;
+
+      let x = 160+Math.cos(this.angle)*this.radius;
+      let y = 100+Math.sin(this.angle)*this.radius;
+
+      DrawCircle(x,y,14,`hsla(50,100%,60%,${alpha})`);
+      DrawCircle(x,y,6,`white`);
+
+    }
+
+  }
+
+  function warframeTaskComplete(){
+
+    this.start=Date.now();
+    this.lifetime=1;
+
+    this.alpha=0;
+    this.fadeOut=false;
+
+    this.rings=[];
+
+    for(let i=0;i<3;i++)
+      this.rings.push(new taskRing(i*180));
+
+
+    this.draw=()=>{
+
+      let elapsed=Date.now()-this.start;
+
+      if(!this.fadeOut){
+        this.alpha<1?this.alpha+=.04:this.alpha=1;
+      }
+      else{
+        this.alpha>0?this.alpha-=.015:this.lifetime=0
+        taskGoing = false;
+      }
+
+
+
+      ctx.fillStyle=`hsla(0,0%,0%,${.35*this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+
+
+      ctx.beginPath();
+      ctx.arc(160,100,90,0,Math.PI*2);
+
+      ctx.strokeStyle=`hsla(120,100%,55%,${this.alpha})`;
+
+      ctx.lineWidth=20;
+      ctx.stroke();
+
+
+
+      ctx.beginPath();
+
+      ctx.moveTo(125,100);
+      ctx.lineTo(150,125);
+      ctx.lineTo(200,70);
+
+
+      ctx.strokeStyle=
+      `hsla(120,100%,75%,${this.alpha})`;
+
+      ctx.lineWidth=20;
+      ctx.lineCap="round";
+      ctx.lineJoin="round";
+
+      ctx.stroke();
+
+
+
+      this.rings.forEach(ele=>ele.draw(this.alpha));
+
+      this.rings=
+      this.rings.filter(ele=>ele.lifetime);
+
+      if((taskBlueMeter.value <.1 || taskWhiteMeter.value <.1) || !inGame)
+        this.fadeOut=true;
+
+    }
+
+  }
+
+
+
+  function taskRing(delay){
+
+    this.start=Date.now()+delay;
+
+    this.radius=40;
+
+    this.speed=4;
+
+    this.lifetime=1;
+
+
+    this.draw=function(alpha){
+
+      if(Date.now()<this.start)
+        return;
+
+
+      this.radius+=this.speed;
+
+
+      ctx.beginPath();
+      ctx.arc(160,100,this.radius,0,Math.PI*2);
+
+      ctx.strokeStyle=`hsla(120,100%,65%,${alpha*(1-this.radius/220)})`;
+      ctx.lineWidth=8;
+
+      ctx.stroke();
+
+
+      if(this.radius>220)
+        this.lifetime=0;
+
+    }
+
+  }
+
+  function warframeMissionComplete(){
+
+    this.start=Date.now();
+    this.lifetime=1;
+
+    this.alpha=0;
+    this.fadeOut=false;
+
+    // Path
+    this.path="M 258.00,599.00 C 251.94,599.80 248.01,595.16 244.09,591.00 235.37,581.75 227.49,572.11 219.80,562.00 200.15,536.12 186.93,502.67 180.55,471.00 177.92,457.93 175.02,444.40 175.00,431.00 175.00,431.00 175.00,397.00 175.00,397.00 175.01,392.70 175.93,378.45 177.98,375.21 180.04,371.97 190.26,366.66 194.00,364.76 194.00,364.76 209.00,356.31 209.00,356.31 209.00,356.31 227.00,346.60 227.00,346.60 272.25,320.21 333.62,283.72 370.72,247.58 383.78,234.85 396.15,222.08 406.56,207.00 406.56,207.00 418.81,186.29 418.81,186.29 420.05,184.80 420.46,184.84 422.00,184.00 432.60,208.62 456.09,234.40 475.99,252.00 506.27,278.78 547.67,308.30 583.00,328.14 583.00,328.14 638.00,359.75 638.00,359.75 638.00,359.75 656.00,369.80 656.00,369.80 658.21,371.12 662.49,373.29 663.83,375.39 665.20,377.55 664.97,381.40 665.28,384.00 665.28,384.00 667.00,408.00 667.00,408.00 667.09,465.40 654.49,519.84 618.58,566.00 610.96,575.79 595.40,595.42 585.00,601.00 584.28,595.10 588.64,592.40 592.20,588.00 599.32,579.18 605.89,569.81 611.58,560.00 631.73,525.23 644.86,475.84 619.96,440.00 617.91,437.05 614.55,432.69 611.91,430.32 611.91,430.32 571.00,403.99 571.00,403.99 571.00,403.99 472.00,346.57 472.00,346.57 472.00,346.57 435.00,325.75 435.00,325.75 431.89,324.18 423.64,318.88 421.00,318.80 417.63,318.70 403.54,327.12 400.00,329.32 400.00,329.32 358.00,353.00 358.00,353.00 358.00,353.00 275.00,401.55 275.00,401.55 265.14,407.47 235.87,424.40 229.01,431.04 212.59,446.97 207.75,468.95 208.00,491.00 208.07,496.76 209.33,502.36 210.39,508.00 214.98,532.55 223.73,551.23 237.52,572.00 237.52,572.00 258.00,599.00 258.00,599.00 Z M 419.00,356.00 C 419.00,356.00 422.00,356.00 422.00,356.00 422.00,356.00 432.14,371.00 432.14,371.00 455.77,403.97 486.49,425.58 521.00,445.86 521.00,445.86 532.00,452.69 532.00,452.69 532.00,452.69 567.00,472.57 567.00,472.57 570.89,474.80 578.84,478.31 580.98,482.10 582.68,485.11 582.99,493.41 583.00,497.00 583.00,497.00 583.00,514.00 583.00,514.00 582.99,521.06 582.17,524.25 581.28,531.00 578.15,554.77 571.11,573.25 559.28,594.00 553.97,603.32 542.56,620.48 533.00,625.00 532.18,619.35 534.88,617.62 537.77,613.00 537.77,613.00 546.55,598.00 546.55,598.00 553.57,586.13 559.98,567.67 560.31,553.84 560.51,545.41 558.95,539.52 555.24,532.00 543.37,507.90 521.97,501.62 501.00,488.00 501.00,488.00 484.00,478.08 484.00,478.08 484.00,478.08 443.00,454.54 443.00,454.54 443.00,454.54 428.00,446.69 428.00,446.69 426.12,445.67 422.62,443.23 420.58,443.24 418.48,443.26 414.04,446.14 412.00,447.22 412.00,447.22 390.00,459.41 390.00,459.41 390.00,459.41 374.00,468.72 374.00,468.72 374.00,468.72 332.00,493.13 332.00,493.13 319.19,500.48 300.52,510.01 291.88,522.01 274.82,545.79 280.79,567.40 291.88,592.00 294.78,598.47 300.73,608.01 304.74,614.00 307.50,618.12 310.68,620.61 307.00,625.00 307.00,625.00 296.32,614.00 296.32,614.00 273.12,586.30 261.41,552.68 258.91,517.00 258.91,517.00 258.00,507.00 258.00,507.00 257.95,502.31 258.84,484.71 261.14,481.39 262.75,479.06 272.94,473.65 276.00,471.80 276.00,471.80 313.00,450.55 313.00,450.55 344.37,431.99 371.07,415.63 395.86,388.09 403.46,379.64 414.42,366.25 419.00,356.00 Z M 5.00,479.00 C 5.00,479.00 25.00,479.00 25.00,479.00 35.81,478.98 55.68,475.57 66.00,472.25 84.39,466.36 101.79,457.36 119.00,448.75 125.78,445.36 139.57,437.75 146.00,436.00 146.00,436.00 151.13,467.00 151.13,467.00 151.93,470.21 154.39,476.77 152.31,479.59 150.68,481.80 139.26,486.15 136.00,487.76 123.13,494.09 109.02,500.95 97.00,508.69 93.39,511.01 82.77,517.03 81.92,521.04 81.35,523.75 84.30,530.18 85.31,533.00 85.31,533.00 94.95,560.00 94.95,560.00 105.18,587.45 118.77,620.40 136.15,643.99 138.80,647.58 150.83,660.98 154.00,663.83 158.66,668.01 162.60,669.55 166.00,675.00 160.98,676.00 154.08,674.03 149.00,672.88 149.00,672.88 122.00,666.66 122.00,666.66 118.20,665.48 111.07,664.10 108.39,661.57 106.46,659.76 102.98,652.75 101.42,650.00 101.42,650.00 86.14,619.00 86.14,619.00 86.14,619.00 65.31,574.00 65.31,574.00 65.31,574.00 51.30,544.00 51.30,544.00 51.30,544.00 45.56,532.00 45.56,532.00 40.23,522.46 34.06,511.11 26.83,503.00 20.85,496.30 8.49,486.38 5.00,479.00 Z M 687.00,479.00 C 689.02,470.07 693.39,457.62 693.98,449.00 694.14,446.57 694.51,438.42 696.60,437.13 698.94,435.68 703.77,439.05 706.00,440.12 706.00,440.12 719.00,446.32 719.00,446.32 719.00,446.32 732.00,453.42 732.00,453.42 732.00,453.42 751.00,462.69 751.00,462.69 762.48,467.87 782.59,474.43 795.00,476.74 803.19,478.26 817.53,479.04 826.00,479.00 826.00,479.00 837.00,479.00 837.00,479.00 833.61,486.17 823.95,492.49 818.29,499.00 808.06,510.74 802.92,520.73 795.42,534.00 795.42,534.00 750.11,630.00 750.11,630.00 750.11,630.00 738.58,653.00 738.58,653.00 737.46,654.98 734.82,660.24 733.51,661.57 730.75,664.36 722.94,665.62 719.00,666.63 719.00,666.63 688.00,674.00 688.00,674.00 683.02,674.71 681.01,676.00 676.00,675.00 676.00,675.00 676.00,673.00 676.00,673.00 705.77,651.12 720.16,622.90 734.42,590.00 734.42,590.00 749.31,553.00 749.31,553.00 749.31,553.00 755.08,535.00 755.08,535.00 755.08,535.00 761.00,519.00 761.00,519.00 761.00,519.00 746.00,509.68 746.00,509.68 746.00,509.68 726.00,498.17 726.00,498.17 726.00,498.17 701.00,485.51 701.00,485.51 701.00,485.51 687.00,479.00 687.00,479.00 Z M 420.00,474.00 C 425.02,477.95 431.64,487.65 436.29,493.00 436.29,493.00 447.00,503.91 447.00,503.91 462.53,518.36 483.64,530.77 502.00,541.42 502.00,541.42 517.00,550.91 517.00,550.91 519.35,552.42 523.51,554.36 525.05,556.53 527.05,559.37 526.99,565.58 527.00,569.00 527.04,594.75 525.41,604.71 513.75,628.00 509.53,636.45 504.76,645.32 497.00,651.00 495.81,643.96 502.64,637.94 505.74,632.00 511.84,620.28 515.50,606.57 509.68,594.00 505.07,584.07 493.23,575.17 484.00,569.60 484.00,569.60 446.00,547.85 446.00,547.85 446.00,547.85 429.00,538.68 429.00,538.68 426.74,537.49 423.52,535.24 421.00,535.12 417.40,534.94 402.12,544.07 398.00,546.31 398.00,546.31 358.00,569.57 358.00,569.57 349.60,574.93 338.66,582.13 333.80,591.00 325.45,606.22 328.73,617.35 336.26,632.00 339.25,637.81 345.96,644.36 345.00,651.00 339.59,648.21 334.73,640.19 331.44,635.00 321.23,618.92 314.23,595.08 314.00,576.00 313.95,571.74 314.08,560.78 316.17,557.32 317.87,554.52 326.88,548.87 330.00,547.01 330.00,547.01 362.00,528.19 362.00,528.19 376.00,519.61 392.77,507.05 403.85,494.96 403.85,494.96 420.00,474.00 420.00,474.00 Z M 114.00,530.00 C 130.03,530.00 135.27,530.02 151.00,525.28 154.53,524.22 167.50,518.23 169.79,518.81 172.02,519.37 173.48,522.20 174.60,524.00 177.84,529.21 182.14,534.18 184.00,540.00 177.69,543.29 165.63,549.76 159.00,551.00 161.84,561.04 169.27,575.62 174.22,585.00 180.56,597.02 186.68,608.72 194.34,620.00 194.34,620.00 213.00,644.00 213.00,644.00 213.00,644.00 185.00,638.01 185.00,638.01 185.00,638.01 173.63,634.19 173.63,634.19 173.63,634.19 164.42,619.00 164.42,619.00 164.42,619.00 149.22,588.00 149.22,588.00 149.22,588.00 127.91,549.00 127.91,549.00 127.91,549.00 114.00,530.00 114.00,530.00 Z M 683.00,551.00 C 676.86,549.85 670.57,546.58 665.00,543.75 663.27,542.87 660.01,541.42 659.15,539.61 658.22,537.64 659.42,535.68 660.39,534.00 662.26,530.76 668.75,519.63 672.09,518.92 675.35,518.24 688.68,524.93 693.00,526.23 701.74,528.86 706.11,528.96 715.00,529.00 715.00,529.00 727.00,530.00 727.00,530.00 727.00,530.00 711.74,552.00 711.74,552.00 711.74,552.00 686.25,601.00 686.25,601.00 686.25,601.00 674.28,624.00 674.28,624.00 674.28,624.00 667.73,634.18 667.73,634.18 667.73,634.18 654.00,638.87 654.00,638.87 654.00,638.87 629.00,645.00 629.00,645.00 629.00,645.00 628.00,644.00 628.00,644.00 630.79,638.10 634.63,635.76 638.82,631.00 638.82,631.00 649.25,617.00 649.25,617.00 659.74,601.57 667.65,584.92 675.30,568.00 675.30,568.00 683.00,551.00 683.00,551.00 Z";
+    this.x=30;
+    this.y=-100;
+    this.targetY=-30;
+    this.scaleX=0.3;
+    this.scaleY=0.3;
+
+    this.arcs=[];
+
+    for(let i=0;i<4;i++)
+      this.arcs.push(new missionArc(i*180));
+
+
+    this.draw=()=>{
+
+      let elapsed=Date.now()-this.start;
+
+
+      if(!this.fadeOut){
+        this.alpha<1?this.alpha+=.04:this.alpha=1;
+      }
+      else{
+        this.alpha>0?this.alpha-=.05:this.lifetime=0;
+        missionGoing = false
+      }
+
+      ctx.fillStyle=`hsla(0,0%,0%,${.4*this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+
+      this.y+=(this.targetY-this.y)*.12;
+
+
+      this.arcs.forEach(ele=>ele.draw(this.alpha));
+      this.arcs=this.arcs.filter(ele=>ele.lifetime);
+
+      DrawPath(
+        this.x,
+        this.y,
+        this.path,
+        `hsla(55,100%,65%,${this.alpha})`,
+        this.scaleX,
+        this.scaleY
+      );
+
+
+      if((missionCompleteBege1Meter.value <.1 && missionCompleteBege2Meter.value <.1) || inGame)
+        this.fadeOut=true;
+
+    }
+
+  }
+
+  function missionArc(delay){
+
+    this.start=Date.now()+delay;
+
+    this.radius=40;
+    this.speed=5;
+
+    this.lifetime=1;
+
+
+    this.draw=function(alpha){
+
+      if(Date.now()<this.start)
+        return;
+
+
+      this.radius+=this.speed;
+
+
+      ctx.beginPath();
+
+      ctx.arc(
+        160,
+        200,
+        this.radius,
+        Math.PI,
+        Math.PI*2
+      );
+
+      ctx.strokeStyle=`hsla(55,100%,65%,${alpha*(1-this.radius/220)})`;
+
+      ctx.lineWidth=15;
+      ctx.lineCap="round";
+
+      ctx.stroke();
+
+
+      if(this.radius>220)
+        this.lifetime=0;
+
+    }
+
+  }
+
+  function warframeDeath(){
+
+    this.start=Date.now();
+    this.alpha=0;
+    this.fadeOut=false;
+    this.lines=[];
+    this.orbs=[];
+    this.lifetime=1;
+
+    for(let i=0;i<15;i++)this.lines.push(new deathLine(i));
+    for(let i=0;i<18;i++)this.orbs.push(new deathOrb(this.lines));
+
+    this.draw=function(){
+
+      if(!this.fadeOut){
+        this.alpha<.65?this.alpha+=.04:this.alpha=.65;
+      }else{
+        this.alpha>.04?this.alpha-=.05:this.alpha=0;
+        if(this.alpha<=0)this.lifetime=0;
+        deathGoing = false
+      }
+
+      ctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      this.lines.forEach(ele=>ele.draw(this.alpha));
+      this.orbs.forEach(ele=>ele.draw(this.alpha));
+
+      this.lines=this.lines.filter(ele=>ele.lifetime);
+      this.orbs=this.orbs.filter(ele=>ele.lifetime);
+
+      if((this.lines.length==0&&this.orbs.length==0&&!this.fadeOut) || inGame){
+        this.fadeOut=true;
+      }
+    }
+  }
+
+  function deathLine(i){
+
+    this.start=Date.now();
+    this.delay=Math.random()*700;
+
+    this.x=20+i*(280/11)+(Math.random()-.5)*10;
+    this.y=-200-Math.random()*120;
+
+    this.speed=1.8+Math.random();
+    this.size=100+Math.random()*60;
+    this.width=12+Math.random()*16;
+
+    this.lifetime=1;
+
+    this.draw=function(alpha){
+
+      if(Date.now()-this.start<this.delay)return;
+
+      this.y+=this.speed;
+
+      ctx.beginPath();
+      ctx.moveTo(this.x,this.y);
+      ctx.lineTo(this.x,this.y+this.size);
+      ctx.strokeStyle=`hsla(0,100%,35%,${alpha})`;
+      ctx.lineWidth=this.width;
+      ctx.lineCap="round";
+      ctx.stroke();
+
+      DrawCircle(
+        this.x,
+        this.y+this.size,
+        this.width*.45,
+        `hsla(0,100%,45%,${alpha})`
+      );
+
+      if(this.y>230)this.lifetime=0;
+    }
+  }
+
+  function deathOrb(lines){
+
+    let line=lines[Math.floor(Math.random()*lines.length)];
+
+    this.x=line.x+(Math.random()-.5)*8;
+    this.y=-150-Math.random()*120;
+
+    this.speed=1.8+Math.random();
+    this.size=2+Math.random()*5;
+
+    this.start=Date.now();
+    this.delay=Math.random()*700;
+
+    this.lifetime=1;
+
+    this.draw=function(alpha){
+
+      if(Date.now()-this.start<this.delay)return;
+
+      this.y+=this.speed;
+
+      DrawCircle(
+        this.x,
+        this.y,
+        this.size,
+        `hsla(0,100%,55%,${alpha})`
+      );
+
+      if(this.y>210)this.lifetime=0;
+    }
+  }
+
+  function warframeMap(){
+
+    this.alpha=0;
+    this.fadeOut=false;
+    this.t=0;
+    this.lifetime=1;
+
+    this.draw=function(){
+
+      if(!this.fadeOut){
+        this.alpha<.65?this.alpha+=.04:this.alpha=.65;
+      }else{
+        this.alpha>.04?this.alpha-=.04:this.alpha=0;
+        if(this.alpha<=0)this.lifetime=0;
+        mapGoing = false
+      }
+
+      ctx.fillStyle=`hsla(210,80%,8%,${this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      this.t+=2;
+
+      drawMapRoute(40,100,280,100,this.alpha,this.t);
+      drawMapRoute(160,20,160,180,this.alpha,this.t+30);
+      drawMapRoute(70,35,250,165,this.alpha,this.t+60);
+      drawMapRoute(250,35,70,165,this.alpha,this.t+90);
+
+      let pulse=42+Math.sin(Date.now()/180)*4;
+
+      DrawCircle(160,100,pulse,`hsla(205,100%,35%,${this.alpha})`);
+      DrawCircle(160,100,pulse*.72,`hsla(205,100%,55%,${this.alpha})`);
+      DrawCircle(160,100,pulse*.42,`hsla(0,0%,100%,${this.alpha})`);
+
+      if((mapBege1Meter.value <.1 || mapBege2Meter.value <.1) && !this.fadeOut)
+        this.fadeOut=true;
+    }
+
+    this.start=Date.now();
+  }
+
+  function drawMapRoute(x1,y1,x2,y2,alpha,offset){
+
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.strokeStyle=`hsla(195,100%,45%,${alpha*.7})`;
+    ctx.lineWidth=14;
+    ctx.lineCap="round";
+    ctx.stroke();
+
+    let t=((offset%100)/100);
+
+    let x=x1+(x2-x1)*t;
+    let y=y1+(y2-y1)*t;
+
+    DrawCircle(x,y,12,`hsla(0,0%,100%,${alpha})`);
+  }
+
+  function warframeBoss(){
+
+    this.start=Date.now();
+
+    this.alpha=0;
+    this.fadeOut=false;
+
+    this.topY=-180;
+    this.bottomY=320;
+    this.leftX=-180;
+    this.rightX=420;
+
+    this.topTarget=5;
+    this.bottomTarget=115;
+    this.leftTarget=40;
+    this.rightTarget=170;
+
+    this.cross=0;
+
+    this.done=false;
+    this.lifetime=1;
+
+    this.draw=function(){
+
+      // Fade In / Fade Out
+      if(!this.fadeOut){
+        this.alpha<.65?this.alpha+=.04:this.alpha=.65;
+      }else{
+        this.alpha>.04?this.alpha-=.04:this.alpha=0;
+        if(this.alpha<=0)this.lifetime=0;
+        
+      }
+
+      ctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      ctx.fillRect(0,0,320,200);
+
+      if(!this.done){
+
+        this.topY+=(this.topTarget-this.topY)*.14;
+        this.bottomY+=(this.bottomTarget-this.bottomY)*.14;
+
+        this.leftX+=(this.leftTarget-this.leftX)*.14;
+        this.rightX+=(this.rightTarget-this.rightX)*.14;
+
+        if(
+          Math.abs(this.topY-this.topTarget)<1 &&
+          Math.abs(this.bottomY-this.bottomTarget)<1 &&
+          Math.abs(this.leftX-this.leftTarget)<1 &&
+          Math.abs(this.rightX-this.rightTarget)<1
+        ){
+          this.done=true;
+        }
+      }
+
+            // Top
+      drawBossPiece(
+          110,
+          this.topY - 20,
+          120,
+          0,
+          `hsla(0,100%,30%,${this.alpha})`
+      );
+
+      // Right
+      drawBossPiece(
+          this.rightX + 105,
+          50,
+          120,
+          Math.PI/2,
+          `hsla(0,100%,30%,${this.alpha})`
+      );
+
+      // Bottom
+      drawBossPiece(
+          210,
+          this.bottomY + 100,
+          120,
+          Math.PI,
+          `hsla(0,100%,30%,${this.alpha})`
+      );
+
+      // Left
+      drawBossPiece(
+          this.leftX + 5,
+          150,
+          120,
+          -Math.PI/2,
+          `hsla(0,100%,30%,${this.alpha})`
+      );
+
+      if(this.done){
+
+        if(this.cross<1)this.cross+=.05;
+
+        ctx.save();
+
+        ctx.translate(160,100);
+
+        ctx.strokeStyle=`hsla(40,100%,80%,${this.alpha*this.cross})`;
+        ctx.lineWidth=18;
+        ctx.lineCap="round";
+
+        ctx.beginPath();
+        ctx.moveTo(-90*this.cross,-90*this.cross);
+        ctx.lineTo(90*this.cross,90*this.cross);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(90*this.cross,-90*this.cross);
+        ctx.lineTo(-90*this.cross,90*this.cross);
+        ctx.stroke();
+
+        ctx.restore();
+
+        if(Date.now()-this.start>2200)
+          this.fadeOut=true;
+      }
+    }
+  }
+
+  function drawBossPiece(x,y,size,rot,color){
+
+      let s=size/120;
+
+      ctx.save();
+
+      ctx.translate(x,y);
+      ctx.rotate(rot);
+
+      ctx.beginPath();
+
+      ctx.moveTo(50*s,0*s);
+      ctx.lineTo(100*s,50*s);
+      ctx.lineTo(78*s,72*s);
+      ctx.lineTo(50*s,44*s);
+      ctx.lineTo(22*s,72*s);
+      ctx.lineTo(0*s,50*s);
+
+      ctx.closePath();
+
+      ctx.fillStyle=color;
+      ctx.fill();
+
+      ctx.restore();
+  }
+
+
+    //#endregion
+    
+  //#region Helper Functions
+  function innerEffects(){
+        this.effects = []
+        this.Add = (cb, arr) => {
+            this.effects.push(new cb(...arr))
+        }
+        this.draw = () => {
+            this.effects.forEach((ele, i)=>{
+                ele.draw()
+                if(ele.lifetime <= 0) this.effects.splice(i, 1)
+            })
+        }
+    }
+
+    function testTranslate(start, end, rot, scaleX, scaleY){
+        ctx.save()
+        ctx.translate(start[0], start[1])
+        ctx.scale(scaleX, scaleY)
+        ctx.rotate(rot)
+        ctx.translate(end[0], end[1])
+    }
+
+  function DrawArc(x, y, start, end, radius, direction, color){
+    ctx.beginPath()
+    ctx.arc(x, y, radius, start, end, direction)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  function DrawLine(start, end, color, stroke){
+    ctx.beginPath()
+    ctx.moveTo(start[0], start[1])
+    ctx.lineTo(end[0], end[1])
+    ctx.strokeStyle = color
+    ctx.lineWidth = stroke
+    ctx.stroke()
+  }
+
+  function drawRadialGradient(color1, color2, inneRadius, fade) {
+      ctx.beginPath();
+      let gradient = ctx.createRadialGradient(160, 100, inneRadius, 160, 100, inneRadius + fade)
+      gradient.addColorStop(0, color1);
+      gradient.addColorStop(1, color2);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 320, 200);
+  }
+
+  function DrawEllipse(x, y, width, height, rotation, color){
+    ctx.beginPath()
+    ctx.ellipse(x, y, width, height, rotation, 0, Math.PI * 2)
+    ctx.fillStyle = color
+    ctx.fill()
+  }
+
+  
+  function lightning(size, color, width){
+      this.points = [];
+      this.color = color
+      this.width = width
+      while(this.points.length <= size){
+        this.points.push([this.points.length * (350 / size) - 25, 100])
+      }
+      this.draw = function(){
+        drawLightning(this.points, this.color, this.width)
+        this.points.forEach((ele, i)=>{
+          var mod = Math.sin(Date.now() / (100000 * Math.random()))
+          switch(i){
+            case 0:
+              this.points[i][1] < 90 ? this.points[i][1]+=2 : 
+                this.points[i][1] > 110 ? this.points[i][1]-=2 : 
+                  this.points[i][1] += mod * 10;
+              break;
+            case this.points.length - 1:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                  this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                      this.points[i][1] += mod * 10;
+              break;
+            default:
+              this.points[i - 1][1] - this.points[i][1] < -30 ? this.points[i][1]-=5 : 
+                this.points[i - 1][1] - this.points[i][1] > 30 ? this.points[i][1]+=5 : 
+                    this.points[i][1] += mod * 10;
+              this.points[i][0] < i * (320 / this.points.length) ? this.points[i][0]+=5 : 
+                this.points[i][0] > i * (320 / this.points.length) + (320 / this.points.length) ? this.points[i][0]-=5 : 
+                    this.points[i][0] += mod * 10;
+              break;
+          }
+        })
+      }
+    }
+
+  function DrawLightning(array, color, width){
+      ctx.beginPath()
+      ctx.moveTo(...array[0])
+      array.forEach((ele, i)=>{
+        if(i){
+          ctx.lineTo(...array[i])
+        }
+      });
+      ctx.strokeStyle = color;
+      ctx.lineJoin = "round";
+      ctx.lineWidth = width + Math.random() * width;
+      ctx.stroke()
+  }
+
+  function DrawGear(x, y, radius, stroke, teeth, color){
+    DrawStroke(x, y, radius, color, stroke)
+    for(let i = 0; i < teeth; i++){
+      var ix = Math.cos(Math.PI * 2 / teeth * i) * radius + x;
+      var iy = Math.sin(Math.PI * 2 / teeth * i) * radius + y;
+      var rotate = Math.atan2(y - iy, x - ix) + Math.PI / 2;
+      ctx.save()
+      ctx.translate(ix, iy)
+      ctx.rotate(rotate)
+      ctx.translate(-ix, -iy)
+      DrawRect(ix, iy, Math.PI * radius * 2 / teeth * .75, radius / 3 + stroke / 2, "orange")
+      ctx.restore()
+    }
+  }
+
+  function DrawPath(x, y, path, color, scaleX, scaleY) {
+    ctx.fillStyle = color;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scaleX, scaleY)
+    let ex = new Path2D(path);
+    ctx.fill(ex);
+    ctx.restore();
+  };
+
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.moveTo(cord1X, cord1Y);
+    ctx.lineTo(cord2X, cord2Y);
+    ctx.lineTo(cord3X, cord3Y);
+    ctx.lineTo(cord1X, cord1Y);
+    ctx.fill();
+  };
+
+  function DrawCircle(x, y, radius, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill();
+  };
+
+  function DrawStroke(x, y, radius, color, stroke) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.stroke();
+  };
+
+  function DrawRect(x, y, width, height, color) {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  };
+
+  function strokeRect(x, y, width, height, color, stroke){
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = stroke
+    ctx.rect(x, y, width, height);
+    ctx.stroke()
+  }
+
+  function DrawHex(x, y, color, size) {
+    ctx.beginPath();
+    for (var i = 0; i < 7; i++) {
+      ctx.lineTo(x + size * Math.cos(2 * Math.PI / 6 * i), y + size * 0.9 * Math.sin(2 * Math.PI / 6 * i));
+    }
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = "black"
+    ctx.stroke()
+  };
+
+      function getCubicBezierXYatPercent(startPt, controlPt1, controlPt2, endPt, percent) {
+        var x = CubicN(percent, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
+        var y = CubicN(percent, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
+
+        return ({ x: x, y: y });
+      }
+
+      function CubicN(pct, a, b, c, d) {
+        var t2 = pct * pct;
+        var t3 = t2 * pct;
+        return a + (-a * 3 + pct * (3 * a - a * pct)) * pct
+          + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct
+          + (c * 3 - c * 3 * pct) * t2
+          + d * t3;
+      }
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  function hexToHSL(hex) {
+      const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+      const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+      const max = Math.max(...rgb);
+      const min = Math.min(...rgb);
+      const l = (max + min) / 2;
+      
+      if (max === min) return [0, 0, Math.round(l * 100)];
+      
+      const d = max - min;
+      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      
+      let h;
+      const [nr, ng, nb] = rgb;
+      if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0);
+      else if (max === ng) h = (nb - nr) / d + 2;
+      else h = (nr - ng) / d + 4;
+      
+      return [
+        Math.round(h * 60),
+        Math.round(s * 100),
+        Math.round(l * 100)
+      ];
+    }
+  
+    function Meter(size, callback) {
+      this.size = size;
+      this.value = 0;
+      this.diff = 0;
+      this.increased = false;
+      this.decreased = false;
+      var values = [];
+  
+      this.setValue = function (updatedValue) {
+        values.push(updatedValue);
+        if (values.length > this.size) {
+          values.shift();
+        }
+  
+        for (var i = 0; i < values.length - 1; i++) {
+          if (values[i] !== values[i + 1]) return;
+        }
+        if (this.value !== values[0]) {
+          this.diff = Math.abs(this.value - values[0]);
+          this.increased = this.value < values[0];
+          this.decreased = this.value > values[0];
+          this.value = values[0];
+          callback();
+        }
+      }
+    }
+    
+    function onCanvasTapped(x, y) {
+  
+    }
+    //#endregion
+
+
+  window.requestAnimationFrame(update);
+</script>
