@@ -1,22 +1,22 @@
 <head>
   <title>Overwatch 2 Dev</title>
-  <meta description="Effects and ambience for Overwatch 2. v1.08" />
+  <meta description="Effects and ambience for Overwatch 2. v1.09" />
   <meta publisher="SignalRGB" />
 
-  <meta property="heroChoice" label="Select a Hero" type="list" values="Ana,Ashe,Baptiste,Bastion,Brigitte,Cassidy,D.va,Doomfist,Echo,Freja,Genji,Hanzo,Hazard,Illari,Junker Queen,Junkrat,Juno,Kiriko,Orisa,Lifeweaver,Lucio,Mauga,Mercy,Mei,Moira,Pharah,Ramattra,Reaper,Reinhardt,Roadhog,Sigma,Sojourn,Soldier 76,Sombra,Symmetra,Torbjorn,Tracer,Venture,Widowmaker,Winston,Wrecking Ball,Zarya,Zenyatta"
+  <meta property="heroChoice" label="Select a Hero" tooltip="Selects which hero's ability effects to display." type="list" values="Ana,Anran,Ashe,Baptiste,Bastion,Brigitte,Cassidy,D.va,Domina,Doomfist,Echo,Emre,Freja,Genji,Hanzo,Hazard,Illari,Jetpack Cat,Junker Queen,Junkrat,Juno,Kiriko,Orisa,Lifeweaver,Lucio,Mauga,Mercy,Mei,Mizuki,Moira,Pharah,Ramattra,Reaper,Reinhardt,Roadhog,Shion,Sierra,Sigma,Sojourn,Soldier 76,Sombra,Symmetra,Torbjorn,Tracer,Vendetta,Venture,Widowmaker,Winston,Wrecking Ball,Wuyang,Zarya,Zenyatta"
     default="Mauga"/>
-  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
-  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  <meta property="ambienceAlpha" label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
   default="Ambience"/>
-  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
-  <meta property="vdOn" label="Victory / Defeat Effects" type="boolean" default="1" />
-  <meta property="skillsOn" label="Hero Abilities" type="boolean" default="1" />
-  <meta property="healingOn" label="Healing Effect" type="boolean" default="1" />
-  <meta property="antihealingOn" label="Anti-Healing Effect" type="boolean" default="1" />
-  <meta property="lowhealthOn" label="Low-Health Effect" type="boolean" default="1" />
-  <meta property="killOn" label="Kill Effect" type="boolean" default="1" />
-  <meta property="ultOn" label="Ultimate Ready Effect" type="boolean" default="1" />
-  <meta property="overtimeOn" label="Overtime Effect" type="boolean" default="1" />
+  <meta property="backColor" label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+  <meta property="vdOn" label="Victory / Defeat Effects" tooltip="Turns on the effect that plays when you win or lose a match." type="boolean" default="1" />
+  <meta property="skillsOn" label="Hero Abilities" tooltip="Turns on the effects that play when you use your hero's abilities." type="boolean" default="1" />
+  <meta property="healingOn" label="Healing Effect" tooltip="Turns on the effect that plays when you are healed." type="boolean" default="1" />
+  <meta property="antihealingOn" label="Anti-Healing Effect" tooltip="Turns on the effect that plays when you are anti-healed." type="boolean" default="1" />
+  <meta property="lowhealthOn" label="Low-Health Effect" tooltip="Turns on the effect that plays when your health is low." type="boolean" default="1" />
+  <meta property="killOn" label="Kill Effect" tooltip="Turns on the effect that plays when you get a kill." type="boolean" default="1" />
+  <meta property="ultOn" label="Ultimate Ready Effect" tooltip="Turns on the effect that plays when your ultimate is ready." type="boolean" default="1" />
+  <meta property="overtimeOn" label="Overtime Effect" tooltip="Turns on the effect that plays during overtime." type="boolean" default="1" />
 
   <meta meter="inGameBlueBottom" tags="VLC,process,Overwatch,photos" type="area" x="0.0535" y="0.9431" width="0.0012" height="0.0000"
     h="180-225" s="25-100" l="80-100" hdr-h="170-220" hdr-s="25-100" hdr-l="50-100">
@@ -296,7 +296,7 @@
   </meta>
 
   <meta meter="SmallBlock3Orange" tags="VLC,process,Overwatch" type="area" x="0.7730" y="0.8951" width="0" height="-0.0014" 
-    h="0-40" s="20-100" l="30-100" hdr-h="0-40" hdr-s="20-100" hdr-l="3s0-100">
+    h="0-40" s="20-100" l="30-100" hdr-h="0-40" hdr-s="20-100" hdr-l="30-100">
     <resolution aspect="3.55:1" x="0.7235" y="0.8955" width="0" height="0" />
     <resolution aspect="24:10" x="0.8344" y="0.8951" width="0" height="0" />
     <resolution aspect="16:11" x="0.7773" y="0.9087" width="0" height="0" />
@@ -421,12 +421,12 @@
   var WreckingFrejaWhiteMeter = new Meter(2, handleHeroMainAbilities)
   var SigmaWhiteMeter = new Meter(8, handleHeroMainAbilities)
 
-  var SmallBlock1orangemeter = new Meter(2, handleHeroMainAbilities)
-  var SmallBlock2orangemeter = new Meter(8, handleHeroMainAbilities)
-  var SmallBlock3orangemeter = new Meter(2, handleHeroMainAbilities)
-  var SmallBlock4orangemeter = new Meter(8, handleHeroMainAbilities)
-  var SmallBlock5orangemeter = new Meter(8, handleHeroMainAbilities)
-  var SigmaBlockorangemeter = new Meter(8, handleHeroMainAbilities)
+  var SmallBlock1OrangeMeter = new Meter(2, handleHeroMainAbilities)
+  var SmallBlock2OrangeMeter = new Meter(8, handleHeroMainAbilities)
+  var SmallBlock3OrangeMeter = new Meter(2, handleHeroMainAbilities)
+  var SmallBlock4OrangeMeter = new Meter(8, handleHeroMainAbilities)
+  var SmallBlock5OrangeMeter = new Meter(8, handleHeroMainAbilities)
+  var SigmaBlockOrangeMeter = new Meter(8, handleHeroMainAbilities)
 
   var ZenYellowMeter = new Meter(15, zenyattaaAbilities)
   var ZenPurpleMeter = new Meter(15, zenyattaaAbilities)
@@ -478,12 +478,12 @@
       SmallGroup4WhiteMeter.setValue(engine.vision.SmallGroup4White)
       SmallGroup5WhiteMeter.setValue(engine.vision.SmallGroup5White)
 
-      SmallBlock1orangemeter.setValue(engine.vision.SmallBlock1Orange)
-      SmallBlock2orangemeter.setValue(engine.vision.SmallBlock2Orange)
-      SmallBlock3orangemeter.setValue(engine.vision.SmallBlock3Orange)
-      SmallBlock4orangemeter.setValue(engine.vision.SmallBlock4Orange)
-      SmallGroup5WhiteMeter.setValue(engine.vision.SmallBlock5Orange)
-      SigmaBlockorangemeter.setValue(engine.vision.SigmaBlockOrange)
+      SmallBlock1OrangeMeter.setValue(engine.vision.SmallBlock1Orange)
+      SmallBlock2OrangeMeter.setValue(engine.vision.SmallBlock2Orange)
+      SmallBlock3OrangeMeter.setValue(engine.vision.SmallBlock3Orange)
+      SmallBlock4OrangeMeter.setValue(engine.vision.SmallBlock4Orange)
+      SmallBlock5OrangeMeter.setValue(engine.vision.SmallBlock5Orange)
+      SigmaBlockOrangeMeter.setValue(engine.vision.SigmaBlockOrange)
       WreckingFrejaWhiteMeter.setValue(engine.vision.WreckingFrejaWhite)
       SigmaWhiteMeter.setValue(engine.vision.SigmaWhite)
       ZenYellowMeter.setValue(engine.vision.ZenYellow)
@@ -657,7 +657,7 @@
         abilities : 2,
         effects : [() => new anaSleep(),() => new anaGrenade()],
         meters : [SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -666,7 +666,88 @@
         abilities : 2,
         effects : [() => new cassidyRoll(),() => new cassidyGrenade()],
         meters : [SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock2orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock1OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Domina":{
+        abilities : 3,
+        effects : [() => new dominaBarrierArray(),() => new dominaCrystalCharge(),() => new dominaSonicRepulsors()],
+        meters : [SmallGroup2WhiteMeter,SmallGroup3WhiteMeter,SmallGroup4WhiteMeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock3OrangeMeter,SmallBlock4OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up", "smallSkill3Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Anran":{
+        abilities : 2,
+        effects : [() => new Skill2_Bounce(),() => new Skill1_Dash()],
+        meters : [SmallGroup4WhiteMeter,SmallGroup5WhiteMeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock5OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Emre":{
+        abilities : 2,
+        effects : [() => new emreGrenade(),() => new emreShot()],
+        meters : [SmallGroup2WhiteMeter,SmallGroup3WhiteMeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock3OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Jetpack Cat":{
+        abilities : 3,
+        effects : [() => new jetpackCatDash(),() => new jetpackCatUltimate(),() => new jetpackCatRescue()],
+        meters : [SmallGroup1WhiteMeter,SmallGroup2WhiteMeter,SmallGroup4WhiteMeter],
+        orangemeters : [SmallBlock1OrangeMeter,SmallBlock2OrangeMeter,SmallBlock3OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up", "smallSkill3Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Vendetta":{
+        abilities : 4,
+        effects : [() => new vendettaThrowBuff(),() => new vendettaShield(),() => new VendettaTrow(),() => new VendettaUltimate()],
+        meters : [SmallGroup2WhiteMeter,SmallGroup3WhiteMeter,SmallGroup4WhiteMeter,SmallGroup5WhiteMeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock3OrangeMeter,SmallBlock4OrangeMeter,SmallBlock5OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up", "smallSkill3Up", "smallSkill4Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Shion":{
+        abilities : 3,
+        effects : [() => new shionExecution(),() => new shionBike(),() => new shionEvasion()],
+        meters : [SmallGroup1WhiteMeter,SmallGroup2WhiteMeter,SmallGroup3WhiteMeter],
+        orangemeters : [SmallBlock1OrangeMeter,SmallBlock2OrangeMeter,SmallBlock3OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up", "smallSkill3Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Mizuki":{
+        abilities : 3,
+        effects : [() => new MizukiBuff(),() => new MizukiChain(),() => new mizukiAura()],
+        meters : [SmallGroup1WhiteMeter,SmallGroup2WhiteMeter,SmallGroup3WhiteMeter],
+        orangemeters : [SmallBlock1OrangeMeter,SmallBlock2OrangeMeter,SmallBlock3OrangeMeter],
+        flags : ["smallSkill1Up", "smallSkill2Up", "smallSkill3Up"],
+        heroflags :[],
+        tag:"blocked"
+      },
+      "Sierra":{
+        abilities : 3,
+        effects : [() => new sierraTrackingShot(),() => new sierraTremorCharge(),() => new sierraAnchorDrone()],
+        meters : [SmallGroup2WhiteMeter,SmallGroup3WhiteMeter,SmallGroup5WhiteMeter],
+        orangemeters : [],
+        flags : ["smallSkill1Up", "smallSkill2Up", "smallSkill3Up"],
+        heroflags :[],
+        tag:""
+      },
+      "Wuyang":{
+        abilities : 2,
+        effects : [() => new wuyangRipple(),() => new wuyangCurrent()],
+        meters : [SmallGroup3WhiteMeter,SmallGroup4WhiteMeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock4OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -684,7 +765,7 @@
         abilities : 2,
         effects : [() => new junkRat(1),() => new junkRat(2)],
         meters : [SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock2orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -711,7 +792,7 @@
         abilities : 2,
         effects : [() => new meiFreeze(), () => new meiWall()],
         meters : [SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock2orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up","smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -720,7 +801,7 @@
          abilities : 2,
         effects : [() => new moiraJump(),() => new moiraBalls()],
         meters : [SmallGroup2WhiteMeter,SmallGroup3WhiteMeter],
-        orangemeters : [SmallBlock2orangemeter,SmallBlock3orangemeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock3OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -729,7 +810,7 @@
          abilities : 2,
         effects : [() => new reaperJump(),() => new reaperTele()],
         meters : [SmallGroup3WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock3orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -747,7 +828,7 @@
          abilities : 2,
         effects : [() => new tracerNoSprint(0),() => new tracerBackSkill()],
         meters : [SmallGroup1WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock1orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock1OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -756,7 +837,7 @@
          abilities : 2,
         effects : [() => new ventureBurrow(),() => new ventureDash()],
         meters : [SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock2orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -765,7 +846,7 @@
          abilities : 2,
         effects : [() => new widowHook(),() => new widowMine()],
         meters : [SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -792,7 +873,7 @@
         abilities : 2,
         effects : [() => new asheShotgun(),() => new asheDynamite()],
         meters : [SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -801,7 +882,7 @@
         abilities : 2,
         effects : [() => new baptisteHeal(),() => new baptisteImmortal()],
         meters : [SmallGroup5WhiteMeter,SmallGroup4WhiteMeter],
-        orangemeters : [SmallBlock5orangemeter,SmallBlock4orangemeter],
+        orangemeters : [SmallBlock5OrangeMeter,SmallBlock4OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -810,7 +891,7 @@
         abilities : 2,
         effects : [() => new bastionGun(),() => new bastionGrenade()],
         meters : [SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :[],
         tag:"blocked"
@@ -836,7 +917,7 @@
       //hero without effects, i put others here for now
       "Freja":{
         abilities : 2,
-        effects : [() => new kirikoTeleport(),() => new kirikoHeal()],
+        effects : [() => new frejaVolley(),() => new frejaJump()],
         meters : [WreckingFrejaWhiteMeter,SmallGroup3WhiteMeter],
         orangemeters : [],
         flags : ["smallSkill1Up", "smallSkill2Up"],
@@ -846,7 +927,7 @@
       //hero without effects, i put others here for now
       "Hazard":{
         abilities : 3,
-        effects : [() => new pharahJump(10),() => new pharahBomb(),() => new pharahJump(5)],
+        effects : [() => new hazardSlam(),() => new hazardWall(),() => new hazardSpikes()],
         meters : [SmallGroup3WhiteMeter,SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
         orangemeters : [],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
@@ -875,7 +956,7 @@
         abilities : 3,
         effects : [() => new echoFly(),() => new echoBeam(),() => new echoBomb()],
         meters : [SmallGroup4WhiteMeter,SmallGroup3WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock3orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock3OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :["","echo2Going",""],
         tag:"blocked"
@@ -884,7 +965,7 @@
         abilities : 3,
         effects : [() => new junkerShout(),() => new junkerSlash(),() => new MundoQ()],
         meters : [SmallGroup4WhiteMeter,SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock2orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock2OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -902,7 +983,7 @@
         abilities : 3,
         effects : [() => new orisaBuff(),() => new orisaSpin(),() => new orisaSpear()],
         meters : [SmallGroup4WhiteMeter,SmallGroup3WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock3orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock3OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -911,7 +992,7 @@
         abilities : 3,
         effects : [() => new reinBoost(),() => new reinSlash(),() => new reinShield()],
         meters : [SmallGroup4WhiteMeter,SmallGroup3WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock3orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock3OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -920,7 +1001,7 @@
         abilities : 3,
         effects : [() => new sojournSlide(),() => new sojournZone(),() => new sojournCharge()],
         meters : [SmallGroup4WhiteMeter,SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :["","sojourn2Going",""],
         tag:"blocked"
@@ -929,7 +1010,7 @@
         abilities : 3,
         effects : [() => new sombraHealthDrain(),() => new sombraJump(),() => new sombraHack()],
         meters : [SmallGroup4WhiteMeter,SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock2orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock2OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -938,7 +1019,7 @@
         abilities : 2,
         effects : [() => new lucioBoost(),() => new lucioBoom()],
         meters : [SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up"],
         heroflags :["","",""],
         tag:"blocked"
@@ -965,7 +1046,7 @@
         abilities : 2,
         effects : [() => new illariJump(),() => new illariHeal()],
         meters : [SmallGroup5WhiteMeter,SmallGroup4WhiteMeter],
-        orangemeters : [SmallBlock5orangemeter,SmallBlock4orangemeter],
+        orangemeters : [SmallBlock5OrangeMeter,SmallBlock4OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" ],
         heroflags :[],
         tag:"blocked"
@@ -974,7 +1055,7 @@
         abilities : 3,
         effects : [() => new ramattraPunch(),() => new ramattraSpiral(),() => new ramattraZone()],
         meters : [SmallGroup4WhiteMeter,SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -983,7 +1064,7 @@
         abilities : 3,
         effects : [() => new soldierSprint(),() => new soldierHeal(),() => new soldierGrenade()],
         meters : [SmallGroup4WhiteMeter,SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -992,7 +1073,7 @@
         abilities : 3,
         effects : [() => new lifePlatform(),() => new lifePull(),() => new hanzoJump()],
         meters : [SmallGroup4WhiteMeter,SmallGroup3WhiteMeter,SmallGroup2WhiteMeter],
-        orangemeters : [SmallBlock4orangemeter,SmallBlock3orangemeter,SmallBlock2orangemeter],
+        orangemeters : [SmallBlock4OrangeMeter,SmallBlock3OrangeMeter,SmallBlock2OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -1001,7 +1082,7 @@
         abilities : 2,
         effects : [() => new roadHogHook(),() => new roadhogGas()],
         meters : [SmallGroup2WhiteMeter,SmallGroup1WhiteMeter],
-        orangemeters : [SmallBlock2orangemeter,SmallBlock1orangemeter],
+        orangemeters : [SmallBlock2OrangeMeter,SmallBlock1OrangeMeter],
         flags : ["smallSkill1Up", "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -1019,7 +1100,7 @@
         abilities : 3,
         effects : [() => new sigmaAbsorb(),() => new sigmaRock(),() => new winstonShield()],
         meters : [SmallGroup3WhiteMeter,SmallGroup1WhiteMeter,SigmaWhiteMeter],
-        orangemeters : [SmallBlock3orangemeter,SmallBlock1orangemeter,SigmaBlockorangemeter],
+        orangemeters : [SmallBlock3OrangeMeter,SmallBlock1OrangeMeter,SigmaBlockOrangeMeter],
         flags : ["smallSkill1Up", "smallSkill2Up" , "smallSkill3Up"],
         heroflags :[],
         tag:"blocked"
@@ -3696,6 +3777,2717 @@
       else this.alpha < 1 ? this.alpha += .05 : this.alpha = 1;
     }
   }
+
+  // ===================== NEW HERO: Domina =====================
+  function dominaBarrierArray(){
+
+    this.phase = 0
+    this.y = 200
+    this.alpha = 1
+    this.time = 0
+    this.cells = []
+
+    for(let i = 0; i < 12; i++){
+      this.cells.push({
+        x: Math.floor(Math.random() * 8),
+        y: Math.floor(Math.random() * 5),
+        alpha: Math.random()
+      })
+    }
+
+    this.draw = function(){
+
+      if(this.phase == 0){
+
+        DrawRect(0,this.y,320,200-this.y,`hsla(195,100%,65%,.35)`)
+        drawBarrierGrid(this.y)
+        this.y -= 8
+
+        if(this.y <= 0){
+          this.phase = 1
+        }
+
+      }else if(this.phase == 1){
+
+        DrawRect(0,0,320,200,`hsla(195,100%,65%,.35)`)
+        drawBarrierGrid(0)
+
+        this.cells.forEach(cell=>{
+
+          cell.alpha -= .04
+
+          if(cell.alpha <= 0){
+            cell.x = Math.floor(Math.random() * 8)
+            cell.y = Math.floor(Math.random() * 5)
+            cell.alpha = 1
+          }
+
+          let px = cell.x * 40 + 14
+          let py = cell.y * 40 + 14
+
+          hctx.globalAlpha = cell.alpha
+          DrawRect(px,py,30,30,"white")
+        })
+
+        hctx.globalAlpha = 1
+        this.time++
+
+        if(this.time > 90){
+          this.phase = 2
+        }
+
+      }else{
+
+        hctx.globalAlpha = this.alpha
+        DrawRect(0,0,320,200,`hsla(195,100%,65%,.35)`)
+        drawBarrierGrid(0)
+        hctx.globalAlpha = 1
+
+        this.alpha -= .03
+
+        if(this.alpha <= 0){
+          this.lifetime = 0
+        }
+      }
+    }
+  }
+
+  function drawBarrierGrid(offsetY){
+
+    for(let x = 0; x < 320; x += 40){
+      DrawRect(x,offsetY,6,200-offsetY,`hsla(210,100%,85%,.4)`)
+    }
+
+    for(let y = offsetY; y < 200; y += 40){
+      DrawRect(0,y,320,6,`hsla(210,100%,85%,.25)`)
+    }
+  }
+
+  function dominaSonicRepulsors(){
+
+    this.phase = 0
+
+    this.rad1 = 10
+    this.rad2 = 30
+    this.rad3 = 50
+
+    this.explosionRad = 20
+
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+    this.timer = 0;
+
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
+
+      if(this.phase == 0){
+
+        DrawStroke(160,100,this.rad1,`hsla(195,100%,60%,.8)`,30)
+        DrawStroke(160,100,this.rad2,`hsla(200,100%,90%,.7)`,20)
+        DrawStroke(160,100,this.rad3,`hsla(195,100%,75%,.6)`,15)
+
+        drawRepulsorBits(this.rad1)
+        drawRepulsorBits(this.rad2)
+        drawRepulsorBits(this.rad3)
+
+        this.rad1 += 3
+        this.rad2 += 4
+        this.rad3 += 5
+
+        if(this.rad1 >= 200 && !this.fadeOut){
+          this.fadeOut = true;
+        }
+      }
+    }
+  }
+
+  function drawRepulsorBits(rad){
+
+    for(let i = 0; i < 8; i++){
+
+      let angle = i * Math.PI / 4
+
+      let x = 160 + Math.cos(angle) * rad
+      let y = 100 + Math.sin(angle) * rad
+
+      DrawRect(x-6,y-6,12,12,"white")
+    }
+  }
+
+  function dominaCrystalCharge(){
+
+    this.phase = 0
+    this.progress = 0
+    this.time = 0
+    this.alpha = 0;
+    this.fadeIn = true;
+    this.fadeOut = false;
+    this.lifetime = 1;
+    this.explosionRad = 10
+
+    this.fragments = [
+      { x:160, y:-40,  tx:160, ty:75,  type:"top" },
+      { x:360, y:100,  tx:205, ty:100, type:"right" },
+      { x:160, y:240,  tx:160, ty:125, type:"bottom" },
+      { x:-40, y:100,  tx:115, ty:100, type:"left" }
+    ]
+
+    this.particles = []
+
+    this.draw = function(){
+      if(this.fadeIn){
+
+        this.alpha += .04;
+
+        if(this.alpha >= .65){
+          this.alpha = .65;
+          this.fadeIn = false;
+        }
+
+      }else if(this.fadeOut){
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      DrawRect(0,0,320,200,`hsla(0,0%,0%,${this.alpha})`);
+
+      if(this.phase == 0){
+
+        this.progress += .05
+
+        this.fragments.forEach(f=>{
+          let x = f.x + (f.tx-f.x)*this.progress
+          let y = f.y + (f.ty-f.y)*this.progress
+          drawCrystalPiece(x,y,40,f.type)
+        })
+
+        if(this.progress >= 1){
+          this.phase = 1
+          this.time = 0
+        }
+
+      }else if(this.phase == 1){
+
+        let size = 60 + Math.sin(this.time/4)*5
+        drawCrystal(160,100,size)
+        this.time++
+
+        if(this.time > 25){
+          this.phase = 2
+          this.time = 0
+        }
+
+      }else if(this.phase == 2){
+
+        if(this.time == 0){
+
+          for(let i = 0; i < 40; i++){
+
+            let angle = Math.random()*Math.PI*2
+
+            this.particles.push({
+              x:160,
+              y:100,
+              dx:Math.cos(angle),
+              dy:Math.sin(angle),
+              speed:Math.random()*4+2,
+              alpha:1,
+              size:Math.random()*16+5
+            })
+          }
+        }
+
+        this.explosionRad += 12
+
+        DrawStroke(160,100,this.explosionRad,`hsla(180,100%,80%,.8)`,16)
+
+        this.particles.forEach(p=>{
+
+          p.x += p.dx*p.speed
+          p.y += p.dy*p.speed
+          p.alpha -= .025
+
+          hctx.globalAlpha = p.alpha
+          drawCrystalTriangle(p.x,p.y,p.size + 10,"white")
+          hctx.globalAlpha = 1
+        })
+
+        this.time++
+
+        if(this.explosionRad > 250){
+          this.phase = 3
+        }
+
+      }else{
+
+        DrawRect(0,0,320,200,`hsla(180,100%,65%,${this.alpha})`);
+
+        if(!this.fadeOut)
+          this.fadeOut=true;
+      }
+    }
+  }
+
+  function drawCrystalTriangle(x,y,size,color){
+
+    hctx.beginPath()
+    hctx.moveTo(x,y-size)
+    hctx.lineTo(x-size,y+size)
+    hctx.lineTo(x+size,y+size)
+    hctx.closePath()
+    hctx.fillStyle = color
+    hctx.fill()
+  }
+
+  function drawCrystalPiece(x,y,size,type){
+
+    hctx.beginPath()
+    if(type == "top"){
+      hctx.moveTo(x,y-size)
+      hctx.lineTo(x-size,y)
+      hctx.lineTo(x+size,y)
+    }
+
+    if(type == "right"){
+      hctx.moveTo(x,y-size)
+      hctx.lineTo(x,y+size)
+      hctx.lineTo(x+size,y)
+    }
+
+    if(type == "bottom"){
+      hctx.moveTo(x-size,y)
+      hctx.lineTo(x+size,y)
+      hctx.lineTo(x,y+size)
+    }
+
+    if(type == "left"){
+      hctx.moveTo(x-size,y)
+      hctx.lineTo(x,y-size)
+      hctx.lineTo(x,y+size)
+    }
+
+    hctx.closePath()
+    hctx.fillStyle = `hsla(180,100%,70%,.85)`
+    hctx.fill()
+  }
+
+  function drawCrystal(x,y,size){
+
+    hctx.beginPath()
+    hctx.moveTo(x,y-size)
+    hctx.lineTo(x+size,y)
+    hctx.lineTo(x,y+size)
+    hctx.lineTo(x-size,y)
+    hctx.closePath()
+    hctx.fillStyle = `hsla(180,100%,70%,.8)`
+    hctx.fill()
+
+    DrawStroke(x,y,size,`white`,8)
+  }
+  // =================== END NEW HERO: Domina ===================
+
+  // ===================== NEW HERO: Anran ======================
+  function FireParticle(x, y, speedX, speedY, size, decayRates = [0.03, 0.06]) {
+    this.x = x;
+    this.y = y;
+    this.vx = speedX;
+    this.vy = speedY;
+    this.size = size;
+    this.life = 1.0;
+    this.decay = decayRates[0] + Math.random() * decayRates[1];
+    this.lifetime = 100;
+
+    this.draw = function() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        this.vx *= 0.98;
+        this.vy *= 0.98;
+
+        this.life -= this.decay;
+
+        if (this.life > 0) {
+            hctx.save();
+            hctx.globalCompositeOperation = 'lighter';
+            hctx.globalAlpha = this.life;
+
+            let hue = this.life * 50;
+
+            hctx.beginPath();
+            hctx.arc(this.x, this.y, this.size * this.life, 0, Math.PI * 2);
+            hctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+
+            hctx.shadowBlur = 10;
+            hctx.shadowColor = `hsl(${hue}, 100%, 50%)`;
+
+            hctx.fill();
+            hctx.restore();
+        } else {
+            this.lifetime = 0;
+        }
+    }
+  }
+
+  function drawPhoenix(x, y, scale, wingAngle, isDiving = false) {
+      hctx.save();
+      hctx.translate(x, y);
+      if (isDiving) hctx.rotate(Math.PI / 2);
+      hctx.scale(scale, scale);
+
+      hctx.globalCompositeOperation = 'lighter';
+      hctx.shadowBlur = 25;
+      hctx.shadowColor = "#ff2200";
+
+      hctx.fillStyle = "#ffaa00";
+      hctx.strokeStyle = "#ff1100";
+      hctx.lineWidth = 2.5;
+
+      hctx.beginPath();
+      hctx.moveTo(15, 0);
+      hctx.lineTo(-5, -6);
+      hctx.lineTo(-18, 0);
+      hctx.lineTo(-5, 6);
+      hctx.closePath();
+      hctx.fill();
+      hctx.stroke();
+
+      hctx.save();
+      hctx.translate(-2, -3);
+      hctx.rotate(-wingAngle);
+      hctx.beginPath();
+      hctx.moveTo(0, 0);
+      hctx.lineTo(-12, -22);
+      hctx.lineTo(18, -12);
+      hctx.closePath();
+      hctx.fillStyle = "rgba(255, 60, 0, 0.9)";
+      hctx.fill();
+      hctx.restore();
+
+      hctx.save();
+      hctx.translate(-2, 3);
+      hctx.rotate(wingAngle);
+      hctx.beginPath();
+      hctx.moveTo(0, 0);
+      hctx.lineTo(-12, 22);
+      hctx.lineTo(18, 12);
+      hctx.closePath();
+      hctx.fillStyle = "rgba(255, 60, 0, 0.9)";
+      hctx.fill();
+      hctx.restore();
+
+      hctx.restore();
+  }
+
+  function Skill1_Dash() {
+    this.x = -30;
+    this.y = 100;
+    this.speed = 10;
+    this.timer = 60;
+    this.alpha=0;
+    this.fadeOut=false;
+    this.lifetime=1;
+
+    this.draw=function(){
+      if(!this.fadeOut){
+        if(this.alpha<.65)
+            this.alpha+=.04;
+        else
+            this.alpha=.65;
+
+      }else{
+
+        this.alpha-=.04;
+
+        if(this.alpha<=0){
+            this.alpha=0;
+            this.lifetime=0;
+            return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      this.x += this.speed;
+
+      for(let i=0;i<5;i++){
+
+        effects.push(new FireParticle(
+            this.x-10+(Math.random()*10-5),
+            this.y+(Math.random()*10-5),
+            (Math.random()-0.5)*2-2,
+            (Math.random()-0.5)*2,
+            Math.random()*20+4,
+            [.05,.05]
+        ));
+
+      }
+
+      drawPhoenix(this.x,this.y,3,.2);
+
+      this.timer--;
+
+      if(this.timer<=0)
+        this.fadeOut=true;
+
+    }
+  }
+
+  function Skill2_Bounce() {
+      this.x = 160;
+      this.y = 100;
+      this.targets = [
+          {x: 280, y: 30},
+          {x: 40, y: 170},
+          {x: 40, y: 30},
+          {x: 280, y: 170},
+          {x: 160, y: 100}
+      ];
+      this.targetIndex = 0;
+      this.speed = 25;
+      this.timer = 100;
+      this.lifetime = 1;
+      this.alpha=0;
+      this.fadeOut=false;
+
+      this.createImpact = function(amount) {
+          for(let i=0; i<amount; i++) {
+              effects.push(new FireParticle(
+                  this.x, this.y,
+                  (Math.random() - 0.5) * 15,
+                  (Math.random() - 0.5) * 15,
+                  Math.random() * 40 + 6,
+                  [0.02, 0.04]
+              ));
+          }
+      }
+
+      this.draw = function() {
+        if(!this.fadeOut){
+
+            if(this.alpha<.65)
+                this.alpha+=.04;
+            else
+                this.alpha=.65;
+
+        }else{
+            this.alpha-=.04;
+            if(this.alpha<=0){
+                this.lifetime=0;
+                return;
+            }
+        }
+
+
+        hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+        hctx.fillRect(0,0,320,200);
+          if (this.targetIndex < this.targets.length) {
+              let tx = this.targets[this.targetIndex].x;
+              let ty = this.targets[this.targetIndex].y;
+
+              let dx = tx - this.x;
+              let dy = ty - this.y;
+              let dist = Math.sqrt(dx*dx + dy*dy);
+
+              if (dist > this.speed) {
+                  this.x += (dx / dist) * this.speed;
+                  this.y += (dy / dist) * this.speed;
+              } else {
+                  this.x = tx;
+                  this.y = ty;
+                  this.targetIndex++;
+                  this.createImpact(15);
+              }
+
+              for(let i=0; i<4; i++) {
+                  effects.push(new FireParticle(
+                      this.x, this.y,
+                      (Math.random() - 0.5) * 3,
+                      (Math.random() - 0.5) * 3,
+                      Math.random() * 30 + 5,
+                      [0.08, 0.05]
+                  ));
+              }
+
+              hctx.save();
+              hctx.globalCompositeOperation = 'lighter';
+              hctx.beginPath();
+              hctx.arc(this.x, this.y, 8, 0, Math.PI * 2);
+              hctx.fillStyle = "#ff0000";
+              hctx.shadowBlur = 20;
+              hctx.shadowColor = "#ff0000";
+              hctx.fill();
+
+              hctx.beginPath();
+              hctx.arc(this.x, this.y, 4, 0, Math.PI * 2);
+              hctx.fillStyle = "#ffffff";
+              hctx.fill();
+              hctx.restore();
+
+          } else if (this.lifetime === 100) {
+              this.createImpact(80);
+              this.lifetime = 50;
+          }
+
+          this.timer--;
+
+          if(this.timer<=0 && !this.fadeOut){
+              this.fadeOut=true;
+          }
+      }
+  }
+  // =================== END NEW HERO: Anran ====================
+
+  // ===================== NEW HERO: Emre =======================
+  function getPercentageBasedOnPoints(startPoint, endPoint, point) {
+
+    const totalDistance = Math.sqrt((endPoint.x - startPoint.x) ** 2 + (endPoint.y - startPoint.y) ** 2);
+
+    const distanceToPoint = Math.sqrt((point.x - startPoint.x) ** 2 + (point.y - startPoint.y) ** 2);
+
+    return (distanceToPoint / totalDistance) * 100;
+  }
+
+  function throwBall(startpos,endpos,speed,color,size){
+      this.startPos = startpos;
+      this.endPos = endpos;
+      this.speed = speed;
+      this.color = color;
+      this.size = size;
+      this.currentPos = {x: this.startPos.x, y: this.startPos.y};
+      let tempAngle = Math.atan2(this.endPos.y - this.startPos.y, this.endPos.x - this.startPos.x);
+      this.dirSpeed = {x: Math.cos(tempAngle) * this.speed, y: Math.sin(tempAngle) * this.speed};
+      this.draw = function(){
+        let percentage = getPercentageBasedOnPoints(this.startPos,this.endPos,this.currentPos);
+        this.currentPos.x += this.dirSpeed.x;
+        this.currentPos.y += this.dirSpeed.y;
+        let sizeMod =1- Math.abs(percentage - 50) / 50;
+        if (percentage<100){
+          DrawCircle(this.currentPos.x,this.currentPos.y,this.size+ (sizeMod*this.size*2),this.color);
+        } else {
+          this.lifetime = 0;
+        }
+      }
+  }
+
+  function emreGrenade(){
+
+      this.throwBalls = [];
+      this.arcSize = 0;
+      this.alpha = 0;
+      this.fadeOut = false;
+      this.lifetime = 1;
+
+      for(let index = 0; index < 5; index++){
+
+        setTimeout(() => {
+          this.throwBalls.push(new throwBall({x:0,y:100},{x:160,y:100},3,`hsl(${45 + index * 5},100%,55%)`,15));
+        }, index * 50);
+      }
+
+      this.draw = function(){
+        if(!this.fadeOut){
+
+          if(this.alpha < .65)
+            this.alpha += .04;
+          else
+            this.alpha = .65;
+
+        }else{
+
+          this.alpha -= .04;
+
+          if(this.alpha <= 0){
+            this.lifetime = 0;
+            return;
+          }
+        }
+
+        hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+        hctx.fillRect(0,0,320,200);
+
+        if(this.throwBalls.length > 0){
+
+          for(let i = this.throwBalls.length - 1; i >= 0; i--){
+
+            this.throwBalls[i].draw();
+
+            if(this.throwBalls[i].lifetime <= 0){
+              this.throwBalls.splice(i,1);
+            }
+          }
+        }
+
+        else{
+
+          hctx.globalAlpha = this.alpha;
+          hctx.beginPath();
+          hctx.fillStyle = `hsl(45 ,100%,55%)`;
+          hctx.arc(160,100,this.arcSize,0,Math.PI * 2);
+
+          hctx.fill();
+          hctx.globalAlpha = 1;
+
+          this.arcSize += 8;
+
+          if(this.arcSize >= 260 && !this.fadeOut){
+
+            this.fadeOut=true;
+
+          }
+        }
+      }
+    }
+
+    function emreShot(){
+    this.count = 0;
+    this.rad = .01
+    this.lit = 30
+    this.alpha = 0;
+    this.fadeOut=false;
+    this.lifetime=1;
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha=.65;
+
+      }else{
+
+        this.alpha-=.04;
+
+        if(this.alpha<=0){
+          this.lifetime=0;
+          return;
+        }
+      }
+
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+      hctx.globalAlpha = this.alpha;
+      let grad = hctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+      grad.addColorStop(0, `hsla(45, 100%, ${this.lit}%, 1)`)
+      grad.addColorStop(Math.min(this.rad,1),`hsla(45,100%,40%,0)`)
+      DrawRect(0, 0, 320, 200, grad)
+      hctx.globalAlpha = 1
+      if(this.lit < 80){
+        this.lit+=.25;
+      }else if(!this.fadeOut){
+        this.fadeOut=true;
+      }
+      this.rad < 1 ? this.rad += .005 : this.rad = 1
+      if(this.count == 20 || this.count == 30){
+        effects.push(new shotHelp())
+      }
+      this.count < 40 ? this.count++ : this.count = 0;
+    }
+  }
+
+  function shotHelp(){
+
+    this.rad=1;
+    this.lifetime=10;
+
+    this.draw=function(){
+
+      DrawStroke(
+        160,
+        100,
+        this.rad,
+        "black",
+        30
+      );
+
+      this.rad < 300
+        ? this.rad+=5
+        : this.lifetime=0;
+
+    }
+  }
+  // =================== END NEW HERO: Emre =====================
+
+  // ==================== NEW HERO: Jetpack Cat =================
+  function drawPaw(x,y,size,color){
+
+    DrawCircle(x,y,size,color)
+
+    DrawCircle(x-size*.9,y-size*.9,size*.35,color)
+    DrawCircle(x-size*.3,y-size*1.3,size*.35,color)
+    DrawCircle(x+size*.3,y-size*1.3,size*.35,color)
+    DrawCircle(x+size*.9,y-size*.9,size*.35,color)
+  }
+
+  function jetpackCatDash(){
+
+      this.lifetime = 80;
+      this.alpha = 0;
+      this.fadeOut = false;
+
+      this.draw = function(){
+
+          if(!this.fadeOut){
+
+              if(this.alpha < .65)
+                  this.alpha += .04;
+              else
+                  this.alpha = .65;
+
+          }else{
+
+              this.alpha -= .04;
+
+              if(this.alpha <= 0){
+                  this.lifetime = 0;
+                  return;
+              }
+          }
+
+
+          hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+          hctx.fillRect(0,0,320,200);
+
+
+          if(this.lifetime % 3 == 0)
+              effects.push(new jetpackCatDashHelp());
+
+
+          this.lifetime--;
+
+          if(this.lifetime <= 0)
+              this.fadeOut = true;
+      }
+  }
+
+  function jetpackCatDashHelp(){
+
+    this.x = -100
+
+    this.y = Math.random() * 160 + 20
+
+    this.size = Math.random() * 15 + 15
+
+    this.draw = function(){
+
+      drawPaw(this.x,this.y,this.size + 10,`hsl(0, 0%, 100%)`)
+      drawPaw(this.x,this.y,this.size + 5,`hsl(55, 100%, 60%)`)
+      drawPaw(this.x,this.y,this.size,`hsl(190, 40%, 60%)`)
+
+      this.x += 10
+
+      if(this.x > 420)
+        this.lifetime = 0
+    }
+  }
+
+  function jetpackCatUltimate(){
+
+      this.rot = 0
+      this.rad = 20
+      this.phase = 0
+      this.alpha = 0
+      this.elementAlpha = 0
+      this.fadeOut = false
+      this.lifetime = 1
+
+      this.draw = function(){
+
+        if(!this.fadeOut){
+
+            if(this.alpha < .65)
+                this.alpha += .04
+            else
+                this.alpha = .65
+
+
+            if(this.elementAlpha < 1)
+                this.elementAlpha += .05
+            else
+                this.elementAlpha = 1
+
+        }else{
+
+            this.alpha -= .04
+            this.elementAlpha -= .04
+
+            if(this.alpha <= 0){
+                this.alpha = 0
+                this.elementAlpha = 0
+                this.lifetime = 0
+                return
+            }
+        }
+
+
+        hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`
+        hctx.fillRect(0,0,320,200)
+
+
+        hctx.save()
+        hctx.globalAlpha = this.elementAlpha
+
+
+        if(this.phase == 0){
+
+          for(let i = 0; i < 8; i++){
+
+            let r = this.rot + i * Math.PI / 4
+
+            drawPaw(
+              160 + Math.cos(r) * this.rad,
+              100 + Math.sin(r) * this.rad,
+              20,
+              "yellow"
+            )
+          }
+
+          this.rot += .08
+          this.rad += .8
+
+          if(this.rad > 100){
+            this.phase = 1
+            this.rad = 20
+          }
+
+        }else{
+
+          drawPaw(160,100,this.rad,"white")
+          drawPaw(160,100,this.rad*.85,"yellow")
+
+          this.rad += 10
+
+          if(this.rad > 250)
+            this.fadeOut = true
+        }
+
+
+        hctx.restore()
+      }
+  }
+
+  function jetpackCatRescue(){
+
+      this.rad = 60
+      this.rot = 0
+      this.time = 0
+      this.alpha = 0
+      this.elementAlpha = 0
+      this.fadeOut = false
+      this.lifetime = 1
+
+
+      this.draw = function(){
+
+        if(!this.fadeOut){
+
+            if(this.alpha < .65)
+                this.alpha += .04
+            else
+                this.alpha = .65
+
+
+            if(this.elementAlpha < 1)
+                this.elementAlpha += .05
+            else
+                this.elementAlpha = 1
+
+        }else{
+
+            this.alpha -= .04
+            this.elementAlpha -= .04
+
+            if(this.alpha <= 0){
+                this.alpha = 0
+                this.elementAlpha = 0
+                this.lifetime = 0
+                return
+            }
+        }
+
+
+        hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`
+        hctx.fillRect(0,0,320,200)
+
+
+        hctx.save()
+        hctx.globalAlpha = this.elementAlpha
+
+
+        let hue = 180 + Math.sin(Date.now()/400) * 40
+
+        let pulse = Math.sin(Date.now()/200) * .2 + 1
+
+
+        drawPaw(
+          160,
+          120,
+          40 * pulse,
+          `hsl(${hue},100%,60%)`
+        )
+
+
+        DrawStroke(
+          160,
+          100,
+          100,
+          `hsla(${hue},100%,70%,.8)`,
+          12
+        )
+
+
+        hctx.save()
+
+        hctx.translate(160,100)
+        hctx.rotate(this.rot)
+
+        DrawRect(-100,-2,50,15,"white")
+        DrawRect(50,-10,50,15,"white")
+
+        DrawRect(-10,-100,15,50,"white")
+        DrawRect(-10,50,15,50,"white")
+
+        hctx.restore()
+
+
+        hctx.save()
+
+        hctx.translate(160,100)
+        hctx.rotate(-this.rot*.7)
+
+        DrawStroke(
+          0,
+          0,
+          80,
+          `hsla(${hue},100%,70%,.5)`,
+          8
+        )
+
+        hctx.restore()
+
+
+        hctx.restore()
+
+
+        this.rot += .03
+        this.time++
+
+
+        if(this.time > 350)
+            this.fadeOut = true
+      }
+  }
+  // ================== END NEW HERO: Jetpack Cat ===============
+
+  // ==================== NEW HERO: Vendetta ====================
+  function drawVendettaArc(cx,cy,rad,rot){
+
+    for(let i = -.8; i <= .8; i += .05){
+
+      let x = cx + Math.cos(i + rot) * rad
+      let y = cy + Math.sin(i + rot) * rad
+
+      DrawCircle(x,y,20,`hsla(0,100%,50%,.5)`)
+      DrawCircle(x,y,10,"white")
+    }
+  }
+
+  function drawVendettaBlade2(x,y,dir){
+
+    for(let i = 0; i < 6; i++){
+
+      hctx.globalAlpha = 1 - i/6
+
+      DrawRect(x - i*20*dir,y-12,180,40,`hsl(0,100%,50%)`)
+      DrawRect(x - i*20*dir,y-4,180,20,"white")
+    }
+
+    hctx.globalAlpha = 1
+  }
+
+  function trowHelp(hue, sat, lit){
+
+    this.hue = hue
+    this.sat = sat
+    this.lit = lit
+
+    this.y = 300
+
+    this.draw = function(){
+
+      hctx.beginPath()
+      hctx.moveTo(80,this.y)
+      hctx.lineTo(160,this.y-120)
+      hctx.lineTo(240,this.y)
+      hctx.strokeStyle = `hsl(${this.hue},${this.sat}%,${this.lit}%)`
+      hctx.lineWidth = 40
+      hctx.stroke()
+
+      DrawRect(145,this.y,30,100,`hsl(${this.hue},${this.sat}%,${this.lit}%)`)
+
+      this.y -= 12
+
+      if(this.y < -150)
+        this.lifetime = 0
+    }
+  }
+
+  function VendettaTrow(){
+    this.effects = []
+    this.backAlpha = 0;
+    this.count = 0;
+    this.lifetime = 10
+    this.alpha = 0;
+    this.fadeOut = false;
+
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      this.backAlpha = this.effects.length / 4
+      if(this.count == 0) this.effects.push(new trowHelp(360, 100, 100))
+      if(this.count == 5) this.effects.push(new trowHelp(360, 100, 75))
+      if(this.count == 10) this.effects.push(new trowHelp(360, 100, 50))
+      if(this.count == 15) this.effects.push(new trowHelp(360, 100, 25))
+      this.count < 16 ? this.count++ : this.count = 16;
+      this.effects.forEach((ele, i)=>{
+        ele.draw()
+        if(ele.lifetime <= 0) this.effects.splice(i, 1)
+      })
+      if(this.effects.length == 0) this.fadeOut = true;
+    }
+  }
+
+  function vendettaThrowBuff(){
+
+    this.phase = 0
+
+    this.y = 200
+    this.alpha = 1
+
+    this.throw = new VendettaTrow()
+
+    this.draw = function(){
+
+      if(this.phase == 0){
+
+        DrawRect(0,this.y,320,200-this.y,`hsl(0,0%,85%)`)
+
+        this.y -= 6
+
+        if(this.y <= 0)
+          this.phase = 1
+
+      }else if(this.phase == 1){
+
+        DrawRect(0,0,320,200,`hsl(0,0%,85%)`)
+
+        this.throw.draw()
+
+        if(this.throw.lifetime <= 0)
+          this.phase = 2
+
+      }else{
+
+        hctx.globalAlpha = this.alpha
+
+        DrawRect(0,0,320,200,`hsl(0,0%,85%)`)
+
+        hctx.globalAlpha = 1
+
+        this.alpha -= .03
+
+        if(this.alpha <= 0)
+          this.lifetime = 0
+      }
+    }
+  }
+
+  function vendettaShield(){
+
+    this.phase = 0
+    this.y = 200
+    this.alpha = 1
+    this.flash = 0
+
+    this.draw = function(){
+
+      if(this.phase == 0){
+
+        DrawRect(0,this.y,320,200-this.y,"white")
+
+        for(let i = 0; i < 320; i += 40)
+          DrawRect(i,this.y,4,200-this.y,`hsla(0,0%,75%,.5)`)
+
+        for(let i = this.y; i < 200; i += 25)
+          DrawRect(0,i,320,2,`hsla(0,0%,75%,.3)`)
+
+        this.y -= 6
+
+        if(this.y <= 0){
+          this.phase = 1
+        }
+
+      }else if(this.phase == 1){
+
+        DrawRect(0,0,320,200,"white")
+
+        for(let i = 0; i < 320; i += 40)
+          DrawRect(i,0,4,200,`hsla(0,0%,75%,.5)`)
+
+        for(let i = 0; i < 200; i += 25)
+          DrawRect(0,i,320,2,`hsla(0,0%,75%,.3)`)
+
+        DrawRect(0,0,320,200,`hsla(0,0%,100%,${Math.sin(this.flash)*.25+.25})`)
+
+        this.flash += .2
+
+        if(this.flash > 12){
+          this.phase = 2
+        }
+
+      }else{
+
+        hctx.globalAlpha = this.alpha
+
+        DrawRect(0,0,320,200,"white")
+
+        for(let i = 0; i < 320; i += 40)
+          DrawRect(i,0,4,200,`hsla(0,0%,75%,.5)`)
+
+        for(let i = 0; i < 200; i += 25)
+          DrawRect(0,i,320,2,`hsla(0,0%,75%,.3)`)
+
+        hctx.globalAlpha = 1
+
+        this.alpha -= .03
+
+        if(this.alpha <= 0)
+          this.lifetime = 0
+      }
+    }
+  }
+
+  function VendettaUltimate(){
+
+    this.phase = 0
+
+    this.leftX = -180
+    this.rightX = 320
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      if(this.phase == 0){
+
+        drawVendettaBlade2(this.leftX,90,1)
+        drawVendettaBlade2(this.rightX,90,-1)
+
+        this.leftX += 18
+        this.rightX -= 18
+
+        if(this.leftX >= this.rightX - 40){
+          this.phase = 1
+          this.rad = 20
+          this.rot = 0
+        }
+
+      }else{
+
+        drawVendettaArc(160,100,this.rad,0)
+        drawVendettaArc(160,100,this.rad,Math.PI)
+        drawVendettaArc(160,100,this.rad,Math.PI/2)
+        drawVendettaArc(160,100,this.rad,-Math.PI/2)
+
+        DrawCircle(160,100,50,`hsla(0,100%,50%,.6)`)
+        DrawCircle(160,100,20,"white")
+
+        this.rad += 8
+
+        if(this.rad > 250)
+          this.fadeOut = true;
+      }
+    }
+  }
+  // ================== END NEW HERO: Vendetta ==================
+
+  // ===================== NEW HERO: Shion ======================
+  function drawBigChevron(x,color){
+
+    for(let i = 0; i < 100; i++){
+
+      DrawRect(
+        x + i * 2,
+        i,
+        20,
+        4,
+        color
+      )
+
+      DrawRect(
+        x + i * 2,
+        200 - i,
+        20,
+        4,
+        color
+      )
+
+    }
+
+  }
+
+  function drawCapsule(x,y,w,h,color){
+
+    DrawRect(x,y,w,h,color)
+
+    DrawCircle(x,y+h/2,h/2,color)
+    DrawCircle(x+w,y+h/2,h/2,color)
+  }
+
+  function shionEvasion(){
+
+    this.x = -320
+
+    this.lifetime = 100
+    this.alpha = 0;
+    this.fadeOut = false;
+
+    this.draw = function(){
+
+      if(!this.fadeOut){
+
+        if(this.alpha < 1)
+          this.alpha += .04;
+        else
+          this.alpha = 1;
+
+      }else{
+
+        this.alpha -= .02;
+
+        if(this.alpha <= 0){
+          this.lifetime = 0;
+          return;
+        }
+      }
+       hctx.fillStyle = `hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      hctx.globalAlpha = this.alpha;
+
+      drawBigChevron(this.x,"white")
+      drawBigChevron(this.x-40,"hsla(180,100%,70%,1)")
+      drawBigChevron(this.x-80,"hsla(220,100%,60%,1)")
+
+      hctx.globalAlpha = 1;
+
+      this.x += 20;
+
+      if(this.x > 500){
+        this.fadeOut = true;
+      }
+    }
+  }
+
+  function shionBike(){
+
+    this.topX = -320
+    this.midX = 320
+    this.botX = -320
+    this.rad = 1
+    this.phase = 0
+    this.lifetime = 999
+    this.endTimer = 0;
+
+    this.alpha = 0;
+    this.fadeOut = false;
+
+    this.draw = function(){
+
+      if(!this.fadeOut){
+
+          if(this.alpha < .65)
+            this.alpha += .03;
+          else
+            this.alpha = .65;
+
+        }else{
+
+          this.alpha -= .015;
+
+          if(this.alpha <= 0){
+            this.lifetime = 0;
+            return;
+          }
+        }
+
+
+        // fundo preto separado
+        hctx.fillStyle = `hsla(0,0%,0%,${this.alpha})`;
+        hctx.fillRect(0,0,320,200);
+
+        hctx.globalAlpha = Math.min(this.alpha / .65, 1);
+      if(this.phase == 0){
+        this.topX += 10
+        drawCapsule(this.topX,15,320,40,"white")
+        if(this.topX >= 0)
+          this.phase = 1
+      }
+
+      else if(this.phase == 1){
+
+        drawCapsule(0,15,320,40,"white")
+        this.midX -= 10
+        drawCapsule(this.midX,78,320,40,"hsl(190,100%,60%)")
+
+        if(this.midX <= 0)
+          this.phase = 2
+      }
+
+
+      else if(this.phase == 2){
+
+        drawCapsule(0,15,320,40,"white")
+        drawCapsule(0,78,320,40,"hsl(190,100%,60%)")
+
+        this.botX += 10
+        drawCapsule(this.botX,141,320,40,"hsl(220,100%,50%)")
+
+        if(this.botX >= 0)
+          this.phase = 3
+      }
+
+      else if(this.phase == 3){
+
+        drawCapsule(0,15,320,40,"white")
+        drawCapsule(0,78,320,40,"hsl(190,100%,60%)")
+        drawCapsule(0,141,320,40,"hsl(220,100%,50%)")
+
+        DrawStroke(
+          160,
+          100,
+          this.rad,
+          "cyan",
+          12
+        )
+
+        DrawStroke(
+          160,
+          100,
+          30,
+          "white",
+          10
+        )
+
+        this.rad += 1.5
+
+        if(this.rad >= 50){
+          this.phase = 4
+        }
+      }
+
+      else{
+
+        drawCapsule(0,15,320,40,"white")
+        drawCapsule(0,78,320,40,"hsl(190,100%,60%)")
+        drawCapsule(0,141,320,40,"hsl(220,100%,50%)")
+
+        DrawStroke(
+          160,
+          100,
+          this.rad,
+          "white",
+          28
+        )
+
+        DrawStroke(
+          160,
+          100,
+          this.rad * .7,
+          "cyan",
+          16
+        )
+
+        for(let i = 0; i < 16; i++){
+
+          let angle = i * Math.PI / 8
+
+          let x = 160 + Math.cos(angle) * this.rad
+          let y = 100 + Math.sin(angle) * this.rad
+
+          DrawRect(
+            x - 3,
+            y - 3,
+            6,
+            6,
+            "white"
+          )
+        }
+
+        this.rad += 12
+
+        if(this.rad > 250){
+
+          this.endTimer++;
+
+          if(this.endTimer > 20)
+            this.fadeOut = true;
+
+        }
+      }
+      hctx.globalAlpha = 1;
+    }
+  }
+
+  function shionExecution(){
+
+    this.time = 0
+    this.flash = 0
+    this.lifetime = 200
+    this.waitTime = 0
+    this.alpha = 0;
+    this.fadeOut = false;
+
+
+    this.points = [
+
+      {x:80,y:40},
+      {x:120,y:70},
+      {x:160,y:100},
+      {x:200,y:130},
+      {x:240,y:160},
+
+      {x:240,y:40},
+      {x:200,y:70},
+      {x:120,y:130},
+      {x:80,y:160}
+
+    ]
+
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .015;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+
+
+      this.time++
+
+      let visible = Math.floor(this.time / 4)
+
+      for(let i = 0; i < visible && i < this.points.length; i++){
+
+        let p = this.points[i]
+
+        let glow = (.5 + Math.sin((this.time-i*2)*.3)*.5) * this.alpha *2;
+
+        hctx.globalAlpha = glow;
+        DrawStroke(
+          p.x,
+          p.y,
+          20,
+          `hsla(180,100%,70%,1)`,
+          8
+        )
+
+        DrawRect(
+          p.x-3,
+          p.y-3,
+          6,
+          6,
+          "white"
+        )
+
+      }
+
+      hctx.globalAlpha = 1
+
+      if(visible >= this.points.length){
+
+        this.waitTime++
+
+
+        for(let i = 0; i < this.points.length; i++){
+
+          let p = this.points[i]
+
+          let glow = (.5 + Math.sin(this.time*.2)*.5) * this.alpha;
+
+          hctx.globalAlpha = glow;
+
+          DrawStroke(
+            p.x,
+            p.y,
+            10,
+            `hsla(180,100%,70%,1)`,
+            8
+          )
+
+          DrawRect(
+            p.x-3,
+            p.y-3,
+            6,
+            6,
+            "white"
+          )
+
+        }
+
+        hctx.globalAlpha = 1
+
+        if(this.waitTime > 40){
+
+          this.flash += 6
+
+          DrawStroke(
+            160,
+            100,
+            this.flash,
+            `hsla(0,0%,100%,${this.alpha})`,
+            12
+          )
+
+          DrawStroke(
+            160,
+            100,
+            this.flash*.6,
+            `hsla(180,100%,70%,${this.alpha})`,
+            12
+          )
+
+        }
+
+      }
+
+
+      if(this.flash > 300){
+        this.fadeOut = true;
+      }
+
+    }
+
+  }
+  // =================== END NEW HERO: Shion ====================
+
+  // ===================== NEW HERO: Mizuki =====================
+  // NOTE: drawCapsule is defined in the Shion block above and reused here.
+  function mizukiAura(){
+
+      this.phase = 0;
+      this.wave = 20;
+      this.pulses = 0;
+      this.centerRad = 50;
+
+      this.bgAlpha = 0;
+      this.effectAlpha = 1;
+      this.fadeOut = false;
+      this.lifetime = 1
+
+
+      this.draw = function(){
+
+
+        if(!this.fadeOut){
+
+          if(this.bgAlpha < .65)
+            this.bgAlpha += .04;
+
+        }else{
+
+          this.bgAlpha -= .01;
+          this.effectAlpha -= .01;
+
+          if(this.effectAlpha <= 0){
+            this.lifetime = 0;
+            return;
+          }
+        }
+
+
+        hctx.fillStyle=`hsla(0,0%,0%,${this.bgAlpha})`;
+        hctx.fillRect(0,0,320,200);
+
+
+
+        if(this.phase == 0){
+
+          hctx.globalAlpha=this.effectAlpha;
+          DrawCircle(160,100,this.centerRad,`hsl(130,100%,50%)`);
+          hctx.globalAlpha=1;
+
+          DrawStroke(160,100,this.wave,"yellow",20);
+          DrawStroke(160,100,this.wave+15,`hsla(55,100%,60%,.5)`,6);
+
+          this.wave += 2;
+
+
+          if(this.wave > 120){
+
+            this.wave = 20;
+            this.pulses++;
+
+            if(this.pulses >= 3)
+              this.phase = 1;
+          }
+
+
+        }else{
+
+
+          hctx.globalAlpha=this.effectAlpha;
+          DrawCircle(160,100,this.centerRad,`hsl(130,100%,50%)`);
+          hctx.globalAlpha=1;
+
+          this.centerRad += 8;
+          this.alpha -= .02;
+
+
+          if(this.centerRad > 250)
+            this.fadeOut = true;
+
+        }
+      }
+  }
+
+  function MizukiBuff(){
+
+    this.topX = -320
+    this.midX = 320
+    this.botX = -320
+
+    this.count = 0
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      if(this.topX < 0)
+        this.topX += 16
+
+      else if(this.midX > 0)
+        this.midX -= 16
+
+      else if(this.botX < 0)
+        this.botX += 16
+
+      drawCapsule(this.topX,25,320,40,`hsl(55,100%,50%)`)
+
+      if(this.topX >= 0)
+        drawCapsule(this.midX,80,320,40,`hsl(55,100%,50%)`)
+
+      if(this.midX <= 0)
+        drawCapsule(this.botX,135,320,40,`hsl(55,100%,50%)`)
+
+      if(this.topX >= 0 && this.midX <= 0 && this.botX >= 0){
+
+        DrawRect(0,0,320,200,`hsla(60,100%,60%,${Math.sin(Date.now()/200)*.15+.15})`)
+
+        this.count++
+
+        if(this.count > 120)
+          this.fadeOut = true;
+      }
+    }
+  }
+
+  function MizukiChain(){
+    this.index = 0
+    this.x = -500
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+
+
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      for(let i = 0; i < 12; i++){
+
+        hctx.beginPath()
+        hctx.rect(this.x + 50 * i,80,50,50)
+        hctx.strokeStyle = `hsla(130,100%,50%,.6)`
+        hctx.lineWidth = 20
+        hctx.stroke()
+      }
+
+      this.x += 8
+
+      if(this.x > 400)
+        this.fadeOut = true;
+    }
+  }
+  // =================== END NEW HERO: Mizuki ===================
+
+  // ===================== NEW HERO: Sierra =====================
+  function drawArc(x, y, r, startAngle, endAngle, color, lineWidth) {
+    hctx.beginPath()
+    hctx.arc(x, y, r, startAngle, endAngle)
+    hctx.strokeStyle = color
+    hctx.lineWidth   = lineWidth
+    hctx.lineCap     = 'round'
+    hctx.stroke()
+  }
+
+  function drawRectRotated(x, y, w, h, angle, color) {
+    hctx.save()
+    hctx.translate(x, y)
+    hctx.rotate(angle)
+    hctx.fillStyle = color
+    hctx.fillRect(-w / 2, -h / 2, w, h)
+    hctx.restore()
+  }
+
+  function sierraTremorCharge() {
+
+    const cx = 160
+    const cy = 20
+
+    const spacing  = 40
+    const rows     = [
+      [0, 1, 2, -1, -2, 3, -3, -4,4],
+      [0, 1, 2, -1, -2, 3, -3],
+      [0, 1, 2, -1, -2],
+      [0, 1, -1],
+      [0]
+    ]
+    const rowCount = rows.length
+    const rowH     = 40
+
+    this.dots = []
+    rows.forEach((offsets, ri) => {
+      offsets.forEach(off => {
+        this.dots.push({ x: cx + off * spacing, y: cy + ri * rowH, ri })
+      })
+    })
+
+    const rowDelay   = 5
+    const explodeDur = 21
+    const pauseAfter = 30
+    const totalFrames = rowCount * rowDelay + explodeDur + pauseAfter
+
+    this.frame    = 0
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+
+    this.draw = function () {
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      this.dots.forEach(d => {
+
+        const fireAt = (rowCount - 1 - d.ri) * rowDelay
+        const local  = this.frame - fireAt
+
+        if (local < 0) {
+          DrawCircle(d.x, d.y, 16, `rgba(255,79,163,0.5)`)
+
+        } else if (local < explodeDur) {
+          const p = local / explodeDur
+
+          const r = 4 + p * 28
+          DrawCircle(d.x, d.y, 15,       `rgba(300,1,163,${1 - p})`,      2)
+          DrawCircle(d.x, d.y, 30, `rgba(300,1,255,${(1-p)*0.4})`, 1)
+          DrawCircle(d.x, d.y, 4 * (1 - p),   `rgba(300,255,255,${1 - p})`)
+        }
+      })
+
+      this.frame++
+
+      if (this.frame >= totalFrames)
+        this.fadeOut = true;
+    }
+  }
+
+  function sierraTrackingShot() {
+
+    const cx = 160
+    const cy = 100
+
+    const sources = [
+      { ax: cx - 250, ay: cy + 200 },
+      { ax: cx + 250, ay: cy + 200 },
+      { ax: cx - 250, ay: cy - 200 },
+      { ax: cx + 250, ay: cy - 200 },
+    ]
+
+    const R            = 80
+    const gap          = 0.25
+    const span         = Math.PI / 2 - gap
+    const stopDist     = R - 50
+    const bulletW      = 60
+    const bulletH      = 20
+    const travelFrames = 33
+    const pauseFrames  = 18
+    const totalFrames  = travelFrames + pauseFrames
+
+    this.frame    = 0
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+    this.endDelay = 20;
+
+    this.draw = function () {
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .015;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      const p    = Math.min(1, this.frame / travelFrames)
+      const done = this.frame >= travelFrames
+      const pulse = done
+        ? (0.7 + 0.3 * Math.sin(this.frame / 3))
+        : (0.5 + p * 0.4)
+
+      const fadeAlpha = pulse * this.alpha;
+
+      for (let i = 0; i < 4; i++) {
+        const mid   = (i / 4) * (Math.PI * 2)
+        const start = mid - span / 2
+        const end   = mid + span / 2
+        drawArc(cx, cy, R, start, end, `rgba(255,0,255,${fadeAlpha})`, 25)
+      }
+
+      DrawCircle(cx, cy, 25, `rgba(255,0,163,${fadeAlpha * 2})`)
+
+      if (!done) {
+        sources.forEach(src => {
+          const dx        = cx - src.ax
+          const dy        = cy - src.ay
+          const totalDist = Math.sqrt(dx * dx + dy * dy)
+          const angle     = Math.atan2(dy, dx)
+          const traveled  = p * (totalDist - stopDist)
+          const bx        = src.ax + Math.cos(angle) * traveled
+          const by        = src.ay + Math.sin(angle) * traveled
+          drawRectRotated(bx, by, bulletW,        bulletH, angle, `rgba(255,255,255,0.9)`)
+        })
+      }
+
+      if (done) {
+        const ip = (this.frame - travelFrames) / pauseFrames
+        DrawCircle(cx,cy,R + 4 + ip * 20,`rgba(255,0,163,${(1 - ip) * 0.5 * this.alpha})`,2)
+      }
+
+      this.frame++
+
+      if(this.frame >= totalFrames + this.endDelay)
+        this.fadeOut = true;
+    }
+  }
+
+  function sierraAnchorDrone() {
+
+    const cx = 160
+    const cy = 100
+
+    const riseFrames   = 30
+    const hoverFrames  = 18
+    const tetherFrames = 30
+    const pauseFrames  = 24
+    const totalFrames  = riseFrames + hoverFrames + tetherFrames + pauseFrames
+
+    const tetherDirs = [
+      { angle: 0 },
+      { angle: Math.PI / 2 },
+      { angle: Math.PI },
+      { angle: Math.PI * 1.5 },
+    ]
+
+    const s = 3
+
+    this.frame    = 0
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+
+    this.draw = function () {
+
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      const f = this.frame
+
+      let droneY, droneAlpha
+      if (f < riseFrames) {
+        const p  = f / riseFrames
+        const ep = 1 - Math.pow(1 - p, 3)
+        droneY     = 220 - ep * (220 - cy)
+        droneAlpha = p
+      } else {
+        droneY     = cy
+        droneAlpha = 1
+      }
+
+      if (f >= riseFrames + hoverFrames) {
+        const tp = Math.min(1, (f - riseFrames - hoverFrames) / tetherFrames)
+
+        tetherDirs.forEach(dir => {
+          const maxLen = dir.angle === 0           ? 320 - cx
+                      : dir.angle === Math.PI     ? cx
+                      : dir.angle === Math.PI / 2 ? 200 - cy
+                      : cy
+
+          const len = tp * maxLen
+          const ex  = cx + Math.cos(dir.angle) * len
+          const ey  = cy + Math.sin(dir.angle) * len
+
+          hctx.beginPath()
+          hctx.moveTo(cx, cy)
+          hctx.lineTo(ex, ey)
+          hctx.strokeStyle = `rgba(300,1,163,0.15)`
+          hctx.lineWidth = 50
+          hctx.stroke()
+
+          hctx.beginPath()
+          hctx.moveTo(cx, cy)
+          hctx.lineTo(ex, ey)
+          hctx.strokeStyle = `rgba(300,1,163,0.85)`
+          hctx.lineWidth = 30
+          hctx.stroke()
+
+          const nx = cx + Math.cos(dir.angle) * len * 0.75
+          const ny = cy + Math.sin(dir.angle) * len * 0.75
+          DrawCircle(nx, ny, 5, `rgba(200,120,255,${tp})`)
+
+          if (tp > 0.85) {
+            const ep2 = (tp - 0.85) / 0.15
+            DrawStroke(ex, ey, 5 * ep2, `rgba(255,255,255,${ep2 * 0.8})`, 1.5)
+          }
+        })
+      }
+
+      if (f >= riseFrames) {
+        const hp = (f - riseFrames) / (hoverFrames + tetherFrames + pauseFrames)
+        for (let i = 0; i < 2; i++) {
+          const rp = ((hp * 2 + i * 0.5) % 1)
+          DrawStroke(cx, cy, 10 + rp * 30, `rgba(300,1,163,${(1 - rp) * 0.25})`, 1)
+        }
+      }
+
+      if (f < riseFrames) {
+        const p = f / riseFrames
+        for (let i = 0; i < 6; i++) {
+          const tp2 = i / 6
+          const ty  = droneY + tp2 * 30
+          DrawCircle(cx, ty, 1.5 - tp2, `rgba(200,120,255,${(1 - tp2) * 0.4 * p})`)
+        }
+      }
+
+      const arms = [[-10,-8],[10,-8],[-10,8],[10,8]]
+      arms.forEach(([ax, ay]) => {
+        const fromX = cx + (ax > 0 ? 8 : -8) * s
+        const fromY = droneY + (ay > 0 ? 4 : -4) * s
+        hctx.beginPath()
+        hctx.moveTo(fromX, fromY)
+        hctx.lineTo(cx + ax * s, droneY + ay * s)
+        hctx.strokeStyle = `rgba(136,136,170,${droneAlpha})`
+        hctx.lineWidth = 2 * s
+        hctx.stroke()
+        DrawCircle(cx + ax * s* 1.5, droneY + ay * s * 2.3, 8 * s, `rgba(68,68,85,${droneAlpha})`)
+        DrawStroke(cx + ax * s* 1.5, droneY + ay * s * 2.3 , 8 * s, `rgba(153,153,187,${droneAlpha})`, s)
+      })
+
+
+      DrawRect(cx - 16 * s, droneY - 10 * s, 32 * s, 20 * s, `rgba(200,200,216,${droneAlpha})`)
+
+      const pulse = 0.85 + 0.15 * Math.sin(f / 3)
+      DrawCircle(cx, droneY, 10 * s, `rgba(300,20,120,${pulse * droneAlpha})`)
+      DrawCircle(cx, droneY, 5 * s, `rgba(255,120,200,${pulse * droneAlpha})`)
+      DrawCircle(cx, droneY, 3 * s, `rgba(300,1,255,${pulse * droneAlpha})`)
+
+      this.frame++
+
+      if (this.frame >= totalFrames)
+        this.fadeOut = true;
+    }
+  }
+  // =================== END NEW HERO: Sierra ===================
+
+  // ===================== NEW HERO: Wuyang =====================
+  function wuyangCurrent(){
+    this.lifetime=1;
+    this.timer=80;
+    this.alpha=0;
+    this.fadeOut=false;
+
+    this.draw=function(){
+
+      if(!this.fadeOut){
+
+        if(this.alpha<.65)
+            this.alpha+=.04;
+        else
+            this.alpha=.65;
+
+      }else{
+
+        this.alpha-=.04;
+
+        if(this.alpha<=0){
+            this.alpha=0;
+            this.lifetime=0;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+
+      if(this.timer>0){
+
+        for(let i=0;i<2;i++){
+            effects.push(new wuyangCurrentHelp(this.alpha));
+        }
+
+        this.timer--;
+      }
+
+
+      if(this.timer<=0 && !this.fadeOut){
+
+        this.fadeOut=true;
+
+      }
+
+    }
+  }
+
+  function wuyangCurrentHelp(alpha){
+
+    this.x=0;
+    this.y=Math.random()*200;
+
+    this.vx=Math.random()*8+8;
+
+    this.alpha=alpha;
+
+    this.lifetime=1;
+
+
+    this.draw=function(){
+
+      DrawRect(
+          this.x,
+          this.y,
+          35,
+          8,
+          `hsla(180,100%,70%,${this.alpha})`
+      );
+
+      DrawCircle(
+          this.x,
+          this.y+3,
+          15,
+          `hsla(200,100%,95%,${this.alpha*.5})`
+      );
+
+
+      this.x+=this.vx;
+
+
+      if(this.x>340){
+          this.lifetime=0;
+      }
+    }
+  }
+
+  function wuyangRipple(){
+    this.phase=0;
+    this.rad=1;
+    this.spawnCount=0;
+    this.spawnTimer=0;
+    this.alpha=0;
+    this.fadeOut=false;
+    this.lifetime=1;
+
+    this.draw=function(){
+
+      if(!this.fadeOut){
+
+        if(this.alpha<.65)
+            this.alpha+=.04;
+        else
+            this.alpha=.65;
+
+      }else{
+
+        this.alpha-=.04;
+
+        if(this.alpha<=0){
+            this.alpha=0;
+            this.lifetime=0;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      if(this.phase==0){
+
+        DrawStroke(
+            160,
+            100,
+            this.rad,
+            `hsla(180,100%,60%,${this.alpha})`,
+            20
+        );
+
+        DrawStroke(
+            160,
+            100,
+            this.rad*.7,
+            `hsla(200,100%,90%,${this.alpha})`,
+            15
+        );
+
+
+        this.rad+=4;
+
+
+        if(this.rad>250){
+            this.phase=1;
+        }
+
+
+      }else{
+
+        this.spawnTimer++;
+
+        if(this.spawnTimer>2 && this.spawnCount<80){
+
+          this.spawnTimer=0;
+          effects.push(new wuyangHealOrb(this.alpha));
+          this.spawnCount++;
+        }
+
+
+        if(this.spawnCount>=80 && !this.fadeOut){
+
+          this.fadeOut=true;
+
+        }
+      }
+    }
+  }
+
+  function wuyangHealOrb(alpha){
+    this.x=Math.random()*320;
+    this.y=220;
+    this.size=16;
+    this.speed=Math.random()*2+2;
+    this.alpha=alpha;
+    this.lifetime=1;
+
+    this.draw=function(){
+
+
+      DrawCircle(
+          this.x,
+          this.y,
+          this.size,
+          `hsla(55,100%,50%,${this.alpha*.8})`
+      );
+
+
+      this.y-=this.speed;
+
+
+      if(this.y<-20){
+          this.lifetime=0;
+      }
+    }
+  }
+  // =================== END NEW HERO: Wuyang ===================
+
+  // ================ NEW EFFECTS: Freja (existing hero) ========
+  function frejaJump(){
+    this.rad = 15
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+
+
+      DrawStroke(160,180,this.rad,`hsla(100,80%,50%,.85)`,25)
+      this.rad += 10
+      if(this.rad > 200) this.fadeOut = true;
+    }
+  }
+
+  function frejaVolley(){
+
+    this.time = 0
+    this.alpha = 0
+    this.fadeOut = false
+    this.lifetime = 1
+
+    this.arrows = []
+
+    for(let i = 0; i < 6; i++){
+      this.arrows.push(new frejaArrow(
+        -80 - i*50,
+        40 + i*20,
+        8 + Math.random()*3
+      ))
+    }
+
+
+    this.draw = function(){
+
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04
+        else
+          this.alpha = .65
+
+      }else{
+
+        this.alpha -= .04
+
+        if(this.alpha <= 0){
+          this.alpha = 0
+          this.lifetime = 0
+          return
+        }
+      }
+
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`
+      hctx.fillRect(0,0,320,200)
+
+
+      let alive = false
+
+      this.arrows.forEach(ele=>{
+
+        ele.draw(this.alpha)
+
+        if(ele.lifetime)
+          alive = true
+
+      })
+
+
+      if(!alive){
+        this.fadeOut = true
+      }
+
+    }
+  }
+
+  function frejaArrow(x,y,speed){
+
+    this.x = x
+    this.y = y
+
+    this.speed = speed
+
+    this.length = 70
+    this.width = 36
+
+    this.lifetime = 1
+
+
+    this.draw = function(alpha){
+
+
+      hctx.save()
+
+      hctx.globalAlpha = alpha
+
+
+      // corpo da flecha
+
+      DrawRect(
+        this.x,
+        this.y-this.width/2,
+        this.length,
+        this.width,
+        `hsla(100,80%,50%,1)`
+      )
+
+
+      // brilho interno
+
+      DrawRect(
+        this.x+10,
+        this.y-this.width/4,
+        this.length-20,
+        this.width/2,
+        `hsla(100,100%,80%,1)`
+      )
+
+
+      // ponta da flecha
+
+      hctx.beginPath()
+
+      hctx.moveTo(
+        this.x+this.length+35,
+        this.y
+      )
+
+      hctx.lineTo(
+        this.x+this.length,
+        this.y-25
+      )
+
+      hctx.lineTo(
+        this.x+this.length,
+        this.y+25
+      )
+
+      hctx.closePath()
+
+      hctx.fillStyle="hsla(100,80%,50%,1)"
+      hctx.fill()
+
+
+      hctx.restore()
+
+
+      this.x += this.speed
+
+
+      if(this.x > 380)
+        this.lifetime = 0
+    }
+  }
+  // ============== END NEW EFFECTS: Freja ======================
+
+  // ================ NEW EFFECTS: Hazard (existing hero) =======
+  // NOTE: DrawTriangle did not exist in this file; added here for hazardSpikes.
+  function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
+    hctx.beginPath();
+    hctx.fillStyle = color;
+    hctx.moveTo(cord1X, cord1Y);
+    hctx.lineTo(cord2X, cord2Y);
+    hctx.lineTo(cord3X, cord3Y);
+    hctx.lineTo(cord1X, cord1Y);
+    hctx.fill();
+  };
+
+  function hazardSpikes(){
+
+    this.time = 0
+    this.timer = 120
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1
+
+    this.draw = function(){
+
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .015;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      this.time++
+
+      for(let i = 0; i < 6; i++){
+
+        let x = i * 55 + 15
+        let h = Math.max(0, Math.sin(this.time * .15 - i * .5)) * 150
+
+        DrawTriangle(
+          x,
+          180-h,
+          x-30,
+          180,
+          x+30,
+          180,
+          `hsla(20,90%,45%,${this.alpha})`
+        )
+      }
+
+      this.timer--
+
+      if(this.timer <= 0){
+        this.fadeOut = true;
+      }
+    }
+  }
+
+  function hazardWall(){
+    this.h = 0
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+      this.h += 8
+      DrawRect(0,200-this.h,320,this.h,`hsla(20,60%,35%,${this.alpha})`)
+      if(this.h > 400) this.fadeOut = true;
+    }
+  }
+
+  function hazardSlam(){
+    this.rad = 15
+    this.alpha = 0;
+    this.fadeOut = false;
+    this.lifetime = 1;
+    this.draw = function(){
+      if(!this.fadeOut){
+
+        if(this.alpha < .65)
+          this.alpha += .04;
+        else
+          this.alpha = .65;
+
+      }else{
+
+        this.alpha -= .04;
+
+        if(this.alpha <= 0){
+          this.alpha = 0;
+          this.lifetime = 0;
+          return;
+        }
+      }
+
+      hctx.fillStyle=`hsla(0,0%,0%,${this.alpha})`;
+      hctx.fillRect(0,0,320,200);
+
+
+
+      DrawStroke(160,180,this.rad,`hsla(20,90%,45%,.8)`,25)
+      this.rad += 10
+      if(this.rad > 200) this.fadeOut = true;
+    }
+  }
+  // ============== END NEW EFFECTS: Hazard =====================
 
   function DrawRect(x, y, width, height, color) {
     hctx.beginPath();
