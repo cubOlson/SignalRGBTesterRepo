@@ -1,0 +1,1755 @@
+<head>
+    <title>Warthunder Dev</title>
+    <meta description="Effects and ambience for Warthunder. v1.0.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Commented out properties (reference only) -->
+    <!-- <meta property="theBool"     label="Boolean"    type="boolean"   default="0" />
+    <meta property="theText"     label="Text Field" type="textfield" default="yourText" />
+    <meta property="frontRange"  label="Numeric"    type="number"    default="50" min="0" max="100" />
+    <meta property="myComboBox"  label="Combo Box"  type="combobox"  values="Option1,Option2,Option3" default="Option1" /> -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACTIVE USER-FACING CONTROLS
+         All properties below appear as controls in the SignalRGB UI.
+         ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Background controls -->
+    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list"
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience" />
+    <meta property="backColor"      label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+
+    <!-- Gameplay context -->
+    <meta property="selectVehicle"  label="Vehicle selection" tooltip="Tells the effect which vehicle you're using so it reads the right HUD (tank, ship, or plane)." type="list"
+          values="Tank,Plane,Ship"
+          default="Tank" />
+
+    <!-- Effect toggles -->
+    <meta property="deathEffectOn" label="Death Effect" tooltip="Turns on the effect that plays when you are destroyed." type="boolean" default="1" />
+    <meta property="captureEffectOn" label="Capture Effect" tooltip="Turns on the effect that plays when you capture a point." type="boolean" default="1" />
+    <meta property="repairEffectOn" label="Repair Effect" tooltip="Turns on the effect that plays when you repair your vehicle." type="boolean" default="1" />
+    <meta property="teamAdvanceOn" label="Team Advance" tooltip="Turns on the effect that plays when a team advances." type="boolean" default="1" />
+    <meta property="teamActionOn" label="Team Action" tooltip="Turns on the effect that plays when a team action alert appears." type="boolean" default="1" />
+    <meta property="boatLowOn" label="Boat Low" tooltip="Turns on the effect that plays when a low-tide warning appears." type="boolean" default="1" />
+    <meta property="boatLowDangerOn" label="Danger Low Tide" tooltip="Turns on the effect that plays when a critical low-tide warning appears." type="boolean" default="1" />
+    <meta property="planeOverloadOn" label="Plane Overload" tooltip="Turns on the effect that plays when your plane's engine overheats." type="boolean" default="1" />
+    <meta property="zoomOn" label="Zoom" tooltip="Turns on the effect that plays when you zoom your tank's gun sight." type="boolean" default="1" />
+    <meta property="missionCompleteOn" label="Mission Complete" tooltip="Turns on the effect that plays when the mission is complete." type="boolean" default="1" />
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VISION METERS
+       Each meter captures a small region of the game screen and
+       measures what percentage of its pixels match the given HSL
+       range. The JS Meter class smooths readings over N frames
+       before firing a callback.
+
+       Detection strategy: every game state uses a POSITIVE meter
+       (confirms the expected color IS present) paired with a
+       NEGATIVE "Not" meter (confirms the region does NOT show that
+       color during baseline/off state). A state is considered active
+       only when positive is high AND negative is low, preventing
+       false positives from ambient lighting or UI transitions.
+
+       TESTER NOTE: If an effect never fires, first check the QA Tool
+       — load a screenshot from the target resolution and verify the
+       meter region actually captures the right pixels at the right
+       color. Then adjust HSL ranges or region coordinates as needed.
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Capture point (blue). One meter pair for both boat and tank — the capture
+       indicator sits in the same place either way. -->
+  <meta meter="captureBlue" tags="vlc,Warthunder,War Thunder" x="0.5018" y="0.7943" width="0.0011" height="0.0042"
+    h="200-250" s="50-80" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5008" y="0.7889" width="0.0013" height="0.0010"  />
+    <resolution aspect="24:10" x="0.5013" y="0.7971" width="0.0023" height="0.0041" />
+    <resolution aspect="16:11" x="0.5014" y="0.7949" width="0.0015" height="0.0031" />
+
+    <resolution size="3840x2160" x="0.5018" y="0.7989" width="0.0023" height="0.0041" />
+    <resolution size="3840x1080" x="0.5008" y="0.7889" width="0.0013" height="0.0010" />
+     <resolution size="2560x1080" x="0.5018" y="0.7933" width="0.0007" height="0.0047" /> 
+  </meta>
+
+  <meta meter="captureNotBlue" tags="vlc,Warthunder,War Thunder" x="0.5006" y="0.7846" width="0.0035" height="0.0041"
+    h="200-250" s=" 50-80" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5008" y="0.7778" width="0.0018" height="0.0050" />
+    <resolution aspect="24:10" x="0.5002" y="0.7879" width="0.0064" height="0.0049" />
+    <resolution aspect="16:11" x="0.4998" y="0.7849" width="0.0031" height="0.0018" />
+
+    <resolution size="3840x2160" x="0.4998" y="0.7901" width="0.0064" height="0.0049" />
+    <resolution size="3840x1080" x="0.5008" y="0.7778" width="0.0018" height="0.0050" />
+    <resolution size="2560x1080" x="0.5014" y="0.7831" width="0.0031" height="0.0028" /> 
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="boatLowYellow" tags="vlc,Warthunder,War Thunder" x="0.3640" y="0.1702" width="0.2704" height="0.0209"
+    h="0-60" s="50-100" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4389" y="0.1667" width="0.1219" height="0.0209" />
+    <resolution aspect="24:10" x="0.4011" y="0.1702" width="0.1961" height="0.0209" />
+    <resolution aspect="16:11" x="0.3640" y="0.1702" width="0.2704" height="0.0209" />
+
+    <resolution size="3840x2160" x="0.3640" y="0.1702" width="0.2704" height="0.0209" />
+    <resolution size="3840x1080" x="0.4389" y="0.1667" width="0.1219" height="0.0209" />
+    <resolution size="2560x1080" x="0.3997" y="0.1704" width="0.2004" height="0.0209" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="boatLowNotYeloow" tags="vlc,Warthunder,War Thunder" x="0.3671" y="0.1613" width="0.0269" height="0.0020"
+    h="0-60" s="50-100" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4396" y="0.1578" width="0.0159" height="0.0020" />
+    <resolution aspect="24:10" x="0.4019" y="0.1591" width="0.0279" height="0.0020" />
+    <resolution aspect="16:11" x="0.3671" y="0.1613" width="0.0329" height="0.0020" />
+
+    <resolution size="3840x2160" x="0.3671" y="0.1613" width="0.0719" height="0.0020" />
+    <resolution size="3840x1080" x="0.4396" y="0.1578" width="0.0159" height="0.0020" />
+    <resolution size="2560x1080" x="0.4003" y="0.1586" width="0.0209" height="0.0020" />
+  </meta>
+
+  <!-- Danger low tide: same region as boatLowYellow, red HSL instead of yellow. -->
+  <meta meter="boatLowRed" tags="vlc,Warthunder,War Thunder" x="0.3640" y="0.1702" width="0.2704" height="0.0209"
+    h="-30-30" s="50-100" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4389" y="0.1667" width="0.1219" height="0.0209" />
+    <resolution aspect="24:10" x="0.4011" y="0.1702" width="0.1961" height="0.0209" />
+    <resolution aspect="16:11" x="0.3640" y="0.1702" width="0.2704" height="0.0209" />
+
+    <resolution size="3840x2160" x="0.3640" y="0.1702" width="0.2704" height="0.0209" />
+    <resolution size="3840x1080" x="0.4389" y="0.1667" width="0.1219" height="0.0209" />
+    <resolution size="2560x1080" x="0.3997" y="0.1704" width="0.2004" height="0.0209" />
+  </meta>
+
+  <!-- Danger low tide baseline: same region as boatLowNotYeloow, red HSL. -->
+  <meta meter="boatLowNotRed" tags="vlc,Warthunder,War Thunder" x="0.3671" y="0.1613" width="0.0269" height="0.0020"
+    h="-30-30" s="50-100" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4396" y="0.1578" width="0.0159" height="0.0020" />
+    <resolution aspect="24:10" x="0.4019" y="0.1591" width="0.0279" height="0.0020" />
+    <resolution aspect="16:11" x="0.3671" y="0.1613" width="0.0329" height="0.0020" />
+
+    <resolution size="3840x2160" x="0.3671" y="0.1613" width="0.0719" height="0.0020" />
+    <resolution size="3840x1080" x="0.4396" y="0.1578" width="0.0159" height="0.0020" />
+    <resolution size="2560x1080" x="0.4003" y="0.1586" width="0.0209" height="0.0020" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="boatRepairWhite" tags="vlc,Warthunder,War Thunder" x="0.5009" y="0.7983" width="0.0018" height="0.0041"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5008" y="0.7935" width="0.0013" height="0.0010" />
+    <resolution aspect="24:10" x="0.5012" y="0.7968" width="0.0018" height="0.0041" />
+    <resolution aspect="16:11" x="0.5014" y="0.7973" width="0.0018" height="0.0041" />
+
+    <resolution size="3840x2160" x="0.5014" y="0.7997" width="0.0018" height="0.0041" />
+    <resolution size="3840x1080" x="0.5008" y="0.7935" width="0.0013" height="0.0010" /> 
+    <resolution size="2560x1080" x="0.5011" y="0.7944" width="0.0018" height="0.0041" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="boatRepairNotWhite" tags="vlc,Warthunder,War Thunder" x="0.5010" y="0.7871" width="0.0128" height="0.0055"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5003" y="0.7806" width="0.0029" height="0.0010" />
+    <resolution aspect="24:10" x="0.4995" y="0.7872" width="0.0087" height="0.0057" />
+    <resolution aspect="16:11" x="0.5002" y="0.7881" width="0.0135" height="0.0037" />
+
+    <resolution size="3840x2160" x="0.4991" y="0.7891" width="0.0087" height="0.0057" />
+    <resolution size="3840x1080" x="0.5003" y="0.7806" width="0.0029" height="0.0010" />
+    <resolution size="2560x1080" x="0.5003" y="0.7818" width="0.0087" height="0.0057" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="deathRed" tags="vlc,Warthunder,War Thunder" x="0.3942" y="0.8607" width="0.2074" height="0.0122"
+    h="-30-30" s="50-80" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4170" y="0.8525" width="0.1674" height="0.0122"  />
+    <resolution aspect="24:10" x="0.3942" y="0.8607" width="0.2074" height="0.0122" />
+    <resolution aspect="16:11" x="0.3061" y="0.8594" width="0.3792" height="0.0122" />
+
+    <resolution size="3840x2160" x="0.3597" y="0.8601" width="0.2459" height="0.0037"   />
+    <resolution size="3840x1080" x="0.4170" y="0.8525" width="0.1674" height="0.0122" />
+    <resolution size="2560x1080" x="0.3954" y="0.8519" width="0.2074" height="0.0122" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="deathNotRed" tags="vlc,Warthunder,War Thunder" x="0.4043" y="0.9251" width="0.0362" height="0.0008"
+    h="-30-30" s="50-80" l="60-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4500" y="0.9191" width="0.0162" height="0.0008" />
+    <resolution aspect="24:10" x="0.4273" y="0.9192" width="0.0162" height="0.0008" />
+    <resolution aspect="16:11" x="0.3703" y="0.9182" width="0.0362" height="0.0008" />
+
+    <resolution size="3840x2160" x="0.3496" y="0.9041" width="0.0114" height="0.0009"  />
+    <resolution size="3840x1080" x="0.4500" y="0.9191" width="0.0162" height="0.0008" />
+    <resolution size="2560x1080" x="0.4043" y="0.9251" width="0.0362" height="0.0008" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="inGameWhite" tags="vlc,Warthunder,War Thunder" x="0.0136" y="0.8930" width="0.0046" height="0.0033"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.2532" y="0.8892" width="0.0026" height="0.0033" />
+    <resolution aspect="24:10" x="0.0092" y="0.8930" width="0.0046" height="0.0033" />
+    <resolution aspect="16:11" x="0.0136" y="0.8929" width="0.0046" height="0.0033" />
+
+    <resolution size="3840x2160" x="0.0112" y="0.8972" width="0.0026" height="0.0018"  />
+    <resolution size="3840x1080" x="0.2532" y="0.8892" width="0.0026" height="0.0033" />
+    <resolution size="2560x1080" x="0.0111" y="0.8908" width="0.0046" height="0.0033" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="inGameNotWhite" tags="vlc,Warthunder,War Thunder" x="0.0108" y="0.9019" width="0.0087" height="0.0049"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.2522" y="0.8996" width="0.0047" height="0.0049" />
+    <resolution aspect="24:10" x="0.0077" y="0.9022" width="0.0087" height="0.0049" />
+    <resolution aspect="16:11" x="0.0106" y="0.9017" width="0.0087" height="0.0049" />
+
+    <resolution size="3840x2160" x="0.0096" y="0.9037" width="0.0029" height="0.0018"  />
+    <resolution size="3840x1080" x="0.2522" y="0.8996" width="0.0047" height="0.0049" />
+    <resolution size="2560x1080" x="0.0084" y="0.9002" width="0.0087" height="0.0049" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="missonCompleteRed" tags="vlc,Warthunder,War Thunder" x="0.3337" y="0.8158" width="0.3197" height="0.0098"
+    h="-30-30" s="50-80" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" xx="0.3445" y="0.8158" width="0.4158" height="0.0065" />
+    <resolution aspect="24:10" x="0.2926" y="0.7986" width="0.4158" height="0.0065" />
+    <resolution aspect="16:11" x="0.2903" y="0.8155" width="0.419" height="0.01" />
+
+    <resolution size="3840x2160" x="0.2917" y="0.8070" width="0.4158" height="0.0065" />
+    <resolution size="3840x1080" x="0.3445" y="0.8158" width="0.4158" height="0.0065" />
+    <resolution size="2560x1080" x="0.2901" y="0.7941" width="0.4158" height="0.0065" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="missionCompleteNotRed" tags="vlc,Warthunder,War Thunder" x="0.2962" y="0.8588" width="0.0206" height="0.0033"
+    h="-30-30" s="50-80" l="60-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4238" y="0.8813" width="0.0206" height="0.0033" />
+    <resolution aspect="24:10" x="0.2962" y="0.8648" width="0.0206" height="0.0033" />
+    <resolution aspect="16:11" x="0.2962" y="0.8648" width="0.0206" height="0.0033" />
+
+    <resolution size="3840x2160" x="0.2962" y="0.8648" width="0.0206" height="0.0033" />
+    <resolution size="3840x1080" x="0.4238" y="0.8813" width="0.0206" height="0.0033" />
+    <resolution size="2560x1080" x="0.3459" y="0.8543" width="0.0206" height="0.0033" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="planeOverloadRed" tags="vlc,Warthunder,War Thunder" x="0.4556" y="0.1313" width="0.0870" height="0.0212"
+    h="-30-30" s="40-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4794" y="0.1363" width="0.0393" height="0.0170" />
+    <resolution aspect="24:10" x="0.4686" y="0.1308" width="0.0600" height="0.0212" />
+    <resolution aspect="16:11" x="0.4557" y="0.1312" width="0.0870" height="0.0212" />
+
+    <resolution size="3840x2160" x="0.4547" y="0.1279" width="0.0870" height="0.0212" />
+    <resolution size="3840x1080" x="0.4794" y="0.1363" width="0.0393" height="0.0170" />
+    <resolution size="2560x1080" x="0.4672" y="0.1369" width="0.0650" height="0.0212" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="tankRepairWhite" tags="vlc,Warthunder,War Thunder" x="0.5010" y="0.7753" width="0.0037" height="0.0033"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5010" y="0.7917" width="0.0010" height="0.0030" />
+    <resolution aspect="24:10" x="0.5012" y="0.7760" width="0.0037" height="0.0033" />
+    <resolution aspect="16:11" x="0.5007" y="0.7759" width="0.0037" height="0.0033" />
+
+    <resolution size="3840x2160" x="0.5010" y="0.7797" width="0.0037" height="0.0033" />
+    <resolution size="3840x1080" x="0.5010" y="0.7917" width="0.0010" height="0.0030" />
+    <resolution size="2560x1080" x="0.5010" y="0.7721" width="0.0037" height="0.0033" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="tankRepairNotWhite" tags="vlc,Warthunder,War Thunder" x="0.5004" y="0.7668" width="0.0041" height="0.0024"
+    h="0-360" s="0-10" l="80-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5008" y="0.78706" width="0.0018" height="0.0030" />
+    <resolution aspect="24:10" x="0.5006" y="0.7673" width="0.0041" height="0.0024" />
+    <resolution aspect="16:11" x="0.5005" y="0.7680" width="0.0041" height="0.0024" />
+
+    <resolution size="3840x2160" x="0.5009" y="0.7719" width="0.0041" height="0.0024" />
+    <resolution size="3840x1080" x="0.5008" y="0.78706" width="0.0018" height="0.0030" />
+    <resolution size="2560x1080" x="0.5005" y="0.7648" width="0.0041" height="0.0024" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="teamBlue2" tags="vlc,Warthunder,War Thunder" x="0.4943" y="0.0737" width="0.0032" height="0.0027"
+    h="150-250" s="50-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4956" y="0.0761" width="0.0040" height="0.0043" />
+    <resolution aspect="24:10" x="0.4956" y="0.0718" width="0.0040" height="0.0053" />
+    <resolution aspect="16:11" x="0.4943" y="0.0732" width="0.0036" height="0.0018" />
+
+    <resolution size="3840x2160" x="0.4939" y="0.0699" width="0.0031" height="0.0028"  />
+    <resolution size="3840x1080" x="0.4956" y="0.0761" width="0.0040" height="0.0043" />
+    <resolution size="2560x1080" x="0.4955" y="0.076" width="0.0027" height="0.0018" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="teamRed2" tags="vlc,Warthunder,War Thunder" x="0.5014" y="0.073" width="0.0047" height="0.0027"
+    h="-30-30" s="50-100" l="70-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5010" y="0.0754" width="0.0018" height="0.0010" />
+    <resolution aspect="24:10" x="0.5007" y="0.0723" width="0.0040" height="0.0049" />
+    <resolution aspect="16:11" x="0.5007" y="0.0735" width="0.0040" height="0.0049" />
+
+    <resolution size="3840x2160" x="0.5014" y="0.0699" width="0.0029" height="0.0028"  />
+    <resolution size="3840x1080" x="0.5008" y="0.0769" width="0.0018" height="0.0005" />
+    <resolution size="2560x1080" x="0.5007" y="0.0755" width="0.0040" height="0.0049" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="teamBlue" tags="vlc,Warthunder,War Thunder" x="0.4939" y="0.0222" width="0.004" height="0.0042"
+    h="100-250" s="40-100" l="40-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4956" y="0.0259" width="0.0023" height="0.0010"/>
+    <resolution aspect="24:10" x="0.4956" y="0.0224" width="0.0040" height="0.0057" />
+    <resolution aspect="16:11" x="0.4943" y="0.0222" width="0.0040" height="0.0057" />
+
+    <resolution size="3840x2160" x="0.4941" y="0.0195" width="0.0039" height="0.0041"  />
+    <resolution size="3840x1080" x="0.4956" y="0.0259" width="0.0023" height="0.0010" />
+    <resolution size="2560x1080" x="0.4955" y="0.0243" width="0.0040" height="0.0057" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="teamRed" tags="vlc,Warthunder,War Thunder" x="0.501" y="0.0222" width="0.0023" height="0.0056"
+    h="-30-30" s="50-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.5013" y="0.0250" width="0.0040" height="0.0041" />
+    <resolution aspect="24:10" x="0.5010" y="0.0230" width="0.0040" height="0.0041" />
+    <resolution aspect="16:11" x="0.5022" y="0.0225" width="0.0040" height="0.0041" />
+
+    <resolution size="3840x2160" x="0.5009" y="0.0195" width="0.0076" height="0.0027"    />
+    <resolution size="3840x1080" x="0.5010" y="0.0250" width="0.0040" height="0.0020" />
+    <resolution size="2560x1080" x="0.5012" y="0.0255" width="0.0040" height="0.0041" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="teamTextBlue" tags="vlc,Warthunder,War Thunder" x="0.4098" y="0.8359" width="0.1726" height="0.0179"
+    h="150-250" s="30-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4620" y="0.8382" width="0.0760" height="0.0120" />
+    <resolution aspect="24:10" x="0.4343" y="0.8368" width="0.1302" height="0.0140"  />
+    <resolution aspect="16:11" x="0.4148" y="0.8370" width="0.1726" height="0.0179" />
+
+    <resolution size="3840x2160" x="0.4129" y="0.8395" width="0.1726" height="0.0179" />
+    <resolution size="3840x1080" x="0.4620" y="0.8382" width="0.0760" height="0.0120" />
+    <resolution size="2560x1080" x="0.442" y="0.8296" width="0.1168" height="0.0204" />
+  </meta>
+
+  <!-- Last edited: 2026-07-27T20:37:59Z | 2026-07-27 17:37:59 MST -->
+  <meta meter="teamTextRed" tags="vlc,Warthunder,War Thunder" x="0.4144" y="0.8372" width="0.1699" height="0.0171"
+    h="-30-30" s="40-100" l="50-100" hdr-h="0-360" hdr-s="0-100" hdr-l="0-100" type="area">
+    <resolution aspect="3.55:1" x="0.4620" y="0.8382" width="0.0760" height="0.0120" />
+    <resolution aspect="24:10" x="0.4343" y="0.8368" width="0.1302" height="0.0140" />
+    <resolution aspect="16:11" x="0.4141" y="0.8376" width="0.1699" height="0.0171" />  
+
+    <resolution size="3840x2160" x="0.4144" y="0.8396" width="0.1699" height="0.0171" />
+    <resolution size="3840x1080" x="0.4620" y="0.8382" width="0.0760" height="0.0120" />
+    <resolution size="2560x1080" x="0.442" y="0.8296" width="0.1168" height="0.0204" />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+    // ═══════════════════════════════════════════════════════════
+    // CANVAS SETUP
+    // SignalRGB renders this 320x200 canvas onto the device layout.
+    // All effects draw to the hidden canvas, composited to ctx once per frame.
+    // ═══════════════════════════════════════════════════════════
+    const canvas = document.getElementById('exCanvas');
+    const ctx    = canvas.getContext('2d');
+    const width  = 320;
+    const height = 200;
+
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width  = 320;
+    hiddenCanvas.height = 200;
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    let effects = [];
+
+    //#region Update
+    function update() {
+        DrawRect(0, 0, 320, 200, 'black')
+        backgroundHandler()
+        checkVehicle()
+        gTeamFrame++
+
+        captureBlue_Meter.setValue(engine.vision.captureBlue)
+        captureNotBlue_Meter.setValue(engine.vision.captureNotBlue)
+        boatLowYellow_Meter.setValue(engine.vision.boatLowYellow)
+        boatLowNotYeloow_Meter.setValue(engine.vision.boatLowNotYeloow)
+        boatLowRed_Meter.setValue(engine.vision.boatLowRed)
+        boatLowNotRed_Meter.setValue(engine.vision.boatLowNotRed)
+        boatRepairWhite_Meter.setValue(engine.vision.boatRepairWhite)
+        boatRepairNotWhite_Meter.setValue(engine.vision.boatRepairNotWhite)
+        deathRed_Meter.setValue(engine.vision.deathRed)
+        deathNotRed_Meter.setValue(engine.vision.deathNotRed)
+        inGameWhite_Meter.setValue(engine.vision.inGameWhite)
+        inGameNotWhite_Meter.setValue(engine.vision.inGameNotWhite)
+        missonCompleteRed_Meter.setValue(engine.vision.missonCompleteRed)
+        missionCompleteNotRed_Meter.setValue(engine.vision.missionCompleteNotRed)
+        planeOverloadRed_Meter.setValue(engine.vision.planeOverloadRed)
+        tankRepairWhite_Meter.setValue(engine.vision.tankRepairWhite)
+        tankRepairNotWhite_Meter.setValue(engine.vision.tankRepairNotWhite)
+        teamBlue2_Meter.setValue(engine.vision.teamBlue2)
+        teamRed2_Meter.setValue(engine.vision.teamRed2)
+        teamBlue_Meter.setValue(engine.vision.teamBlue)
+        teamRed_Meter.setValue(engine.vision.teamRed)
+        teamTextBlue_Meter.setValue(engine.vision.teamTextBlue)
+        teamTextRed_Meter.setValue(engine.vision.teamTextRed)
+
+        effects.forEach(ele => { ele.draw() })
+        effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+        ctx.drawImage(hiddenCanvas, 0, 0)
+        window.requestAnimationFrame(update)
+    }
+    //#endregion
+
+    //#region Meter Declarations
+
+    // -------------------------------------------------------------------------
+    // Meter objects
+    // -------------------------------------------------------------------------
+    const captureBlue_Meter = new Meter(10, captureEffectCallback)
+    const captureNotBlue_Meter = new Meter(10, captureEffectCallback)
+    const boatLowYellow_Meter = new Meter(5, boatLowCallback)
+    const boatLowNotYeloow_Meter = new Meter(5, boatLowCallback)
+    const boatLowRed_Meter = new Meter(5, boatLowDangerCallback)
+    const boatLowNotRed_Meter = new Meter(5, boatLowDangerCallback)
+    const boatRepairWhite_Meter = new Meter(10, repairEffectCallback)
+    const boatRepairNotWhite_Meter = new Meter(10, repairEffectCallback)
+    const deathRed_Meter = new Meter(10, deathEffectCallback)
+    const deathNotRed_Meter = new Meter(10, deathEffectCallback)
+    const inGameWhite_Meter = new Meter(5, inGameDetect)
+    const inGameNotWhite_Meter = new Meter(5, inGameDetect)
+    const missonCompleteRed_Meter = new Meter(10, missionCompleteCallback)
+    const missionCompleteNotRed_Meter = new Meter(10, missionCompleteCallback)
+    const planeOverloadRed_Meter = new Meter(5, planeOverloadCallback)
+    const tankRepairWhite_Meter = new Meter(10, repairEffectCallback)
+    const tankRepairNotWhite_Meter = new Meter(10, repairEffectCallback)
+    const teamBlue2_Meter = new Meter(5, secondBarsChanged)
+    const teamRed2_Meter = new Meter(5, secondBarsChanged)
+    const teamBlue_Meter = new Meter(5, topBarsChanged)
+    const teamRed_Meter = new Meter(5, topBarsChanged)
+    const teamTextBlue_Meter = new Meter(5, teamActionBlueCallback)
+    const teamTextRed_Meter = new Meter(5, teamActionRedCallback)
+    //#endregion
+
+    //#region Callbacks
+
+    // -------------------------------------------------------------------------
+    // Global state flags
+    // -------------------------------------------------------------------------
+    let gInGame = false
+    let deathEffectGoing = false
+    let captureEffectGoing = false
+    let repairEffectGoing = false
+    let teamAdvanceGoing = false
+    let teamActionGoing = false
+    let boatLowGoing = false
+    let boatLowDangerGoing = false
+    let planeOverloadGoing = false
+    let zoomGoing = false
+    let missionCompleteGoing = false
+    var vehicleId;
+
+    // Team-bar blink detection + zoom presence (see updateTeamState).
+    let gTeamFrame = 0
+    // The last advancing team we actually fired for: 'none' | 'blue' | 'red'.
+    // Team Advance fires ONLY when the winning team CHANGES (e.g. red-winning →
+    // blue-winning); the same winner blinking again will not re-fire.
+    let teamAdvanceLast = 'none'
+    let teamAdvanceCooldownUntil = 0     // short anti-flicker debounce after a switch
+    const TEAM_ADVANCE_COOLDOWN = 180    // frames (~3s) min gap between switches; set 0 for none
+    let holdABlue = 0, holdARed = 0, holdBBlue = 0, holdBRed = 0
+    const TEAM_PRESENT = .95        // bar solid (color matches its HSL range)
+    const TEAM_ABSENT = .1          // bar gone / blinked to white
+    const TEAM2_PRESENT = .95        // ship/plane second-bar solid level (matches inGameDetect)
+    const TEAM2_ABSENT = .1         // ship/plane second-bar gone / blinked to white
+    const TEAM_HOLD = 36            // frames a bar stays "present" after last solid (bridges blink gaps)
+    const BLINK_WINDOW = 90         // ~1.5s window for counting blink oscillations
+    const BLINK_MIN_CROSSINGS = 3   // >= this many high/low crossings in the window → blinking
+    const blueBlinkTracker = new BlinkTracker()
+    const redBlinkTracker = new BlinkTracker()
+
+
+
+    // -------------------------------------------------------------------------
+    // Callbacks
+    // -------------------------------------------------------------------------
+
+    function checkVehicle(){
+        vehicleId = selectVehicle;
+    }
+    
+    function inGameDetect() {
+        if(vehicleId == "Tank") {
+            if(inGameWhite_Meter.value >= .95 && 
+            inGameNotWhite_Meter.value < .1 && 
+            !gInGame) {
+
+                gInGame = true
+
+            } else if(inGameWhite_Meter.value < .1 && gInGame) {
+                gInGame = false
+            }
+        }
+
+
+        if(vehicleId == "Ship" || vehicleId == "Plane") {
+            if((teamBlue2_Meter.value >= .2 || teamRed2_Meter.value >= .2) && inGameWhite_Meter.value <.1 && !gInGame) {
+                gInGame = true
+
+            } else if(teamBlue2_Meter.value < .1 && teamRed2_Meter.value < .1 && gInGame) {
+                gInGame = false
+
+            }
+        }
+    }
+
+    function deathEffectCallback() {
+        let gameffect = false
+        if (vehicleId == "Plane" || vehicleId == "Ship") {
+            gameffect = deathEffectOn && (deathRed_Meter.value >= .2 && deathNotRed_Meter.value < .1) && !deathEffectGoing
+        }else{
+            gameffect = gInGame && deathEffectOn && (deathRed_Meter.value >= .25 && deathNotRed_Meter.value < .1) && !deathEffectGoing
+        }
+        if (gameffect) {
+            effects.push(new DeathEffect())
+            deathEffectGoing = true
+        }
+    }
+
+    function captureEffectCallback() {
+        // One capture meter pair covers both boat and tank (same on-screen spot).
+        if (gInGame && captureEffectOn && captureBlue_Meter.value >= .95 && captureNotBlue_Meter.value < .1 && !captureEffectGoing) {
+            effects.push(new CaptureEffect())
+            captureEffectGoing = true
+        }
+
+    }
+
+    function repairEffectCallback() {
+        // Ship and tank use different repair meters but trigger the same effect.
+        let vehicleRepair = false
+        if (vehicleId == "Ship") {
+            vehicleRepair = boatRepairWhite_Meter.value >= .95 && boatRepairNotWhite_Meter.value < .1
+        } else if (vehicleId == "Tank") {
+            vehicleRepair = tankRepairWhite_Meter.value >= .95 && tankRepairNotWhite_Meter.value < .1
+        }
+        if (gInGame && vehicleRepair && repairEffectOn && !repairEffectGoing) {
+            effects.push(new RepairEffect())
+            repairEffectGoing = true
+        }
+    }
+
+    // Team action — blue tank, triggered by the blue team-text meter.
+    function teamActionBlueCallback() {
+        if(selectVehicle == "Tank" || vehicleId == "Ship"){
+            if (gInGame && teamActionOn && teamTextBlue_Meter.value >= .18 && !teamActionGoing) {
+                effects.push(new TeamAction('blue'))
+                teamActionGoing = true
+            }
+        }
+    }
+
+    // Team action — red tank, triggered by the red team-text meter.
+    function teamActionRedCallback() {
+        if(selectVehicle == "Tank" || vehicleId == "Ship"){
+            if (gInGame && teamActionOn && teamTextRed_Meter.value >= .18 && deathRed_Meter.value <.1 && !teamActionGoing) {
+                effects.push(new TeamAction('red'))
+                teamActionGoing = true
+            }
+        }
+    }
+
+    function boatLowCallback() {
+        if(selectVehicle == "Ship"){
+            if (gInGame && boatLowOn && (boatLowYellow_Meter.value >= .3 && boatLowNotYeloow_Meter.value < .1) && !boatLowGoing) {
+                effects.push(new BoatLow())
+                boatLowGoing = true
+            
+        }}
+    }
+
+    // Danger (red) low tide — same detection pattern as boatLowCallback but on the red meters.
+    function boatLowDangerCallback() {
+        if(selectVehicle == "Ship"){
+            if (gInGame && boatLowDangerOn && (boatLowRed_Meter.value >= .3 && boatLowNotRed_Meter.value < .1) && !boatLowDangerGoing) {
+                effects.push(new BoatLow(true))
+                boatLowDangerGoing = true
+            
+        }}
+    }
+
+    function planeOverloadCallback() {
+        if(selectVehicle == "Plane"){
+            if (gInGame && planeOverloadOn && planeOverloadRed_Meter.value >= .1 && !planeOverloadGoing) {
+                effects.push(new PlaneOverload())
+                planeOverloadGoing = true
+            
+        }}
+    }
+
+    // Mission complete — the end-of-match banner. Positive red meter high AND
+    // negative baseline low confirms the banner is on screen. team 2 (red palette)
+    // matches the detected red banner; flip to 1 for the blue/win palette.
+    function missionCompleteCallback() {
+        if (gInGame && missionCompleteOn && missonCompleteRed_Meter.value >= .3 && missionCompleteNotRed_Meter.value < .1 && !missionCompleteGoing) {
+            if((teamBlue_Meter.value >= .2 || teamBlue2_Meter.value >= .2)){
+                effects.push(new MissionComplete(1))
+                missionCompleteGoing = true
+            }else if((teamRed_Meter.value >= .2 || teamRed2_Meter.value >= .2)){
+                effects.push(new MissionComplete(2))
+                missionCompleteGoing = true
+            }
+
+        }
+    }
+
+    // The top team bars drive three things, so route their meter changes through
+    // one handler: winner detection (mission complete), zoom detection, and the
+    // team-advance blink detection.
+    function topBarsChanged() {
+        missionCompleteCallback()
+        zoomCallback()
+        teamAdvanceCallback()
+    }
+
+    // The second bar set (ship/plane HUD) drives in-game detection and, for those
+    // vehicles, team-advance blink detection.
+    function secondBarsChanged() {
+        inGameDetect()
+        teamAdvanceCallback()
+    }
+
+    // Team advance: in-game a team's bar blinks (flashes to white) and shrinks
+    // while that team is being attacked / losing — so a blinking bar means the
+    // OTHER team is advancing. Feed both top bars through their blink trackers;
+    // when one is blinking, fire TeamAdvance for the winning (non-blinking) team:
+    //   red bar blinking  → red losing  → blue advancing → TeamAdvance(1) (blue)
+    //   blue bar blinking → blue losing → red advancing  → TeamAdvance(2) (red)
+    function teamAdvanceCallback() {
+        // Tanks read the top team bars (fill to ~solid, .95); ships/planes read the
+        // second bar set, whose solid level is lower (same levels inGameDetect uses).
+        const isTank = vehicleId === 'Tank'
+        const redMeter = isTank ? teamRed_Meter : teamRed2_Meter
+        const blueMeter = isTank ? teamBlue_Meter : teamBlue2_Meter
+        const present = isTank ? TEAM_PRESENT : TEAM2_PRESENT
+        const absent = isTank ? TEAM_ABSENT : TEAM2_ABSENT
+        const redBlinking = redBlinkTracker.update(redMeter.value, gTeamFrame, present, absent)
+        const blueBlinking = blueBlinkTracker.update(blueMeter.value, gTeamFrame, present, absent)
+        if (!(gInGame && teamAdvanceOn)) { teamAdvanceLast = 'none'; return }
+
+        const detected = redBlinking ? 'blue' : (blueBlinking ? 'red' : 'none')
+
+        // No bar blinking right now → keep the current winner latched and wait.
+        if (detected === 'none') return
+
+        // Fire ONLY when the winning team CHANGES (e.g. red-winning → blue-winning).
+        // The same winner blinking again — even after a gap — will not re-fire,
+        // because teamAdvanceLast stays on that team until the OTHER team wins.
+        if (detected === teamAdvanceLast) return
+
+        // Short debounce so a noisy one-frame flip to the other team can't bounce.
+        if (gTeamFrame < teamAdvanceCooldownUntil) return
+
+        teamAdvanceLast = detected
+        teamAdvanceCooldownUntil = gTeamFrame + TEAM_ADVANCE_COOLDOWN
+        effects.push(new TeamAdvance(detected === 'blue' ? 1 : 2))
+        teamAdvanceGoing = true
+    }
+
+    // Zoom (tank only): the top team bars drop out of the HUD when the gunsight
+    // zooms in. Fire the scope overlay while both bars are absent; end it when
+    // either bar comes back.
+    function zoomCallback() {
+        if (vehicleId != "Tank") { zoomGoing = false; return }
+        if (gInGame && zoomOn && teamBlue_Meter.value < TEAM_ABSENT && teamRed_Meter.value < TEAM_ABSENT && teamBlue2_Meter.value >= TEAM2_PRESENT && !zoomGoing) {
+            effects.push(new ZoomEffect())
+            zoomGoing = true
+        } else if (teamBlue_Meter.value >= TEAM_PRESENT || teamRed_Meter.value >= TEAM_PRESENT) {
+            zoomGoing = false
+        }
+    }
+
+
+    //#endregion
+
+    //#region Background Modes
+    // ═══════════════════════════════════════════════════════════
+    // BACKGROUND SYSTEM
+    // Eight modes selected by the backgroundMode control.
+    // ═══════════════════════════════════════════════════════════
+    let proBack = [0, 0, 0]
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor)
+    }
+
+    let audioEase = { sat: 0, lit: 0 }
+    let gCycle = 0
+
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100
+        audioEase.sat += (targetDensity - audioEase.sat) / 10
+        audioEase.lit += (targetDensity - audioEase.lit) / 10
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360
+    }
+
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100
+
+        if (backgroundMode.includes('Color Cycle')) updateColorCycle()
+        if (backgroundMode.includes('Audio'))       updateAudioEase()
+
+        if (backgroundMode.includes('Ambience')) {
+            if (backgroundMode === 'Ambience Audio Visualizer') {
+                copyScreenAudio(alpha)
+            } else {
+                copyScreen(alpha)
+            }
+            return
+        }
+
+        const hue = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0)
+        const sat = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1]
+        const lit = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2]
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha))
+    }
+
+    const ZONE_COLS   = 28
+    const ZONE_ROWS   = 20
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat       = new Int8Array(engine.zone.saturation)
+        const hue       = new Int16Array(engine.zone.hue)
+        const w = 320 / ZONE_COLS
+        const h = 200 / ZONE_ROWS
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            hiddenCtx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hiddenCtx.fillRect(col * w, row * h, w, h)
+        }
+    }
+
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat       = new Int8Array(engine.zone.saturation)
+        const hue       = new Int16Array(engine.zone.hue)
+        const w = 320 / ZONE_COLS
+        const h = 200 / ZONE_ROWS
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const finalHue = backgroundMode === 'Custom Ambience'
+                ? proBack[0]
+                : hue[iZone] + (backgroundMode === 'Color Cycle Ambience' ? gCycle : 0)
+            hiddenCtx.fillStyle = getColorString(finalHue, sat[iZone], lightness[iZone], alpha)
+            hiddenCtx.fillRect(col * w, row * h, w, h)
+        }
+    }
+    //#endregion
+
+    //#region Helper Functions
+    // ═══════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS — draw primitives target hiddenCtx
+    // ═══════════════════════════════════════════════════════════
+    function DrawRect(x, y, w, h, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fillRect(x, y, w, h)
+    }
+
+    function strokeRect(x, y, w, h, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.rect(x, y, w, h)
+        hiddenCtx.stroke()
+    }
+
+    function DrawCircle(x, y, radius, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+        hiddenCtx.fill()
+    }
+
+    function DrawStroke(x, y, radius, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+        hiddenCtx.stroke()
+    }
+
+    function DrawArcStroke(x, y, radius, start, end, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.arc(x, y, radius, start, end)
+        hiddenCtx.stroke()
+    }
+
+    function DrawLine(start, end, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(start[0], start[1])
+        hiddenCtx.lineTo(end[0], end[1])
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.stroke()
+    }
+
+    function DrawArc(x, y, start, end, radius, direction, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.arc(x, y, radius, start, end, direction)
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fill()
+    }
+
+    function DrawEllipse(x, y, w, h, rotation, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.ellipse(x, y, w, h, rotation, 0, Math.PI * 2)
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fill()
+    }
+
+    function DrawTriangle(x1, y1, x2, y2, x3, y3, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.moveTo(x1, y1)
+        hiddenCtx.lineTo(x2, y2)
+        hiddenCtx.lineTo(x3, y3)
+        hiddenCtx.lineTo(x1, y1)
+        hiddenCtx.fill()
+    }
+
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+        hiddenCtx.fillStyle = color
+        hiddenCtx.save()
+        hiddenCtx.translate(x, y)
+        hiddenCtx.scale(scaleX, scaleY)
+        hiddenCtx.fill(new Path2D(path))
+        hiddenCtx.restore()
+    }
+
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null
+    }
+
+    function hexToHSL(hex) {
+        const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || []
+        const rgb = [r, g, b].map(x => parseInt(x, 16) / 255)
+        const max = Math.max(...rgb)
+        const min = Math.min(...rgb)
+        const l = (max + min) / 2
+        if (max === min) return [0, 0, Math.round(l * 100)]
+        const d = max - min
+        const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+        let h
+        const [nr, ng, nb] = rgb
+        if      (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0)
+        else if (max === ng) h = (nb - nr) / d + 2
+        else                 h = (nr - ng) / d + 4
+        return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)]
+    }
+
+    // Meter(size, callback): frame-stabilizing debouncer for vision signals.
+    function Meter(size, callback) {
+        this.size = size
+        this.value = 0
+        this.diff = 0
+        this.increased = false
+        this.decreased = false
+        var values = []
+        this.setValue = function (updatedValue) {
+            values.push(updatedValue)
+            if (values.length > this.size) values.shift()
+            for (var i = 0; i < values.length - 1; i++) {
+                if (values[i] !== values[i + 1]) return
+            }
+            if (this.value !== values[0]) {
+                this.diff = Math.abs(this.value - values[0])
+                this.increased = this.value < values[0]
+                this.decreased = this.value > values[0]
+                this.value = values[0]
+                callback()
+            }
+        }
+    }
+
+    // BlinkTracker: detects a value oscillating high<->low (e.g. a team bar
+    // flashing to white). Records threshold crossings and reports "blinking"
+    // when at least BLINK_MIN_CROSSINGS happen within BLINK_WINDOW frames.
+    function BlinkTracker() {
+        this.high = false
+        this.crossings = []
+        this.update = function (value, frame, present, absent) {
+            if (present === undefined) present = TEAM_PRESENT
+            if (absent === undefined) absent = TEAM_ABSENT
+            if (this.high && value <= absent) {
+                this.high = false
+                this.crossings.push(frame)
+            } else if (!this.high && value >= present) {
+                this.high = true
+                this.crossings.push(frame)
+            }
+            this.crossings = this.crossings.filter(f => frame - f <= BLINK_WINDOW)
+            return this.crossings.length >= BLINK_MIN_CROSSINGS
+        }
+    }
+
+  
+    //#endregion
+
+    //#region Effects
+
+    // ═══════════════════════════════════════════════════════════
+    // EFFECTS
+    // ═══════════════════════════════════════════════════════════
+
+    // DeathEffect: fade in, a tank in the middle of screen exploding, with parts flying around, all with red colors with black background
+    function DeathEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.fadingOut = false
+        this.exploded = false
+        this.tankX = -160
+        this.parts = []
+        for (let i = 0; i < 30; i++) {
+            let ang = Math.random() * Math.PI * 2
+            let spd = 0.4 + Math.random() * 1.6
+            this.parts.push({
+                x: 50,
+                y: 50,
+                vx: Math.cos(ang) * spd,
+                vy: Math.sin(ang) * spd,
+                size: 3 + Math.random() * 6,
+                rot: Math.random() * Math.PI,
+                spin: (Math.random() - 0.5) * 0.4,
+                hue: Math.random() * 20,
+                live: false
+            })
+        }
+        this.tankParts = [
+            {ox: -40, oy: -2, w: 80, h: 44, hue: 0, l: 25},
+            {ox: -20, oy: -26, w: 48, h: 28, hue: 0, l: 20},
+            {ox: 28, oy: -32, w: 56, h: 12, hue: 0, l: 20},
+            {ox: -44, oy: 38, w: 92, h: 14, hue: 0, l: 15}
+        ]
+        for (let i = 0; i < this.tankParts.length; i++) {
+            let p = this.tankParts[i]
+            let ang = Math.random() * Math.PI * 2
+            let spd = 1.2 + Math.random() * 2.2
+            p.vx = Math.cos(ang) * spd
+            p.vy = Math.sin(ang) * spd - 1
+            p.rot = 0
+            p.spin = (Math.random() - 0.5) * 0.3
+            p.dx = 0
+            p.dy = 0
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut) {
+                if (this.alpha < 1) this.alpha += 0.05
+                if (this.alpha > 1) this.alpha = 1
+                // Self-terminate once the explosion debris has finished flying out.
+                let doneExploding = this.exploded && (this.frame - this.explodeFrame) > 120
+                if (!deathEffectGoing || doneExploding) this.fadingOut = true
+            } else {
+                this.alpha -= 0.04
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    deathEffectGoing = false
+                    return
+                }
+            }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            let cx = 160
+            let cy = 100
+            let arrived = this.tankX >= cx
+            if (!arrived && !this.exploded) {
+                this.tankX += (cx - this.tankX) * 0.06 + 1.2
+                if (this.tankX >= cx - 0.5) {
+                    this.tankX = cx
+                    this.stopFrame = this.frame
+                }
+            }
+            if (arrived && !this.exploded) {
+                if (this.stopFrame === undefined) this.stopFrame = this.frame
+                if (this.frame - this.stopFrame > 60) {
+                    this.exploded = true
+                    this.explodeFrame = this.frame
+                    for (let i = 0; i < this.parts.length; i++) this.parts[i].live = true
+                }
+            }
+            let tx = arrived ? cx : this.tankX
+            if (this.exploded) {
+                let ef = this.frame - this.explodeFrame
+                let burst = Math.min(ef / 20, 1)
+                let flick = 0.6 + Math.random() * 0.4
+                let coreR = 90 * burst
+                hiddenCtx.save()
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(cx, cy, coreR + 30, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `hsla(20, 100%, 55%, ${0.3 * a * flick})`
+                hiddenCtx.fill()
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(cx, cy, coreR, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `hsla(10, 100%, 50%, ${0.7 * a * flick})`
+                hiddenCtx.fill()
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(cx, cy, coreR * 0.5, 0, Math.PI * 2)
+                hiddenCtx.fillStyle = `hsla(45, 100%, 65%, ${0.9 * a * flick})`
+                hiddenCtx.fill()
+                hiddenCtx.restore()
+            }
+            for (let i = 0; i < this.tankParts.length; i++) {
+                let p = this.tankParts[i]
+                if (this.exploded) {
+                    p.dx += p.vx
+                    p.dy += p.vy
+                    p.vy += 0.06
+                    p.rot += p.spin
+                }
+                let px = tx + p.ox + p.dx
+                let py = cy + p.oy + p.dy
+                hiddenCtx.save()
+                hiddenCtx.translate(px, py)
+                hiddenCtx.rotate(p.rot)
+                hiddenCtx.fillStyle = `hsla(${p.hue}, 60%, ${p.l}%, ${a})`
+                hiddenCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h)
+                hiddenCtx.restore()
+            }
+            if (this.exploded) {
+                for (let i = 0; i < this.parts.length; i++) {
+                    let p = this.parts[i]
+                    if (!p.live) continue
+                    p.x += p.vx
+                    p.y += p.vy
+                    p.vy += 0.02
+                    p.rot += p.spin
+                    let px = p.x * 3.2
+                    let py = p.y * 2.0
+                    let pa = a * Math.max(0, 1 - (this.frame - this.explodeFrame) / 120)
+                    DrawEllipse(px, py, p.size * 2, p.size, p.rot, `hsla(${p.hue}, 90%, ${40 + Math.random() * 20}%, ${pa})`)
+                }
+            }
+        }
+    }
+
+    // CaptureEffect: a big circle inte h middle of the scereen the is divided in 4 quadrants, that fills it self in blue intil is all full, with black backgroung both fade in
+    function CaptureEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.fillProgress = 0
+        this.holdFrames = 0
+        this.exiting = false
+        this.lifetime = 1
+        this.draw = function () {
+            this.frame++
+            if (!this.exiting) {
+                if (this.alpha < 1) {
+                    this.alpha += 0.03
+                    if (this.alpha > 1) this.alpha = 1
+                }
+                if (this.fillProgress < 1) {
+                    this.fillProgress += 0.008
+                    if (this.fillProgress > 1) this.fillProgress = 1
+                }
+                // Self-terminate: once all quadrants are full, hold briefly then fade.
+                if (this.fillProgress >= 1) this.holdFrames++
+                if (!captureEffectGoing || this.holdFrames > 60) this.exiting = true
+            } else {
+                this.alpha -= 0.03
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    captureEffectGoing = false
+                    return
+                }
+            }
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+            var cx = 160
+            var cy = 100
+            var radius = 70
+            hiddenCtx.save()
+            hiddenCtx.strokeStyle = `hsla(210, 30%, 60%, ${this.alpha})`
+            hiddenCtx.lineWidth = 2
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(cx, cy, radius, 0, Math.PI * 2)
+            hiddenCtx.stroke()
+            hiddenCtx.restore()
+            var quadFill = this.fillProgress * 4
+            for (var q = 0; q < 4; q++) {
+                var qStart = q
+                var qFill = quadFill - qStart
+                if (qFill <= 0) continue
+                if (qFill > 1) qFill = 1
+                var baseAngle = -Math.PI / 2 + q * (Math.PI / 2)
+                var sweep = qFill * (Math.PI / 2)
+                hiddenCtx.save()
+                hiddenCtx.fillStyle = `hsla(215, 85%, 55%, ${this.alpha})`
+                hiddenCtx.beginPath()
+                hiddenCtx.moveTo(cx, cy)
+                hiddenCtx.arc(cx, cy, radius, baseAngle, baseAngle + sweep)
+                hiddenCtx.closePath()
+                hiddenCtx.fill()
+                hiddenCtx.restore()
+            }
+            DrawLine([cx - 70, cy], [cx + 70, cy], `hsla(0, 0%, 100%, ${this.alpha * 0.6})`, 1)
+            DrawLine([cx, cy - 70], [cx, cy + 70], `hsla(0, 0%, 100%, ${this.alpha * 0.6})`, 1)
+        }
+    }
+
+    // RepairEffect: two large rotating hex nuts. white An adjustable wrench moves up and down over each nut, as if tightening them. The motion should be smooth, mechanical, and synchronized. with black background both fade in
+    function RepairEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 300
+        this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            // Self-terminate after the tightening animation has run its course.
+            if (!this.fadingOut && (this.frame > this.duration || (!repairEffectGoing && this.frame > 5))) {
+                this.fadingOut = true
+            }
+            if (this.fadingOut) {
+                this.alpha -= 0.03
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    repairEffectGoing = false
+                    return
+                }
+            } else {
+                if (this.alpha < 1) {
+                    this.alpha += 0.03
+                    if (this.alpha > 1) this.alpha = 1
+                }
+            }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            let nuts = [{ x: 30, y: 50 }, { x: 70, y: 50 }]
+            let rot = this.frame * 0.03
+            for (let i = 0; i < nuts.length; i++) {
+                let cx = nuts[i].x * 3.2
+                let cy = nuts[i].y * 2.0
+                let r = 60
+                let dir = i === 0 ? 1 : -1
+                let angle = rot * dir
+                hiddenCtx.save()
+                hiddenCtx.beginPath()
+                for (let s = 0; s < 6; s++) {
+                    let ha = angle + (s * Math.PI * 2 / 6)
+                    let px = cx + Math.cos(ha) * r
+                    let py = cy + Math.sin(ha) * r
+                    if (s === 0) {
+                        hiddenCtx.moveTo(px, py)
+                    } else {
+                        hiddenCtx.lineTo(px, py)
+                    }
+                }
+                hiddenCtx.closePath()
+                hiddenCtx.fillStyle = `hsla(0, 0%, 100%, ${a})`
+                hiddenCtx.fill()
+                hiddenCtx.beginPath()
+                hiddenCtx.arc(cx, cy, r * 0.45, 0, Math.PI * 2)
+                hiddenCtx.closePath()
+                // Fill the nut's center hole with the black background instead of
+                // erasing it, so it shows black (not a see-through hole to the game).
+                hiddenCtx.fillStyle = `hsla(0, 0%, 0%, ${a})`
+                hiddenCtx.fill()
+                hiddenCtx.restore()
+            }
+        }
+    }
+
+    // TeamAdvance: So I want one effect to work for both teams, so maybe the effect function should receive like a value like one and two, so one for the blue team and two for the red team. So when it's blue team, means the blue team is winning. So I want like the screen divided, like half blue on the left and half red on the right. And then the blue, and then the blue is like taking, and then there's a line in the middle. And then the blue appears to be like the blue and the red are like fighting. So the blue goes bigger, and then the red goes bigger, then the blue goes bigger, then the blue fills slowly the screen, because it means the blue team is winning. And when it's red, the opposite happens. So they start like fighting, so the red gets bigger, the blue gets bigger, then the red slowly fills the screen with red on the left, and fills the whole screen,
+    function TeamAdvance(team) {
+        this.team = team || 1
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 150
+        this.fadingOut = false
+        this.divide = 50
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) {
+                this.alpha += 0.1
+                if (this.alpha > 1) this.alpha = 1
+            }
+            // Self-terminate once the winning team has finished filling the screen.
+            if (!this.fadingOut && (!teamAdvanceGoing || this.frame > this.duration)) {
+                this.fadingOut = true
+            }
+            if (this.fadingOut) {
+                this.alpha -= 0.06
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    teamAdvanceGoing = false
+                    return
+                }
+            }
+            let winner = this.team === 1
+            let fight = Math.sin(this.frame * 0.3) * 8
+            let progress = Math.min(this.frame / 120, 1)
+            let target = winner ? 50 + progress * 50 : 50 - progress * 50
+            this.divide += (target - this.divide) * 0.12
+            let d = this.divide + fight * (1 - progress)
+            if (d < 0) d = 0
+            if (d > 100) d = 100
+            let a = this.alpha
+            DrawRect(0, 0, d * 3.2, 200, `hsla(215, 90%, 50%, ${a})`)
+            DrawRect(d * 3.2, 0, (100 - d) * 3.2, 200, `hsla(0, 90%, 50%, ${a})`)
+            DrawRect(d * 3.2 - 3, 0, 6, 200, `hsla(0, 0%, 100%, ${a})`)
+        }
+    }
+
+    // TeamAction: Okay, so for this effect, we're gonna have to receive in the function also a parameter, which team it is, like the last one. So, because when it's blue team, I want a blue tank out of the screen on the left, and then it goes to the middle of the screen, and it's gonna have some arches grow and leave the screen behind him, and also with the black background. And then when it's the red team, I want a red tank on the right outside of the screen, and then it comes from the right and then stays in the middle of the screen with the red arches also, like, growing behind him and coming out of the screen,
+    function TeamAction(team) {
+        this.team = team
+        this.frame = 0
+        this.alpha = 0
+        this.fadeOut = false
+        this.lifetime = 1
+        this.duration = 70
+        this.hue = team === 'red' ? 0 : 220
+        this.faceDir = team === 'red' ? -1 : 1
+        // Tank sits in the middle of the screen from the start (no drive-in).
+        this.tankX = 50
+        // Exactly two arcs behind the tank; they expand outward off-screen and fade.
+        this.arches = [
+            { r: 24, delay: 0 },
+            { r: 24, delay: 14 }
+        ]
+        this.draw = function () {
+            this.frame++
+            // Self-terminate once the two arcs have expanded off-screen.
+            if (!this.fadeOut && (!teamActionGoing || this.frame > this.duration)) {
+                this.fadeOut = true
+            }
+            if (this.fadeOut) {
+                this.alpha -= 0.06
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    teamActionGoing = false
+                    return
+                }
+            } else if (this.alpha < 1) {
+                this.alpha += 0.1
+                if (this.alpha > 1) this.alpha = 1
+            }
+
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+
+            const hue = this.hue
+            const faceDir = this.faceDir
+
+            const tx = this.tankX * 3.2
+            const ty = 100
+
+            // Two full-circle arcs centered on the tank. They grow past the
+            // screen edge and fade as they go.
+            for (let i = 0; i < this.arches.length; i++) {
+                const a = this.arches[i]
+                if (this.frame < a.delay) continue
+                a.r += 3.2
+                const la = this.alpha * Math.max(0, 1 - a.r / 200)
+                if (la > 0) {
+                    DrawStroke(tx, ty, a.r, `hsla(${hue}, 90%, 55%, ${la})`, 12)
+                }
+            }
+
+            DrawRect(tx - 40, ty - 16, 80, 32, `hsla(${hue}, 80%, 35%, ${this.alpha})`)
+            DrawRect(tx - 43, ty + 14, 86, 15, `hsla(${hue}, 70%, 25%, ${this.alpha})`)
+            DrawRect(tx - 21, ty - 40, 42, 24, `hsla(${hue}, 85%, 45%, ${this.alpha})`)
+            DrawRect(tx + (faceDir > 0 ? 21 : -57), ty - 33, 36, 7, `hsla(${hue}, 60%, 20%, ${this.alpha})`)
+
+            for (let w = -34; w <= 34; w += 11) {
+                DrawCircle(tx + w, ty + 21, 7, `hsla(${hue}, 30%, 15%, ${this.alpha})`)
+            }
+        }
+    }
+
+    // BoatLow: So, for this effect, it should be like a caution, a symbol, so be cautious, seeing a caution symbol in the middle of the screen, really big. And you can do yellow and white, and maybe with a yellow background-ish. Like, yeah.
+    // BoatLow(danger): low-tide caution symbol. danger=false → yellow "low tide"
+    // warning; danger=true → red "danger low tide" (same animation, red palette).
+    function BoatLow(danger) {
+        this.danger = !!danger
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 200
+        this.fadingOut = false
+        // Palette swaps yellow → red for the danger variant; icon stays white.
+        this.bgHue    = this.danger ? 0 : 48
+        this.triHue   = this.danger ? 0 : 50
+        this.pulseHue = this.danger ? 5 : 55
+        this.draw = function () {
+            this.frame++
+            // Self-terminate after the caution symbol has blinked for its duration.
+            if (!boatLowGoing || this.frame > this.duration) {
+                this.fadingOut = true
+            }
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    if(this.danger == false){
+                        boatLowGoing = false
+                    }else{
+                        boatLowDangerGoing = false
+                    }
+                    
+                    return
+                }
+            } else {
+                if (this.alpha < 1) {
+                    this.alpha += 0.05
+                    if (this.alpha > 1) this.alpha = 1
+                }
+            }
+            let a = this.alpha
+            let blink = (Math.floor(this.frame / 20) % 2 === 0) ? 1 : 0.15
+            let pulse = 0.5 + 0.5 * Math.sin(this.frame * 0.1)
+            DrawRect(0, 0, 320, 200, `hsla(${this.bgHue}, 90%, 55%, ${0.25 * a})`)
+            let sa = a * blink
+            let cx = 160
+            let cy = 100
+            let size = 70
+            let x1 = cx
+            let y1 = cy - size
+            let x2 = cx - size * 0.9
+            let y2 = cy + size * 0.7
+            let x3 = cx + size * 0.9
+            let y3 = cy + size * 0.7
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(x1, y1)
+            hiddenCtx.lineTo(x2, y2)
+            hiddenCtx.lineTo(x3, y3)
+            hiddenCtx.closePath()
+            hiddenCtx.fillStyle = `hsla(${this.triHue}, 100%, 50%, ${0.9 * sa})`
+            hiddenCtx.fill()
+            hiddenCtx.lineWidth = 6
+            hiddenCtx.strokeStyle = `hsla(0, 0%, 100%, ${sa})`
+            hiddenCtx.stroke()
+            DrawRect(cx - 5, cy - 30, 10, 40, `hsla(0, 0%, 100%, ${sa})`)
+            DrawCircle(cx, cy + 30, 6, `hsla(0, 0%, 100%, ${sa})`)
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(x1, y1)
+            hiddenCtx.lineTo(x2, y2)
+            hiddenCtx.lineTo(x3, y3)
+            hiddenCtx.closePath()
+            hiddenCtx.lineWidth = 3
+            hiddenCtx.strokeStyle = `hsla(${this.pulseHue}, 100%, 70%, ${pulse * sa})`
+            hiddenCtx.stroke()
+        }
+    }
+
+    // PlaneOverload: engine heat-overload warning. A horizontal bar fills
+    // green -> yellow -> red as heat climbs; at redline the bar and the whole
+    // screen strobe red, with rising heat shimmer. Self-terminating.
+    function PlaneOverload() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.heat = 0
+        this.fillRate = 0.01   // ~100 frames from cold to redline
+        this.holdFrames = 0
+        this.holdMax = 90      // frames spent strobing at redline before fade
+        this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) {
+                this.alpha += 0.05
+                if (this.alpha > 1) this.alpha = 1
+            }
+            if (this.heat < 1) {
+                this.heat += this.fillRate
+                if (this.heat > 1) this.heat = 1
+            } else {
+                this.holdFrames++
+            }
+            // Self-terminate once it has strobed at redline (or detection ended).
+            if (!this.fadingOut && (this.holdFrames > this.holdMax || !planeOverloadGoing)) {
+                this.fadingOut = true
+            }
+            if (this.fadingOut) {
+                this.alpha -= 0.04
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    planeOverloadGoing = false
+                    return
+                }
+            }
+            let a = this.alpha
+            let full = this.heat >= 1
+            let flash = (Math.floor(this.frame / 6) % 2 === 0) ? 1 : 0.25
+
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${0.7 * a})`)
+            // Red screen strobe once redlined.
+            if (full) {
+                DrawRect(0, 0, 320, 200, `hsla(0, 90%, 50%, ${0.22 * a * flash})`)
+            }
+
+            let bw = 288, bh = 84
+            let bx = (320 - bw) / 2
+            let by = (200 - bh) / 2
+            strokeRect(bx - 3, by - 3, bw + 6, bh + 6, `hsla(0, 0%, 100%, ${a})`, 3)
+            DrawRect(bx, by, bw, bh, `hsla(0, 0%, 15%, ${a})`)
+
+            let fillW = bw * this.heat
+            let hue = 120 - this.heat * 120        // green -> yellow -> red
+            let lit = full ? 45 + 20 * flash : 50
+            DrawRect(bx, by, fillW, bh, `hsla(${hue}, 90%, ${lit}%, ${a})`)
+
+            // Segment gridlines for a gauge look.
+            for (let s = 1; s < 10; s++) {
+                let gx = bx + (bw / 10) * s
+                DrawLine([gx, by], [gx, by + bh], `hsla(0, 0%, 0%, ${0.4 * a})`, 1)
+            }
+
+            // Thermometer icon to the left of the bar.
+            let ix = bx - 9
+            DrawRect(ix - 4, by - 4, 8, bh + 8, `hsla(${hue}, 90%, 50%, ${a})`)
+            DrawCircle(ix, by + bh + 6, 7, `hsla(${hue}, 90%, 50%, ${a})`)
+
+            // Rising heat shimmer / embers above the bar once it is hot.
+            if (this.heat > 0.35) {
+                for (let i = 0; i < 10; i++) {
+                    let rise = (this.frame * 0.6 + i * 6) % 60
+                    let sx = bx + 15 + i * (bw / 10) + Math.sin(this.frame * 0.2 + i) * 4
+                    let sy = by - rise
+                    let sa2 = a * 0.3 * (1 - rise / 60) * this.heat
+                    DrawEllipse(sx, sy, 3, 8, 0, `hsla(20, 100%, 60%, ${sa2})`)
+                }
+            }
+        }
+    }
+
+    // ZoomEffect: tank scope "punch-in". A dark scope vignette irises inward
+    // leaving a clear circular aperture (game shows through), radial zoom-rush
+    // lines streak toward center, and a green crosshair reticle fades in.
+    function ZoomEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 220
+        this.zoom = 0        // 0..1 eased iris-in progress
+        this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) {
+                this.alpha += 0.06
+                if (this.alpha > 1) this.alpha = 1
+            }
+            if (this.zoom < 1) this.zoom += (1 - this.zoom) * 0.08
+            // Self-terminate after the hold, or when zoomed back out.
+            if (!this.fadingOut && (this.frame > this.duration || !zoomGoing)) {
+                this.fadingOut = true
+            }
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    return
+                }
+            }
+            let a = this.alpha
+            let cx = 160, cy = 100
+            let r = 150 - this.zoom * 60   // aperture irises 150 -> 90
+
+            // Dark scope vignette: transparent center fading to dark outside the aperture.
+            let grad = hiddenCtx.createRadialGradient(cx, cy, Math.max(1, r * 0.55), cx, cy, r)
+            grad.addColorStop(0, 'hsla(0, 0%, 0%, 0)')
+            grad.addColorStop(1, `hsla(0, 0%, 0%, ${0.92 * a})`)
+            hiddenCtx.fillStyle = grad
+            hiddenCtx.fillRect(0, 0, 320, 200)
+
+            // Subtle green scope tint over the aperture.
+            DrawCircle(cx, cy, r, `hsla(120, 50%, 30%, ${0.10 * a})`)
+
+            // Radial zoom-rush lines converging toward the center.
+            let n = 16
+            for (let i = 0; i < n; i++) {
+                let ang = (i / n) * Math.PI * 2
+                let phase = ((this.frame * 2 + i * 7) % 60) / 60   // 0..1 loop
+                let r1 = r * (0.30 + phase * 0.70)
+                let r2 = r * (0.30 + Math.min(1, phase + 0.15) * 0.70)
+                let la = a * (1 - phase) * 0.5
+                DrawLine(
+                    [cx + Math.cos(ang) * r1, cy + Math.sin(ang) * r1],
+                    [cx + Math.cos(ang) * r2, cy + Math.sin(ang) * r2],
+                    `hsla(120, 50%, 70%, ${la})`, 2
+                )
+            }
+
+            // Scope ring.
+            DrawStroke(cx, cy, r, `hsla(120, 40%, 70%, ${a})`, 2)
+
+            // Crosshair reticle (with a center gap).
+            let gap = 10
+            let reticle = `hsla(120, 60%, 80%, ${a})`
+            DrawLine([cx - r, cy], [cx - gap, cy], reticle, 1)
+            DrawLine([cx + gap, cy], [cx + r, cy], reticle, 1)
+            DrawLine([cx, cy - r], [cx, cy - gap], reticle, 1)
+            DrawLine([cx, cy + gap], [cx, cy + r], reticle, 1)
+
+            // Range ticks along the vertical axis.
+            for (let t = -3; t <= 3; t++) {
+                if (t === 0) continue
+                let ty = cy + t * 12
+                let len = (t % 2 === 0) ? 8 : 4
+                DrawLine([cx - len, ty], [cx + len, ty], `hsla(120, 60%, 80%, ${a * 0.8})`, 1)
+            }
+
+            // Center aim dot.
+            DrawCircle(cx, cy, 1.5, `hsla(120, 80%, 85%, ${a})`)
+        }
+    }
+
+    // MissionComplete: victory / "mission accomplished" fanfare. One effect for
+    // both teams (1 = blue won → you win, 2 = red won → you lose). A huge tank
+    // rolls in from the left, plants itself, then fires celebratory fireworks
+    // that arc up and burst across the sky in the winning team's colors (with
+    // gold + white sparkle accents). Recoils on every shot. Self-terminating.
+    function MissionComplete(team) {
+        this.team = team || 1
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.fadingOut = false
+
+        // Tank travels from off-screen left to its resting spot (lower-left) so
+        // the sky above/right is free for fireworks.
+        this.tankX = -140
+        this.restX = 105
+        this.tankY = 150
+        this.arrived = false
+        this.arriveFrame = 0
+        this.recoil = 0
+
+        // Barrel geometry (relative to turret front), angled up-and-to-the-right.
+        this.barrelAngle = -Math.PI / 3   // -60deg
+        this.barrelLen = 62
+
+        this.shells = []   // rising firework shells
+        this.parts = []    // exploded particles
+        this.trails = []   // faint rising-shell trail dots
+        this.launchTimer = 30
+        this.fireNow = false
+
+        // How long we keep launching after arrival, and total active window.
+        this.launchWindow = 300
+        this.activeWindow = 380
+
+        // Winning-team palette: main hue + gold/white accents for the "victory" feel.
+        this.mainHue = this.team === 1 ? 218 : 0
+        this.altHue = this.team === 1 ? 195 : 18
+
+        this.pickColor = function () {
+            let r = Math.random()
+            if (r < 0.55) return { h: this.mainHue, s: 95, l: 58 }
+            if (r < 0.75) return { h: this.altHue, s: 95, l: 60 }
+            if (r < 0.90) return { h: 45, s: 100, l: 60 }   // gold
+            return { h: 0, s: 0, l: 100 }                    // white spark
+        }
+
+        this.grav = 0.08
+
+        // Aim each shell at a random point spread across the WHOLE screen so the
+        // bursts bloom edge-to-edge instead of clustering by the barrel. We solve
+        // the ballistic launch velocity that lands the shell on (tx,ty) after T
+        // frames, then detonate it there (fuse = T).
+        this.launchShell = function (x0, y0) {
+            let tx = 22 + Math.random() * 276     // full width  (22 .. 298)
+            let ty = 22 + Math.random() * 118     // upper 2/3   (22 .. 140)
+            let T = 34 + Math.random() * 24       // flight time in frames
+            let vx = (tx - x0) / T
+            let vy = (ty - y0) / T - 0.5 * this.grav * T
+            this.shells.push({
+                x: x0, y: y0,
+                vx: vx, vy: vy,
+                col: this.pickColor(),
+                fuse: Math.round(T)
+            })
+            this.recoil = 7
+        }
+
+        this.explode = function (s) {
+            let n = 26 + Math.floor(Math.random() * 12)
+            for (let i = 0; i < n; i++) {
+                let ang = Math.random() * Math.PI * 2
+                let spd = 0.8 + Math.random() * 2.6
+                // Blend the shell's color with occasional gold/white sparks.
+                let c = Math.random() < 0.2 ? this.pickColor() : s.col
+                this.parts.push({
+                    x: s.x, y: s.y,
+                    vx: Math.cos(ang) * spd,
+                    vy: Math.sin(ang) * spd,
+                    col: c,
+                    size: 10 + Math.random() * 1.8,
+                    life: 1
+                })
+            }
+        }
+
+        this.draw = function () {
+            this.frame++
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.frame < 6 ? 1 : this.alpha})`)
+
+            // ---- lifecycle / alpha ----
+            if (!this.fadingOut && this.alpha < 1) {
+                this.alpha += 0.05
+                if (this.alpha > 1) this.alpha = 1
+            }
+            if (!this.arrived) {
+                this.tankX += (this.restX - this.tankX) * 0.07 + 1.4
+                if (this.tankX >= this.restX - 0.6) {
+                    this.tankX = this.restX
+                    this.arrived = true
+                    this.arriveFrame = this.frame
+                }
+            } else {
+                let lf = this.frame - this.arriveFrame
+                if (lf < this.launchWindow) {
+                    this.launchTimer--
+                    if (this.launchTimer <= 0) {
+                        this.launchTimer = 20 + Math.floor(Math.random() * 16)
+                        this.fireNow = true
+                    }
+                }
+                if (!this.fadingOut && (!missionCompleteGoing || lf > this.activeWindow)) this.fadingOut = true
+            }
+            if (this.fadingOut) {
+                this.alpha -= 0.025
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    missionCompleteGoing = false
+                    return
+                }
+            }
+            a = this.alpha
+
+            // Recoil settles back to rest.
+            this.recoil *= 0.8
+            let drawX = this.tankX - this.recoil
+            let cy = this.tankY
+            let hue = this.mainHue
+
+            // ---- barrel tip (also the firework launch point) ----
+            let turretCX = drawX + 6
+            let turretCY = cy - 40
+            let baseX = turretCX + 22
+            let baseY = turretCY - 6
+            let tipX = baseX + Math.cos(this.barrelAngle) * this.barrelLen
+            let tipY = baseY + Math.sin(this.barrelAngle) * this.barrelLen
+
+            // Fire a shell when the timer just reset (flag set in lifecycle above).
+            if (this.fireNow) {
+                this.launchShell(tipX, tipY)
+                this.fireNow = false
+            }
+
+            // ---- update + draw rising shells (with trail) ----
+            for (let i = this.shells.length - 1; i >= 0; i--) {
+                let s = this.shells[i]
+                s.x += s.vx
+                s.y += s.vy
+                s.vy += 0.08
+                s.fuse--
+                this.trails.push({ x: s.x, y: s.y, col: s.col, life: 1 })
+                if (s.fuse <= 0 || s.vy >= -0.2) {
+                    this.explode(s)
+                    this.shells.splice(i, 1)
+                }
+            }
+            for (let i = this.trails.length - 1; i >= 0; i--) {
+                let t = this.trails[i]
+                t.life -= 0.12
+                if (t.life <= 0) { this.trails.splice(i, 1); continue }
+                DrawCircle(t.x, t.y, 1.4 * t.life, `hsla(45, 100%, 70%, ${a * t.life * 0.7})`)
+            }
+            // Draw the shell heads on top of their trails.
+            for (let i = 0; i < this.shells.length; i++) {
+                let s = this.shells[i]
+                DrawCircle(s.x, s.y, 2.2, `hsla(${s.col.h}, ${s.col.s}%, 80%, ${a})`)
+            }
+
+            // ---- update + draw firework particles ----
+            for (let i = this.parts.length - 1; i >= 0; i--) {
+                let p = this.parts[i]
+                p.x += p.vx
+                p.y += p.vy
+                p.vy += 0.035
+                p.vx *= 0.985
+                p.vy *= 0.985
+                p.life -= 0.016
+                if (p.life <= 0) { this.parts.splice(i, 1); continue }
+                let pa = a * p.life
+                // Glow halo + bright core.
+                DrawCircle(p.x, p.y, p.size * 2.2, `hsla(${p.col.h}, ${p.col.s}%, ${p.col.l}%, ${pa * 0.25})`)
+                DrawCircle(p.x, p.y, p.size, `hsla(${p.col.h}, ${Math.max(0, p.col.s - 20)}%, ${Math.min(95, p.col.l + 25)}%, ${pa})`)
+            }
+
+            // ---- muzzle flash on recoil ----
+            if (this.recoil > 1.5) {
+                let fl = this.recoil / 7
+                DrawCircle(tipX, tipY, 10 * fl, `hsla(45, 100%, 65%, ${a * fl})`)
+                DrawCircle(tipX, tipY, 5 * fl, `hsla(0, 0%, 100%, ${a * fl})`)
+            }
+
+            // ---- ground glow beneath the tank (team-tinted) ----
+            DrawEllipse(drawX + 20, cy + 26, 90, 10, 0, `hsla(${hue}, 80%, 45%, ${a * 0.18})`)
+
+            // ---- the huge tank (facing right) ----
+            // Barrel first so the turret overlaps its base cleanly.
+            DrawLine([baseX, baseY], [tipX, tipY], `hsla(${hue}, 65%, 22%, ${a})`, 11)
+            DrawCircle(tipX, tipY, 5.5, `hsla(${hue}, 60%, 20%, ${a})`)          // muzzle brake
+            // Treads / track base.
+            DrawRect(drawX - 62, cy + 14, 130, 20, `hsla(${hue}, 55%, 16%, ${a})`)
+            for (let w = -52; w <= 56; w += 15) {
+                DrawCircle(drawX + w, cy + 24, 9, `hsla(${hue}, 35%, 12%, ${a})`)
+                DrawCircle(drawX + w, cy + 24, 4, `hsla(${hue}, 40%, 22%, ${a})`)
+            }
+            // Hull.
+            DrawRect(drawX - 58, cy - 14, 118, 30, `hsla(${hue}, 75%, 34%, ${a})`)
+            DrawRect(drawX - 58, cy - 14, 118, 6, `hsla(${hue}, 80%, 44%, ${a})`)  // top highlight
+            // Turret.
+            DrawRect(turretCX - 30, turretCY - 15, 60, 28, `hsla(${hue}, 82%, 42%, ${a})`)
+            DrawRect(turretCX - 30, turretCY - 15, 60, 6, `hsla(${hue}, 85%, 52%, ${a})`)
+            DrawCircle(turretCX - 10, turretCY - 2, 5, `hsla(${hue}, 40%, 18%, ${a})`)  // hatch
+        }
+    }
+
+
+    //#endregion
+
+    window.requestAnimationFrame(update)
+</script>
