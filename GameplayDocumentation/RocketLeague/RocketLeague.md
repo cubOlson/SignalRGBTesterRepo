@@ -40,6 +40,9 @@ Observation: Most in-match effects only fire while the integration considers you
 4. Score a goal. The goal explosion triggers the `scoreBall`, `scoreLeft` and `scoreRight` meters (Goal effect — the color follows the scoring team). `scoreLeft` / `scoreRight` read which side scored.
 ![goal](images/goal.png)
 
+   After the goal, the replay plays with letterbox bars — this is read by the `replayBlock` meter (helper meter used to detect the replay and suppress duplicate goal effects; it does not drive a lighting effect on its own).
+![replayBlock](images/replayBlock.png)
+
 5. Block a shot on your net to get a **Save!** popup, triggering the `saveLeft`, `saveRight` and `saveNotOrange` meters (Save effect).
 ![save](images/save.png)
 
@@ -63,7 +66,6 @@ Observation: Most in-match effects only fire while the integration considers you
 ## Notes
 
 * The Search and End Game effects fire while you are **not** in a match (menu / result screen). Every other effect requires the in-game detection (match HUD visible) to be active.
-* `replayBlock` is a helper meter used to detect goal replays and suppress duplicate goal effects — it does not drive a lighting effect on its own.
 * The Goal effect has a **Goal Effect Choice** (Ball / Spots / Swirl) and the boost HUD has its own color / position / style controls — set these before testing so the effect you expect is the one that plays.
 * Effect groups can be toggled independently in the integration (Boost, Goal, Save / Demo, Chat Spam, Overtime, End Game, Search). Make sure the relevant effect is enabled before testing its meter.
 * Meter validation alone does not guarantee the integration is working. A complete test should verify both:
