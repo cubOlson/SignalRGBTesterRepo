@@ -79,7 +79,7 @@ The left and right blue arrows trigger the `missionCompleteBlue1` and `missionCo
 
 Fail a mission. The **MISSION FAILED** banner appears with a red arrow on each side.
 
-The left and right red arrows trigger the `missionCompleteRed1` and `missionCompleteRed2` meters (same regions as mission complete, tuned for red), confirmed by the shared `missionTextWhite` banner-text meter.
+The left and right red arrows trigger the `missionFailedRed1` and `missionFailedRed2` meters (same regions as mission complete, tuned for red), confirmed by the shared `missionTextWhite` banner-text meter.
 
 ![missionfailed](images/missionfailed.png)
 
