@@ -1,0 +1,1277 @@
+<head>
+    <title>Binding of Isaac Rebirth Dev</title>
+    <meta description="Effects and ambience for The Binding of Isaac: Rebirth. v1.0.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACTIVE USER-FACING CONTROLS
+         All properties below appear as controls in the SignalRGB UI.
+         ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Background controls -->
+    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list"
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience" />
+    <meta property="backColor"      label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+
+    <!-- Effect toggles — one boolean per effect. Add a new one here when you add
+         a new effect, and gate its callback on it (see the Callbacks region). -->
+    <meta property="enableHurtEffectOn"    label="Hurt Effect"          tooltip="Turns on the effect that plays when Isaac takes damage." type="boolean" default="1" />
+    <meta property="enableItemPickupOn"    label="Item Pickup Effect"   tooltip="Turns on the effect that plays when you pick up an item." type="boolean" default="1" />
+    <meta property="enableDeathEffectOn"   label="Death Effect"         tooltip="Turns on the effect that plays when Isaac dies." type="boolean" default="1" />
+    <meta property="enableCoinEffectOn"     label="Coin Pickup Effect"  tooltip="Turns on the effect that plays when you pick up a coin." type="boolean" default="1" />
+    <meta property="enableBombEffectOn"     label="Bomb Pickup Effect"  tooltip="Turns on the effect that plays when you pick up a bomb." type="boolean" default="1" />
+    <meta property="enableKeyEffectOn"      label="Key Pickup Effect"   tooltip="Turns on the effect that plays when you pick up a key." type="boolean" default="1" />
+    <meta property="enableLowHealthEffectOn" label="Low Health Effect"  tooltip="Turns on the effect that plays when Isaac is down to his last heart." type="boolean" default="1" />
+    <meta property="enableBossEffectOn"     label="Boss Effect"         tooltip="Turns on the effect that plays when a boss health bar appears." type="boolean" default="1" />
+    <meta property="enableEternalEffectOn"  label="Eternal Effect"      tooltip="Turns on the effect that plays when you have plenty of soul (blue) hearts." type="boolean" default="1" />
+    <meta property="enableLevelUpEffectOn"  label="Level Up Effect"     tooltip="Turns on the effect that plays when you Level Up." type="boolean" default="1" />
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VISION METERS
+       Each meter captures a small region of the game screen and
+       measures what percentage of its pixels match the given HSL
+       range. The JS Meter class smooths readings over N frames
+       before firing a callback.
+
+       Detection strategy: every game state uses a POSITIVE meter
+       (confirms the expected color IS present) paired with a
+       NEGATIVE "Not" meter (confirms the region does NOT show that
+       color during baseline/off state). A state is considered active
+       only when positive is high AND negative is low, preventing
+       false positives from ambient lighting or UI transitions.
+
+       ⚠ PLACEHOLDER REGIONS: the x/y/width/height coordinates below are
+       rough starting guesses, NOT calibrated. Before this detects
+       anything you MUST calibrate each region with the QA Tool — load a
+       screenshot at the target resolution, confirm the box sits on the
+       right pixels, then tune the HSL ranges. Add per-resolution
+       <resolution .../> overrides the same way WarThunder.html does.
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- In-game detection: Isaac's health is a row of red hearts in the top-left.
+       Positive = red hearts present; negative baseline just below the HUD. -->
+    <meta meter="inGameBlack" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.8136" y="0.2578" width="0.0074" height="0"
+        h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+        <resolution aspect="3.55:1" x="0.9177" y="0.2292" width="0.0222" height="0.0017" />
+        <resolution aspect="24:10" x="0.8612" y="0.2577" width="0.0222" height="0.0017" />
+        <resolution aspect="16:11" x="0.8131" y="0.2346" width="0.0222" height="0.0017" />
+
+        <resolution size="3840x2160" x="0.8131" y="0.2568" width="0.0222" height="0.0017" />
+        <resolution size="3840x1080" x="0.9177" y="0.2292" width="0.0222" height="0.0017" />
+        <resolution size="2560x1080" x="0.8761" y="0.2289" width="0.0222" height="0.0017" />
+        <resolution size="1920x1080" x="0.8359" y="0.2291" width="0.0222" height="0.0017" />
+    </meta>
+
+       
+    <meta meter="healthBarRed" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.1473" y="0.0847" width="0.077" height="0.0040"
+        h="-30-30" s="75-100" l="75-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.0659" y="0.0782" width="0.0342" height="0.0074" />
+        <resolution aspect="24:10" x="0.1102" y="0.0878" width="0.0573" height="0.0077" />
+        <resolution aspect="16:11" x="0.1478" y="0.0815" width="0.0772" height="0.0073" />
+
+        <resolution size="3840x2160" x="0.1477" y="0.0849" width="0.0772" height="0.0077" />
+        <resolution size="3840x1080" x="0.0659" y="0.0782" width="0.0342" height="0.0074" />
+        <resolution size="2560x1080" x="0.0987" y="0.0784" width="0.0514" height="0.0061" />
+        <resolution size="1920x1080" x="0.1316" y="0.0784" width="0.0689" height="0.0073" />
+    </meta>
+
+    <meta meter="lastHealthRed" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.1477" y="0.0883" width="0.0203" height="0.0007"
+        h="-30-30" s="75-100" l="90-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="90-100" type="area">
+        <resolution aspect="3.55:1" x="0.0658" y="0.0783" width="0.0092" height="0.0066" />
+        <resolution aspect="24:10" x="0.1101" y="0.0876" width="0.0156" height="0.0083" />
+        <resolution aspect="16:11" x="0.1478" y="0.0848" width="0.0213" height="0.0041" />
+
+        <resolution size="3840x2160" x="0.1476" y="0.0877" width="0.0213" height="0.0041" />
+        <resolution size="3840x1080" x="0.0658" y="0.0783" width="0.0092" height="0.0066" />
+        <resolution size="2560x1080" x="0.0987" y="0.0814" width="0.0138" height="0.0041" />
+        <resolution size="1920x1080" x="0.1318" y="0.0808" width="0.0184" height="0.0041" />
+    </meta>
+
+    <!-- Hurt: the screen edges flash red when Isaac takes damage. Sample a strip
+        near the top-center; negative baseline sits just inside it. -->
+    <meta meter="coinWhite" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.0817" y="0.2001" width="0.0289" height="0.0341"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="90-100" type="area">
+        <resolution aspect="3.55:1" x="0.0366" y="0.1779" width="0.0140" height="0.0334" />
+        <resolution aspect="24:10" x="0.0611" y="0.2001" width="0.0228" height="0.0378" />
+        <resolution aspect="16:11" x="0.0821" y="0.1820" width="0.0307" height="0.0344" />
+
+        <resolution size="3840x2160" x="0.0820" y="0.1995" width="0.0299" height="0.0385" />
+        <resolution size="3840x1080" x="0.0366" y="0.1779" width="0.0140" height="0.0334" />
+        <resolution size="2560x1080" x="0.0548" y="0.1774" width="0.0205" height="0.0342" />
+        <resolution size="1920x1080" x="0.0729" y="0.1778" width="0.0272" height="0.0337" />
+    </meta>
+
+    <meta meter="BombWhite" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.0825" y="0.2502" width="0.0277" height="0.034"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="90-100" type="area">
+        <resolution aspect="3.55:1" x="0.0362" y="0.2227" width="0.0138" height="0.0328" />
+        <resolution aspect="24:10" x="0.0610" y="0.2499" width="0.0229" height="0.0378" />
+        <resolution aspect="16:11" x="0.0821" y="0.2272" width="0.0309" height="0.0344" />
+
+        <resolution size="3840x2160" x="0.0823" y="0.2501" width="0.0305" height="0.0378" />
+        <resolution size="3840x1080" x="0.0362" y="0.2227" width="0.0138" height="0.0328" />
+        <resolution size="2560x1080" x="0.0548" y="0.2225" width="0.0205" height="0.0338" />
+        <resolution size="1920x1080" x="0.0731" y="0.2226" width="0.0277" height="0.0336" />
+    </meta>
+
+    <!-- Item pickup: a bright item sprite + name banner appears center-screen when
+        you grab an item off a pedestal. Positive samples the bright banner text;
+        negative baseline sits just below it. -->
+    <meta meter="keyWhite" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.0825" y="0.2995" width="0.0290" height="0.0370"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="90-100" type="area">
+        <resolution aspect="3.55:1" x="0.0365" y="0.2672" width="0.0137" height="0.0328" />
+        <resolution aspect="24:10" x="0.0609" y="0.2998" width="0.0229" height="0.0384" />
+        <resolution aspect="16:11" x="0.0822" y="0.2723" width="0.0303" height="0.0342" />
+
+        <resolution size="3840x2160" x="0.0822" y="0.2999" width="0.0303" height="0.0378" />
+        <resolution size="3840x1080" x="0.0365" y="0.2672" width="0.0137" height="0.0328" />
+        <resolution size="2560x1080" x="0.0549" y="0.2668" width="0.0204" height="0.0338" />
+        <resolution size="1920x1080" x="0.0732" y="0.2664" width="0.0272" height="0.0344" />
+    </meta>
+
+    <meta meter="bossBarRed" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.3787" y="0.0841" width="0.0023" height="0.0181"
+        h="-30-30" s="75-100" l="40-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-100" type="area">
+        <resolution aspect="3.55:1" x="0.4464" y="0.0722" width="0.0018" height="0.0130" />
+        <resolution aspect="24:10" x="0.4113" y="0.0830" width="0.0029" height="0.0240" />
+        <resolution aspect="16:11" x="0.3813" y="0.0768" width="0.0029" height="0.0240" />
+
+        <resolution size="3840x2160" x="0.3804" y="0.0848" width="0.0029" height="0.0240" />
+        <resolution size="3840x1080" x="0.4464" y="0.0722" width="0.0018" height="0.0130" />
+        <resolution size="2560x1080" x="0.4215" y="0.0740" width="0.0029" height="0.0240" />
+        <resolution size="1920x1080" x="0.3963" y="0.0736" width="0.0029" height="0.0240" />
+    </meta>
+
+    <meta meter="bossBarNotRed" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.3783" y="0.0744" width="0.009" height="0.0007"
+        h="-30-30" s="0-100" l="40-100" hdr-h="-30-30" hdr-s="0-100" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.4469" y="0.0648" width="0.0060" height="0.0005" />
+        <resolution aspect="24:10" x="0.4092" y="0.0742" width="0.0241" height="0.0021" />
+        <resolution aspect="16:11" x="0.3793" y="0.0695" width="0.0241" height="0.0021" />
+
+        <resolution size="3840x2160" x="0.3793" y="0.0737" width="0.0241" height="0.0021" />
+        <resolution size="3840x1080" x="0.4469" y="0.0648" width="0.0060" height="0.0005" />
+        <resolution size="2560x1080" x="0.4195" y="0.0657" width="0.0241" height="0.0021" />
+        <resolution size="1920x1080" x="0.3951" y="0.0661" width="0.0241" height="0.0021" />
+    </meta>
+
+    <!-- Death: the game-over screen. Sample a region that goes distinctly red/dark
+        on death; negative baseline confirms the normal HUD isn't showing it. -->
+    <meta meter="deathWhite1" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.1454" y="0.886" width="0.0187" height="0.0257"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.0556" y="0.9021" width="0.0185" height="0.0340" />
+        <resolution aspect="24:10" x="0.0907" y="0.8780" width="0.0242" height="0.0352" />
+        <resolution aspect="16:11" x="0.1320" y="0.9070" width="0.0234" height="0.0364" />
+
+        <resolution size="3840x2160" x="0.1438" y="0.8979" width="0.0232" height="0.0403" />
+        <resolution size="3840x1080" x="0.0556" y="0.9021" width="0.0185" height="0.0340" />
+        <resolution size="2560x1080" x="0.0842" y="0.9144" width="0.0232" height="0.0403" />
+        <resolution size="1920x1080" x="0.1184" y="0.8966" width="0.0271" height="0.0405" />
+    </meta>
+
+    <meta meter="deathWhite2" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.8245" y="0.8812" width="0.0141" height="0.0271"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.9237" y="0.9044" width="0.0088" height="0.0274" />
+        <resolution aspect="24:10" x="0.8658" y="0.8867" width="0.0157" height="0.0322" />
+        <resolution aspect="16:11" x="0.8271" y="0.8945" width="0.0198" height="0.0279" />
+
+        <resolution size="3840x2160" x="0.8214" y="0.8774" width="0.0198" height="0.0309" />
+        <resolution size="3840x1080" x="0.9237" y="0.9044" width="0.0088" height="0.0274" />
+        <resolution size="2560x1080" x="0.8869" y="0.8965" width="0.0132" height="0.0275" />
+        <resolution size="1920x1080" x="0.8391" y="0.9020" width="0.0179" height="0.0277" />
+    </meta>
+
+    <meta meter="deathNotWhite" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.2044" y="0.8395" width="0.0015" height="0.0139"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.0878" y="0.9352" width="0.0026" height="0.0213" />
+        <resolution aspect="24:10" x="0.1433" y="0.9139" width="0.0091" height="0.0321" />
+        <resolution aspect="16:11" x="0.2051" y="0.8612" width="0.0059" height="0.0216" />
+
+        <resolution size="3840x2160" x="0.1955" y="0.8937" width="0.0058" height="0.0240" />
+        <resolution size="3840x1080" x="0.0878" y="0.9352" width="0.0026" height="0.0213" />
+        <resolution size="2560x1080" x="0.1327" y="0.8684" width="0.0058" height="0.0240" />
+        <resolution size="1920x1080" x="0.1779" y="0.8525" width="0.0069" height="0.0239" />
+    </meta>
+
+    <meta meter="healthBarBlue" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.1473" y="0.0847" width="0.077" height="0.0040"
+        h="100-250" s="10-50" l="50-90" hdr-h="100-250" hdr-s="0-50" hdr-l="50-100" type="area">
+        <resolution aspect="3.55:1" x="0.0658" y="0.0782" width="0.0340" height="0.0061" />
+        <resolution aspect="24:10" x="0.1103" y="0.0882" width="0.0572" height="0.0081" />
+        <resolution aspect="16:11" x="0.1480" y="0.0814" width="0.0770" height="0.0072" />
+
+        <resolution size="3840x2160" x="0.1478" y="0.0849" width="0.0770" height="0.0094" />
+        <resolution size="3840x1080" x="0.0658" y="0.0782" width="0.0340" height="0.0061" />
+        <resolution size="2560x1080" x="0.0986" y="0.0783" width="0.0516" height="0.0069" />
+        <resolution size="1920x1080" x="0.1317" y="0.0784" width="0.0682" height="0.0068" />
+    </meta>
+
+    <meta meter="itemWhite" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.449" y="0.2571" width="0.1251" height="0.0264"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.4665" y="0.2250" width="0.1000" height="0.0200" />
+        <resolution aspect="24:10" x="0.4409" y="0.2626" width="0.1202" height="0.0222" />
+        <resolution aspect="16:11" x="0.4465" y="0.2386" width="0.1477" height="0.0294" />
+
+        <resolution size="3840x2160" x="0.4247" y="0.2544" width="0.1477" height="0.0294" />
+        <resolution size="3840x1080" x="0.4665" y="0.2250" width="0.1000" height="0.0200" /> 
+        <resolution size="2560x1080" x="0.4490" y="0.2289" width="0.1024" height="0.0232" />
+        <resolution size="1920x1080" x="0.4482" y="0.2326" width="0.1477" height="0.0196" />
+    </meta>
+
+    <meta meter="itemBlack" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.2814" y="0.1918" width="0.0082" height="0.0104"
+        h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+        <resolution aspect="3.55:1" x="0.3893" y="0.1602" width="0.0068" height="0.0120" />
+        <resolution aspect="24:10" x="0.3337" y="0.1807" width="0.0246" height="0.0266" />
+        <resolution aspect="16:11" x="0.2673" y="0.1646" width="0.0264" height="0.0273" />
+
+        <resolution size="3840x2160" x="0.2703" y="0.1827" width="0.0246" height="0.0266" />
+        <resolution size="3840x1080" x="0.3893" y="0.1602" width="0.0068" height="0.0120" />
+        <resolution size="2560x1080" x="0.3224" y="0.1622" width="0.0086" height="0.0148" />
+        <resolution size="1920x1080" x="0.2772" y="0.1696" width="0.0146" height="0.0083" />
+    </meta>
+
+    <meta meter="levelUpWhite" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.4392" y="0.6998" width="0.0067" height="0.0056"
+        h="0-360" s="0-25" l="75-100" hdr-h="0-360" hdr-s="0-25" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.4705" y="0.6806" width="0.0082" height="0.0111" />
+        <resolution aspect="24:10" x="0.4547" y="0.6979" width="0.0047" height="0.0060" />
+        <resolution aspect="16:11" x="0.4388" y="0.6811" width="0.0055" height="0.0043" />
+
+        <resolution size="3840x2160" x="0.4402" y="0.6981" width="0.0082" height="0.0111" />
+        <resolution size="3840x1080" x="0.4705" y="0.6806" width="0.0082" height="0.0111" />
+        <resolution size="2560x1080" x="0.4577" y="0.6748" width="0.0082" height="0.0111" />
+        <resolution size="1920x1080" x="0.4481" y="0.6786" width="0.0082" height="0.0111" />
+    </meta>
+
+    <meta meter="levelUpBlack" tags="vlc,Binding of Isaac,Binding of Isaac:Rebirth" x="0.4392" y="0.7401" width="0.0067" height="0.0063"
+        h="0-360" s="0-100" l="0-10" hdr-h="0-360" hdr-s="0-100" hdr-l="0-10" type="area">
+        <resolution aspect="3.55:1" x="0.4698" y="0.7138" width="0.0125" height="0.0026" />
+        <resolution aspect="24:10" x="0.4552" y="0.7403" width="0.0049" height="0.0020" />
+        <resolution aspect="16:11" x="0.4392" y="0.7179" width="0.009" height="0.0026" />
+
+        <resolution size="3840x2160" x="0.4377" y="0.7436" width="0.0125" height="0.0026" />
+        <resolution size="3840x1080" x="0.4698" y="0.7138" width="0.0125" height="0.0026" />
+        <resolution size="2560x1080" x="0.4577" y="0.7157" width="0.0125" height="0.0026" />
+        <resolution size="1920x1080" x="0.4443" y="0.7155" width="0.0125" height="0.0026" />
+    </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+    // ═══════════════════════════════════════════════════════════
+    // CANVAS SETUP
+    // SignalRGB renders this 320x200 canvas onto the device layout.
+    // All effects draw to the hidden canvas, composited to ctx once per frame.
+    // ═══════════════════════════════════════════════════════════
+    const canvas = document.getElementById('exCanvas');
+    const ctx    = canvas.getContext('2d');
+    const width  = 320;
+    const height = 200;
+
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width  = 320;
+    hiddenCanvas.height = 200;
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    let effects = [];
+
+    //#region Update
+    // Runs every frame: paint the background, push each meter's latest vision
+    // reading through its debouncer (which fires callbacks on stable changes),
+    // draw + prune effects, then composite the hidden canvas to the screen.
+    function update() {
+        DrawRect(0, 0, 320, 200, 'black')
+        backgroundHandler()
+
+        // In-game / health
+        inGameBlack_Meter.setValue(engine.vision.inGameBlack)
+        healthBarRed_Meter.setValue(engine.vision.healthBarRed)
+        healthBarBlue_Meter.setValue(engine.vision.healthBarBlue)
+        lastHealthRed_Meter.setValue(engine.vision.lastHealthRed)
+
+        // Pickups (coin / bomb / key counters)
+        coinWhite_Meter.setValue(engine.vision.coinWhite)
+        BombWhite_Meter.setValue(engine.vision.BombWhite)
+        keyWhite_Meter.setValue(engine.vision.keyWhite)
+
+        // Item pickup (pedestal)
+        itemWhite_Meter.setValue(engine.vision.itemWhite)
+        itemBlack_Meter.setValue(engine.vision.itemBlack)
+
+        // Boss fight
+        bossBarRed_Meter.setValue(engine.vision.bossBarRed)
+        bossBarNotRed_Meter.setValue(engine.vision.bossBarNotRed)
+
+        // Death / game over
+        deathWhite1_Meter.setValue(engine.vision.deathWhite1)
+        deathWhite2_Meter.setValue(engine.vision.deathWhite2)
+        deathNotWhite_Meter.setValue(engine.vision.deathNotWhite)
+        levelUpWhite_Meter.setValue(engine.vision.levelUpWhite)
+        levelUpBlack_Meter.setValue(engine.vision.levelUpBlack)
+
+
+        effects.forEach(ele => { ele.draw() })
+        effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+        ctx.drawImage(hiddenCanvas, 0, 0)
+        window.requestAnimationFrame(update)
+    }
+    //#endregion
+
+    //#region Meter Declarations
+    // -------------------------------------------------------------------------
+    // Meter(size, callback): size = frames a reading must hold steady before the
+    // callback fires. Pair each positive + negative meter to the SAME callback.
+    // -------------------------------------------------------------------------
+    // In-game / health — the positive+negative pair feeds inGameDetect; the
+    // health bars feed the damage / low-health callbacks.
+    const inGameBlack_Meter    = new Meter(5,  inGameDetect)
+    const healthBarRed_Meter   = new Meter(4,  damageCallback)
+    const healthBarBlue_Meter  = new Meter(4,  healthBlueChanged)   // soul hearts drive two things: the low-health turn-off AND the eternal effect
+    const lastHealthRed_Meter  = new Meter(5,  lowHealthCallback)
+
+    // Pickups (coin / bomb / key counters)
+    const coinWhite_Meter      = new Meter(10, coinChanged)
+    const BombWhite_Meter      = new Meter(10, bombCallback)
+    const keyWhite_Meter       = new Meter(10, keyCallback)
+
+    // Item pickup (pedestal) — positive white banner + negative black baseline.
+    const itemWhite_Meter      = new Meter(10, itemPickupCallback)
+    const itemBlack_Meter      = new Meter(10, itemPickupCallback)
+
+    // Boss fight — positive+negative pair on the boss health bar.
+    const bossBarRed_Meter     = new Meter(5,  bossEffectCallback)
+    const bossBarNotRed_Meter  = new Meter(5,  bossEffectCallback)
+
+    // Death / game over — two positive samples + one negative baseline.
+    const deathWhite1_Meter    = new Meter(10, deathEffectCallback)
+    const deathWhite2_Meter    = new Meter(10, deathEffectCallback)
+    const deathNotWhite_Meter  = new Meter(10, deathEffectCallback)
+    // Level UP — two positive samples
+    const levelUpWhite_Meter   = new Meter(10, levelUpCallback)
+    const levelUpBlack_Meter   = new Meter(10, levelUpCallback)
+    //#endregion
+
+    //#region Callbacks
+    // -------------------------------------------------------------------------
+    // Global state flags — one "...Going" flag per effect stops it from
+    // re-triggering every frame while its trigger colors are still on screen.
+    // Each effect resets its own flag to false when it finishes fading out.
+    // -------------------------------------------------------------------------
+    let gInGame = false
+    let hurtEffectGoing = false     // also used by damageCallback (the hurt/damage effect)
+    let itemPickupGoing = false
+    let deathEffectGoing = false
+    let coinGoing = false
+    let bombGoing = false
+    let keyGoing = false
+    let lowHealthGoing = false
+    let bossEffectGoing = false
+    let eternalGoing = false
+    let levelUpGoing = false
+
+    // Last committed counter values for coin / bomb / key. A pickup changes the
+    // on-screen counter (and thus its meter value), so we only fire when the value
+    // DIFFERS from the last one we saw while in game. These persist while you're
+    // out of game (menu / between runs), so returning with the same counts does
+    // NOT re-fire — only a real change does. null = not seen in a run yet.
+    let coinPrev = null
+    let bombPrev = null
+    let keyPrev  = null
+
+    // -------------------------------------------------------------------------
+    // Detection callbacks. Pattern for each: gated on gInGame + its toggle, fires
+    // when the POSITIVE meter is high AND the NEGATIVE meter is low, and only if
+    // it isn't already going. Copy one of these to add a new effect.
+    // -------------------------------------------------------------------------
+
+    // Are we in an active run? Red hearts present in the HUD, baseline clear.
+    function inGameDetect() {
+        if (inGameBlack_Meter.value >= .95 && coinWhite_Meter.value >=.1 && !gInGame) {
+            gInGame = true
+        } else if (inGameBlack_Meter.value < .1 || coinWhite_Meter.value <.1) {
+            gInGame = false
+            // Leaving the run (incl. death) must end the persistent low-health
+            // warning, since its own callback may not fire once health hits 0.
+            lowHealthGoing = false
+            // Forget the counter values so re-entering (or a fresh run) records them
+            // anew instead of firing coin/bomb/key from the change on the way back in.
+            coinPrev = null
+            bombPrev = null
+            keyPrev  = null
+        }
+    }
+
+    function itemPickupCallback() {
+        if (gInGame && enableItemPickupOn && itemWhite_Meter.value >= .1 && itemBlack_Meter.value >=.95 && !itemPickupGoing) {
+            effects.push(new ItemPickupEffect())
+            itemPickupGoing = true
+        }
+    }
+
+    function deathEffectCallback() {
+        if (!gInGame && enableDeathEffectOn && deathWhite1_Meter.value >= .95 && deathWhite2_Meter.value >= .95 && deathNotWhite_Meter.value < .1 && !deathEffectGoing) {
+            effects.push(new DeathEffect())
+            deathEffectGoing = true
+        }
+    }
+
+    // Coin / bomb / key: fire only when the counter's value CHANGES from the last
+    // one we saw in game (a real pickup/spend), not on the static level. The first
+    // in-game reading (prev === null) just records the value without firing, and
+    // the value isn't updated while out of game — so leaving and returning with the
+    // same count won't re-trigger.
+    function coinCallback() {
+        if (!gInGame) return
+        if (gInGame && coinPrev !== null && enableCoinEffectOn && !coinGoing && coinWhite_Meter.value !== coinPrev) {
+            effects.push(new CoinEffect())
+            coinGoing = true
+        }
+        coinPrev = coinWhite_Meter.value
+    }
+
+    function bombCallback() {
+        if (!gInGame) return
+        if (gInGame && bombPrev !== null && enableBombEffectOn && !bombGoing && BombWhite_Meter.value !== bombPrev) {
+            effects.push(new BombEffect())
+            bombGoing = true
+        }
+        bombPrev = BombWhite_Meter.value
+    }
+
+    function keyCallback() {
+        if (!gInGame) return
+        if (gInGame && keyPrev !== null && enableKeyEffectOn && !keyGoing && keyWhite_Meter.value !== keyPrev) {
+            effects.push(new KeyEffect())
+            keyGoing = true
+        }
+        keyPrev = keyWhite_Meter.value
+    }
+
+    function damageCallback() {
+        // A decrease only counts as damage if the health bar is STILL present
+        // afterward (value > .05). A drop to ~0 means the HUD vanished (leaving the
+        // run / death), not a hit — otherwise the bar disappearing fires a false
+        // hurt on the frame before gInGame flips to false.
+        let redHit  = healthBarRed_Meter.decreased  && healthBarRed_Meter.diff  > .05 && healthBarRed_Meter.value  > .05
+        let blueHit = healthBarBlue_Meter.decreased && healthBarBlue_Meter.diff > .05 && healthBarBlue_Meter.value > .05
+        if (gInGame && enableHurtEffectOn && (redHit || blueHit) && !hurtEffectGoing && !lowHealthGoing) {
+            effects.push(new HurtEffect())
+            hurtEffectGoing = true
+        }
+    }
+
+    function lowHealthCallback() {
+        if (gInGame && enableLowHealthEffectOn && lastHealthRed_Meter.value >= .1 && lastHealthRed_Meter.value < .5 && !lowHealthGoing) {
+            effects.push(new LowHealthEffect())
+            lowHealthGoing = true
+        } else if (!gInGame || lastHealthRed_Meter.value >= .7 || lastHealthRed_Meter.value < .1 || healthBarBlue_Meter.value >= .2) {
+            // Turn off when: not in a run, red hearts recovered, the heart is empty
+            // (< .1 — dead / no red health), OR a soul (blue) heart is present, since
+            // a soul heart buffers damage — no low-health warning in any of these.
+            lowHealthGoing = false
+        }
+    }
+    function bossEffectCallback() {
+        if (gInGame && enableBossEffectOn && bossBarRed_Meter.value >= .95 && bossBarNotRed_Meter.value < .1 && !bossEffectGoing) {
+            effects.push(new BossEffect())
+            bossEffectGoing = true
+        }else if(!gInGame || bossBarRed_Meter.value <.1){
+            bossEffectGoing = false
+        }
+    }
+
+    // healthBarBlue drives two states, so route its meter changes through one
+    // handler (the WarThunder "...Changed" pattern): the low-health warning
+    // (a soul heart cancels it) and the eternal effect (lots of soul health).
+    function healthBlueChanged() {
+        lowHealthCallback()
+        eternalCallback()
+        damageCallback()
+    }
+
+    function coinChanged() {
+        coinCallback()
+        inGameDetect()
+    }
+
+    // Eternal: fires when a soul (blue) heart is present (value >= .2).
+    function eternalCallback() {
+        if (gInGame && enableEternalEffectOn && healthBarBlue_Meter.value >= .2 && !eternalGoing) {
+            effects.push(new EternalEffect())
+            eternalGoing = true
+        }else if(!gInGame || healthBarBlue_Meter.value <.1){
+            eternalGoing = false
+        }
+    }
+
+    function levelUpCallback(){
+        if (!gInGame && enableLevelUpEffectOn && levelUpBlack_Meter.value >= .95 && levelUpWhite_Meter.value >=.95 && !levelUpGoing) {
+            effects.push(new LevelUpEffect())
+            levelUpGoing = true
+        }else if(gInGame || (levelUpBlack_Meter.value <.1 && levelUpWhite_Meter.value <.1)){
+            levelUpGoing = false
+        }
+    }
+
+
+    //#endregion
+
+    //#region Background Modes
+    // ═══════════════════════════════════════════════════════════
+    // BACKGROUND SYSTEM
+    // Eight modes selected by the backgroundMode control.
+    // ═══════════════════════════════════════════════════════════
+    let proBack = [0, 0, 0]
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor)
+    }
+
+    let audioEase = { sat: 0, lit: 0 }
+    let gCycle = 0
+
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100
+        audioEase.sat += (targetDensity - audioEase.sat) / 10
+        audioEase.lit += (targetDensity - audioEase.lit) / 10
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360
+    }
+
+    // One explicit case per background mode. Every case uses ambienceAlpha for
+    // its brightness so the Background Brightness control works in all modes.
+    function backgroundHandler() {
+        switch (backgroundMode) {
+            case 'Color Cycle':
+                updateColorCycle()
+                DrawRect(0, 0, 320, 200, getColorString(proBack[0] + gCycle, proBack[1], proBack[2], ambienceAlpha / 100))
+                break
+            case 'Color Cycle Ambience':
+                updateColorCycle()
+                copyScreen(ambienceAlpha / 100)
+                break
+            case 'Color Cycle Audio Visualizer':
+                updateColorCycle()
+                audioEase.sat += (engine.audio.density * 100 - audioEase.sat) / 10
+                audioEase.lit += (engine.audio.density * 100 - audioEase.lit) / 10
+                DrawRect(0, 0, 320, 200, getColorString(proBack[0] + gCycle, audioEase.sat * 0.33 + 66, audioEase.lit * 0.9 + 10, ambienceAlpha / 100))
+                break
+            case 'Custom':
+                DrawRect(0, 0, 320, 200, getColorString(proBack[0], proBack[1], proBack[2], ambienceAlpha / 100))
+                break
+            case 'Ambience':
+                copyScreen(ambienceAlpha / 100)
+                break
+            case 'Custom Ambience':
+                copyScreen(ambienceAlpha / 100)
+                break
+            case 'Ambience Audio Visualizer':
+                copyScreenAudio(ambienceAlpha / 100)
+                break
+            case 'Custom Audio Visualizer':
+                audioEase.sat += (engine.audio.density * 100 - audioEase.sat) / 10
+                audioEase.lit += (engine.audio.density * 100 - audioEase.lit) / 10
+                DrawRect(0, 0, 320, 200, getColorString(proBack[0], audioEase.sat * 0.33 + 66, audioEase.lit * 0.9 + 10, ambienceAlpha / 100))
+                break
+        }
+    }
+
+    const ZONE_COLS   = 28
+    const ZONE_ROWS   = 20
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat       = new Int8Array(engine.zone.saturation)
+        const hue       = new Int16Array(engine.zone.hue)
+        const w = 320 / ZONE_COLS
+        const h = 200 / ZONE_ROWS
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            hiddenCtx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hiddenCtx.fillRect(col * w, row * h, w, h)
+        }
+    }
+
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat       = new Int8Array(engine.zone.saturation)
+        const hue       = new Int16Array(engine.zone.hue)
+        const w = 320 / ZONE_COLS
+        const h = 200 / ZONE_ROWS
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const finalHue = backgroundMode === 'Custom Ambience'
+                ? proBack[0]
+                : hue[iZone] + (backgroundMode === 'Color Cycle Ambience' ? gCycle : 0)
+            hiddenCtx.fillStyle = getColorString(finalHue, sat[iZone], lightness[iZone], alpha)
+            hiddenCtx.fillRect(col * w, row * h, w, h)
+        }
+    }
+    //#endregion
+
+    //#region Helper Functions
+    // ═══════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS — draw primitives target hiddenCtx
+    // ═══════════════════════════════════════════════════════════
+    function DrawRect(x, y, w, h, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fillRect(x, y, w, h)
+    }
+
+    function strokeRect(x, y, w, h, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.rect(x, y, w, h)
+        hiddenCtx.stroke()
+    }
+
+    function DrawCircle(x, y, radius, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+        hiddenCtx.fill()
+    }
+
+    function DrawStroke(x, y, radius, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+        hiddenCtx.stroke()
+    }
+
+    function DrawArcStroke(x, y, radius, start, end, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.arc(x, y, radius, start, end)
+        hiddenCtx.stroke()
+    }
+
+    function DrawLine(start, end, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(start[0], start[1])
+        hiddenCtx.lineTo(end[0], end[1])
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.stroke()
+    }
+
+    function DrawArc(x, y, start, end, radius, direction, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.arc(x, y, radius, start, end, direction)
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fill()
+    }
+
+    function DrawEllipse(x, y, w, h, rotation, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.ellipse(x, y, w, h, rotation, 0, Math.PI * 2)
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fill()
+    }
+
+    function DrawTriangle(x1, y1, x2, y2, x3, y3, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.moveTo(x1, y1)
+        hiddenCtx.lineTo(x2, y2)
+        hiddenCtx.lineTo(x3, y3)
+        hiddenCtx.lineTo(x1, y1)
+        hiddenCtx.fill()
+    }
+
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+        hiddenCtx.fillStyle = color
+        hiddenCtx.save()
+        hiddenCtx.translate(x, y)
+        hiddenCtx.scale(scaleX, scaleY)
+        hiddenCtx.fill(new Path2D(path))
+        hiddenCtx.restore()
+    }
+
+    // drawHeart: two lobes (circles) + a pointed base (triangle). Handy for a
+    // game whose whole HUD is hearts. Uses the Draw* helpers, so it targets
+    // hiddenCtx here automatically.
+    function drawHeart(cx, cy, size, color) {
+        let r = size / 2
+        DrawTriangle(cx - r * 1.05, cy - r * 0.05, cx + r * 1.05, cy - r * 0.05, cx, cy + r * 1.25, color)
+        DrawCircle(cx - r * 0.5, cy - r * 0.3, r * 0.62, color)
+        DrawCircle(cx + r * 0.5, cy - r * 0.3, r * 0.62, color)
+    }
+
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null
+    }
+
+    function hexToHSL(hex) {
+        const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || []
+        const rgb = [r, g, b].map(x => parseInt(x, 16) / 255)
+        const max = Math.max(...rgb)
+        const min = Math.min(...rgb)
+        const l = (max + min) / 2
+        if (max === min) return [0, 0, Math.round(l * 100)]
+        const d = max - min
+        const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+        let h
+        const [nr, ng, nb] = rgb
+        if      (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0)
+        else if (max === ng) h = (nb - nr) / d + 2
+        else                 h = (nr - ng) / d + 4
+        return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)]
+    }
+
+    // Meter(size, callback): frame-stabilizing debouncer for vision signals.
+    // A reading must repeat identically `size` times before it commits and the
+    // callback fires — filters out one-frame noise from the vision system.
+    function Meter(size, callback) {
+        this.size = size
+        this.value = 0
+        this.diff = 0
+        this.increased = false
+        this.decreased = false
+        var values = []
+        this.setValue = function (updatedValue) {
+            values.push(updatedValue)
+            if (values.length > this.size) values.shift()
+            for (var i = 0; i < values.length - 1; i++) {
+                if (values[i] !== values[i + 1]) return
+            }
+            if (this.value !== values[0]) {
+                this.diff = Math.abs(this.value - values[0])
+                this.increased = this.value < values[0]
+                this.decreased = this.value > values[0]
+                this.value = values[0]
+                callback()
+            }
+        }
+    }
+    //#endregion
+
+    //#region Effects
+    // ═══════════════════════════════════════════════════════════
+    // EFFECTS  (draw to hiddenCtx via the Draw* helpers)
+    //
+    // Each effect is a constructor exposing:
+    //   this.lifetime = 1        → alive; update() removes it when it hits 0
+    //   this.draw = function(){} → called once per frame
+    // and is SELF-TERMINATING: fade in → play → fade out → set lifetime = 0
+    // AND reset its "...Going" flag so it can trigger again next time.
+    //
+    // Keep these in sync with BindingOfIsaacStaging.html (same visuals, minus
+    // the "...Going" bookkeeping) so you can preview them there.
+    // ═══════════════════════════════════════════════════════════
+
+    // HurtEffect: a red heart pulses center-screen, then shatters into flying
+    // shards with a red damage flash. Fires when Isaac takes damage.
+    function HurtEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.fadingOut = false
+        this.broken = false
+        this.breakFrame = 0
+        this.parts = []
+        for (let i = 0; i < 24; i++) {
+            let ang = Math.random() * Math.PI * 2
+            let spd = 1 + Math.random() * 3
+            this.parts.push({
+                x: 160, y: 96,
+                vx: Math.cos(ang) * spd,
+                vy: Math.sin(ang) * spd - 1,
+                size: 12 + Math.random() * 5,
+                rot: Math.random() * Math.PI,
+                spin: (Math.random() - 0.5) * 0.4,
+                live: false
+            })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut) {
+                if (this.alpha < 1) this.alpha += 0.08
+                if (this.alpha > 1) this.alpha = 1
+                if (!this.broken && this.frame > 22) {
+                    this.broken = true
+                    this.breakFrame = this.frame
+                    for (let p of this.parts) p.live = true
+                }
+                // Self-terminate once the shards have flown out (or the trigger cleared).
+                if (!enableHurtEffectOn || (this.broken && this.frame - this.breakFrame > 60)) this.fadingOut = true
+            } else {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    hurtEffectGoing = false
+                    return
+                }
+            }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            let flash = this.broken ? Math.max(0, 1 - (this.frame - this.breakFrame) / 30) : 0.4
+            DrawRect(0, 0, 320, 200, `hsla(0, 90%, 45%, ${0.35 * a * (flash + 0.2)})`)
+            if (!this.broken) {
+                let pulse = 1 + Math.sin(this.frame * 0.3) * 0.08
+                drawHeart(160, 96, 80 * pulse, `hsla(0, 85%, 55%, ${a})`)
+            } else {
+                for (let p of this.parts) {
+                    if (!p.live) continue
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.rot += p.spin
+                    let pa = a * Math.max(0, 1 - (this.frame - this.breakFrame) / 60)
+                    DrawEllipse(p.x, p.y, p.size, p.size * 0.8, p.rot, `hsla(0, 85%, ${45 + Math.random() * 15}%, ${pa})`)
+                }
+            }
+        }
+    }
+
+    function LowHealthEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!lowHealthGoing && !this.fadingOut) {
+                this.fadingOut = true
+            }
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    return
+                }
+            } else if (this.alpha < 1) {
+                this.alpha += 0.03
+                if (this.alpha > 1) this.alpha = 1
+            }
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
+            let pulse = 0.5 + 0.5 * Math.sin(this.frame * 0.15)
+            let scale = 20 + pulse * 2
+            let cx = 50
+            let cy = 50
+            let lit = 40 + pulse * 20
+            let col = `hsla(0, 90%, ${lit}%, ${this.alpha})`
+            let px = [
+                [-3, -2], [-2, -2], [1, -2], [2, -2],
+                [-4, -1], [-3, -1], [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1], [3, -1],
+                [-4, 0], [-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], [3, 0],
+                [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],
+                [-2, 2], [-1, 2], [0, 2], [1, 2],
+                [-1, 3], [0, 3]
+            ]
+            for (let i = 0; i < px.length; i++) {
+                let bx = cx + px[i][0] * (scale / 3.2)
+                let by = cy + px[i][1] * (scale / 2.0)
+                DrawRect(bx * 3.2 - scale / 2, by * 2.0 - scale / 2, scale, scale, col)
+            }
+        }
+    }
+
+    // ItemPickupEffect: a holy radiance — golden halo rings expand from center
+    // over a glowing core with sparkle rays. Fires on picking up an item.
+    function ItemPickupEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 150
+        this.fadingOut = false
+        this.rings = []
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) {
+                this.alpha += 0.06
+                if (this.alpha > 1) this.alpha = 1
+            }
+            if (!this.fadingOut && (!enableItemPickupOn || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.04
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    itemPickupGoing = false
+                    return
+                }
+            }
+            let a = this.alpha
+            let cx = 160, cy = 100
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            if (this.frame % 18 === 0 && !this.fadingOut) this.rings.push({ r: 10 })
+            for (let i = this.rings.length - 1; i >= 0; i--) {
+                let ring = this.rings[i]
+                ring.r += 2.2
+                let la = a * Math.max(0, 1 - ring.r / 150)
+                if (la <= 0) { this.rings.splice(i, 1); continue }
+                DrawStroke(cx, cy, ring.r, `hsla(48, 100%, 65%, ${la})`, 9)
+            }
+            let pulse = 0.6 + 0.4 * Math.sin(this.frame * 0.15)
+            DrawCircle(cx, cy, 60, `hsla(48, 100%, 60%, ${0.25 * a * pulse})`)
+            DrawCircle(cx, cy, 40, `hsla(52, 100%, 70%, ${0.6 * a})`)
+            DrawCircle(cx, cy, 18,  `hsla(55, 100%, 92%, ${a})`)
+            let n = 8
+            for (let i = 0; i < n; i++) {
+                let ang = (i / n) * Math.PI * 2 + this.frame * 0.02
+                let r1 = 22, r2 = 40 + Math.sin(this.frame * 0.1 + i) * 6
+                DrawLine([cx + Math.cos(ang) * r1, cy + Math.sin(ang) * r1],
+                         [cx + Math.cos(ang) * r2, cy + Math.sin(ang) * r2],
+                         `hsla(50, 100%, 85%, ${a * 0.7})`, 2)
+            }
+        }
+    }
+
+    // DeathEffect: big blood drips fall while a blood pool rises from the bottom
+    // to fill the whole screen — then the effect ends. Isaac's "you died" moment.
+    // Drops sit behind the pool, fading out as they slip behind the red, and stop
+    // drawing once it's full so no residual drops linger over the fade-out.
+    function DeathEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.fadingOut = false
+        this.pool = 0            // blood pool rising from the bottom until it fills the screen
+        this.drops = []
+        for (let i = 0; i < 22; i++) {
+            this.drops.push({
+                x: Math.random() * 320,
+                y: -Math.random() * 200,
+                vy: 1.5 + Math.random() * 3,
+                len: 18 + Math.random() * 30,   // bigger streaks
+                w: 5 + Math.random() * 6        // thicker drops
+            })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) {
+                this.alpha += 0.03
+                if (this.alpha > 1) this.alpha = 1
+            }
+            // End early if the effect is toggled off mid-play.
+            if (!this.fadingOut && !enableDeathEffectOn) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.03
+                if (this.alpha <= 0) {
+                    this.alpha = 0
+                    this.lifetime = 0
+                    deathEffectGoing = false
+                    return
+                }
+            }
+            let a = this.alpha
+            // Dark backdrop + deep blood-red vignette.
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            DrawRect(0, 0, 320, 200, `hsla(0, 85%, 12%, ${0.3 * a})`)
+            // Advance the pool first so we know where its top edge is this frame.
+            if (!this.fadingOut) {
+                this.pool += 0.8
+                if (this.pool >= 200) { this.pool = 200; this.fadingOut = true }
+            }
+            let poolTop = 200 - this.pool
+            // Falling blood drops — drawn BEHIND the pool. Each fades out over the
+            // last 25px as it nears the surface, so it vanishes just as it slips
+            // behind the red. Once the pool is full and fading, drops stop drawing
+            // entirely so no residual drops linger over the fading rectangle.
+            if (!this.fadingOut) {
+                for (let d of this.drops) {
+                    d.y += d.vy
+                    if (d.y - d.len > 200) { d.y = -d.len; d.x = Math.random() * 320; d.vy = 1.5 + Math.random() * 3 }
+                    let dist = poolTop - d.y                    // gap from head to the surface (>0 above)
+                    let df = dist >= 25 ? 1 : Math.max(0, dist / 25)
+                    let da = a * df
+                    DrawRect(d.x - d.w / 2, d.y - d.len, d.w, d.len, `hsla(0, 90%, 30%, ${da})`)
+                    DrawCircle(d.x, d.y, d.w * 0.9, `hsla(0, 90%, 35%, ${da})`)
+                }
+            }
+            // Rising blood pool — drawn on top of the drops; fills the whole
+            // screen (up to the top), then fades out on its own.
+            DrawRect(0, poolTop, 320, this.pool, `hsla(0, 90%, 22%, ${a})`)
+            DrawRect(0, poolTop, 320, 3, `hsla(0, 90%, 35%, ${a})`)   // glossy rising edge
+        }
+    }
+
+    // CoinEffect: a spinning gold coin over a golden coin-shower. STUB — restyle
+    // the visuals freely; the lifecycle + coinGoing reset are already wired.
+    // (Currently shared by coin / bomb / key pickups via coinCallback.)
+    function CoinEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 90
+        this.fadingOut = false
+        this.coins = []
+        for (let i = 0; i < 16; i++) {
+            this.coins.push({
+                x: Math.random() * 320,
+                y: -20 - Math.random() * 200,
+                vy: 1.5 + Math.random() * 2.5,
+                r: 15 + Math.random() * 5,
+                phase: Math.random() * Math.PI * 2
+            })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.08; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!enableCoinEffectOn || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; coinGoing = false; return }
+            }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            // Falling coin shower — width oscillates to fake a flipping coin.
+            for (let c of this.coins) {
+                c.y += c.vy
+                if (c.y > 220) { c.y = -20; c.x = Math.random() * 320 }
+                let w = Math.abs(Math.cos(this.frame * 0.15 + c.phase)) * c.r + 1
+                DrawEllipse(c.x, c.y, w, c.r, 0, `hsla(48, 100%, 55%, ${a})`)
+            }
+            // Big flipping coin in the center.
+            let cx = 160, cy = 100
+            let w = Math.abs(Math.cos(this.frame * 0.12)) * 55 + 5
+            DrawEllipse(cx, cy, w, 55, 0, `hsla(46, 100%, 55%, ${a})`)
+            DrawEllipse(cx, cy, w * 0.7, 40, 0, `hsla(52, 100%, 68%, ${a})`)
+        }
+    }
+
+    // BossEffect: an ominous pulsing-red wash behind a blocky skull silhouette.
+    // STUB — swap in whatever boss visuals you want; lifecycle + bossEffectGoing
+    // reset are already wired.
+    function BossEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 180
+        this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.04; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!enableBossEffectOn || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.03
+                if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; return }
+            }
+            let a = this.alpha
+            let pulse = 0.5 + 0.5 * Math.sin(this.frame * 0.12)
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            DrawRect(0, 0, 320, 200, `hsla(0, 90%, ${18 + pulse * 12}%, ${0.4 * a})`)
+            let cx = 160, cy = 86
+            DrawEllipse(cx, cy, 66, 50, 0, `hsla(0, 0%, 92%, ${a})`)                      // cranium
+            DrawRect(cx - 32, cy + 42, 66, 40, `hsla(0, 0%, 92%, ${a})`)                  // jaw
+            DrawCircle(cx - 18, cy - 4, 16, `hsla(0, 90%, ${30 + pulse * 30}%, ${a})`)    // left eye socket
+            DrawCircle(cx + 18, cy - 4, 16, `hsla(0, 90%, ${30 + pulse * 30}%, ${a})`)    // right eye socket
+            DrawTriangle(cx - 6, cy + 14, cx + 6, cy + 14, cx, cy + 26, `hsla(0, 0%, 5%, ${a})`)  // nose
+        }
+    }
+
+    // EternalEffect: two big white X marks over a blue wash. Fires when soul
+    // (blue) health is high (> .6). Simple fade in → hold → fade out one-shot.
+    function EternalEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 120
+        this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.05; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!enableEternalEffectOn || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; return }
+            }
+            let a = this.alpha
+            // Blue background.
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            DrawRect(0, 0, 320, 200, `hsla(210, 50%, 45%, ${0.85 * a})`)
+            // Two white X marks.
+            let s = 40, cy = 100
+            let xs = [110, 210]
+            for (let i = 0; i < xs.length; i++) {
+                let cx = xs[i]
+                DrawLine([cx - s, cy - s], [cx + s, cy + s], `hsla(0, 0%, 100%, ${a})`, 20)
+                DrawLine([cx - s, cy + s], [cx + s, cy - s], `hsla(0, 0%, 100%, ${a})`, 20)
+            }
+        }
+    }
+
+    // BombEffect: a black bomb with a sparking fuse that flashes faster and then
+    // detonates in a fireball with flying debris. Fires on a bomb pickup.
+    function BombEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.fadingOut = false
+        this.exploded = false
+        this.explodeFrame = 0
+        this.fuseAt = 70          // frames until detonation
+        this.parts = []
+        for (let i = 0; i < 24; i++) {
+            let ang = Math.random() * Math.PI * 2
+            let spd = 1.5 + Math.random() * 3.5
+            this.parts.push({ x: 160, y: 100, vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd, size: 3 + Math.random() * 5, live: false })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.08; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.exploded && !enableBombEffectOn) this.fadingOut = true
+            if (!this.exploded && this.frame >= this.fuseAt) {
+                this.exploded = true
+                this.explodeFrame = this.frame
+                for (let p of this.parts) p.live = true
+            }
+            if (this.exploded && this.frame - this.explodeFrame > 60 && !this.fadingOut) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; bombGoing = false; return }
+            }
+            let a = this.alpha
+            let cx = 160, cy = 100
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            if (!this.exploded) {
+                let near = this.frame / this.fuseAt           // 0..1, grows toward the boom
+                // Bomb body + highlight.
+                DrawCircle(cx, cy + 6, 68, `hsla(0, 0%, 12%, ${a})`)
+                DrawCircle(cx - 10, cy - 2, 18, `hsla(0, 0%, 32%, ${a})`)
+                // Fuse cap + fuse + sparking tip.
+                DrawRect(cx - 5, cy - 78, 20, 20, `hsla(30, 55%, 38%, ${a})`)
+                DrawLine([cx, cy - 68], [cx + 12, cy - 88], `hsla(30, 55%, 45%, ${a})`, 6)
+                let spark = 0.5 + 0.5 * Math.sin(this.frame * 0.8)
+                DrawCircle(cx + 12, cy - 88, 9 + spark * 3 * near, `hsla(45, 100%, ${60 + spark * 30}%, ${a})`)
+                // Whole bomb flashes red, faster as detonation nears.
+                let rate = Math.max(3, 12 - near * 10)
+                if (Math.floor(this.frame / rate) % 2 === 0) {
+                    DrawCircle(cx, cy + 6, 68, `hsla(0, 90%, 45%, ${0.4 * a * near})`)
+                }
+            } else {
+                let ef = this.frame - this.explodeFrame
+                let burst = Math.min(ef / 15, 1)
+                let flick = 0.6 + Math.random() * 0.4
+                DrawCircle(cx, cy, 100 * burst, `hsla(20, 100%, 55%, ${0.35 * a * flick})`)
+                DrawCircle(cx, cy, 70 * burst,  `hsla(12, 100%, 50%, ${0.6 * a * flick})`)
+                DrawCircle(cx, cy, 38 * burst,  `hsla(45, 100%, 65%, ${0.9 * a * flick})`)
+                for (let p of this.parts) {
+                    if (!p.live) continue
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.05
+                    let pa = a * Math.max(0, 1 - ef / 60)
+                    DrawCircle(p.x, p.y, p.size, `hsla(20, 90%, ${40 + Math.random() * 20}%, ${pa})`)
+                }
+            }
+        }
+    }
+
+    // KeyEffect: a golden key with a glowing halo and a sparkle. Fires on a key
+    // pickup. Simple fade in → hold → fade out one-shot.
+    function KeyEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 120
+        this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!enableKeyEffectOn || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; keyGoing = false; return }
+            }
+            let a = this.alpha
+            let cx = 160, cy = 100
+            let pulse = 0.5 + 0.5 * Math.sin(this.frame * 0.12)
+            let gold = `hsla(46, 100%, 55%, ${a})`
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            // Glow behind the key.
+            DrawCircle(cx, cy, 80 + pulse * 8, `hsla(48, 100%, 55%, ${0.15 * a})`)
+            // Key: ring head (bow) on the left, shaft, teeth on the right.
+            let bowX = cx - 58
+            DrawStroke(bowX, cy, 20, "grey", 14)
+            DrawRect(bowX + 16, cy - 5, 95, 10, "grey")
+            DrawRect(bowX + 103, cy + 5, 8, 16, "grey")
+            DrawRect(bowX + 90, cy + 5, 8, 11, "grey")
+            // Sparkle near the teeth.
+            let sx = cx + 74
+            DrawLine([sx - 6, cy - 30], [sx + 6, cy - 30], `hsla(52, 100%, 92%, ${a * pulse})`, 6)
+            DrawLine([sx, cy - 36], [sx, cy - 24], `hsla(52, 100%, 92%, ${a * pulse})`, 6)
+        }
+    }
+
+    // LevelUpEffect: a brown treasure chest whose lid hinges open while golden
+    // light and rays pour out. Fade in → chest opens → hold → fade out.
+    function LevelUpEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 150
+        this.fadingOut = false
+        this.lid = 0             // 0 = closed, eases toward 1 = fully open
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!enableLevelUpEffectOn || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) {
+                this.alpha -= 0.05
+                if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; levelUpGoing = false; return }
+            }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            // After a short beat, ease the lid open.
+            if (this.frame > 20 && this.lid < 1) this.lid += (1 - this.lid) * 0.06
+            let open = this.lid
+
+            let cx = 160
+            let baseTop = 118
+            let baseW = 130
+            let baseH = 46
+            let bx = cx - baseW / 2
+
+            // Golden light pouring out of the opening — grows with how open it is.
+            if (open > 0.05) {
+                let pulse = 0.6 + 0.4 * Math.sin(this.frame * 0.2)
+                let glowA = a * open
+                DrawCircle(cx, baseTop, 75 * open, `hsla(45, 100%, 60%, ${0.25 * glowA * pulse})`)
+                DrawCircle(cx, baseTop, 42 * open, `hsla(50, 100%, 70%, ${0.4 * glowA})`)
+            }
+
+            // Chest base (brown box) with rim, shadow and a metal lock.
+            DrawRect(bx, baseTop, baseW, baseH, `hsla(28, 65%, 32%, ${a})`)                              // body
+            DrawRect(bx, baseTop, baseW, 8, `hsla(30, 60%, 42%, ${a})`)                                 // top rim
+            DrawRect(bx, baseTop + baseH - 8, baseW, 8, `hsla(28, 60%, 22%, ${a})`)                      // bottom shadow
+            DrawRect(bx + baseW / 2 - 9, baseTop + baseH / 2 - 9, 18, 20, `hsla(45, 90%, 55%, ${a})`)    // lock plate
+            DrawRect(bx + baseW / 2 - 3, baseTop + baseH / 2 - 2, 6, 8, `hsla(30, 40%, 15%, ${a})`)      // keyhole
+
+            // Lid — hinged at the top-back corner, swinging up and back as it opens.
+            hiddenCtx.save()
+            hiddenCtx.translate(bx, baseTop)
+            hiddenCtx.rotate(-open * 2.1)
+            DrawRect(0, -20, baseW, 22, `hsla(28, 60%, 38%, ${a})`)     // lid body
+            DrawRect(0, -20, baseW, 7,  `hsla(30, 60%, 48%, ${a})`)     // lid highlight
+            DrawRect(0, -6, baseW, 6,   `hsla(28, 60%, 24%, ${a})`)     // lid lower band
+            hiddenCtx.restore()
+        }
+    }
+    //#endregion
+
+    window.requestAnimationFrame(update)
+</script>

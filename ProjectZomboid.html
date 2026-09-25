@@ -1,0 +1,1335 @@
+<head>
+    <title>Project Zomboid Dev</title>
+    <meta description="Effects and ambience for Project Zomboid. v1.0.0" />
+    <meta publisher="SignalRGB" />
+
+    <!-- Commented out properties (reference only) -->
+    <!-- <meta property="theBool"     label="Boolean"    type="boolean"   default="0" />
+    <meta property="theText"     label="Text Field" type="textfield" default="yourText" />
+    <meta property="frontRange"  label="Numeric"    type="number"    default="50" min="0" max="100" />
+    <meta property="myComboBox"  label="Combo Box"  type="combobox"  values="Option1,Option2,Option3" default="Option1" /> -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACTIVE USER-FACING CONTROLS
+         All properties below appear as controls in the SignalRGB UI.
+         ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Background controls -->
+    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Adjusts the brightness of the background mode." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" tooltip="Changes look of the background." type="list"
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience" />
+    <meta property="backColor"      label="Custom Color" tooltip="Controls the color of the custom background modes." type="color" default="#010101" min="0" max="360" />
+
+    <!-- Effect toggles -->
+    <!-- One boolean toggle per game event the effect engine detects. -->
+    <meta property="deathEffectOn"     label="Death Effect"     tooltip="Turns on the effect that plays when you die." type="boolean" default="1" />
+    <meta property="craftEffectOn"     label="Craft Effect"     tooltip="Turns on the effect that plays while crafting." type="boolean" default="1" />
+    <meta property="healthEffectOn"    label="Health Effect"    tooltip="Turns on the effect that plays when the health panel is open." type="boolean" default="1" />
+    <meta property="inventoryEffectOn" label="Inventory Effect" tooltip="Turns on the effect that plays when the inventory is open." type="boolean" default="1" />
+    <meta property="buildEffectOn"     label="Build Effect"     tooltip="Turns on the effect that plays in the build menu." type="boolean" default="1" />
+    <meta property="moveEffectOn"      label="Move Effect"      tooltip="Turns on the effect that plays when moving furniture." type="boolean" default="1" />
+    <meta property="searchEffectOn"    label="Search Effect"    tooltip="Turns on the effect that plays while searching or looting." type="boolean" default="1" />
+    <meta property="animalsEffectOn"   label="Animals Effect"   tooltip="Turns on the effect that plays for the animals panel." type="boolean" default="1" />
+    <meta property="weaponEffectOn"    label="Weapon Effect"    tooltip="Turns on the effect that plays when a weapon slot changes." type="boolean" default="1" />
+    <meta property="damageEffectOn"    label="Damage Effect"    tooltip="Turns on the effect that plays when you take damage." type="boolean" default="1" />
+    <meta property="carEffectOn"       label="Car Effect"       tooltip="Turns on the effect that plays when in a vehicle." type="boolean" default="1" />
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VISION METERS
+       Each meter captures a small region of the game screen and
+       measures what percentage of its pixels match the given HSL
+       range. The JS Meter class smooths readings over N frames
+       before firing a callback.
+
+       Detection strategy: every game state uses a POSITIVE meter
+       (confirms the expected color IS present) paired with a
+       NEGATIVE "Not" meter (confirms the region does NOT show that
+       color during the baseline/off state). A state is considered
+       active only when positive is high AND negative is low, which
+       prevents false positives from ambient lighting or UI fades.
+
+       TESTER NOTE: If an effect never fires, first check the QA Tool
+       — load a screenshot at the target resolution and verify the
+       meter region actually captures the right pixels at the right
+       color. Then adjust HSL ranges or region coordinates as needed.
+
+       EDIT ME: the x/y/width/height below are PLACEHOLDER regions
+       (small boxes near screen center). Replace them with the real
+       on-screen locations once you have screenshots to measure from,
+       and add per-resolution <resolution> overrides like War Thunder.
+       ═══════════════════════════════════════════════════════════ -->
+    <meta meter="inGameRed" tags="vlc,ProjectZomboid,Project Zomboid" x="0.934" y="0.0075" width="0.0609" height="0.0166"
+        h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.9563" y="0.0084" width="0.0401" height="0.0230" />
+        <resolution aspect="24:10"  x="0.9506" y="0.0069" width="0.0451" height="0.0180" />
+        <resolution aspect="16:11"  x="0.9347" y="0.0069" width="0.061" height="0.0144" />
+
+        <resolution size="3840x2160" x="0.9562" y="0.0050" width="0.0404" height="0.0111" />
+        <resolution size="3840x1080" x="0.9563" y="0.0084" width="0.0401" height="0.0230" />
+        <resolution size="2560x1080" x="0.9351" y="0.0102" width="0.0602" height="0.0232" />
+        <resolution size="1920x1080" x="0.913" y="0.0102" width="0.0781" height="0.0222" />
+    </meta>
+
+    <meta meter="inGameWhite" tags="vlc,ProjectZomboid,Project Zomboid" x="0.934" y="0.0075" width="0.0609" height="0.0166"
+        h="0-360" s="0-10" l="50-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+        <resolution aspect="3.55:1" x="0.9563" y="0.0084" width="0.0401" height="0.0230" />
+        <resolution aspect="24:10"  x="0.9506" y="0.0069" width="0.0451" height="0.0180" />
+        <resolution aspect="16:11"  x="0.9347" y="0.0069" width="0.061" height="0.0144" />
+
+        <resolution size="3840x2160" x="0.9562" y="0.0050" width="0.0404" height="0.0111" />
+        <resolution size="3840x1080" x="0.9563" y="0.0084" width="0.0401" height="0.0230" />
+        <resolution size="2560x1080" x="0.9351" y="0.0102" width="0.0602" height="0.0232" />
+        <resolution size="1920x1080" x="0.913" y="0.0102" width="0.0781" height="0.0222" />
+    </meta>
+
+    <meta meter="deathRed" tags="vlc,ProjectZomboid,Project Zomboid" x="0.9703" y="0.0757" width="0.0266" height="0.057"
+        h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.9841" y="0.1093" width="0.0130" height="0.0480" />
+        <resolution aspect="24:10"  x="0.9779" y="0.0771" width="0.0189" height="0.0570" />
+        <resolution aspect="16:11"  x="0.9633" y="0.07" width="0.032" height="0.0576" />
+
+        <resolution size="3840x2160" x="0.9685" y="0.0486" width="0.0294" height="0.0524" />
+        <resolution size="3840x1080" x="0.9841" y="0.1093" width="0.0130" height="0.0480" />
+        <resolution size="2560x1080" x="0.9773" y="0.1075" width="0.0204" height="0.0519" />
+        <resolution size="1920x1080" x="0.9703" y="0.1066" width="0.0224" height="0.05" />
+    </meta>
+
+    <!-- Example: baseline for death — same style region that should NOT be red during normal play. -->
+    <meta meter="deathWhiteText" tags="vlc,ProjectZomboid,Project Zomboid" x="0.4181" y="0.8735" width="0.1657" height="0.0153"
+        h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+        <resolution aspect="3.55:1" x="0.4635" y="0.8639" width="0.0727" height="0.0100" />
+        <resolution aspect="24:10"  x="0.4485" y="0.8833" width="0.1029" height="0.0111" />
+        <resolution aspect="16:11"  x="0.4603" y="0.9210" width="0.079" height="0.0062" />
+
+        <resolution size="3840x2160" x="0.4459" y="0.9166" width="0.1079" height="0.0079" />
+        <resolution size="3840x1080" x="0.4635" y="0.8639" width="0.0727" height="0.0100" />
+        <resolution size="2560x1080" x="0.4599" y="0.8824" width="0.0809" height="0.0092" />
+        <resolution size="1920x1080" x="0.4461" y="0.8820" width="0.1073" height="0.0093" />
+    </meta>
+
+    <!-- craftBlue (chat, blue) -->
+    <meta meter="craftBlue" tags="vlc,ProjectZomboid,Project Zomboid" x="0.016" y="0.2189" width="0.0016" height="0.0010"
+        h="200-250" s="30-50" l="50-90" hdr-h="150-250" hdr-s="0-30" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.0091" y="0.2352" width="0.0000" height="0.0000" />
+        <resolution aspect="24:10"  x="0.0116" y="0.2188" width="0.0006" height="0.0005" />
+        <resolution aspect="16:11"  x="0.0199" y="0.2358" width="0.0004" height="0" />
+
+        <resolution size="3840x2160" x="0.0135" y="0.2006" width="0.0006" height="0.0009" />
+        <resolution size="3840x1080" x="0.0091" y="0.2352" width="0.0000" height="0.0000" />
+        <resolution size="2560x1080" x="0.0133" y="0.2345" width="0.0004" height="0.0009" />
+        <resolution size="1920x1080" x="0.0172" y="0.2345" width="0.0016" height="0" />
+    </meta>
+
+    <!-- healthpink (health, pink) -->
+    <meta meter="healthPink" tags="vlc,ProjectZomboid,Project Zomboid" x="0.009" y="0.1543" width="0.0027" height="0.0034"
+        h="300-360" s="0-50" l="75-100" hdr-h="300-360" hdr-s="0-50" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.0047" y="0.1667" width="0.0013" height="0.0040" />
+        <resolution aspect="24:10"  x="0.0070" y="0.1549" width="0.0017" height="0.0020" />
+        <resolution aspect="16:11"  x="0.0121" y="0.1657" width="0.002" height="0.0044" />
+
+        <resolution size="3840x2160" x="0.0081" y="0.1431" width="0.0026" height="0.0037" />
+        <resolution size="3840x1080" x="0.0047" y="0.1667" width="0.0013" height="0.0040" />
+        <resolution size="2560x1080" x="0.0094" y="0.1668" width="0.0015" height="0.0028" />
+        <resolution size="1920x1080" x="0.0109" y="0.1687" width="0.0016" height="0.0028" />
+    </meta>
+
+    <!-- inventoryBrown (inventory, brown) -->
+    <meta meter="inventoryBrown" tags="vlc,ProjectZomboid,Project Zomboid" x="0.0176" y="0.1244" width="0" height="0.0042"
+        h="20-45" s="50-80" l="60-100" hdr-h="20-45" hdr-s="50-80" hdr-l="60-100" type="area">
+        <resolution aspect="3.55:1" x="0.0094" y="0.1343" width="0.0005" height="0.0030" />
+        <resolution aspect="24:10"  x="0.0128" y="0.1229" width="0.0003" height="0.0020" />
+        <resolution aspect="16:11"  x="0.0211" y="0.1326" width="0.0004" height="0.0031" />
+
+        <resolution size="3840x2160" x="0.0164" y="0.1116" width="0.0018" height="0.0023" />
+        <resolution size="3840x1080" x="0.0094" y="0.1343" width="0.0005" height="0.0030" />
+        <resolution size="2560x1080" x="0.0145" y="0.1325" width="0.0003" height="0.0030" />
+        <resolution size="1920x1080" x="0.0182" y="0.1335" width="0.0006" height="0.0027" />
+    </meta>
+
+    <!-- buildBrown (build menu, brown) -->
+    <meta meter="buildBrown" tags="vlc,ProjectZomboid,Project Zomboid" x="0.0086" y="0.2488" width="0.0027" height="0.0069"
+        h="0-100" s="50-90" l="20-80" hdr-h="0-100" hdr-s="50-90" hdr-l="20-80" type="area">
+        <resolution aspect="3.55:1" x="0.0057" y="0.2685" width="0.0013" height="0.0040" />
+        <resolution aspect="24:10"  x="0.0061" y="0.2500" width="0.0026" height="0.0070" />
+        <resolution aspect="16:11"  x="0.0098" y="0.2683" width="0.0027" height="0.0075" />
+
+        <resolution size="3840x2160" x="0.0073" y="0.2302" width="0.0026" height="0.0065" />
+        <resolution size="3840x1080" x="0.0057" y="0.2685" width="0.0013" height="0.0040" />
+        <resolution size="2560x1080" x="0.0082" y="0.2678" width="0.002" height="0.0065" />
+        <resolution size="1920x1080" x="0.0104" y="0.2678" width="0.0026" height="0.0093" />
+    </meta>
+
+    <!-- moveBrown (move/furniture, brown) -->
+    <meta meter="moveBrown" tags="vlc,ProjectZomboid,Project Zomboid" x="0.0195" y="0.3016" width="0.002" height="0.0028"
+        h="20-45" s="30-80" l="20-55" hdr-h="20-45" hdr-s="30-80" hdr-l="20-55" type="area">
+        <resolution aspect="3.55:1" x="0.0107" y="0.3241" width="0.0003" height="0.0040" />
+        <resolution aspect="24:10"  x="0.0151" y="0.2986" width="0.0003" height="0.0010" />
+        <resolution aspect="16:11"  x="0.0227" y="0.3221" width="0.0023" height="0" />
+
+        <resolution size="3840x2160" x="0.019" y="0.2742" width="0.0013" height="0.0014" />
+        <resolution size="3840x1080" x="0.0107" y="0.3241" width="0.0003" height="0.0040" />
+        <resolution size="2560x1080" x="0.0156" y="0.3207" width="0" height="0.0037" />
+        <resolution size="1920x1080" x="0.0219" y="0.3207" width="0.0005" height="0.0027" />
+    </meta>
+
+    <!-- searchBlue (search/loot, blue) -->
+    <meta meter="searchBlue" tags="vlc,ProjectZomboid,Project Zomboid" x="0.0137" y="0.344" width="0.0004" height="0.0014"
+        h="150-230" s="30-50" l="75-100" hdr-h="150-250" hdr-s="0-30" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.0076" y="0.3741" width="0.0000" height="0.0000" />
+        <resolution aspect="24:10"  x="0.0105" y="0.3444" width="0.0000" height="0.0000" />
+        <resolution aspect="16:11"  x="0.0164" y="0.3709" width="0.0008" height="0.0006" />
+
+        <resolution size="3840x2160" x="0.0125" y="0.3173" width="0.0008" height="0.0014" />
+        <resolution size="3840x1080" x="0.0076" y="0.3741" width="0.0000" height="0.0000" />
+        <resolution size="2560x1080" x="0.0113" y="0.3716" width="0.0004" height="0" />
+        <resolution size="1920x1080" x="0.0156" y="0.3707" width="0.0006" height="0.0009" />
+    </meta>
+
+    <!-- animalsBlue (animals, blue) -->
+    <meta meter="animalsBlue" tags="vlc,ProjectZomboid,Project Zomboid" x="0.0148" y="0.4017" width="0.002" height="0.0007"
+        h="150-250" s="30-50" l="50-80" hdr-h="150-250" hdr-s="30-50" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.0081" y="0.4343" width="0.0003" height="0.0005" />
+        <resolution aspect="24:10"  x="0.0116" y="0.4014" width="0.0012" height="0.0005" />
+        <resolution aspect="16:11"  x="0.018" y="0.4296" width="0.0015" height="0.0013" />
+
+        <resolution size="3840x2160" x="0.0133" y="0.3705" width="0.0023" height="0.001" />
+        <resolution size="3840x1080" x="0.0081" y="0.4343" width="0.0003" height="0.0005" />
+        <resolution size="2560x1080" x="0.0129" y="0.4319" width="0.0012" height="0"/>
+        <resolution size="1920x1080" x="0.0162" y="0.4319" width="0.0015" height="0" />
+    </meta>
+
+    <!-- weapon1Black (weapon slot 1, black) -->
+    <meta meter="weapon1Black" tags="vlc,ProjectZomboid,Project Zomboid" x="0.0094" y="0.0195" width="0.0109" height="0.0152"
+        h="0-360" s="0-30" l="0-15" hdr-h="0-360" hdr-s="0-30" hdr-l="10-30" type="area">
+        <resolution aspect="3.55:1" x="0.0063" y="0.0241" width="0.0039" height="0.0130" />
+        <resolution aspect="24:10"  x="0.0084" y="0.0208" width="0.0076" height="0.0150" />
+        <resolution aspect="16:11"  x="0.0133" y="0.0225" width="0.0129" height="0.0163" />
+
+        <resolution size="3840x2160" x="0.0083" y="0.0171" width="0.0125" height="0.0167" />
+        <resolution size="3840x1080" x="0.0063" y="0.0241" width="0.0039" height="0.0130" />
+        <resolution size="2560x1080" x="0.0086" y="0.0204" width="0.0082" height="0.0195" />
+        <resolution size="1920x1080" x="0.0109" y="0.0222" width="0.0105" height="0.0149" />
+    </meta>
+
+    <!-- weapon2Black (weapon slot 2, black) -->
+    <meta meter="weapon2Black" tags="vlc,ProjectZomboid,Project Zomboid" x="0.0121" y="0.0702" width="0.0082" height="0.0125"
+        h="0-360" s="0-30" l="0-15" hdr-h="0-360" hdr-s="0-30" hdr-l="10-30" type="area">
+        <resolution aspect="3.55:1" x="0.0073" y="0.0787" width="0.0023" height="0.0070" />
+        <resolution aspect="24:10"  x="0.0096" y="0.0729" width="0.0049" height="0.0090" />
+        <resolution aspect="16:11"  x="0.0137" y="0.0794" width="0.0094" height="0.0088" />
+
+        <resolution size="3840x2160" x="0.0112" y="0.0667" width="0.0081" height="0.0097" />
+        <resolution size="3840x1080" x="0.0073" y="0.0787" width="0.0023" height="0.0070" />
+        <resolution size="2560x1080" x="0.0102" y="0.0751" width="0.005" height="0.0129" />
+        <resolution size="1920x1080" x="0.0141" y="0.0778" width="0.0067" height="0.0121" />
+    </meta>
+
+    <!-- damageRed (damage/hit flash, red) -->
+    <meta meter="damageRed" tags="vlc,ProjectZomboid,Project Zomboid" x="0.9789" y="0.0778" width="0.0043" height="0.2995"
+        h="-30-30" s="50-100" l="50-100" hdr-h="-30-30" hdr-s="50-100" hdr-l="75-100" type="area">
+        <resolution aspect="3.55:1" x="0.9885" y="0.1074" width="0.0052" height="0.2500" />
+        <resolution aspect="24:10"  x="0.9843" y="0.0813" width="0.0073" height="0.2666" />
+        <resolution aspect="16:11"  x="0.9754" y="0.0719" width="0.0094" height="0.2833" />
+
+        <resolution size="3840x2160" x="0.9818" y="0.0519" width="0.007" height="0.2904" />
+        <resolution size="3840x1080" x="0.9885" y="0.1074" width="0.0052" height="0.2500" />
+        <resolution size="2560x1080" x="0.9836" y="0.1066" width="0.0058" height="0.2873" />
+        <resolution size="1920x1080" x="0.9781" y="0.1094" width="0.0094" height="0.278" />
+    </meta>
+
+    <!-- carWhite (vehicle HUD, black) -->
+    <meta meter="carWhite" tags="vlc,ProjectZomboid,Project Zomboid" x="0.4994" y="0.9701" width="0" height="0.0014"
+        h="0-360" s="0-10" l="90-100" hdr-h="0-360" hdr-s="0-10" hdr-l="90-100" type="area">
+        <resolution aspect="3.55:1" x="0.4992" y="0.9593" width="0.0008" height="0.0030" />
+        <resolution aspect="24:10"  x="0.4994" y="0.9715" width="0.0006" height="0.0005" />
+        <resolution aspect="16:11"  x="0.4994" y="0.9731" width="0.0008" height="0.0019" />
+
+        <resolution size="3840x2160" x="0.4991" y="0.9801" width="0.0008" height="0.0037" />
+        <resolution size="3840x1080" x="0.4992" y="0.9593" width="0.0008" height="0.0030" />
+        <resolution size="2560x1080" x="0.4998" y="0.9601" width="0" height="0.0038" />
+        <resolution size="1920x1080" x="0.4992" y="0.9601" width="0.0005" height="0.0065" />
+    </meta>
+
+    <!-- carGrey (vehicle HUD, grey) -->
+    <meta meter="carGrey" tags="vlc,ProjectZomboid,Project Zomboid" x="0.5193" y="0.9597" width="0.0032" height="0.0069"
+        h="0-360" s="0-15" l="0-30" hdr-h="0-360" hdr-s="0-15" hdr-l="0-50" type="area">
+        <resolution aspect="3.55:1" x="0.5122" y="0.9509" width="0.0018" height="0.0150" />
+        <resolution aspect="24:10"  x="0.5131" y="0.9653" width="0.0035" height="0.0090" />
+        <resolution aspect="16:11"  x="0.5178" y="0.9687" width="0.0051" height="0.0107" />
+
+        <resolution size="3840x2160" x="0.5139" y="0.9694" width="0.0024" height="0.0102" />
+        <resolution size="3840x1080" x="0.5122" y="0.9509" width="0.0018" height="0.0150" />
+        <resolution size="2560x1080" x="0.5178" y="0.9537" width="0.0035" height="0.012" />
+        <resolution size="1920x1080" x="0.5221" y="0.9611" width="0.0073" height="0.0139" />
+    </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+    // ═══════════════════════════════════════════════════════════
+    // CANVAS SETUP
+    // SignalRGB renders this 320x200 canvas onto the device layout.
+    // All effects draw to the hidden canvas, composited to ctx once per frame.
+    // ═══════════════════════════════════════════════════════════
+    const canvas = document.getElementById('exCanvas');
+    const ctx    = canvas.getContext('2d');
+    const width  = 320;
+    const height = 200;
+
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width  = 320;
+    hiddenCanvas.height = 200;
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    let effects = [];
+
+    //#region Update
+    function update() {
+        DrawRect(0, 0, 320, 200, 'black')
+        backgroundHandler()
+
+        // EDIT ME: feed each declared meter its live vision reading every frame.
+        inGameRed_Meter.setValue(engine.vision.inGameRed)
+        inGameWhite_Meter.setValue(engine.vision.inGameWhite)
+        deathRed_Meter.setValue(engine.vision.deathRed)
+        deathWhiteText_Meter.setValue(engine.vision.deathWhiteText)
+        craftBlue_Meter.setValue(engine.vision.craftBlue)
+        healthPink_Meter.setValue(engine.vision.healthPink)
+        inventoryBrown_Meter.setValue(engine.vision.inventoryBrown)
+        buildBrown_Meter.setValue(engine.vision.buildBrown)
+        moveBrown_Meter.setValue(engine.vision.moveBrown)
+        searchBlue_Meter.setValue(engine.vision.searchBlue)
+        animalsBlue_Meter.setValue(engine.vision.animalsBlue)
+        weapon1Black_Meter.setValue(engine.vision.weapon1Black)
+        weapon2Black_Meter.setValue(engine.vision.weapon2Black)
+        damageRed_Meter.setValue(engine.vision.damageRed)
+        carWhite_Meter.setValue(engine.vision.carWhite)
+        carGrey_Meter.setValue(engine.vision.carGrey)
+   
+
+        effects.forEach(ele => { ele.draw() })
+        effects = effects.filter(ele => !(ele.lifetime <= 0))
+
+        ctx.drawImage(hiddenCanvas, 0, 0)
+        window.requestAnimationFrame(update)
+    }
+    //#endregion
+
+    //#region Meter Declarations
+    // -------------------------------------------------------------------------
+    // Meter objects — Meter(smoothingFrames, callback).
+    // EDIT ME: one Meter per <meter> above; pair positive + negative on the
+    // same callback so the callback can check both before firing.
+    // -------------------------------------------------------------------------
+        const inGameRed_Meter           = new Meter(5, inGameCallback)
+        const inGameWhite_Meter     = new Meter(5, inGameCallback)
+        const deathRed_Meter           = new Meter(10, deathEffectCallback)
+        const deathWhiteText_Meter     = new Meter(10, deathEffectCallback)
+        const craftBlue_Meter          = new Meter(5, craftCallback)
+        const healthPink_Meter         = new Meter(5, healthCallback)
+        const inventoryBrown_Meter     = new Meter(5, inventoryCallback)
+        const buildBrown_Meter         = new Meter(5, buildCallback)
+        const moveBrown_Meter          = new Meter(5, moveCallback)
+        const searchBlue_Meter         = new Meter(5, searchCallback)
+        const animalsBlue_Meter        = new Meter(5, animalsCallback)
+        const weapon1Black_Meter       = new Meter(5, weaponCallback)
+        const weapon2Black_Meter       = new Meter(5, weaponCallback)
+        const damageRed_Meter          = new Meter(5, damageCallback)
+        const carWhite_Meter           = new Meter(5, carCallback)
+        const carGrey_Meter            = new Meter(5, carCallback)
+    //#endregion
+
+    //#region Callbacks
+    // -------------------------------------------------------------------------
+    // Global state flags — one "…Going" latch per effect so it fires once and
+    // doesn't re-trigger every frame while the trigger color stays on screen.
+    // -------------------------------------------------------------------------
+    let gInGame            = false
+    let deathEffectGoing   = false
+    let craftGoing         = false
+    let healthGoing        = false
+    let inventoryGoing     = false
+    let buildGoing         = false
+    let moveGoing          = false
+    let searchGoing        = false
+    let animalsGoing       = false
+    let weaponGoing        = false
+    let damageGoing        = false
+    let carGoing           = false
+
+    // -------------------------------------------------------------------------
+    // Callbacks — fire when positive meter is high AND negative meter is low.
+    // EDIT ME: tune the .value thresholds against real screenshots, write the
+    // matching effect class, then uncomment its `effects.push(...)` line.
+    // -------------------------------------------------------------------------
+
+    // In-game detection: sets gInGame so effects only fire during gameplay.
+    // EDIT ME: pick the real positive/negative logic for the HUD you're reading.
+    function inGameCallback() {
+        if (inGameRed_Meter.value >= 0.02 && inGameWhite_Meter.value >= 0.15) {
+            gInGame = true
+        } else if (inGameWhite_Meter.value <.05) {
+            gInGame = false
+        }
+    }
+
+    function deathEffectCallback() {
+        if (deathEffectOn && deathRed_Meter.value >= 0.1 && deathWhiteText_Meter.value >= 0.15 && !deathEffectGoing) {
+            effects.push(new DeathEffect())
+            deathEffectGoing = true
+        }
+    }
+
+    function craftCallback() {
+        if (gInGame && craftEffectOn && craftBlue_Meter.value >= 0.95 && !craftGoing) {
+            effects.push(new CraftEffect())
+            craftGoing = true
+        }
+    }
+
+    function healthCallback() {
+        if (gInGame && healthEffectOn && healthPink_Meter.value >= 0.95 && !healthGoing) {
+            effects.push(new HealthEffect())
+            healthGoing = true
+        }
+    }
+
+    function inventoryCallback() {
+        if (gInGame && inventoryEffectOn && inventoryBrown_Meter.value >= 0.95 && !inventoryGoing) {
+            effects.push(new InventoryEffect())
+            inventoryGoing = true
+        }else {
+            inventoryGoing = false
+        }
+    }
+
+    function buildCallback() {
+        if (gInGame && buildEffectOn && buildBrown_Meter.value >= 0.5 && !buildGoing) {
+            effects.push(new BuildEffect())
+            buildGoing = true
+        }
+    }
+
+    function moveCallback() {
+        if (gInGame && moveEffectOn && moveBrown_Meter.value >= 0.95 && !moveGoing) {
+            effects.push(new MoveEffect())
+            moveGoing = true
+        }
+    }
+
+    function searchCallback() {
+        if (gInGame && searchEffectOn && searchBlue_Meter.value >= 0.95 && !searchGoing) {
+            effects.push(new SearchEffect())
+            searchGoing = true
+        }
+    }
+
+    function animalsCallback() {
+        if (gInGame && animalsEffectOn && animalsBlue_Meter.value >= 0.95 && !animalsGoing) {
+            effects.push(new AnimalsEffect())
+            animalsGoing = true
+        }
+    }
+
+    // Two weapon slots share this callback; check whichever slot you need.
+    function weaponCallback() {
+        if (gInGame && weaponEffectOn && ((weapon1Black_Meter.decreased && weapon1Black_Meter.diff >.2) || (weapon2Black_Meter.decreased && weapon2Black_Meter.diff >.2)) && !weaponGoing) {
+            effects.push(new WeaponEffect())
+            weaponGoing = true
+        }else if(weapon1Black_Meter.value >=.95 || weapon2Black_Meter.value >=.95){
+            weaponGoing = false
+        }
+    }
+
+    function damageCallback() {
+        if (gInGame && damageEffectOn && damageRed_Meter.increased && damageRed_Meter.diff >.05 && !damageGoing) {
+            effects.push(new DamageEffect())
+            damageGoing = true
+        }
+    }
+
+    // Car HUD uses a black + grey pair; adjust the logic to your real regions.
+    function carCallback() {
+        if (gInGame && carEffectOn && carWhite_Meter.value >= 0.95 && carGrey_Meter.value >= 0.95 && !carGoing) {
+            effects.push(new CarEffect())
+            carGoing = true
+        }else if(!gInGame || (carWhite_Meter.value <.1 || carGrey_Meter.value <.1)){
+            carGoing = false
+        }
+    }
+
+    //#endregion
+
+    //#region Background Modes
+    // ═══════════════════════════════════════════════════════════
+    // BACKGROUND SYSTEM
+    // Eight modes selected by the backgroundMode control.
+    // ═══════════════════════════════════════════════════════════
+    let proBack = [0, 0, 0]
+    function onbackColorChanged() {
+        proBack = hexToHSL(backColor)
+    }
+
+    let audioEase = { sat: 0, lit: 0 }
+    let gCycle = 0
+
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100
+        audioEase.sat += (targetDensity - audioEase.sat) / 10
+        audioEase.lit += (targetDensity - audioEase.lit) / 10
+    }
+
+    function getColorString(hue, sat, lit, alpha) {
+        return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`
+    }
+
+    function updateColorCycle() {
+        gCycle = (gCycle + 0.5) % 360
+    }
+
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100
+
+        if (backgroundMode.includes('Color Cycle')) updateColorCycle()
+        if (backgroundMode.includes('Audio'))       updateAudioEase()
+
+        if (backgroundMode.includes('Ambience')) {
+            if (backgroundMode === 'Ambience Audio Visualizer') {
+                copyScreenAudio(alpha)
+            } else {
+                copyScreen(alpha)
+            }
+            return
+        }
+
+        const hue = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0)
+        const sat = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1]
+        const lit = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2]
+        DrawRect(0, 0, 320, 200, getColorString(hue, sat, lit, alpha))
+    }
+
+    const ZONE_COLS   = 28
+    const ZONE_ROWS   = 20
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat       = new Int8Array(engine.zone.saturation)
+        const hue       = new Int16Array(engine.zone.hue)
+        const w = 320 / ZONE_COLS
+        const h = 200 / ZONE_ROWS
+        const satMultiplier = audioEase.sat / 200 + 0.5
+        const litMultiplier = audioEase.lit / 100
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            hiddenCtx.fillStyle = getColorString(
+                hue[iZone],
+                sat[iZone] * satMultiplier,
+                lightness[iZone] * litMultiplier,
+                alpha
+            )
+            hiddenCtx.fillRect(col * w, row * h, w, h)
+        }
+    }
+
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness)
+        const sat       = new Int8Array(engine.zone.saturation)
+        const hue       = new Int16Array(engine.zone.hue)
+        const w = 320 / ZONE_COLS
+        const h = 200 / ZONE_ROWS
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS)
+            const col = iZone % ZONE_COLS
+            const finalHue = backgroundMode === 'Custom Ambience'
+                ? proBack[0]
+                : hue[iZone] + (backgroundMode === 'Color Cycle Ambience' ? gCycle : 0)
+            hiddenCtx.fillStyle = getColorString(finalHue, sat[iZone], lightness[iZone], alpha)
+            hiddenCtx.fillRect(col * w, row * h, w, h)
+        }
+    }
+    //#endregion
+
+    //#region Helper Functions
+    // ═══════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS — draw primitives target hiddenCtx
+    // ═══════════════════════════════════════════════════════════
+    function DrawRect(x, y, w, h, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fillRect(x, y, w, h)
+    }
+
+    function strokeRect(x, y, w, h, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.rect(x, y, w, h)
+        hiddenCtx.stroke()
+    }
+
+    function DrawCircle(x, y, radius, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+        hiddenCtx.fill()
+    }
+
+    function DrawStroke(x, y, radius, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+        hiddenCtx.stroke()
+    }
+
+    function DrawArcStroke(x, y, radius, start, end, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.arc(x, y, radius, start, end)
+        hiddenCtx.stroke()
+    }
+
+    function DrawLine(start, end, color, stroke) {
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(start[0], start[1])
+        hiddenCtx.lineTo(end[0], end[1])
+        hiddenCtx.strokeStyle = color
+        hiddenCtx.lineWidth = stroke
+        hiddenCtx.stroke()
+    }
+
+    function DrawArc(x, y, start, end, radius, direction, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.arc(x, y, radius, start, end, direction)
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fill()
+    }
+
+    function DrawEllipse(x, y, w, h, rotation, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.ellipse(x, y, w, h, rotation, 0, Math.PI * 2)
+        hiddenCtx.fillStyle = color
+        hiddenCtx.fill()
+    }
+
+    function DrawTriangle(x1, y1, x2, y2, x3, y3, color) {
+        hiddenCtx.beginPath()
+        hiddenCtx.fillStyle = color
+        hiddenCtx.moveTo(x1, y1)
+        hiddenCtx.lineTo(x2, y2)
+        hiddenCtx.lineTo(x3, y3)
+        hiddenCtx.lineTo(x1, y1)
+        hiddenCtx.fill()
+    }
+
+    function DrawPath(x, y, path, color, scaleX, scaleY) {
+        hiddenCtx.fillStyle = color
+        hiddenCtx.save()
+        hiddenCtx.translate(x, y)
+        hiddenCtx.scale(scaleX, scaleY)
+        hiddenCtx.fill(new Path2D(path))
+        hiddenCtx.restore()
+    }
+
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null
+    }
+
+    function hexToHSL(hex) {
+        const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || []
+        const rgb = [r, g, b].map(x => parseInt(x, 16) / 255)
+        const max = Math.max(...rgb)
+        const min = Math.min(...rgb)
+        const l = (max + min) / 2
+        if (max === min) return [0, 0, Math.round(l * 100)]
+        const d = max - min
+        const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+        let h
+        const [nr, ng, nb] = rgb
+        if      (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0)
+        else if (max === ng) h = (nb - nr) / d + 2
+        else                 h = (nr - ng) / d + 4
+        return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)]
+    }
+
+    // Meter(size, callback): frame-stabilizing debouncer for vision signals.
+    function Meter(size, callback) {
+        this.size = size
+        this.value = 0
+        this.diff = 0
+        this.increased = false
+        this.decreased = false
+        var values = []
+        this.setValue = function (updatedValue) {
+            values.push(updatedValue)
+            if (values.length > this.size) values.shift()
+            for (var i = 0; i < values.length - 1; i++) {
+                if (values[i] !== values[i + 1]) return
+            }
+            if (this.value !== values[0]) {
+                this.diff = Math.abs(this.value - values[0])
+                this.increased = this.value < values[0]
+                this.decreased = this.value > values[0]
+                this.value = values[0]
+                callback()
+            }
+        }
+    }
+
+    // BlinkTracker: detects a value oscillating high<->low (e.g. a HUD element
+    // flashing). Kept here from the War Thunder base in case a Zomboid event
+    // (e.g. a blinking bleed/injury icon) needs blink detection. Reports
+    // "blinking" when >= BLINK_MIN_CROSSINGS crossings happen within BLINK_WINDOW.
+    const BLINK_WINDOW = 90
+    const BLINK_MIN_CROSSINGS = 3
+    const BLINK_PRESENT = 0.95
+    const BLINK_ABSENT = 0.1
+    function BlinkTracker() {
+        this.high = false
+        this.crossings = []
+        this.update = function (value, frame, present, absent) {
+            if (present === undefined) present = BLINK_PRESENT
+            if (absent === undefined) absent = BLINK_ABSENT
+            if (this.high && value <= absent) {
+                this.high = false
+                this.crossings.push(frame)
+            } else if (!this.high && value >= present) {
+                this.high = true
+                this.crossings.push(frame)
+            }
+            this.crossings = this.crossings.filter(f => frame - f <= BLINK_WINDOW)
+            return this.crossings.length >= BLINK_MIN_CROSSINGS
+        }
+    }
+    //#endregion
+
+    //#region Effects
+    // ═══════════════════════════════════════════════════════════
+    // EFFECTS
+    // Every effect is self-terminating: it plays its animation, fades out,
+    // then sets this.lifetime = 0 so the update loop removes it. Each effect
+    // also clears its "…Going" latch on the way out so it can fire again.
+    // ═══════════════════════════════════════════════════════════
+
+    // DeathEffect: a cartoon green zombie head in a red ring (matching the game
+    // icon) — pale eyes with dark pupils (one bloodshot), an exposed pink brain
+    // wound with blood, and an open toothy mouth — with a rain of blood behind him.
+    function DeathEffect() {
+        this.frame = 0
+        this.alpha = 0
+        this.lifetime = 1
+        this.duration = 220
+        this.fadingOut = false
+        this.lunge = 0
+        // Rain of blood behind the zombie: falling red streaks.
+        this.rain = []
+        for (let i = 0; i < 48; i++) {
+            this.rain.push({
+                x: Math.random() * 320,
+                y: Math.random() * 200,
+                len: 16 + Math.random() * 34,
+                speed: 3 + Math.random() * 4.5,
+                w: 4 + Math.random() * 5
+            })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.05; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!deathEffectGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.03; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; deathEffectGoing = false; return } }
+            let a = this.alpha
+
+            // Dark background so the blood rain reads.
+            DrawRect(0, 0, 320, 200, `hsla(0, 40%, 5%, ${a})`)
+
+            // ---- Rain of blood (behind the zombie) ----
+            for (let i = 0; i < this.rain.length; i++) {
+                let d = this.rain[i]
+                d.y += d.speed
+                if (d.y - d.len > 200) { d.y = -d.len - Math.random() * 30; d.x = Math.random() * 320 }
+                DrawRect(d.x, d.y - d.len, d.w, d.len, `hsla(0, 85%, 38%, ${a * 0.9})`)
+                DrawCircle(d.x + d.w / 2, d.y, d.w * 1.1, `hsla(0, 88%, 42%, ${a})`)
+            }
+
+            // ---- Zombie (lunges in) ----
+            this.lunge += (1 - this.lunge) * 0.12
+            let sc = 0.55 + 0.45 * this.lunge
+            let cx = 160, cy = 100, R = 66
+
+            hiddenCtx.save()
+            hiddenCtx.translate(cx, cy); hiddenCtx.scale(sc, sc); hiddenCtx.translate(-cx, -cy)
+
+            // Red ring badge with black outlines (like the icon).
+            DrawCircle(cx, cy, R + 11, `hsla(0, 0%, 6%, ${a})`)
+            DrawCircle(cx, cy, R + 8, `hsla(0, 78%, 44%, ${a})`)
+            DrawCircle(cx, cy, R + 2, `hsla(0, 0%, 6%, ${a})`)
+
+            // Green face + shading.
+            DrawCircle(cx, cy, R, `hsla(96, 30%, 44%, ${a})`)
+            DrawEllipse(cx - 14, cy + 6, 40, 44, 0, `hsla(98, 32%, 50%, ${a})`)
+
+            // Exposed brain wound (upper-right), pink lobes + a blood streak.
+            DrawCircle(cx + 30, cy - 40, 15, `hsla(0, 55%, 30%, ${a})`)
+            DrawCircle(cx + 24, cy - 42, 9, `hsla(340, 55%, 74%, ${a})`)
+            DrawCircle(cx + 34, cy - 44, 8, `hsla(340, 55%, 70%, ${a})`)
+            DrawCircle(cx + 30, cy - 36, 8, `hsla(340, 50%, 66%, ${a})`)
+            DrawRect(cx + 40, cy - 34, 4, 30, `hsla(0, 85%, 32%, ${a})`)
+
+            // Eyes: pale sclera + dark pupils; right eye bloodshot (pink).
+            DrawCircle(cx - 24, cy - 8, 17, `hsla(60, 18%, 88%, ${a})`)
+            DrawCircle(cx + 22, cy - 10, 17, `hsla(348, 45%, 82%, ${a})`)
+            let look = Math.sin(this.frame * 0.06) * 3
+            DrawCircle(cx - 24 + look, cy - 6, 6.5, `hsla(0, 0%, 10%, ${a})`)
+            DrawCircle(cx + 22 + look, cy - 8, 6.5, `hsla(0, 0%, 10%, ${a})`)
+
+            // Open mouth (dark) with a couple of teeth + blood on the lip.
+            DrawEllipse(cx - 2, cy + 34, 24, 17, 0, `hsla(320, 30%, 14%, ${a})`)
+            DrawRect(cx - 12, cy + 22, 7, 9, `hsla(52, 30%, 82%, ${a})`)
+            DrawRect(cx + 4, cy + 22, 7, 9, `hsla(52, 30%, 82%, ${a})`)
+            DrawEllipse(cx - 2, cy + 30, 22, 6, 0, `hsla(0, 88%, 32%, ${a})`)
+            hiddenCtx.restore()
+        }
+    }
+
+    // CraftEffect: a hammer swings in an ARC onto a nail and back up, repeatedly.
+    // Each strike drives the nail deeper and throws sparks. Black background.
+    function CraftEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 150; this.fadingOut = false
+        this.cycle = 34            // frames per hammer swing
+        this.prevP = 0
+        this.nailSink = 0
+        this.maxSink = 44
+        this.sparks = []
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!craftGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; craftGoing = false; return } }
+            let a = this.alpha
+
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            let cx = 160
+            let boardTop = 160
+            let nailLenMax = 64
+            let visibleLen = nailLenMax - this.nailSink
+            let headY = boardTop - visibleLen
+
+            // Hammer pivots about a fixed hand point (px,py) and swings in an ARC.
+            let px = cx - 120, py = 54                   // the hand / pivot (left side)
+            let vx = cx - px, vy = headY - py
+            let L = Math.hypot(vx, vy)
+            let thetaStrike = Math.atan2(vy, vx)
+            let thetaUp = thetaStrike - 1.2
+
+            let p = (this.frame % this.cycle) / this.cycle
+            let theta
+            if (p < 0.3) {
+                let e = (p / 0.3); e = e * e
+                theta = thetaUp + (thetaStrike - thetaUp) * e
+            } else {
+                let e = (p - 0.3) / 0.7; e = 1 - (1 - e) * (1 - e)
+                theta = thetaStrike + (thetaUp - thetaStrike) * e
+            }
+
+            if (this.prevP < 0.3 && p >= 0.3) {
+                if (this.nailSink < this.maxSink) this.nailSink += 7
+                for (let s = 0; s < 10; s++) {
+                    let ang = -Math.PI / 2 + (Math.random() - 0.5) * 2.2
+                    let spd = 2 + Math.random() * 3.4
+                    this.sparks.push({ x: cx, y: headY, vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd, life: 1 })
+                }
+            }
+            this.prevP = p
+
+            // Board.
+            DrawRect(cx - 100, boardTop, 200, 48, `hsla(28, 50%, 30%, ${a})`)
+            DrawRect(cx - 100, boardTop, 200, 7, `hsla(30, 50%, 40%, ${a})`)
+
+            // Nail.
+            if (visibleLen > 0) {
+                DrawRect(cx - 3, headY + 6, 6, boardTop - (headY + 6), `hsla(0, 0%, 72%, ${a})`)
+                DrawRect(cx - 12, headY, 24, 8, `hsla(0, 0%, 82%, ${a})`)
+            }
+
+            // Sparks.
+            for (let i = this.sparks.length - 1; i >= 0; i--) {
+                let sp = this.sparks[i]
+                sp.x += sp.vx; sp.y += sp.vy; sp.vy += 0.2; sp.life -= 0.06
+                if (sp.life <= 0) { this.sparks.splice(i, 1); continue }
+                DrawCircle(sp.x, sp.y, 20 * sp.life, `hsla(45, 100%, 70%, ${a * sp.life})`)
+            }
+
+            // Hammer swinging on the arc.
+            hiddenCtx.save()
+            hiddenCtx.translate(px, py)
+            hiddenCtx.rotate(theta)
+            DrawRect(18, -12, L - 30, 24, `hsla(28, 50%, 40%, ${a})`)
+            DrawRect(L - 28, -38, 50, 76, `hsla(0, 0%, 28%, ${a})`)
+            DrawRect(L - 28, -38, 50, 10, `hsla(0, 0%, 42%, ${a})`)
+            hiddenCtx.restore()
+            DrawCircle(px, py, 13, `hsla(28, 45%, 30%, ${a})`)
+        }
+    }
+
+    // HealthEffect: a full black body on a pink background; an arm + a leg blink
+    // red (alternating sides), with a white scan line sweeping over the body.
+    function HealthEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 180; this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!healthGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; healthGoing = false; return } }
+            let a = this.alpha
+
+            // Pinkish background.
+            DrawRect(0, 0, 320, 200, `hsla(330, 55%, 55%, ${0.30 * a})`)
+
+            let phase = Math.floor(this.frame / 22) % 2
+            let blink = 0.35 + 0.65 * Math.abs(Math.sin(this.frame * 0.18))
+            let body = `hsla(0, 0%, 8%, ${a})`
+            let hurt = `hsla(335, 95%, 62%, ${a * blink})`
+            let leftArm  = phase === 0 ? hurt : body
+            let rightArm = phase === 1 ? hurt : body
+            let leftLeg  = phase === 1 ? hurt : body
+            let rightLeg = phase === 0 ? hurt : body
+
+            let cx = 160, cy = 100
+            DrawCircle(cx, cy - 70, 22, body)                         // head
+            DrawRect(cx - 26, cy - 48, 52, 90, body)                  // torso
+            DrawRect(cx - 48, cy - 46, 20, 78, leftArm)               // arms
+            DrawRect(cx + 28, cy - 46, 20, 78, rightArm)
+            DrawRect(cx - 24, cy + 42, 21, 50, leftLeg)               // legs
+            DrawRect(cx + 3,  cy + 42, 21, 50, rightLeg)
+
+            // White scan line sweeping up/down across the body.
+            let top = cy - 96, bottom = cy + 96
+            let t = 0.5 - 0.5 * Math.cos(this.frame * 0.06)
+            let scanY = top + t * (bottom - top)
+            let x0 = cx - 120, x1 = cx + 120
+            DrawRect(x0, scanY - 6, x1 - x0, 20, `hsla(0, 0%, 100%, ${0.12 * a})`)
+            DrawLine([x0, scanY], [x1, scanY], `hsla(0, 0%, 100%, ${0.9 * a})`, 20)
+        }
+    }
+
+    // InventoryEffect: a grid of big inventory slots that blink randomly (each
+    // square pulses on its own phase/speed), then fades.
+    function InventoryEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 150; this.fadingOut = false
+        this.cols = 4; this.rows = 3
+        this.cells = []
+        for (let i = 0; i < this.cols * this.rows; i++) {
+            this.cells.push({ phase: Math.random() * Math.PI * 2, speed: 0.02 + Math.random() * 0.07 })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!inventoryGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; return } }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            let cell = 52, gap = 10
+            let gw = this.cols * cell + (this.cols - 1) * gap
+            let gh = this.rows * cell + (this.rows - 1) * gap
+            let ox = 160 - gw / 2, oy = 100 - gh / 2
+            for (let r = 0; r < this.rows; r++) for (let c = 0; c < this.cols; c++) {
+                let i = r * this.cols + c
+                let cl = this.cells[i]
+                let b = 0.5 + 0.5 * Math.sin(this.frame * cl.speed + cl.phase)
+                let lit = 16 + b * 40
+                let x = ox + c * (cell + gap), y = oy + r * (cell + gap)
+                DrawRect(x, y, cell, cell, `hsla(30, 45%, ${lit}%, ${a})`)
+            }
+        }
+    }
+
+    // BuildEffect: a brick wall stacks up from the bottom (running bond), fills
+    // the screen, holds, then fades out.
+    function BuildEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1
+        this.buildFrames = 150
+        this.hold = 40
+        this.duration = this.buildFrames + this.hold
+        this.fadingOut = false
+        this.bw = 72; this.bh = 34; this.gap = 4
+        this.cols = Math.ceil(320 / (this.bw + this.gap)) + 1
+        this.rows = Math.ceil(200 / (this.bh + this.gap))
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!buildGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; buildGoing = false; return } }
+            let a = this.alpha
+
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            let total = this.rows * this.cols
+            let p = Math.min(this.frame / this.buildFrames, 1)
+            let revealed = Math.floor(p * total)
+
+            let step = this.bh + this.gap
+            for (let r = 0; r < this.rows; r++) {
+                let y = 200 - (r + 1) * step + this.gap
+                let offset = (r % 2 === 0) ? 0 : -(this.bw + this.gap) / 2
+                for (let c = 0; c < this.cols; c++) {
+                    let idx = r * this.cols + c
+                    if (idx >= revealed) continue
+                    let x = offset + c * (this.bw + this.gap)
+                    let lit = 38 + ((r * 3 + c) % 3) * 5
+                    DrawRect(x, y, this.bw, this.bh, `hsla(18, 62%, ${lit}%, ${a})`)
+                    DrawRect(x, y, this.bw, 3, `hsla(20, 60%, ${lit + 14}%, ${a})`)
+                }
+            }
+        }
+    }
+
+    // MoveEffect: a big orange 4-way move cursor wandering smoothly around the
+    // screen (layered sines → organic drift, like dragging furniture).
+    function MoveEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 300; this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!moveGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; moveGoing = false; return } }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            let f = this.frame
+            let px = 160 + Math.sin(f * 0.026) * 72 + Math.sin(f * 0.014 + 1.3) * 26
+            let py = 100 + Math.cos(f * 0.021) * 33 + Math.sin(f * 0.037 + 2.1) * 9
+            let col = `hsla(28, 95%, 55%, ${a})`
+            let len = 40, thick = 18, headLen = 36, headW = 15
+
+            let arrow = function (dx, dy) {
+                let ex = px + dx * len, ey = py + dy * len
+                DrawLine([px, py], [ex, ey], col, thick)
+                let tipx = px + dx * (len + headLen)
+                let tipy = py + dy * (len + headLen)
+                let perpx = -dy, perpy = dx
+                DrawTriangle(tipx, tipy, ex + perpx * headW, ey + perpy * headW, ex - perpx * headW, ey - perpy * headW, col)
+            }
+            arrow(0, -1); arrow(0, 1); arrow(-1, 0); arrow(1, 0)
+        }
+    }
+
+    // SearchEffect: a big all-blue magnifying glass sweeping side to side.
+    function SearchEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 130; this.fadingOut = false
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!searchGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; searchGoing = false; return } }
+            let a = this.alpha
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+            let cx = 160 + Math.sin(this.frame * 0.07) * 55
+            let cy = 92
+            let r = 52
+            DrawCircle(cx, cy, r, `hsla(210, 80%, 55%, ${0.25 * a})`)          // lens glass
+            DrawStroke(cx, cy, r, `hsla(210, 85%, 60%, ${a})`, 9)             // rim
+            let hx = cx + Math.cos(Math.PI / 4) * r
+            let hy = cy + Math.sin(Math.PI / 4) * r
+            DrawLine([hx, hy], [hx + 46, hy + 46], `hsla(210, 85%, 55%, ${a})`, 16)   // handle
+            DrawCircle(hx + 46, hy + 46, 8, `hsla(210, 85%, 55%, ${a})`)
+        }
+    }
+
+    // AnimalsEffect: a green field onto which a blue "pasture" rectangle grows
+    // from the center to fill the screen, then big white animals appear inside it.
+    function AnimalsEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 180; this.fadingOut = false
+        this.growFrames = 70
+        this.animals = []
+        for (let i = 0; i < 5; i++) {
+            this.animals.push({
+                rx: 0.14 + Math.random() * 0.72,
+                ry: 0.24 + Math.random() * 0.56,
+                s: 16 + Math.random() * 8,
+                dir: Math.random() < 0.5 ? -1 : 1,
+                delay: 8 + i * 12
+            })
+        }
+        this.drawAnimal = function (ax, ay, s, dir, a) {
+            let col = `hsla(0, 0%, 96%, ${a})`
+            for (let lx = -0.6; lx <= 0.6; lx += 0.4) {
+                DrawRect(ax + lx * s - 2, ay + s * 0.4, 4, s * 0.6, col)
+            }
+            DrawEllipse(ax, ay, s, s * 0.62, 0, col)
+            DrawCircle(ax + dir * s * 0.95, ay - s * 0.25, s * 0.42, col)
+            DrawCircle(ax + dir * s * 1.15, ay - s * 0.6, s * 0.16, col)
+            DrawRect(ax - dir * s - 2, ay - s * 0.3, 4, s * 0.5, col)
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!animalsGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; animalsGoing = false; return } }
+            let a = this.alpha
+
+            DrawRect(0, 0, 320, 200, `hsla(110, 45%, 14%, ${0.7 * a})`)
+
+            let p = Math.min(this.frame / this.growFrames, 1)
+            let pe = 1 - Math.pow(1 - p, 3)
+            let W = 300, H = 184
+            let w = W * pe, h = H * pe
+            let x = 160 - w / 2, y = 100 - h / 2
+            DrawRect(x, y, w, h, `hsla(210, 80%, 50%, ${0.45 * a})`)
+            strokeRect(x, y, w, h, `hsla(210, 85%, 65%, ${a})`, 3)
+
+            if (pe > 0.6) {
+                let laid = this.frame - this.growFrames
+                for (let i = 0; i < this.animals.length; i++) {
+                    let an = this.animals[i]
+                    if (laid < an.delay) continue
+                    let pop = Math.min((laid - an.delay) / 10, 1)
+                    let ax = x + an.rx * w
+                    let ay = y + an.ry * h
+                    this.drawAnimal(ax, ay, an.s, an.dir, a * pop)
+                }
+            }
+        }
+    }
+
+    // WeaponEffect: "item equipped" — a knife or pistol bursts into a slot on a
+    // flash of energy: spinning rays, a pulsing glow, an energized border, and a
+    // spark burst. Flashy yellow + white palette (no brown/tan/silver).
+    function WeaponEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 120; this.fadingOut = false
+        // Show a knife or a pistol at random each spawn (marketing variety).
+        this.kind = Math.random() < 0.5 ? 'knife' : 'gun'
+        // Spark burst thrown out from the slot on spawn.
+        this.sparks = []
+        for (let i = 0; i < 22; i++) {
+            let ang = Math.random() * Math.PI * 2
+            let spd = 2.5 + Math.random() * 4.5
+            this.sparks.push({ x: 160, y: 100, vx: Math.cos(ang) * spd, vy: Math.sin(ang) * spd, life: 1, lit: 60 + Math.random() * 40 })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!weaponGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; weaponGoing = false; return } }
+            let a = this.alpha
+
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            let cx = 160, cy = 100, S = 96
+            let left = cx - S / 2, top = cy - S / 2
+
+            let gp = 0.5 + 0.5 * Math.sin(this.frame * 0.18)
+
+            // Spinning energy rays radiating from behind the slot (yellow, each
+            // ray shimmering from yellow toward white).
+            let rays = 12, rot = this.frame * 0.05
+            for (let i = 0; i < rays; i++) {
+                let ang = rot + i * (Math.PI * 2 / rays)
+                let inner = 40, outer = 40 + 70 * (0.6 + 0.4 * Math.sin(this.frame * 0.15 + i))
+                let rl = 58 + 30 * Math.sin(this.frame * 0.15 + i)
+                DrawLine(
+                    [cx + Math.cos(ang) * inner, cy + Math.sin(ang) * inner],
+                    [cx + Math.cos(ang) * outer, cy + Math.sin(ang) * outer],
+                    `hsla(50, 100%, ${rl}%, ${0.5 * a})`, 4)
+            }
+
+            // Pulsing yellow glow behind the slot.
+            DrawCircle(cx, cy, S * (0.7 + 0.15 * gp), `hsla(50, 100%, 55%, ${0.16 * a})`)
+
+            // Scale-in pop for the slot + item.
+            let t = Math.min(this.frame / 14, 1)
+            let sc = 0.6 + 0.4 * (1 - (1 - t) * (1 - t))
+            hiddenCtx.save()
+            hiddenCtx.translate(cx, cy)
+            hiddenCtx.scale(sc, sc)
+            hiddenCtx.translate(-cx, -cy)
+
+            // Slot frame with an energized, glowing yellow border.
+            DrawRect(left, top, S, S, `hsla(0, 0%, 10%, ${a})`)
+            strokeRect(left, top, S, S, `hsla(50, 100%, ${60 + gp * 25}%, ${a})`, 4)
+
+            // Weapon icon — a knife or a pistol (chosen per spawn). Yellow body
+            // with white highlights (no brown/tan/silver).
+            let blade = `hsla(50, 100%, 58%, ${a})`   // yellow body
+            let hot   = `hsla(0, 0%, 100%, ${a})`     // white highlight
+            let grip  = `hsla(46, 100%, 48%, ${a})`   // deeper yellow grip
+            let spark = `hsla(0, 0%, 100%, ${a})`     // white accent
+            if (this.kind === 'knife') {
+                hiddenCtx.save()
+                hiddenCtx.translate(cx, cy)
+                hiddenCtx.rotate(-Math.PI / 4)
+                DrawRect(-40, -7, 28, 14, grip)             // handle
+                DrawRect(-44, -6, 6, 12, spark)             // pommel cap
+                DrawRect(-13, -12, 7, 24, hot)              // guard / bolster (the knife tell)
+                DrawTriangle(-6, -8, 40, -8, -6, 8, blade)  // blade — flat spine side
+                DrawTriangle(40, -8, -6, 8, 56, 0, blade)   // blade — taper to the point
+                DrawLine([-6, 8], [56, 0], hot, 3)          // white-hot cutting edge
+                hiddenCtx.restore()
+            } else {
+                hiddenCtx.save()
+                hiddenCtx.translate(cx, cy)
+                hiddenCtx.rotate(-0.12)
+                DrawRect(-36, -20, 64, 16, blade)           // slide
+                DrawRect(-36, -20, 64, 4, hot)              // slide top highlight
+                DrawRect(24, -18, 10, 12, hot)              // white-hot muzzle
+                DrawRect(-30, -6, 34, 8, blade)             // frame
+                DrawArcStroke(-12, 6, 10, 0, Math.PI, spark, 4) // trigger guard
+                hiddenCtx.save()
+                hiddenCtx.translate(-26, 0)
+                hiddenCtx.rotate(0.42)
+                DrawRect(-8, 0, 16, 34, grip)               // grip (angled back)
+                DrawRect(-8, 30, 16, 4, spark)              // grip base accent
+                hiddenCtx.restore()
+                hiddenCtx.restore()
+            }
+
+            hiddenCtx.restore()
+
+            // Spark burst on spawn (thrown out, decelerating).
+            for (let i = 0; i < this.sparks.length; i++) {
+                let s = this.sparks[i]
+                s.x += s.vx; s.y += s.vy; s.vx *= 0.94; s.vy *= 0.94; s.life -= 0.03
+                if (s.life <= 0) continue
+                DrawCircle(s.x, s.y, 4 * s.life, `hsla(50, 100%, ${s.lit}%, ${a * s.life})`)
+            }
+
+            // Bright diagonal shine sweep across the slot early on.
+            let sp = this.frame / 30
+            if (sp < 1) {
+                let sx = left - 24 + sp * (S + 48)
+                DrawLine([sx, top], [sx - 34, top + S], `hsla(0, 0%, 100%, ${0.6 * a * (1 - sp)})`, 12)
+            }
+        }
+    }
+
+    // DamageEffect: an organic splash of red "paint" thrown diagonally across the
+    // screen — lumpy core, tendrils, and droplets, corner to corner. Randomized
+    // every spawn. Black background.
+    function DamageEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 90; this.fadingOut = false
+
+        let down = Math.random() < 0.5 ? 1 : -1
+        let throwAng = down * (30 + Math.random() * 22) * Math.PI / 180
+        let dirx = Math.cos(throwAng), diry = Math.sin(throwAng)
+        this.cx = 18 + Math.random() * 26
+        this.cy = down > 0 ? 18 + Math.random() * 24 : 158 + Math.random() * 24
+
+        this.blobs = []
+        this.maxDist = 1
+        let add = (dx, dy, r) => {
+            let dist = Math.hypot(dx, dy)
+            if (dist > this.maxDist) this.maxDist = dist
+            this.blobs.push({ dx: dx, dy: dy, r: r, lit: 26 + Math.random() * 22 })
+        }
+
+        // Lumpy core, stretched along the diagonal.
+        for (let i = 0; i < 9; i++) {
+            let along = (Math.random() - 0.2) * 60
+            let side = (Math.random() - 0.5) * 30
+            add(dirx * along - diry * side, diry * along + dirx * side, 14 + Math.random() * 20)
+        }
+        // Tendrils flung along the diagonal, reaching toward the far corner.
+        let arms = 10 + Math.floor(Math.random() * 5)
+        for (let k = 0; k < arms; k++) {
+            let ang = (Math.random() < 0.78) ? throwAng + (Math.random() - 0.5) * 1.1 : Math.random() * Math.PI * 2
+            let len = 150 + Math.random() * 230
+            let px = -Math.sin(ang), py = Math.cos(ang)
+            let steps = 5 + Math.floor(Math.random() * 4)
+            for (let s = 1; s <= steps; s++) {
+                let t = s / steps
+                let wob = (Math.random() - 0.5) * 16
+                let dist = t * len
+                add(Math.cos(ang) * dist + px * wob, Math.sin(ang) * dist + py * wob, (1 - t) * 11 + 2.5)
+            }
+        }
+        // Scattered fine droplets flung far along the diagonal.
+        for (let i = 0; i < 20; i++) {
+            let ang = throwAng + (Math.random() - 0.5) * 1.4
+            let dist = 90 + Math.random() * 280
+            add(Math.cos(ang) * dist, Math.sin(ang) * dist, 2 + Math.random() * 5)
+        }
+
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.25; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && (!damageGoing || this.frame > this.duration)) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.04; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; damageGoing = false; return } }
+            let a = this.alpha
+
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            let sp = Math.min(this.frame / 10, 1)
+            for (let i = 0; i < this.blobs.length; i++) {
+                let b = this.blobs[i]
+                let df = Math.hypot(b.dx, b.dy) / this.maxDist
+                let local = (sp - df * 0.6) / 0.4
+                if (local <= 0) continue
+                if (local > 1) local = 1
+                DrawCircle(this.cx + b.dx, this.cy + b.dy, b.r * local, `hsla(0, 88%, ${b.lit}%, ${a})`)
+            }
+        }
+    }
+
+    // CarEffect: two big spinning wheels with thick white metal, plus white speed
+    // rectangles streaking right→left for motion, on black.
+    function CarEffect() {
+        this.frame = 0; this.alpha = 0; this.lifetime = 1; this.duration = 150; this.fadingOut = false
+        this.lines = []
+        for (let i = 0; i < 11; i++) {
+            this.lines.push({
+                x: Math.random() * 320,
+                y: 20 + Math.random() * 160,
+                w: 24 + Math.random() * 56,
+                h: 5 + Math.random() * 7,
+                speed: 5 + Math.random() * 5
+            })
+        }
+        this.draw = function () {
+            this.frame++
+            if (!this.fadingOut && this.alpha < 1) { this.alpha += 0.06; if (this.alpha > 1) this.alpha = 1 }
+            if (!this.fadingOut && !carGoing) this.fadingOut = true
+            if (this.fadingOut) { this.alpha -= 0.05; if (this.alpha <= 0) { this.alpha = 0; this.lifetime = 0; return } }
+            let a = this.alpha
+
+            DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${a})`)
+
+            // Speed rectangles streaking right → left (behind the wheels).
+            for (let i = 0; i < this.lines.length; i++) {
+                let l = this.lines[i]
+                l.x -= l.speed
+                if (l.x + l.w < 0) { l.x = 320 + Math.random() * 80; l.y = 20 + Math.random() * 160; l.w = 24 + Math.random() * 56 }
+                DrawRect(l.x, l.y, l.w, l.h, `hsla(0, 0%, 92%, ${a * 0.85})`)
+            }
+
+            // Two big wheels: dark tire, thick white metal rim + spokes + hub.
+            let rot = this.frame * 0.15
+            let R = 46
+            for (let w = 0; w < 2; w++) {
+                let cx = 95 + w * 130
+                DrawCircle(cx, 100, R, `hsla(0, 0%, 12%, ${a})`)
+                DrawStroke(cx, 100, R * 0.72, `hsla(0, 0%, 95%, ${a})`, 9)
+                for (let s = 0; s < 6; s++) {
+                    let ang = rot + s * Math.PI / 3
+                    DrawLine([cx, 100], [cx + Math.cos(ang) * R * 0.72, 100 + Math.sin(ang) * R * 0.72], `hsla(0, 0%, 95%, ${a})`, 7)
+                }
+                DrawCircle(cx, 100, 14, `hsla(0, 0%, 96%, ${a})`)
+            }
+        }
+    }
+    //#endregion
+
+    window.requestAnimationFrame(update)
+</script>
