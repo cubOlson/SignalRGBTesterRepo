@@ -13,7 +13,7 @@
 
 Change the monitor resolution, launch the game and open the video settings.
 
-Verify that the selected resolution appears in the Resolution option, then change the game resolution to the right one. If the resolution is not available:
+Verify that the selected resolution appears in the Resolution option, then change the game resolution for the right one. If the resolution is not available:
 
 \- Change the Aspect Ratio setting.
 
@@ -23,7 +23,7 @@ Test the game in fullscreen or windowed borderless.
 
 **Testing Guidelines**
 
-1\. Launch the game, select a normal match and wait for the match to start to trigger the inGame meter.  
+1\. Launch the game, select a normal match and wait for it to start to trigger the inGame meter.  
 ![inGame](images/inGame.png)
 
 2\. After a few seconds, once the HUD with the shop loads, check the defaultUI and TimeBar meters.  
@@ -37,10 +37,10 @@ Test the game in fullscreen or windowed borderless.
 4\. When combat ends and you move to the planning phase, check the planningConfirmation meter.  
 ![planningConfirmation](images/planningConfirmation.png)
 
-5\. Upon winning a combat, an orange flame icon appears next to the gold count, triggering the Win meter.  
+5\. Upon winning a combat, an orange flame icon appears next to the gold count, on the right side — this triggers the Win meter.  
 ![win](images/win.png)
 
-6\. Upon losing a combat, the flame icon next to the gold count turns blue, triggering the Lose meter.  
+6\. Upon losing a combat, the flame icon next to the gold count turns blue — this triggers the Lose meter.  
 ![lose](images/lose.png)
 
 7\. As you accumulate gold, check the moneyCount meter.  
