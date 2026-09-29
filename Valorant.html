@@ -1,24 +1,46 @@
 <head>
-  <title>Valorant Devv</title>
-  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.48" />
+  <title>Valorant Dev</title>
+  <meta description="Agent abilities and ambience for Valorant. Use select box to choose agent. v2.0.1" />
   <meta publisher="SignalRGB" />
-  <meta property="ambienceAlpha" label="Background Brightness" type="number" default="100" min="0" max="100" />
-  <meta property="backgroundMode" label="Background Mode" type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
-  default="Ambience"/>
-  <meta property="backColor" label="Custom Color" type="color" default="#010101" min="0" max="360" />
-  <meta property="selectedChamp" label="Agent selection" type="list"
-    values="Astra,Breach,Brimstone,Chamber,Clove,Cypher,Deadlock,Fade,Gekko,Harbor,ISO,Jett,Kayo,Killjoy,Miks,Neon,Omen,Phoenix,Raze,Reyna,Sage,Skye,Sova,Tejo,Veto,Viper,Vyse,Waylay,Yoru"
-    default="Vyse" />
-  <meta property="enableAgents" label="Agent skill effects" type="boolean" default="1" />
-  <meta property="enableShield" label="Shield effect" type="boolean" default="1" />
-  <meta property="enableSpike" label="Spike effect" type="boolean" default="1" />
-  <meta property="enableDamage" label="Damage effect" type="boolean" default="1" />
-  <meta property="enableHeal" label="Heal effect" type="boolean" default="1" />
-  <meta property="enableVictory" label="Victory effect" type="boolean" default="1" />
-  <meta property="enableDefeat" label="Defeat effect" type="boolean" default="1" />
-  <meta property="enableBomb" label="Bomb effect" type="boolean" default="1" />
+  <!-- ═══════════════════════════════════════════════════════════
+       ACTIVE USER-FACING CONTROLS
+       All properties below appear as controls in the SignalRGB UI.
+       Values are injected into the JS scope by name at runtime.
+       ═══════════════════════════════════════════════════════════ -->
 
-  <meta meter="inGame1" tags="vlc,VALORANT" x="0.4885" y="0.1022" width="0.0062" height="0" 
+  <!-- Background controls -->
+  <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Sets how bright the background effect appears on your devices."                                    type="number" default="100" min="0" max="100" />
+  <meta property="backgroundMode"  label="Background Mode"       tooltip="Chooses the background look: solid color, color cycle, screen ambience, or audio-reactive."     type="list" values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+  default="Ambience"/>
+  <meta property="backColor"       label="Custom Color"          tooltip="Sets the color used by the Custom and Custom Ambience background modes."                        type="color" default="#010101" min="0" max="360" />
+
+  <!-- Agent selection -->
+  <meta property="selectedChamp"   label="Agent selection"       tooltip="Selects which agent's ability effects play on your devices."                                    type="list"
+    values="Astra,Breach,Brimstone,Chamber,Clove,Cypher,Deadlock,Fade,Gekko,Harbor,ISO,Jett,Kayo,Killjoy,Miks,Neon,Omen,Phoenix,Raze,Reyna,Sage,Skye,Sova,Tejo,Veto,Viper,Vyse,Waylay,Yoru"
+    default="Miks" />
+
+  <!-- Effect toggles -->
+  <meta property="enableAgents"    label="Agent skill effects"   tooltip="Plays your selected agent's ability animations on your devices."                                type="boolean" default="1" />
+  <meta property="enableShield"    label="Shield effect"         tooltip="Flashes your devices when your shield/armor increases."                                         type="boolean" default="1" />
+  <meta property="enableSpike"     label="Spike effect"          tooltip="Shows the spike-plant progress bar across your devices."                                        type="boolean" default="1" />
+  <meta property="enableDamage"    label="Damage effect"         tooltip="Flashes red on your devices when you take damage."                                              type="boolean" default="1" />
+  <meta property="enableHeal"      label="Heal effect"           tooltip="Pulses green on your devices when you heal."                                                    type="boolean" default="1" />
+  <meta property="enableVictory"   label="Victory effect"        tooltip="Plays a celebration animation on your devices when you win the match."                          type="boolean" default="1" />
+  <meta property="enableDefeat"    label="Defeat effect"         tooltip="Plays a defeat animation on your devices when you lose the match."                              type="boolean" default="1" />
+  <meta property="enableBomb"      label="Bomb effect"           tooltip="Plays the spike-detonation sequence on your devices once the spike is planted."                 type="boolean" default="1" />
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VISION METERS
+       If an effect never fires, use the QA Tool to verify the
+       meter region captures the right pixels at the right color.
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- ── IN-GAME DETECTION ───────────────────────────────────────
+       inGame1/inGame2 confirm the HUD is on-screen and gate every
+       ability effect. ValidAbilities confirms the ability bar is
+       visible before the cast meters are trusted.
+       ──────────────────────────────────────────────────────────── -->
+  <meta meter="inGame1" tags="vlc,VALORANT" x="0.4885" y="0.1022" width="0.0062" height="0"
     h="0-360" s="0-30" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="70-100" type="area">
     <resolution aspect="3.55:1" x="0.5000" y="0.1212" width="0.0005" height="0.0001" />
     <resolution aspect="24:10" x="0.5" y="0.1222" width=".0001" height=".0001" />
@@ -48,8 +70,12 @@
     <resolution size="2560x1080" x="0.5997" y="0.9299" width=".005" height="0.0001" />
   </meta>
 
+  <!-- ── HEALTH ──────────────────────────────────────────────────
+       health samples the white health number; healthred detects the
+       red low-health state. Both feed onHealthMeterChanged.
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="health" tags="vlc,VALORANT" x="0.3029" y="0.9347" width="0.0343" height="0.0306" 
-    type="area" h="0-360" s="0-20" l="90-100" hdr-h="0-360" hdr-s="0-20" hdr-l="90-100">
+    type="area" h="20-340" s="0-10" l="90-100" hdr-h="20-340" hdr-s="0-10" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.401" y="0.9324" width="0.018" height="0.040" />
     <resolution aspect="24:10" x="0.3523" y="0.9319" width="0.03" height="0.0350" />
     <resolution aspect="16:11" x="0.2794" y="0.9337" width="0.0391" height="0.0307" />
@@ -59,7 +85,7 @@
   </meta>
 
   <meta meter="healthred" tags="vlc,VALORANT" type="area" x="0.3029" y="0.9347" width="0.0343" height="0.0306" 
-    h="-30-30" s="40-75" l="0-100" hdr-h="-30-30" hdr-s="40-75" hdr-l="60-100">
+    h="-30-30" s="40-75" l="10-100" hdr-h="-30-30" hdr-s="40-75" hdr-l="60-100">
     <resolution aspect="3.55:1" x="0.401" y="0.9324" width="0.018" height="0.040"/>
     <resolution aspect="24:10" x="0.3523" y="0.9319" width="0.03" height="0.0350" />
     <resolution aspect="16:11" x="0.2794" y="0.9337" width="0.0391" height="0.0307" />
@@ -68,6 +94,10 @@
     <resolution size="2560x1080" x="0.3517" y="0.9333" width="0.0262" height="0.0324" />
   </meta>
 
+  <!-- ── SHIELD ──────────────────────────────────────────────────
+       shieldWhite detects a shield/armor gain (white bar); the paired
+       shieldNotWhite negative guard makes it fire only on a real gain.
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="shieldNotWhite" tags="vlc,VALORANT" type="area" x="0.2876" y="0.9388" width="0.0031" height="0.0014"
     h="0-360" s="0-20" l="90-100" hdr-h="0-10" hdr-s="0-10" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.3954" y="0.9407" width="0" height="0" />
@@ -88,6 +118,10 @@
     <resolution size="2560x1080" x="0.338" y="0.9416" width="0.0080" height="0.0167"  />
   </meta>
 
+  <!-- ── DEATH / RESPAWN ─────────────────────────────────────────
+       deadGreen/deadWhite detect the death + spectate HUD state
+       (currently sampled but not wired to an effect).
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="deadGreen" tags="vlc,VALORANT" type="linear" x="0.0711" y="0.795" width="0" height="0"
     h="100-220" s="0-50" l="60-100" hdr-h="0-10" hdr-s="0-10" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.0354" y="0.7926" width="0" height="0"  />
@@ -108,6 +142,11 @@
     <resolution size="2560x1080"  x="0.0551" y="0.8063" width="0.0004" height="0" />
   </meta>
 
+  <!-- ── ABILITY CASTS ───────────────────────────────────────────
+       cMeter/qMeter/eMeter/xMeter track the C/Q/E/X charge pips. A
+       drop in a meter means that ability was cast, which fires the
+       matching callback for the currently selected agent.
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="cMeter" tags="vlc,VALORANT" x="0.3978" y="0.9653" width="0.0274" height="0.0062" 
   h="140-180" s="40-80" l="70-100" hdr-h="140-240" hdr-s="0-70" hdr-l="60-100" type="area">
     <resolution aspect="3.55:1" x="0.4482" y="0.9704" width="0.0148" height="0.0001" />
@@ -148,6 +187,10 @@
     <resolution size="2560x1080" x="0.5535" y="0.9688" width=".024" height=".001" />
   </meta>
 
+  <!-- ── AGENT-SPECIFIC ULTS ─────────────────────────────────────
+       Per-agent ult / signature meters (Jett, Viper, Neon, Chamber,
+       Reyna). Only the selected agent's meter is polled each frame.
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="jettX" tags="vlc,VALORANT" type="area" x="0.575" y="0.8481" height="0.0083" width="0.0016" 
     h="150-176" s="20-50" l="70-100" hdr-h="0-10" hdr-s="0-10" hdr-l="90-100">
     <resolution aspect="3.55:1" x="0.5372" y="0.851" width="0.0005" height="0.0001" />
@@ -218,6 +261,11 @@
     <resolution size="2560x1080" x="0.3877" y="0.899" width="0.0023" height="0"/>
   </meta>
 
+  <!-- ── SPIKE PLANT ─────────────────────────────────────────────
+       PlantSpikeConfirmation confirms a plant is underway,
+       PlantSpikeBar drives the on-screen progress bar, and
+       SpikeNotYellow guards against false progress readings.
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="PlantSpikeConfirmation" tags="vlc,VALORANT" type="area" x="0.4639" y="0.1633" width="0.0011" height="0" 
     h="0-360" s="0-40" l="35-100" hdr-h="0-360" hdr-s="0-20" hdr-l="80-100">
     <resolution aspect="3.55:1" x="0.4931" y="0.1547" width="0.0112" height="0.0023" />
@@ -248,6 +296,10 @@
     <resolution size="2560x1080" x="0.4994" y="0.0743" width="0.0009" height="0.0014" />
   </meta>
 
+  <!-- ── BOMB / DETONATION ───────────────────────────────────────
+       BombPlanted detects the armed spike; the paired BombNotRed
+       negative guard prevents the detonation effect from misfiring.
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="BombPlanted" tags="vlc,VALORANT" type="area" x="0.5064" y="0.0236" width="0.0036" height="0.0021" 
     h="-30-30" s="80-100" l="0-100" hdr-h="-30-30" hdr-s="80-100" hdr-l="0-100">
     <resolution aspect="3.55:1" x="0.5074" y="0.0238" width="0.0006" height="0.0042" />
@@ -268,6 +320,11 @@
     <resolution size="2560x1080" x="0.5021" y="0.0297" width="0.0008" height="0.0009"  />
   </meta>
 
+  <!-- ── MATCH END ───────────────────────────────────────────────
+       VictoryGreen + VictoryNotGreen confirm a win; LossRed +
+       LossNotRed confirm a loss. Each positive/negative pair keeps
+       the end-screen effect from firing on the wrong result.
+       ──────────────────────────────────────────────────────────── -->
   <meta meter="VictoryGreen" tags="vlc,VALORANT" type="area" x="0.5709" y="0.0264" width="0.0145" height="0"  
     h="150-180" s="60-100" l="30-100" hdr-h="140-180" hdr-s="0-80" hdr-l="20-100">
     <resolution aspect="3.55:1" x="0.5367" y="0.0259" width="0.0076" height="0.0001" />
@@ -314,31 +371,46 @@
 </body>
 
 <script>
-  //variables
-  var canvas, ctx;
+  // ═══════════════════════════════════════════════════════════════
+  // CANVAS SETUP
+  // SignalRGB renders this 320×200 canvas onto the device layout.
+  // All effects draw to the hidden canvas; the finished frame is
+  // composited onto the visible ctx once per update().
+  // ═══════════════════════════════════════════════════════════════
+  let canvas, ctx
+  const width  = 320
+  const height = 200
+
+  // Hidden canvas — every effect draws here each frame, then the whole
+  // frame is composited onto the visible ctx in one drawImage call.
+  const hiddenCanvas = document.createElement('canvas')
+  hiddenCanvas.width  = width
+  hiddenCanvas.height = height
+  const hiddenCtx = hiddenCanvas.getContext('2d')
+
   var bursts = [];
   var stateMgr = new StateHandler();
   var effects = [];
-  var oldHealth = 0;
   var oldCharge = 100;
   var neonFill = "#00ffff"
   var ShouldTriggerEffects = false;
   var champId;
   var bombPushed = false;
-  var bombCancelTimer = Date.now();
-  var timeSinceLastFlicker = 0;
   var healthState = "green";
   var prevHealthState = "green";
   var timeoutHp = Date.now();
   let hasTriggered = false;
-  let basebrightness = 65;
-  var currentColHigh = false;
   var recentColSwitch = false;
   let runningArr = [" M 26,111 31,104 L 26 111 L 31 104 L 40 99 L 35 89 L 37 80 L 30 70 L 21 63 L 6 59 L 5 50 L 14 48 L 21 50 L 21 41 L 18 32 L 14 24 L 14 16 L 22 7 L 31 4 L 40 6 L 49 2 L 58 4 L 67 10 L 74 17 L 78 26 L 87 35 L 87 46 L 81 53 L 88 64 L 95 68 L 104 69 L 107 79 L 106 89 L 99 83 L 89 87 L 80 89 L 66 87 L 57 91 L 52 100 L 49 108 L 39 110 Z"," M 42,110 55,109 L 42 110 L 55 109 L 65 108 L 64 97 L 69 92 L 79 94 L 87 95 L 90 103 L 96 98 L 98 89 L 95 80 L 85 80 L 89 72 L 88 62 L 83 51 L 87 43 L 83 33 L 78 24 L 73 15 L 66 9 L 58 4 L 49 3 L 40 6 L 31 5 L 22 8 L 16 15 L 12 23 L 18 31 L 22 40 L 19 50 L 10 57 L 15 63 L 25 64 L 33 72 L 44 80 L 46 90 L 52 99 L 42 103 L 41 109 Z"," M 59,111 67,101 L 59 111 L 67 101 L 60 95 L 53 85 L 45 77 L 35 70 L 25 63 L 15 64 L 19 52 L 22 42 L 18 31 L 14 24 L 14 15 L 21 6 L 30 3 L 39 4 L 49 0 L 58 2 L 66 7 L 74 14 L 78 23 L 82 34 L 84 44 L 84 56 L 85 65 L 78 75 L 78 84 L 87 88 L 89 96 L 80 105 L 71 109 Z"," M 30,109 39,109 L 30 109 L 39 109 L 50 108 L 59 103 L 55 89 L 57 82 L 68 87 L 77 87 L 86 85 L 96 82 L 105 85 L 104 75 L 99 65 L 89 69 L 84 64 L 86 55 L 84 46 L 82 36 L 80 25 L 76 16 L 69 8 L 62 3 L 51 0 L 41 4 L 32 3 L 23 5 L 16 14 L 14 22 L 19 30 L 23 40 L 23 50 L 22 59 L 26 67 L 34 72 L 31 81 L 40 94 L 40 101 L 30 106 Z"," M 62,111 68,102 L 62 111 L 68 102 L 59 98 L 52 86 L 42 79 L 31 70 L 19 70 L 16 60 L 23 55 L 23 46 L 19 36 L 16 28 L 15 19 L 22 11 L 30 7 L 39 9 L 48 4 L 57 5 L 66 9 L 74 16 L 78 25 L 82 35 L 85 48 L 84 57 L 86 67 L 80 77 L 77 86 L 87 92 L 90 99 L 82 108 Z"," M 42,110 38,105 L 42 110 L 38 105 L 50 101 L 46 91 L 45 81 L 34 73 L 24 63 L 14 63 L 10 56 L 19 50 L 22 41 L 18 32 L 13 24 L 15 16 L 21 8 L 30 5 L 39 7 L 48 2 L 57 3 L 65 6 L 72 13 L 77 22 L 82 31 L 87 41 L 85 50 L 87 59 L 90 69 L 83 79 L 93 80 L 99 87 L 96 97 L 91 104 L 87 95 L 78 94 L 68 92 L 64 98 L 65 108 L 56 109 Z"]
   let sharkSVG ="M629.8,398.2c-11.5-34.4-66-98.3-82.3-98.3c-16.2,0-21.3,104.5-57.4,113.6c-34.6,8.7-203.7,48.8-203.7,48.8s-27.8-22.7-36.3-21c-7.1,1.4-10.6,33.1-32.5,34.8c-21.8,1.7-50.6,0.4-50.6,0.4C116.4,375,10,369.5,10,369.5c54.6,81.3,107.2,134.8,32.6,247.7c51.6,0,117.6-78.4,122.4-95.6c18.3-4.8,39.3-4.7,50.7,8.6c8.6,10.1,8.8,14.7,15.5,16.6c6.7,1.9,14.1-14.7,25.6-14.7c11.5,0,67.1,17.6,81.3,22c14.2,4.4,28.7,54.5,46.9,56.4c18.2,1.9,59.3-33.5,68.8-33.5c9.6,0,80.3,10.5,158.7,7.6c13.4,14.4,30.6,43.3-4.4,97.6c-6.7,10.5-4.8,27.7,17.2,10.5c22-17.2,62.6-41.4,103.7-115.9C771.2,573,990,519.6,990,480.4C990,441.2,749.3,394.4,629.8,398.2z"
   let gPlantBar = 0
 
-  //Generic meters --------------------------------------------------------------------------
+  // ═══════════════════════════════════════════════════════════════
+  // METER DECLARATIONS
+  // Each Meter(size, callback) smooths the vision signal over `size`
+  // identical frames before updating .value and firing the callback.
+  // Larger size = more stable but slower to react.
+  // ═══════════════════════════════════════════════════════════════
 
   var healthMeter = new Meter(8, onHealthMeterChanged);
   var healthRedMeter = new Meter(3, onHealthMeterChanged);
@@ -363,7 +435,14 @@
   var VictoryGreenMeter = new Meter(10, VictoryCallback);
   var LossRedMeter = new Meter(10, LossCallback);
 
-  //UPDATE LOOP ------------------------------------------------------------------------------
+  //#region Update
+  // ═══════════════════════════════════════════════════════════════
+  // MAIN UPDATE LOOP — called every animation frame (~60fps).
+  //   1. Clear hidden canvas to black
+  //   2. Feed current vision readings into each Meter (may fire callbacks)
+  //   3. Draw background, run states, draw + filter active effects
+  //   4. Composite the hidden canvas onto the visible canvas
+  // ═══════════════════════════════════════════════════════════════
   function update() {
     if (effects.length == 0) {
       bombPushed = false;
@@ -404,28 +483,35 @@
     backgroundHandler()
 
     stateMgr.Process();
-    effects.forEach((ele, i)=>{
-      ele.draw()
-      if(ele.lifetime <= 0) effects.splice(i, 1)
-    })
+    effects.forEach(ele => { ele.draw() })
+    effects = effects.filter(ele => !(ele.lifetime <= 0))
 
     if (enableSpike) {
       if (PlantSpikeMeter.value >= .95 && engine.vision.PlantSpikeBar > .01 && engine.vision.SpikeNotYellow <.1) gPlantBar += (engine.vision.PlantSpikeBar - gPlantBar) / 10
       else if (PlantSpikeMeter.value <= .1 || bombMeter.value >= .95 || engine.vision.PlantSpikeBar <= .05) gPlantBar > 0 ? gPlantBar-=5 : gPlantBar = 0
-      ctx.beginPath();
-      ctx.fillStyle = "hsla(60,75%,70%,1)"
-      ctx.fillRect(0, 0, gPlantBar * 320, 200)
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = "hsla(60,75%,70%,1)"
+      hiddenCtx.fillRect(0, 0, gPlantBar * 320, 200)
     }
+
+    ctx.drawImage(hiddenCanvas, 0, 0)
     window.requestAnimationFrame(update);
   }
+  //#endregion
 
+  //#region Background Modes
+  // ═══════════════════════════════════════════════════════════════
+  // BACKGROUND SYSTEM
+  // backgroundMode selects one of eight looks (see the meta property).
+  // Ambience modes copy the screen zones; color modes fill a flat hue;
+  // audio modes ease saturation/lightness from engine.audio.density.
+  // ═══════════════════════════════════════════════════════════════
     let proBack = [0, 0, 0]
     function onbackColorChanged(){
       let temp = hexToHSL(backColor)
       proBack = [temp.h, temp.s, temp.l]
     }
 
-    let backgroundEaseHue = 0;
     let backgroundEaseLit = 0;
     let backgroundEaseSat = 0
     let gCycle = 0
@@ -480,8 +566,8 @@
         var iHeight = 200 / 20;
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
-        ctx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
-        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillStyle = `hsla(${hue[iZone]}, ${sat[iZone] * (audioScreenSat / 200 + .5)}%, ${lightness[iZone] * (audioScreenLit / 100)}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
   
@@ -496,11 +582,23 @@
         var iHeight = 200 / 20;
         var iZx = iCol * iWidth;
         var iZy = iRow * iHeight;
-        ctx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
-        ctx.fillRect(iZx, iZy, iWidth, iHeight);
+        hiddenCtx.fillStyle = `hsla(${(backgroundMode == "Custom Ambience" ? proBack[0] : hue[iZone] + gCycle * (backgroundMode == "Color Cycle Ambience"))}, ${sat[iZone]}%, ${lightness[iZone]}%, ${alpha})`;
+        hiddenCtx.fillRect(iZx, iZy, iWidth, iHeight);
       }
     }
 
+  //#endregion
+
+  //#region Callbacks
+  // ═══════════════════════════════════════════════════════════════
+  // CALLBACKS
+  // Fired by meters when their signal stabilizes. Each callback reads
+  // the current state of related meters/flags, then pushes effects or
+  // flips "going" flags. "Going" flags prevent duplicate spawns and
+  // are cleared inside the effect's draw() when it expires.
+  // checkChanges() runs every frame to gate effects and detect the
+  // health-state and agent-selection changes.
+  // ═══════════════════════════════════════════════════════════════
   function checkChanges() {
     if (engine.vision.ValidAbilities >= 0.95 && deadGreenMeter.value < 0.8 && deadWhiteMeter.value < 0.8 &&  engine.vision.inGame2 >= .95) {
       ShouldTriggerEffects = true;
@@ -520,8 +618,8 @@
     }
     champId = selectedChamp;
   }
-  //END UPDATE LOOP --------------------------------------------------------------------------
-  //GENERAL METER CALLBACKS --------------------------------------------------------------------------
+  // Health rising past a short cooldown = heal (green); a sharp red drop = damage (red).
+  // Sets healthState, which checkChanges() turns into a BackgroundFade pulse.
   function onHealthMeterChanged() {
     if (healthMeter.value > 0.2 && healthMeter.increased && Date.now() - timeoutHp > 500 && enableHeal) {
       healthState = "#00ff00";
@@ -531,6 +629,8 @@
     }
   }
 
+  // Fires once per shield gain: white bar appears (shieldWhite up, shieldNotWhite low).
+  // hasTriggered latches until the white bar clears so it can't re-fire mid-animation.
   function onShieldMeterChanged() {
     if(enableShield){
         if (!hasTriggered && shieldWhiteMeter.value >= 0.01 && shieldNotWhiteMeter.value <.1  && ShouldTriggerEffects) {
@@ -541,35 +641,35 @@
           hasTriggered = false;
         }
     }
-    
   }
 
 
+  // Win: green banner present AND its negative guard low, only on the end screen
+  // (!ShouldTriggerEffects means we're no longer in active play).
   function VictoryCallback() {
     if(enableVictory){
       if (VictoryGreenMeter.value >= .95 &&  engine.vision.VictoryNotGreen <.1  && !ShouldTriggerEffects ) {
         effects.push(new VictoryEffect())
       }
     }
-    
   }
 
+  // Loss: red banner present AND its negative guard low, only on the end screen.
   function LossCallback() {
     if(enableDefeat){
       if (LossRedMeter.value >= .95 && engine.vision.LossNotRed <.1  && !ShouldTriggerEffects ) {
         effects.push(new DefeatEffect())
       }
     }
-
   }
 
+  // Spike planted: red timer detected and not already going. bombPushed latches
+  // until the meter fully clears so the detonation sequence spawns only once.
   function onBombMeterChanged() {
-
     if(enableBomb){
       if (bombMeter.value >= .95 && engine.vision.BombNotRed <.1 && !bombPushed ) {
         bombPushed = true;
         effects.push(new SpikeProgressionEffect());
-
       } else if (bombMeter.decreased && bombMeter.value == 0) {
         bombPushed = false;
       }
@@ -577,18 +677,8 @@
         recentColSwitch = false;
       }
     }
-    
   }
 
-  function SpikeLoading(){
-      this.width = 0
-      this.draw = function(){
-        this.width < 100 ? this.width += .5 : this.lifetime = 0
-        DrawRect(0, 0, this.width * 3.2, 200, "hsla(60,75%,70%,1)")
-      }
-    }
-  //END GENERAL METER CALLBACKS --------------------------------------------------------------------------
-  //CHARACTER METER CALLBACKS --------------------------------------------------------------------------
   function onJett_x() {
     if (xAbilityMeter.value >= .5 && Jett_x_meter.increased && enableAgents) {
       effects.push(new JettX())
@@ -1022,7 +1112,7 @@
 
           break;
         case "Veto":
-          stateMgr.Push(new ExplodingOrbState("#00ffff", "#0000ff", "#ffffff", 1, 1, "black", 2))
+          effects.push(new VetoE())
 
           break;
         case "Waylay":
@@ -1068,6 +1158,10 @@
       }
     }
   }
+  // Veto ult — polled each frame while Veto is selected (not meter-driven).
+  // Fires VetoX when the X charge is full AND the reynaE2 region confirms the
+  // ult is active. vetoXReady re-arms only after reynaE2 drops, so it fires once
+  // per ult; vetoXGoing is cleared by VetoX when its animation ends.
   var vetoXGoing = false
   var vetoXReady = true;
 
@@ -1229,20 +1323,20 @@
       this.half = false
       this.draw = function(){
         DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
-        ctx.save()
-        ctx.translate(160, 100)
-        ctx.rotate(this.rot)
-        ctx.translate(-160, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(this.rot)
+        hiddenCtx.translate(-160, -100)
         DrawTriangle(160, 100, 160, 30, 300, 100, `hsla(0, 0%, 50%, ${this.alpha})`)
-        ctx.translate(160, 100)
-        ctx.rotate(Math.PI * 2 / 3)
-        ctx.translate(-160, -100)
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(Math.PI * 2 / 3)
+        hiddenCtx.translate(-160, -100)
         DrawTriangle(160, 100, 160, 30, 300, 100, `hsla(0, 0%, 50%, ${this.alpha})`)
-        ctx.translate(160, 100)
-        ctx.rotate(Math.PI * 2 / 3)
-        ctx.translate(-160, -100)
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(Math.PI * 2 / 3)
+        hiddenCtx.translate(-160, -100)
         DrawTriangle(160, 100, 160, 30, 300, 100, `hsla(0, 0%, 50%, ${this.alpha})`)
-        ctx.restore()
+        hiddenCtx.restore()
         this.rot -= .075
         if(!this.half) this.alpha <= .95 ? this.alpha += .05 : this.half = true
         else this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
@@ -1264,15 +1358,15 @@
     }
 
     function vyseQHelp(x, y, width, height, mod, color){
-      ctx.beginPath()
-      ctx.moveTo(x, y)
-      ctx.lineTo(x + width, y)
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(x, y)
+      hiddenCtx.lineTo(x + width, y)
       for(let i = 0; i < 11; i++){
-        ctx.lineTo(320 - i * 32, Math.sin(i + Date.now() / 500) * mod + height)
+        hiddenCtx.lineTo(320 - i * 32, Math.sin(i + Date.now() / 500) * mod + height)
       }
-      ctx.lineTo(x, y)
-      ctx.fillStyle = color
-      ctx.fill()
+      hiddenCtx.lineTo(x, y)
+      hiddenCtx.fillStyle = color
+      hiddenCtx.fill()
     }
 
     function VyseC(){
@@ -1289,11 +1383,11 @@
     }
 
     function vyseCHelp(x, y, radius, start, end, color, stroke){
-      ctx.beginPath();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = stroke;
-      ctx.arc(x, y, radius, start, end)
-      ctx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.strokeStyle = color;
+      hiddenCtx.lineWidth = stroke;
+      hiddenCtx.arc(x, y, radius, start, end)
+      hiddenCtx.stroke();
     }
 
 
@@ -1365,33 +1459,16 @@
         }
       }
   }
-  //END CHARACTER METER CALLBACKS --------------------------------------------------------------------------
-  //EFFECTS
-  function AlertState(color) {
-    var colors = hexToHSL(color);
-    var y = 0;
-    var y2 = 200;
-    this.start = new Date().getTime();
-    this.duration = 2000;
-    effects.push(new bounceBar(0, 0, 320, 30, { x: 0, y: 5 }, 1, "white"))
+  //#endregion
 
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-
-    this.Draw = function () {
-      var norm_elapsed = this.elapsed / this.duration;
-      var phaseBrightness = norm_elapsed * Math.PI * 3;
-      var bright = 20 + Math.abs(Math.sin(phaseBrightness)) * 30;
-      ctx.fillStyle = "hsl(" + colors.h + "," + 100 + "%," + bright + "%)";
-      ctx.fillRect(0, 0, 320, 200);
-    };
-  }
-
+  //#region Effects
+  // ═══════════════════════════════════════════════════════════════
+  // EFFECTS
+  // Each effect is a constructor pushed into effects[] and drawn every
+  // frame until its lifetime hits 0 (or it self-terminates). Effect-
+  // specific helper constructors live alongside their effect here.
+  //   User X/Y/W/H are 0–100 (% of canvas); canvas px = x*3.2, y*2.0.
+  // ═══════════════════════════════════════════════════════════════
   function BackgroundFade(speed, color) {
     this.alpha = 0;
     this.there = false;
@@ -1401,14 +1478,14 @@
     this.a = 0;
     this.color = hexToHSL(color)
     this.draw = function () {
-      var fadeGrad = ctx.createRadialGradient(160, 100, 10, 160, 100, 250)
+      var fadeGrad = hiddenCtx.createRadialGradient(160, 100, 10, 160, 100, 250)
       fadeGrad.addColorStop(0, `hsla(${this.color.h}, ${this.color.s}%, ${this.color.l}%, 0)`)
       fadeGrad.addColorStop(this.stop, color)
       this.stop <= (1 - this.a) ? this.stop += this.a : null;
       this.a += .0002
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(0, 0, 320, 200, fadeGrad);
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if (this.there) {
         this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0;
       } else {
@@ -1439,13 +1516,13 @@
       this.y = 200
       this.color = `hsl(${190 + val * 2}, 90%, 60%)`
       this.draw = function(){
-        ctx.beginPath()
-        ctx.moveTo(0, this.y + 50)
-        ctx.lineTo(160, this.y)
-        ctx.lineTo(320, this.y + 50)
-        ctx.strokeStyle = this.color
-        ctx.lineWidth = 50
-        ctx.stroke()
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(0, this.y + 50)
+        hiddenCtx.lineTo(160, this.y)
+        hiddenCtx.lineTo(320, this.y + 50)
+        hiddenCtx.strokeStyle = this.color
+        hiddenCtx.lineWidth = 50
+        hiddenCtx.stroke()
         this.y > -60 ? this.y -= 5 : this.lifetime = 0
       }
     }
@@ -1479,7 +1556,7 @@
       this.alpha = 1
       this.draw = function(){
         this.count++
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         if(this.count < 10){
           this.rad < 20 ? this.rad += 5 : this.rad = 20
         } else if(this.count < 30){
@@ -1530,8 +1607,8 @@
     this.bounces = 0;
 
     this.draw = function () {
-      ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.fillRect(this.x, this.y, this.width, this.height);
       this.y += this.speed.y;
       this.x += this.speed.x;
       if (this.y > 200 - height) {
@@ -1561,22 +1638,22 @@
       this.alpha = 2
       this.draw = function(){
         this.effects.push(new reynaCHelp())
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         this.effects.forEach((ele, i)=>{
           ele.draw()
           if(ele.lifetime <= 0) this.effects.splice(i, 1)
         })
         if(this.effects.length > 20) this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
         DrawCircle(160, 100, 50, "purple")
-        ctx.beginPath()
-        ctx.moveTo(140, 100)
-        ctx.lineTo(160, 0)
-        ctx.lineTo(180, 100)
-        ctx.lineTo(160, 200)
-        ctx.lineTo(140, 100)
-        ctx.fillStyle = "black"
-        ctx.fill()
-        ctx.globalAlpha = 1
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(140, 100)
+        hiddenCtx.lineTo(160, 0)
+        hiddenCtx.lineTo(180, 100)
+        hiddenCtx.lineTo(160, 200)
+        hiddenCtx.lineTo(140, 100)
+        hiddenCtx.fillStyle = "black"
+        hiddenCtx.fill()
+        hiddenCtx.globalAlpha = 1
       }
     }
 
@@ -1602,11 +1679,11 @@
       this.two = new lightning(10, "pink", 20)
       this.three = new lightning(10, "white", 10)
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         this.one.draw()
         this.two.draw()
         this.three.draw()
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
       }
     }
@@ -1630,15 +1707,15 @@
       this.width = 100
       this.rot = rot
       this.draw = function(){
-        ctx.save()
-        ctx.translate(160, 100)
-        ctx.rotate(this.rot)
-        ctx.translate(-160, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(this.rot)
+        hiddenCtx.translate(-160, -100)
         DrawRect(160 - this.width / 2, -100, this.width, 400, `hsla(300, 100%, 50%, 1)`)
         DrawRect(160 - this.width / 4, -100, this.width / 2, 400, `hsla(300, 100%, 60%, 1)`)
         DrawRect(160 - this.width / 8, -100, this.width / 4, 400, `hsla(300, 100%, 75%, 1)`)
         DrawRect(160 - this.width / 16, -100, this.width / 8, 400, `hsla(300, 100%, 90%, 1)`)
-        ctx.restore()
+        hiddenCtx.restore()
         this.width >= 3 ? this.width -= 1.5 : this.width = .1
       }
     }
@@ -1681,15 +1758,15 @@
             this.effects.push(new breachXHelp(i * 32, 200, "yellow", 6, 10))
           }
         }
-        ctx.save()
-        ctx.translate(160, 100)
-        ctx.scale((200 - this.count) / 200 * .9 + .1, (200 - this.count) / 200 * .9 + .1)
-        ctx.translate(-160, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.scale((200 - this.count) / 200 * .9 + .1, (200 - this.count) / 200 * .9 + .1)
+        hiddenCtx.translate(-160, -100)
         this.effects.forEach((ele, i)=>{
           ele.draw()
           if(ele.lifetime <= 0) this.effects.splice(i, 1)
         })
-        ctx.restore()
+        hiddenCtx.restore()
         this.count < 200 ? this.count++ : this.effects.length > 0 ? null : this.lifetime = 0
       }
     }
@@ -1702,9 +1779,9 @@
       this.y = y
       this.alpha = 1
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawCircle(this.x, this.y, this.rad, this.color)
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.y -= this.speed
         this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
       }
@@ -1728,9 +1805,9 @@
       this.height = 0
       this.color = `hsl(${Math.random() * 50}, 100%, 50%)`
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawRect(this.x, this.y, 20, this.height, this.color)
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.height > - 400 ? this.height -= 10 : this.alpha >= .02 ? this.alpha -= .02 : this.lifetime = 0
       }
     }
@@ -1765,9 +1842,9 @@
     this.lifetime = 200;
     this.size = 0;
     this.draw = function () {
-      ctx.fillStyle = `hsla(190, 100%, 50%, ${this.lifetime / 100})`;
-      ctx.fillRect(0, 0, this.size * 160, 200);
-      ctx.fillRect(320, 0, -this.size * 160, 200);
+      hiddenCtx.fillStyle = `hsla(190, 100%, 50%, ${this.lifetime / 100})`;
+      hiddenCtx.fillRect(0, 0, this.size * 160, 200);
+      hiddenCtx.fillRect(320, 0, -this.size * 160, 200);
       if (this.size < 1) {
         this.size += 0.03;
       } else {
@@ -1796,7 +1873,7 @@
     this.alpha = 0
     this.done = false
     this.draw = function () {
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       DrawStroke(160, 100, this.rad, "yellow", 20)
       DrawStroke(160, 100, this.rad * 1.6, "yellow", 20)
       DrawStroke(160, 100, this.rad * 2.2, "yellow", 20)
@@ -1806,7 +1883,7 @@
       DrawCircle(tempX, tempY, 30, "orange")
       DrawCircle(tempX, tempY, 20, "yellow")
       this.rad < 100 ? this.rad += 10 : this.rad = 100
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       !this.done ? this.alpha < 1 ? this.alpha += .05 : this.done = true: this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
     }
   }
@@ -1822,22 +1899,22 @@
       this.Draw();
     };
     this.Draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
 
-      ctx.fillStyle = "orange";
-      ctx.beginPath();
-      ctx.arc(160, 100, 10, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(160, 100, this.radius + 50, 0, Math.PI * 2);
-      ctx.lineWidth = 20;
-      ctx.strokeStyle = "yellow";
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.strokeStyle = "purple";
-      ctx.arc(160, 100, this.radius, 0, Math.PI * 2);
-      ctx.stroke();
+      hiddenCtx.fillStyle = "orange";
+      hiddenCtx.beginPath();
+      hiddenCtx.arc(160, 100, 10, 0, Math.PI * 2);
+      hiddenCtx.fill();
+      hiddenCtx.beginPath();
+      hiddenCtx.arc(160, 100, this.radius + 50, 0, Math.PI * 2);
+      hiddenCtx.lineWidth = 20;
+      hiddenCtx.strokeStyle = "yellow";
+      hiddenCtx.stroke();
+      hiddenCtx.beginPath();
+      hiddenCtx.strokeStyle = "purple";
+      hiddenCtx.arc(160, 100, this.radius, 0, Math.PI * 2);
+      hiddenCtx.stroke();
       this.radius += 2;
       if (this.radius > 200) {
         this.radius = 0;
@@ -1897,11 +1974,11 @@
     };
 
     this.Draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = this.color1;
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = this.color1;
       var pctUp = this.count / 2000;
-      ctx.beginPath();
+      hiddenCtx.beginPath();
       draw3ColorSpiral(
         160,
         100,
@@ -1911,11 +1988,11 @@
         200 * pctUp,
         -this.count
       );
-      ctx.fill();
-      ctx.fillStyle = "white";
-      ctx.beginPath();
-      ctx.arc(160, 100, 20, 0, 2 * Math.PI);
-      ctx.fill();
+      hiddenCtx.fill();
+      hiddenCtx.fillStyle = "white";
+      hiddenCtx.beginPath();
+      hiddenCtx.arc(160, 100, 20, 0, 2 * Math.PI);
+      hiddenCtx.fill();
 
       this.count -= 25;
     };
@@ -1928,9 +2005,9 @@
       this.height = 20
       this.alpha = 1
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawRect(this.x, this.y, this.width, this.height, "blue")
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.x > 0 ? this.x-= 3 : this.y > 0 ? this.y -= 2 : this.y = 0
         this.width < 320 ? this.width += 6 : this.height < 200 ? this.height += 4 : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
       }
@@ -1944,14 +2021,14 @@
       this.draw = function(){
         if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
         else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
-        ctx.save()
-        ctx.translate(160, 100)
-        ctx.rotate(this.rot)
-        ctx.translate(-160, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(this.rot)
+        hiddenCtx.translate(-160, -100)
         DrawStroke(160, 100, this.rad, `hsla(190, 100%, 90%, ${this.alpha})`, 20)
         DrawTriangle(160, 100, 260, -100, 60, -100, `hsla(190, 100%, 50%, ${this.alpha})`)
         DrawTriangle(160, 100, 260, 300, 60, 300, `hsla(190, 100%, 50%, ${this.alpha})`)
-        ctx.restore()
+        hiddenCtx.restore()
         this.rot+=.1
         this.rad < 200 ? this.rad += 5 : this.rad = 1
       }
@@ -1980,14 +2057,14 @@
         let tempY = this.points[this.points.length - 1][1] - Math.random() * 20
         this.points.push([this.points[this.points.length - 1][0] + (20 - Math.random() * 40), tempY])
         if(tempY < -100) this.lifetime = 0
-        ctx.beginPath()
-        ctx.moveTo(this.points[0][0], this.points[0][1])
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(this.points[0][0], this.points[0][1])
         this.points.forEach(ele=>{
-          ctx.lineTo(ele[0], ele[1])
+          hiddenCtx.lineTo(ele[0], ele[1])
         })
-        ctx.strokeStyle = "cyan"
-        ctx.lineWidth = 10
-        ctx.stroke()
+        hiddenCtx.strokeStyle = "cyan"
+        hiddenCtx.lineWidth = 10
+        hiddenCtx.stroke()
         if(this.points.length > 10) this.points.shift()
       }
     }
@@ -2024,31 +2101,6 @@
     }
   }
 
-  function DiagonalLine() {
-    this.start = new Date().getTime();
-    this.duration = 1500;
-    this.x = -200;
-    this.y = 200;
-    this.width = 20;
-    var speed = 8;
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-
-    this.Draw = function () {
-      ctx.beginPath();
-      ctx.strokeStyle = "#86f4f7";
-      ctx.fillStyle = "#86f4f7";
-      drawRotatedRect(ctx, this.x, this.y, 400, 320, 40)
-      this.x += speed;
-      this.y -= speed;
-    };
-  }
-
   function DeadlockX(){
       this.effects = []
       this.count = 0
@@ -2058,7 +2110,7 @@
       this.alpha2 = 1
       this.draw = function(){
         if(this.alpha2 < 0) this.alpha2 = 0
-        ctx.globalAlpha = this.alpha2
+        hiddenCtx.globalAlpha = this.alpha2
         DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.alpha})`)
         this.alpha < .5 ? this.alpha += .05 : this.alpha = .5;
         if(this.count % 3 == 0) this.effects.push(new DeadXHelp(this.rot))
@@ -2070,7 +2122,7 @@
           if(ele.lifetime <= 0) this.effects.splice(i, 1)
         })
         DrawStroke(160, 100, this.rad, "cyan", 40)
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.rad > 5 ? this.rad -= 5 : this.rad = 400
       }
     }
@@ -2081,12 +2133,12 @@
       this.color = `hsl(${210 + Math.sin(Date.now()/100) * 30}, 100%, 50%)`
       this.alpha = 1
       this.draw = function(){
-        ctx.save()
-        ctx.translate(160, 100)
-        ctx.rotate(this.rot)
-        ctx.translate(-160, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(this.rot)
+        hiddenCtx.translate(-160, -100)
         DrawCircle(this.x, 100, 35, this.color)
-        ctx.restore()
+        hiddenCtx.restore()
         this.rot+=.05
         this.x < 155 ? this.x+=3 : this.lifetime = 0;
       }
@@ -2100,12 +2152,12 @@
         if(this.count % 20 == 0) this.effects.push(new DeadEHelp(this.count))
         this.count < 200 ? this.count++ : this.alpha > 0 ? this.alpha -= .0025 : this.lifetime = 0;
         if(this.alpha < 0) this.alpha = 0
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         this.effects.forEach((ele, i)=>{
           ele.draw()
           if(ele.lifetime <= 0) this.effects.splice(i, 1)
         })
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
       }
     }
 
@@ -2160,12 +2212,12 @@
       this.count = 0
       this.count2 = 0
       this.draw = function(){
-        ctx.beginPath()
-        ctx.moveTo(this.start[0] + this.stepX * this.count2 / 5, this.start[1] + this.stepY * this.count2 / 5)
-        ctx.lineTo(this.start[0] + this.stepX * this.count, this.start[1] + this.stepY * this.count)
-        ctx.lineWidth = 20
-        ctx.strokeStyle = `hsla(${220 + Math.sin(Date.now() / 100) * 15}, 100%, 50%, 1)`
-        ctx.stroke()
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(this.start[0] + this.stepX * this.count2 / 5, this.start[1] + this.stepY * this.count2 / 5)
+        hiddenCtx.lineTo(this.start[0] + this.stepX * this.count, this.start[1] + this.stepY * this.count)
+        hiddenCtx.lineWidth = 20
+        hiddenCtx.strokeStyle = `hsla(${220 + Math.sin(Date.now() / 100) * 15}, 100%, 50%, 1)`
+        hiddenCtx.stroke()
         this.count < 30 ? this.count++ : this.count2 < 150 ? this.count2++: this.lifetime = 0;
       }
     }
@@ -2183,41 +2235,41 @@
       this.elapsed = Date.now() - this.start;
       if (this.elapsed < this.STAGE2TIME) {
 
-        ctx.beginPath();
-        ctx.moveTo(0, 100);
-        ctx.lineTo(this.elapsed / 5, 100);
-        ctx.lineWidth = this.elapsed < this.STAGE1TIME ? 5 : (this.elapsed - this.STAGE1TIME) / 3;
-        ctx.strokeStyle = "red";
-        ctx.stroke();
+        hiddenCtx.beginPath();
+        hiddenCtx.moveTo(0, 100);
+        hiddenCtx.lineTo(this.elapsed / 5, 100);
+        hiddenCtx.lineWidth = this.elapsed < this.STAGE1TIME ? 5 : (this.elapsed - this.STAGE1TIME) / 3;
+        hiddenCtx.strokeStyle = "red";
+        hiddenCtx.stroke();
       } else if (this.elapsed < this.STAGE3TIME) {
-        let gradient = ctx.createLinearGradient(-100, 0, 420, 0)
+        let gradient = hiddenCtx.createLinearGradient(-100, 0, 420, 0)
         if (this.calculateVal < 1000) {
           this.calculateVal = -1440 * Math.floor(((this.elapsed - this.STAGE2TIME) / 1440) / 1) + (((this.elapsed - this.STAGE2TIME) / 1440) * (1440 / 1));
         }
         gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "red");
         gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0.9)");
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = gradient;
+        hiddenCtx.fillRect(0, 0, 320, 200);
       } else {
         if (this.elapsed < this.ENDSTAGE) {
-          ctx.beginPath()
-          ctx.fillStyle = "hsla(0, 0%, 0%,0.9)";
-          ctx.fillRect(0, 0, 320, 200);
+          hiddenCtx.beginPath()
+          hiddenCtx.fillStyle = "hsla(0, 0%, 0%,0.9)";
+          hiddenCtx.fillRect(0, 0, 320, 200);
           let tempVal = Math.random();
           this.stripes.push(new stripe({ x: tempVal * 320, y: -50 }, { x: tempVal * 320, y: 250 }, 50, 30, 5, `hsla(0,100%,${30 + Math.random() * 50}%)`, 2000))
           this.stripes.forEach(element => {
-            ctx.globalAlpha = 1 - (((this.elapsed) - (this.ENDSTAGE - 800)) / 800);
+            hiddenCtx.globalAlpha = 1 - (((this.elapsed) - (this.ENDSTAGE - 800)) / 800);
             element.draw();
-            ctx.globalAlpha = 1;
+            hiddenCtx.globalAlpha = 1;
           });
         } else {
-          let gradient = ctx.createRadialGradient(160, 100, 0, 160, 100, 200)
+          let gradient = hiddenCtx.createRadialGradient(160, 100, 0, 160, 100, 200)
           this.calculateVal = -1660 * Math.floor(((this.elapsed - this.ENDSTAGE) / 1660) / 1) + (((this.elapsed - this.ENDSTAGE) / 1660) * (1660 / 1));
           gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0.9)");
           gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 100%, 50%,1)");
           gradient.addColorStop(SetRange((-400 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
-          ctx.fillStyle = gradient;
-          ctx.fillRect(0, 0, 320, 200)
+          hiddenCtx.fillStyle = gradient;
+          hiddenCtx.fillRect(0, 0, 320, 200)
           if (this.elapsed > 7200) {
             this.lifetime = 0;
           }
@@ -2287,32 +2339,32 @@
   }
 
   function DrawSkyeBird(y, alpha){
-    ctx.globalAlpha = alpha
-    ctx.beginPath()
-    ctx.moveTo(160, y - 20)
-    ctx.lineTo(240, y + 75)
-    ctx.lineTo(180, y + 75)
-    ctx.lineTo(160, y + 200)
-    ctx.lineTo(140, y + 75)
-    ctx.lineTo(80, y + 75)
-    ctx.lineTo(160, y - 20)
-    ctx.fillStyle = "yellow"
-    ctx.fill()
-    ctx.beginPath()
-    ctx.moveTo(160, y)
-    ctx.lineTo(240, y + 75)
-    ctx.lineTo(180, y + 75)
-    ctx.lineTo(160, y + 150)
-    ctx.lineTo(140, y + 75)
-    ctx.lineTo(80, y + 75)
-    ctx.lineTo(160, y)
-    ctx.fillStyle = "green"
-    ctx.fill()
-    ctx.globalAlpha = 1
+    hiddenCtx.globalAlpha = alpha
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(160, y - 20)
+    hiddenCtx.lineTo(240, y + 75)
+    hiddenCtx.lineTo(180, y + 75)
+    hiddenCtx.lineTo(160, y + 200)
+    hiddenCtx.lineTo(140, y + 75)
+    hiddenCtx.lineTo(80, y + 75)
+    hiddenCtx.lineTo(160, y - 20)
+    hiddenCtx.fillStyle = "yellow"
+    hiddenCtx.fill()
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(160, y)
+    hiddenCtx.lineTo(240, y + 75)
+    hiddenCtx.lineTo(180, y + 75)
+    hiddenCtx.lineTo(160, y + 150)
+    hiddenCtx.lineTo(140, y + 75)
+    hiddenCtx.lineTo(80, y + 75)
+    hiddenCtx.lineTo(160, y)
+    hiddenCtx.fillStyle = "green"
+    hiddenCtx.fill()
+    hiddenCtx.globalAlpha = 1
   }
 
     function SkyeDogEffect() {
-      this.grad = ctx.createRadialGradient(160, 100, 10, 160, 100, 200)
+      this.grad = hiddenCtx.createRadialGradient(160, 100, 10, 160, 100, 200)
       this.grad.addColorStop(.5, `hsla(120, 100%, 50%, 0)`)
       this.grad.addColorStop(1, `hsla(120, 100%, 50%, 1)`)
       this.alpha = 0
@@ -2320,10 +2372,10 @@
       this.draw = function () {
         if(!this.done) this.alpha <= .95 ? this.alpha += .05 : this.done = true
         else this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawRect(0, 0, 320, 200, this.grad)
         effects.push(new SkyeDogHelp())
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
       };
     }
 
@@ -2362,11 +2414,11 @@
     };
     this.Draw = function () {
       if (this.bg == "null") {
-        ctx.fillStyle = "rgba(0,0,0,0.5)";
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = "rgba(0,0,0,0.5)";
+        hiddenCtx.fillRect(0, 0, 320, 200);
       } else {
-        ctx.fillStyle = this.bg;
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = this.bg;
+        hiddenCtx.fillRect(0, 0, 320, 200);
       }
 
       if (this.particles.length < 200) {
@@ -2449,11 +2501,11 @@
 
     this.Draw = function () {
       if (background != "null") {
-        ctx.fillStyle = background;
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = background;
+        hiddenCtx.fillRect(0, 0, 320, 200);
       }
       if (this.count > 1000) {
-        ctx.globalAlpha = .5
+        hiddenCtx.globalAlpha = .5
         draw3ColorSpiral(
           160,
           this.y,
@@ -2463,7 +2515,7 @@
           200,
           -this.count * this.rotateSpeed
         );
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
       }
       if (shouldRise && this.y > 100) {
         this.y -= 3;
@@ -2495,11 +2547,11 @@
 
     this.Draw = function () {
       if (background != "null") {
-        ctx.fillStyle = background;
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = background;
+        hiddenCtx.fillRect(0, 0, 320, 200);
       }
       if (this.count > 1000) {
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         draw3ColorSpiral(
           160,
           this.y,
@@ -2509,7 +2561,7 @@
           200,
           -this.count * this.rotateSpeed
         );
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
       }
       if (shouldRise && this.y > 100) {
         this.y -= 3;
@@ -2534,11 +2586,11 @@
           this.effects.push(new SovaXHelp())
           this.count++
         } else {
-          ctx.globalAlpha = this.alpha
+          hiddenCtx.globalAlpha = this.alpha
           this.three.draw()
           this.two.draw()
           this.one.draw()
-          ctx.globalAlpha = 1
+          hiddenCtx.globalAlpha = 1
           this.alpha > .005 ? this.alpha -= .005 : this.lifetime = 0
         }
       }
@@ -2574,14 +2626,14 @@
       this.lifetime = 50
       this.draw = function(){
         this.points.push([this.points[this.points.length - 1][0] + (20 - Math.random() * 40), this.points[this.points.length - 1][1] + (20 - Math.random() * 40)])
-        ctx.beginPath()
-        ctx.moveTo(this.points[0][0], this.points[0][1])
+        hiddenCtx.beginPath()
+        hiddenCtx.moveTo(this.points[0][0], this.points[0][1])
         this.points.forEach(ele=>{
-          ctx.lineTo(ele[0], ele[1])
+          hiddenCtx.lineTo(ele[0], ele[1])
         })
-        ctx.strokeStyle = "cyan"
-        ctx.lineWidth = 10
-        ctx.stroke()
+        hiddenCtx.strokeStyle = "cyan"
+        hiddenCtx.lineWidth = 10
+        hiddenCtx.stroke()
         if(this.points.length > 15) this.points.shift()
         this.lifetime--
       }
@@ -2594,9 +2646,9 @@
     this.draw = function () {
       this.y1 = Math.abs(Math.sin(Date.now() / 250) * 60) + 160;
       this.y2 = Math.abs(Math.sin((Date.now() - 2000) / 250) * 60) - 20;
-      ctx.globalAlpha = .3;
+      hiddenCtx.globalAlpha = .3;
       DrawRect(0, 0, 320, 200, `hsla(0, 0%, 0%, ${this.lifetime / 80})`)
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       for (let index = 0; index < 5; index++) {
         let value = index * 80;
         DrawTriangle(0 + value, this.y1, 40 + value, this.y1 - 80, 80 + value, this.y1, `hsla(300, 100%, 60%, ${this.lifetime / 80})`);
@@ -2616,9 +2668,9 @@
     this.radius2 = 1;
     this.draw = function () {
       var elapsed = Date.now() - this.start;
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(0, 0, 320, 200, "red")
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       DrawStroke(160, 100, this.radius2, "cyan", 30)
       DrawCircle(160, 100, this.radius1, "red")
       DrawStroke(160, 100, this.radius1, "rgb(20, 20, 20)", 40)
@@ -2648,7 +2700,7 @@
     this.effects = []
     this.draw = function () {
       var elapsed = Date.now() - this.start;
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawStroke(160, 100, this.radius2, "rgb(20, 20, 20)", 30)
       DrawCircle(160, 100, this.radius1 + Math.sin(Date.now() / 20), "rgb(20, 20, 20)")
       this.effects.forEach((ele, i) => {
@@ -2664,7 +2716,7 @@
         this.effects.push(new fadeParticle(200, 100, "right", elapsed % 2 == 0 ? "purple" : "blue"))
         this.start = Date.now()
       }
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       this.alpha < 1 ? this.alpha += .04 : this.alpha = 1;
       this.radius1 < 70 ? this.radius1 += 4 : this.radius1 = 70;
       this.radius2 < 200 ? this.radius2 += 8 : this.radius2 = 1;
@@ -2680,9 +2732,9 @@
     this.count = 0;
     this.effects = []
     this.draw = function () {
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawRect(0, this.y, 320, 200, "black");
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if (this.count < 150) {
         this.y > 0 ? this.y -= 10 : this.y = 0;
         this.alpha < 1 ? this.alpha += .05 : this.alpha = 1;
@@ -2712,19 +2764,19 @@
     this.randColors = ["yellow","purple","#ce54b7","#fbb279"];
     this.start = Date.now();
     this.draw = function(){
-      ctx.beginPath();
-      ctx.fillStyle = `hsla(0,0%,0%,1 )`;
-      ctx.fillRect(0,-8000+this.counter,320,8000);
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = `hsla(0,0%,0%,1 )`;
+      hiddenCtx.fillRect(0,-8000+this.counter,320,8000);
       this.counter+=5;
       if (Date.now() - this.start < 5000){
-      ctx.beginPath();
-      ctx.save();
-      ctx.translate(160,100 + Math.sin(this.counter/100 -Math.PI/2)*20);
-      ctx.rotate(Math.sin(this.counter/100)*0.2);
-      ctx.scale(0.5,1);
-      ctx.translate(20,-100);
+      hiddenCtx.beginPath();
+      hiddenCtx.save();
+      hiddenCtx.translate(160,100 + Math.sin(this.counter/100 -Math.PI/2)*20);
+      hiddenCtx.rotate(Math.sin(this.counter/100)*0.2);
+      hiddenCtx.scale(0.5,1);
+      hiddenCtx.translate(20,-100);
       DrawPath(0,0,0.2,sharkSVG,`purple`);
-      ctx.restore();
+      hiddenCtx.restore();
 
       this.particles.push(new shotParticle(170,100 + Math.sin(this.counter/100 -Math.PI/2)*20,{x: -Math.random()*5-2, y:  (Math.random()-0.5)*4},20,this.randColors[Math.floor(Math.random()* this.randColors.length)],1000))
       for (let i = 0; i < this.particles.length; i++) {
@@ -2741,22 +2793,22 @@
   }
 
   function drawArrow(x, y, width, height, color, lineWidth, rotation) {
-      ctx.beginPath();
-      ctx.save();
-      ctx.translate(x, y + height / 2);
-      ctx.rotate(rotation)
-      // ctx.moveTo(0,0+height/2);
-      // ctx.lineTo(0,0-height/2)
-      ctx.strokeStyle = color;
-      ctx.lineWidth = lineWidth;
-      ctx.moveTo(0, 0)
-      ctx.moveTo(0 - 3, -height / 2);
-      ctx.lineTo(width / 2, height / 4)
+      hiddenCtx.beginPath();
+      hiddenCtx.save();
+      hiddenCtx.translate(x, y + height / 2);
+      hiddenCtx.rotate(rotation)
+      // hiddenCtx.moveTo(0,0+height/2);
+      // hiddenCtx.lineTo(0,0-height/2)
+      hiddenCtx.strokeStyle = color;
+      hiddenCtx.lineWidth = lineWidth;
+      hiddenCtx.moveTo(0, 0)
+      hiddenCtx.moveTo(0 - 3, -height / 2);
+      hiddenCtx.lineTo(width / 2, height / 4)
   
-      ctx.moveTo(0 + 3, -height / 2);
-      ctx.lineTo(-width / 2, height / 4)
-      ctx.stroke();
-      ctx.restore();
+      hiddenCtx.moveTo(0 + 3, -height / 2);
+      hiddenCtx.lineTo(-width / 2, height / 4)
+      hiddenCtx.stroke();
+      hiddenCtx.restore();
     }
 
   function GekkoQ(){
@@ -2766,25 +2818,25 @@
     this.start = Date.now();
     this.alpha = 1
     this.draw = function (){
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       if(200 - this.counter / 4 <= -60){
         DrawStroke(160, 100, this.rad, "blue", 20)
         DrawStroke(160, 100, this.rad * .75, "purple", 20)
         this.rad < 200 ? this.rad += 5 : this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
       }
-      ctx.beginPath();
-      ctx.fillStyle = `hsla(0,0%,0%,0.9 )`;
-      ctx.fillRect(0,0-this.length+this.counter,320,this.length);
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = `hsla(0,0%,0%,0.9 )`;
+      hiddenCtx.fillRect(0,0-this.length+this.counter,320,this.length);
       this.counter+=8;
-        ctx.beginPath();
-        ctx.save();
-        ctx.translate(160,100);
-        ctx.scale(-1,1);
-        ctx.translate(200-this.counter/4 > -60 ? 200 - this.counter / 4 : -60,-80);
+        hiddenCtx.beginPath();
+        hiddenCtx.save();
+        hiddenCtx.translate(160,100);
+        hiddenCtx.scale(-1,1);
+        hiddenCtx.translate(200-this.counter/4 > -60 ? 200 - this.counter / 4 : -60,-80);
         DrawPath(0,0,1.2,runningArr[(Math.floor(this.counter/50))%runningArr.length],`purple`);
         DrawPath(10,10,1,runningArr[(Math.floor(this.counter/50))%runningArr.length],`yellow`);
-        ctx.restore();
-        ctx.globalAlpha = 1
+        hiddenCtx.restore();
+        hiddenCtx.globalAlpha = 1
     }
   }
 
@@ -2796,13 +2848,13 @@
       this.draw = function (){
         this.pos.y = 120 + Math.sin(this.counter/100)*-50;
         this.pos.x = this.counter
-        ctx.beginPath();
-        ctx.fillStyle = `hsla(0,0%,0%,0.9 )`;
-        ctx.fillRect(0,0 + this.counter*5-1500,320,1500);
+        hiddenCtx.beginPath();
+        hiddenCtx.fillStyle = `hsla(0,0%,0%,0.9 )`;
+        hiddenCtx.fillRect(0,0 + this.counter*5-1500,320,1500);
         DrawCircle(this.pos.x,this.pos.y,10,`cyan`);
-        ctx.beginPath();
-        ctx.strokeStyle = `cyan`;
-        ctx.lineWidth = 20;
+        hiddenCtx.beginPath();
+        hiddenCtx.strokeStyle = `cyan`;
+        hiddenCtx.lineWidth = 20;
         let size = this.counter>80 ? this.counter-80 : 0;
         if (size>80){
           if (this.shotParticles.length ==0 && size <100){
@@ -2811,8 +2863,8 @@
             }  
           }
         }
-        ctx.arc(this.pos.x, this.pos.y, 15, 0, SetRange(size/10,0,2 * Math.PI))
-        ctx.stroke();
+        hiddenCtx.arc(this.pos.x, this.pos.y, 15, 0, SetRange(size/10,0,2 * Math.PI))
+        hiddenCtx.stroke();
         this.counter+=2;
         for (let i = this.shotParticles.length - 1; i >= 0; i--) {
           this.shotParticles[i].draw();
@@ -2857,10 +2909,10 @@
             this.arcSize = 0;
           }
         }
-        ctx.beginPath();
-        ctx.fillStyle = `hsla(${100},100%, ${50}%,${SetRange(this.arcSize/200,0,0.9)})`;
-        ctx.arc(160, 100, this.arcSize, 0, 2 * Math.PI)
-        ctx.fill();
+        hiddenCtx.beginPath();
+        hiddenCtx.fillStyle = `hsla(${100},100%, ${50}%,${SetRange(this.arcSize/200,0,0.9)})`;
+        hiddenCtx.arc(160, 100, this.arcSize, 0, 2 * Math.PI)
+        hiddenCtx.fill();
         this.arcSize+=4;
         if (Math.random()<(1- this.arcSize/600)){
           this.pulseBalls.push(new pulseBall(160+(Math.random()-0.5)*this.arcSize*1.5,100+(Math.random()-0.5) *this.arcSize,0,20,`hsl(${100},100%, ${10}%)`,this.intenseCounter))
@@ -2889,13 +2941,13 @@
           this.rad > 1 ? this.rad -= 3 : this.half = true
         }
         else {
-          ctx.globalAlpha = this.alpha
+          hiddenCtx.globalAlpha = this.alpha
           DrawCircle(160, 100, this.rad2 + Math.sin(Date.now() / 200) * 10, "red")
           this.rad2 < 30 ? this.rad2+=2 : this.rad2 = 30
           this.rad < 300 ? this.rad += 5 : this.rad = 1
           DrawStroke(160, 100, this.rad, "red", 50)
           DrawStroke(160, 100, this.rad * 3, "red", 50)
-          ctx.globalAlpha = 1
+          hiddenCtx.globalAlpha = 1
           this.alpha >= .002 ? this.alpha -= .002 : this.lifetime = 0
         }
       }
@@ -2906,7 +2958,7 @@
       this.half = false
       this.rad = 1
       this.draw = function(){
-        let grad = ctx.createRadialGradient(160, 100, 50, 160, 100, 200)
+        let grad = hiddenCtx.createRadialGradient(160, 100, 50, 160, 100, 200)
         grad.addColorStop(0, `hsla(290, 100%, 50%, 0)`)
         grad.addColorStop(.75 + Math.sin(Date.now() / 500) * .25, `hsla(290, 100%, 50%, .25)`)
         grad.addColorStop(1, `hsla(290, 100%, 50%, ${this.alpha})`)
@@ -2943,9 +2995,9 @@
       else if(i == 4) this.color = "blue"
       else if(i == 5) this.color = "hsla(190, 100%, 70%, 1)"
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawStroke(160, 100, i * this.rad + 10, this.color, 30)
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.alpha >= .01 ? this.alpha -= .01 : this.lifetime = 0
         this.rad > 1 ? this.rad -= .5 : this.lifetime = 0
       }
@@ -2970,7 +3022,7 @@
       this.x = x
       this.y = y
       this.draw = function(){
-        let grad = ctx.createRadialGradient(this.x, this.y, 10, this.x, this.y, 50)
+        let grad = hiddenCtx.createRadialGradient(this.x, this.y, 10, this.x, this.y, 50)
         grad.addColorStop(.3, "hsl(250, 100%, 30%)")
         grad.addColorStop(1, "hsl(240, 100%, 80%)")
         DrawCircle(this.x, this.y, 50, grad)
@@ -2992,12 +3044,12 @@
       this.y = 0
       this.color = `hsl(${190 + Math.random() * 50}, 100%, 50%)`
       this.draw = function(){
-        ctx.save()
-        ctx.translate(160, 100)
-        ctx.rotate(this.rot)
-        ctx.translate(-160, -100)
+        hiddenCtx.save()
+        hiddenCtx.translate(160, 100)
+        hiddenCtx.rotate(this.rot)
+        hiddenCtx.translate(-160, -100)
         DrawCircle(160, 100 + this.y, 20, this.color)
-        ctx.restore()
+        hiddenCtx.restore()
         this.y < 200 ? this.y += 3 : this.lifetime = 0
       }
     }
@@ -3045,10 +3097,10 @@
       this.stroke = 1
       this.alpha = 1
       this.draw = function(){
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
         DrawCircle(160, 100, this.rad1, `hsla(190, 100%, 50%, .5)`)
         DrawStroke(160, 100, this.rad2, "yellow", this.stroke)
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
         this.rad1 < 200 ? this.rad1 += 5 : this.rad2 < 300 ? this.rad2 += 8 : this.alpha >= .05 ? this.alpha -= .05 : this.lifetime = 0
         if(this.rad1 >= 200) this.stroke+=5
       }
@@ -3144,21 +3196,21 @@
     };
 
     this.Draw = function () {
-      ctx.fillStyle = "rgba(0,0,0,0.5)";
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = this.color2;
+      hiddenCtx.fillStyle = "rgba(0,0,0,0.5)";
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = this.color2;
       var pctUp = this.count / 2000;
       var pctUpN = 1 - this.count / 2000;
       var xPos = pctUp * 160;
       var width = pctUpN * 320;
-      ctx.fillRect(xPos, 0, width, 200);
+      hiddenCtx.fillRect(xPos, 0, width, 200);
 
-      ctx.fillStyle = this.color1;
-      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
-      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
-      ctx.fillStyle = this.color3;
-      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
-      ctx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+      hiddenCtx.fillStyle = this.color1;
+      hiddenCtx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+      hiddenCtx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+      hiddenCtx.fillStyle = this.color3;
+      hiddenCtx.fillRect(Math.random() * width + xPos, 0, 20, 200);
+      hiddenCtx.fillRect(Math.random() * width + xPos, 0, 20, 200);
 
       this.count -= 25;
     };
@@ -3212,12 +3264,12 @@
         this.effects.push(new harborCHelp(this.switch))
       }
       this.count++
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       this.effects.forEach((ele, i) => {
         ele.draw()
         if (ele.lifetime <= 0) this.effects.splice(i, 1)
       })
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       if (this.count > 250) this.alpha > .01 ? this.alpha -= .01 : this.lifetime = 0;
     }
   }
@@ -3227,7 +3279,7 @@
     this.y = 200;
     this.lifetime = 10;
     this.draw = function () {
-      this.grad = ctx.createLinearGradient(this.x, this.y, this.x, this.y + 200)
+      this.grad = hiddenCtx.createLinearGradient(this.x, this.y, this.x, this.y + 200)
       this.grad.addColorStop(0, "white")
       this.grad.addColorStop(.3, "#00838F")
       this.grad.addColorStop(1, "#01579B")
@@ -3243,12 +3295,12 @@
     this.lifetime = 10;
     this.draw = function () {
       let elapsed = Date.now() - this.start;
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawCircle(160, 100, this.radius, "hsl(160, 100%, 50%)")
       DrawCircle(160, 100, this.radius * 1.3, "hsla(160, 0%, 90%, .3)")
       DrawCircle(160, 100, this.radius * 1.9, "hsla(60, 100%, 50%, .2)")
       DrawStroke(160, 100, this.radius * 1.9, "yellow", 20)
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       this.alpha <= .99 ? this.alpha += .01 : this.alpha = 1;
       if (elapsed > 1000 && elapsed < 5000) this.radius < 50 ? this.radius += 10 : this.radius = Math.sin(Date.now() / 350) * 10 + 60;
       if (elapsed > 5000) this.radius > 10 ? this.radius -= 10 : this.lifetime = 0;
@@ -3257,7 +3309,7 @@
 
   function HarborE() {
     this.start = Date.now()
-    this.grad = ctx.createLinearGradient(160, 0, 160, 200)
+    this.grad = hiddenCtx.createLinearGradient(160, 0, 160, 200)
     this.grad.addColorStop(.6, "hsla(0, 0%, 100%, 0)")
     this.grad.addColorStop(1, "hsla(0, 0%, 100%, 1)")
     this.width = 1;
@@ -3266,16 +3318,16 @@
     this.mid = .5
     this.lifetime = 10;
     this.draw = function () {
-      this.grad2 = ctx.createLinearGradient(160, 0, 160, 200)
+      this.grad2 = hiddenCtx.createLinearGradient(160, 0, 160, 200)
       this.grad2.addColorStop(.1, "hsla(160, 80%, 40%, 1)")
       this.grad2.addColorStop(this.mid - .1, "hsla(240, 90%, 40%, 1)")
       this.grad2.addColorStop(this.mid + .1, "hsla(240, 90%, 40%, 1)")
       this.grad2.addColorStop(.9, "hsla(60, 80%, 40%, 1)")
       let elapsed = Date.now() - this.start;
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       DrawRect(0, this.height, 320, 200, this.grad2)
       DrawRect(0, 0, this.width, 200, this.grad)
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       this.mid = Math.sin(Date.now() / 500) * .2 + .5;
       this.width < 320 ? this.width += 20 : this.width = 320;
       if (elapsed > 2000) {
@@ -3304,19 +3356,19 @@
     };
 
     this.Draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
       var pctUp = this.count / 2000;
       if (speed <= 160) {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(0 + speed, 0, 50, 200);
-        ctx.fillRect(270 - speed, 0, 50, 200);
+        hiddenCtx.fillStyle = this.color;
+        hiddenCtx.fillRect(0 + speed, 0, 50, 200);
+        hiddenCtx.fillRect(270 - speed, 0, 50, 200);
         speed += 8;
       }
       else {
-        ctx.fillStyle = this.color2;
-        ctx.fillRect(0 + speed - speed2, 0, 50, 200);
-        ctx.fillRect(270 - speed + speed2, 0, 50, 200);
+        hiddenCtx.fillStyle = this.color2;
+        hiddenCtx.fillRect(0 + speed - speed2, 0, 50, 200);
+        hiddenCtx.fillRect(270 - speed + speed2, 0, 50, 200);
         speed2 += 5;
       }
       if (this.count < 100) {
@@ -3342,8 +3394,8 @@
     this.height = height;
 
     this.draw = function () {
-      ctx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
-      ctx.fillRect(this.x, this.y, this.height, this.width);
+      hiddenCtx.fillStyle = 'hsla(' + this.hue + ',' + this.sat + '%,' + this.lit + '%,' + this.alpha + ' )';
+      hiddenCtx.fillRect(this.x, this.y, this.height, this.width);
       this.lifetime--;
       this.y -= this.ydirection;
       this.x += this.xdirection;
@@ -3360,15 +3412,15 @@
     this.y = Math.random() * 200 + this.offset;
     this.draw = function () {
       if (Neon_ult_meter.value > .75) {
-        ctx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
-        ctx.globalAlpha = .2;
-        ctx.fillRect(0, 0, 320, 200);
-        ctx.globalAlpha = 1;
+        hiddenCtx.fillStyle = `hsl(${this.hue}, 100%, 50%)`;
+        hiddenCtx.globalAlpha = .2;
+        hiddenCtx.fillRect(0, 0, 320, 200);
+        hiddenCtx.globalAlpha = 1;
       }
-      ctx.beginPath();
-      ctx.fillStyle = color;
-      ctx.rect(this.x, this.y, 15, 50);
-      ctx.fill();
+      hiddenCtx.beginPath();
+      hiddenCtx.fillStyle = color;
+      hiddenCtx.rect(this.x, this.y, 15, 50);
+      hiddenCtx.fill();
       if (this.direction) {
         this.y += 10;
       } else {
@@ -3402,86 +3454,6 @@
       };
     }
 
-  function PulseRippleState3Color(color1, color2, color3, hollow) {
-    this.start = new Date().getTime();
-    this.duration = 2000;
-    this.count = 2000;
-    this.colors = [color1, color2, color3];
-    effects.push(new rippleEffect([color1, color2, color3], 4, hollow, "out", 700, "null", 0, 30, 0, false));
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
-      var pctUp = this.count / 2000;
-      if (this.count <= 500) {
-        for (let index = 0; index < 30; index++) {
-          ctx.fillStyle = index < 10 ? color1 : index < 20 ? color2 : color3;
-          ctx.fillRect(Math.random() * 320, Math.random() * 200, 50, 50);
-        }
-      };
-      this.count -= 50;
-    }
-  }
-
-  function RocketState(color1, color2, color3, speed, size) {
-    this.start = new Date().getTime();
-    this.x = 0;
-    this.color1 = color1;
-    this.color2 = color2;
-    this.color3 = color3;
-    this.speed = speed;
-    this.size = size;
-    this.rotateTimer = new Date().getTime();
-    this.rotation;
-
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > 1000) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
-      this.rotation = new Date().getTime() - this.rotateTimer;
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = this.color1;
-      if (this.x < 320) {
-        this.start = new Date().getTime();
-        this.x += this.speed;
-        ctx.beginPath();
-        draw3ColorSpiral(
-          this.x,
-          100,
-          this.color1,
-          this.color2,
-          this.color3,
-          20,
-          -this.rotation / 2
-        );
-        ctx.fill();
-      } else {
-        ctx.beginPath();
-        draw3ColorSpiral(
-          320,
-          100,
-          this.color1,
-          this.color2,
-          this.color3,
-          this.size,
-          this.rotation / 2
-        );
-        ctx.fill();
-      }
-    };
-  }
-
     function SpikeProgressionEffect() {
       this.start = Date.now();
       this.lifetime = 1;
@@ -3509,8 +3481,8 @@
         if (redPulse < 50) redPulse += 0.2;
 
         if (showLine) {
-          ctx.fillStyle = "yellow";
-          ctx.fillRect(0, linePos, 330, 30);
+          hiddenCtx.fillStyle = "yellow";
+          hiddenCtx.fillRect(0, linePos, 330, 30);
 
           linePos += lineDir * 3;
 
@@ -3590,13 +3562,13 @@
 
     this.rot = Math.atan2(this.endY - this.y, this.endX - this.x);
     this.draw = function () {
-      ctx.beginPath();
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.rot);
-      ctx.fillStyle = this.color;
-      ctx.fillRect(0, 0, this.width, this.height);
-      ctx.restore();
+      hiddenCtx.beginPath();
+      hiddenCtx.save();
+      hiddenCtx.translate(this.x, this.y);
+      hiddenCtx.rotate(this.rot);
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.fillRect(0, 0, this.width, this.height);
+      hiddenCtx.restore();
       this.x += this.speed * Math.cos(this.rot);
       this.y += this.speed * Math.sin(this.rot);
 
@@ -3668,6 +3640,7 @@
     }
   }
 
+  // Tejo X — rolling wall of yellow sparks sweeps across the screen, then expires.
   function TejoX(x){
       this.x = x
       this.count = 0
@@ -3699,6 +3672,7 @@
       }
     }
 
+    // Tejo E — yellow core with two side-arcs that open, hold, then fade out.
     function TejoE(){
       this.a = 0
       this.mod = 0
@@ -3718,13 +3692,14 @@
     }
 
     function DrawArc(x, y, start, end, radius, direction, color, stroke){
-      ctx.beginPath()
-      ctx.arc(x, y, radius, start, end, direction)
-      ctx.strokeStyle = color
-      ctx.lineWidth = stroke
-      ctx.stroke()
+      hiddenCtx.beginPath()
+      hiddenCtx.arc(x, y, radius, start, end, direction)
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth = stroke
+      hiddenCtx.stroke()
     }
 
+    // Tejo Q — expanding concentric yellow rings grow to full width and vanish.
     function TejoQ(){
       this.a = 1
       this.rad = 1
@@ -3737,6 +3712,7 @@
       }
     }
 
+    // Tejo C — screen washes yellow while a marker rises from the bottom, then fades.
     function TejoC(){
       this.a = 0
       this.draw = function(){
@@ -3748,12 +3724,12 @@
     }
 
     function DrawLine(start, end, color, stroke){
-      ctx.beginPath()
-      ctx.moveTo(start[0], start[1])
-      ctx.lineTo(end[0], end[1])
-      ctx.strokeStyle = color
-      ctx.lineWidth = stroke
-      ctx.stroke()
+      hiddenCtx.beginPath()
+      hiddenCtx.moveTo(start[0], start[1])
+      hiddenCtx.lineTo(end[0], end[1])
+      hiddenCtx.strokeStyle = color
+      hiddenCtx.lineWidth = stroke
+      hiddenCtx.stroke()
     }
 
     function TejoCHelp(){
@@ -3773,6 +3749,7 @@
       }
     }
 
+  // Veto Q — two cyan bars sweep in from both edges and meet, then clear.
   function VetoQ(){
 
       this.offset = 0
@@ -3791,6 +3768,7 @@
     }
 
 
+    // Veto C — white-and-blue ring expands from center while fading out.
     function VetoC(){
 
       this.radius = 10
@@ -3798,12 +3776,12 @@
 
       this.draw = function(){
 
-        ctx.globalAlpha = this.alpha
+        hiddenCtx.globalAlpha = this.alpha
 
         DrawCircle(160,100,this.radius,"white")
         DrawCircle(160,100,this.radius/2,"blue")
 
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
 
         this.radius += 10
         this.alpha -= .02
@@ -3854,27 +3832,27 @@
 
         this.draw = function(){
 
-            ctx.globalAlpha = .35;
+            hiddenCtx.globalAlpha = .35;
 
-            ctx.fillStyle = this.fillColor;
+            hiddenCtx.fillStyle = this.fillColor;
 
-            ctx.beginPath();
+            hiddenCtx.beginPath();
 
-            ctx.arc(this.x,this.y,this.size,Math.PI,0);
-            ctx.lineTo(this.x + this.size, this.y);
-            ctx.lineTo(this.x - this.size, this.y);
+            hiddenCtx.arc(this.x,this.y,this.size,Math.PI,0);
+            hiddenCtx.lineTo(this.x + this.size, this.y);
+            hiddenCtx.lineTo(this.x - this.size, this.y);
 
-            ctx.closePath();
-            ctx.fill();
-            ctx.globalAlpha = 1;
-            ctx.lineWidth = this.thickness;
-            ctx.strokeStyle = this.borderColor;
+            hiddenCtx.closePath();
+            hiddenCtx.fill();
+            hiddenCtx.globalAlpha = 1;
+            hiddenCtx.lineWidth = this.thickness;
+            hiddenCtx.strokeStyle = this.borderColor;
 
-            ctx.beginPath();
+            hiddenCtx.beginPath();
 
-            ctx.arc(this.x,this.y,this.size,Math.PI,0);
+            hiddenCtx.arc(this.x,this.y,this.size,Math.PI,0);
 
-            ctx.stroke();
+            hiddenCtx.stroke();
 
             this.y -= this.speed;
 
@@ -3889,6 +3867,8 @@
 
 
 
+    // Veto X — rising fan of translucent blue arcs; ends when all arcs exit the
+    // top, which also clears the vetoXGoing latch in onVeto_X.
     function VetoX(){
 
         this.arcSize = 50;
@@ -3927,6 +3907,164 @@
         };
     }
 
+    // Veto E — yellow-white core orbited flatly by dark-blue clouds. The
+    // core fires thick blue beams that intercept and explode the incoming
+    // multicolored enemy-ability orbs. Winds down after a fixed duration.
+    function VetoE(){
+      this.frame    = 0
+      this.duration = 150
+      this.master   = 0
+      this.orbPulse = 0
+      this.cooldown = 0
+      this.clouds   = []
+      this.incoming = []
+      this.beams    = []
+      this.bursts   = []
+
+      // dark-blue circles on a flat (wide, shallow) orbit — like clouds wrapping a planet
+      for(let i = 0; i < 5; i++){
+        this.clouds.push({
+          angle : Math.random() * Math.PI * 2,
+          speed : .015 + Math.random() * .02,
+          size  : 14 + Math.random() * 12,
+          rx    : 58 + Math.random() * 26,
+          ry    : 10 + Math.random() * 9
+        })
+      }
+
+      // scatter a ring of particles where an orb detonates
+      this.spawnBurst = function(x, y, hue){
+        for(let i = 0; i < 16; i++){
+          let a  = Math.random() * Math.PI * 2
+          let sp = 1 + Math.random() * 4
+          this.bursts.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 1, hue: hue })
+        }
+      }
+
+      this.draw = function(){
+        this.frame++
+        this.orbPulse += .15
+        if(this.frame <= 20) this.master = this.frame / 20
+        hiddenCtx.globalAlpha = this.master
+
+        // spawn incoming enemy orbs from off-screen, aimed at the core
+        if(this.frame < this.duration && this.frame % 32 == 0){
+          this.incoming.push({
+            angle    : Math.random() * Math.PI * 2,
+            dist     : 230,
+            speed    : 1 + Math.random() * 1.5,
+            hue      : random(0, 360),
+            size     : 10 + Math.random() * 6,
+            targeted : false,
+            dead     : false
+          })
+        }
+
+        // core locks the nearest untargeted orb and fires a beam at it
+        this.cooldown--
+        if(this.cooldown <= 0){
+          let target = null
+          let best   = 9999
+          this.incoming.forEach(o => {
+            if(!o.targeted && !o.dead && o.dist < best){ best = o.dist; target = o }
+          })
+          if(target){
+            target.targeted = true
+            this.beams.push({ angle: target.angle, len: 32, target: target, alpha: 1, fade: false })
+            this.cooldown = 10
+          }
+        }
+
+        let orbR = 68 + Math.sin(this.orbPulse) * 4
+
+        // advance orbits, then draw the clouds passing behind the core first
+        this.clouds.forEach(c => c.angle += c.speed)
+        this.clouds.forEach(c => {
+          let depth = Math.sin(c.angle)
+          if(depth < 0){
+            let x = 160 + Math.cos(c.angle) * c.rx
+            let y = 100 + depth * c.ry
+            DrawCircle(x, y, c.size * (.7 + (depth + 1) * .15), "#0a1a4d")
+          }
+        })
+
+        // central orb — white core fading out to a yellow edge
+        let grad = hiddenCtx.createRadialGradient(160, 100, 2, 160, 100, orbR)
+        grad.addColorStop(0, "#ffffff")
+        grad.addColorStop(.55, "#fff6c0")
+        grad.addColorStop(1, "#ffd000")
+        DrawCircle(160, 100, orbR, grad)
+
+        // clouds passing in front of the core
+        this.clouds.forEach(c => {
+          let depth = Math.sin(c.angle)
+          if(depth >= 0){
+            let x = 160 + Math.cos(c.angle) * c.rx
+            let y = 100 + depth * c.ry
+            DrawCircle(x, y, c.size * (.7 + (depth + 1) * .15), "#16277d")
+          }
+        })
+
+        // incoming multicolored orbs drift toward the core
+        this.incoming.forEach(o => {
+          o.dist -= o.speed
+          let x = 160 + Math.cos(o.angle) * o.dist
+          let y = 100 + Math.sin(o.angle) * o.dist
+          DrawCircle(x, y, o.size, `hsl(${o.hue}, 100%, 60%)`)
+          DrawCircle(x, y, o.size * .5, `hsl(${(o.hue + 60) % 360}, 100%, 82%)`)
+          // slipped past the beams — fizzle on the core
+          if(o.dist <= orbR && !o.dead){
+            o.dead = true
+            this.spawnBurst(x, y, o.hue)
+          }
+        })
+
+        // thick blue interception beams shot outward from the core
+        this.beams.forEach(b => {
+          b.len += 16
+          let x1 = 160 + Math.cos(b.angle) * (orbR - 4)
+          let y1 = 100 + Math.sin(b.angle) * (orbR - 4)
+          let x2 = 160 + Math.cos(b.angle) * b.len
+          let y2 = 100 + Math.sin(b.angle) * b.len
+          hiddenCtx.globalAlpha = b.alpha * this.master
+          DrawLine([x1, y1], [x2, y2], "#1e90ff", 13.5)
+          DrawLine([x1, y1], [x2, y2], "#aee0ff", 4.5)
+          // tip reached the target — detonate it
+          if(b.target && !b.target.dead && b.len >= b.target.dist){
+            b.target.dead = true
+            this.spawnBurst(160 + Math.cos(b.target.angle) * b.target.dist,
+                            100 + Math.sin(b.target.angle) * b.target.dist, b.target.hue)
+          }
+          if(b.target && b.target.dead) b.fade = true
+          if(b.fade) b.alpha -= .18
+        })
+        hiddenCtx.globalAlpha = this.master
+
+        // explosion particles
+        this.bursts.forEach(p => {
+          p.x  += p.vx
+          p.y  += p.vy
+          p.vx *= .92
+          p.vy *= .92
+          p.life -= .04
+          DrawCircle(p.x, p.y, 4 * p.life + 1, `hsla(${p.hue}, 100%, 65%, ${p.life})`)
+        })
+
+        hiddenCtx.globalAlpha = 1
+
+        // cull spent objects
+        this.incoming = this.incoming.filter(o => !o.dead)
+        this.beams    = this.beams.filter(b => b.alpha > 0 && b.len < 280)
+        this.bursts   = this.bursts.filter(p => p.life > 0)
+
+        // wind down once the duration is up
+        if(this.frame > this.duration){
+          this.master -= .02
+          if(this.master <= 0) this.lifetime = 0
+        }
+      }
+    }
+
     function MiksQArrow(){
         this.x = Math.random() * 280 + 20
         this.y = 220
@@ -3936,18 +4074,18 @@
 
         this.draw = function(){
 
-            ctx.globalAlpha = this.alpha
+            hiddenCtx.globalAlpha = this.alpha
 
-            DrawRect(this.x, this.y, 12, 20, "orange")
-            ctx.beginPath()
-            ctx.moveTo(this.x - 8, this.y)
-            ctx.lineTo(this.x + 6, this.y - 15)
-            ctx.lineTo(this.x + 20, this.y)
+            DrawRect(this.x, this.y, 24, 40, "orange")
+            hiddenCtx.beginPath()
+            hiddenCtx.moveTo(this.x - 16, this.y)
+            hiddenCtx.lineTo(this.x + 12, this.y - 30)
+            hiddenCtx.lineTo(this.x + 40, this.y)
 
-            ctx.fillStyle = "orange"
-            ctx.fill()
+            hiddenCtx.fillStyle = "orange"
+            hiddenCtx.fill()
 
-            ctx.globalAlpha = 1
+            hiddenCtx.globalAlpha = 1
 
             this.y -= this.speed
 
@@ -3959,6 +4097,7 @@
         }
     }
 
+    // Miks Q — purple field with orange arrows rising and fading; ends after the burst.
     function MiksQ(){
 
         this.effects = []
@@ -3977,7 +4116,7 @@
 
             if(this.frames < 350){
 
-                if(Math.random() > .6){
+                if(Math.random() > .8){
                     this.effects.push(new MiksQArrow())
                 }
             }
@@ -3999,6 +4138,7 @@
         }
     }
 
+    // Miks C — purple/pink core pulses an orange bar three times, each with a fading field.
     function MiksC(){
 
         this.phase = "pulse"
@@ -4040,7 +4180,7 @@
 
             else if(this.phase == "field"){
 
-                ctx.globalAlpha = this.fieldAlpha
+                hiddenCtx.globalAlpha = this.fieldAlpha
                 DrawCircle(
                     160,
                     100,
@@ -4048,7 +4188,7 @@
                     "orange"
                 )
 
-                ctx.globalAlpha = 1
+                hiddenCtx.globalAlpha = 1
 
                 this.fieldAlpha -= .04
 
@@ -4068,6 +4208,7 @@
         }
     }
 
+    // Miks E — yellow core ringed by orbiting purple dots; pulses outward three times.
     function MiksE(){
 
         this.maxPulses = 3
@@ -4082,21 +4223,21 @@
             DrawCircle(160,100,60,"#FFD54A")
             DrawCircle(160,100,30,"#FFF2A0")
 
-            ctx.lineWidth = 4
-            ctx.strokeStyle = "#FFC107"
+            hiddenCtx.lineWidth = 4
+            hiddenCtx.strokeStyle = "#FFC107"
 
-            ctx.beginPath()
-            ctx.arc(160,100,60,0,Math.PI*2)
-            ctx.stroke()
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(160,100,60,0,Math.PI*2)
+            hiddenCtx.stroke()
 
-            ctx.globalAlpha = this.alpha
+            hiddenCtx.globalAlpha = this.alpha
 
-            ctx.lineWidth = 9
-            ctx.strokeStyle = "purple"
+            hiddenCtx.lineWidth = 9
+            hiddenCtx.strokeStyle = "purple"
 
-            ctx.beginPath()
-            ctx.arc(160, 100, this.radius, 0, Math.PI * 2)
-            ctx.stroke()
+            hiddenCtx.beginPath()
+            hiddenCtx.arc(160, 100, this.radius, 0, Math.PI * 2)
+            hiddenCtx.stroke()
 
             for(let i = 0; i < 12; i++){
 
@@ -4115,7 +4256,7 @@
                 DrawCircle(x, y, 8,"purple")
             }
 
-            ctx.globalAlpha = 1
+            hiddenCtx.globalAlpha = 1
 
             this.radius += this.pulseSpeed
 
@@ -4137,12 +4278,13 @@
         }
     }
 
+    // Miks X — purple screen with rising gold bars, then a white flash that fades out.
     function MiksX(){
 
-        this.lineCount = 5;      
-        this.lineSpeed = 3;    
-        this.lineThickness = 2; 
-        this.duration = 250;    
+        this.lineCount = 4;
+        this.lineSpeed = 3;
+        this.lineThickness = 4;
+        this.duration = 250;
         this.flashSpeed = 10;    
         this.fadeSpeed = .03;  
         this.frame = 0;
@@ -4162,8 +4304,14 @@
             DrawRect(0,0,320,200,"purple");
             if(this.phase == "lines"){
                 this.lines.forEach((line)=>{
+                  // trail below the bar, fading out behind its upward motion
+                  let trail = hiddenCtx.createLinearGradient(0, line.y, 0, line.y + 45);
+                  trail.addColorStop(0, "rgba(255,200,74,0.55)");
+                  trail.addColorStop(1, "rgba(255,200,74,0)");
+                  DrawRect(0, line.y, 320, 45, trail);
+
                   DrawRect(0,line.y,320,this.lineThickness,"#FFC84A");
-                  DrawRect(0,line.y + 1,320,8,"#FFF3B0");
+                  DrawRect(0,line.y + 1,320,16,"#FFF3B0");
 
                   line.y -= this.lineSpeed;
 
@@ -4189,9 +4337,9 @@
                 }
             }
             else if(this.phase == "fade"){
-                ctx.globalAlpha = this.flashAlpha;
+                hiddenCtx.globalAlpha = this.flashAlpha;
                 DrawRect(0,0,320,200,"#FFF3B0");
-                ctx.globalAlpha = 1;
+                hiddenCtx.globalAlpha = 1;
 
                 this.flashAlpha -= this.fadeSpeed;
 
@@ -4202,6 +4350,7 @@
         }
     }
 
+    // Waylay Q — white/purple bars sweep across twice, then clear.
     function WaylayQ(){
 
       this.x = 0;
@@ -4209,17 +4358,17 @@
 
       this.draw = function(){
 
-        DrawRect(this.x,0,15,200,"white");
-        DrawRect(this.x+15,0,15,200,"purple");
+        DrawRect(this.x,0,30,200,"white");
+        DrawRect(this.x+30,0,30,200,"purple");
 
-        this.x += 12;
+        this.x += 8;
 
         if(this.x > 320){
           this.passes++;
           if(this.passes >= 2){
             this.lifetime = 0;
           }else{
-            this.x = -30;
+            this.x = -60;
           }
         }
       }
@@ -4237,15 +4386,15 @@
 
       this.draw = function(){
 
-        ctx.fillStyle = this.color
-        ctx.beginPath()
+        hiddenCtx.fillStyle = this.color
+        hiddenCtx.beginPath()
 
-        ctx.moveTo(this.x, this.y - this.size)
-        ctx.lineTo(this.x - this.size,this.y + this.size)
-        ctx.lineTo(this.x + this.size,this.y + this.size)
-        ctx.closePath()
+        hiddenCtx.moveTo(this.x, this.y - this.size)
+        hiddenCtx.lineTo(this.x - this.size,this.y + this.size)
+        hiddenCtx.lineTo(this.x + this.size,this.y + this.size)
+        hiddenCtx.closePath()
 
-        ctx.fill()
+        hiddenCtx.fill()
 
         this.y -= this.speed
 
@@ -4255,9 +4404,10 @@
       }
     }
 
+    // Waylay E — green tint with green/purple triangles rising up; ends after the batch.
     function WaylayE(){
 
-      this.triangleSize = 25
+      this.triangleSize = 38
       this.triangleSpeed = 4
       this.triangleAmount = 30
       this.spawnDelay = 6
@@ -4267,9 +4417,9 @@
 
       this.draw = function(){
 
-        ctx.globalAlpha = .15
+        hiddenCtx.globalAlpha = .15
         DrawRect(0,0,320,200,"#7CFF8A")
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = 1
 
         this.timer++
 
@@ -4292,6 +4442,7 @@
       }
     }
 
+    // Waylay C — purple orbs are thrown to center, then a purple disc expands and fades.
     function WaylayC(){
 
       this.throwBalls = [];
@@ -4322,13 +4473,13 @@
 
         else{
 
-          ctx.globalAlpha = this.alpha;
-          ctx.beginPath();
-          ctx.fillStyle = "#C77DFF";
-          ctx.arc(160,100,this.arcSize,0,Math.PI * 2);
+          hiddenCtx.globalAlpha = this.alpha;
+          hiddenCtx.beginPath();
+          hiddenCtx.fillStyle = "#C77DFF";
+          hiddenCtx.arc(160,100,this.arcSize,0,Math.PI * 2);
 
-          ctx.fill();
-          ctx.globalAlpha = 1;
+          hiddenCtx.fill();
+          hiddenCtx.globalAlpha = 1;
 
           this.arcSize += 8;
 
@@ -4352,9 +4503,9 @@
 
       this.draw = function(){
 
-        ctx.globalAlpha = this.alpha
-        DrawRect(this.x,0,9,200,"#7CFF8A")
-        ctx.globalAlpha = 1
+        hiddenCtx.globalAlpha = this.alpha
+        DrawRect(this.x,0,14,200,"#7CFF8A")
+        hiddenCtx.globalAlpha = 1
 
         this.x += this.speed * this.dir
 
@@ -4364,10 +4515,11 @@
       }
     }
 
+    // Waylay X — green split-beam phase, then a purple explosion disc that expands and fades.
     function WaylayX(){
       this.lines = []
       this.spawnTimer = 0
-      this.duration = 90
+      this.duration = 120
       this.frames = 0
       this.phase = "lines"
       this.radius = 0
@@ -4380,9 +4532,9 @@
 
           this.spawnTimer++
 
-          if(this.spawnTimer >= 12){
-              this.lines.push(new WaylayXLine(1,4))
-              this.lines.push(new WaylayXLine(-1,4))
+          if(this.spawnTimer >= 21){
+              this.lines.push(new WaylayXLine(1,2))
+              this.lines.push(new WaylayXLine(-1,2))
               this.spawnTimer = 0
           }
 
@@ -4401,13 +4553,13 @@
         }
 
         else{
-          ctx.globalAlpha = this.alpha
+          hiddenCtx.globalAlpha = this.alpha
           DrawCircle(160,100,this.radius,`hsla(300, 60%, 50%, ${this.alpha})`)
-          ctx.globalAlpha = 1
-          this.radius += 12
+          hiddenCtx.globalAlpha = 1
+          this.radius += 9
 
           if(this.radius >= 240){
-              this.alpha -= .02
+              this.alpha -= .015
               if(this.alpha <= 0){
                 this.lifetime = 0
               }
@@ -4444,21 +4596,21 @@
 
     this.draw = function () {
       if (this.background != "null") {
-        ctx.fillStyle = this.background;
-        ctx.fillRect(0, 0, 320, 200);
+        hiddenCtx.fillStyle = this.background;
+        hiddenCtx.fillRect(0, 0, 320, 200);
       }
       this.elapsed = new Date().getTime() - this.start;
       colors.forEach((color, i) => {
-        ctx.beginPath();
-        ctx.arc(160, 100, SetRange(this.radius[i], 0, 500), 0, 2 * Math.PI);
+        hiddenCtx.beginPath();
+        hiddenCtx.arc(160, 100, SetRange(this.radius[i], 0, 500), 0, 2 * Math.PI);
         if (this.isHollow) {
-          ctx.strokeStyle = color;
-          ctx.lineWidth = this.strokeSize;
-          ctx.stroke();
+          hiddenCtx.strokeStyle = color;
+          hiddenCtx.lineWidth = this.strokeSize;
+          hiddenCtx.stroke();
         } else {
           if (this.radius[i] < 200 || !this.autodelete) {
-            ctx.fillStyle = color;
-            ctx.fill();
+            hiddenCtx.fillStyle = color;
+            hiddenCtx.fill();
           }
         }
         if (this.direction == "out") {
@@ -4478,15 +4630,15 @@
     this.color2 = color2;
     this.draw = function () {
       this.elapsed = new Date().getTime() - this.start;
-      ctx.fillStyle = this.color1;
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.beginPath();
-      ctx.save();
-      ctx.translate(160, 100);
-      ctx.rotate(this.elapsed / 200);
-      ctx.fillStyle = this.color2;
-      ctx.fillRect(-15, 0, 30, 200);
-      ctx.restore();
+      hiddenCtx.fillStyle = this.color1;
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.beginPath();
+      hiddenCtx.save();
+      hiddenCtx.translate(160, 100);
+      hiddenCtx.rotate(this.elapsed / 200);
+      hiddenCtx.fillStyle = this.color2;
+      hiddenCtx.fillRect(-15, 0, 30, 200);
+      hiddenCtx.restore();
       if (this.elapsed > this.duration) {
         this.lifetime = 0;
         for(let i = 0; i < 50; i++) effects.push(new BeamHelp(this.color1, this.color2))
@@ -4524,49 +4676,14 @@
     };
 
     this.Draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = this.color;
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = this.color;
       var effectHeight = 200 - 200 * (this.count / 2000);
-      ctx.fillRect(0, effectHeight, 320, 200);
-      ctx.fillStyle = "white";
-      ctx.fillRect(0, effectHeight, 320, 40);
+      hiddenCtx.fillRect(0, effectHeight, 320, 200);
+      hiddenCtx.fillStyle = "white";
+      hiddenCtx.fillRect(0, effectHeight, 320, 40);
       this.count += 43;
-    };
-  }
-
-  function SparkleEffect(hue, saturation, lightness, size) {
-    this.x = Math.random() * 320;
-    this.y = Math.random() * 200;
-    this.hue = hue;
-    this.saturation = saturation;
-    this.lightness = lightness;
-    this.lifetime = 40;
-    this.size = size;
-    this.draw = function () {
-      ctx.fillStyle = 'hsl(' + this.hue + ',' + this.saturation + '%,' + this.lightness + '%)';
-      ctx.fillRect(this.x, this.y, this.size, this.size);
-      this.lifetime--;
-    };
-  }
-
-  function SweepState(bars, dur, background) {
-    this.start = new Date().getTime();
-    this.duration = dur;
-    this.background = background;
-    bars.forEach(bar => {
-      effects.push(new bounceBar(bar.x, bar.y, bar.width, bar.height, bar.speed, bar.bA, bar.color));
-    });
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-    this.Draw = function () {
-      ctx.fillStyle = this.background;
-      ctx.fillRect(0, 0, 320, 200);
     };
   }
 
@@ -4583,8 +4700,8 @@
         this.lifetime = 0
       }
       effects.push(new swarmHelp())
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
     };
   }
 
@@ -4600,34 +4717,6 @@
       this.y = Math.sin(Date.now() / (this.mod * 3)) * this.mod + 100
       DrawCircle(this.x, this.y, 30, `hsla(${this.color}, 100%, 50%, ${this.alpha})`)
     }
-  }
-
-  function TripwireState(color) {
-    this.start = new Date().getTime();
-    this.duration = 2000;
-    this.count = 2000;
-    this.color = color;
-
-    this.Process = function () {
-      this.elapsed = new Date().getTime() - this.start;
-
-      if (this.elapsed > this.duration) {
-        stateMgr.Pop();
-      }
-      this.Draw();
-    };
-
-    this.Draw = function () {
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 360, 200);
-      var pct = this.count / 2000;
-      var negPct = 1 - this.count / 2000;
-      var xPos = 160 * pct;
-      ctx.fillStyle = this.color;
-      ctx.fillRect(xPos, 100, negPct * 360, 10);
-
-      this.count -= 50;
-    };
   }
 
   function TurretState(color1, color2, color3) {
@@ -4648,9 +4737,9 @@
     };
 
     this.Draw = function () {
-      ctx.globalAlpha = this.alpha
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.globalAlpha = this.alpha
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
       if (Math.random() > 0.9) {
         let rngvar = Math.random();
         this.bullets.push(new bullet(rngvar < 0.3 ? color1 : color2));
@@ -4658,7 +4747,7 @@
       this.bullets.forEach(element => {
         element.draw();
       });
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
     };
   }
 
@@ -4666,8 +4755,8 @@
     this.x = 0;
     this.col = col;
     this.draw = function () {
-      ctx.fillStyle = this.col;
-      ctx.fillRect(this.x, 0, 30, 200);
+      hiddenCtx.fillStyle = this.col;
+      hiddenCtx.fillRect(this.x, 0, 30, 200);
       this.x += 5;
     }
   }
@@ -4682,14 +4771,14 @@
     this.ripple = -1;
     this.draw = function () {
       this.elapsed = Date.now() - this.start;
-      let gradient = ctx.createLinearGradient(-100, 0, 420, 0)
+      let gradient = hiddenCtx.createLinearGradient(-100, 0, 420, 0)
       if (this.calculateVal < 1000) {
         this.calculateVal = -1440 * Math.floor((this.elapsed / 1440) / 2) + ((this.elapsed / 1440) * (1440 / 2));
       }
       gradient.addColorStop(SetRange((-0 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0)");
       gradient.addColorStop(SetRange((-200 + (this.calculateVal)), 0, 1000) / 1000, "hsla(0, 0%, 0%,0.9)");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = gradient;
+      hiddenCtx.fillRect(0, 0, 320, 200);
 
 
       DrawPoints([{ x: 110, y: 50 }, { x: 160, y: 150 }, { x: 210, y: 50 }], SetRange(2 - (this.elapsed / 2000), 1, 2), 20, `hsla(101, 100%, ${SetRange(Math.sin(this.elapsed / 800) * 100, 50, 70)}%, 1)`)
@@ -4720,20 +4809,20 @@
 
   function DrawPoints(points, size, lineWidth, color) {
     let tempCanvas = canvas.cloneNode();
-    tempCanvasctx = tempCanvas.getContext("2d");
-    tempCanvasctx.clearRect(0, 0, 320, 200);
+    tempCtx = tempCanvas.getContext("2d");
+    tempCtx.clearRect(0, 0, 320, 200);
 
-    tempCanvasctx.beginPath();
-    tempCanvasctx.scale(size, size);
-    tempCanvasctx.moveTo(points[0].x / size, points[0].y)
+    tempCtx.beginPath();
+    tempCtx.scale(size, size);
+    tempCtx.moveTo(points[0].x / size, points[0].y)
     for (let index = 1; index < points.length; index++) {
-      tempCanvasctx.lineTo(points[index].x / size, points[index].y)
+      tempCtx.lineTo(points[index].x / size, points[index].y)
     }
-    tempCanvasctx.lineWidth = lineWidth;
+    tempCtx.lineWidth = lineWidth;
 
-    tempCanvasctx.strokeStyle = color;
-    tempCanvasctx.stroke();
-    ctx.drawImage(tempCanvas, 0 - ((size - 1) * 320) / 2, 0, 320 * size, 200 * size)
+    tempCtx.strokeStyle = color;
+    tempCtx.stroke();
+    hiddenCtx.drawImage(tempCanvas, 0 - ((size - 1) * 320) / 2, 0, 320 * size, 200 * size)
 
   }
 
@@ -4756,19 +4845,19 @@
       this.Draw();
     };
     this.Draw = function () {
-      ctx.globalAlpha = this.alpha
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, 320, 200);
-      ctx.fillStyle = this.color1;
-      ctx.fillRect(0, this.y, 320, 600);
-      ctx.fillStyle = this.color2;
-      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
-      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
-      ctx.fillStyle = this.color3;
-      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
-      ctx.fillRect(Math.random() * 320, this.y, 20, 600);
+      hiddenCtx.globalAlpha = this.alpha
+      hiddenCtx.fillStyle = "black";
+      hiddenCtx.fillRect(0, 0, 320, 200);
+      hiddenCtx.fillStyle = this.color1;
+      hiddenCtx.fillRect(0, this.y, 320, 600);
+      hiddenCtx.fillStyle = this.color2;
+      hiddenCtx.fillRect(Math.random() * 320, this.y, 20, 600);
+      hiddenCtx.fillRect(Math.random() * 320, this.y, 20, 600);
+      hiddenCtx.fillStyle = this.color3;
+      hiddenCtx.fillRect(Math.random() * 320, this.y, 20, 600);
+      hiddenCtx.fillRect(Math.random() * 320, this.y, 20, 600);
       this.y += this.speed;
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
     };
   }
 
@@ -4819,9 +4908,9 @@
     this.draw = function () {
       var vx = Math.random() * 30 - 15
       var vy = Math.random() * 30 - 15
-      ctx.globalAlpha = this.alpha;
+      hiddenCtx.globalAlpha = this.alpha;
       DrawCircle(this.x, this.y, this.radius, "rgb(25, 25, 50)");
-      ctx.globalAlpha = 1;
+      hiddenCtx.globalAlpha = 1;
       this.alpha > 0 ? this.alpha -= .01 : this.lifetime = 0;
       this.x += vx;
       this.y += vy;
@@ -4832,9 +4921,9 @@
     this.alpha = 1
     this.count = 200
     this.draw = function(){
-      ctx.globalAlpha = this.alpha
+      hiddenCtx.globalAlpha = this.alpha
       DrawRect(0, 0, 320, 200, `hsla(240, 100%, 20%, ${Math.sin(Date.now() / 500) * .25 + .5})`)
-      ctx.globalAlpha = 1
+      hiddenCtx.globalAlpha = 1
       this.count > 0 ? this.count-- : this.alpha >= .005 ? this.alpha -= .005 : this.lifetime = 0
     }
   }
@@ -4861,12 +4950,20 @@
   }
 
   Footstep.prototype.draw = function () {
-    ctx.beginPath();
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, 30, 30);
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = this.color;
+    hiddenCtx.fillRect(this.x, this.y, 30, 30);
     this.lifetime--;
   };
 
+  //#endregion
+
+  //#region Helper Functions
+  // ═══════════════════════════════════════════════════════════════
+  // HELPER FUNCTIONS
+  // Shared draw primitives, color/utility math, the Meter debouncer,
+  // and the StateHandler stack used across every effect above.
+  // ═══════════════════════════════════════════════════════════════
   function hexToHSL(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
@@ -4942,8 +5039,8 @@
         this.complete = true;
       }
 
-      ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, 50, 50);
+      hiddenCtx.fillStyle = this.color;
+      hiddenCtx.fillRect(this.x, this.y, 50, 50);
 
       this.frames += 1;
     };
@@ -4955,84 +5052,75 @@
   //END HELPER FUNCTIONS
   //DRAW FUNCTIONS
 
-  function drawRotatedRect(ctx, x, y, width, height, angle) {
-    angle *= Math.PI / 180
-    ctx.lineWidth = height / 2
-    ctx.beginPath()
-    ctx.moveTo(x, y)
-    ctx.lineTo(x + width * Math.cos(angle), y + width * Math.sin(angle))
-    ctx.stroke()
-  }
-
   function draw3ColorSpiral(spX, spY, cl1, cl2, cl3, radius, phase) {
-    ctx.save()
-    ctx.translate(160, 100)
-    ctx.scale(radius / 100, radius / 100)
-    ctx.rotate(phase / 100)
-    ctx.translate(-160, -100)
+    hiddenCtx.save()
+    hiddenCtx.translate(160, 100)
+    hiddenCtx.scale(radius / 100, radius / 100)
+    hiddenCtx.rotate(phase / 100)
+    hiddenCtx.translate(-160, -100)
     DrawTriangle(160, 100, -15, -200, 335, -200, cl1)
-    ctx.translate(160, 100)
-    ctx.rotate(Math.PI / 3)
-    ctx.translate(-160, -100)
+    hiddenCtx.translate(160, 100)
+    hiddenCtx.rotate(Math.PI / 3)
+    hiddenCtx.translate(-160, -100)
     DrawTriangle(160, 100, -15, -200, 335, -200, cl2)
-    ctx.translate(160, 100)
-    ctx.rotate(Math.PI / 3)
-    ctx.translate(-160, -100)
+    hiddenCtx.translate(160, 100)
+    hiddenCtx.rotate(Math.PI / 3)
+    hiddenCtx.translate(-160, -100)
     DrawTriangle(160, 100, -15, -200, 335, -200, cl3)
-    ctx.translate(160, 100)
-    ctx.rotate(Math.PI / 3)
-    ctx.translate(-160, -100)
+    hiddenCtx.translate(160, 100)
+    hiddenCtx.rotate(Math.PI / 3)
+    hiddenCtx.translate(-160, -100)
     DrawTriangle(160, 100, -15, -200, 335, -200, cl1)
-    ctx.translate(160, 100)
-    ctx.rotate(Math.PI / 3)
-    ctx.translate(-160, -100)
+    hiddenCtx.translate(160, 100)
+    hiddenCtx.rotate(Math.PI / 3)
+    hiddenCtx.translate(-160, -100)
     DrawTriangle(160, 100, -15, -200, 335, -200, cl2)
-    ctx.translate(160, 100)
-    ctx.rotate(Math.PI / 3)
-    ctx.translate(-160, -100)
+    hiddenCtx.translate(160, 100)
+    hiddenCtx.rotate(Math.PI / 3)
+    hiddenCtx.translate(-160, -100)
     DrawTriangle(160, 100, -15, -200, 335, -200, cl3)
-    ctx.restore()
+    hiddenCtx.restore()
   }
 
   function DrawRect(x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height);
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.fillRect(x, y, width, height);
   };
   
   function DrawPath(x, y, scale, path, color) {
-    ctx.fillStyle = color;
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.scale(scale, scale)
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.save();
+    hiddenCtx.translate(x, y);
+    hiddenCtx.scale(scale, scale)
     let ex = new Path2D(path);
-    ctx.fill(ex);
-    ctx.restore();
+    hiddenCtx.fill(ex);
+    hiddenCtx.restore();
   };
 
   function DrawTriangle(cord1X, cord1Y, cord2X, cord2Y, cord3X, cord3Y, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.moveTo(cord1X, cord1Y);
-    ctx.lineTo(cord2X, cord2Y);
-    ctx.lineTo(cord3X, cord3Y);
-    ctx.lineTo(cord1X, cord1Y);
-    ctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.moveTo(cord1X, cord1Y);
+    hiddenCtx.lineTo(cord2X, cord2Y);
+    hiddenCtx.lineTo(cord3X, cord3Y);
+    hiddenCtx.lineTo(cord1X, cord1Y);
+    hiddenCtx.fill();
   };
 
   function DrawCircle(x, y, radius, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.fill();
+    hiddenCtx.beginPath();
+    hiddenCtx.fillStyle = color;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.fill();
   };
 
   function DrawStroke(x, y, radius, color, stroke) {
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = stroke;
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
-    ctx.stroke();
+    hiddenCtx.beginPath();
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineWidth = stroke;
+    hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI)
+    hiddenCtx.stroke();
   };
 
   function lightning(size, color, width){
@@ -5071,17 +5159,17 @@
     }
 
   function drawLightning(array, color, width) {
-    ctx.beginPath()
-    ctx.moveTo(...array[0])
+    hiddenCtx.beginPath()
+    hiddenCtx.moveTo(...array[0])
     array.forEach((ele, i) => {
       if (i) {
-        ctx.lineTo(...array[i])
+        hiddenCtx.lineTo(...array[i])
       }
     });
-    ctx.strokeStyle = color;
-    ctx.lineJoin = "round";
-    ctx.lineWidth = width + Math.random() * width;
-    ctx.stroke()
+    hiddenCtx.strokeStyle = color;
+    hiddenCtx.lineJoin = "round";
+    hiddenCtx.lineWidth = width + Math.random() * width;
+    hiddenCtx.stroke()
   }
   //END DRAW FUNCTIONS
 
@@ -5148,11 +5236,11 @@
   }
 
   function onEngineReady() {
-    // Grab canvas and rendering context. 
+    // Grab canvas and rendering context.
     canvas = document.getElementById("exCanvas");
     ctx = canvas.getContext("2d");
-    // Start updates *after* our engine is accessible and ready. 
-
+    // Start updates *after* our engine is accessible and ready.
     window.requestAnimationFrame(update);
-  }  
+  }
+  //#endregion
 </script>
