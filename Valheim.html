@@ -1,0 +1,895 @@
+<head>
+    <title>Valheim Dev</title>
+    <meta description="Effects and ambience for Valheim. v0.1.0" />
+    <meta publisher="SignalRGB" />
+
+    <meta property="ambienceAlpha"  label="Background Brightness" tooltip="Sets how bright the background lighting appears on your devices." type="number" default="100" min="0" max="100" />
+    <meta property="backgroundMode" label="Background Mode" type="list"
+          values="Color Cycle,Color Cycle Ambience,Color Cycle Audio Visualizer,Custom,Ambience,Custom Ambience,Ambience Audio Visualizer,Custom Audio Visualizer"
+          default="Ambience" />
+    <meta property="backColor"      label="Custom Color" type="color" default="#010101" min="0" max="360" />
+
+    <meta property="craftOn" label="Craft Effect" tooltip="Turns on the effect when you craft an item on craft window." type="boolean" default="1" />
+    <meta property="lowHealthOn" label="Low Health Effect" tooltip="Turns on when health is critically low." type="boolean" default="1" />
+    <meta property="damageOn" label="Damage Effect" tooltip="Flashes when taking damage." type="boolean" default="1" />
+    <meta property="healingOn" label="Healing Effect" tooltip="Flashes green when health increases." type="boolean" default="1" />
+    <meta property="portalOn" label="Portal Effect" tooltip="Turns on when entering a portal." type="boolean" default="1" />
+    <meta property="lowStaminaOn" label="Low Stamina Effect" tooltip="Turns on when stamina is almost empty." type="boolean" default="1" />
+    <meta property="sleepOn" label="Sleep Effect" tooltip="Turns on when the player is sleeping." type="boolean" default="1" />
+    <meta property="deathOn" label="Death Effect" tooltip="Flashes a red skull when you die." type="boolean" default="1" />
+
+  <meta meter="craftWhite" tags="vlc,Valheim" x="0.857" y="0.7408" width="0.0492" height="0.0195"
+    h="0-360" s="0-15" l="80-100" hdr-h="0-360" hdr-s="0-15" hdr-l="80-100" type="area">
+    <resolution aspect="3.55:1" x="0.9284" y="0.7407" width="0.0253" height="0.0180" />
+    <resolution aspect="24:10" x="0.8933" y="0.7417" width="0.0360" height="0.0170" />
+    <resolution aspect="16:11" x="0.857" y="0.6679" width="0.05" height="0.0169" />
+    
+    <resolution size="3840x2160" x="0.858" y="0.7402" width="0.0495" height="0.0194" />
+    <resolution size="3840x1080" x="0.9284" y="0.7407" width="0.0253" height="0.0180" />
+    <resolution size="2560x1080" x="0.8925" y="0.7405" width="0.0376" height="0.0213" />
+    <resolution size="1920x1080" x="0.8572" y="0.7433" width="0.0495" height="0.0157" />
+  </meta>
+
+  <meta meter="craftBrown" tags="vlc,Valheim" x="0.7999" y="0.7325" width="0.1649" height="0.0041" 
+    h="0-60" s="60-100" l="60-100" hdr-h="0-60" hdr-s="40-100" hdr-l="60-100" type="area">
+    <resolution aspect="3.55:1" x="0.8995" y="0.7324" width="0.0807" height="0.0080" />
+    <resolution aspect="24:10" x="0.8500" y="0.7329" width="0.1227" height="0.0070" />
+    <resolution aspect="16:11" x="0.7999" y="0.6598" width="0.1634" height="0.005" />
+
+    <resolution size="3840x2160" x="0.7994" y="0.7337" width="0.1639" height="0.0088" />
+    <resolution size="3840x1080" x="0.8995" y="0.7324" width="0.0807" height="0.0080" />
+    <resolution size="2560x1080" x="0.8492" y="0.7331" width="0.1227" height="0.0037" />
+    <resolution size="1920x1080" x="0.7994" y="0.734" width="0.1641" height="0.0009" />
+  </meta>
+
+  <meta meter="craftOrange" tags="vlc,Valheim" x="0.8307" y="0.1024" width="0.0016" height="0.0069" 
+    h="0-60" s="40-90" l="60-90" hdr-h="0-60" hdr-s="40-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.9141" y="0.1018" width="0.0016" height="0.0069" />
+    <resolution aspect="24:10" x="0.8740" y="0.1052" width="0.0016" height="0.0069" />
+    <resolution aspect="16:11" x="0.8307" y="0.1024" width="0.0016" height="0.0069" />
+
+    <resolution size="3840x2160" x="0.8307" y="0.1024" width="0.0016" height="0.0069" />
+    <resolution size="3840x1080" x="0.9141" y="0.1018" width="0.0016" height="0.0069" />
+    <resolution size="2560x1080" x="0.8740" y="0.1052" width="0.0016" height="0.0069" />
+    <resolution size="1920x1080" x="0.8307" y="0.1024" width="0.0016" height="0.0069" />
+  </meta>
+
+  <meta meter="lifeRed" tags="vlc,Valheim" x="0.0535" y="0.7839" width="0.0015" height="0.1244" 
+    h="-30-30" s="60-90" l="50-100" hdr-h="-30-30" hdr-s="50-90" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.0270" y="0.7944" width="0.0005" height="0.1111" />
+    <resolution aspect="24:10" x="0.0399" y="0.7785" width="-0.0004" height="0.1279" />
+    <resolution aspect="16:11" x="0.0531" y="0.8005" width="0.0012" height="0.1176" />
+
+    <resolution size="3840x2160" x="0.0542" y="0.7865" width="-0.0003" height="0.1195" />
+    <resolution size="3840x1080" x="0.0270" y="0.7944" width="0.0005" height="0.1111" />
+    <resolution size="2560x1080" x="0.0399" y="0.7785" width="0.0004" height="0.1279" />
+    <resolution size="1920x1080" x="0.0532" y="0.7711" width="0" height="0.1344" />
+  </meta>
+
+  <meta meter="lifeNotRed" tags="vlc,Valheim"  x="0.0496" y="0.8277" width="0" height="0.0076"
+    h="-30-30" s="60-90" l="50-100" hdr-h="-30-30" hdr-s="50-90" hdr-l="40-100" type="area">
+    <resolution aspect="3.55:1" x="0.0353" y="0.7868" width="0.0004" height="0.1267" />
+    <resolution aspect="24:10" x="0.0536" y="0.7848" width="0.0004" height="0.1267" />
+    <resolution aspect="16:11" x="0.0723" y="0.8118" width="0.0009" height="0.1096" />
+
+    <resolution size="3840x2160" x="0.0724" y="0.7870" width="0.0004" height="0.1267" />
+    <resolution size="3840x1080" x="0.0353" y="0.7868" width="0.0004" height="0.1267" />
+    <resolution size="2560x1080" x="0.0536" y="0.7848" width="0.0004" height="0.1267" />
+    <resolution size="1920x1080" x="0.05" y="0.8369" width="-0.0005" height="0.0185" />
+  </meta>
+
+  <meta meter="yellowStamina" tags="vlc,Valheim"  x="0.4721" y="0.8596" width="0.0547" height="0.0014"
+    h="30-60" s="50-80" l="70-100" hdr-h="30-60" hdr-s="50-80" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.4856" y="0.8625" width="0.0292" height="0.0035" />
+    <resolution aspect="24:10" x="0.4846" y="0.8588" width="0.0383" height="0.0046" />
+    <resolution aspect="16:11" x="0.4783" y="0.8724" width="0.0438" height="0.0025" />
+
+    <resolution size="3840x2160" x="0.4749" y="0.8588" width="0.05" height="0.0014" />
+    <resolution size="3840x1080" x="0.4856" y="0.8625" width="0.0292" height="0.0035" />
+    <resolution size="2560x1080" x="0.481" y="0.8582" width="0.0383" height="0.0046" />
+    <resolution size="1920x1080" x="0.4706" y="0.8591" width="0.0588" height="0"  />
+  </meta>
+
+  <meta meter="staminaNotYellow" tags="vlc,Valheim"  x="0.4896" y="0.8534" width="0.011" height="0.0007"
+    h="30-60" s="50-80" l="70-100" hdr-h="30-60" hdr-s="50-80" hdr-l="70-100" type="area">
+    <resolution aspect="3.55:1" x="0.4956" y="0.8509" width="0.00036" height="0.0005" />
+    <resolution aspect="24:10" x="0.4936" y="0.8554" width="0.0093" height="-0.0028" />
+    <resolution aspect="16:11" x="0.4787" y="0.8687" width="0.0164" height="0.0012" />
+
+    <resolution size="3840x2160" x="0.4897" y="0.8527" width="0.0115" height="0.0014" />
+    <resolution size="3840x1080" x="0.4956" y="0.8509" width="0.00036" height="0.0005" />
+    <resolution size="2560x1080" x="0.4936" y="0.8554" width="0.0093" height="-0.0028" />
+    <resolution size="1920x1080" x="0.4883" y="0.8536" width="0.013" height="-0.001"  />
+  </meta>
+
+  <meta meter="inGameRed" tags="vlc,Valheim" x="0.0597" y="0.9317" width="0.0017" height="0.0019" 
+    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.0301" y="0.9322" width="0.0008" height="0.0014" />
+    <resolution aspect="24:10" x="0.0449" y="0.9325" width="0.0009" height="0.0011" />
+    <resolution aspect="16:11" x="0.0596" y="0.9384" width="0.0017" height="0.0019" />
+
+    <resolution size="3840x2160" x="0.0591" y="0.9244" width="0.0017" height="0.0019" />
+    <resolution size="3840x1080" x="0.0301" y="0.9322" width="0.0008" height="0.0014" />
+    <resolution size="2560x1080" x="0.0449" y="0.9325" width="0.0009" height="0.0011" />
+    <resolution size="1920x1080" x="0.0584" y="0.9231" width="0.0005" height="0.0018" />
+  </meta>
+
+  <meta meter="inGameNotRed" tags="vlc,Valheim" x="0.0647" y="0.9335" width="0.0016" height="0.0017" 
+    h="-30-30" s="75-100" l="50-100" hdr-h="-30-30" hdr-s="75-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.0319" y="0.9399" width="0.0008" height="0.0017" />
+    <resolution aspect="24:10" x="0.0490" y="0.9355" width="0.0010" height="0.0017" />
+    <resolution aspect="16:11" x="0.0652" y="0.9399" width="0.0016" height="0.0017" />
+
+    <resolution size="3840x2160" x="0.0675" y="0.9285" width="0.0016" height="0.0017" />
+    <resolution size="3840x1080" x="0.0319" y="0.9399" width="0.0008" height="0.0017" />
+    <resolution size="2560x1080" x="0.0490" y="0.9355" width="0.0010" height="0.0017" />
+    <resolution size="1920x1080" x="0.0649" y="0.9354" width="0.0016" height="0.0017" />
+  </meta>
+
+  <meta meter="portalRed" tags="vlc,Valheim" x="0.6926" y="0.4460" width="0.0004" height="0.0811" 
+    h="-30-30" s="80-100" l="50-100" hdr-h="-30-30" hdr-s="80-100" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.5951" y="0.4357" width="0.0004" height="0.0811" />
+    <resolution aspect="24:10" x="0.6488" y="0.4351" width="0.0004" height="0.0811" />
+    <resolution aspect="16:11" x="0.7213" y="0.4675" width="0.0005" height="0.0811" />
+
+    <resolution size="3840x2160" x="0.6926" y="0.4460" width="0.0004" height="0.0811" />
+    <resolution size="3840x1080" x="0.5951" y="0.4357" width="0.0004" height="0.0811" />
+    <resolution size="2560x1080" x="0.6488" y="0.4351" width="0.0004" height="0.0811" />
+    <resolution size="1920x1080" x="0.7023" y="0.4495" width="0.0005" height="0.0811" />
+  </meta>
+
+  <meta meter="portalDark" tags="vlc,Valheim" x="0.4844" y="0.4875" width="0.0064" height="0.0069" 
+    h="300-350" s="60-100" l="0-40" hdr-h="300-350" hdr-s="0-100" hdr-l="0-40" type="area">
+    <resolution aspect="3.55:1" x="0.4834" y="0.4832" width="0.0039" height="0.0069" />
+    <resolution aspect="24:10" x="0.4842" y="0.4850" width="0.0039" height="0.0069" />
+    <resolution aspect="16:11" x="0.4837" y="0.4852" width="0.0064" height="0.0069" />
+
+    <resolution size="3840x2160" x="0.4837" y="0.4852" width="0.0064" height="0.0069" />
+    <resolution size="3840x1080" x="0.4834" y="0.4832" width="0.0039" height="0.0069" />
+    <resolution size="2560x1080" x="0.4842" y="0.4850" width="0.0039" height="0.0069" />
+    <resolution size="1920x1080" x="0.4837" y="0.4852" width="0.0064" height="0.0069" />
+  </meta>
+
+  <meta meter="sleepYellow" tags="vlc,Valheim" x="0.4537" y="0.4981" width="0.0797" height="0.0112" 
+    h="30-80" s="75-100" l="40-100" hdr-h="30-80" hdr-s="75-100" hdr-l="40-100" type="area">
+    <resolution aspect="3.55:1" x="0.4768" y="0.4988" width="0.0408" height="0.0087" />
+    <resolution aspect="24:10" x="0.4612" y="0.4985" width="0.0651" height="0.0112" />
+    <resolution aspect="16:11" x="0.4526" y="0.4989" width="0.0816" height="0.0112" />
+
+    <resolution size="3840x2160" x="0.4612" y="0.4985" width="0.0651" height="0.0112" />
+    <resolution size="3840x1080" x="0.4768" y="0.4988" width="0.0408" height="0.0087" />
+    <resolution size="2560x1080" x="0.4612" y="0.4985" width="0.0651" height="0.0112" />
+    <resolution size="1920x1080" x="0.4528" y="0.4954" width="0.0817" height="0.0195" />
+  </meta>
+
+  <meta meter="sleepGray" tags="vlc,Valheim" x="0.9733" y="0.9324" width="0.0029" height="0.0041" 
+    h="0-15" s="0-15" l="0-60" hdr-h="0-15" hdr-s="0-15" hdr-l="0-60" type="area">
+    <resolution aspect="3.55:1" x="0.9900" y="0.9657" width="0.0016" height="0.0033" />
+    <resolution aspect="24:10" x="0.9755" y="0.9350" width="0.0022" height="0.0044" />
+    <resolution aspect="16:11" x="0.9826" y="0.9599" width="0.0035" height="0.0069" />
+
+    <resolution size="3840x2160" x="0.9687" y="0.9682" width="0.0035" height="0.0069" />
+    <resolution size="3840x1080" x="0.9900" y="0.9657" width="0.0016" height="0.0033" />
+    <resolution size="2560x1080" x="0.9755" y="0.9350" width="0.0022" height="0.0044" />
+    <resolution size="1920x1080" x="0.9687" y="0.9682" width="0.0035" height="0.0069" />
+  </meta>
+
+  <meta meter="deathText" tags="vlc,Valheim"  x="0.4478" y="0.3468" width="0.1028" height="0.0271" 
+    h="30-80" s="50-90" l="50-100" hdr-h="30-80" hdr-s="50-90" hdr-l="50-100" type="area">
+    <resolution aspect="3.55:1" x="0.4740" y="0.3472" width="0.0513" height="0.0250" />
+    <resolution aspect="24:10" x="0.4616" y="0.3486" width="0.0756" height="0.0250" />
+    <resolution aspect="16:11" x="0.4486" y="0.3646" width="0.102" height="0.0225" />
+
+    <resolution size="3840x2160" x="0.4486" y="0.3492" width="0.1028" height="0.026" />
+    <resolution size="3840x1080" x="0.4740" y="0.3472" width="0.0513" height="0.0250" />
+    <resolution size="2560x1080" x="0.4603" y="0.3475" width="0.0786" height="0.0251" />
+    <resolution size="1920x1080" x="0.4471" y="0.3485" width="0.1037" height="0.025"  />
+  </meta>
+</head>
+
+<body style="margin: 0; padding: 0; background: #000;">
+    <canvas id="exCanvas" width="320" height="200"></canvas>
+</body>
+
+<script>
+    const canvas = document.getElementById('exCanvas');
+    const ctx    = canvas.getContext('2d');
+    const width  = 320;
+    const height = 200;
+
+    const hiddenCanvas = document.createElement('canvas');
+    hiddenCanvas.width  = 320;
+    hiddenCanvas.height = 200;
+    const hiddenCtx = hiddenCanvas.getContext('2d');
+
+    let effects = [];
+    let gInGame = false;
+    let craftGoing = false;
+    let lowHealthGoing = false;
+    let portalGoing = false;
+    let lowStaminaGoing = false;
+    let sleepGoing = false;
+    let deathGoing = false;
+
+    function update() {
+        hiddenCtx.clearRect(0, 0, width, height);
+        hiddenCtx.globalAlpha = 1;
+        DrawRect(0, 0, width, height, 'black');
+        backgroundHandler();
+
+        craftBrown_Meter.setValue(engine.vision.craftBrown);
+        craftWhite_Meter.setValue(engine.vision.craftWhite);
+        craftOrange_Meter.setValue(engine.vision.craftOrange);
+        lifeRed_Meter.setValue(engine.vision.lifeRed);
+        lifeNotRed_Meter.setValue(engine.vision.lifeNotRed);
+        yellowStamina_Meter.setValue(engine.vision.yellowStamina);
+        staminaNotYellow_Meter.setValue(engine.vision.staminaNotYellow);
+        inGameRed_Meter.setValue(engine.vision.inGameRed);
+        inGameNotRed_Meter.setValue(engine.vision.inGameNotRed);
+        portalRed_Meter.setValue(engine.vision.portalRed);
+        portalDark_Meter.setValue(engine.vision.portalDark);
+        sleepYellow_Meter.setValue(engine.vision.sleepYellow);
+        sleepGray_Meter.setValue(engine.vision.sleepGray);
+        deathText_Meter.setValue(engine.vision.deathText);
+
+        effects.forEach(ele => { ele.draw(); });
+        effects = effects.filter(ele => !(ele.lifetime <= 0));
+
+        ctx.clearRect(0, 0, width, height);
+        ctx.drawImage(hiddenCanvas, 0, 0);
+        window.requestAnimationFrame(update);
+    }
+
+    const craftBrown_Meter = new Meter(5, craftCallback);
+    const craftWhite_Meter = new Meter(5, craftCallback);
+    const craftOrange_Meter = new Meter(5, craftCallback);
+    const lifeRed_Meter = new Meter(3, healthCallback);
+    const lifeNotRed_Meter = new Meter(3, healthCallback);
+    const yellowStamina_Meter = new Meter(5, staminaCallback);
+    const staminaNotYellow_Meter = new Meter(5, staminaCallback);
+    const inGameRed_Meter = new Meter(5, inGameDetect);
+    const inGameNotRed_Meter = new Meter(5, inGameDetect);
+    const portalRed_Meter = new Meter(5, portalCallback);
+    const portalDark_Meter = new Meter(5, portalCallback);
+    const sleepYellow_Meter = new Meter(5, sleepCallback);
+    const sleepGray_Meter = new Meter(5, sleepCallback);
+    const deathText_Meter = new Meter(5, deathCallback);
+
+    function inGameDetect() {
+        if ((inGameRed_Meter.value >= .8 && inGameNotRed_Meter.value < .1) && !gInGame) {
+            gInGame = true;
+        } else if (inGameRed_Meter.value < .1 && gInGame) {
+            gInGame = false;
+        }
+    }
+
+    function craftCallback() {
+        if (gInGame && craftOn && (craftBrown_Meter.value >= .2 && craftWhite_Meter.value >= .15 && craftOrange_Meter.value >= .95) && !craftGoing) {
+            effects.push(new Craft());
+            craftGoing = true;
+        } else if (!gInGame || (craftBrown_Meter.value < .1 || craftWhite_Meter.value < .1)) {
+            craftGoing = false;
+        }
+    }
+
+    function healthCallback() {
+        if (gInGame && damageOn && lifeRed_Meter.decreased && lifeRed_Meter.diff >= 0.08) {
+            effects.push(new Damage());
+        }
+
+        if (gInGame && healingOn && lifeRed_Meter.increased && lifeRed_Meter.diff >= 0.08) {
+            effects.push(new Healing());
+        }
+
+        if (gInGame && lowHealthOn && lifeRed_Meter.value <= 0.2 && lifeNotRed_Meter.value < 0.1 && !lowHealthGoing && !deathGoing) {
+            effects.push(new LowHealth());
+            lowHealthGoing = true;
+        } else if (!gInGame || lifeRed_Meter.value > 0.2 || lifeRed_Meter.value <= 0.02) {
+            lowHealthGoing = false;
+        }
+    }
+
+    function portalCallback() {
+        if (!gInGame && portalOn && portalRed_Meter.value >= 0.95 && portalDark_Meter.value >= 0.5 && !portalGoing) {
+            effects.push(new Portal());
+            portalGoing = true;
+        } else if (gInGame || (portalRed_Meter.value < .1)) {
+            portalGoing = false;
+        }
+    }
+
+    function staminaCallback() {
+        if (gInGame && lowStaminaOn && yellowStamina_Meter.value <= 0.25 && staminaNotYellow_Meter.value < 0.1 && !lowStaminaGoing && !deathGoing) {
+            effects.push(new LowStamina());
+            lowStaminaGoing = true;
+        } else if (!gInGame || yellowStamina_Meter.value > 0.3) {
+            lowStaminaGoing = false;
+        }
+    }
+
+    function sleepCallback() {
+        if (!gInGame && sleepOn && sleepYellow_Meter.value >= 0.2 && sleepGray_Meter.value >= 0.5 && !sleepGoing) {
+            effects.push(new Sleep());
+            sleepGoing = true;
+        } else if (gInGame || sleepGray_Meter.value < 0.1 ) {
+            sleepGoing = false;
+        }
+    }
+
+    function deathCallback() {
+        if (gInGame && deathOn && lifeRed_Meter.value < 0.1 && deathText_Meter.value >= 0.25 && !deathGoing) {
+            effects.push(new Death());
+            deathGoing = true;
+        } else if (!gInGame || deathText_Meter.value < 0.1) {
+            deathGoing = false;
+        }
+    }
+
+    let proBack = [0, 0, 0];
+    function onbackColorChanged() { proBack = hexToHSL(backColor); }
+
+    let audioEase = { sat: 0, lit: 0 };
+    let gCycle = 0;
+
+    function updateAudioEase() {
+        const targetDensity = engine.audio.density * 100;
+        audioEase.sat += (targetDensity - audioEase.sat) / 10;
+        audioEase.lit += (targetDensity - audioEase.lit) / 10;
+    }
+
+    function getColorString(hue, sat, lit, alpha) { return `hsla(${hue}, ${sat}%, ${lit}%, ${alpha})`; }
+    function updateColorCycle() { gCycle = (gCycle + 0.5) % 360; }
+
+    function backgroundHandler() {
+        const alpha = ambienceAlpha / 100;
+        if (backgroundMode.includes('Color Cycle')) updateColorCycle();
+        if (backgroundMode.includes('Audio'))       updateAudioEase();
+
+        if (backgroundMode.includes('Ambience')) {
+            if (backgroundMode === 'Ambience Audio Visualizer') copyScreenAudio(alpha);
+            else copyScreen(alpha);
+            return;
+        }
+
+        const hue = proBack[0] + (backgroundMode.includes('Color Cycle') ? gCycle : 0);
+        const sat = backgroundMode.includes('Audio') ? audioEase.sat * 0.33 + 66 : proBack[1];
+        const lit = backgroundMode.includes('Audio') ? audioEase.lit * 0.9  + 10 : proBack[2];
+        DrawRect(0, 0, width, height, getColorString(hue, sat, lit, alpha));
+    }
+
+    const ZONE_COLS = 28;
+    const ZONE_ROWS = 20;
+    const TOTAL_ZONES = ZONE_COLS * ZONE_ROWS;
+
+    function copyScreenAudio(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness);
+        const sat = new Int8Array(engine.zone.saturation);
+        const hue = new Int16Array(engine.zone.hue);
+        const w = 320 / ZONE_COLS, h = 200 / ZONE_ROWS;
+        const satMultiplier = audioEase.sat / 200 + 0.5;
+        const litMultiplier = audioEase.lit / 100;
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS), col = iZone % ZONE_COLS;
+            hiddenCtx.fillStyle = getColorString(hue[iZone], sat[iZone] * satMultiplier, lightness[iZone] * litMultiplier, alpha);
+            hiddenCtx.fillRect(col * w, row * h, w, h);
+        }
+    }
+
+    function copyScreen(alpha) {
+        const lightness = new Int8Array(engine.zone.lightness);
+        const sat = new Int8Array(engine.zone.saturation);
+        const hue = new Int16Array(engine.zone.hue);
+        const w = 320 / ZONE_COLS, h = 200 / ZONE_ROWS;
+        for (let iZone = 0; iZone < TOTAL_ZONES; iZone++) {
+            const row = Math.floor(iZone / ZONE_COLS), col = iZone % ZONE_COLS;
+            const finalHue = backgroundMode === 'Custom Ambience' ? proBack[0] : hue[iZone] + (backgroundMode === 'Color Cycle Ambience' ? gCycle : 0);
+            hiddenCtx.fillStyle = getColorString(finalHue, sat[iZone], lightness[iZone], alpha);
+            hiddenCtx.fillRect(col * w, row * h, w, h);
+        }
+    }
+
+    function DrawRect(x, y, w, h, color) { hiddenCtx.beginPath(); hiddenCtx.fillStyle = color; hiddenCtx.fillRect(x, y, w, h); }
+    function DrawCircle(x, y, radius, color) { hiddenCtx.beginPath(); hiddenCtx.fillStyle = color; hiddenCtx.arc(x, y, radius, 0, 2 * Math.PI); hiddenCtx.fill(); }
+    function DrawLine(start, end, color, stroke) { hiddenCtx.beginPath(); hiddenCtx.moveTo(start[0], start[1]); hiddenCtx.lineTo(end[0], end[1]); hiddenCtx.strokeStyle = color; hiddenCtx.lineWidth = stroke; hiddenCtx.lineCap = "round"; hiddenCtx.stroke(); }
+    function hexToHSL(hex) {
+        const [, r, g, b] = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) || [];
+        const rgb = [r, g, b].map(x => parseInt(x, 16) / 255);
+        const max = Math.max(...rgb), min = Math.min(...rgb), l = (max + min) / 2;
+        if (max === min) return [0, 0, Math.round(l * 100)];
+        const d = max - min, s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        let h; const [nr, ng, nb] = rgb;
+        if (max === nr) h = (ng - nb) / d + (ng < nb ? 6 : 0); else if (max === ng) h = (nb - nr) / d + 2; else h = (nr - ng) / d + 4;
+        return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)];
+    }
+
+    function Meter(size, callback) {
+        this.size = size;
+        this.value = 0;
+        this.diff = 0;
+        this.increased = false;
+        this.decreased = false;
+        var values = [];
+        this.setValue = function (updatedValue) {
+            values.push(updatedValue);
+            if (values.length > this.size) values.shift();
+            for (var i = 0; i < values.length - 1; i++) {
+                if (values[i] !== values[i + 1]) return;
+            }
+            if (this.value !== values[0]) {
+                this.diff = Math.abs(this.value - values[0]);
+                this.increased = this.value < values[0];
+                this.decreased = this.value > values[0];
+                this.value = values[0];
+                callback();
+            }
+        }
+    }
+
+    function Craft() {
+        this.frame = 0;
+        this.sparks = [];
+        this.anvilX = 160;
+        this.anvilY = 140;
+        this.lifetime = 300;
+        this.heat = 0;
+        this.fadingOut = false;
+        this.fadeFrame = 0;
+
+        this.draw = function () {
+            this.frame++;
+            if (!craftGoing) this.fadingOut = true;
+
+            // fade in (25f) / latch-driven fade out (30f); backdrop + image fade together
+            let env;
+            if (this.fadingOut) { this.fadeFrame++; env = 1 - this.fadeFrame / 30; if (env <= 0) { this.lifetime = 0; return; } }
+            else env = Math.min(1, this.frame / 25);
+            hiddenCtx.globalAlpha = env;
+
+            DrawRect(0, 0, width, height, 'black');
+
+            let cycle = this.frame % 50;
+            let swing = cycle < 20 ? Math.pow(cycle / 20, 2) : 1 - ((cycle - 20) / 30);
+            
+            if (cycle === 20) {
+                this.heat = 1.0;
+                for (let i = 0; i < 20; i++) {
+                    let ang = -Math.PI + (Math.random() * Math.PI);
+                    let speed = 3 + Math.random() * 6;
+                    this.sparks.push({ x: this.anvilX, y: this.anvilY - 15, vx: Math.cos(ang) * speed, vy: Math.sin(ang) * speed, life: 1.0, size: 2.5 + Math.random() * 3 });
+                }
+            }
+
+            if (this.heat > 0) this.heat -= 0.03;
+
+            if (this.heat > 0) {
+                let gradient = hiddenCtx.createRadialGradient(this.anvilX, this.anvilY - 15, 0, this.anvilX, this.anvilY - 15, 120 * this.heat);
+                gradient.addColorStop(0, `rgba(255, 150, 50, ${this.heat * 0.5})`);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                hiddenCtx.fillStyle = gradient;
+                hiddenCtx.fillRect(0, 0, width, height);
+            }
+
+            for (let i = this.sparks.length - 1; i >= 0; i--) {
+                let s = this.sparks[i];
+                s.x += s.vx; s.y += s.vy;
+                s.vy += 0.25; 
+                s.life -= 0.03;
+                if (s.life <= 0) { this.sparks.splice(i, 1); continue; }
+                let hue = 10 + (1 - s.life) * 40;
+                DrawCircle(s.x, s.y, s.size * s.life, `hsla(${hue}, 100%, 60%, ${s.life})`);
+            }
+
+            DrawRect(this.anvilX - 45, this.anvilY, 90, 20, '#666'); 
+            DrawRect(this.anvilX - 22, this.anvilY + 20, 45, 35, '#555'); 
+            DrawRect(this.anvilX - 37, this.anvilY + 55, 75, 15, '#444'); 
+            DrawRect(this.anvilX - 15, this.anvilY - 10, 30, 10, `rgba(255, ${100 + this.heat * 155}, 50, 1)`);
+
+            let pivotX = this.anvilX + 55; 
+            let pivotY = this.anvilY - 55; 
+            let angleStart = Math.PI * 1.3; 
+            let angleStrike = Math.PI * 0.82; 
+            let hammerAngle = angleStart + swing * (angleStrike - angleStart);
+            
+            let hx = pivotX + Math.cos(hammerAngle) * 75;
+            let hy = pivotY + Math.sin(hammerAngle) * 75;
+            
+            DrawLine([pivotX, pivotY], [hx, hy], '#8b5a2b', 8); 
+            
+            hiddenCtx.save();
+            hiddenCtx.translate(hx, hy);
+            hiddenCtx.rotate(hammerAngle);
+            hiddenCtx.fillStyle = '#aaa';
+            hiddenCtx.fillRect(-15, -22, 30, 45);
+            hiddenCtx.restore();
+            hiddenCtx.globalAlpha = 1;
+        }
+    }
+
+    function LowHealth() {
+        this.frame = 0;
+        this.lifetime = 500;
+        this.fadingOut = false;
+        this.fadeFrame = 0;
+        
+        this.draw = function() {
+            this.frame++;
+            if (!lowHealthGoing) this.fadingOut = true;
+
+            // heartbeat: a double-thump (lub-dub) then rest, ~1.2s cycle
+            let t = this.frame % 72;
+            let beat = 0;
+            if (t < 8) beat = Math.sin((t / 8) * Math.PI);                       // lub
+            else if (t >= 12 && t < 20) beat = 0.7 * Math.sin(((t - 12) / 8) * Math.PI); // dub (softer)
+
+            // fade in (30f) / latch-driven eased fade out (40f); heartbeat settles as it fades
+            let env;
+            if (this.fadingOut) {
+                this.fadeFrame++;
+                let f = Math.min(1, this.fadeFrame / 40);
+                env = 1 - f * f;
+                if (env <= 0) { this.lifetime = 0; return; }
+                beat *= env;
+            } else {
+                env = Math.min(1, this.frame / 30);
+            }
+            hiddenCtx.globalAlpha = env;
+
+            DrawRect(0, 0, width, height, 'black');
+
+            let cx = width / 2, cy = height / 2;
+
+            // blood-red vignette pushed to the EDGES; center stays dark
+            let g = hiddenCtx.createRadialGradient(cx, cy, 25, cx, cy, 250);
+            g.addColorStop(0, 'rgba(120, 0, 0, 0)');
+            g.addColorStop(0.38, `rgba(150, 0, 0, ${0.1 + beat * 0.26})`);
+            g.addColorStop(1, `rgba(185, 15, 15, ${0.3 + beat * 0.32})`);
+            hiddenCtx.fillStyle = g;
+            hiddenCtx.fillRect(0, 0, width, height);
+
+            // thick edge border that swells + brightens on each thump
+            hiddenCtx.strokeStyle = `rgba(210, 0, 0, ${0.2 + beat * 0.5})`;
+            hiddenCtx.lineWidth = 80 + beat * 55;
+            hiddenCtx.strokeRect(0, 0, width, height);
+            hiddenCtx.globalAlpha = 1;
+        }
+    }
+
+    function Damage() {
+        this.frame = 0;
+        this.lifetime = 40;        // one-shot: a single hit, ~0.67s
+        this.shakeAmp = 42;
+
+        this.draw = function() {
+            this.frame++;
+            let progress = this.frame / 40;
+            let alpha = 1 - progress;                 // snaps in at full, fades out
+            if (alpha <= 0) { this.lifetime = 0; return; }
+
+            // backdrop fades out with the hit (no hard cut)
+            DrawRect(0, 0, width, height, `rgba(0, 0, 0, ${alpha})`);
+
+            hiddenCtx.save();
+            // violent shake that eases off over the first 12 frames
+            if (this.frame < 12) {
+                let s = this.shakeAmp * (1 - this.frame / 12);
+                hiddenCtx.translate((Math.random() - 0.5) * s, (Math.random() - 0.5) * s);
+            }
+
+            // full-screen red slam: bright center, whole screen (opposite of Low Health's dark-center edges).
+            // oversized fill so the shake never exposes a gap.
+            let g = hiddenCtx.createRadialGradient(width / 2, height / 2, 20, width / 2, height / 2, 240);
+            g.addColorStop(0, `rgba(255, 45, 45, ${alpha * 0.55})`);
+            g.addColorStop(1, `rgba(190, 0, 0, ${alpha})`);
+            hiddenCtx.fillStyle = g;
+            hiddenCtx.fillRect(-60, -60, width + 120, height + 120);
+
+            // WHITE-HOT punch on the first frames, decaying fast to reveal the red = "impact"
+            if (this.frame < 6) {
+                let w = 1 - this.frame / 6;
+                DrawRect(-60, -60, width + 120, height + 120, `rgba(255, 240, 235, ${0.9 * w})`);
+            }
+
+            hiddenCtx.restore();
+        }
+    }
+
+    function Healing() {
+        this.frame = 0;
+        this.lifetime = 60;
+
+        this.draw = function() {
+            this.frame++;
+            let progress = this.frame / 60;
+            let alpha = 1 - Math.pow(progress, 2);
+            if (alpha <= 0) { this.lifetime = 0; return; }
+
+            DrawRect(0, 0, width, height, `rgba(0, 0, 0, ${alpha})`);
+
+            let gradient = hiddenCtx.createLinearGradient(0, height, 0, height - 180);
+            gradient.addColorStop(0, `rgba(50, 255, 80, ${alpha * 0.9})`);
+            gradient.addColorStop(1, 'rgba(50, 255, 80, 0)');
+            
+            hiddenCtx.fillStyle = gradient;
+            hiddenCtx.fillRect(0, height - 180, width, 180);
+
+            DrawRect(0, 0, width, height, `rgba(100, 255, 120, ${alpha * 0.25})`);
+        }
+    }
+
+    function Portal() {
+        this.frame = 0;
+        this.lifetime = 500;   
+        this.particles = [];
+        this.fadingOut = false;
+        this.fadeFrame = 0;
+
+        this.draw = function() {
+            this.frame++;
+            if (!portalGoing) this.fadingOut = true;
+
+            // fade in (25f) / latch-driven fade out (30f); backdrop + image fade together
+            let env;
+            if (this.fadingOut) { this.fadeFrame++; env = 1 - this.fadeFrame / 30; if (env <= 0) { this.lifetime = 0; return; } }
+            else env = Math.min(1, this.frame / 25);
+            hiddenCtx.globalAlpha = env;
+
+            DrawRect(0, 0, width, height, 'black');
+
+            if (this.frame % 2 === 0 && this.frame < 260) {
+                this.particles.push({
+                    angle: Math.random() * Math.PI * 2,
+                    radius: 20,
+                    speed: 2 + Math.random() * 3,
+                    rotSpeed: 0.05 + Math.random() * 0.1,
+                    size: 7 + Math.random() * 7,
+                    life: 1.0,
+                    // mostly portal purple/magenta, with ~35% warm orange/yellow sparks mixed in
+                    hue: Math.random() < 0.35 ? 25 + Math.random() * 30 : 260 + Math.random() * 40
+                });
+            }
+
+            let cx = width / 2;
+            let cy = height / 2;
+
+            DrawCircle(cx, cy, 40, 'rgba(0, 0, 0, 1)');
+
+            let glow = hiddenCtx.createRadialGradient(cx, cy, 10, cx, cy, 150);
+            glow.addColorStop(0, `rgba(150, 50, 255, 0.6)`);
+            glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            hiddenCtx.fillStyle = glow;
+            hiddenCtx.fillRect(0, 0, width, height);
+
+            for (let i = this.particles.length - 1; i >= 0; i--) {
+                let p = this.particles[i];
+                p.angle += p.rotSpeed;
+                p.radius += p.speed;
+                p.life -= 0.015;
+
+                if (p.life <= 0) { this.particles.splice(i, 1); continue; }
+
+                let px = cx + Math.cos(p.angle) * p.radius;
+                let py = cy + Math.sin(p.angle) * p.radius;
+
+                DrawCircle(px, py, p.size * p.life, `hsla(${p.hue}, 100%, 60%, ${p.life})`);
+            }
+            hiddenCtx.globalAlpha = 1;
+        }
+    }
+
+    function LowStamina() {
+        this.frame = 0;
+        this.lifetime = 110;   // one-shot: a single "stamina ran out" alert (~1.8s), NOT lingering
+
+        this.draw = function() {
+            this.frame++;
+            let total = 110;
+            if (this.frame >= total) { this.lifetime = 0; return; }
+
+            // fade in (15) / hold / fade out (last 30)
+            let alpha = 1;
+            if (this.frame < 15) alpha = this.frame / 15;
+            else if (this.frame > total - 30) alpha = (total - this.frame) / 30;
+
+            DrawRect(0, 0, width, height, `rgba(0, 0, 0, ${alpha})`);
+
+            // stamina drains from full to empty over the first ~65% of the effect
+            let fill = Math.max(0, 1 - this.frame / 72);
+
+            // breathing amber "exhaustion" glow behind the bar
+            let breathe = Math.abs(Math.sin(this.frame * 0.09));
+            let g = hiddenCtx.createRadialGradient(width / 2, height / 2, 20, width / 2, height / 2, 190);
+            g.addColorStop(0, `rgba(255, 190, 40, ${(0.12 + breathe * 0.22) * alpha})`);
+            g.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            hiddenCtx.fillStyle = g;
+            hiddenCtx.fillRect(0, 0, width, height);
+
+            // big centered stamina bar
+            let barW = 240, barH = 34;
+            let barX = (width - barW) / 2, barY = (height - barH) / 2;
+
+            DrawRect(barX - 4, barY - 4, barW + 8, barH + 8, `rgba(20, 18, 8, ${0.9 * alpha})`);   // frame
+            DrawRect(barX, barY, barW, barH, `rgba(70, 60, 25, ${0.85 * alpha})`);                  // empty track
+
+            if (fill > 0.02) {
+                // fill shifts gold (hue 50) -> orange -> red (hue 0) as it empties
+                let hue = 50 * fill;
+                DrawRect(barX, barY, barW * fill, barH, `hsla(${hue}, 100%, 55%, ${0.95 * alpha})`);
+            } else {
+                // empty -> flashing red: winded / out of stamina
+                let flash = (this.frame % 16 < 8) ? 0.9 : 0.25;
+                DrawRect(barX, barY, barW, barH, `rgba(255, 45, 0, ${flash * alpha})`);
+            }
+        }
+    }
+
+    function Sleep() {
+        this.frame = 0;
+        this.lifetime = 500;
+        this.zs = [];
+        this.fadingOut = false;
+        this.fadeFrame = 0;
+
+        // full-screen field of twinkling stars, fixed positions so they don't jump each frame
+        this.stars = [];
+        for (let i = 0; i < 26; i++) {
+            this.stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,            // across the WHOLE screen
+                r: 5 + Math.random() * 5,             // bigger stars (5-10)
+                phase: Math.random() * Math.PI * 2,
+                tw: 0.03 + Math.random() * 0.05       // twinkle speed
+            });
+        }
+
+        this.draw = function() {
+            this.frame++;
+            if (!sleepGoing) this.fadingOut = true;
+
+            // fade in (25f) / latch-driven fade out (30f); backdrop + image fade together
+            let env;
+            if (this.fadingOut) { this.fadeFrame++; env = 1 - this.fadeFrame / 30; if (env <= 0) { this.lifetime = 0; return; } }
+            else env = Math.min(1, this.frame / 25);
+            hiddenCtx.globalAlpha = env;
+
+            DrawRect(0, 0, width, height, 'black');
+
+            // twinkling yellowish stars, whole screen
+            for (let s of this.stars) {
+                let b = 0.35 + 0.65 * Math.abs(Math.sin(this.frame * s.tw + s.phase));
+                DrawCircle(s.x, s.y, s.r, `rgba(255, 238, 160, ${b})`);
+            }
+
+            if (this.frame % 30 === 0) {
+                this.zs.push({ x: 100 + Math.random() * 120, y: height - 20, life: 1.0, drift: Math.random() * Math.PI * 2 });
+            }
+
+            hiddenCtx.font = "bold 68px Arial";   // bigger Z's
+            hiddenCtx.textAlign = "center";
+
+            for (let i = this.zs.length - 1; i >= 0; i--) {
+                let z = this.zs[i];
+                z.y -= 1.5;
+                z.x += Math.sin(this.frame * 0.05 + z.drift) * 1.5;
+                z.life -= 0.01;
+
+                if (z.life <= 0) { this.zs.splice(i, 1); continue; }
+
+                hiddenCtx.fillStyle = `rgba(70, 130, 255, ${z.life})`;   // stronger, deeper blue
+                hiddenCtx.fillText("Z", z.x, z.y);
+            }
+            hiddenCtx.globalAlpha = 1;
+        }
+    }
+    function Death() {
+        this.frame = 0;
+        this.lifetime = 150;   // one-shot ~2.5s death moment
+        this.drops = [];
+
+        this.draw = function() {
+            this.frame++;
+            if (this.frame >= 150) { this.lifetime = 0; return; }
+
+            // fade in (first 15) -> hold -> fade out (last 40)
+            let alpha = 1;
+            if (this.frame < 15) alpha = this.frame / 15;
+            else if (this.frame > 110) alpha = (150 - this.frame) / 40;
+
+            DrawRect(0, 0, width, height, `rgba(0, 0, 0, ${alpha})`);
+
+            // low blood-red ground glow (you bled out here)
+            let glow = hiddenCtx.createRadialGradient(width / 2, height / 2, 20, width / 2, height / 2, 210);
+            glow.addColorStop(0, `rgba(60, 0, 0, ${0.55 * alpha})`);
+            glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            hiddenCtx.fillStyle = glow;
+            hiddenCtx.fillRect(0, 0, width, height);
+
+            let cx = width / 2, cy = 92;
+
+            // slam-in: skull punches to full size in the first 12 frames
+            let scale = this.frame < 12 ? 1.3 - 0.3 * (this.frame / 12) : 1.0;
+
+            hiddenCtx.save();
+            hiddenCtx.translate(cx, cy);
+            hiddenCtx.scale(scale, scale);
+
+            let bone = `rgba(236, 236, 226, ${alpha})`;
+
+            // ---- crossbones behind the skull (X) ----
+            hiddenCtx.strokeStyle = bone;
+            hiddenCtx.fillStyle = bone;
+            hiddenCtx.lineCap = 'round';
+            hiddenCtx.lineWidth = 13;
+            for (let s of [1, -1]) {
+                let x1 = -78 * s, y1 = -52, x2 = 78 * s, y2 = 52;
+                hiddenCtx.beginPath();
+                hiddenCtx.moveTo(x1, y1);
+                hiddenCtx.lineTo(x2, y2);
+                hiddenCtx.stroke();
+                // knobby bone ends
+                let ang = Math.atan2(y2 - y1, x2 - x1);
+                let px = Math.cos(ang + Math.PI / 2) * 7, py = Math.sin(ang + Math.PI / 2) * 7;
+                for (let [ex, ey] of [[x1, y1], [x2, y2]]) {
+                    hiddenCtx.beginPath(); hiddenCtx.arc(ex + px, ey + py, 8, 0, Math.PI * 2); hiddenCtx.fill();
+                    hiddenCtx.beginPath(); hiddenCtx.arc(ex - px, ey - py, 8, 0, Math.PI * 2); hiddenCtx.fill();
+                }
+            }
+
+            // ---- skull (big, bone-white) ----
+            hiddenCtx.fillStyle = `rgba(242, 242, 234, ${alpha})`;
+            hiddenCtx.beginPath();
+            hiddenCtx.arc(0, -8, 42, 0, Math.PI * 2);   // cranium
+            hiddenCtx.fill();
+            hiddenCtx.fillRect(-25, 22, 50, 24);         // jaw
+
+            // eye sockets
+            hiddenCtx.fillStyle = `rgba(0, 0, 0, ${alpha})`;
+            hiddenCtx.beginPath();
+            hiddenCtx.arc(-17, -8, 13, 0, Math.PI * 2);
+            hiddenCtx.arc(17, -8, 13, 0, Math.PI * 2);
+            hiddenCtx.fill();
+
+            // nose
+            hiddenCtx.beginPath();
+            hiddenCtx.moveTo(0, 6);
+            hiddenCtx.lineTo(-7, 18);
+            hiddenCtx.lineTo(7, 18);
+            hiddenCtx.fill();
+
+            // teeth
+            hiddenCtx.strokeStyle = `rgba(0, 0, 0, ${alpha})`;
+            hiddenCtx.lineWidth = 3;
+            hiddenCtx.beginPath();
+            hiddenCtx.moveTo(-16, 22); hiddenCtx.lineTo(-16, 46);
+            hiddenCtx.moveTo(0, 22);   hiddenCtx.lineTo(0, 46);
+            hiddenCtx.moveTo(16, 22);  hiddenCtx.lineTo(16, 46);
+            hiddenCtx.stroke();
+
+            hiddenCtx.restore();
+
+            // ---- red "dropped loot" bursting outward from the body, spraying everywhere ----
+            let burst = 0;
+            if (this.frame === 13) burst = 22;                                  // the spill
+            else if (this.frame < 120 && this.frame % 6 === 0) burst = 5;       // trailing scatter
+            for (let k = 0; k < burst; k++) {
+                let ang = Math.random() * Math.PI * 2;
+                let speed = 2 + Math.random() * 5;
+                this.drops.push({
+                    x: cx + (Math.random() - 0.5) * 24,
+                    y: cy - 4,
+                    vx: Math.cos(ang) * speed,
+                    vy: Math.sin(ang) * speed - 1.5,   // slight upward kick so they arc out, then fall
+                    life: 1,
+                    size: 4 + Math.random() * 5
+                });
+            }
+            for (let i = this.drops.length - 1; i >= 0; i--) {
+                let d = this.drops[i];
+                d.x += d.vx; d.y += d.vy; d.vy += 0.13; d.life -= 0.009;
+                if (d.life <= 0) { this.drops.splice(i, 1); continue; }
+                DrawCircle(d.x, d.y, d.size * d.life, `rgba(210, 30, 30, ${d.life * alpha})`);
+            }
+        }
+    }
+
+    window.requestAnimationFrame(update);
+</script>
